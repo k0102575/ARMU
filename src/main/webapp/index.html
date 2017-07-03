@@ -45,19 +45,41 @@
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
+body {
+padding: 0px;
+margin: 0px;
+}
+
+.header-menu {
+  float: right;
+  margin: 13px 15px;
+  color: white;
+  font-family: ;
+}
+
+a {
+  text-decoration: none;
+}
+    
+#header {
+  position: absolute;
+  height: 50px;
+  width: 1900px;
+  /*border: 1px solid gray;*/
+  background-image: url("../heungwon/ARMU-Image/WEB/1_Home/Main-Header.jpg");
+}
+
 #container {
-  border: 1px solid red;
   margin: 0px;
 	height: 2000px;
-	width: 1880px;
+	width: 1900px;
 	position: relative;
 }
 
 #main_header {
 /* 	position: absolute; */
-  border: 1px solid blue;
 	height: 394px;
-	width: 1880px;
+	width: 1900px;
 	background-repeat: no-repeat;
 	background-image:
 		url("ARMU-Image/WEB/1_Home/Main-Header2.jpg");
@@ -96,12 +118,11 @@
 }
 
 #iconMenu {
-  left: 350px;
 	position: absolute;
 	top: 396px;
 	height: 120px;
-	width: 1202px;
-	background-color: #dcdcdc;
+	width: 1900px;
+	background-color: #F5F5F5;
 }
 
 #iconOne, #iconTwo, #iconThree {
@@ -136,6 +157,14 @@
 	left: 450px;
 }
 
+#EventGround {
+  position: absolute;
+  width: 1900px;
+  height: 490px;
+  background-color: #F5F5F5;
+  bottom: 280px;
+}
+
 #EventList {
   width: 1200px;
   position: absolute;
@@ -153,6 +182,7 @@
   font-size: 30px;
   font-weight: bolder;
 }
+
 
 .jssorl-004-double-tail-spin img {
     animation-name: jssorl-004-double-tail-spin;
@@ -186,6 +216,11 @@
 </style>
 <body>
 <div id="container">
+<div id="header">
+  <a href="#" class="header-menu">뮤지션 가입하기</a>
+  <a href="#" class="header-menu">회원가입</a>
+  <a href="#" class="header-menu">로그인</a>
+</div>
 <div id="main_header">
 		<div id="mainText">
 			<span id="mainArmu">알뮤</span>로 쉽고 빠르게<br> 필요한 뮤지션을 찾아보세요.
@@ -198,11 +233,13 @@
 	</div>  <!-- iconMenu -->
 	<div id="mainIndex"></div>
 	
+	<div id="EventGround">
+	
+	</div>
+	
 	<div id="EventListText">
   인기 이벤트
-  </div>
-	
-
+  </div> <!-- EventListText -->
 	
 	<div id="EventList">
     <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1200px;height:380px;overflow:hidden;visibility:hidden;">
@@ -251,7 +288,8 @@
            </svg>
        </div>
    </div>
-	</div> <!-- slider -->
+   
+	</div> <!-- EventList -->
 </div >  <!-- container -->
 
 </body>
