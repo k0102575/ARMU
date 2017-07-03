@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>ARMU</title>
-
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <style>
     @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
@@ -21,10 +21,10 @@
     }
 
     #header {
-      position: absolute;
-      border: 1px solid gray;
+      /*position: absolute;*/
       height: 50px;
       width: 1200px;
+      /*border: 1px solid gray;*/
       background-image: url("../heungwon/ARMU-Image/WEB/1_Home/Main-Header.jpg");
     }
 
@@ -39,11 +39,40 @@
       text-decoration: none;
     }
 
-    h1 {
-      margin-top: 100px;
+    .search {
+      padding-top: 20px;
+      font-size: 16px;
+      margin: 0px;
+      line-height: 2.0em;
+    }
+
+    #search-btn {
+      width: 60px;
+      display: inline-block;
+      /*height: 40px;*/
+      color: rgb(64, 64, 64);
+      text-align: center;
+      /*border-radius: 0px 4px 4px 0px;*/
+      background-color: rgb(224, 224, 224);
+      /*border-width: 1px;
+      border-style: solid;
+      border-color: rgb(190, 190, 190);*/
+      border: 1px solid red;
+      padding-left: 0px;
+    }
+
+    #search-input {
+      border: 1px solid red;
+      /*border-width: 1px;
+      border-style: solid;
+      border-color: rgb(190, 190, 190);*/
+    }
+    span {
+      font-weight: bold; color: rgb(94, 94, 94);
     }
   </style>
 </head>
+
 
 <body>
   <div id="container">
@@ -53,9 +82,16 @@
       <a href="#" class="header-menu">로그인</a>
     </div>
     <!-- header -->
-    <h1>aaaaaaaaaaaaaaaa테스트</h1>
+
+    <div class="search">
+      <input id="search-input" type="text" placeholder="Text input">
+      <div id="search-btn" data-text-content="true">
+        <span>검색</span>
+      </div>
+    </div>
   </div>
   <!-- container -->
 </body>
+
 
 </html>
