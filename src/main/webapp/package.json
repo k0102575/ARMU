@@ -1,8 +1,8 @@
 {
-  "name": "step08",
+  "name": "armu",
   "version": "1.0.0",
   "description": "",
-  "main": "main/main.js",
+  "main": "join/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,6 +11,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "handlebars": "^4.0.6",
-    "jquery": "^1.12.4"
+    "jquery": "^1.12.4",
+    "sweetalert": "^1.1.3"
   }
 }
