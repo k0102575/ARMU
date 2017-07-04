@@ -1,11 +1,14 @@
-<th><a href="#"> <!DOCTYPE html>
-		<html>
-
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ARMU</title>
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<link href="jquery.lineProgressbar.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet"
-	href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
@@ -166,78 +169,147 @@ td>a {
 
 /* Modal Content */
 .modal-content {
-  position: relative;
-	background-color: #fefefe;
+	position: relative;
+	border: 1px solid red;
+	background-color: #fff;
 	margin: auto;
 	padding: 10px;
 	border: 1px solid #888;
 	width: 700px;
-	height: 450px;
+	height: 600px;
 }
 
 /* The Close Button */
-.close {
+.closeBtn {
 	color: #aaaaaa;
 	float: right;
-	font-size: 28px;
 	font-weight: bold;
+	background-image: url("../ARMU-Image/ARMU_icon/x.png");
+  width: 50px;
+  height: 50px;
 }
 
-.close:hover, .close:focus {
+.closeBtn:hover, .closeBtn:focus {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
 }
 
 .eventLogo {
-  background-image: url("../ARMU-Image/ARMU_Logo/ARMU_01.png");
-  background-repeat: no-repeat;
-  background-size: 50%;
-  width: 50%;
-  height: 70px;
-  position: absolute;
-  left: 35%;
-} 
-
-.eventText {
-  height: 200px;
-  position: absolute;
-  top: 45%;
-  font-size: 35px;
-  left: 10%;
-  font-weight: bold;
-} 
+	position: absolute;
+	width: 50%;
+	height: 70px;
+	left: 35%;
+	background-image: url("../ARMU-Image/ARMU_Logo/ARMU_01.png");
+	background-repeat: no-repeat;
+	background-size: 50%;
+	
+}
 
 .nextBtn {
-  position: absolute;
-  color: #000;
-  font-size: 28px;
-  font-weight: bold;
-  right: 10%;
-  bottom: 10%;
+	position: absolute;
+	color: #000;
+	font-size: 28px;
+	font-weight: bold;
+	right: 10%;
+	bottom: 5%;
+	background-image: url("../ARMU-Image/ARMU_icon/arrow_2.png");
+	width: 90px;
+	height: 35px;
 }
 
 .nextBtn:hover, .nextBtn:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 .prevBtn {
-  position: absolute;
-  color: #000;
-  font-size: 28px;
-  font-weight: bold;
-  left: 10%;
-  bottom: 10%;
+	position: absolute;
+	color: #000;
+	font-size: 28px;
+	font-weight: bold;
+	left: 10%;
+	bottom: 5%;
+	background-image: url("../ARMU-Image/ARMU_icon/arrow_1.png");
+	width: 90px;
+	height: 35px;
 }
 
 .prevBtn:hover, .prevBtn:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
 }
 
+#jq {
+	position: absolute;
+	width: 500px;
+	left: 15%;
+	top: 15%;
+}
+
+.eventSelect {
+  position: absolute;
+  width: 560px;
+  left: 10%;
+  height: 400px;
+  bottom: 13%;
+}
+
+.eventText {
+  font-size: 27px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.selectTextEvent {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.selectTextGenre {
+  position: absolute;
+  top: 20%;
+  left: 47%;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.selectTextMajor {
+  position: absolute;
+  top: 20%;
+  right: 15%;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#selectListEvent {
+  display: inline-table;
+  width: 120px;
+  position: absolute;
+  top: 35%;
+  left: 10%;
+}
+
+#selectListGenre {
+  display: inline-table;
+  width: 120px;
+  position: absolute;
+  top: 35%;
+  left: 42%;
+}
+
+#selectListMajor {
+  display: inline-table;
+  width: 120px;
+  position: absolute;
+  top: 35%;
+  right: 5%;
+}
 
 /*모달 끗*/
 </style>
@@ -250,7 +322,6 @@ td>a {
 	</div>
 	<!-- header -->
 	<div id="container">
-	
 
 		<div class="search">
 			<a href="#"><img id="search-logo"
@@ -332,29 +403,82 @@ td>a {
 			</table>
 
 		</div>
-  <button id="myBtn">Open Modal</button>
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <div class="eventLogo"></div>
-    <div class="eventText">
-    
-    
-    
-    </div>
-    <div class="prevBtn"><span onclick="location.href='regist.html'">&times;</span>이전</div>
-    <div class="nextBtn">다음<span onclick="location.href='regist3.html'">&times;</span></div>
-  </div>
-  </div>
+		<button id="myBtn">Open Modal</button>
+		<!-- The Modal -->
+		<div id="myModal" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="closeBtn"></span>
+				<div class="eventLogo"></div>
+					<div id="jq"></div>
+					<div class="eventSelect">
+					<div class="eventText">
+          희망하시는 이벤트 분류를 선택해 주세요
+					</div> <!-- eventText -->
+					<div class="selectText">
+          <span class="selectTextEvent">이벤트 테마</span><span class="selectTextGenre">전공</span><span class="selectTextMajor">장르</span>
+          </div> <!-- selectText -->
+          <div>
+          <form>
+							<select class="form-control" id="selectListEvent">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</select> 
+							<select class="form-control" id="selectListGenre">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</select> 
+							<select class="form-control" id="selectListMajor">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</select>
+						</form>
+          
+          </div>
+          
+          
+				</div> <!-- eventSelect -->
+				<div class="prevBtn" onclick="location.href='regist.html'"></div>
+				<div class="nextBtn" onclick="location.href='regist3.html'"></div>
+			</div> <!-- modal-content -->
+		</div> <!-- mymodal -->
 	</div> <!-- container -->
 	
-	
-	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="jquery.lineProgressbar.js"></script>
+  <script>
+  $('#jq').LineProgressbar({
+    percentage : 20,
+    radius : '3px',
+    height : '10px',
+  });
+
+  var _gaq = _gaq || [];
+  _gaq.push([ '_setAccount', 'UA-36251023-1' ]);
+  _gaq.push([ '_setDomainName', 'jqueryscript.net' ]);
+  _gaq.push([ '_trackPageview' ]);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+        : 'http://www')
+        + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
 	<script src="regist.js"></script>
-	<script>display(10)</script>
-	
+
 </body>
 </html>

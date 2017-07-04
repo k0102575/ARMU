@@ -1,14 +1,13 @@
-<th><a href="#"> <!DOCTYPE html>
-		<html>
+<!DOCTYPE html>
+<html>
 
 <head>
 <meta charset="utf-8">
 <title>ARMU</title>
 <link rel="stylesheet"
-	href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-
 body {
 	font-family: 'Noto Sans KR', sans-serif;
 }
@@ -176,14 +175,16 @@ td>a {
 }
 
 /* The Close Button */
-.close {
-	color: #aaaaaa;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
+.closeBtn {
+  color: #aaaaaa;
+  float: right;
+  font-weight: bold;
+  background-image: url("../ARMU-Image/ARMU_icon/x.png");
+  width: 50px;
+  height: 50px;
 }
 
-.close:hover, .close:focus {
+.closeBtn:hover, .closeBtn:focus {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
@@ -215,6 +216,9 @@ td>a {
   font-weight: bold;
   right: 10%;
   bottom: 10%;
+  background-image: url("../ARMU-Image/ARMU_icon/arrow_2.png");
+     width: 90px;
+  height: 35px;
 }
 
 .nextBtn:hover, .nextBtn:focus {
@@ -322,12 +326,12 @@ td>a {
 
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="closeBtn"></span>
     <div class="eventLogo"></div>
     <div class="eventText">
     원하는 조건에 맞는 뮤지션 매칭을 위해<br> 몇가지 질문에 답해주세요.
     </div>
-    <div class="nextBtn">다음<span onclick="location.href='regist2.html'">&times;</span></div>
+    <div class="nextBtn" onclick="location.href='regist2.html'"></div>
   </div>
   </div>
 	</div> <!-- container -->
