@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+  <title>jQuery Progress.js Plugin Demos</title>
+   <link rel="stylesheet" type="text/css" href="progress.css">
+  <style>
+  body { background-color:#dedede;}
+  .wrapper { max-width:640px; margin:150px auto;}
+  h1 { margin-bottom:50px;}
+  </style>
+  </head>
+  <body>
+  <div id="jquery-script-menu">
+<div class="jquery-script-center">
+<ul>
+<li><a href="http://www.jqueryscript.net/loading/SVG-Based-Progress-Bar-Plugin-For-jQuery-Progress-js.html">Download This Plugin</a></li>
+<li><a href="http://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
+</ul>
+<div class="jquery-script-ads"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<div class="jquery-script-clear"></div>
+</div>
+</div>
+  <div class="wrapper">
+  <h1>jQuery Progress.js Plugin Demos</h1>
+    <svg id="container"></svg><br>
+<br><br>
+
+    <svg id="container1"></svg><br>
+<br><br>
+
+    <svg id="container2"></svg>
+
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="jquery.progress.js"></script>
+    <script type="text/javascript">
+      var progress = $("#container").Progress({
+        percent: 20,
+        width: 350,
+        height: 40,
+        fontSize: 16
+      });
+
+      var progress1 = $("#container1").Progress({
+        percent: 50,
+        width: 350,
+        height: 40,
+		barColor:'#46CFB0',
+        fontSize: 16,
+        increaseSpeed: 2
+      });
+
+      var progress2 = $("#container2").Progress({
+        percent: 70,
+        width: 350,
+        height: 40,
+		barColor:'#5E9DE6',
+        fontSize: 16,
+        animate: false
+      });
+
+      setTimeout(function(){
+        progress.percent(90);
+        progress1.percent(90);
+        progress2.percent(90);
+      }, 4000);
+    </script>
+  </div><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  </body>
+</html>
