@@ -9,7 +9,6 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal
 
 btn.click(function() {
-    console.log("aaa");
     modal.style.display = "block";
 })
 
