@@ -1,0 +1,193 @@
+  @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  #container {
+    /*border: 1px solid red;*/
+    height: 1600px;
+    width: 1200px;
+    position: relative;
+    left: 350px;
+  }
+  #header {
+    height: 50px;
+    width: 100%;
+    /*border: 1px solid gray;*/
+    background-image: url("../ARMU-Image/WEB/1_Home/Main-Header.jpg");
+  }
+
+  .header-menu {
+    float: right;
+    margin: 13px 15px;
+    color: white;
+  }
+  .search {
+    width: 500px;
+    position: relative;
+    /*left: 40%;*/
+    /*padding-top: 20px;*/
+    font-size: 16px;
+    margin: auto;
+    margin-top: 50px;
+    line-height: 2.0em;
+    /*border: 1px solid red;*/
+  }
+
+  #search-btn {
+    margin-top: 4px;
+    display: inline-block;
+    position: absolute;
+    width: 60px;
+    /*height: 40px;*/
+    color: rgb(64, 64, 64);
+    text-align: center;
+    border-radius: 0px 4px 4px 0px;
+    background-color: rgb(224, 224, 224);
+    border: 1px solid rgb(190, 190, 190);
+  }
+
+  #search-input {
+    width: 400px;
+    margin-top: 5px;
+    height: 2.0em;
+    border: 1px solid rgb(190, 190, 190);
+  }
+
+  .event-body {
+    font-size: 30px;
+    margin-top: 50px;
+    margin-bottom: 80px;
+    /*border: 3px solid blue;*/
+    height: 750px;
+  }
+
+  .event-list {
+    /*margin-top: 50px;*/
+    padding: 25px;
+    position: absolute;
+    width: 350px;
+    height: 280px;
+    /*border: 1px solid red;*/
+    background-color: #EEEEEE;
+  }
+
+  #el1 {
+    left: 20px;
+    margin-top: 50px;
+  }
+
+  #el2 {
+    margin-top: 50px;
+    left: 420px;
+  }
+
+  #el3 {
+    margin-top: 50px;
+    right: 20px;
+  }
+
+  #el4 {
+    /*top: 600px;*/
+    margin-top: 400px;
+    left: 220px;
+  }
+
+  #el5 {
+    margin-top: 400px;
+    /*top: 600px;*/
+    right: 220px;
+  }
+
+  #event-title {
+    font-weight: bold;
+    color: rgb(94, 94, 94);
+    font-size: 50px;
+    margin-left: 30px;
+  }
+
+  #search-logo {
+    height: 38px;
+    width: 30px;
+    margin-bottom: 10px;
+  }
+
+  .event-font {
+    position: absolute;
+    text-align: center;
+    width: 300px;
+    color: rgb(94, 94, 94);
+  }
+
+  span {
+    margin-bottom: 50px;
+  }
+
+  table {
+    color: rgb(94, 94, 94);
+    margin: auto;
+  }
+
+  tr>th {
+    /*border: 1px solid blue;*/
+    font-size: 35px;
+    width: 230px;
+  }
+
+  tr>td {
+    /*border: 1px solid blue;*/
+    padding-left: 10px;
+    padding-top: 20px;
+    font-size: 20px;
+  }
+
+  th>a {
+    color: rgb(94, 94, 94);
+  }
+
+  td>a {
+    color: rgb(94, 94, 94);
+  }
+
+
+  .event-nav {
+    color: #5E5E5E;
+    font-size: 20px;
+    /*width: 800px;*/
+  }
+
+  li.active>a.event-nav {
+    background-color: #a5a5a5;
+  }
+
+  .sub-menu {
+    width: 700px;
+    margin: 20px 0 20px 5%;
+    /*margin-left: 5%;*/
+  }
+
+
+  div.row {
+    position: absolute;
+    margin: auto;
+    border: 1px solid red;
+  }
+
+  .thumbnail {
+    margin: 20px;
+    border: 1px solid red;
+  }
+  .nav {
+    font-size: 30px;
+    /*border: 1px solid red*/
+  }
+  ul.nav-tabs > li > a {
+    font-weight: bold;
+    color: #b6b6b6;
+    border: 1px solid #dddddd;
+    margin: 0px;
+  }
