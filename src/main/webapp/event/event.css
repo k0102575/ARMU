@@ -14,10 +14,11 @@
     position: relative;
     left: 350px;
   }
+
+  /*header시작*/
   #header {
     height: 50px;
     width: 100%;
-    /*border: 1px solid gray;*/
     background-image: url("../ARMU-Image/WEB/1_Home/Main-Header.jpg");
   }
 
@@ -26,6 +27,8 @@
     margin: 13px 15px;
     color: white;
   }
+  /*header끝*/
+
   .search {
     width: 500px;
     position: relative;
