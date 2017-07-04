@@ -4,15 +4,17 @@
 <head>
 <meta charset="utf-8">
 <title>ARMU</title>
-<link rel="stylesheet"
-	href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"
-	href="../node_modules/sweetalert/dist/sweetalert.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../node_modules/sweetalert/dist/sweetalert.css">
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 body {
 	font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+	text-decoration: none;
 }
 
 #container {
@@ -38,47 +40,8 @@ body {
 	font-family:;
 }
 
-a {
-	text-decoration: none;
-}
 
-.search {
-	position: relative;
-	left: 40%;
-	padding-top: 20px;
-	font-size: 16px;
-	margin: 0px;
-	line-height: 2.0em;
-}
 
-#search-btn {
-	display: inline-block;
-	position: absolute;
-	width: 60px;
-	/*height: 40px;*/
-	color: rgb(64, 64, 64);
-	text-align: center;
-	/*border-radius: 0px 4px 4px 0px;*/
-	background-color: rgb(224, 224, 224);
-	/*border-width: 1px;
-      border-style: solid;
-      border-color: rgb(190, 190, 190);*/
-	border: 1px solid rgb(190, 190, 190);
-	padding-left: 0px;
-}
-
-#search-input {
-	height: 2.1em;
-	/*border: 1px solid red;*/
-	border-width: 1px;
-	border-style: solid;
-	border-color: rgb(190, 190, 190);
-}
-
-span {
-	font-weight: bold;
-	color: rgb(94, 94, 94);
-}
 
 /*모달*/
 /* The Modal (background) */
@@ -98,11 +61,11 @@ span {
 
 /* Modal Content */
 .modal-content {
-	background-color: #fefefe;
+	background-color: #fff;
 	margin: auto;
 	padding: 20px;
 	border: 1px solid #888;
-	width: 500px;
+	width: 450px;
 	height: 500px;
 	top: 100px;
 }
@@ -141,6 +104,10 @@ span {
 	color: black;
 }
 
+#kakao-join:hover, #kakao-join:focus {
+background-color: #F7B50C;
+}
+
 .join-or-separator {
 	position: relative;
 	width: 80%;
@@ -153,14 +120,40 @@ span {
 	top: -10px;
 	background-color: white;
 	padding: 0 6px;
-	left: 165px;
+	left: 145px;
 	font-weight: 100;
+	color: #5e5e5e;
 }
 
-hr {
- color: whiteSmoke;
+#email-join {
+ border: 1px solid #5e5e5e;
+ color: black;
+ margin-top: 4%; 
 }
 
+#description {
+  width: 77%;
+  margin-left: 13%;
+  margin-right: 13%;
+  margin-top: 8%;
+}
+
+#login-btn {
+  width: 120px;
+  height: 30px;
+  /*background-color: white;
+  color: #5e5e5e;
+  border: 0.5px solid #5e5e5e;*/
+  padding: 0px;
+  display: inline-block;
+  margin-left: 24%;
+}
+
+#login-ask{
+font-size: large;
+font-weight: normal;
+color: #565051;
+}
 </style>
 </head>
 
@@ -174,29 +167,10 @@ hr {
 		</div>
 		<!-- header -->
 
-		<div class="search">
-
-			<div data-obj-id="VZXiI" data-obj-type="icon" class=""
-				style="position: absolute; top: 10px; left: 11px; width: 20px; height: 20px;">
-				<svg xmlns="http://www.w3.org/2000/svg"
-					xmlns:xlink="http://www.w3.org/1999/xlink"
-					width="32.24800109863281" height="32.24800109863281"
-					viewBox="0 0 32.24800109863281 32.24800109863281"
-					fill="rgb(166, 166, 166)" data-svg-content="true"
-					preserveAspectRatio="none">
-					<g>
-					<path
-						d="M 19,0C 11.82,0, 6,5.82, 6,13c0,3.090, 1.084,5.926, 2.884,8.158l-8.592,8.592c-0.54,0.54-0.54,1.418,0,1.958 c 0.54,0.54, 1.418,0.54, 1.958,0l 8.592-8.592C 13.074,24.916, 15.91,26, 19,26c 7.18,0, 13-5.82, 13-13S 26.18,0, 19,0z M 19,24 C 12.934,24, 8,19.066, 8,13S 12.934,2, 19,2S 30,6.934, 30,13S 25.066,24, 19,24z"></path></g></svg>
-			</div>
-
-			<input id="search-input" type="text" placeholder="Text input">
-			<!-- <button id="search-btn" type="button" name="button">검색</button> -->
-			<div id="search-btn" data-text-content="true">
-				<span>검색</span>
-			</div>
-		</div>
 	</div>
 	<!-- container -->
+
+
 
 
 	<!-- The Modal -->
@@ -220,14 +194,20 @@ hr {
 					<hr>
 					<span class="join-or-separator-text">또는</span>
 				</div>
-				<button type="button"
-					class='btn btn-primary btn-lg btn-block join-btns' id="email-join">이메일로 가입하기</button>
+				<a href='signup.html'
+					class='btn btn-default btn-lg btn-block join-btns' id="email-join">이메일로 가입하기</a>
 			</div>
+			<div id='description'>회원가입을 클릭하면 알뮤의 서비스 약관, 개인정보 보호정책에 동의하는 것입니다.</div>
 			<!-- join -->
+		<hr>
+		<div id='login'>
+		<span id='login-ask'>이미 알뮤 회원이신가요?</span>
+		<button type="button"
+          class='btn btn-default btn-lg btn-block' id="login-btn">로그인</button>
 		</div>
-		<!-- Modal Contents -->
+		</div><!-- Modal Contents -->
 
-	</div>
+	</div><!-- Modal -->
 
 
 </body>

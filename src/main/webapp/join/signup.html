@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>ARMU</title>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../node_modules/sweetalert/dist/sweetalert.css">
+<style>
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+#container {
+	border: 1px solid red;
+	height: 1600px;
+	width: 1200px;
+	position: relative;
+	left: 350px;
+}
+
+#header {
+	/*position: absolute;*/
+	height: 50px;
+	width: 1200px;
+	/*border: 1px solid gray;*/
+	background-image: url("../ARMU-Image/Web/1_Home/Main-Header.jpg");
+}
+
+.header-menu {
+	float: right;
+	margin: 13px 15px;
+	color: white;
+	font-family:;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+
+/*모달*/
+/* The Modal (background) */
+.modal {
+	display: block; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */ 7
+	y left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+	background-color: #fff;
+	margin: auto;
+	margin-bottom: 200px;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 450px;
+	height: 470px;
+	top: 100px;
+}
+
+/* The Close Button */
+.close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/*모달 끗*/
+
+.join {
+	text-align: center;
+}
+
+.join-btns {
+	font-weight: normal;
+	width: 300px;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 3%;
+	border: none;
+}
+
+#signup-btn {
+ border: 1px solid #5e5e5e;
+ color: black;
+ margin-top: 6%;
+}
+
+.email-join-separator {
+	position: relative;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.email-join-separator-text {
+	position: absolute;
+	top: -10px;
+	background-color: white;
+	padding: 0 6px;
+	left: 100px;
+	font-weight: 100;
+	color: #5e5e5e;
+}
+
+.join-form {
+color: #5e5e5e;
+margin-left: 10%;
+}
+
+
+#sns-join {
+  width: 77%;
+  margin-left: 13%;
+  margin-right: 13%;
+  margin-top: 8%;
+}
+
+#login-btn {
+  width: 120px;
+  height: 30px;
+  /*background-color: white;
+  color: #5e5e5e;
+  border: 0.5px solid #5e5e5e;*/
+  padding: 0px;
+  display: inline-block;
+  margin-left: 24%;
+}
+
+#login-ask{
+font-size: large;
+font-weight: normal;
+color: #565051;
+}
+</style>
+</head>
+
+
+<body>
+	<div id="container">
+		<div id="header">
+			<a href="#" class="header-menu">뮤지션 가입하기</a> <a href="#"
+				class="header-menu" id="join-btn">회원가입</a> <a href="#"
+				class="header-menu">로그인</a>
+		</div>
+		<!-- header -->
+
+	</div>
+	<!-- container -->
+
+
+
+
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<div class="join">
+				<br>
+			<div class="email-join-separator">
+         <hr>
+         <span class="email-join-separator-text">이메일로 가입하기</span>
+       </div>
+       
+       <form class="form-horizontal join-form">
+  
+  <div class="form-group">
+    <label for="fi-email" class="col-sm-3 control-label">이메일</label>
+    <div class="col-sm-7">
+      <input type="email" class="form-control" id="fi-email" placeholder="이메일">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fi-name" class="col-sm-3 control-label">이름</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="fi-name" placeholder="이름">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fi-password" class="col-sm-3 control-label">비밀번호</label>
+    <div class="col-sm-4">
+      <input type="password" class="form-control" id="fi-password">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fi-tel" class="col-sm-3 control-label">휴대폰번호</label>
+    <div class="col-sm-7">
+      <input type="text" class="form-control" id="fi-tel" placeholder="휴대폰번호">
+    </div>
+  </div>
+  
+ 
+</form>
+				
+				<button type="button"
+					class='btn btn-default btn-lg btn-block join-btns' id="signup-btn">회원 가입</button>
+			</div>
+			<a id='sns-join'>SNS 계정으로 가입하러 갈래요 &nbsp;&nbsp; &gt;</a>
+			<!-- join -->
+		<hr>
+		<div id='login'>
+		<span id='login-ask'>이미 알뮤 회원이신가요?</span>
+		<button type="button"
+          class='btn btn-default btn-lg btn-block' id="login-btn">로그인</button>
+		</div>
+		</div><!-- Modal Contents -->
+
+	</div><!-- Modal -->
+
+
+</body>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="index.js"></script>
+</html>
