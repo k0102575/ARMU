@@ -2,224 +2,227 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>ARMU</title>
-  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="../node_modules/sweetalert/dist/sweetalert.css">
-  <style>
-    @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+<meta charset="utf-8">
+<title>ARMU</title>
+<link rel="stylesheet"
+	href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../node_modules/sweetalert/dist/sweetalert.css">
+<style>
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
-    body {
-      font-family: 'Noto Sans KR', sans-serif;
-    }
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
 
-    #container {
-      border: 1px solid red;
-      height: 1600px;
-      width: 1200px;
-      position: relative;
-      left: 350px;
-    }
+#container {
+	border: 1px solid red;
+	height: 1600px;
+	width: 1200px;
+	position: relative;
+	left: 350px;
+}
 
-    #header {
-      /*position: absolute;*/
-      height: 50px;
-      width: 1200px;
-      /*border: 1px solid gray;*/
-      background-image: url("../ARMU-Image/Web/1_Home/Main-Header.jpg");
-    }
+#header {
+	/*position: absolute;*/
+	height: 50px;
+	width: 1200px;
+	/*border: 1px solid gray;*/
+	background-image: url("../ARMU-Image/Web/1_Home/Main-Header.jpg");
+}
 
-    .header-menu {
-      float: right;
-      margin: 13px 15px;
-      color: white;
-      font-family: ;
-    }
+.header-menu {
+	float: right;
+	margin: 13px 15px;
+	color: white;
+	font-family:;
+}
 
-    a {
-      text-decoration: none;
-    }
+a {
+	text-decoration: none;
+}
 
-    .search {
-      position: relative;
-      left: 40%;
-      padding-top: 20px;
-      font-size: 16px;
-      margin: 0px;
-      line-height: 2.0em;
-    }
+.search {
+	position: relative;
+	left: 40%;
+	padding-top: 20px;
+	font-size: 16px;
+	margin: 0px;
+	line-height: 2.0em;
+}
 
-    #search-btn {
-      display: inline-block;
-      position: absolute;
-      width: 60px;
-      /*height: 40px;*/
-      color: rgb(64, 64, 64);
-      text-align: center;
-      /*border-radius: 0px 4px 4px 0px;*/
-      background-color: rgb(224, 224, 224);
-      /*border-width: 1px;
+#search-btn {
+	display: inline-block;
+	position: absolute;
+	width: 60px;
+	/*height: 40px;*/
+	color: rgb(64, 64, 64);
+	text-align: center;
+	/*border-radius: 0px 4px 4px 0px;*/
+	background-color: rgb(224, 224, 224);
+	/*border-width: 1px;
       border-style: solid;
       border-color: rgb(190, 190, 190);*/
-      border: 1px solid rgb(190, 190, 190);
-      padding-left: 0px;
-    }
+	border: 1px solid rgb(190, 190, 190);
+	padding-left: 0px;
+}
 
-    #search-input {
-      height: 2.1em;
-      /*border: 1px solid red;*/
-      border-width: 1px;
-      border-style: solid;
-      border-color: rgb(190, 190, 190);
-    }
-    span {
-      font-weight: bold; color: rgb(94, 94, 94);
-    }
+#search-input {
+	height: 2.1em;
+	/*border: 1px solid red;*/
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(190, 190, 190);
+}
 
-  /*모달*/
-    /* The Modal (background) */
-    .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    }
+span {
+	font-weight: bold;
+	color: rgb(94, 94, 94);
+}
 
-    /* Modal Content */
-    .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        height:700px;
-    }
+/*모달*/
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */ 7
+	y left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
 
-    /* The Close Button */
-    .close {
-        color: #aaaaaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
+/* Modal Content */
+.modal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 500px;
+	height: 500px;
+	top: 100px;
+}
 
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-    
-    /*모달 끗*/
+/* The Close Button */
+.close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
 
-  </style>
+.close:hover, .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/*모달 끗*/
+.join {
+	text-align: center;
+}
+
+.join-btns {
+	font-weight: normal;
+	width: 300px;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 3%;
+	border: none;
+}
+
+#kakao-join {
+	background-color: yellow;
+	color: black;
+}
+
+.join-or-separator {
+	position: relative;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.join-or-separator-text {
+	position: absolute;
+	top: -10px;
+	background-color: white;
+	padding: 0 6px;
+	left: 165px;
+	font-weight: 100;
+}
+</style>
 </head>
 
 
 <body>
-  <div id="container">
-    <div id="header">
-      <a href="#" class="header-menu">뮤지션 가입하기</a>
-      <a href="#" class="header-menu" id="join-btn">회원가입</a>
-      <a href="#" class="header-menu">로그인</a>
-    </div>
-    <!-- header -->
+	<div id="container">
+		<div id="header">
+			<a href="#" class="header-menu">뮤지션 가입하기</a> <a href="#"
+				class="header-menu" id="join-btn">회원가입</a> <a href="#"
+				class="header-menu">로그인</a>
+		</div>
+		<!-- header -->
 
-    <div class="search">
+		<div class="search">
 
-      <div data-obj-id="VZXiI" data-obj-type="icon" class=""
-      style="position: absolute; top: 10px; left: 11px; width: 20px; height: 20px;">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.24800109863281" height="32.24800109863281" viewBox="0 0 32.24800109863281 32.24800109863281" fill="rgb(166, 166, 166)" data-svg-content="true" preserveAspectRatio="none"><g><path d="M 19,0C 11.82,0, 6,5.82, 6,13c0,3.090, 1.084,5.926, 2.884,8.158l-8.592,8.592c-0.54,0.54-0.54,1.418,0,1.958 c 0.54,0.54, 1.418,0.54, 1.958,0l 8.592-8.592C 13.074,24.916, 15.91,26, 19,26c 7.18,0, 13-5.82, 13-13S 26.18,0, 19,0z M 19,24 C 12.934,24, 8,19.066, 8,13S 12.934,2, 19,2S 30,6.934, 30,13S 25.066,24, 19,24z"></path></g></svg></div>
+			<div data-obj-id="VZXiI" data-obj-type="icon" class=""
+				style="position: absolute; top: 10px; left: 11px; width: 20px; height: 20px;">
+				<svg xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink"
+					width="32.24800109863281" height="32.24800109863281"
+					viewBox="0 0 32.24800109863281 32.24800109863281"
+					fill="rgb(166, 166, 166)" data-svg-content="true"
+					preserveAspectRatio="none">
+					<g>
+					<path
+						d="M 19,0C 11.82,0, 6,5.82, 6,13c0,3.090, 1.084,5.926, 2.884,8.158l-8.592,8.592c-0.54,0.54-0.54,1.418,0,1.958 c 0.54,0.54, 1.418,0.54, 1.958,0l 8.592-8.592C 13.074,24.916, 15.91,26, 19,26c 7.18,0, 13-5.82, 13-13S 26.18,0, 19,0z M 19,24 C 12.934,24, 8,19.066, 8,13S 12.934,2, 19,2S 30,6.934, 30,13S 25.066,24, 19,24z"></path></g></svg>
+			</div>
 
-      <input id="search-input" type="text" placeholder="Text input">
-      <!-- <button id="search-btn" type="button" name="button">검색</button> -->
-      <div id="search-btn" data-text-content="true">
-        <span>검색</span>
-      </div>
-    </div>
-  </div>
-  <!-- container -->
+			<input id="search-input" type="text" placeholder="Text input">
+			<!-- <button id="search-btn" type="button" name="button">검색</button> -->
+			<div id="search-btn" data-text-content="true">
+				<span>검색</span>
+			</div>
+		</div>
+	</div>
+	<!-- container -->
 
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    
-    
-<h1>회원 가입</h1>
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<div class="join">
+				<br>
+				<h3>회원 가입</h3>
+				<br>
+				<button type="button" class='btn btn-primary btn-lg btn-block join-btns' id="facebook-join">
+					<span id='fbk-img'><img src="facebook.png"></span>
+					페이스북으로 가입하기</button>
+					
+				<button type="button" class='btn btn-primary btn-lg btn-block join-btns' id="kakao-join">
+					 카카오 계정으로 가입하기</button>
+				
+				<div class="join-or-separator">
+					<hr>
+					<span class="join-or-separator-text">또는</span>
+				</div>
+				<button type="button"
+					class='btn btn-primary btn-lg btn-block join-btns' id="email-join">이메일로 가입하기</button>
+			</div>
+			<!-- join -->
+		</div>
+		<!-- Modal Contents -->
 
-<form class="form-horizontal">
-  <div class="form-group bit-view">
-    <label class="col-sm-2 control-label">번호</label>
-    <div class="col-sm-10">
-      <p class="form-control-static" id="fi-no"></p>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="fi-email" class="col-sm-2 control-label">이메일</label>
-    <div class="col-sm-7">
-      <input type="email" class="form-control" id="fi-email" placeholder="이메일">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="fi-name" class="col-sm-2 control-label">이름</label>
-    <div class="col-sm-4">
-      <input type="text" class="form-control" id="fi-name" placeholder="이름">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="fi-tel" class="col-sm-2 control-label">전화번호</label>
-    <div class="col-sm-4">
-      <input type="text" class="form-control" id="fi-tel" placeholder="전화번호">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="fi-password" class="col-sm-2 control-label">암호</label>
-    <div class="col-sm-4">
-      <input type="password" class="form-control" id="fi-password">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="fi-homepage" class="col-sm-2 control-label">홈페이지</label>
-    <div class="col-sm-4">
-      <input type="text" class="form-control" id="fi-homepage" placeholder="홈페이지">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="fi-facebook" class="col-sm-2 control-label">페이스북</label>
-    <div class="col-sm-4">
-      <input type="text" class="form-control" id="fi-facebook" placeholder="페이스북">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="fi-twitter" class="col-sm-2 control-label">트위터</label>
-    <div class="col-sm-4">
-      <input type="text" class="form-control" id="fi-twitter" placeholder="트위터">
-    </div>
-  </div>  
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="button" class="btn btn-primary bit-view" id="upd-btn">변경</button>
-      <button type="button" class="btn btn-primary bit-view" id="del-btn">삭제</button>
-      <button type="button" class="btn btn-primary bit-new" id="add-btn">추가</button>
-      <a href="index.html" class="btn btn-primary" id="lst-btn">목록</a>
-    </div>
-  </div>
-</form>
-    
-  </div> <!-- Modal Contents -->
-
-</div>
+	</div>
 
 
 </body>
