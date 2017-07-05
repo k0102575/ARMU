@@ -4,6 +4,7 @@
 <head>
 <meta charset="utf-8">
 <title>ARMU</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../node_modules/sweetalert/dist/sweetalert.css">
 <style>
@@ -11,37 +12,42 @@
 
 body {
 	font-family: 'Noto Sans KR', sans-serif;
+	padding: 0px;
+  margin: 0px;
 }
 
 a {
 	text-decoration: none;
 }
 
-#container {
-	border: 1px solid red;
-	height: 1600px;
-	width: 1200px;
-	position: relative;
-	left: 350px;
-}
-
-#header {
-	/*position: absolute;*/
-	height: 50px;
-	width: 1200px;
-	/*border: 1px solid gray;*/
-	background-image: url("../ARMU-Image/Web/1_Home/Main-Header.jpg");
-}
-
 .header-menu {
-	float: right;
-	margin: 13px 15px;
-	color: white;
-	font-family:;
+  float: right;
+  margin: 13px 15px;
+  color: white;
 }
 
+    
+#header {
+  position: absolute;
+  height: 50px;
+  width: 1900px;
+}
 
+#container {
+  margin: 0px;
+  height: 2000px;
+  width: 1900px;
+  position: relative;
+}
 
+#main_header {
+/*  position: absolute; */
+  height: 394px;
+  width: 1900px;
+  background-repeat: no-repeat;
+  background-image:
+    url("../ARMU-Image/WEB/1_Home/Main-Header2.jpg");
+}
 
 /*모달*/
 /* The Modal (background) */
@@ -154,6 +160,7 @@ font-size: large;
 font-weight: normal;
 color: #565051;
 }
+
 </style>
 </head>
 
@@ -166,6 +173,11 @@ color: #565051;
 				class="header-menu">로그인</a>
 		</div>
 		<!-- header -->
+		<div id="main_header">
+    <div id="mainText">
+      <span id="mainArmu">알뮤</span>로 쉽고 빠르게<br> 필요한 뮤지션을 찾아보세요.
+    </div>  <!-- mainText -->
+  </div>  <!-- main_header -->
 
 	</div>
 	<!-- container -->
