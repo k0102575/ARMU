@@ -28,7 +28,7 @@ a {
 /*헤더부분*/
 #header-img {
 position: relative;
-	height: 300px;
+	height: 250px;
 	width: 100%;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -45,11 +45,16 @@ position: relative;
 	float: right;
 	color: black;
 	font-size: 200%;
-	margin: 3%;
+	margin: 4% 3%;
+}
+
+#header-menu-search{
+  margin-right: 6%;
 }
 
 #header-menu-icon {
-	margin-right: 26%;
+	margin-right: 29%;
+	margin-top: 4.7%;
 }
 
 #logo{
@@ -64,7 +69,7 @@ position: relative;
 #category {
 position: absolute;
 bottom: 0px;
-  height: 35%;
+  height: 45%;
   width: 100%;
   border-bottom: 3px solid;
   border-bottom-color: lightgray; 
@@ -151,10 +156,10 @@ color: orange;
 	<div id="container">
 		<div id="header-img">
 			<div id="header-menu-box">
-				<a href="#" class="header-menu">검색</a> <a href="#"
-					class="header-menu">메시지</a> 
+				<img src='../ARMU-Image/ARMU_icon/search.png' class="header-menu" id='header-menu-search'> 
+				<img src='../ARMU-Image/ARMU_icon/email.png'class="header-menu"> 
 					<img class="header-menu" id='logo' src='../ARMU-Image/ARMU_Logo/ARMU_01.png'>
-					<a href="#" class="header-menu" id="header-menu-icon">메뉴</a>
+					<img src='../ARMU-Image/ARMU_icon/menu.png' class="header-menu" id="header-menu-icon" width='42px'>
 		</div><!-- header-menu-box -->
 		<div id="category">
 			<a href='#' class='category-menu' id="category1">테마</a> 
