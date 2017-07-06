@@ -90,6 +90,7 @@ bottom: 0px;
 	color: black;
 	font-size: 250%;
   vertical-align: -50px;
+  font-weight: normal;
 }
 
 #category1 {
@@ -118,7 +119,8 @@ bottom: 0px;
   font-size: 400%;
   font-weight: 400;
   top: 40%;
-  left: 40%;
+  text-align: center;
+  width: 100%;
 }
 /*서브카테고리 끝*/
 
@@ -185,20 +187,60 @@ color: orange;
 		<!-- header-img -->
 
 
-  <div id="sub-category">
-    <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_5.jpg"/> 
-    <h2 class='sub-category-menu-text'>결혼식</h2></div>
-    <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_4.jpg"/> 
-    <h2 class='sub-category-menu-text'>졸업연주</h2></div>  
-    <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_3.jpg"/> 
-    <h2 class='sub-category-menu-text'>기업행사</h2></div>
-    <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_2.jpg"/> 
-    <h2 class='sub-category-menu-text'>종교행사</h2></div>   
-    <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg"/> 
-    <h2 class='sub-category-menu-text'>기타</h2></div> 
-  </div>
-  <!-- sub-category -->
+  <div id="theme-category">
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_5.jpg" />
+        <p class='sub-category-menu-text'>결혼식</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
+        <p class='sub-category-menu-text'>졸업연주</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_3.jpg" />
+        <p class='sub-category-menu-text'>기업행사</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
+        <p class='sub-category-menu-text'>종교행사</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+        <p class='sub-category-menu-text'>기타</p>
+      </div>
+    </div>
+  <!-- theme-category -->
 
+
+<div id="major-category" hidden="">
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
+        <p class='sub-category-menu-text'>보컬</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_5.jpg" />
+        <p class='sub-category-menu-text'>현악</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
+        <p class='sub-category-menu-text'>관악</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+        <p class='sub-category-menu-text'>기타 전공</p>
+      </div>
+    </div>
+    <!-- major-category -->
+
+    <div id="genre-category" hidden="">
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+        <p class='sub-category-menu-text'>클래식</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
+        <p class='sub-category-menu-text'>재즈</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_3.jpg" />
+        <p class='sub-category-menu-text'>국악</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
+        <p class='sub-category-menu-text'>밴드</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+        <p class='sub-category-menu-text'>기타</p>
+      </div>
+    </div>
+    <!-- genre-category -->
 
 
 	</div>
@@ -207,5 +249,6 @@ color: orange;
 	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="jquery.mobilemenu.js" type="text/javascript"></script>
 <script src="index_menu.js"></script>
+<script src="index_category.js"></script>
 </body>
 </html>

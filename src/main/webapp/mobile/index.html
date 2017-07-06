@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- <meta name="viewport" content="width=device-width, user-scalable=no"> -->
 <title>ARMU MOBILE</title>
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
@@ -52,16 +51,19 @@ position: relative;
   margin-right: 6%;
 }
 
-#header-menu-icon {
-	margin-right: 29%;
-	margin-top: 4.7%;
-}
-
-#logo{
+#header-menu-logo {
   margin: 2%;
-  height: 70px;
   margin-right: 17%;
 }
+
+#header-menu-menu {
+	margin-right: 29%;
+}
+
+#header-menu-menu img {
+margin-top: 4.7%;
+}
+
 /*헤더부분 끗*/
 
 /*카테고리 시작*/
@@ -72,7 +74,7 @@ bottom: 0px;
   height: 45%;
   width: 100%;
   border-bottom: 3px solid;
-  border-bottom-color: lightgray;
+  border-bottom-color: lightgray; 
 }
 
 .category-menu {
@@ -81,6 +83,7 @@ bottom: 0px;
 	color: black;
 	font-size: 250%;
   vertical-align: -50px;
+  font-weight: normal;
 }
 
 #category1 {
@@ -109,9 +112,13 @@ bottom: 0px;
   font-size: 400%;
   font-weight: 400;
   top: 40%;
-  left: 40%;
+  text-align: center;
+  width: 100%;
 }
 /*서브카테고리 끝*/
+
+
+
 
 /* 스마트폰 (가로 및 세로) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width
@@ -143,7 +150,7 @@ body {
 color: aqua;
 }
 }
-/* 대형 스크린 -----------
+/* 대형 스크린 ----------- 
 @media only screen and (min-width : 1824px) {
 body {
 color: orange;
@@ -156,20 +163,16 @@ color: orange;
 	<div id="container">
 		<div id="header-img">
 			<div id="header-menu-box">
-<<<<<<< HEAD
-				<a href="#" class="header-menu">검색</a> <a href="#"
-					class="header-menu">메시지</a>
-=======
-				<img src='../ARMU-Image/ARMU_icon/search.png' class="header-menu" id='header-menu-search'> 
-				<img src='../ARMU-Image/ARMU_icon/email.png'class="header-menu"> 
->>>>>>> 892f9e8722a5367a11cb242668e1e85d4277e9e3
-					<img class="header-menu" id='logo' src='../ARMU-Image/ARMU_Logo/ARMU_01.png'>
-					<img src='../ARMU-Image/ARMU_icon/menu.png' class="header-menu" id="header-menu-icon" width='42px'>
+				<span class="header-menu" id='header-menu-search'><img src='../ARMU-Image/ARMU_icon/search.png'></span> 
+				<span class="header-menu"><img src='../ARMU-Image/ARMU_icon/email.png'></span> 
+					<span class="header-menu" id='header-menu-logo'><img id='logo-img' src='../ARMU-Image/ARMU_Logo/ARMU_01.png' height='70px'></span>
+					<!-- <span class="mobilemenu--open-icon header-menu">aaaaaa</span> -->
+					<span class="header-menu" id="header-menu-menu"><img src='../ARMU-Image/ARMU_icon/menu.png' width='42px'></span>
 		</div><!-- header-menu-box -->
 		<div id="category">
-			<a href='#' class='category-menu' id="category1">테마</a>
-			<a href='#' class='category-menu' id="category2">전공</a>
-			<a href='#'class='category-menu' id="category3">장르</a>
+			<a href='#'><span class='category-menu' id="category1">테마</span></a> 
+			<a href='#'><span class='category-menu' id="category2">전공</span></a> 
+			<a href='#'><span class='category-menu' id="category3">장르</span></a>
 		</div>
 		<!-- category -->
 			<!-- header -->
@@ -177,23 +180,66 @@ color: orange;
 		<!-- header-img -->
 
 
-  <div id="sub-category">
-    <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_5.jpg"/>
-    <h2 class='sub-category-menu-text'>결혼식</h2></div>
-    <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_4.jpg"/>
-    <h2 class='sub-category-menu-text'>졸업연주</h2></div>
-    <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_3.jpg"/>
-    <h2 class='sub-category-menu-text'>기업행사</h2></div>
-    <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_2.jpg"/>
-    <h2 class='sub-category-menu-text'>종교행사</h2></div>
-    <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg"/>
-    <h2 class='sub-category-menu-text'>기타</h2></div>
-  </div>
-  <!-- sub-category -->
+  <div id="theme-category">
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_5.jpg" />
+        <p class='sub-category-menu-text'>결혼식</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
+        <p class='sub-category-menu-text'>졸업연주</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_3.jpg" />
+        <p class='sub-category-menu-text'>기업행사</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
+        <p class='sub-category-menu-text'>종교행사</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+        <p class='sub-category-menu-text'>기타</p>
+      </div>
+    </div>
+  <!-- theme-category -->
 
+
+<div id="major-category" hidden="">
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
+        <p class='sub-category-menu-text'>보컬</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_5.jpg" />
+        <p class='sub-category-menu-text'>현악</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
+        <p class='sub-category-menu-text'>관악</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+        <p class='sub-category-menu-text'>기타 전공</p>
+      </div>
+    </div>
+    <!-- major-category -->
+
+    <div id="genre-category" hidden="">
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+        <p class='sub-category-menu-text'>클래식</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
+        <p class='sub-category-menu-text'>재즈</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_3.jpg" />
+        <p class='sub-category-menu-text'>국악</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
+        <p class='sub-category-menu-text'>밴드</p>
+      </div>
+      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+        <p class='sub-category-menu-text'>기타</p>
+      </div>
+    </div>
+    <!-- genre-category -->
 
 
 	</div>
 	<!-- container -->
+	
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="index_category.js"></script>
 </body>
 </html>
