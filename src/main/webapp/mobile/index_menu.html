@@ -24,7 +24,6 @@ a {
 }
 
 #container {
-  position: absolute;
 	height: auto;
 	width: 100%;
 }
@@ -123,13 +122,51 @@ bottom: 0px;
 /*서브카테고리 끝*/
 
 
-#toggle {
-    width: 500px;
-    height: 900px;
-    background: #ccc;
-    font-size: 500%;
+/*메뉴 토글 시작*/
+#menu-toggle {
+  position: fixed;
+  top: 0px;
+  display: none;
+   width: 700px;
+   height: 100%;
+   /* background: #222; */
+   /* box-shadow: 3px 3px #111; */
+   background-image: url("../ARMU-Image/Mobile/1_main/main2_4.jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+   font-size: 300%;
+   color: white;
   }
+  
+  #menu-backscreen {
+  position: fixed;
+  display: none;
+  top: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, .6);
+  }
+/*메뉴 토글 끝*/
 
+#menu-container {
+  width: 700px;
+  height: 100%;
+}
+
+#login-empty-img {
+  top: 200px;
+  left: 50%;
+  /* transform: translateX(-50%) translateY(-18%); */
+}
+
+#login-text {
+  position: absolute;
+  top: 39%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-39%);
+ 
+}
 
 
 /* 스마트폰 (가로 및 세로) ----------- */
@@ -175,12 +212,8 @@ color: orange;
 </head>
 <body>
 
-  <!-- menu slider -->
-<div id="toggle">메롱</div>
-
-<!-- menu slider ended -->
+	
 	<div id="container">
-
 		<div id="header-img">
 			<div id="header-menu-box">
 				<span class="header-menu" id='header-menu-search'><img src='../ARMU-Image/ARMU_icon/search.png'></span> 
@@ -257,10 +290,26 @@ color: orange;
 	</div>
 	<!-- container -->
 	
+  <!-- menu slider -->
+<div id="menu-backscreen"></div>
+<div id="menu-toggle">
+<div id="menu-container">
+<span id='login-empty-img'><img src='../ARMU-Image/Mobile/login/login_empty.png'></span>
+<p id='login-text'>로그인</p>
+</div><!-- menu-container -->
+</div><!-- menu-toggle -->
+<!-- menu slider ended -->
 	<script>
 $('#header-menu-menu').click(function() {
-  $( "#toggle" ).toggle( "slide" );
+  $( "#menu-backscreen" ).css('display', 'block');
+  $( "#menu-toggle" ).toggle( "slide" );
 });
+
+$( "#menu-backscreen" ).click(function() {
+	  $( "#menu-toggle" ).toggle( "slide" );
+	$( "#menu-backscreen" ).css('display', 'none');
+})
+
 </script>
 <script src="index_category.js"></script>
 </body>
