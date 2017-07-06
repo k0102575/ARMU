@@ -29,11 +29,12 @@ a {
 
 /*헤더부분*/
 #header-img {
-	height: 500px;
+position: relative;
+	height: 200px;
 	width: 100%;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-image: url("../ARMU-Image/WEB/1_Home/main_head.jpg");
+/* 	background-image: url("../ARMU-Image/WEB/1_Home/main_head.jpg"); */
 }
 
 #header-menu-box {
@@ -44,7 +45,7 @@ a {
 
 .header-menu {
 	float: right;
-	color: white;
+	color: black;
 	font-size: 200%;
 	margin: 3%;
 }
@@ -53,43 +54,61 @@ a {
 	margin-right: 62%;
 }
 
-#header-main-text {
-	margin-top: 15%;
-	margin-left: 5%;
-	height: 20%;
-	color: white;
-	font-size: 300%;
-	font-weight: 400;
-	left: 10%;
-	top: 20%;
-	cursor: default;
-}
-
-#header-main-text-armu {
-	color: white;
-	font-size: 250%;
-	font-weight: 700;
-	cursor: default;
+#header-screen {
+position: absolute;
+bottom: 0px;
+  height: 100%;
+  width: 100%;
+  /* background-color: rgba(0, 0, 0, .4); */
 }
 /*헤더부분 끗*/
 
 /*카테고리 시작*/
+
 #category {
-	height: 120px;
-	width: 100%;
-	background-color: #F5F5F5;
+position: absolute;
+bottom: 0px;
+  height: 45%;
+  width: 100%;
 }
 
 .category-menu {
-	margin-left: 13%;
-	margin-right: 13%;
-	margin-top: 50%; width : 150px;
-	height: 100px;
-	font-size: 20px;
-	width: 150px;
+	margin-left: 12%;
+	margin-right: 12%;
+	color: black;
+	font-size: 250%;
+  vertical-align: -40px;
+}
+
+#category1 {
+  font-size: 270%;
+  font-weight: 900;
 }
 
 /*카테고리 끝끝*/
+
+/*서브 카테고리 시작*/
+.sub-category-menu {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  border-top: 4px solid white;
+}
+
+.sub-category-menu-img {
+  height: 500px;
+  width: 100%;
+}
+
+.sub-category-menu-text {
+  position: absolute;
+  color: white;
+  font-size: 400%;
+  font-weight: 400;
+  top: 40%;
+  left: 40%;
+}
+/*서브카테고리 끝*/
 
 /* 스마트폰 (가로 및 세로) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width
@@ -134,32 +153,36 @@ color: orange;
 	<div id="container">
 		<div id="header-img">
 			<div id="header-menu-box">
+			<div id="header-screen">
 				<a href="#" class="header-menu">검색</a> <a href="#"
 					class="header-menu">메시지</a> <a href="#" class="header-menu"
 					id="header-menu-icon">메뉴</a>
-			</div>
+			</div><!-- header-screen -->
+		</div><!-- header-menu-box -->
+		<div id="category">
+			<a href='#' class='category-menu' id="category1">테마</a> 
+			<a href='#' class='category-menu' id="category2">전공</a> 
+			<a href='#'class='category-menu' id="category3">장르</a>
+		</div>
+		<!-- category -->
 			<!-- header -->
-			<div id="header-main-text">
-				<span id="header-main-text-armu">알뮤</span>로 쉽고 빠르게<br> &nbsp;
-				필요한 뮤지션을 찾아보세요
-			</div>
-			<!-- header-main-text -->
 		</div>
 		<!-- header-img -->
 
 
-		<div id="category">
-			<a href='#' class='category-menu' id="category1"> <img
-				src="../ARMU-Image/ARMU_icon/i_1.png"></a> <a href='#'
-				class='category-menu' id="category2"> <img
-				src="../ARMU-Image/ARMU_icon/i_1.png"></a> <a href='#'
-				class='category-menu' id="category3"> <img
-				src="../ARMU-Image/ARMU_icon/i_1.png"></a>
-		</div>
-		<!-- category -->
-
-
-
+  <div id="sub-category">
+    <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_5.jpg"/> 
+    <h2 class='sub-category-menu-text'>결혼식</h2></div>
+    <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_4.jpg"/> 
+    <h2 class='sub-category-menu-text'>졸업연주</h2></div>  
+    <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_3.jpg"/> 
+    <h2 class='sub-category-menu-text'>기업행사</h2></div>
+    <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_2.jpg"/> 
+    <h2 class='sub-category-menu-text'>종교행사</h2></div>   
+    <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg"/> 
+    <h2 class='sub-category-menu-text'>기타</h2></div> 
+  </div>
+  <!-- sub-category -->
 
 
 
