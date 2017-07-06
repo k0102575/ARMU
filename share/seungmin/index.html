@@ -33,7 +33,7 @@ a {
 	width: 100%;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-image: url("../ARMU-Image/WEB/1_Home/main_head.jpg");
+	background-image: url("main_head.jpg");
 }
 
 #header-menu-box {
@@ -158,22 +158,96 @@ color: orange;
 		</div>
 		<!-- category -->
 
-
-
-
-
-
 	</div>
 	<!-- container -->
+	
+	
+	<div id="container1">
+    <div id="header-img1">
+      <div id="header-menu-box">
+        <a href="#" class="header-menu">검색</a> <a href="#"
+          class="header-menu">메시지</a> <a href="#" class="header-menu"
+          id="header-menu-icon">메뉴</a>
+      </div>
+      <!-- header -->
+      <div id="header-main-text">
+        <span id="header-main-text-armu">알뮤</span>로 쉽고 빠르게<br> &nbsp;
+        필요한 뮤지션을 찾아보세요
+      </div>
+      <!-- header-main-text -->
+    </div>
+    <!-- header-img -->
+
+
+    <div id="category1">
+      <a href='#' class='category-menu' id="category1"> <img
+        src="../ARMU-Image/ARMU_icon/i_1.png"></a> <a href='#'
+        class='category-menu' id="category2"> <img
+        src="../ARMU-Image/ARMU_icon/i_1.png"></a> <a href='#'
+        class='category-menu' id="category3"> <img
+        src="../ARMU-Image/ARMU_icon/i_1.png"></a>
+    </div>
+    <!-- category -->
+
+  </div>
+  <!-- container -->
+  
+  
+  <div id="container1">
+    <div id="header-img1">
+      <div id="header-menu-box">
+        <a href="#" class="header-menu">검색</a> <a href="#"
+          class="header-menu">메시지</a> <a href="#" class="header-menu"
+          id="header-menu-icon">메뉴</a>
+      </div>
+      <!-- header -->
+      <div id="header-main-text">
+        <span id="header-main-text-armu">알뮤</span>로 쉽고 빠르게<br> &nbsp;
+        필요한 뮤지션을 찾아보세요
+      </div>
+      <!-- header-main-text -->
+    </div>
+    <!-- header-img -->
+
+
+    <div id="category1">
+      <a href='#' class='category-menu' id="category1"> <img
+        src="../ARMU-Image/ARMU_icon/i_1.png"></a> <a href='#'
+        class='category-menu' id="category2"> <img
+        src="../ARMU-Image/ARMU_icon/i_1.png"></a> <a href='#'
+        class='category-menu' id="category3"> <img
+        src="../ARMU-Image/ARMU_icon/i_1.png"></a>
+    </div>
+    <!-- category -->
+
+  </div>
+  <!-- container -->
 	
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	
 	<script>
-	window.addEventListener('scroll', function(){
-	  console.log("하하하하하하하하하")
 	
-	}, true)
+	var headerImg = $("#header-img")
+	var totalHeight = headerImg.height()
+	$(window).bind('mousewheel', function(event) {
+	  
+	  if (event.originalEvent.wheelDelta >= 0) {
+	      /* console.log('Scroll up'); */
+	      /* console.log(headerImg += 1) */
+	   totalHeight += 150
+	   console.log(totalHeight)
+     headerImg.css('height', (totalHeight + 'px')) 
+	  }
+	  else {
+	      /* console.log('Scroll down'); */
+      /* console.log(headerImg -= 1) */
+	     totalHeight -= 150
+	     console.log(totalHeight)
+	      headerImg.css('height', (totalHeight + 'px')) 
+
+	  }
+	  });
 
 	
 	
