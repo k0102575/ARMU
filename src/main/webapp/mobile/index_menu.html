@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>ARMU MOBILE</title>
-<link rel="stylesheet" href="../node_modules/jquery-ui-dist/jquery-ui.css">
+<link rel="stylesheet"
+	href="../node_modules/jquery-ui-dist/jquery-ui.css">
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
 <style>
@@ -16,7 +17,7 @@
 }
 
 body {
-position:relative;
+	position: relative;
 }
 
 a {
@@ -30,12 +31,12 @@ a {
 
 /*헤더부분*/
 #header-img {
-position: relative;
+	position: relative;
 	height: 250px;
 	width: 100%;
 	background-position: center;
 	background-repeat: no-repeat;
-/* 	background-image: url("../ARMU-Image/WEB/1_Home/main_head.jpg"); */
+	/* 	background-image: url("../ARMU-Image/WEB/1_Home/main_head.jpg"); */
 }
 
 #header-menu-box {
@@ -51,13 +52,13 @@ position: relative;
 	margin: 4% 3%;
 }
 
-#header-menu-search{
-  margin-right: 6%;
+#header-menu-search {
+	margin-right: 6%;
 }
 
 #header-menu-logo {
-  margin: 2%;
-  margin-right: 17%;
+	margin: 2%;
+	margin-right: 17%;
 }
 
 #header-menu-menu {
@@ -65,20 +66,19 @@ position: relative;
 }
 
 #header-menu-menu img {
-margin-top: 4.7%;
+	margin-top: 4.7%;
 }
 
 /*헤더부분 끗*/
 
 /*카테고리 시작*/
-
 #category {
-position: absolute;
-bottom: 0px;
-  height: 45%;
-  width: 100%;
-  border-bottom: 3px solid;
-  border-bottom-color: lightgray; 
+	position: absolute;
+	bottom: 0px;
+	height: 45%;
+	width: 100%;
+	border-bottom: 3px solid;
+	border-bottom-color: lightgray;
 }
 
 .category-menu {
@@ -86,87 +86,122 @@ bottom: 0px;
 	margin-right: 12.5%;
 	color: black;
 	font-size: 250%;
-  vertical-align: -50px;
-  font-weight: normal;
+	vertical-align: -50px;
+	font-weight: normal;
 }
 
 #category1 {
-  font-size: 270%;
-  font-weight: 900;
+	font-size: 270%;
+	font-weight: 900;
 }
 
 /*카테고리 끝끝*/
 
 /*서브 카테고리 시작*/
 .sub-category-menu {
-  position: relative;
-  height: 500px;
-  width: 100%;
-  border-bottom: 2px solid white;
+	position: relative;
+	height: 500px;
+	width: 100%;
+	border-bottom: 2px solid white;
 }
 
 .sub-category-menu-img {
-  height: 500px;
-  width: 100%;
+	height: 500px;
+	width: 100%;
 }
 
 .sub-category-menu-text {
-  position: absolute;
-  color: white;
-  font-size: 400%;
-  font-weight: 400;
-  top: 40%;
-  text-align: center;
-  width: 100%;
+	position: absolute;
+	color: white;
+	font-size: 400%;
+	font-weight: 400;
+	top: 40%;
+	text-align: center;
+	width: 100%;
 }
 /*서브카테고리 끝*/
 
-
 /*메뉴 토글 시작*/
 #menu-toggle {
-  position: fixed;
-  top: 0px;
-  display: none;
-   width: 700px;
-   height: 100%;
-   background-image: url("../ARMU-Image/Mobile/1_main/main_back.jpg");
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-position: center;
-   font-size: 300%;
-   color: white;
-  }
-  
-  #menu-backscreen {
-  position: fixed;
-  display: none;
-  top: 0px;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, .6);
-  }
+	position: fixed;
+	top: 0px;
+	display: none;
+	width: 700px;
+	height: 100%;
+	background-image: url("../ARMU-Image/Mobile/1_main/main_back.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	font-size: 300%;
+	color: white;
+	overflow: scroll;
+}
+
+#menu-backscreen {
+	position: fixed;
+	display: none;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, .6);
+}
 /*메뉴 토글 끝*/
 
 /*메뉴 콘텐츠 시작*/
 #menu-contents {
-position: absolute;
-top: 120px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  width: 85%;
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+	width: 85%;
+	height: auto;
 }
 
 #mode-switch-btn {
-  font-size: 70%;
-  font-weight: 300;
+	/* display: inline-block; */
+	text-align: right;
+	margin: 1% 0;
+	font-size: 70%;
+	font-weight: 300;
+	color: rgba(255, 255, 255, .9);
 }
 
-.separator {
-  margin: 8% 0%;
+#menu-login-text {
+	font-size: 85%;
+	font-weight: 300;
+}
+
+.menu-login-separator {
+	margin: 8% 0 3% 0;
+}
+
+.menu-category-separator {
+	margin: 3% 0%;
+}
+
+.menu-category-btn {
+	font-size: 75%;
+	font-weight: 300;
+	color: rgba(255, 255, 255, .9);
+	text-align: left;
+	margin-left: 4%;
+}
+
+.menu-copyright {
+	margin-top: 80%;
+	font-size: 50%;
+	color: rgba(255, 255, 255, .9);
+}
+
+#menu-copyright-text {
+	vertical-align: 10px;
+}
+
+#menu-copyright-img {
+	width: 100px;
 }
 /*메뉴 콘텐츠 끝*/
-
 
 /* 스마트폰 (가로 및 세로) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width
@@ -205,114 +240,173 @@ color: orange;
 }
 }
 */
-  
 </style>
 
 </head>
 <body>
 
-	
+
 	<div id="container">
 		<div id="header-img">
 			<div id="header-menu-box">
-				<span class="header-menu" id='header-menu-search'><img src='../ARMU-Image/ARMU_icon/search.png'></span> 
-				<span class="header-menu"><img src='../ARMU-Image/ARMU_icon/email.png'></span> 
-					<span class="header-menu" id='header-menu-logo'><img id='logo-img' src='../ARMU-Image/ARMU_Logo/ARMU_01.png' height='70px'></span>
-					<span class="header-menu" id="header-menu-menu"><img src='../ARMU-Image/ARMU_icon/menu.png' width='42px'></span>
-		</div><!-- header-menu-box -->
-		<div id="category">
-			<a href='#'><span class='category-menu' id="category1">테마</span></a> 
-			<a href='#'><span class='category-menu' id="category2">전공</span></a> 
-			<a href='#'><span class='category-menu' id="category3">장르</span></a>
-		</div>
-		<!-- category -->
+				<span class="header-menu" id='header-menu-search'><img
+					src='../ARMU-Image/ARMU_icon/search.png'></span> <span
+					class="header-menu"><img
+					src='../ARMU-Image/ARMU_icon/email.png'></span> <span
+					class="header-menu" id='header-menu-logo'><img id='logo-img'
+					src='../ARMU-Image/ARMU_Logo/ARMU_01.png' height='70px'></span> <span
+					class="header-menu" id="header-menu-menu"><img
+					src='../ARMU-Image/ARMU_icon/menu.png' width='42px'></span>
+			</div>
+			<!-- header-menu-box -->
+			<div id="category">
+				<a href='#'><span class='category-menu' id="category1">테마</span></a>
+				<a href='#'><span class='category-menu' id="category2">전공</span></a>
+				<a href='#'><span class='category-menu' id="category3">장르</span></a>
+			</div>
+			<!-- category -->
 			<!-- header -->
 		</div>
 		<!-- header-img -->
 
-  <div id="theme-category">
-      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_5.jpg" />
-        <p class='sub-category-menu-text'>결혼식</p>
-      </div>
-      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
-        <p class='sub-category-menu-text'>졸업연주</p>
-      </div>
-      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_3.jpg" />
-        <p class='sub-category-menu-text'>기업행사</p>
-      </div>
-      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
-        <p class='sub-category-menu-text'>종교행사</p>
-      </div>
-      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
-        <p class='sub-category-menu-text'>기타</p>
-      </div>
-    </div>
-  <!-- theme-category -->
+		<div id="theme-category">
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_5.jpg" />
+				<p class='sub-category-menu-text'>결혼식</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
+				<p class='sub-category-menu-text'>졸업연주</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_3.jpg" />
+				<p class='sub-category-menu-text'>기업행사</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
+				<p class='sub-category-menu-text'>종교행사</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+				<p class='sub-category-menu-text'>기타</p>
+			</div>
+		</div>
+		<!-- theme-category -->
 
 
-<div id="major-category" hidden="">
-      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
-        <p class='sub-category-menu-text'>보컬</p>
-      </div>
-      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_5.jpg" />
-        <p class='sub-category-menu-text'>현악</p>
-      </div>
-      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
-        <p class='sub-category-menu-text'>관악</p>
-      </div>
-      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
-        <p class='sub-category-menu-text'>기타 전공</p>
-      </div>
-    </div>
-    <!-- major-category -->
+		<div id="major-category" hidden="">
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
+				<p class='sub-category-menu-text'>보컬</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_5.jpg" />
+				<p class='sub-category-menu-text'>현악</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
+				<p class='sub-category-menu-text'>관악</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+				<p class='sub-category-menu-text'>기타 전공</p>
+			</div>
+		</div>
+		<!-- major-category -->
 
-    <div id="genre-category" hidden="">
-      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
-        <p class='sub-category-menu-text'>클래식</p>
-      </div>
-      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
-        <p class='sub-category-menu-text'>재즈</p>
-      </div>
-      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_3.jpg" />
-        <p class='sub-category-menu-text'>국악</p>
-      </div>
-      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
-        <p class='sub-category-menu-text'>밴드</p>
-      </div>
-      <div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
-        <p class='sub-category-menu-text'>기타</p>
-      </div>
-    </div>
-    <!-- genre-category -->
+		<div id="genre-category" hidden="">
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+				<p class='sub-category-menu-text'>클래식</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
+				<p class='sub-category-menu-text'>재즈</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_3.jpg" />
+				<p class='sub-category-menu-text'>국악</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
+				<p class='sub-category-menu-text'>밴드</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+				<p class='sub-category-menu-text'>기타</p>
+			</div>
+		</div>
+		<!-- genre-category -->
 
 
 	</div>
 	<!-- container -->
-	
-  <!-- menu slider -->
-<div id="menu-backscreen"></div>
-<div id="menu-toggle">
-<div id='menu-contents'>
-<span id='mode-switch-btn'>뮤지션 모드로 전환</span><br>
-<span><img src='../ARMU-Image/Mobile/login/main_login.png'></span>
-<p>로그인</p>
-<hr class='separator'>
-</div><!-- menu-contents -->
 
-</div><!-- menu-toggle -->
-<!-- menu slider ended -->
+	<!-- menu slider -->
+	<div id="menu-backscreen"></div>
+	<div id="menu-toggle">
+		<div id='menu-contents'>
+			<div id='mode-switch-btn'>
+				<img src='../ARMU-Image/ARMU_icon/change.png'>
+			</div>
+			<br> <span><img
+				src='../ARMU-Image/Mobile/login/main_login.png'></span>
+			<p id='menu-login-text'>로그인</p>
+			<hr class='menu-login-separator'>
+			<div class='menu-category-btn'>나의이벤트</div>
+			<hr class='menu-category-separator'>
+			<div class='menu-category-btn'>관심뮤지션</div>
+			<hr class='menu-category-separator'>
+			<div class='menu-category-btn'>이벤트 등록하기</div>
+			<hr class='menu-category-separator'>
+			<div class='menu-category-btn'>뮤지션모드로 전환</div>
+			<hr class='menu-category-separator'>
+
+			<div class='menu-copyright'>
+				<span id='menu-copyright-text'>@COPYRIGHT 2015</span> <img
+					id='menu-copyright-img' src='../ARMU-Image/ARMU_Logo/ARMU_ch1.png'>
+			</div>
+			<!-- menu-copyright -->
+		</div>
+		<!-- menu-contents -->
+
+
+	</div>
+	<!-- menu-toggle -->
+	<!-- menu slider ended -->
 	<script>
-$('#header-menu-menu').click(function() {
-  $( "#menu-backscreen" ).css('display', 'block');
-  $( "#menu-toggle" ).toggle( "slide" );
+	var container = $( "#container" ),
+	    menuBtn = $('#header-menu-menu'),
+	    menuBackscreen = $( "#menu-backscreen" ),
+	    menuToggle = $( "#menu-toggle" )
+	
+  menuBtn.click(function() {
+	  menuBackscreen.css('display', 'block');
+	  menuToggle.toggle( "slide" );
+	  container.css('position', 'fixed').css('overflow', 'hidden');
 });
 
-$( "#menu-backscreen" ).click(function() {
-	  $( "#menu-toggle" ).toggle( "slide" );
-	$( "#menu-backscreen" ).css('display', 'none');
+	menuBackscreen.click(function() {
+		menuToggle.toggle( "slide" );
+	  menuBackscreen.css('display', 'none');
+	  container.css('position', '').css('overflow', '');
 })
 
 </script>
-<script src="index_category.js"></script>
+	<script src="index_category.js"></script>
 </body>
 </html>
