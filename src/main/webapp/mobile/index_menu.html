@@ -31,43 +31,52 @@ a {
 
 /*헤더부분*/
 #header-img {
-	position: relative;
-	height: 250px;
-	width: 100%;
-	background-position: center;
-	background-repeat: no-repeat;
-	/* 	background-image: url("../ARMU-Image/WEB/1_Home/main_head.jpg"); */
+  height: 250px;
+position: relative;
+  width: 100%;
+/*  background-position: center;
+  background-repeat: no-repeat; */
+/*  background-image: url("../ARMU-Image/WEB/1_Home/main_head.jpg"); */
 }
 
 #header-menu-box {
-	border: 1px solid white;
-	height: auto;
-	width: 100%;
+  height: auto;
+  width: 100%;
 }
 
 .header-menu {
-	float: right;
-	color: black;
-	font-size: 200%;
-	margin: 4% 3%;
+  float: right;
+  color: black;
+  font-size: 200%;
+  margin: 4%;
 }
 
-#header-menu-search {
-	margin-right: 6%;
+#header-menu-search{
+  position: absolute;
+  right: 3%;
+  transform: translateX(-3%);
 }
 
 #header-menu-logo {
-	margin: 2%;
-	margin-right: 17%;
-}
+  position: absolute;
+  right: 37%;
+  transform: translateX(-37%);
+  top: 8%;
+  transform: translateY(-40%);
+ }
 
 #header-menu-menu {
-	margin-right: 29%;
+  position: absolute;
+  left: 3.5%;
+  transform: translateX(-3.5%);
 }
 
-#header-menu-menu img {
-	margin-top: 4.7%;
+#header-menu-email {
+  position: absolute;
+  right: 13%;
+  transform: translateX(-13%);
 }
+
 
 /*헤더부분 끗*/
 
@@ -158,13 +167,20 @@ a {
 	height: auto;
 }
 
-#mode-switch-btn {
-	/* display: inline-block; */
-	text-align: right;
+#menu-upper-btn {
 	margin: 1% 0;
 	font-size: 70%;
 	font-weight: 300;
 	color: rgba(255, 255, 255, .9);
+}
+
+#home-btn {
+  width: 60px;
+  margin-right: 80%;
+}
+
+#login-btn {
+  display: inline-block;
 }
 
 #menu-login-text {
@@ -202,6 +218,56 @@ a {
 	width: 100px;
 }
 /*메뉴 콘텐츠 끝*/
+
+
+    /*검색 시작 */
+    #search-toggle {
+      border: 1px solid blue;
+      position: fixed;
+      top: 0%;
+      display: none;
+      width: 100%;
+      height: 30%;
+      background-color: white;
+      /*background-image: url("../ARMU-Image/Mobile/1_main/main_back.jpg");*/
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      font-size: 300%;
+      color: black;
+      background-color: #F2F2F2;
+    }
+
+    #search-backscreen {
+      position: fixed;
+      display: none;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, .6);
+    }
+
+    #search-contents {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: left;
+      width: 85%;
+    }
+
+    .search-sub-contents {
+      padding-left: 5%;
+      background-color: white;
+      margin: 2%;
+      height: 80px;
+    }
+
+    #prev-page {
+      margin: 5% 12%;
+      width: 5%;
+      height: 5%;
+    }
+    /*검색 끝 */
 
 /* 스마트폰 (가로 및 세로) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width
@@ -250,8 +316,8 @@ color: orange;
 		<div id="header-img">
 			<div id="header-menu-box">
 				<span class="header-menu" id='header-menu-search'><img
-					src='../ARMU-Image/ARMU_icon/search.png'></span> <span
-					class="header-menu"><img
+					src='../ARMU-Image/ARMU_icon/search.png'></span> <span id='header-menu-email'
+					class="header-menu"><img 
 					src='../ARMU-Image/ARMU_icon/email.png'></span> <span
 					class="header-menu" id='header-menu-logo'><img id='logo-img'
 					src='../ARMU-Image/ARMU_Logo/ARMU_01.png' height='70px'></span> <span
@@ -360,12 +426,13 @@ color: orange;
 	<div id="menu-backscreen"></div>
 	<div id="menu-toggle">
 		<div id='menu-contents'>
-			<div id='mode-switch-btn'>
+			<div id='menu-upper-btn'>
+			<img id='home-btn' src='../ARMU-Image/ARMU_icon/mobile_icon/home_bt.png'>
 				<img src='../ARMU-Image/ARMU_icon/change.png'>
 			</div>
-			<br> <span><img
-				src='../ARMU-Image/Mobile/login/main_login.png'></span>
-			<p id='menu-login-text'>로그인</p>
+			<br> <div id='login-btn'><img
+				src='../ARMU-Image/Mobile/login/main_login.png'>
+			<p id='menu-login-text'>로그인</p></div>
 			<hr class='menu-login-separator'>
 			<div class='menu-category-btn'>나의이벤트</div>
 			<hr class='menu-category-separator'>
@@ -373,7 +440,7 @@ color: orange;
 			<hr class='menu-category-separator'>
 			<div class='menu-category-btn'>이벤트 등록하기</div>
 			<hr class='menu-category-separator'>
-			<div class='menu-category-btn'>뮤지션모드로 전환 <img src='../ARMU-Image/ARMU_icon/change.png'></div>
+			<div class='menu-category-btn'>뮤지션모드로 전환 </div>
 			<hr class='menu-category-separator'>
 
 			<div class='menu-copyright'>
@@ -383,8 +450,6 @@ color: orange;
 			<!-- menu-copyright -->
 		</div>
 		<!-- menu-contents -->
-
-
 	</div>
 	<!-- menu-toggle -->
 	<!-- menu slider ended -->
@@ -406,6 +471,9 @@ color: orange;
 	  container.css('position', '').css('overflow', '');
 })
 
+$('#login-btn').click(function() {
+	location.href = 'join.html'
+})
 </script>
 	<script src="index_category.js"></script>
 </body>
