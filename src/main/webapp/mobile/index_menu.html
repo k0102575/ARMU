@@ -7,78 +7,9 @@
 	href="../node_modules/jquery-ui-dist/jquery-ui.css">
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="header.css">
 <style>
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
-* {
-	font-family: 'Noto Sans KR', sans-serif;
-	padding: 0;
-	margin: 0;
-}
-
-body {
-	position: relative;
-}
-
-a {
-	text-decoration: none;
-}
-
-#container {
-	height: auto;
-	width: 100%;
-}
-
-/*헤더부분*/
-#header-img {
-  height: 250px;
-position: relative;
-  width: 100%;
-/*  background-position: center;
-  background-repeat: no-repeat; */
-/*  background-image: url("../ARMU-Image/WEB/1_Home/main_head.jpg"); */
-}
-
-#header-menu-box {
-  height: auto;
-  width: 100%;
-}
-
-.header-menu {
-  float: right;
-  color: black;
-  font-size: 200%;
-  margin: 4%;
-}
-
-#header-menu-search{
-  position: absolute;
-  right: 3%;
-  transform: translateX(-3%);
-}
-
-#header-menu-logo {
-  position: absolute;
-  right: 37%;
-  transform: translateX(-37%);
-  top: 8%;
-  transform: translateY(-40%);
- }
-
-#header-menu-menu {
-  position: absolute;
-  left: 3.5%;
-  transform: translateX(-3.5%);
-}
-
-#header-menu-email {
-  position: absolute;
-  right: 13%;
-  transform: translateX(-13%);
-}
-
-
-/*헤더부분 끗*/
 
 /*카테고리 시작*/
 #category {
@@ -175,7 +106,6 @@ position: relative;
 }
 
 #home-btn {
-  width: 60px;
   margin-right: 80%;
 }
 
@@ -427,7 +357,7 @@ color: orange;
 	<div id="menu-toggle">
 		<div id='menu-contents'>
 			<div id='menu-upper-btn'>
-			<img id='home-btn' src='../ARMU-Image/ARMU_icon/mobile_icon/home_bt.png'>
+			<img id='home-btn' src='../ARMU-Image/ARMU_icon/mobile_icon/home-bt1.png'>
 				<img src='../ARMU-Image/ARMU_icon/change.png'>
 			</div>
 			<br> <div id='login-btn'><img
@@ -453,6 +383,41 @@ color: orange;
 	</div>
 	<!-- menu-toggle -->
 	<!-- menu slider ended -->
+	
+	
+	<!-- search slider -->
+  <div id="search-backscreen"></div>
+  <div id="search-toggle">
+    <div><img id="prev-page" src='../ARMU-Image/ARMU_icon/arrow_1.png'></div>
+    <div id='search-contents'>
+      <div class="search-sub-contents" id="major-div">전공</div>
+      <div class="search-sub-contents" id="genre-div">장르</div>
+      <div class="search-sub-contents" id="location-div">지역</div>
+    </div><!-- search-toggle -->
+  </div><!-- search slider ended -->
+  
+
+  <div id="major-toggle">
+    <div><img id="x-major" src='../ARMU-Image/ARMU_icon/x.png'></div>
+    <div id='major-contents'>
+      <p>전공전공전공</p>
+    </div>
+  </div><!-- major-toggle -->
+
+  <div id="genre-toggle">
+    <div><img id="x-genre" src='../ARMU-Image/ARMU_icon/x.png'></div>
+    <div id='genre-contents'>
+      <p>장르장르장르</p>
+    </div>
+  </div><!-- genre-toggle -->
+
+  <div id="location-toggle">
+    <div><img id="x-location" src='../ARMU-Image/ARMU_icon/x.png'></div>
+    <div id='genre-contents'>
+      <p>위치위치위치</p>
+    </div>
+  </div><!-- location-toggle -->
+	
 	<script>
 	var container = $( "#container" ),
 	    menuBtn = $('#header-menu-menu'),
@@ -474,6 +439,48 @@ color: orange;
 $('#login-btn').click(function() {
 	location.href = 'join.html'
 })
+
+
+
+
+$('#header-menu-search').click(function() {
+      $("#search-backscreen").css('display', 'block');
+      $("#search-toggle").toggle("slide", {direction: "up"});
+    });
+
+    $("#search-backscreen").click(function() {
+      $("#search-toggle").toggle("slide", {direction: "up"});
+      $("#search-backscreen").css('display', 'none');
+    })
+
+    $("#prev-page").click(function() {
+      $("#search-toggle").toggle("slide", {direction: "up"});
+      $("#search-backscreen").css('display', 'none');
+    })
+
+
+    $("#major-div").click(function() {
+      $("#major-toggle").toggle("slide", {direction: "down"});
+    })
+    $("#x-major").click(function() {
+      $("#major-toggle").toggle("slide", {direction: "down"});
+    })
+
+
+    $("#genre-div").click(function() {
+      $("#genre-toggle").toggle("slide", {direction: "down"});
+    })
+    $("#x-genre").click(function() {
+      $("#genre-toggle").toggle("slide", {direction: "down"});
+    })
+
+
+    $("#location-div").click(function() {
+      $("#location-toggle").toggle("slide", {direction: "down"});
+    })
+    $("#x-location").click(function() {
+      $("#location-toggle").toggle("slide", {direction: "down"});
+    })
 </script>
 	<script src="index_category.js"></script>
 </body>
