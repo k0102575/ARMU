@@ -129,9 +129,7 @@ bottom: 0px;
   display: none;
    width: 700px;
    height: 100%;
-   /* background: #222; */
-   /* box-shadow: 3px 3px #111; */
-   background-image: url("../ARMU-Image/Mobile/1_main/main2_4.jpg");
+   background-image: url("../ARMU-Image/Mobile/1_main/main_back.jpg");
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center;
@@ -149,24 +147,25 @@ bottom: 0px;
   }
 /*메뉴 토글 끝*/
 
-#menu-container {
-  width: 700px;
-  height: 100%;
+/*메뉴 콘텐츠 시작*/
+#menu-contents {
+position: absolute;
+top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 85%;
 }
 
-#login-empty-img {
-  top: 200px;
-  left: 50%;
-  /* transform: translateX(-50%) translateY(-18%); */
+#mode-switch-btn {
+  font-size: 70%;
+  font-weight: 300;
 }
 
-#login-text {
-  position: absolute;
-  top: 39%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-39%);
- 
+.separator {
+  margin: 8% 0%;
 }
+/*메뉴 콘텐츠 끝*/
 
 
 /* 스마트폰 (가로 및 세로) ----------- */
@@ -293,10 +292,13 @@ color: orange;
   <!-- menu slider -->
 <div id="menu-backscreen"></div>
 <div id="menu-toggle">
-<div id="menu-container">
-<span id='login-empty-img'><img src='../ARMU-Image/Mobile/login/login_empty.png'></span>
-<p id='login-text'>로그인</p>
-</div><!-- menu-container -->
+<div id='menu-contents'>
+<span id='mode-switch-btn'>뮤지션 모드로 전환</span><br>
+<span><img src='../ARMU-Image/Mobile/login/main_login.png'></span>
+<p>로그인</p>
+<hr class='separator'>
+</div><!-- menu-contents -->
+
 </div><!-- menu-toggle -->
 <!-- menu slider ended -->
 	<script>
