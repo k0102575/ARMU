@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>ARMU MOBILE</title>
+	<link rel="stylesheet" href="../node_modules/jquery-ui-dist/jquery-ui.css">
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+	<style>
+		@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+		* {
+			font-family: 'Noto Sans KR', sans-serif;
+			padding: 0;
+			margin: 0;
+		}
+
+		body {
+			position: relative;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		#container {
+			height: auto;
+			width: 100%;
+		}
+		/*헤더부분*/
+
+		#header-img {
+			position: relative;
+			height: 250px;
+			width: 100%;
+			background-position: center;
+			background-repeat: no-repeat;
+			/* 	background-image: url("../ARMU-Image/WEB/1_Home/main_head.jpg"); */
+		}
+
+		#header-menu-box {
+			border: 1px solid white;
+			height: auto;
+			width: 100%;
+		}
+
+		.header-menu {
+			float: right;
+			color: black;
+			font-size: 200%;
+			margin: 4% 3%;
+		}
+
+		#header-menu-search {
+			margin-right: 6%;
+		}
+
+		#header-menu-logo {
+			margin: 2%;
+			margin-right: 17%;
+		}
+
+		#header-menu-menu {
+			margin-right: 29%;
+		}
+
+		#header-menu-menu img {
+			margin-top: 4.7%;
+		}
+		/*헤더부분 끗*/
+		/*카테고리 시작*/
+
+		#category {
+			position: absolute;
+			bottom: 0px;
+			height: 45%;
+			width: 100%;
+			border-bottom: 3px solid;
+			border-bottom-color: lightgray;
+		}
+
+		.category-menu {
+			margin-left: 12.5%;
+			margin-right: 12.5%;
+			color: black;
+			font-size: 250%;
+			vertical-align: -50px;
+			font-weight: normal;
+		}
+
+		#category1 {
+			font-size: 270%;
+			font-weight: 900;
+		}
+		/*카테고리 끝끝*/
+		/*서브 카테고리 시작*/
+
+		.sub-category-menu {
+			position: relative;
+			height: 500px;
+			width: 100%;
+			border-bottom: 2px solid white;
+		}
+
+		.sub-category-menu-img {
+			height: 500px;
+			width: 100%;
+		}
+
+		.sub-category-menu-text {
+			position: absolute;
+			color: white;
+			font-size: 400%;
+			font-weight: 400;
+			top: 40%;
+			text-align: center;
+			width: 100%;
+		}
+		/*서브카테고리 끝*/
+		/*메뉴 토글 시작*/
+
+		#menu-toggle {
+			position: fixed;
+			top: 0px;
+			display: none;
+			width: 700px;
+			height: 100%;
+			background-image: url("../ARMU-Image/Mobile/1_main/main_back.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			font-size: 300%;
+			color: white;
+		}
+
+		#menu-backscreen {
+			position: fixed;
+			display: none;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			background: rgba(255, 255, 255, .6);
+		}
+		/*메뉴 토글 끝*/
+		/*검색 시작 */
+
+		#search-toggle {
+			border: 1px solid blue;
+			position: fixed;
+			top: 0%;
+			display: none;
+			width: 100%;
+			height: 30%;
+			background-color: white;
+			/*background-image: url("../ARMU-Image/Mobile/1_main/main_back.jpg");*/
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			font-size: 300%;
+			color: black;
+			background-color: #F2F2F2;
+		}
+
+		#search-backscreen {
+			position: fixed;
+			display: none;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			background: rgba(255, 255, 255, .6);
+		}
+
+		#search-contents {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			text-align: left;
+			width: 85%;
+		}
+
+		.search-sub-contents {
+			padding-left: 5%;
+			background-color: white;
+			margin: 2%;
+			height: 80px;
+		}
+
+		#prev-page {
+			margin: 5% 12%;
+			width: 5%;
+			height: 5%;
+		}
+		/*검색 끝 */
+		/*전공 시작*/
+
+		#major-toggle {
+			border: 1px solid blue;
+			position: fixed;
+			top: 0%;
+			display: none;
+			width: 100%;
+			height: 100%;
+			background-color: white;
+			/*background-image: url("../ARMU-Image/Mobile/1_main/main_back.jpg");*/
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			font-size: 300%;
+			color: black;
+			background-color: #F2F2F2;
+		}
+
+		#major-contents {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			text-align: left;
+			width: 85%;
+		}
+
+		.major-sub-contents {
+			padding-left: 5%;
+			background-color: white;
+			margin: 2%;
+			height: 80px;
+		}
+
+		#x-major {
+			margin: 5% 12%;
+			width: 5%;
+			height: 5%;
+		}
+		/*전공끝*/
+		/*장르 시작*/
+
+		#genre-toggle {
+			border: 1px solid blue;
+			position: fixed;
+			top: 0%;
+			display: none;
+			width: 100%;
+			height: 100%;
+			background-color: white;
+			/*background-image: url("../ARMU-Image/Mobile/1_main/main_back.jpg");*/
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			font-size: 300%;
+			color: black;
+			background-color: #F2F2F2;
+		}
+
+		#genre-contents {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			text-align: left;
+			width: 85%;
+		}
+
+		.genre-sub-contents {
+			padding-left: 5%;
+			background-color: white;
+			margin: 2%;
+			height: 80px;
+		}
+		#x-genre {
+			margin: 5% 12%;
+			width: 5%;
+			height: 5%;
+		}
+		/*장르끝*/
+		/*위치 시작*/
+
+		#location-toggle {
+			border: 1px solid blue;
+			position: fixed;
+			top: 0%;
+			display: none;
+			width: 100%;
+			height: 100%;
+			background-color: white;
+			/*background-image: url("../ARMU-Image/Mobile/1_main/main_back.jpg");*/
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			font-size: 300%;
+			color: black;
+			background-color: #F2F2F2;
+		}
+
+		#location-contents {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			text-align: left;
+			width: 85%;
+		}
+
+		.location-sub-contents {
+			padding-left: 5%;
+			background-color: white;
+			margin: 2%;
+			height: 80px;
+		}
+
+		#x-location {
+			margin: 5% 12%;
+			width: 5%;
+			height: 5%;
+		}
+		/*위치끝*/
+
+
+		/*메뉴 콘텐츠 시작*/
+
+		#menu-contents {
+			position: absolute;
+			top: 120px;
+			left: 50%;
+			transform: translateX(-50%);
+			text-align: center;
+			width: 85%;
+		}
+
+		#mode-switch-btn {
+			font-size: 70%;
+			font-weight: 300;
+		}
+
+		.separator {
+			margin: 8% 0%;
+		}
+		/*메뉴 콘텐츠 끝*/
+		/* 스마트폰 (가로 및 세로) ----------- */
+
+		@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+			body {
+				color: red;
+			}
+		}
+		/*------- 스마트폰에서 아이폰 사이 ---------*/
+
+		@media only screen and (min-device-width: 481px) and (max-device-width: 767px) {
+			body {
+				color: blue;
+			}
+		}
+		/* 아이패드 (가로 및 세로) -----------*/
+
+		@media only screen and (min-device-width: 768px) and (max-device-width: 1223px) {
+			body {
+				color: yellow;
+			}
+		}
+		/*------데탑!!!!!!!!----------
+/*----- 노트북/pc중간 스크린----
+@media only screen and (min-width : 1224px) and (max-device-width : 1823px) {
+body {
+color: aqua;
+}
+}
+/* 대형 스크린 -----------
+@media only screen and (min-width : 1824px) {
+body {
+color: orange;
+}
+}
+*/
+	</style>
+
+</head>
+
+<body>
+
+
+	<div id="container">
+		<div id="header-img">
+			<div id="header-menu-box">
+				<span class="header-menu" id='header-menu-search'><img src='../ARMU-Image/ARMU_icon/search.png'></span>
+				<span class="header-menu"><img src='../ARMU-Image/ARMU_icon/email.png'></span>
+				<span class="header-menu" id='header-menu-logo'><img id='logo-img' src='../ARMU-Image/ARMU_Logo/ARMU_01.png' height='70px'></span>
+				<span class="header-menu" id="header-menu-menu"><img src='../ARMU-Image/ARMU_icon/menu.png' width='42px'></span>
+			</div>
+			<!-- header-menu-box -->
+			<div id="category">
+				<a href='#'><span class='category-menu' id="category1">테마</span></a>
+				<a href='#'><span class='category-menu' id="category2">전공</span></a>
+				<a href='#'><span class='category-menu' id="category3">장르</span></a>
+			</div>
+			<!-- category -->
+			<!-- header -->
+		</div>
+		<!-- header-img -->
+
+		<div id="theme-category">
+			<div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_5.jpg" />
+				<p class='sub-category-menu-text'>결혼식</p>
+			</div>
+			<div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
+				<p class='sub-category-menu-text'>졸업연주</p>
+			</div>
+			<div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_3.jpg" />
+				<p class='sub-category-menu-text'>기업행사</p>
+			</div>
+			<div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
+				<p class='sub-category-menu-text'>종교행사</p>
+			</div>
+			<div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+				<p class='sub-category-menu-text'>기타</p>
+			</div>
+		</div>
+		<!-- theme-category -->
+
+
+		<div id="major-category" hidden="">
+			<div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
+				<p class='sub-category-menu-text'>보컬</p>
+			</div>
+			<div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_5.jpg" />
+				<p class='sub-category-menu-text'>현악</p>
+			</div>
+			<div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
+				<p class='sub-category-menu-text'>관악</p>
+			</div>
+			<div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+				<p class='sub-category-menu-text'>기타 전공</p>
+			</div>
+		</div>
+		<!-- major-category -->
+
+		<div id="genre-category" hidden="">
+			<div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+				<p class='sub-category-menu-text'>클래식</p>
+			</div>
+			<div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
+				<p class='sub-category-menu-text'>재즈</p>
+			</div>
+			<div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_3.jpg" />
+				<p class='sub-category-menu-text'>국악</p>
+			</div>
+			<div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
+				<p class='sub-category-menu-text'>밴드</p>
+			</div>
+			<div class='sub-category-menu'> <img class='sub-category-menu-img' src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+				<p class='sub-category-menu-text'>기타</p>
+			</div>
+		</div>
+		<!-- genre-category -->
+
+
+	</div>
+	<!-- container -->
+
+	<!-- menu slider -->
+	<div id="menu-backscreen"></div>
+	<div id="menu-toggle">
+		<div id='menu-contents'>
+			<span id='mode-switch-btn'>뮤지션 모드로 전환</span><br>
+			<span><img src='../ARMU-Image/Mobile/login/main_login.png'></span>
+			<p>로그인</p>
+			<hr class='separator'>
+		</div>
+		<!-- menu-contents -->
+
+	</div>
+
+	<div id="search-backscreen"></div>
+	<div id="search-toggle">
+		<div><img id="prev-page" src='../ARMU-Image/ARMU_icon/arrow_1.png'></div>
+		<div id='search-contents'>
+			<div class="search-sub-contents" id="major-div">전공</div>
+			<div class="search-sub-contents" id="genre-div">장르</div>
+			<div class="search-sub-contents" id="location-div">지역</div>
+		</div><!-- search-toggle -->
+	</div><!-- search slider ended -->
+
+	<div id="major-toggle">
+		<div><img id="x-major" src='../ARMU-Image/ARMU_icon/x.png'></div>
+		<div id='major-contents'>
+			<p>전공전공전공</p>
+		</div>
+	</div>
+
+	<div id="genre-toggle">
+		<div><img id="x-genre" src='../ARMU-Image/ARMU_icon/x.png'></div>
+		<div id='genre-contents'>
+			<p>장르장르장르</p>
+		</div>
+	</div>
+
+	<div id="location-toggle">
+		<div><img id="x-location" src='../ARMU-Image/ARMU_icon/x.png'></div>
+		<div id='genre-contents'>
+			<p>위치위치위치</p>
+		</div>
+	</div>
+
+	<script>
+		$('#header-menu-menu').click(function() {
+			$("#menu-backscreen").css('display', 'block');
+			$("#menu-toggle").toggle("slide");
+		});
+
+		$("#menu-backscreen").click(function() {
+			$("#menu-toggle").toggle("slide");
+			$("#menu-backscreen").css('display', 'none');
+		})
+
+		$('#header-menu-search').click(function() {
+			$("#search-backscreen").css('display', 'block');
+			$("#search-toggle").toggle("slide", {direction: "up"});
+		});
+
+		$("#search-backscreen").click(function() {
+			$("#search-toggle").toggle("slide", {direction: "up"});
+			$("#search-backscreen").css('display', 'none');
+		})
+
+		$("#prev-page").click(function() {
+			$("#search-toggle").toggle("slide", {direction: "up"});
+			$("#search-backscreen").css('display', 'none');
+		})
+
+
+		$("#major-div").click(function() {
+			$("#major-toggle").toggle("slide", {direction: "down"});
+		})
+		$("#x-major").click(function() {
+			$("#major-toggle").toggle("slide", {direction: "down"});
+		})
+
+
+		$("#genre-div").click(function() {
+			$("#genre-toggle").toggle("slide", {direction: "down"});
+		})
+		$("#x-genre").click(function() {
+			$("#genre-toggle").toggle("slide", {direction: "down"});
+		})
+
+
+		$("#location-div").click(function() {
+			$("#location-toggle").toggle("slide", {direction: "down"});
+		})
+		$("#x-location").click(function() {
+			$("#location-toggle").toggle("slide", {direction: "down"});
+		})
+
+
+
+	</script>
+	<script src="index_category.js"></script>
+
+	</script>
+</body>
+
+</html>
