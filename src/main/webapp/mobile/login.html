@@ -17,6 +17,7 @@
 }
 
 body {
+	
 }
 
 a {
@@ -27,35 +28,28 @@ a {
 	height: 1550px;
 	width: 100%;
 	background-image: url("../ARMU-Image/Mobile/1_main/main_back.jpg");
-	background-repeat : no-repeat;
+	background-repeat: no-repeat;
 	background-size: 100%;
 	position: relative;
 	background-repeat: no-repeat;
 }
 
+<!-- 뒤로가기 시작 -->
+.prev-btn {
+}
+
+#prev-page {
+position: absolute;
+top: 3%;
+left: 5%;
+width: 100px; 
+}
+
+<!-- 뒤로가기 끝 -->
+
 <!-- 헤더 시작 -->
-/*
-.armu-img {
-	position: absolute;
-	top: 12%;
-	background-size: 100%;
-	left: 28%;
-	transform: -28%;
+.header {
 }
-
-.armu-text {
-	position: absolute;
-	top: 13%;
-	color: white;
-	font-size: 700%;
-	font-weight: 700;
-	left: 43%;
-	transform: -43%;
-} */
-
-.header{
-}
-
 .armu-img {
 	position: absolute;
 	top: 12%;
@@ -72,53 +66,48 @@ a {
 #intro-text {
 	position: absolute;
 	top: 30%;
-	left: 27%;
+	left: 25%;
 	color: white;
-	font-size: 3em;
+	font-size: 3.5em;
 	font-weight: 400;
 }
 
 <!-- 인트로 끝 -->
 
-<!-- 로그인 및 회원가입 버튼 시작 -->
-
+<!--로그인 시작 -->
 #login {
 }
-
-.kakao-btn {
+.email-input {
 	height: 120px;
 	width: 80%;
 	position: absolute;
-	bottom: 40%;
+	bottom: 45%;
 	left: 10%;
-	color: white;
+	color: black;
 	font-size: 3em;
 	font-weight: 400;
-	text-align: center;
-  background-color: rgb(252, 224 , 0);
+	background-color: white;
 	border-radius: 15px;
-	vertical-align: middle;
 	padding-top: 15px;
+	padding-left: 20px;
 	box-sizing: border-box;
 }
-
-.fb-btn {
+.password-input {
 	height: 120px;
 	width: 80%;
 	position: absolute;
-	bottom: 30%;
+	bottom: 35%;
 	left: 10%;
-	color: white;
+	color: black;
 	font-size: 3em;
 	font-weight: 400;
-	text-align: center;
+	background-color: white;
 	border-radius: 15px;
-	background-color: rgb(59, 89 , 152);
 	padding-top: 15px;
+	padding-left: 20px;
 	box-sizing: border-box;
 }
-
-.signup-btn {
+.login-btn {
 	height: 120px;
 	width: 80%;
 	position: absolute;
@@ -127,64 +116,12 @@ a {
 	color: white;
 	font-size: 3em;
 	font-weight: 400;
-	text-align: center;
 	background-color: #66ccff;
 	border-radius: 15px;
 	padding-top: 15px;
 	box-sizing: border-box;
 }
-
-.login-btn {
-	height: 120px;
-	width: 80%;
-	position: absolute;
-	bottom: 10%;
-	left: 10%;
-	color: #66ccff;
-	font-size: 3em;
-	font-weight: 400;
-	text-align: center;
-	background-color: White;
-	border-radius: 15px;
-	padding-top: 15px;
-	box-sizing: border-box;
-}
-
-.kakao-btn-img {
-	position: absolute;
-	width: auto;
-	height: 70px;
-	bottom: 42%;
-	left: 14%;
-}
-
-.fb-btn-img {
-	position: absolute;
-	width: auto;
-	height: 70px;
-	bottom: 32%;
-	left: 14%;
-}
-
-.signup-btn-img {
-	position: absolute;
-	width: auto;
-	height: 70px;
-	bottom: 22%;
-	left: 14%;
-}
-
-.login-btn-img {
-	position: absolute;
-	width: auto;
-	height: 70px;
-	bottom: 12%;
-	left: 14%;
-}
-
-
-<!-- 로그인 및 회원가입 버튼 끝 -->
-
+<!-- 로그인 끝 --> 
 /* 스마트폰 (가로 및 세로) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width
 	: 480px) {
@@ -218,32 +155,43 @@ color: orange;
 </head>
 <body>
 	<div id="container">
+		
+    <div class="prev-btn"><img id="prev-page" src='../ARMU-Image/ARMU_icon/mobile_icon/arrows_left1.png'></div>
+		<!-- 뒤로가기버튼 -->
+		
 		<div class="header">
 			<img class="armu-img" src="../ARMU-Image/ARMU_Logo/ARMU_ch4.png">
 			<!-- <span class="armu-text">ARMU</span> -->
-		</div> <!-- header -->
-
+		</div>
+		<!-- header -->
+		
 		<div>
 		<p id="intro-text">
-		알뮤로 쉽고 빠르게 <br>
-		뮤지션을 찾아 보세요</p>
+		기존 아이디로 로그인
 		</div>
 		<!-- intro -->
-		
+
 		<div id='login'>
-		<a href="#" class="kakao-btn" type="button">&nbsp;&nbsp;카카오톡으로 로그인</a>
-		<img class="kakao-btn-img" src="../ARMU-Image/login_icon/fb.png">
-		<a href="#" class="fb-btn" type="button">&nbsp;&nbsp;페이스북으로 로그인</a>
-		<img class="fb-btn-img" src="../ARMU-Image/login_icon/fb.png">
-		<a href="#" class="signup-btn" type="button">&nbsp;&nbsp;회원가입 하러 가기</a>
-		<img class="signup-btn-img" src="../ARMU-Image/login_icon/fb.png">
-		<a href="login.html" class="login-btn" type="button">&nbsp;&nbsp;기존계정으로 로그인</a>
-		<img class="login-btn-img" src="../ARMU-Image/login_icon/fb.png">
+		<form>
+		<div>
+			<input type="text" class="email-input" id="email" placeholder="이메일">
+		</div>
+		<div>
+			<input type="password" class="password-input" id="password" placeholder="비밀번호">
+		</div>
+		<button type="button" class="login-btn">로그인</button>
+		</form>
 		</div>
 		<!-- login -->
-		
+
 	</div>
 	<!-- container -->
+
+<script>
+	$("#prev-page").click(function(){
+		location.href='join.html' 
+	})
+</script>
 
 </body>
 </html>
