@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ARMU MOBILE</title>
+<link rel="stylesheet"
+	href="../node_modules/jquery-ui-dist/jquery-ui.css">
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+<style>
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+	font-family: 'Noto Sans KR', sans-serif;
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	
+}
+
+a {
+	text-decoration: none;
+}
+
+#container {
+	height: 1550px;
+	width: 100%;
+	background-image: url("../ARMU-Image/Mobile/1_main/main_back.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	position: relative;
+	background-repeat: no-repeat;
+}
+
+<!-- 뒤로가기 시작 -->
+.prev-btn {
+}
+
+#prev-page {
+position: absolute;
+top: 3%;
+left: 5%;
+width: 100px; 
+}
+
+<!-- 뒤로가기 끝 -->
+
+<!-- 인트로 시작 -->
+#intro {
+}
+
+#intro-text {
+	position: absolute;
+	top: 3.5%;
+	left: 50%; 
+	transform: translateX(-50%);
+	color: white;
+	font-size: 4em;
+	font-weight: 500;
+}
+
+<!-- 인트로 끝 -->
+
+<!--로그인 시작 -->
+#signup {
+}
+.email-input {
+	height: 120px;
+	width: 80%;
+	position: absolute;
+	top: 20%;
+	left: 10%;
+	color: black;
+	font-size: 3em;
+	font-weight: 400;
+	background-color: white;
+	border-radius: 15px;
+	padding-top: 15px;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+
+.password-input {
+	height: 120px;
+	width: 80%;
+	position: absolute;
+	top: 30%;
+	left: 10%;
+	color: black;
+	font-size: 3em;
+	font-weight: 400;
+	background-color: white;
+	border-radius: 15px;
+	padding-top: 15px;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+
+.password-check {
+	height: 120px;
+	width: 80%;
+	position: absolute;
+	top: 40%;
+	left: 10%;
+	color: black;
+	font-size: 3em;
+	font-weight: 400;
+	background-color: white;
+	border-radius: 15px;
+	padding-top: 15px;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+.name-input {
+	height: 120px;
+	width: 80%;
+	position: absolute;
+	top: 50%;
+	left: 10%;
+	color: black;
+	font-size: 3em;
+	font-weight: 400;
+	background-color: white;
+	border-radius: 15px;
+	padding-top: 15px;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+
+.phone-input {
+	height: 120px;
+	width: 80%;
+	position: absolute;
+	top: 60%;
+	left: 10%;
+	color: black;
+	font-size: 3em;
+	font-weight: 400;
+	background-color: white;
+	border-radius: 15px;
+	padding-top: 15px;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+
+.login-btn {
+	height: 120px;
+	width: 80%;
+	position: absolute;
+	bottom: 20%;
+	left: 10%;
+	color: white;
+	font-size: 3em;
+	font-weight: 400;
+	background-color: #66ccff;
+	border-radius: 15px;
+	padding-top: 15px;
+	box-sizing: border-box;
+}
+
+<!-- 로그인 끝 --> 
+/* 스마트폰 (가로 및 세로) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width
+	: 480px) {
+}
+/*------- 스마트폰에서 아이폰 사이 ---------*/
+@media only screen and (min-device-width : 481px) and (max-device-width
+	: 767px) {
+}
+
+/* 아이패드 (가로 및 세로) -----------*/
+@media only screen and (min-device-width : 768px) and (max-device-width
+	: 1223px) {
+}
+
+/*------데탑!!!!!!!!----------
+/*----- 노트북/pc중간 스크린----
+@media only screen and (min-width : 1224px) and (max-device-width : 1823px) {
+body {
+color: aqua;
+}
+}
+/* 대형 스크린 -----------
+@media only screen and (min-width : 1824px) {
+body {
+color: orange;
+}
+}
+*/
+</style>
+
+</head>
+<body>
+	<div id="container">
+		
+    <div class="prev-btn"><img id="prev-page" src='../ARMU-Image/ARMU_icon/mobile_icon/arrows_left1.png'></div>
+		<!-- 뒤로가기버튼 -->
+		
+		<div>
+		<p id="intro-text">
+		회원 가입
+		</div>
+		<!-- intro -->
+
+		<div id='signup'>
+		<form>
+		<div>
+			<input type="text" class="email-input" id="email" placeholder="이메일">
+		</div>
+		<div>
+			<input type="password" class="password-input" id="password" placeholder="비밀번호">
+		</div>
+		<div>
+			<input type="password" class="password-check" id="password" placeholder="비밀번호 확인">
+		</div>
+		<div>
+			<input type="text" class="name-input" id="name" placeholder="이름">
+		</div>
+		<div>
+			<input type="text" class="phone-input" id="phone" placeholder="휴대폰 번호">
+		</div>
+		<button type="button" class="login-btn">회원 가입</button>
+		</form>
+		</div>
+		<!-- login -->
+
+	</div>
+	<!-- container -->
+
+<script>
+	$("#prev-page").click(function(){
+		location.href='join.html' 
+	})
+</script>
+
+</body>
+</html>
