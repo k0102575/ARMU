@@ -27,7 +27,7 @@ a {
 #container {
 	height: 1550px;
 	width: 100%;
-	background-image: url("../ARMU-Image/Mobile/1_main/main_back.jpg");
+	background-image: url("../ARMU-Image/Mobile/1_main/main_signup1.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	position: relative;
@@ -40,39 +40,28 @@ a {
 
 #prev-page {
 position: absolute;
-top: 3%;
-left: 5%;
-width: 100px; 
+top: 4%;
+left: 7%;
+width: 60px; 
 }
 
 <!-- 뒤로가기 끝 -->
 
 <!-- 헤더 시작 -->
-.header {
+#header {
+
 }
-.armu-img {
-	position: absolute;
-	top: 12%;
-	left: 23%;
-	transformx: -23%;
+
+#header {
+  position: absolute;
+  top: 3.5%;
+  left: 30%;
+  color: white;
+  font-size: 3em;
+  font-weight: 400;
 }
 
 <!-- 헤더 끝 -->
-
-<!-- 인트로 시작 -->
-#intro {
-}
-
-#intro-text {
-	position: absolute;
-	top: 30%;
-	left: 25%;
-	color: white;
-	font-size: 3.5em;
-	font-weight: 400;
-}
-
-<!-- 인트로 끝 -->
 
 <!--로그인 시작 -->
 #login {
@@ -81,7 +70,7 @@ width: 100px;
 	height: 120px;
 	width: 80%;
 	position: absolute;
-	bottom: 45%;
+	top: 35%;
 	left: 10%;
 	color: black;
 	font-size: 3em;
@@ -96,7 +85,7 @@ width: 100px;
 	height: 120px;
 	width: 80%;
 	position: absolute;
-	bottom: 35%;
+	top: 45%;
 	left: 10%;
 	color: black;
 	font-size: 3em;
@@ -111,7 +100,7 @@ width: 100px;
 	height: 120px;
 	width: 80%;
 	position: absolute;
-	bottom: 20%;
+	bottom: 30%;
 	left: 10%;
 	color: white;
 	font-size: 3em;
@@ -156,20 +145,14 @@ color: orange;
 <body>
 	<div id="container">
 		
-    <div class="prev-btn"><img id="prev-page" src='../ARMU-Image/ARMU_icon/mobile_icon/arrows_left1.png'></div>
+    <div class="prev-btn"><img id="prev-page" src='../ARMU-Image/ARMU_icon/mobile_icon/left-arrow_w.png'></div>
 		<!-- 뒤로가기버튼 -->
 		
-		<div class="header">
-			<img class="armu-img" src="../ARMU-Image/ARMU_Logo/ARMU_ch4.png">
-			<!-- <span class="armu-text">ARMU</span> -->
-		</div>
-		<!-- header -->
-		
 		<div>
-		<p id="intro-text">
+		<p id="header">
 		기존 아이디로 로그인
 		</div>
-		<!-- intro -->
+		<!-- header -->
 
 		<div id='login'>
 		<form>

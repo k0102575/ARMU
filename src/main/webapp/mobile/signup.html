@@ -7,6 +7,12 @@
 	href="../node_modules/jquery-ui-dist/jquery-ui.css">
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+<script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet"
+	href="../node_modules/sweetalert/dist/sweetalert.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
@@ -27,7 +33,7 @@ a {
 #container {
 	height: 1550px;
 	width: 100%;
-	background-image: url("../ARMU-Image/Mobile/1_main/main_back.jpg");
+	background-image: url("../ARMU-Image/Mobile/1_main/main_signup1.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	position: relative;
@@ -36,36 +42,37 @@ a {
 
 <!-- 뒤로가기 시작 -->
 .prev-btn {
+	
 }
 
 #prev-page {
-position: absolute;
-top: 3%;
-left: 5%;
-width: 100px; 
+	position: absolute;
+	top: 4%;
+	left: 7%;
+	width: 60px;
 }
 
 <!-- 뒤로가기 끝 -->
-
-<!-- 인트로 시작 -->
-#intro {
+<!--헤더 시작 -->
+#header {
+	
 }
 
-#intro-text {
+#header {
 	position: absolute;
 	top: 3.5%;
-	left: 50%; 
-	transform: translateX(-50%);
+	left: 40%;
 	color: white;
-	font-size: 4em;
-	font-weight: 500;
+	font-size: 3em;
+	font-weight: 400;
 }
 
-<!-- 인트로 끝 -->
-
+<!-- 헤더 끝 -->
 <!--로그인 시작 -->
 #signup {
+	
 }
+
 .email-input {
 	height: 120px;
 	width: 80%;
@@ -113,6 +120,7 @@ width: 100px;
 	padding-left: 20px;
 	box-sizing: border-box;
 }
+
 .name-input {
 	height: 120px;
 	width: 80%;
@@ -145,7 +153,7 @@ width: 100px;
 	box-sizing: border-box;
 }
 
-.login-btn {
+.signup-btn {
 	height: 120px;
 	width: 80%;
 	position: absolute;
@@ -161,6 +169,35 @@ width: 100px;
 }
 
 <!-- 로그인 끝 --> 
+
+<!-- 회원가입 버튼 시작 -->
+
+#menu-toggle {
+  position: fixed;
+  top: 0px;
+  display: none;
+  width: 700px;
+  height: 100%;
+  background-image: url("../ARMU-Image/Mobile/1_main/main_back.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-size: 300%;
+  color: white;
+  overflow: scroll;
+}
+
+#menu-backscreen {
+  position: fixed;
+  display: none;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, .6);
+}
+
+<!-- 회원가입 버튼 끝 -->
+
 /* 스마트폰 (가로 및 세로) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width
 	: 480px) {
@@ -194,46 +231,78 @@ color: orange;
 </head>
 <body>
 	<div id="container">
-		
-    <div class="prev-btn"><img id="prev-page" src='../ARMU-Image/ARMU_icon/mobile_icon/arrows_left1.png'></div>
-		<!-- 뒤로가기버튼 -->
-		
-		<div>
-		<p id="intro-text">
-		회원 가입
+
+		<div class="prev-btn">
+			<img id="prev-page"
+				src='../ARMU-Image/ARMU_icon/mobile_icon/left-arrow_w.png'>
 		</div>
-		<!-- intro -->
+		<!-- 뒤로가기버튼 -->
+
+		<div>
+			<p id="header">회원 가입
+		</div>
+		<!-- header -->
 
 		<div id='signup'>
-		<form>
-		<div>
-			<input type="text" class="email-input" id="email" placeholder="이메일">
-		</div>
-		<div>
-			<input type="password" class="password-input" id="password" placeholder="비밀번호">
-		</div>
-		<div>
-			<input type="password" class="password-check" id="password" placeholder="비밀번호 확인">
-		</div>
-		<div>
-			<input type="text" class="name-input" id="name" placeholder="이름">
-		</div>
-		<div>
-			<input type="text" class="phone-input" id="phone" placeholder="휴대폰 번호">
-		</div>
-		<button type="button" class="login-btn">회원 가입</button>
-		</form>
+			<form>
+				<div>
+					<input type="text" class="email-input" id="email" placeholder="이메일">
+				</div>
+				<div>
+					<input type="password" class="password-input" id="password"
+						placeholder="비밀번호">
+				</div>
+				<div>
+					<input type="password" class="password-check" id="password"
+						placeholder="비밀번호 확인">
+				</div>
+				<div>
+					<input type="text" class="name-input" id="name" placeholder="이름">
+				</div>
+				<div>
+					<input type="text" class="phone-input" id="phone"
+						placeholder="휴대폰 번호">
+				</div>
+				<button type="button" class="signup-btn">회원 가입</button>
+			</form>
 		</div>
 		<!-- login -->
-
 	</div>
 	<!-- container -->
+	
+	<div id="menu-backscreen"></div>
+  <div id="menu-toggle">
+    <div id='menu-contents'>
+    아아아아아
+    </div>
+    <!-- menu-contents -->
+  </div>
+  <!-- menu-toggle -->
+  <!-- menu slider ended -->
 
-<script>
-	$("#prev-page").click(function(){
-		location.href='join.html' 
-	})
-</script>
+	<script>
+	var container = $( "#container" ),
+      menuBtn = $('#header-menu-menu'),
+      menuBackscreen = $( "#menu-backscreen" ),
+      menuToggle = $( "#menu-toggle" )
+	
+    $("#prev-page").click(function() {
+      location.href = 'join.html'
+    }) // #prev-page().click
+
+    $(".signup-btn").click(function() {
+      menuBackscreen.css('display', 'block');
+      menuToggle.toggle( "slide" );
+      container.css('position', 'fixed').css('overflow', 'hidden');
+    }) // .singup-btn().click
+    
+    menuBackscreen.click(function() {
+      menuBackscreen.css('display', 'none');
+      menuToggle.toggle( "slide" );
+      container.css('position', '').css('overflow', '');
+  })
+
+  </script>
 
 </body>
 </html>
