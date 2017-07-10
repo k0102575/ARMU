@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url("header.css");
+
+
+* {
+	font-family: 'Noto Sans KR', sans-serif;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	position: relative;
+}
+
+a {
+	text-decoration: none;
+}
+
+#container {
+	height: auto;
+	width: 100%;
+}
