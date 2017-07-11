@@ -1,0 +1,163 @@
+
+<!-- menu slider -->
+<div id="menu-backscreen"></div>
+<div id="menu-toggle">
+	<div id='menu-contents'>
+		<div id='menu-upper-btn'>
+			<a href='index.html'><img id='home-btn'
+				src='../ARMU-Image/ARMU_icon/mobile_icon/home_bt1.png'></a> <img
+				src='../ARMU-Image/ARMU_icon/change.png'>
+		</div>
+		<br>
+		<div id='login-btn'>
+			<img src='../ARMU-Image/Mobile/login/login_01_w.png'>
+			<p id='menu-login-text'>로그인</p>
+		</div>
+		<div class='menu-category-btn' id='myevent-btn'>나의이벤트</div>
+		<hr class='menu-category-separator'>
+		<div class='menu-category-btn'>관심뮤지션</div>
+		<hr class='menu-category-separator'>
+		<div class='menu-category-btn'>이벤트 등록하기</div>
+		<hr class='menu-category-separator'>
+		<div class='menu-category-btn'>뮤지션모드로 전환</div>
+		<hr class='menu-category-separator'>
+
+		<div class='menu-copyright'>
+			<span id='menu-copyright-text'>@COPYRIGHT 2017</span> <img
+				id='menu-copyright-img' src='../ARMU-Image/ARMU_Logo/ARMU_ch1.png'>
+		</div>
+		<!-- menu-copyright -->
+	</div>
+	<!-- menu-contents -->
+</div>
+<!-- menu-toggle -->
+<!-- menu slider ended -->
+
+
+<!-- search slider -->
+<div id="search-backscreen"></div>
+<div id="search-toggle">
+	<div>
+		<img id="prev-page" src='../ARMU-Image/ARMU_icon/arrow_1.png'>
+	</div>
+	<div id='search-contents'>
+		<div class="search-sub-contents" id="major-div">전공</div>
+		<div class="search-sub-contents" id="genre-div">장르</div>
+		<div class="search-sub-contents" id="location-div">지역</div>
+	</div>
+	<!-- search-toggle -->
+</div>
+<!-- search slider ended -->
+
+
+<div id="major-toggle">
+	<div>
+		<img id="x-major" src='../ARMU-Image/ARMU_icon/x.png'>
+	</div>
+	<div id='major-contents'>
+		<p>전공전공전공</p>
+	</div>
+</div>
+<!-- major-toggle -->
+
+<div id="genre-toggle">
+	<div>
+		<img id="x-genre" src='../ARMU-Image/ARMU_icon/x.png'>
+	</div>
+	<div id='genre-contents'>
+		<p>장르장르장르</p>
+	</div>
+</div>
+<!-- genre-toggle -->
+
+<div id="location-toggle">
+	<div>
+		<img id="x-location" src='../ARMU-Image/ARMU_icon/x.png'>
+	</div>
+	<div id='genre-contents'>
+		<p>위치위치위치</p>
+	</div>
+</div>
+<!-- location-toggle -->
+
+
+<script>
+/*메뉴 관련*/
+	var container = $("#container"), 
+	    menuBtn = $('#header-menu-menu'), 
+	    menuBackscreen = $("#menu-backscreen"), 
+	    menuToggle = $("#menu-toggle")
+
+	menuBtn.on('click', function() {
+		menuBackscreen.css('display', 'block');
+		menuToggle.toggle("slide", 300);
+		container.css('position', 'fixed').css('overflow', 'hidden');
+	});
+
+	menuBackscreen.on('click', function() {
+		menuToggle.toggle("slide", 300);
+		menuBackscreen.css('display', 'none');
+		container.css('position', '').css('overflow', '');
+	})
+
+	$('#login-btn').on('click', function() {
+		location.href = 'join.html'
+	})
+	
+
+
+	/*검색 관련*/
+	$('#header-menu-search').on('click', function() {
+		$("#search-backscreen").css('display', 'block');
+		$("#search-toggle").toggle("slide", {
+			direction : "up"
+		});
+	});
+
+	$("#search-backscreen").on('click', function() {
+		$("#search-toggle").toggle("slide", {
+			direction : "up"
+		});
+		$("#search-backscreen").css('display', 'none');
+	})
+
+	$("#prev-page").on('click', function() {
+		$("#search-toggle").toggle("slide", {
+			direction : "up"
+		});
+		$("#search-backscreen").css('display', 'none');
+	})
+
+	$("#major-div").on('click', function() {
+		$("#major-toggle").toggle("slide", {
+			direction : "down"
+		});
+	})
+	$("#x-major").on('click', function() {
+		$("#major-toggle").toggle("slide", {
+			direction : "down"
+		});
+	})
+
+	$("#genre-div").on('click', function() {
+		$("#genre-toggle").toggle("slide", {
+			direction : "down"
+		});
+	})
+	$("#x-genre").on('click', function() {
+		$("#genre-toggle").toggle("slide", {
+			direction : "down"
+		});
+	})
+
+	$("#location-div").on('click', function() {
+		$("#location-toggle").toggle("slide", {
+			direction : "down"
+		});
+	})
+	$("#x-location").on('click', function() {
+		$("#location-toggle").toggle("slide", {
+			direction : "down"
+		});
+	})
+</script>

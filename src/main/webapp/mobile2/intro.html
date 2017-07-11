@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ARMU MOBILE</title>
+<link rel="stylesheet"
+	href="../node_modules/jquery-ui-dist/jquery-ui.css">
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+<link href="common.css" rel="stylesheet" type="text/css" media="all">
+<style>
+#container {
+	height: 1550px;
+	width: 100%;
+	position: relative;
+}
+
+#container-filter {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+		url("../ARMU-Image/Mobile/1_main/main_signup5_1.jpg");
+	/*2_2, 2_3, 2_5, 3_2, 3_3, 3_4, 4_2, 4_3, 5_1*/
+	height: 100%;
+	width: 100%;
+	background-size: cover;
+	/* 	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px);
+	-o-filter: blur(5px);
+	-ms-filter: blur(5px);
+	filter: blur(5px); */
+}
+
+<!-- 헤더 시작 -->
+.header {
+  
+}
+
+
+#armu-img {
+  position: absolute;
+  width: 40%;
+  height: auto;
+  top: 19%;
+  left: 22%;
+  transform: translateX(22%);
+}
+
+/*
+.armu-img {
+	position: absolute;
+	top: 12%;
+	background-size: 100%;
+	left: 28%;
+	transform: -28%;
+}
+ 
+.armu-text {
+	position: absolute;
+	top: 13%;
+	color: white;
+	font-size: 700%;
+	font-weight: 700;
+	left: 43%;
+	transform: -43%;
+} */ 
+
+
+
+<!-- 헤더 끝 -->
+
+<!--인트로 시작 -->
+#intro {
+	
+}
+
+#intro-text-box {
+  position: absolute;
+  width: 100%;
+  top: 34%;
+  transform: translateY(40%);
+  text-align: center;
+  color: white;
+  font-size: 230%;
+  font-weight: 300;
+}
+
+<!--
+인트로 끝 --><!--로그인 및 회원가입 버튼 시작 -->#login {
+	
+}
+
+.btn {
+	position: absolute;
+	height: 95px;
+	width: 65%;
+	left: 10%;
+	transform: translateX(10%);
+	font-size: 200%;
+	font-weight: 400;
+	text-align: center;
+	border-radius: 50px;
+	line-height: 95px;
+	box-sizing: border-box;
+}
+
+.kakao-btn {
+	bottom: 45%;
+	color: black;
+	background-color: rgba(252, 224, 0, .8);
+}
+
+.fb-btn {
+	bottom: 37%;
+	color: white;
+	background-color: rgba(59, 89, 152, .7);
+}
+
+.signup-btn {
+	bottom: 29%;
+	color: black;
+	background-color: rgba(255, 255, 255, .7);
+}
+
+.login-btn {
+	bottom: 21%;
+	color: white;
+	border: 1.5px solid white;
+	/* background-color: White; */
+}
+
+.btn-img {
+  position: absolute;
+  width: 8%;
+  height: auto;
+  top:0;
+  bottom:0;
+  margin:auto;
+  left: 14%;
+  transform: translateX(14%);
+}
+
+
+.fb-btn-img {
+  height: 60%;
+  width: auto;
+	left: 15.5%;
+	transform: translateX(15.5%);
+}
+
+#skip-btn {
+  bottom: 11%;
+  color: white;
+  text-decoration: underline;
+}
+
+<!-- 로그인 및 회원가입 버튼 끝 -->
+</style>
+
+</head>
+<body>
+	<div id="container">
+		<div id='container-filter'></div>
+		<div class="header">
+			<img id="armu-img" src="../ARMU-Image/ARMU_Logo/ARMU_ch1.png">
+			<!-- <span class="armu-text">ARMU</span> -->
+		</div>
+		<!-- header -->
+
+		<div id="intro-text-box">
+				ARBEIT FOR MUSICIANS
+		</div>
+		<!-- intro -->
+
+		<div id='login'>
+			<a href="#" class="kakao-btn btn" type="button"> <img class="kakao-btn-img btn-img"src="../ARMU-Image/login_icon/kakao.png">
+			 &nbsp;&nbsp;카카오톡으로 로그인</a>
+				<a href="#" class="fb-btn btn" type="button"> <img class="fb-btn-img btn-img" src="../ARMU-Image/login_icon/fb.png"> 
+				&nbsp;&nbsp;페이스북으로 로그인</a> 
+        <a href="signup.html" class="signup-btn btn" type="button"> <img class="signup-btn-img btn-img" src="../ARMU-Image/login_icon/join1.png">
+        &nbsp;&nbsp;회원가입 하러 가기</a> 
+        <a href="login.html" class="login-btn btn" type="button"> <img class="login-btn-img btn-img" src="../ARMU-Image/login_icon/login.png">
+        &nbsp;&nbsp;기존계정으로 로그인</a>
+        
+        <a href="index.html" id='skip-btn' class="btn"> 둘러보기</a> 
+		</div>
+		<!-- login -->
+
+	</div>
+	<!-- container -->
+
+</body>
+</html>

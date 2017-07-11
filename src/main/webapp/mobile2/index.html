@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ARMU MOBILE</title>
+<link rel="stylesheet"
+	href="../node_modules/jquery-ui-dist/jquery-ui.css">
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+<link href="common.css" rel="stylesheet" type="text/css" media="all">
+<style>
+
+/*카테고리 시작*/
+#category {
+	position: absolute;
+	bottom: 0px;
+	height: 45%;
+	width: 100%;
+	border-bottom: 3px solid;
+	border-bottom-color: lightgray;
+}
+
+.category-menu {
+	margin-left: 12.5%;
+	margin-right: 12.5%;
+	color: black;
+	font-size: 250%;
+	vertical-align: -50px;
+	font-weight: normal;
+}
+
+#category1 {
+	font-size: 270%;
+	font-weight: 900;
+}
+/*카테고리 끝끝*/
+
+/*서브 카테고리 시작*/
+.sub-category-menu {
+	position: relative;
+	height: 500px;
+	width: 100%;
+	border-bottom: 2px solid white;
+}
+
+.sub-category-menu-img {
+	height: 500px;
+	width: 100%;
+}
+
+.sub-category-menu-text {
+	position: absolute;
+	color: white;
+	font-size: 400%;
+	font-weight: 400;
+	top: 40%;
+	text-align: center;
+	width: 100%;
+}
+/*서브카테고리 끝*/
+
+</style>
+
+</head>
+<body>
+
+
+	<div id="container">
+		<div id="header-container">
+			<div id="header-menu-box"><!-- include --></div>
+
+			<div id="category">
+				<a href='#'><span class='category-menu' id="category1">테마</span></a>
+				<a href='#'><span class='category-menu' id="category2">전공</span></a>
+				<a href='#'><span class='category-menu' id="category3">장르</span></a>
+			</div>
+			<!-- category -->
+			<!-- header -->
+		</div>
+		<!-- header-container -->
+
+		<div id="theme-category">
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_5.jpg" />
+				<p class='sub-category-menu-text'>결혼식</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
+				<p class='sub-category-menu-text'>졸업연주</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_3.jpg" />
+				<p class='sub-category-menu-text'>기업행사</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
+				<p class='sub-category-menu-text'>종교행사</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+				<p class='sub-category-menu-text'>기타</p>
+			</div>
+		</div>
+		<!-- theme-category -->
+
+
+		<div id="major-category" hidden="">
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
+				<p class='sub-category-menu-text'>보컬</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_5.jpg" />
+				<p class='sub-category-menu-text'>현악</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
+				<p class='sub-category-menu-text'>관악</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+				<p class='sub-category-menu-text'>기타 전공</p>
+			</div>
+		</div>
+		<!-- major-category -->
+
+		<div id="genre-category" hidden="">
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+				<p class='sub-category-menu-text'>클래식</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_2.jpg" />
+				<p class='sub-category-menu-text'>재즈</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_3.jpg" />
+				<p class='sub-category-menu-text'>국악</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_4.jpg" />
+				<p class='sub-category-menu-text'>밴드</p>
+			</div>
+			<div class='sub-category-menu'>
+				<img class='sub-category-menu-img'
+					src="../ARMU-Image/Mobile/1_main/main2_1.jpg" />
+				<p class='sub-category-menu-text'>기타</p>
+			</div>
+		</div>
+		<!-- genre-category -->
+
+
+	</div>
+	<!-- container -->
+	
+  <div id='header-menu-detail'><!-- include --></div>
+
+	<!-- include header-menu-box -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#header-menu-box").load("header-menu-box.html");
+			$("#header-menu-detail").load("header-menu-detail.html");
+		})
+	</script>
+	<script src="index_category.js"></script>
+</body>
+</html>
