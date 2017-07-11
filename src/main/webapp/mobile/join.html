@@ -33,20 +33,29 @@
 }
 
 <!-- 헤더 시작 -->
-.header {
-  
+
+#join-prev-header {
 }
 
-
-#armu-img {
+#join-prev-page {
   position: absolute;
-  width: 40%;
-  height: auto;
-  top: 19%;
-  left: 22%;
-  transform: translateX(22%);
+  margin-top: 0;
+  top: 1.5%;
+  left: 5%;
+  transform: translateX(5%), translateY(1.5%);
+  height:48px; 
+  width: auto;
 }
 
+#join-header {
+  position: absolute;
+  top: 1%;
+  left: 43%;
+  transform: translateX(43%), translateY(1%);
+  color: white;
+  font-size: 250%;
+  font-weight: 400;
+}
 /*
 .armu-img {
 	position: absolute;
@@ -70,25 +79,9 @@
 
 <!-- 헤더 끝 -->
 
-<!--인트로 시작 -->
-#intro {
-	
-}
+<!--로그인 및 회원가입 버튼 시작 -->
 
-#intro-text-box {
-  position: absolute;
-  width: 100%;
-  top: 34%;
-  transform: translateY(40%);
-  text-align: center;
-  color: white;
-  font-size: 230%;
-  font-weight: 300;
-}
-
-<!--
-인트로 끝 --><!--로그인 및 회원가입 버튼 시작 -->#login {
-	
+#login {
 }
 
 .btn {
@@ -100,31 +93,31 @@
 	font-size: 200%;
 	font-weight: 400;
 	text-align: center;
-	border-radius: 49px;
+	border-radius: 50px;
 	line-height: 95px;
 	box-sizing: border-box;
 }
 
 .kakao-btn {
-	bottom: 45%;
+	bottom: 75%;
 	color: black;
 	background-color: rgba(252, 224, 0, .8);
 }
 
 .fb-btn {
-	bottom: 37%;
+	bottom: 67%;
 	color: white;
 	background-color: rgba(59, 89, 152, .7);
 }
 
 .signup-btn {
-	bottom: 29%;
+	bottom: 59%;
 	color: black;
 	background-color: rgba(255, 255, 255, .7);
 }
 
 .login-btn {
-	bottom: 21%;
+	bottom: 51%;
 	color: white;
 	border: 1.5px solid white;
 	/* background-color: White; */
@@ -162,15 +155,14 @@
 <body>
 	<div id="container">
 		<div id='container-filter'></div>
-		<div class="header">
-			<img id="armu-img" src="../ARMU-Image/ARMU_Logo/ARMU_ch1.png">
-			<!-- <span class="armu-text">ARMU</span> -->
-		</div>
+		<div id="join-prev-header">
+      <a href='index_menu.html'> <img id="join-prev-page"
+        src='../ARMU-Image/ARMU_icon/mobile_icon/left-arrow_w.png'></a>
+      <span id="join-header">회원 가입</span>
+    </div>
+    
 		<!-- header -->
 
-		<div id="intro-text-box">
-				ARBEIT FOR MUSICIANS
-		</div>
 		<!-- intro -->
 
 		<div id='login'>
@@ -183,7 +175,6 @@
         <a href="login.html" class="login-btn btn" type="button"> <img class="login-btn-img btn-img" src="../ARMU-Image/login_icon/login.png">
         &nbsp;&nbsp;기존계정으로 로그인</a>
         
-        <a href="#"  id='skip-btn' class="btn" type="button"> 둘러보기</a> 
 		</div>
 		<!-- login -->
 
