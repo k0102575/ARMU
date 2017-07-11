@@ -67,7 +67,6 @@ a {
 <!-- 뒤로가기 끝 -->
 <!--헤더 시작 -->
 #header {
-	
 }
 
 #header {
@@ -86,21 +85,27 @@ a {
 	
 }
 
+::-webkit-input-placeholder { /* Chrome */
+  color: white;
+}
+
 .email-input {
 	height: 120px;
 	width: 80%;
 	position: absolute;
 	top: 20%;
 	left: 10%;
-	color: black;
-	font-size: 3em;
+	font-size: 2em;
 	font-weight: 400;
-	background-color: white;
-	border-radius: 15px;
-	padding-top: 15px;
-	padding-left: 20px;
+  border: 0px;	
+  border-bottom: 2px solid white;
+  border-radius: 0px;
 	box-sizing: border-box;
+	background-color: rgba(0, 0, 0, 0);
+	padding-top: 40px;
+	color: white;
 }
+
 
 .password-input {
 	height: 120px;
@@ -108,14 +113,15 @@ a {
 	position: absolute;
 	top: 30%;
 	left: 10%;
-	color: black;
-	font-size: 3em;
+	font-size: 2em;
 	font-weight: 400;
-	background-color: white;
-	border-radius: 15px;
-	padding-top: 15px;
-	padding-left: 20px;
+	border: 0px; 
+  border-bottom: 2px solid white;
+  border-radius: 0px;
 	box-sizing: border-box;
+	 background-color: rgba(0, 0, 0, 0);
+	   padding-top: 40px;
+  color: white;
 }
 
 .password-check {
@@ -124,14 +130,15 @@ a {
 	position: absolute;
 	top: 40%;
 	left: 10%;
-	color: black;
-	font-size: 3em;
+	font-size: 2em;
 	font-weight: 400;
-	background-color: white;
-	border-radius: 15px;
-	padding-top: 15px;
-	padding-left: 20px;
+	border: 0px; 
+  border-bottom: 2px solid white;
+  border-radius: 0px;
 	box-sizing: border-box;
+	background-color: rgba(0, 0, 0, 0);
+	 padding-top: 40px;
+  color: white;
 }
 
 .name-input {
@@ -140,14 +147,16 @@ a {
 	position: absolute;
 	top: 50%;
 	left: 10%;
-	color: black;
-	font-size: 3em;
+	font-size: 2em;
 	font-weight: 400;
-	background-color: white;
-	border-radius: 15px;
-	padding-top: 15px;
-	padding-left: 20px;
 	box-sizing: border-box;
+  background-color: black;
+	border: 0px;  
+	border-radius: 0px;
+  border-bottom: 2px solid white;
+  background-color: rgba(0, 0, 0, 0);
+    padding-top: 40px;
+  color: white;
 }
 
 .phone-input {
@@ -156,29 +165,34 @@ a {
 	position: absolute;
 	top: 60%;
 	left: 10%;
-	color: black;
-	font-size: 3em;
+	font-size: 2em;
 	font-weight: 400;
-	background-color: white;
-	border-radius: 15px;
-	padding-top: 15px;
-	padding-left: 20px;
 	box-sizing: border-box;
+	background-color: black;
+	border: 0px; 
+  border-bottom: 2px solid white;
+  border-radius: 0px;
+  background-color: rgba(0, 0, 0, 0);
+  padding-top: 40px;
+  color: white;
 }
 
 .signup-btn {
-	height: 120px;
-	width: 80%;
 	position: absolute;
-	bottom: 20%;
-	left: 10%;
-	color: white;
-	font-size: 3em;
-	font-weight: 400;
-	background-color: #66ccff;
-	border-radius: 15px;
-	padding-top: 15px;
-	box-sizing: border-box;
+  height: 95px;
+  width: 65%;
+  left: 10%;
+  transform: translateX(10%);
+  font-size: 200%;
+  font-weight: 400;
+  text-align: center;
+  border-radius: 50px;
+  line-height: 95px;
+  box-sizing: border-box;
+  bottom: 15%;
+  color: white;
+  border: 1.5px solid white;
+  background: rgba(0, 0, 0, 0);``
 }
 
 <!-- 로그인 끝 --> 
@@ -191,12 +205,14 @@ a {
 
 #member-toggle {
   position: absolute;
-  top: 17%;
-  left: 10%;
   display: none;
-  height: 63%;
-  width: 80%;
-  background-color: white;
+  top: 0%;
+  height: 100%;
+  width: 100%;
+  background-image: url("../ARMU-Image/Mobile/1_main/main_signup2_3.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
 }
 
 #member-backscreen {
@@ -209,8 +225,47 @@ a {
 }
 
 #member-text {
-  font-size: 450%;
+  font-size: 550%;
   text-align: center;
+  color: white;
+}
+
+#musician-text {
+  font-size: 400%;
+  text-align: center;
+  color: white;
+}
+
+#btnDiv{
+}
+
+.btn {
+  position: absolute;
+  height: 95px;
+  width: 65%;
+  left: 20%;
+  transform: translateX(-20%);
+  font-size: 200%;
+  font-weight: 400;
+  text-align: center;
+  border-radius: 49px;
+  line-height: 95px;
+  box-sizing: border-box;
+}
+
+.login-btn {
+  bottom: 25%;
+  color: white;
+  background-color: rgba(255, 255, 255, .7);
+  transform: translateY(25%);
+}
+
+.musician-btn {
+  bottom: 15%;
+  color: white;
+  border: 1.5px solid white;
+  transform: translateY(15%);
+  /* background-color: White; */
 }
 
 <!-- 회원가입 버튼 끝 -->
@@ -291,8 +346,21 @@ color: orange;
   <div id="member-toggle">
     <div id='member-contents'>
     
-    <div id="member-text">회원가입을 축하합니다</div>
-    <div id="Musician-text">회원가입을 축하합니다</div>
+    <div id="member-text">
+    <br>
+    회원가입을 축하합니다
+    </div> <!-- member-text -->
+    <div id="musician-text">
+    <br>
+    뮤지션으로 회원가입을 원하시면<br>
+    뮤지션 회원가입을 눌러주세요
+    </div> <!-- musician-text -->
+    
+    <div id="btnDiv">
+    <a href="login.html" class="login-btn btn" type="button">로그인 화면으로</a>
+    <a href="#" class="musician-btn btn" type="button">뮤지션 회원가입</a>
+    </div> <!-- btnDiv -->
+    
     
     </div>
     <!-- menu-contents -->
