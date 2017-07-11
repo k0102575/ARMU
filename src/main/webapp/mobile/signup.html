@@ -115,7 +115,7 @@ a {
 	color: white;
 }
 
-.password-input {
+.password-input1 {
 	height: 120px;
 	width: 80%;
 	position: absolute;
@@ -132,7 +132,7 @@ a {
   color: white;
 }
 
-.password-check {
+.password-input2 {
 	height: 120px;
 	width: 80%;
 	position: absolute;
@@ -206,14 +206,72 @@ a {
 #consent-menu {
   position: absolute;
   bottom: 10%;
-  left: %;
-  transform: translateX(-40%);
+  left: 37%;
   color: white;
   font-size: 2em;
   font-weight: 400;
 }
 
 <!-- 회원가입 끝 --> 
+
+<!-- 입력 체크 시작 -->
+
+.check {
+
+}
+
+.email-input-check {
+  position: absolute;
+  left: 10%;
+  font-size: 2em;
+  font-weight: 400;
+  color: red;
+  top: 28%;
+  display: none;
+}
+
+.password-input1-check {
+  position: absolute;
+  left: 10%;
+  font-size: 2em;
+  font-weight: 400;
+  color: red;
+  top: 38%;
+  display: none;
+}
+
+.password-input2-check {
+  position: absolute;
+  left: 10%;
+  font-size: 2em;
+  font-weight: 400;
+  color: red;
+  top: 48%;
+  display: none;
+}
+
+.name-input-check {
+  position: absolute;
+  left: 10%;
+  font-size: 2em;
+  font-weight: 400;
+  color: red;
+  top: 58%;
+  display: none;
+}
+
+.phone-input-check {
+  position: absolute;
+  left: 10%;
+  font-size: 2em;
+  font-weight: 400;
+  color: red;
+  top: 68%;
+  display: none;
+}
+
+<!-- 입력 체크 끝 -->
+
 
 <!-- 회원가입 버튼 시작 -->
 
@@ -341,22 +399,24 @@ color: orange;
 		<div id='signup'>
 			<form>
 				<div>
-					<input type="text" class="email-input" id="email" placeholder="이메일">
+					<input type="text" class="email-input"  placeholder="이메일">
+					<p class="email-input-check check">이메일을 입력해 주세요</p>
 				</div>
 				<div>
-					<input type="password" class="password-input" id="password"
-						placeholder="비밀번호">
+					<input type="password" class="password-input1" placeholder="비밀번호">
+					<p class="password-input1-check check">비밀번호를 입력해 주세요</p>
 				</div>
 				<div>
-					<input type="password" class="password-check" id="password"
-						placeholder="비밀번호 확인">
+					<input type="password" class="password-input2" placeholder="비밀번호 확인">
+					<p class="password-input2-check check">비밀번호를 입력해 주세요</p>
 				</div>
 				<div>
-					<input type="text" class="name-input" id="name" placeholder="이름">
+					<input type="text" class="name-input" placeholder="이름">
+					<p class="name-input-check check">이름을 입력해 주세요</p>
 				</div>
 				<div>
-					<input type="text" class="phone-input" id="phone"
-						placeholder="휴대폰 번호">
+					<input type="text" class="phone-input" placeholder="휴대폰 번호">
+					<p class="phone-input-check check">휴대폰 번호를 입력해 주세요</p>
 				</div>
 				<button type="button" class="signup-btn">회원 가입</button>
 			</form>
@@ -397,25 +457,82 @@ color: orange;
   <!-- menu slider ended -->
 
 	<script>
-	var memberBackscreen = $( "#member-backscreen" ),
-      memberToggle = $( "#member-toggle" )
+var   memberToggle = $("#member-toggle" ),
+      emailInput = $(".email-input" ),
+      passwordInput1 = $(".password-input1" ),
+      passwordInput2 = $(".password-input2" ),
+      nameInput = $(".name-input" ),
+      phoneInput = $(".phone-input" ),
+      emailInputCheck = $(".email-input-check" ),
+      passwordInput1Check = $(".password-input1-check" ),
+      passwordInput2Check = $(".password-input2-check" ),
+      nameInputCheck = $(".name-input-check" ),
+      phoneInputCheck = $(".phone-input-check" )
+  
+    $("input").keypress(function(){
+      emailInput.css("border-bottom", "2px solid white");
+      passwordInput1.css("border-bottom", "2px solid white");
+      passwordInput2.css("border-bottom", "2px solid white");
+      nameInput.css("border-bottom", "2px solid white");
+      phoneInput.css("border-bottom", "2px solid white");
+      emailInputCheck.css("display", "none")
+      passwordInput1Check.css("display", "none")
+      passwordInput2Check.css("display", "none")
+      nameInputCheck.css("display", "none")
+      phoneInputCheck.css("display", "none")
+      passwordInput1Check.html("비밀번호가 입력해주세요.")
+      passwordInput2Check.html("비밀번호가 입력해주세요.")
+    })
 	
     $("#prev-page").click(function() {
       location.href="join.html"
     }) // #prev-page().click
 
     $(".signup-btn").on('click', function() {
-      memberBackscreen.css('display', 'block');
-      memberToggle.toggle();
+      
+      if(emailInput.val().length == 0) {
+        emailInput.css("border-bottom", "2px solid red");
+        emailInputCheck.css("display", "block")
+      }
+      
+      if(passwordInput1.val().length == 0) {
+        passwordInput1.css("border-bottom", "2px solid red");
+        passwordInput1Check.css("display", "block")
+      }
+      
+      if(passwordInput2.val().length == 0) {
+        passwordInput2.css("border-bottom", "2px solid red");
+        passwordInput2Check.css("display", "block")
+      }
+      
+      if(nameInput.val().length == 0) {
+        nameInput.css("border-bottom", "2px solid red");
+        nameInputCheck.css("display", "block")
+      }
+      
+      if(phoneInput.val().length == 0) {
+        phoneInput.css("border-bottom", "2px solid red");
+        phoneInputCheck.css("display", "block")
+      }
+      
+      if(passwordInput1.val() != passwordInput2.val()) {
+        passwordInput1Check.html("비밀번호가 틀립니다.")
+        passwordInput2Check.html("비밀번호가 틀립니다.")
+        passwordInput1Check.css("display", "block")
+        passwordInput2Check.css("display", "block")
+      }
+      
+      if (emailInput.val().length > 0 && 
+          passwordInput1.val().length > 0 &&
+          passwordInput2.val().length > 0 && 
+          nameInput.val().length > 0 &&
+          phoneInput.val().length > 0) 
+      {
+        memberToggle.toggle(); 
+      }
+        
     }) // .singup-btn().click
     
-    memberBackscreen.on('click', function() {
-      memberToggle.toggle();
-      memberBackscreen.css('display', 'none');
-    })
-    
-  
-
   </script>
 
 </body>
