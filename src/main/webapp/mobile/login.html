@@ -82,7 +82,7 @@ a {
 <!-- 헤더 끝 -->
 
 <!--로그인 시작 -->
-#signup {
+#login {
 	
 }
 
@@ -178,7 +178,7 @@ a {
   color: white;
 }
 
-.signup-btn {
+.login-btn {
 	position: absolute;
   height: 95px;
   width: 65%;
@@ -193,63 +193,38 @@ a {
   bottom: 15%;
   color: white;
   border: 1.5px solid white;
-  background: rgba(0, 0, 0, 0);``
+  background-color: rgba(0, 0, 0, 0);
 }
 
 <!-- 로그인 끝 --> 
 
-<!-- 회원가입 버튼 시작 -->
+<!-- 입력 체크 시작 -->
 
-#member-backscreen {
+.check {
 
 }
 
-#member-toggle {
+.email-input-check {
   position: absolute;
-  display: none;
-  top: 0%;
-  height: 100%;
-  width: 100%;
-  background-image: url("../ARMU-Image/Mobile/1_main/main_signup2_3.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100%;
-}
-
-#member-backscreen {
-  position: fixed;
-  display: none;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, .6);
-}
-
-#btnDiv{
-}
-
-.btn {
-  position: absolute;
-  height: 95px;
-  width: 65%;
-  left: 20%;
-  transform: translateX(-20%);
-  font-size: 200%;
+  left: 10%;
+  font-size: 2em;
   font-weight: 400;
-  text-align: center;
-  border-radius: 49px;
-  line-height: 95px;
-  box-sizing: border-box;
+  color: red;
+  top: 28%;
+  display:none;
 }
 
-.login-btn {
-  bottom: 25%;
-  color: white;
-  background-color: rgba(255, 255, 255, .7);
-  transform: translateY(25%);
+.password-input-check {
+  position: absolute;
+  left: 10%;
+  font-size: 2em;
+  font-weight: 400;
+  color: red;
+  top: 38%;
+  display:none;
 }
 
-<!-- 회원가입 버튼 끝 -->
+<!-- 입력 체크 끝 -->
 
 /* 스마트폰 (가로 및 세로) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width
@@ -296,16 +271,17 @@ color: orange;
 		</div>
 		<!-- header -->
 
-		<div id='signup'>
+		<div id='login'>
 			<form>
 				<div>
-					<input type="text" class="email-input" id="email" placeholder="이메일을 입력하세요">
+					<input type="text" class="email-input" id="email-input" placeholder="이메일을 입력하세요">
+					<p class="email-input-check check">이메일을 입력해 주세요</p>
 				</div>
 				<div>
-					<input type="password" class="password-input" id="password"
-						placeholder="비밀번호를 입력하세요">
+					<input type="password" class="password-input" id="password-input" placeholder="비밀번호를 입력하세요">
+					<p class="password-input-check check">비밀번호를 입력해 주세요</p>
 				</div>
-				<button type="button" class="signup-btn">로그인</button>
+				<button type="button" class="login-btn">로그인</button>
 			</form>
 		</div>
 		<!-- login -->
@@ -313,9 +289,40 @@ color: orange;
 	<!-- container -->
 	
 	<script>
-  $("#prev-page").click(function(){
+	
+	var  emailInput = $(".email-input"),
+			 passwordInput = $(".password-input"),
+			 emailInputCheck = $(".email-input-check"),
+			 passwordInputCheck = $(".password-input-check")
+	
+  $("#prev-page").click(function() {
     location.href="intro.html"
   })
+  
+  $(".login-btn").click(function() {
+      if(emailInput.val().length == 0) {
+          emailInput.css("border-bottom", "2px solid red");
+          emailInputCheck.css("display", "block")
+        }
+        
+        if(passwordInput.val().length == 0) {
+          passwordInput.css("border-bottom", "2px solid red");
+          passwordInputCheck.css("display", "block")
+        }
+        
+        if (emailInput.val().length > 0 &&passwordInput.val().length > 0 &&) {
+        	location.href="index.html"
+            }
+  })
+  
+  $("input").keypress(function(){
+      emailInput.css("border-bottom", "2px solid white");
+      passwordInput.css("border-bottom", "2px solid white");
+      emailInputCheck.css("display", "none")
+      passwordInputCheck.css("display", "none")
+    })
+  
+  
   </script>
 
 </body>

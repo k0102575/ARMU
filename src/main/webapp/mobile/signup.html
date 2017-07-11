@@ -206,7 +206,7 @@ a {
 #consent-menu {
   position: absolute;
   bottom: 10%;
-  left: 37%;
+  left: 30%;
   color: white;
   font-size: 2em;
   font-weight: 400;
@@ -424,7 +424,7 @@ color: orange;
 		<!-- login -->
 		
 		<div id="consent-menu">
-		이용 약관 및 정책
+		이용 약관/개인정보 보호 방침
     </div> <!-- consent-menu -->
     
 	</div>
@@ -485,7 +485,7 @@ var   memberToggle = $("#member-toggle" ),
     })
 	
     $("#prev-page").click(function() {
-      location.href="join.html"
+      location.href="intro.html"
     }) // #prev-page().click
 
     $(".signup-btn").on('click', function() {
@@ -532,6 +532,10 @@ var   memberToggle = $("#member-toggle" ),
       }
         
     }) // .singup-btn().click
+    
+    $('#consent-menu').click(function() {
+    	window.open("clause.html");
+    })
     
   </script>
 
