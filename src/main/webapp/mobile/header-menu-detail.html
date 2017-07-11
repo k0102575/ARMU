@@ -4,8 +4,8 @@
 <div id="menu-toggle">
 	<div id='menu-contents'>
 		<div id='menu-upper-btn'>
-			<img id='home-btn'
-				src='../ARMU-Image/ARMU_icon/mobile_icon/home_bt1.png'> <img
+			<a href='index_menu.html'><img id='home-btn'
+				src='../ARMU-Image/ARMU_icon/mobile_icon/home_bt1.png'></a> <img
 				src='../ARMU-Image/ARMU_icon/change.png'>
 		</div>
 		<br>
@@ -91,12 +91,12 @@
 
 	menuBtn.on('click', function() {
 		menuBackscreen.css('display', 'block');
-		menuToggle.toggle("slide");
+		menuToggle.toggle("slide", 300);
 		container.css('position', 'fixed').css('overflow', 'hidden');
 	});
 
 	menuBackscreen.on('click', function() {
-		menuToggle.toggle("slide");
+		menuToggle.toggle("slide", 300);
 		menuBackscreen.css('display', 'none');
 		container.css('position', '').css('overflow', '');
 	})
@@ -104,7 +104,10 @@
 	$('#login-btn').on('click', function() {
 		location.href = 'join.html'
 	})
+	
 
+
+	/*검색 관련*/
 	$('#header-menu-search').on('click', function() {
 		$("#search-backscreen").css('display', 'block');
 		$("#search-toggle").toggle("slide", {
@@ -112,8 +115,6 @@
 		});
 	});
 
-	
-	/*검색 관련*/
 	$("#search-backscreen").on('click', function() {
 		$("#search-toggle").toggle("slide", {
 			direction : "up"
