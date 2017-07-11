@@ -78,9 +78,18 @@ a {
 	font-weight: 400;
 }
 
+#consent-text {
+  position: absolute;
+  top: 10%;
+  left: 30%;
+  color: white;
+  font-size: 2em;
+  font-weight: 200;
+}
+
 <!-- 헤더 끝 -->
 
-<!--로그인 시작 -->
+<!--회원가입 시작 -->
 #signup {
 	
 }
@@ -105,7 +114,6 @@ a {
 	padding-top: 40px;
 	color: white;
 }
-
 
 .password-input {
 	height: 120px;
@@ -195,7 +203,17 @@ a {
   background: rgba(0, 0, 0, 0);``
 }
 
-<!-- 로그인 끝 --> 
+#consent-menu {
+  position: absolute;
+  bottom: 10%;
+  left: %;
+  transform: translateX(-40%);
+  color: white;
+  font-size: 2em;
+  font-weight: 400;
+}
+
+<!-- 회원가입 끝 --> 
 
 <!-- 회원가입 버튼 시작 -->
 
@@ -314,6 +332,11 @@ color: orange;
 			<p id="header">회원 가입
 		</div>
 		<!-- header -->
+		
+		<div id="consent-text">
+    가입 버튼을 누르면 이용약관과<br>
+    정책에 동의한 것으로 간주합니다.
+    </div> <!-- consent-text -->
 
 		<div id='signup'>
 			<form>
@@ -339,6 +362,11 @@ color: orange;
 			</form>
 		</div>
 		<!-- login -->
+		
+		<div id="consent-menu">
+		이용 약관 및 정책
+    </div> <!-- consent-menu -->
+    
 	</div>
 	<!-- container -->
 	
@@ -369,9 +397,8 @@ color: orange;
   <!-- menu slider ended -->
 
 	<script>
-	var container = $( "#container" ),
-	memberBackscreen = $( "#member-backscreen" ),
-	memberToggle = $( "#member-toggle" )
+	var memberBackscreen = $( "#member-backscreen" ),
+      memberToggle = $( "#member-toggle" )
 	
     $("#prev-page").click(function() {
       location.href="join.html"
@@ -386,6 +413,8 @@ color: orange;
       memberToggle.toggle();
       memberBackscreen.css('display', 'none');
     })
+    
+  
 
   </script>
 
