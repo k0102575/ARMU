@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+/*뮤지션 리스트 시작*/
+#musician-list {
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+#musician {
+  border: 1px solid black;
+  border-radius: 20px;
+  height: 700px;
+  width: 45%;
+  float: left;
+  margin-left: 3%;
+  margin-top: 3%;
+}
+
+.musician-picture {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  width: 100%;
+  height: 80%;
+}
+  
+/*뮤지션 리스트 끝*/
