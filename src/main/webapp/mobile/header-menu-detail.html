@@ -34,58 +34,11 @@
 <!-- menu slider ended -->
 
 
-<!-- search slider -->
-<div id="search-backscreen"></div>
-<div id="search-toggle">
-	<div>
-		<img id="prev-page" src='../ARMU-Image/ARMU_icon/arrow_1.png'>
-	</div>
-	<div id='search-contents'>
-		<div class="search-sub-contents" id="major-div">전공</div>
-		<div class="search-sub-contents" id="genre-div">장르</div>
-		<div class="search-sub-contents" id="location-div">지역</div>
-	</div>
-	<!-- search-toggle -->
-</div>
-<!-- search slider ended -->
-
-
-<div id="major-toggle">
-	<div>
-		<img id="x-major" src='../ARMU-Image/ARMU_icon/x.png'>
-	</div>
-	<div id='major-contents'>
-		<p>전공전공전공</p>
-	</div>
-</div>
-<!-- major-toggle -->
-
-<div id="genre-toggle">
-	<div>
-		<img id="x-genre" src='../ARMU-Image/ARMU_icon/x.png'>
-	</div>
-	<div id='genre-contents'>
-		<p>장르장르장르</p>
-	</div>
-</div>
-<!-- genre-toggle -->
-
-<div id="location-toggle">
-	<div>
-		<img id="x-location" src='../ARMU-Image/ARMU_icon/x.png'>
-	</div>
-	<div id='genre-contents'>
-		<p>위치위치위치</p>
-	</div>
-</div>
-<!-- location-toggle -->
-
-
 <script>
 /*메뉴 관련*/
-	var container = $("#container"), 
-	    menuBtn = $('#header-menu-menu'), 
-	    menuBackscreen = $("#menu-backscreen"), 
+	var container = $("#container"),
+	    menuBtn = $('#header-menu-menu'),
+	    menuBackscreen = $("#menu-backscreen"),
 	    menuToggle = $("#menu-toggle")
 
 	menuBtn.on('click', function() {
@@ -103,61 +56,5 @@
 	$('#login-btn').on('click', function() {
 		location.href = 'join.html'
 	})
-	
 
-
-	/*검색 관련*/
-	$('#header-menu-search').on('click', function() {
-		$("#search-backscreen").css('display', 'block');
-		$("#search-toggle").toggle("slide", {
-			direction : "up"
-		});
-	});
-
-	$("#search-backscreen").on('click', function() {
-		$("#search-toggle").toggle("slide", {
-			direction : "up"
-		});
-		$("#search-backscreen").css('display', 'none');
-	})
-
-	$("#prev-page").on('click', function() {
-		$("#search-toggle").toggle("slide", {
-			direction : "up"
-		});
-		$("#search-backscreen").css('display', 'none');
-	})
-
-	$("#major-div").on('click', function() {
-		$("#major-toggle").toggle("slide", {
-			direction : "down"
-		});
-	})
-	$("#x-major").on('click', function() {
-		$("#major-toggle").toggle("slide", {
-			direction : "down"
-		});
-	})
-
-	$("#genre-div").on('click', function() {
-		$("#genre-toggle").toggle("slide", {
-			direction : "down"
-		});
-	})
-	$("#x-genre").on('click', function() {
-		$("#genre-toggle").toggle("slide", {
-			direction : "down"
-		});
-	})
-
-	$("#location-div").on('click', function() {
-		$("#location-toggle").toggle("slide", {
-			direction : "down"
-		});
-	})
-	$("#x-location").on('click', function() {
-		$("#location-toggle").toggle("slide", {
-			direction : "down"
-		});
-	})
 </script>
