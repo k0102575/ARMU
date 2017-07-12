@@ -25,18 +25,18 @@
   height: 70%;
 }
 
-.musician-surf-preview {
-	border: 1px solid black;
+#musician-surf-preview {
 	width: auto;
-	height: 30%;
+	height: 10%;
+	font-size: 2em;
 }
 
-.musician-surf-name {
+#musician-surf-name {
   
   
 }
 
-.musician-surf-location {
+#musician-surf-location {
   
   
 }
