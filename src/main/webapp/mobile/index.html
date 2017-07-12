@@ -22,18 +22,32 @@
 }
 
 .category-menu {
-position: absolute;
-  right: 13%;
-  transform: translateX(-13%);
 	color: black;
 	font-size: 250%;
-	vertical-align: -50px;
 	font-weight: normal;
 }
 
 #category1 {
-	font-size: 270%;
+  position: absolute;
+  left: 15%;
+  top: 15%;
+  transform: translate(15%, 15%);
+  
 	font-weight: 900;
+}
+
+#category2 {
+  position: absolute;
+  right: 44%;
+  top: 15%;
+  transform: translate(-44%, 15%);
+}
+
+#category3 {
+  position: absolute;
+  right: 15%;
+  top: 15%;
+  transform: translate(-15%, 15%);
 }
 /*카테고리 끝끝*/
 
@@ -50,7 +64,7 @@ position: absolute;
 			<div id="category">
 				<a href='#'><span class='category-menu' id="category1">추천</span></a>
 				<a href='#'><span class='category-menu' id="category2">탐색</span></a>
-				<a href='#'><span class='category-menu' id="category3">활동</span></a>
+				<a href='#'><span class='category-menu' id="category3">내 활동</span></a>
 			</div>
 			<!-- category -->
 

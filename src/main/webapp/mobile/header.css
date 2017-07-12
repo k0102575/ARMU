@@ -10,34 +10,36 @@
 .header-menu {
   float: right;
   color: black;
-  margin: 4%;
 }
 
 #header-menu-logo {
   position: absolute;
   right: 34%;
-  transform: translate(-34%);
-  margin:2.5%;
+  top: 15%;
+  transform: translate(-34%, 15%);
  }
 
 #header-menu-bell {
   position: absolute;
   right: 3%;
-  transform: translateX(-3%);
+  top: 25%;
+  transform: translate(-3%, 25%);
   font-size: 40px;
 }
 
 #header-menu-menu {
   position: absolute;
   left: 3.5%;
-  transform: translateX(-3.5%);
+  top: 25%;
+  transform: translate(-3.5%, 25%);
   font-size: 40px;
 }
 
 #header-menu-email {
   position: absolute;
   right: 13%;
-  transform: translateX(-13%);
+  top: 25%;
+  transform: translate(-13%, 25%);
   font-size: 40px;
 }
 
