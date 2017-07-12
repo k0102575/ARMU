@@ -13,20 +13,41 @@
   margin-top: 7%;
 }
 
-.rec-best-musi {
-  display: inline-block;
-  border: 1px solid black;
-  height: 500px;
-  width: 40%;
-  margin: 3%;
-}
-
 .rec-container-separator {
   width: 100%;
   margin-top: 50px;
   border-bottom: 40px solid #f5f5f5;
 }
 
+/*인기 뮤지션 시작*/
+.rec-popular-musi {
+  display: inline-block;
+  border: 1px solid black;
+  height: 500px;
+  width: 40%;
+  margin: 3%;
+}
+/*인기 뮤지션 끝*/
+
+/*베스트 뮤지션 리뷰 시작*/
+.rec-best-review {
+  position: relative;
+  display: inline-block;
+  border: 1px solid black;
+  height: 450px;
+  width:85%;
+  margin: 3%;
+}
+
+.rec-best-review-img {
+  padding: 0;
+  width: 100px;
+  height: auto;
+  border-radius: 50%;
+}
+/*베스트 뮤지션 리뷰 끝*/
+
+/*분류 탑 텐 해시태그 시작*/
 .rec-hashtag-container {
   padding-left: 5%;
   width: auto;
@@ -52,3 +73,4 @@
   padding: 0 3%;
   margin: 2% 0 2% 3%;
 }
+/*분류 탑 텐 해시태그 끝*/

@@ -132,10 +132,12 @@ display: none;
 	    mainRecommend = $('#main-recommend'),
 	    mainSurf = $('#main-surf');
 
+	mainSurf.css('display', 'none')
+
   categoryBtn1.on('click', function() {
 	  categoryUnderbar1.css('display', "inline-block")
 	  mainRecommend.css('display', '')
-	  
+
     mainSurf.css('display', 'none')
 	  categoryUnderbar2.css('display', "none")
 	  categoryUnderbar3.css('display', "none")
@@ -144,7 +146,7 @@ display: none;
   categoryBtn2.on('click', function() {
 	  categoryUnderbar2.css('display', "inline-block")
     mainSurf.css('display', '')
-    
+
 	  mainRecommend.css('display', 'none')
 	  categoryUnderbar1.css('display', "none")
 	  categoryUnderbar3.css('display', "none")
