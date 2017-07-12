@@ -8,6 +8,7 @@
 <link href="common.css" rel="stylesheet" type="text/css" media="all">
 <link href="header.css" rel="stylesheet" type="text/css" media="all">
 <link href="main-recommend.css" rel="stylesheet" type="text/css" media="all">
+<link href="main-surf.css" rel="stylesheet" type="text/css" media="all">
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
 <style>
@@ -105,6 +106,7 @@ display: none;
 		</div>
 
 	<div class='category-main' id='main-recommend'><!-- include --></div>
+	<div class='category-main' id='main-surf'><!-- include --></div>
 
 
 </div> <!-- container -->
@@ -116,6 +118,7 @@ display: none;
 	$(document).ready(function() {
 		$("#header-box").load("header-box.html");
 		$('#main-recommend').load('main-recommend.html');
+		$('#main-surf').load('main-surf.html');
 		$("#header-menu-detail").load("header-menu-detail.html");
 	})
 
@@ -126,28 +129,32 @@ display: none;
 	    categoryUnderbar1 = $('#category-underline-bar1'),
 	    categoryUnderbar2 = $('#category-underline-bar2'),
 	    categoryUnderbar3 = $('#category-underline-bar3'),
-	    mainRecommend = $('#main-recommend');
-	
+	    mainRecommend = $('#main-recommend'),
+	    mainSurf = $('#main-surf');
+
   categoryBtn1.on('click', function() {
 	  categoryUnderbar1.css('display', "inline-block")
 	  mainRecommend.css('display', '')
 	  
+    mainSurf.css('display', 'none')
 	  categoryUnderbar2.css('display', "none")
 	  categoryUnderbar3.css('display', "none")
   })
-  
+
   categoryBtn2.on('click', function() {
 	  categoryUnderbar2.css('display', "inline-block")
-	  
+    mainSurf.css('display', '')
+    
 	  mainRecommend.css('display', 'none')
 	  categoryUnderbar1.css('display', "none")
 	  categoryUnderbar3.css('display', "none")
   })
-  
+
   categoryBtn3.on('click', function() {
 	  categoryUnderbar3.css('display', "inline-block")
-	  
+
 	  mainRecommend.css('display', 'none')
+	  mainSurf.css('display', 'none')
 	  categoryUnderbar1.css('display', "none")
 	  categoryUnderbar2.css('display', "none")
   })
