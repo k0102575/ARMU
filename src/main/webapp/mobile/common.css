@@ -25,24 +25,15 @@ a {
 /* 스마트폰 (가로 및 세로) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width
   : 480px) {
-  body {
-    color: red;
-  }
 }
 /*------- 스마트폰에서 아이폰 사이 ---------*/
 @media only screen and (min-device-width : 481px) and (max-device-width
   : 767px) {
-  body {
-    color: blue;
-  }
 }
 
 /* 아이패드 (가로 및 세로) -----------*/
 @media only screen and (min-device-width : 768px) and (max-device-width
   : 1223px) {
-  body {
-    color: yellow;
-  }
 }
 
 /*------데탑!!!!!!!!----------

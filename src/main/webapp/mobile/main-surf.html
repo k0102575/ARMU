@@ -1,12 +1,17 @@
-  <div id="musician-list">
+  <div id="musician-surf-list">
+  <div id='musician-surf'><img class='musician-surf-picture' src='../ARMU-Image/Mobile/19_eventpage/e_2.jpg'>
+  <div id="musician-surf-preview">프리뷰</div><br>
+  <span id="musician-surf-name">이름</span><br>
+  <span id="musician-surf-location">지역</span><br>
+  </div>
   
-  <div id="musician"><img class='musician-picture' src='../ARMU-Image/Mobile/19_eventpage/e_2.jpg'></div>
-  <div id="musician"><img class='musician-picture' src='../ARMU-Image/Mobile/19_eventpage/e_2.jpg'></div>
   </div> 
-  <!--musician-list -->
+  <!--musician-surf-list -->
+  <button class="autoDiv">버튼</button>
 
 <script>
-$(".category-menu").on('click', function() {
-  $("#musician-list").append("<div id='musician'><img class='musician-picture' src='../ARMU-Image/Mobile/19_eventpage/e_2.jpg'></div>");
+$(".autoDiv").on('click', function() {
+  $("#musician-surf-list").append(
+      "<div id='musician-surf'><img class='musician-surf-picture' src='../ARMU-Image/Mobile/19_eventpage/e_2.jpg'><div id='musician-surf-preview'>프리뷰</div><br><span id='musician-surf-name'>이름</span><br><span id='musician-surf-location'>지역</span><br></div>");
 })
 </script>

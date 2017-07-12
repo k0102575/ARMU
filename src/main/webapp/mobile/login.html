@@ -198,9 +198,9 @@ a {
 
 <!-- 로그인 끝 --> 
 
-<!-- 입력 체크 시작 -->
+<!-- 입력체크 시작 -->
 
-.check {
+#member-backscreen {
 
 }
 
@@ -212,6 +212,7 @@ a {
   color: red;
   top: 28%;
   display:none;
+  
 }
 
 .password-input-check {
@@ -224,7 +225,14 @@ a {
   display:none;
 }
 
-<!-- 입력 체크 끝 -->
+.login-btn {
+  bottom: 25%;
+  color: white;
+  background-color: rgba(255, 255, 255, .7);
+  transform: translateY(25%);
+}
+
+<!-- 입력체크 끝 -->
 
 /* 스마트폰 (가로 및 세로) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width
@@ -274,12 +282,12 @@ color: orange;
 		<div id='login'>
 			<form>
 				<div>
-					<input type="text" class="email-input" id="email-input" placeholder="이메일을 입력하세요">
-					<p class="email-input-check check">이메일을 입력해 주세요</p>
+				  <input type="text" class="email-input" id="email-input" placeholder="이메일을 입력하세요">
+          <p class="email-input-check">이메일을 입력해 주세요</p>
 				</div>
 				<div>
-					<input type="password" class="password-input" id="password-input" placeholder="비밀번호를 입력하세요">
-					<p class="password-input-check check">비밀번호를 입력해 주세요</p>
+				  <input type="password" class="password-input" id="password-input" placeholder="비밀번호를 입력하세요">
+          <p class="password-input-check">비밀번호를 입력해 주세요</p>
 				</div>
 				<button type="button" class="login-btn">로그인</button>
 			</form>
@@ -289,17 +297,16 @@ color: orange;
 	<!-- container -->
 	
 	<script>
-	
-	var  emailInput = $(".email-input"),
-			 passwordInput = $(".password-input"),
-			 emailInputCheck = $(".email-input-check"),
-			 passwordInputCheck = $(".password-input-check")
-	
-  $("#prev-page").click(function() {
-    location.href="intro.html"
-  })
-  
-  $(".login-btn").click(function() {
+    var  emailInput = $(".email-input"),
+         passwordInput = $(".password-input"),
+         emailInputCheck = $(".email-input-check"),
+         passwordInputCheck = $(".password-input-check")
+         
+  $("#prev-page").on('click', function(){
+      location.href="intro.html"
+    })
+    
+  $(".login-btn").on('click', function() {
       if(emailInput.val().length == 0) {
           emailInput.css("border-bottom", "2px solid red");
           emailInputCheck.css("display", "block")
@@ -310,8 +317,8 @@ color: orange;
           passwordInputCheck.css("display", "block")
         }
         
-        if (emailInput.val().length > 0 &&passwordInput.val().length > 0 &&) {
-        	location.href="index.html"
+        if (emailInput.val().length > 0 && passwordInput.val().length > 0) {
+          location.href="index.html"
             }
   })
   

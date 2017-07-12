@@ -1,14 +1,14 @@
 @CHARSET "UTF-8";
 
 /*뮤지션 리스트 시작*/
-#musician-list {
+#musician-surf-list {
   position: absolute;
   width: 100%;
   box-sizing: border-box;
   background-color: white;
 }
 
-#musician {
+#musician-surf {
   border: 1px solid black;
   border-radius: 20px;
   height: 700px;
@@ -18,11 +18,33 @@
   margin-top: 3%;
 }
 
-.musician-picture {
+.musician-surf-picture {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   width: 100%;
-  height: 80%;
+  height: 70%;
+}
+
+.musician-surf-preview {
+	border: 1px solid black;
+	width: auto;
+	height: 30%;
+}
+
+.musician-surf-name {
+  
+  
+}
+
+.musician-surf-location {
+  
+  
 }
   
 /*뮤지션 리스트 끝*/
+
+.autoDiv {
+	position: absolute;
+	left: 30%;
+	top: 30%;
+}
