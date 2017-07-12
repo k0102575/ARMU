@@ -32,7 +32,7 @@
   left: 15%;
   top: 15%;
   transform: translate(15%, 15%);
-  
+
 	font-weight: 900;
 }
 
@@ -57,31 +57,31 @@
 <body>
 
 
-	<div id="container">
+<div id="container">
 
-			<div id="header-box"><!-- include --></div>
+	<div id="header-box"><!-- include --></div>
 
-			<div id="category">
-				<a href='#'><span class='category-menu' id="category1">추천</span></a>
-				<a href='#'><span class='category-menu' id="category2">탐색</span></a>
-				<a href='#'><span class='category-menu' id="category3">내 활동</span></a>
-			</div>
-			<!-- category -->
+	<div id="category">
+		<a href='#'><span class='category-menu' id="category1">추천</span></a>
+		<a href='#'><span class='category-menu' id="category2">탐색</span></a>
+		<a href='#'><span class='category-menu' id="category3">내 활동</span></a>
+	</div> <!-- category -->
+
+	<div class='category-main' id='main-recommend'><!-- include --></div>
 
 
+</div> <!-- container -->
 
+<div id='header-menu-detail'><!-- include --></div>
 
-	</div>
-	<!-- container -->
+<!-- include header-box -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#header-box").load("header-box.html");
+		$('#main-recommend').load('main-recommend.html');
+		$("#header-menu-detail").load("header-menu-detail.html");
+	})
+</script>
 
-  <div id='header-menu-detail'><!-- include --></div>
-
-	<!-- include header-menu-box -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#header-box").load("header-box.html");
-			$("#header-menu-detail").load("header-menu-detail.html");
-		})
-	</script>
 </body>
 </html>
