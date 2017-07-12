@@ -1,8 +1,6 @@
 @CHARSET "UTF-8";
 
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-@import url("header.css");
-
 
 * {
 	font-family: 'Noto Sans KR', sans-serif;
@@ -54,7 +52,7 @@ body {
 color: aqua;
 }
 }
-/* 대형 스크린 ----------- 
+/* 대형 스크린 -----------
 @media only screen and (min-width : 1824px) {
 body {
 color: orange;
