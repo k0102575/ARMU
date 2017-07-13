@@ -117,25 +117,28 @@ display: none;
 
 <!-- include header-box -->
 <script type="text/javascript">
+var categoryBtn1 = $('#category1'),
+		categoryBtn2 = $('#category2'),
+		categoryBtn3 = $('#category3'),
+		categoryUnderbar1 = $('#category-underline-bar1'),
+		categoryUnderbar2 = $('#category-underline-bar2'),
+		categoryUnderbar3 = $('#category-underline-bar3'),
+		mainRecommend = $('#main-recommend'),
+		mainSurf = $('#main-surf'),
+		mainAct = $('#main-act'),
+		headerBox = $("#header-box"),
+		headerMenuDetail = $("#header-menu-detail");
+
 	$(document).ready(function() {
-		$("#header-box").load("header-box.html");
-		$('#main-recommend').load('main-recommend.html');
-		$('#main-surf').load('main-surf.html');
-    $('#main-act').load('main-act.html');
-		$("#header-menu-detail").load("header-menu-detail.html");
+		headerBox.load("header-box.html");
+		mainRecommend.load('main-recommend.html');
+		mainSurf.load('main-surf.html');
+    mainAct.load('main-act.html');
+    headerMenuDetail.load("header-menu-detail.html");
 	})
 
+	
 	/* 카테고리별 메인 화면 띄우기 */
-	var categoryBtn1 = $('#category1'),
-	    categoryBtn2 = $('#category2'),
-	    categoryBtn3 = $('#category3'),
-	    categoryUnderbar1 = $('#category-underline-bar1'),
-	    categoryUnderbar2 = $('#category-underline-bar2'),
-	    categoryUnderbar3 = $('#category-underline-bar3'),
-	    mainRecommend = $('#main-recommend'),
-	    mainSurf = $('#main-surf'),
-      mainAct = $('#main-act');
-
 	mainSurf.css('display', 'none')
   mainAct.css('display', 'none')
 
