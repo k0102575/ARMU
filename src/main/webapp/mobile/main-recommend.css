@@ -2,6 +2,7 @@
   height: auto;
   width:100%;
   text-align: center;
+  /*background-color: #f5f5f5;*/
 }
 
 .rec-title {
@@ -16,17 +17,49 @@
 
 .rec-container-separator {
   width: 100%;
-  margin-top: 50px;
-  border-bottom: 40px solid #f5f5f5;
+  margin-top: 60px;
+  border-bottom: 80px solid #f5f5f5;
 }
 
+/*이벤트 맞춤 추천 뮤지션 시작*/
+.rec-no-event {
+  position: relative;
+  hegiht: 900px;
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+  color: darkgray;
+  overflow: visible;
+}
+
+#rec-no-event-cry {
+  font-size: 80px;
+}
+
+.rec-event-add-btn {
+  position: absolute;
+  font-size: 33px;
+  font-weight: 100;
+  height: 55px;
+  width: 300px;
+  left: 50%;
+	transform: translateX(-50%);
+  border-radius: 50px;
+  border: 1px solid white;
+	line-height: 50px;
+  color: white;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, .85);
+}
+/*이벤트 맞춤 추천 뮤지션 끝*/
 
 
 /*베스트 뮤지션 리뷰 시작*/
 .rec-best-review {
   position: relative;
   display: inline-block;
-  border: 1px solid black;
+  border: 1px solid gray;
+  background-color: white;
   height: 450px;
   width:95%;
   margin: 3%;
@@ -146,10 +179,11 @@
 .rec-popular-musi {
   position: relative;
   display: inline-block;
-  border: 1px solid black;
+  border: 1px solid gray;
   height: 600px;
   width: 45%;
   margin: 1%;
+  margin-bottom: 3%;
   text-align: justify;
 }
 
@@ -212,11 +246,27 @@
 
 
 
+/*
 
+* {
+  border: 1px solid red;
+  margin-right: 0;
+  -webkit-margin-before: 0;
+-webkit-margin-after: 0;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;
+-webkit-padding-start: 0em;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+}*/
 
-
-
-
+/*html {
+  overflow-y: overlay;
+  width: 100vw;
+  overflow-x:hidden;
+  right: 0;
+}
+html::-webkit-scrollbar { width: 0 !important }*/
 
 
 

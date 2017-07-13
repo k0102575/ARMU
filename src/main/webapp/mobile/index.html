@@ -9,6 +9,7 @@
 <link href="header.css" rel="stylesheet" type="text/css" media="all">
 <link href="main-recommend.css" rel="stylesheet" type="text/css" media="all">
 <link href="main-surf.css" rel="stylesheet" type="text/css" media="all">
+<link href="main-act.css" rel="stylesheet" type="text/css" media="all">
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
 <style>
@@ -107,6 +108,7 @@ display: none;
 
 	<div class='category-main' id='main-recommend'><!-- include --></div>
 	<div class='category-main' id='main-surf'><!-- include --></div>
+  <div class='category-main' id='main-act'><!-- include --></div>
 
 
 </div> <!-- container -->
@@ -119,6 +121,7 @@ display: none;
 		$("#header-box").load("header-box.html");
 		$('#main-recommend').load('main-recommend.html');
 		$('#main-surf').load('main-surf.html');
+    $('#main-act').load('main-act.html');
 		$("#header-menu-detail").load("header-menu-detail.html");
 	})
 
@@ -130,15 +133,18 @@ display: none;
 	    categoryUnderbar2 = $('#category-underline-bar2'),
 	    categoryUnderbar3 = $('#category-underline-bar3'),
 	    mainRecommend = $('#main-recommend'),
-	    mainSurf = $('#main-surf');
+	    mainSurf = $('#main-surf'),
+      mainAct = $('#main-act');
 
 	mainSurf.css('display', 'none')
+  mainAct.css('display', 'none')
 
   categoryBtn1.on('click', function() {
 	  categoryUnderbar1.css('display', "inline-block")
 	  mainRecommend.css('display', '')
 
     mainSurf.css('display', 'none')
+    mainAct.css('display', 'none')
 	  categoryUnderbar2.css('display', "none")
 	  categoryUnderbar3.css('display', "none")
   })
@@ -148,12 +154,14 @@ display: none;
     mainSurf.css('display', '')
 
 	  mainRecommend.css('display', 'none')
+    mainAct.css('display', 'none')
 	  categoryUnderbar1.css('display', "none")
 	  categoryUnderbar3.css('display', "none")
   })
 
   categoryBtn3.on('click', function() {
 	  categoryUnderbar3.css('display', "inline-block")
+    mainAct.css('display', '')
 
 	  mainRecommend.css('display', 'none')
 	  mainSurf.css('display', 'none')
