@@ -1,29 +1,10 @@
 
 <div id="musician-surf-list">
 	<div id="musician-surf-sort">
-	  <div id="select"></div>
-
-	  <!-- 
-		<select name="성별 및 연령대" id="musician-list-filter">
-			<optgroup label="성별">
-			  <option value="musician">성별 및 연령대</option>
-				<option value="male">남성</option>
-				<option value="female">여성</option>
-			</optgroup>
-			<optgroup label="연령대">
-			  <option value="0s">전체연령</option>
-				<option value="10s">10대</option>
-				<option value="20s">20대</option>
-        <option value="30s">30대</option>
-        <option value="40s">40대</option>
-			</optgroup>
-		</select>
- -->
-
-
+	<button class="filterBtn">필터&nbsp;<i class="fa fa-filter" aria-hidden="true"></i></button>
 		<form>
 			<select name="정렬" id="musician-list-sort">
-			  <option>정렬순서</option>
+				<option>정렬순서</option>
 				<option>최신순</option>
 				<option>인기순</option>
 			</select>
@@ -45,9 +26,46 @@
 	</div>
 	<!-- musician-surf -->
 
+<div id="surf-backscreen"></div>
+<div id="surf-toggle">
+
+<div class="gender-filter">
+  <form>
+    <input type="radio" id="gender-all" name="gender"/>
+    <label for="r1">전체</label>
+    <p>
+    <input type="radio" id="gender-male" name="gender"/>
+    <label for="r2">남성</label>
+    <p>
+    <input type="radio" id="gnder-female" name="gender"/>
+    <label for="r3">여성</label>
+  </form>
+</div>
+  
+<div class="age-filter">
+    <form>
+    <input type="checkbox" id="age-all" name="age"/>
+    <label for="none">무관</label>
+    <p>
+    <input type="checkbox" id="age-10s" name="age"/>
+    <label for="none">10대</label>
+    <p>
+    <input type="checkbox" id="age-20s" name="age"/>
+    <label for="none">20대</label>
+    <p>
+    <input type="checkbox" id="age-30s" name="age"/>
+    <label for="none">30대</label>
+    <p>
+    <input type="checkbox" id="age-40s" name="age"/>
+    <label for="none">40대</label>
+    <p>
+    
+  </form>
+</div>
+  
+</div>
+<!-- surf-toggle -->
+
 </div>
 <!--musician-surf-list -->
-<button class="autoDiv">버튼</button>
-
 <script src="main-surf.js"></script>
-
