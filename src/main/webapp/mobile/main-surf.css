@@ -166,4 +166,91 @@ input[type=checkbox] {
   
 /*뮤지션 리스트 끝*/
 
+.filter-body {
+  box-shadow: 3px 3px 20px 2px rgba(167, 167, 167, 0.8);
+  border-radius: 40px;
+  font-size: 2.3em;
+  font-weight: 440;
+  position: fixed;
+  margin-left: 28%;
+  top: 87%;
+  z-index: 1;
+  background-color: white;
+  width: 44%;
+  height: 80px;
+  padding-left: 2%;
+}
 
+.filter {
+  padding: 3% 7%;
+  display: inline-block;
+}
+
+#filter-major {
+  padding-left: 8%;
+  padding-right: 8%;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+}
+
+#filter-loc-toggle {
+  position: fixed;
+  background-color: #00bd39;
+  z-index: 1;
+  bottom: 0;
+  bottom: -26%;
+}
+
+#filter-loc-tab {
+  height: 30%;
+  font-size: 100%;
+  border-bottom: 1px solid grey;
+  height: 80px;
+}
+
+#filter-loc-backscreen {
+  z-index: 1;
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, .6);
+}
+
+.filter-loc-sub-tab {
+  display: inline-block;
+  width: 10.87%; /*탭 개수에 따라서 비율을 맞춰야 함*/
+  height: 65%;
+  color: black;
+  padding-top: 1.5%;
+  padding-bottom: 0.4%;
+  text-align: center;
+  font-size: 250%;
+}
+
+#seoul {
+  margin-left: 0.5%;
+}
+
+.seoul {
+  padding: 2% 1%;
+  color: black;
+  text-align: center;
+  display: inline-block;
+  font-size: 230%;
+  width: 30.9%;
+  border-right: 0.5px solid grey;
+  border-bottom: 0.5px solid grey;
+}
+
+.cr {
+  border-right: 0px;
+}
+
+.on {
+  border-bottom: 5px solid indigo;
+  font-weight: bold;
+}
+.on2 {
+  font-weight: bold;
+}

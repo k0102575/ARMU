@@ -21,3 +21,47 @@ surfBackscreen.on('click', function() {
   surfToggle.toggle();
   surfBackscreen.css('display', 'none');
 })
+
+var xScroll = new jindo.m.Scroll("filter-loc-tab", {
+  bUseHScroll: true,
+  bUseVScroll: false,
+  bUseMomentum: false,
+  nHeight: 100,
+  nWidth: 980
+});
+
+var yScroll = new jindo.m.Scroll("seoul", {
+  bUseHScroll: false,
+  bUseVScroll: true,
+  bUseMomentum: false,
+  nHeight: 340
+});
+
+$('#filter-loc').click(function() {
+  $("#filter-loc-backscreen").css('display', 'block');
+  $("#filter-loc-toggle").css('display', 'none');
+  $("#filter-loc-toggle").css('bottom', '0%');
+  $("#filter-loc-toggle").toggle("slide", {direction: "down"});
+});
+
+$("#filter-loc-backscreen").click(function() {
+  $("#filter-loc-toggle").toggle("slide", {direction: "down"});
+  $("#filter-loc-toggle").css('bottom', '-26%');
+  $("#filter-loc-backscreen").css('display', 'none');
+})
+
+
+var filterLocTab = $('.filter-loc-sub-tab')
+
+filterLocTab.click(function () {
+    filterLocTab.removeClass('on')
+    $(this).addClass('on')
+})
+
+var seoul = $('.seoul')
+seoul.click(function () {
+    $('.fa-check').remove()
+    seoul.removeClass('on2')
+    $(this).html('<i class="fa fa-check" aria-hidden="true"></i>'+ $(this).text())
+    $(this).addClass('on2')
+})
