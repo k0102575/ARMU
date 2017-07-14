@@ -153,15 +153,16 @@
 }
 
 .act-now-recruiting-applicantbox-title {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 600;
 }
 
-.act-now-recruiting-applicantbox > p {
-  font-size: 28px;
+.act-now-recruiting-applicantbox-subtitle {
+  margin-left: 4%;
+  width: auto;
+  font-size: 32px;
   font-weight: 400;
 }
-
 
 .act-now-recruiting-separator {
   width: 95%;
