@@ -10,17 +10,12 @@
 //})
 
 var surfBackscreen = $("#surf-backscreen"),
-    surfToggle = $("#surf-toggle" )
+    filterContainer = $("#filter-container" )
 
 $(".filterBtn").on('click', function() {
   surfBackscreen.css('display', 'block');
-  surfToggle.toggle();
+  filterContainer.toggle();
 });
-
-surfBackscreen.on('click', function() {
-  surfToggle.toggle();
-  surfBackscreen.css('display', 'none');
-})
 
 var xScroll = new jindo.m.Scroll("filter-loc-tab", {
   bUseHScroll: true,

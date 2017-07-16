@@ -20,45 +20,41 @@
 	</div>
 	<!-- musician-surf -->
 
-	<div id="surf-backscreen"></div>
-	<div id="surf-toggle">
-
-		<div class="gender-filter">
-			<form>
-				<input type="radio" id="gender-all" name="gender" />
-				<label for="r1">전체</label>
-				<p>
-					<input type="radio" id="gender-male" name="gender" />
-					<label for="r2">남성</label>
-					<p>
-						<input type="radio" id="gnder-female" name="gender" />
-						<label for="r3">여성</label>
-			</form>
-		</div>
-
-		<div class="age-filter">
-			<form>
-				<input type="checkbox" id="age-all" name="age" />
-				<label for="none">무관</label>
-				<p>
-					<input type="checkbox" id="age-10s" name="age" />
-					<label for="none">10대</label>
-					<p>
-						<input type="checkbox" id="age-20s" name="age" />
-						<label for="none">20대</label>
-						<p>
-							<input type="checkbox" id="age-30s" name="age" />
-							<label for="none">30대</label>
-							<p>
-								<input type="checkbox" id="age-40s" name="age" />
-								<label for="none">40대</label>
-								<p>
-
-			</form>
-		</div>
-
+<div id="surf-backscreen"></div>
+	<div id="filter-container">
+	<div id="filter-category">
+		<i class="fa fa-times fa-3x" aria-hidden="true" id="filter-cancel"></i>
+		<span id="filter-text">필터</span>
+		<i class="fa fa-check fa-3x" aria-hidden="true" id="filter-update"></i>
+	</div> <!-- filter-category -->
+	<hr>
+	
+		<span id="gender-text">성 별</span>
+	  <input id="gender1" name="gender" type="radio" checked>
+	  <label for="gender1" id="gender-all">둘 다</label>
+	  <input id="gender2" name="gender" type="radio">
+	  <label for="gender2" id="gender-male">남성</label>
+	  <input id="gender3" name="gender" type="radio">
+	  <label for="gender3" id="gender-female">여성</label>
+	  
+	  <span id="age-text">나 이</span>
+	  
+	  <input id="age10" name="age" type="checkbox" checked>
+	  <label for="age10" id="age-10s">10대</label>
+	  <input id="age20" name="age" type="checkbox" checked>
+	  <label for="age20" id="age-20s">20대</label>
+	  <input id="age30" name="age" type="checkbox" checked>
+	  <label for="age30" id="age-30s">30대</label>
+	  <input id="age40" name="age" type="checkbox" checked>
+	  <label for="age40" id="age-40s">40대</label>
+	  <input id="age50" name="age" type="checkbox" checked>
+	  <label for="age50" id="age-50s">50대</label>
+	  <input id="age60" name="age" type="checkbox" checked>
+	  <label for="age60" id="age-60s">60대</label>
+	  
 	</div>
-	<!-- surf-toggle -->
+<!-- filter-container -->
+
 
 </div>
 <!--musician-surf-list -->
@@ -121,3 +117,4 @@
 	</div>
 </div>
 <script src="main-surf.js"></script>
+
