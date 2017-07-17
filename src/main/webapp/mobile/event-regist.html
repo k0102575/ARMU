@@ -14,6 +14,7 @@
 <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
 <script type="text/javascript" src="jindo.desktop.ns.min.js"></script>
 <script type="text/javascript" src="jindo_mobile_component.js"></script>
+<script src="jquery.ui.touch-punch.min.js"></script>
 <style>
 
 /*카테고리 시작*/
@@ -96,22 +97,6 @@ display: none;
 
 	<div id="header-box"><!-- include --></div>
 
-	<div id="category">
-		<a href='#'><span class='category-menu' id="category1">추천</span></a>
-		<a href='#'><span class='category-menu' id="category2">탐색</span></a>
-		<a href='#'><span class='category-menu' id="category3">내 활동</span></a>
-	</div> <!-- category -->
-
-		<div id='category-underline'>
-		  <div id='category-underline-bar1'></div>
-		  <div id='category-underline-bar2'></div>
-		  <div id='category-underline-bar3'></div>
-		</div>
-
-	<div class='category-main' id='main-recommend'><!-- include --></div>
-	<div class='category-main' id='main-surf'><!-- include --></div>
-  <div class='category-main' id='main-act'><!-- include --></div>
-
 
 </div> <!-- container -->
 
@@ -119,13 +104,7 @@ display: none;
 
 <!-- include header-box -->
 <script type="text/javascript">
-var categoryBtn1 = $('#category1'),
-		categoryBtn2 = $('#category2'),
-		categoryBtn3 = $('#category3'),
-		categoryUnderbar1 = $('#category-underline-bar1'),
-		categoryUnderbar2 = $('#category-underline-bar2'),
-		categoryUnderbar3 = $('#category-underline-bar3'),
-		mainRecommend = $('#main-recommend'),
+var mainRecommend = $('#main-recommend'),
 		mainSurf = $('#main-surf'),
 		mainAct = $('#main-act'),
 		headerBox = $("#header-box"),
