@@ -25,8 +25,8 @@ function displayOngoingEventList() {
     var templateFn = Handlebars.compile($('#ongoing-event-template').text())
     var generatedHTML = templateFn(result)
     var container = $('#act-ongoing-event-container')
-    container.text('')
-    container.html(generatedHTML)
+    var html = container.html()
+    container.html(html + generatedHTML)
     console.log(generatedHTML)
   }, function(err) {
     log('err')

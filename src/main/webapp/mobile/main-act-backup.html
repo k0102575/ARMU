@@ -10,7 +10,47 @@
   <div class="act-container" id='act-ongoing-event-container'>
     <p class='act-title'>진행중인 이벤트</p>
 
-
+    <div class="act-recent-event">
+      <div class="act-recent-event-title">
+        <span>결혼식 축가 반주와 전체 반주자(피아노)구해요~!구해요구해요구해요구해요구해요</span>
+      </div><!-- act-now-recruiting-title -->
+      <div class="act-recent-event-date">
+        <span> 2017년 9월 1일</span>
+      </div>
+      <div class='act-recent-event-area'>
+        <i class="fa fa-map-marker" aria-hidden="true"></i><span> 서울 동대문구</span>
+      </div>
+      <div class="act-recent-event-price">
+        $100,000
+      </div>
+      <!--함께한 뮤지션-->
+      <div class="act-recent-event-musibox">
+        <span class='act-recent-event-musibox-title'>함께하는 뮤지션: </span>
+        <br>
+        <div class="act-recent-event-musi">
+            <div class="act-recent-event-musi-img"></div>
+            <div class="act-recent-event-musi-name">
+              <span>이름이</span>
+              <div class="act-recent-event-musi-score">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="act-recent-event-musi-hashtagbox">
+              <span>#피아노</span>
+              <span>#결혼식 축가 반주</span>
+              <span>#결혼식 반주</span>
+              <span>#졸업연주 반주</span>
+              <span>#예배 반주</span>
+              <span>#클래식</span>
+            </div>
+          </div>
+      </div><!-- act-recent-event-musibox -->
+      <!--함께하는 뮤지션 끝-->
+    </div><!-- act-recent-event -->
 
   </div><!-- act-container-->
   <!-- 진행중인 이벤트 끝 -->
@@ -305,7 +345,7 @@
     <div class="act-recent-event-title"><span>{{title}}</span></div><!-- act-now-recruiting-title -->
     <div class="act-recent-event-date"><span>{{date}}</span></div>
     <div class='act-recent-event-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{area}}</span></div>
-    <div class="act-recent-event-price">{{price}}<i class="fa fa-krw" aria-hidden="true"></i></div>
+    <div class="act-recent-event-price">{{price}}</div>
     <!--함께한 뮤지션-->
     <div class="act-recent-event-musibox">
       <span class='act-recent-event-musibox-title'>함께하는 뮤지션: </span>
@@ -322,9 +362,9 @@
           </div>
         </div>
           <div class="act-recent-event-musi-hashtagbox">
-            {{#each musiTag}}
+            <!-- {{#each musiTag}}
             <span>#{{this}}</span>
-            {{/each}}
+            {{/each}} -->
           </div>
         </div>
     </div><!-- act-recent-event-musibox -->
