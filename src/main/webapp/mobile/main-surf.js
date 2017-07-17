@@ -16,7 +16,7 @@ var surfBackscreen = $("#surf-backscreen"),
 
 $(".filterBtn").on('click', function() {
   surfBackscreen.css('display', 'block');
-  ageGroup.val("20대 이하" + " - " + "50대 이상");  
+  ageGroup.val("20대 이하" + " - " + "50대 이상");
   filterContainer.toggle();
 });
 
@@ -49,7 +49,7 @@ $('#filter-loc').click(function() {
 
 $("#filter-loc-backscreen").click(function() {
   $("#filter-loc-toggle").toggle("slide", {direction: "down"});
-  $("#filter-loc-toggle").css('bottom', '-26%');
+  $("#filter-loc-toggle").css('bottom', '-50%');
   $("#filter-loc-backscreen").css('display', 'none');
 })
 
@@ -61,7 +61,7 @@ $( function() {
       step: 10,
       values: [ 10, 50 ],
       slide: function( event, ui ) {
-        
+
         if (ui.values[0] == 10 && ui.values[1] == 50) {
           ageGroup.val("20대 이하" + " - " + "50대 이상");
           ageGroup.css("left", "52%").css("width", "41%");
@@ -75,16 +75,16 @@ $( function() {
           ageGroup.val(ui.values[ 0 ] + "대" + " - " + ui.values[ 1 ] + "대");
           ageGroup.css("left", "60%").css("width", "36%");
         } // if
-          
+
         }
     });
-    ageGroup.val($( "#slider-range" ).slider( "values", 0 ) + "대" + 
+    ageGroup.val($( "#slider-range" ).slider( "values", 0 ) + "대" +
       " - " + $( "#slider-range" ).slider( "values", 1 )  + "대");
   });
 
 function showValues(ui) {
   console.log(ui);
-  
+
 }
 
 
