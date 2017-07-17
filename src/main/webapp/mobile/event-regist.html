@@ -7,153 +7,93 @@
 <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
 <link href="common.css" rel="stylesheet" type="text/css" media="all">
 <link href="header.css" rel="stylesheet" type="text/css" media="all">
-<link href="main-recommend.css" rel="stylesheet" type="text/css" media="all">
-<link href="main-surf.css" rel="stylesheet" type="text/css" media="all">
-<link href="main-act.css" rel="stylesheet" type="text/css" media="all">
+<link href="event-regist.css" rel="stylesheet" type="text/css" media="all">
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
-<script type="text/javascript" src="jindo.desktop.ns.min.js"></script>
-<script type="text/javascript" src="jindo_mobile_component.js"></script>
-<script src="jquery.ui.touch-punch.min.js"></script>
-<style>
-
-/*카테고리 시작*/
-#category {
-  position: relative;
-	height: 100px;
-	width: 100%;
-}
-
-.category-menu {
-	color: black;
-	font-size: 250%;
-	font-weight: normal;
-}
-
-#category1 {
-  position: absolute;
-  left: 15%;
-  top: 15%;
-  transform: translate(15%, 15%);
-
-	font-weight: 900;
-}
-
-#category2 {
-  position: absolute;
-  right: 44%;
-  top: 15%;
-  transform: translate(-44%, 15%);
-}
-
-#category3 {
-  position: absolute;
-  right: 15%;
-  top: 15%;
-  transform: translate(-15%, 15%);
-}
-
-#category-underline {
-  position: relative;
-  width: 100%;
-  border-bottom: 5px solid lightgray;
-}
-
-#category-underline-bar1 {
-  position: absolute;
-  display: inline-block;
-  width: 33%;
-  border-bottom: 5px solid black;
-}
-
-#category-underline-bar2 {
-  position: absolute;
-  display: none;
-  /*display: inline-block;*/
-  width: 34%;
-  border-bottom: 5px solid black;
-  left: 24.6%;
-  transform: translateX(24.6%);
-}
-
-#category-underline-bar3 {
-  position: absolute;
-display: none;
-  /*display: inline-block;*/
-  width: 33%;
-  border-bottom: 5px solid black;
-  right: 0%;
-  transform: translateX(0%);
-}
-/*카테고리 끝끝*/
-
-</style>
-
 </head>
+
 <body>
-
-
 <div id="container">
 
-	<div id="header-box"><!-- include --></div>
+<div id="header-box"><!-- include --></div>
 
+  <div id="event-page">
+    <span id="event-page-text">이벤트 등록하기</span>
+  </div> <!-- event-page -->
+  
+  <div id="event-progress">
+    <div id="event-progressbar"></div>
+	</div>
+	
+<!-- 이벤트 페이지1 시작 -->
+	
+  <div id="event-page1">
+    
+    <div id="event-page1-text">
+    원하는 조건에 맞는 <br><br>
+    뮤지션 매칭을 위해 <br><br>
+    질문에 답해주세요 
+    </div>
+    
+    <div id="event-page1-btn">
+    <div id="event-page1-cancel">나가기</div>
+    <div id="event-page1-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
+    </div>
+    <!-- event-page1-btn -->
+    
+  
+  </div>
+<!-- 이벤트 페이지1 끝 -->
+
+<!-- 이벤트 페이지2 시작 -->
+
+  <div id="event-page2">
+  
+  <div id="event-select">
+   <div id="theme-select">
+    <select name="theme" id="theme-select-menu">
+      <option>테마 선택</option>
+      <option value="1">테마1</option>
+      <option value="2">테마2</option>
+      <option value="3">테마3</option>
+    </select>
+  </div>
+  <!-- theme-select -->
+  
+  </div>
+  <!-- event-select -->
+    
+    <div id="event-page2-btn">
+    <div id="event-page2-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
+    <div id="event-page2-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
+    </div>
+    <!-- event-page2-btn -->
+    
+  </div>
+<!-- 이벤트 페이지2 끝 -->
+
+<!-- 이벤트 페이지3 시작 -->
+
+  <div id="event-page3">
+    
+    <div id="calendar"></div>
+    
+    <div id="event-page3-btn">
+    <div id="event-page3-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
+    <div id="event-page3-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
+    </div>
+    <!-- event-page3-btn -->
+    
+  </div>
+<!-- 이벤트 페이지3 끝 -->
 
 </div> <!-- container -->
 
 <div id='header-menu-detail'><!-- include --></div>
 
 <!-- include header-box -->
-<script type="text/javascript">
-var mainRecommend = $('#main-recommend'),
-		mainSurf = $('#main-surf'),
-		mainAct = $('#main-act'),
-		headerBox = $("#header-box"),
-		headerMenuDetail = $("#header-menu-detail");
 
-	$(document).ready(function() {
-		headerBox.load("header-box.html");
-		mainRecommend.load('main-recommend.html');
-		mainSurf.load('main-surf.html');
-    mainAct.load('main-act.html');
-    headerMenuDetail.load("header-menu-detail.html");
-	})
-
-
-	/* 카테고리별 메인 화면 띄우기 */
-	mainSurf.css('display', 'none')
-  mainAct.css('display', 'none')
-
-  categoryBtn1.on('click', function() {
-	  categoryUnderbar1.css('display', "inline-block")
-	  mainRecommend.css('display', '')
-
-    mainSurf.css('display', 'none')
-    mainAct.css('display', 'none')
-	  categoryUnderbar2.css('display', "none")
-	  categoryUnderbar3.css('display', "none")
-  })
-
-  categoryBtn2.on('click', function() {
-	  categoryUnderbar2.css('display', "inline-block")
-    mainSurf.css('display', '')
-
-	  mainRecommend.css('display', 'none')
-    mainAct.css('display', 'none')
-	  categoryUnderbar1.css('display', "none")
-	  categoryUnderbar3.css('display', "none")
-  })
-
-  categoryBtn3.on('click', function() {
-	  categoryUnderbar3.css('display', "inline-block")
-    mainAct.css('display', '')
-
-	  mainRecommend.css('display', 'none')
-	  mainSurf.css('display', 'none')
-	  categoryUnderbar1.css('display', "none")
-	  categoryUnderbar2.css('display', "none")
-  })
-
-</script>
+<script src="event-regist.js"></script>
 
 </body>
 </html>
