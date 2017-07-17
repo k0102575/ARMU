@@ -366,7 +366,7 @@ input:checked + label {
 
 #filter-loc-toggle {
   position: fixed;
-  background-color: #00bd39;
+  background-color: rgb(40,40,40);
   z-index: 1;
   bottom: 0;
   bottom: -50%;
@@ -392,7 +392,7 @@ input:checked + label {
   display: inline-block;
   width: 10.87%; /*탭 개수에 따라서 비율을 맞춰야 함*/
   height: 65%;
-  color: black;
+  color: white;
   padding-top: 1.5%;
   padding-bottom: 0.4%;
   text-align: center;
@@ -405,10 +405,10 @@ input:checked + label {
 
 .seoul {
   padding: 2% 1%;
-  color: black;
+  color: white;
   text-align: center;
   display: inline-block;
-  font-size: 230%;
+  font-size: 230%; 
   width: 30.9%;
   border-right: 0.5px solid grey;
   border-bottom: 0.5px solid grey;
@@ -419,7 +419,7 @@ input:checked + label {
 }
 
 .on {
-  border-bottom: 5px solid indigo;
+  border-bottom: 5px solid white;
   font-weight: bold;
 }
 .on2 {
