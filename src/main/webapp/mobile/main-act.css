@@ -33,6 +33,7 @@
 /*event 있는 경우 시작*/
 .act-yes-event {
   background-color: #f5f5f5;
+  padding-bottom: 5%;
 }
 
 .act-container {
@@ -59,7 +60,6 @@
 }
 
 /*모집 중인 이벤트 시작*/
-
 .act-now-recruiting {
   position: relative;
   background-color: white;
@@ -68,6 +68,7 @@
   height: auto;
   width:100%;
   margin-bottom: 3%;
+  padding-bottom: 5%;
   text-align: justify;
   color: white;
 /*
@@ -144,22 +145,30 @@
   margin-right: 4%;
 }
 
-.act-now-recruiting-applicantbox {
+.act-now-recruiting-separator {
+  width: 95%;
+  margin: 2% 0;
+  margin-left: auto; margin-right: auto;
+}
+
+/*모집 중인 이벤트 공통내용 시작*/
+.act-now-recruiting-musibox {
   margin-top: 1%;
-  margin-left: 4%;
+  margin-left: auto; margin-right: auto;
   color: black;
   width: 95%;
   overflow: auto;
   text-align: center;
 }
 
-.act-now-recruiting-applicantbox-title {
+.act-now-recruiting-musibox-title {
   font-size: 36px;
   font-weight: 600;
+  margin-left: 7%;
 }
 
 
-.act-now-recruiting-applicantbox-subtitle {
+.act-now-recruiting-musibox-subtitle {
   margin-top: 3%; margin-bottom: 3%;
   margin-left: 1%;
   width: auto;
@@ -167,12 +176,9 @@
   font-weight: 400;
   text-align: left;
 }
+/*모집 중인 이벤트 공통내용 끝*/
 
-.act-now-recruiting-separator {
-  width: 95%;
-  margin: 2% 0;
-  margin-left: auto; margin-right: auto;
-}
+/*모집 중인 이벤트 - 지원자 시작*/
 
 .act-now-recruiting-applicant {
   position: relative;
@@ -285,12 +291,119 @@
 .act-now-recruiting-applicant-btnbox > .with-line {
   border-right: 2px solid white;
 }
+/*모집 중인 이벤트 - 지원자 끝*/
 
-/*------*/
+/* 모집 중인 이벤트 - 내가 요청한 뮤지션 시작*/
+.act-now-recruiting-callee {
+  position: relative;
+  display: inline-block;
+  height: 330px;
+  width: 95%;
+  font-size: 28px;
+  font-weight: 300;
+  border: 1px solid gray;
+  margin-bottom: 5%;
+  text-align: left;
+  vertical-align: middle;
+}
 
+.act-now-recruiting-callee-info {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 150px;
+}
 
+.act-now-recruiting-callee-img {
+  position: absolute;
+  display: inline-block;
+  top: 5%; left: 4%;
+  height: 140px;
+  width: 140px;
+  border-radius: 100%;
+  overflow: hidden;
+  background-image: url('musician/photo/0choi2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
+.act-now-recruiting-callee-name {
+  position: absolute;
+  display: inline-block;
+  top: 3%; left: 24%;
+  height: auto;
+  font-size: 30px;
+  font-weight: 500;
+  color: black;
+}
 
+.act-now-recruiting-callee-score {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.act-now-recruiting-callee-hashtagbox {
+  position: absolute;
+  display: inline-block;
+  top: 35%; left: 24%;
+  font-size: 30px;
+  font-weight: 500;
+  color: black;
+  width: 70%;
+  overflow: auto;
+}
+
+.act-now-recruiting-callee-hashtagbox > span {
+  float: left;
+  margin-right: 4%;
+}
+
+.act-now-recruiting-callee-separator {
+  width: 90%;
+  margin-left: auto; margin-right: auto;
+}
+
+.act-now-recruiting-callee-contents {
+  height: auto;
+  width: 90%;
+  margin-left: auto; margin-right: auto;
+  margin-top: 3%;
+  text-align: center;
+  font-size: 27px;
+  font-weight: 500;
+}
+
+.act-now-recruiting-callee-btnbox {
+  position: absolute;
+  display: flex;
+  height: auto;
+  width: 100%;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  margin: 0;
+  padding: 0;
+}
+
+.act-now-recruiting-callee-btn {
+  display: inline-block;
+  padding: 1% 0;
+  margin: 0;
+  height: auto;
+  width: calc(100% / 2);
+  background-color: lightgray;
+  font-size: 30px;
+  font-weight: 400;
+  text-align: center;
+  color: black;
+}
+
+.act-now-recruiting-callee-btnbox > .with-line {
+  border-right: 2px solid white;
+}
+/*모집 중인 이벤트 - 내가 요청한 뮤지션 끝*/
 /*모집 중인 이벤트 끝*/
+
+/*event 있는 경우 끝*/
 
 /*event 있는 경우 끝*/
