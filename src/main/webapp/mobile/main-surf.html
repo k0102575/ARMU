@@ -23,9 +23,7 @@
 <div id="surf-backscreen"></div>
 	<div id="filter-container">
 	<div id="filter-category">
-		<i class="fa fa-times fa-3x" aria-hidden="true" id="filter-cancel"></i>
 		<span id="filter-text">필터</span>
-		<i class="fa fa-check fa-3x" aria-hidden="true" id="filter-update"></i>
 	</div> <!-- filter-category -->
 	<hr>
 	
@@ -38,20 +36,23 @@
 	  <label for="gender3" id="gender-female">여성</label>
 	  
 	  <span id="age-text">나 이</span>
-	  
-	  <input id="age10" name="age" type="checkbox" checked>
-	  <label for="age10" id="age-10s">10대</label>
-	  <input id="age20" name="age" type="checkbox" checked>
-	  <label for="age20" id="age-20s">20대</label>
-	  <input id="age30" name="age" type="checkbox" checked>
-	  <label for="age30" id="age-30s">30대</label>
-	  <input id="age40" name="age" type="checkbox" checked>
-	  <label for="age40" id="age-40s">40대</label>
-	  <input id="age50" name="age" type="checkbox" checked>
-	  <label for="age50" id="age-50s">50대</label>
-	  <input id="age60" name="age" type="checkbox" checked>
-	  <label for="age60" id="age-60s">60대</label>
-	  
+
+	 <input type="text" id="age-group" readonly>
+    <hr class="slider-max-range">
+		<div id="slider-range" ></div>
+		   <span id="age-10s" data-step='1'>20대 이하</span> 
+       <span id="age-20s" data-step='2'>20대</span>
+       <span id="age-30s" data-step='3'>30대</span> 
+       <span id="age-40s" data-step='4'>40대</span> 
+       <span id="age-50s" data-step='5'>50대 이상</span>  
+       
+  <div id="filter-btn">
+  <hr>
+  <hr class="hr-sero">
+    <div id="filter-cancel">취소</div>
+    <div id="filter-update">적용</div>  
+  </div> <!-- filter-btn -->
+  
 	</div>
 <!-- filter-container -->
 

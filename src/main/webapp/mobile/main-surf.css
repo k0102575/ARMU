@@ -24,17 +24,6 @@
   z-index: 11;
 }
 
-/* 
-#surf-toggle {
-  position: absolute;
-  display: none;
-  top: 13%;
-  height: 70%;
-  width: 90%;
-  background-color: #F5F5F5;
-  border-radius: 30px;
-} */
-
 #filter-container {
 	display: none;
   position: fixed;
@@ -53,12 +42,6 @@
 	width: 100%;
 }
 
-#filter-cancel {
-  position: absolute;
-  left: 5%;
-  top: 15%;
-  transform: translate(-5%, 15%);
-}
 
 #filter-text {
   position: absolute;
@@ -71,11 +54,45 @@
   font-weight: 600;
 }
 
+#filter-btn {
+	position: absolute;
+	bottom: 0%;
+  height: 100px;
+  width: 100%;
+  display: inline-block;
+}
+
+#filter-cancel {
+  position: absolute;
+  left: 18%;
+  transform: translate(-35%, 15%);
+  color: black;
+  font-size: 2em;
+  font-weight: 600;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  top: 5%;
+}
+
 #filter-update {
   position: absolute;
-  right: 5%;
-  top: 15%;
-  transform: translate(-5%, 15%);
+  color: black;
+  font-size: 2em;
+  font-weight: 600;
+  right: -18%;
+  transform: translate(-35%, 15%);
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  top: 5%;
+}
+
+.hr-sero {
+	position: absolute;
+	left: 50%;
+	height: 95px;
+	width: 0px;
 }
 
 input {
@@ -131,7 +148,6 @@ input:checked + label {
 	top: 25%;
 	left: 64%;
 }
-
 #age-text {
 	position: absolute;
 	top: 50%;
@@ -140,40 +156,79 @@ input:checked + label {
 	font-weight: 500;
 }
 
-#age-10s, #age-20s, #age-30s, 
+ #age-10s, #age-20s, #age-30s, 
 #age-40s, #age-50s, #age-60s {
-	padding: 20px 80px 20px 80px;
-	position: absolute;
+  position: absolute;
+  bottom: 24%;
+  font-size: 1.5em;
 }
 
 #age-10s {
-	bottom: 25%;
-	left: 6%;
+  left: 3%;
 }
 
 #age-20s {
-	bottom: 25%;
-	left: 38%;
+  left: 26%;
 }
 
 #age-30s {
-	bottom: 25%;
-	left: 69%;
+  left: 46.5%;
 }
 
 #age-40s {
-	bottom: 5%;
-	left: 6%;
+  left: 66%;
 }
 
 #age-50s {
-	bottom: 5%;
-	left: 38%;
+  left: 83%;
 }
 
-#age-60s {
-	bottom: 5%;
-	left: 69%;
+
+#age-group {
+	position: absolute;
+  top: 50%;
+  left: 52%;
+  font-size: 2.5em;
+  background-color: #F5F5F5;
+  border: 0px;
+  width: 41%;
+  text-align: center;
+}
+
+#slider-range {
+	position: absolute;
+	bottom: 25%;
+	left: 7%;
+  width: 80%;
+	height: 10%;
+	border: 0px;
+	background-color: #F5F5F5;
+}
+
+.slider-max-range {
+	position: absolute;
+	left: 6%;
+  bottom: 31.5%;
+  background-color: white;
+  border: 3px solid white;
+  width: 80%;
+  z-index: 1;
+}
+
+.ui-slider .ui-slider-range {
+	height: 11%;
+	margin-top: 3%;
+	background-color: #BEAED4;
+	z-index: 2;
+}
+
+.ui-slider .ui-slider-handle {
+	height: 60%;
+	width: 6%;
+	border-radius: 50px;
+	background-color: white;
+	border: 3px solid #BEAED4;
+	z-index: 2;
 }
 
 /* 필터 부분 끝 */

@@ -10,12 +10,20 @@
 //})
 
 var surfBackscreen = $("#surf-backscreen"),
-    filterContainer = $("#filter-container" )
+    filterContainer = $("#filter-container" ),
+    filterCancel = $("#filter-cancel"),
+    ageGroup = $("#age-group")
 
 $(".filterBtn").on('click', function() {
   surfBackscreen.css('display', 'block');
+  ageGroup.val("20대 이하" + " - " + "50대 이상");  
   filterContainer.toggle();
 });
+
+filterCancel.on('click', function() {
+  filterContainer.toggle();
+  surfBackscreen.css('display', 'none');
+})
 
 var xScroll = new jindo.m.Scroll("filter-loc-tab", {
   bUseHScroll: true,
@@ -44,6 +52,40 @@ $("#filter-loc-backscreen").click(function() {
   $("#filter-loc-toggle").css('bottom', '-26%');
   $("#filter-loc-backscreen").css('display', 'none');
 })
+
+$( function() {
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 10,
+      max: 50,
+      step: 10,
+      values: [ 10, 50 ],
+      slide: function( event, ui ) {
+        
+        if (ui.values[0] == 10 && ui.values[1] == 50) {
+          ageGroup.val("20대 이하" + " - " + "50대 이상");
+          ageGroup.css("left", "52%").css("width", "41%");
+        } else if (ui.values[1] == 50) {
+          ageGroup.val(ui.values[0] + "대" +  " - " + "50대 이상");
+          ageGroup.css("left", "57%").css("width", "36%");
+        } else if (ui.values[0] == 10) {
+          ageGroup.val("20대 이하" + " - " + ui.values[ 1 ] + "대");
+          ageGroup.css("left", "57%").css("width", "36%");
+        } else {
+          ageGroup.val(ui.values[ 0 ] + "대" + " - " + ui.values[ 1 ] + "대");
+          ageGroup.css("left", "60%").css("width", "36%");
+        } // if
+          
+        }
+    });
+    ageGroup.val($( "#slider-range" ).slider( "values", 0 ) + "대" + 
+      " - " + $( "#slider-range" ).slider( "values", 1 )  + "대");
+  });
+
+function showValues(ui) {
+  console.log(ui);
+  
+}
 
 
 var filterLocTab = $('.filter-loc-sub-tab')
