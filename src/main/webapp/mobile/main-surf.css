@@ -156,7 +156,7 @@ input:checked + label {
 	font-weight: 500;
 }
 
- #age-10s, #age-20s, #age-30s, 
+ #age-10s, #age-20s, #age-30s,
 #age-40s, #age-50s, #age-60s {
   position: absolute;
   bottom: 24%;
@@ -289,25 +289,25 @@ input:checked + label {
 #musician-surf-preview {
 	position: relative;
 	width: 100%;
-	height: 30%;  
+	height: 30%;
 }
 
 #musician-surf-intro {
 	position: absolute;
-	width: 90%; 
-	overflow: hidden; 
-	text-overflow: ellipsis; 
+	width: 90%;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	font-size: 2.5em;
 	left: 5%;
 	top: 10px;
 	font-weight: 400;
-	white-space: normal; 
-	line-height: 1.2; 
+	white-space: normal;
+	line-height: 1.2;
 	max-height: 100px;
-	text-align: left; 
-	word-wrap: break-word; 
-	display: -webkit-box; 
-	-webkit-line-clamp: 2; 
+	text-align: left;
+	word-wrap: break-word;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
 }
 
@@ -315,7 +315,7 @@ input:checked + label {
 	position: absolute;
 	left: 5%;
 	bottom: 30%;
-  width: auto; 
+  width: auto;
   font-size: 1.5em;
 }
 
@@ -323,7 +323,7 @@ input:checked + label {
 	 position: absolute;
   left: 5%;
   bottom: 15%;
-  width: auto; 
+  width: auto;
   font-size: 1.5em;
   font-weight: 600;
 }
@@ -333,10 +333,10 @@ input:checked + label {
 	right: 10%;
 	bottom: 25%;
 }
-  
+
 /*뮤지션 리스트 끝*/
 
-.filter-body {
+#filter-body {
   box-shadow: 3px 3px 20px 2px rgba(167, 167, 167, 0.8);
   border-radius: 40px;
   font-size: 2.3em;
@@ -349,6 +349,7 @@ input:checked + label {
   width: 44%;
   height: 80px;
   padding-left: 2%;
+  display: none;
 }
 
 .filter {
@@ -365,10 +366,10 @@ input:checked + label {
 
 #filter-loc-toggle {
   position: fixed;
-  background-color: #00bd39;
+  background-color: rgb(40,40,40);
   z-index: 1;
   bottom: 0;
-  bottom: -26%;
+  bottom: -50%;
 }
 
 #filter-loc-tab {
@@ -391,7 +392,7 @@ input:checked + label {
   display: inline-block;
   width: 10.87%; /*탭 개수에 따라서 비율을 맞춰야 함*/
   height: 65%;
-  color: black;
+  color: white;
   padding-top: 1.5%;
   padding-bottom: 0.4%;
   text-align: center;
@@ -404,10 +405,10 @@ input:checked + label {
 
 .seoul {
   padding: 2% 1%;
-  color: black;
+  color: white;
   text-align: center;
   display: inline-block;
-  font-size: 230%;
+  font-size: 230%; 
   width: 30.9%;
   border-right: 0.5px solid grey;
   border-bottom: 0.5px solid grey;
@@ -418,7 +419,7 @@ input:checked + label {
 }
 
 .on {
-  border-bottom: 5px solid indigo;
+  border-bottom: 5px solid white;
   font-weight: bold;
 }
 .on2 {
