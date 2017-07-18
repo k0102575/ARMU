@@ -157,6 +157,7 @@ var categoryBtn1 = $('#category1'),
 
   categoryBtn2.on('click', function() {
 	  categoryUnderbar2.css('display', "inline-block")
+	  mainSurf.css('display', 'block')
     mainSurf.css('bottom', '0%')
     $('#filter-body').css('display','block')
 	  mainRecommend.css('display', 'none')
@@ -168,7 +169,7 @@ var categoryBtn1 = $('#category1'),
   categoryBtn3.on('click', function() {
 	  categoryUnderbar3.css('display', "inline-block")
     mainAct.css('display', '')
-
+    mainSurf.css('display', 'none')
 	  mainRecommend.css('display', 'none')
 	  mainSurf.css('bottom', '-100%')
     $('#filter-body').css('display','none')

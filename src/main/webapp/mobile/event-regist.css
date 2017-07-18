@@ -82,10 +82,8 @@ select {
 	background: url(../ARMU-Image/ARMU_icon/mobile_icon/select-arrow.png) no-repeat 95% 50%;
   background-color: white;
   border: 5px solid #525252;
-  padding-left: 4%;
   color: #525252;
   position: absolute;
-  font-size: 2.6em;
 }
 
 select::-ms-expand {
@@ -119,17 +117,24 @@ select::-ms-expand {
 
 /* 이벤트 페이지 2 시작 */
 
-#theme-select-menu, #major-select-menu, #genre-select-menu{
+#theme-select-menu, #major-select-menu, #genre-select-menu,
+#sido-select-menu, #city-select-menu, #street-select-menu {
+	padding-left: 4%;
   width: 28%;
   height: 10%;
   top: 33%;
+  font-size: 30px;
+}
+
+.select-option {
+	font-size: 12px;
 }
 
 #theme-text {
   position: absolute;
   top: 25%;
   left: 16%;
-  font-size: 3.5em;
+  font-size: 2.5em;
   color: #525252;
 }
 
@@ -141,7 +146,7 @@ select::-ms-expand {
   position: absolute;
   top: 25%;
   left: 45%;
-  font-size: 3.5em;
+  font-size: 2.5em;
   color: #525252;
 }
 
@@ -153,7 +158,7 @@ select::-ms-expand {
   position: absolute;
   top: 25%;
   left: 76%;
-  font-size: 3.5em;
+  font-size: 2.5em;
   color: #525252;
 }
 
