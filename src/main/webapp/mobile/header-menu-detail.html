@@ -17,7 +17,7 @@
 		<hr class='menu-category-separator'>
 		<div class='menu-category-btn'>관심뮤지션</div>
 		<hr class='menu-category-separator'>
-		<div class='menu-category-btn'>이벤트 등록하기</div>
+		<div class='menu-category-btn' id="menu-category-event-regist">이벤트 등록하기</div>
 		<hr class='menu-category-separator'>
 		<div class='menu-category-btn'>뮤지션모드로 전환</div>
 		<hr class='menu-category-separator'>
@@ -40,7 +40,6 @@
 	    menuBackscreen = $("#menu-backscreen"),
 	    menuToggle = $("#menu-toggle")
 	    
-
 	menuBtn.on('click', function() {
 		menuBackscreen.css('display', 'block');
 		menuToggle.toggle("slide", 300);
@@ -51,6 +50,10 @@
 		menuToggle.toggle("slide", 300);
 		menuBackscreen.css('display', 'none');
 		container.css('position', '').css('overflow', '');
+	})
+	
+	$("#menu-category-event-regist").on('click', function(){
+	 location.href = 'event-regist.html'
 	})
 
 	$('#login-btn').on('click', function() {

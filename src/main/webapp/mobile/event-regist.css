@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 
+/* 이벤트 공통 시작 */
 
 #container {
   position: relative;
@@ -11,7 +12,7 @@
 	height: 25%;
 	left: 15%;
 	top: 30%;
-	border: 2px solid #BEAED4;
+	border: 2px solid #525252;
 	border-radius: 25px;
 	z-index: 11;
 }
@@ -30,9 +31,8 @@
   background-color: #F5F5F5;
 }
 
-/* 이벤트 공통 시작 */
-
-#event-page1, #event-page2, #event-page3 {
+#event-page1, #event-page2, #event-page3, 
+#event-page4, #event-page5, #event-page6, #event-page8 {
   display: none;
   position: fixed;
   top: 250px;
@@ -41,37 +41,69 @@
   background-color: #F5F5F5;
 }
 
-#event-page1-btn, #event-page2-btn, #event-page3-btn{
+#event-page1-btn, #event-page2-btn, #event-page3-btn, 
+#event-page4-btn, #event-page5-btn, #event-page6-btn, #event-page8-btn {
   position: absolute;
   height: 10%;
   width: 100%;
-  bottom: 5%;
+  bottom: 10%;
   display: inline-block;
 }
 
-#event-page1-cancel, #event-page2-prev, #event-page3-prev{
+#event-page1-cancel, #event-page2-prev, #event-page3-prev,
+#event-page4-prev, #event-page5-prev, #event-page6-prev {
   position: absolute;
   left: 10%;
   font-size: 300%;
 }
 
-#event-page1-next, #event-page2-next, #event-page3-next {
+#event-page1-next, #event-page2-next, #event-page3-next,
+#event-page4-next, #event-page5-next, #event-page6-next {
   position: absolute;
   right: 10%;
   font-size: 300%;
+}
+
+#event-page2-text, #event-page3-text, #event-page4-text,
+#event-page5-text, #event-page6-text {
+  position: absolute;
+  color: black;
+  top: 5%;
+  font-size: 3.5em;
+  font-weight: normal;
+  text-align: center;
+  width: 100%;
+}
+
+select {
+	-webkit-appearance: none;  /* 네이티브 외형 감추기 */
+  -moz-appearance: none;
+  appearance: none;
+	background: url(../ARMU-Image/ARMU_icon/mobile_icon/select-arrow.png) no-repeat 95% 50%;
+  background-color: white;
+  border: 5px solid #525252;
+  padding-left: 4%;
+  color: #525252;
+  position: absolute;
+  font-size: 2.6em;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+#event-page-text {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 250%;
+  font-weight: normal;
 }
 
 /* 이벤트 공통 끝 */
 
 /* 이벤트 페이지 1 시작 */
 
-#event-page-text {
-	position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  font-size: 250%;
-  font-weight: normal;
-}
 
 #event-page1-text {
 	position: absolute;
@@ -87,23 +119,46 @@
 
 /* 이벤트 페이지 2 시작 */
 
-#event-select {
-	position: absolute;
-	width: 100%;
-  height: 50%;
-  top: 15%;
+#theme-select-menu, #major-select-menu, #genre-select-menu{
+  width: 28%;
+  height: 10%;
+  top: 33%;
+}
+
+#theme-text {
+  position: absolute;
+  top: 25%;
+  left: 16%;
+  font-size: 3.5em;
+  color: #525252;
 }
 
 #theme-select-menu {
-	position: absolute;
-	width: 20%;
-	height: 10%;
-	font-size: 2em;
+	left: 7%;
 }
 
-select {
-	background-color: white;
-	color: green;
+#major-text {
+  position: absolute;
+  top: 25%;
+  left: 45%;
+  font-size: 3.5em;
+  color: #525252;
+}
+
+#major-select-menu {
+  left: 37%;
+}
+
+#genre-text {
+  position: absolute;
+  top: 25%;
+  left: 76%;
+  font-size: 3.5em;
+  color: #525252;
+}
+
+#genre-select-menu {
+  left: 67%;
 }
 
 /* 이벤트 페이지 2 끝 */
@@ -112,9 +167,9 @@ select {
 
 .ui-datepicker {
 	position: absolute;
-	top: 10%;
+	top: 15%;
 	width: 98%;
-	height: 55%;
+	height: 57%;
 	font-size: 3em;
 }
 
@@ -172,11 +227,260 @@ select {
 	width: 32px; height: 32px;
   background: url(../ARMU-Image/ARMU_icon/mobile_icon/prev.png) top left no-repeat; 
   }
+  
 .ui-datepicker .ui-datepicker-next .ui-icon { 
 	 width: 32px; height: 32px;
   background: url(../ARMU-Image/ARMU_icon/mobile_icon/next.png) top left no-repeat;  
 	}
 
-
-
 /* 이벤트 페이지 3 끝 */
+
+/* 이벤트 페이지 4 시작 */
+
+#location-select {
+  width: 100%;
+  position: relative;
+  top: 10%;
+  height: 70%;
+}
+
+#sido-select-menu, #city-select-menu, #street-select-menu{
+  width: 69%;
+  height: 12%;
+  left: 15%;
+}
+
+#sido-select-menu {
+	top: 17%;
+}
+
+#city-select-menu {
+  top: 35%;
+}
+
+#street-select-menu {
+  top: 53%;
+}
+
+#detail-location {
+  position: absolute;
+  left: 15%;
+  bottom: 16%;
+  width: 64%;
+  height: 12%;
+  border: 5px solid #525252;
+  color: #525252;
+  padding-left: 4%;
+  font-size: 2.6em;
+}
+
+/* 이벤트 페이지 4 끝 */
+
+/* 이벤트 페이지 5 시작 */
+
+#event-input {
+	width: 100%;
+  position: relative;
+  top: 10%;
+  height: 70%;
+}
+
+#event-name, #event-pay, #event-require {
+	position: absolute;
+  left: 15%;
+  width: 64%;
+  height: 12%;
+  border: 5px solid #525252;
+  color: black;
+  padding-left: 4%;
+  font-size: 2.6em;
+}
+
+#event-name {
+  top: 20%;
+}
+
+#event-name-text{
+	color: black;
+	font-size: 2.6em;
+	position: absolute;
+	left: 15%;
+	top: 12%;
+}
+
+#event-pay {
+  bottom: 41%;
+}
+
+#event-pay-text{
+  color: black;
+  font-size: 2.6em;
+  position: absolute;
+  left: 15%;
+  bottom: 56%;
+}
+
+#event-require {
+  bottom: 13%;
+}
+
+#event-require-text{
+  color: black;
+  font-size: 2.6em;
+  position: absolute;
+  left: 15%;
+  bottom: 28%;
+}
+
+/* 이벤트 페이지 5 끝 */
+
+/* 이벤트 페이지 7 시작 */
+
+
+#event-page7 {
+	display: none;
+  position: relative;
+  top: 200px;
+  width: 100%;
+  height: 1500px;
+  background-color: #F5F5F5;
+}
+
+#event-page7-text {
+	position: absolute;
+  color: black;
+  font-size: 3.5em;
+  font-weight: normal;
+  text-align: center;
+  width: 100%;
+}
+
+#event-page7-btn {
+  position: absolute;
+  height: 10%;
+  width: 100%;
+  bottom: 0%;
+  display: inline-block;
+}
+
+#event-page7-prev {
+  position: absolute;
+  left: 10%;
+  font-size: 300%;
+}
+
+#event-page7-next {
+  position: absolute;
+  right: 10%;
+  font-size: 300%;
+}
+
+#event-confirm-list {
+  width: 100%;
+  position: absolute;
+  top: 0%;
+  height: 90%;
+}
+
+#name-confirm, #cathgory-confirm, #date-confirm, #match-confirm,
+#location-confirm, #pay-confirm, #require-confirm {
+	position: absolute;
+  left: 15%;
+  width: 65%;
+  height: 7%;
+  border: 1px solid #F5F5F5;
+  border-bottom: 5px solid #252525;
+  background-color: #F5F5F5;
+  color: black;
+  font-size: 2.5em;
+}
+
+#name-confirm-text, #cathgory-confirm-text, #date-confirm-text, #match-confirm-text,
+#location-confirm-text, #pay-confirm-text, #require-confirm-text {
+  position: absolute;
+  left: 15%;
+  border: 0px;
+  color: #252525;
+  font-size: 1.75em;
+}
+
+#name-confirm {
+	top: 12%;
+}
+
+#name-confirm-text {
+  top: 8%;
+}
+
+#cathgory-confirm {
+	top: 24%;
+}
+
+#cathgory-confirm-text {
+  top: 20%;
+}
+
+#date-confirm {
+	top: 36%;
+}
+
+#date-confirm-text {
+  top: 32%;
+}
+
+#match-confirm {
+	top: 48%;
+}
+
+#match-confirm-text {
+  top: 44%;
+}
+
+#location-confirm {
+	top: 60%;
+}
+
+#location-confirm-text {
+  top: 56%;
+}
+
+#pay-confirm {
+	top: 72%;
+}
+
+#pay-confirm-text {
+  top: 68%;
+}
+
+#require-confirm {
+	height: 14%;
+	top: 84%;
+}
+
+#require-confirm-text {
+  top: 80%;
+}
+/* 이벤트 페이지 7 끝 */
+
+/* 이벤트 페이지 8 시작 */
+
+#event-page8-text {
+  position: absolute;
+  color: black;
+  top: 25%;
+  font-size: 4.5em;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+}
+
+#event-page8-home {
+  position: absolute;
+  height: 100px;
+  left: 43%;
+  bottom: 0%;
+  font-size: 3em;
+  font-weight: normal;
+}
+
+/* 이벤트 페이지 8 끝 */
