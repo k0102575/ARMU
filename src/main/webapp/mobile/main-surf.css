@@ -265,8 +265,10 @@ input:checked + label {
 #musician-surf-list {
   position: absolute;
   width: 100%;
+  height: auto;
   box-sizing: border-box;
   background-color: white;
+  display: inline-block;
 }
 
 #musician-surf {
@@ -277,6 +279,7 @@ input:checked + label {
   float: left;
   margin-left: 3%;
   margin-top: 3%;
+  display: inline-block;
 }
 
 .musician-surf-picture {

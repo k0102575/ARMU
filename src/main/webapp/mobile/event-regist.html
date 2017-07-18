@@ -15,16 +15,12 @@
 <body>
 <div id="container">
 
-<div id="header-box"><!-- include --></div>
-
   <div id="event-page">
+    <span id="event-cancelbtn">취소</span>
     <span id="event-page-text">이벤트 등록하기</span>
+     <div id="event-progressbar"></div>
   </div> <!-- event-page -->
   
-  <div id="event-progress">
-    <div id="event-progressbar"></div>
-	</div>
-	
 <!-- 이벤트 페이지1 시작 -->
 	
   <div id="event-page1">
@@ -36,7 +32,6 @@
     </div>
     
     <div id="event-page1-btn">
-    <div id="event-page1-cancel">나가기</div>
     <div id="event-page1-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
     </div>
     <!-- event-page1-btn -->
@@ -259,7 +254,7 @@
     
   <div id="event-page7-btn">
   <div id="event-page7-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
-  <div id="event-page7-next">등록<i class="fa fa-check" aria-hidden="true"></i></div>
+  <div id="event-page7-next">등록&nbsp;<i class="fa fa-check" aria-hidden="true"></i></div>
   </div>
   <!-- event-page7-btn -->
     
@@ -286,6 +281,22 @@
 
 
 </div> <!-- container -->
+
+<!-- 취소 알림 시작 -->
+
+  <div id="event-cancelpage-backscreen"></div>
+  <div id="event-cancelpage">
+  <div id="event-cancelpage-text">
+  입력하신 정보가 사라집니다 <br><br>
+  취소하시겠습니까?
+</div>
+<!-- event-cancelpage -->
+  
+  <div id="event-cancelpage-return"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp;돌아가기</div>
+  <div id="event-cancelpage-quit">취소&nbsp;<i class="fa fa-times" aria-hidden="true"></i></div>
+  
+</div>
+<!-- 취소 알림 끝 -->
 
 <div id='header-menu-detail'><!-- include --></div>
 

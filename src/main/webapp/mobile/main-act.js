@@ -16,7 +16,6 @@ if(isEvent) {
   noEventView.css('display', '')
 }
 
-
 function displayOngoingEventList() {
   $.getJSON('json/act-ongoing-event.json', function(result) {
     var templateFn = Handlebars.compile($('#act-ongoing-event-template').text())

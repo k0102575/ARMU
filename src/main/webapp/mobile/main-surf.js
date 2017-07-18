@@ -82,11 +82,15 @@ $( function() {
       " - " + $( "#slider-range" ).slider( "values", 1 )  + "대");
   });
 
-function showValues(ui) {
-  console.log(ui);
 
-}
-
+$.getJSON('json/musician-list.json', function(result) {
+  var templateFn = Handlebars.compile($('#musician-list-template').text())
+  var generatedHTML = templateFn(result)
+  var container = $('#musician-surf-list')
+  var html = container.html()
+  container.html(html + generatedHTML)
+  console.log(generatedHTML)
+})
 
 var filterLocTab = $('.filter-loc-sub-tab')
 

@@ -1,5 +1,9 @@
-var headerBox = $("#header-box"),
-    progressBar = $("#event-progressbar"),
+var progressBar = $("#event-progressbar"),
+    pageCancelBtn = $("#event-cancelbtn"),
+    pageCancelPage = $("#event-cancelpage"),
+    pageCancelPageBackscreen = $("#event-cancelpage-backscreen"),
+    pageCancelPageReturn = $("#event-cancelpage-return"),
+    pageCancelPageQuit = $("#event-cancelpage-quit"),
     eventPage1 = $("#event-page1"),
     eventPage1Cancel = $("#event-page1-cancel"),
     eventPage1Next = $("#event-page1-next"),
@@ -9,6 +13,7 @@ var headerBox = $("#header-box"),
     eventPage3 = $("#event-page3"),
     eventPage3Prev = $("#event-page3-prev"),
     eventPage3Next = $("#event-page3-next"),
+    eventPage3Calendar = $("#calendar-page3"),
     eventPage4 = $("#event-page4"),
     eventPage4Prev = $("#event-page4-prev"),
     eventPage4Next = $("#event-page4-next"),
@@ -18,11 +23,19 @@ var headerBox = $("#header-box"),
     eventPage6 = $("#event-page6"),
     eventPage6Prev = $("#event-page6-prev"),
     eventPage6Next = $("#event-page6-next"),
+    eventPage6Calendar = $("#calendar-page6"),
     eventPage7 = $("#event-page7"),
     eventPage7Prev = $("#event-page7-prev"),
     eventPage7Next = $("#event-page7-next"),
     eventPage8 = $("#event-page8"),
-    eventPage8Home = $("#event-page8-home")
+    eventPage8Home = $("#event-page8-home"),
+    nameConfirm = $("#name-confirm"),
+    cathgoryConfirm = $("#name-confirm"),
+    dateConfirm = $("#name-confirm"),
+    matchConfirm = $("#name-confirm"),
+    locationConfirm = $("#name-confirm"),
+    payConfirm = $("#name-confirm"),
+    requireConfirm = $("#name-confirm")
     
 var themeVal,majorVal,genreVal,eventDate,
     sido,city,street,detailLocation,
@@ -30,9 +43,22 @@ var themeVal,majorVal,genreVal,eventDate,
     matchDate
 
 $(document).ready(function() {
-  headerBox.load("header-box.html");
   eventPage1.toggle();
   progress(5)
+})
+
+pageCancelBtn.on('click', function() {
+  pageCancelPageBackscreen.css('display', 'block');
+  pageCancelPage.toggle(0);
+})
+
+pageCancelPageReturn.on('click', function() {
+  pageCancelPage.toggle(0);
+  pageCancelPageBackscreen.css('display', 'none');
+})
+
+pageCancelPageQuit.on('click', function() {
+  location.href="index.html"
 })
 
 eventPage1Cancel.on('click', function() {
@@ -57,7 +83,7 @@ eventPage2Next.on('click', function() {
     majorVal =  $("#major-select-menu").val()
     genreVal =  $("#genre-select-menu").val()
     progress(35)
-    $("#calendar-page3").datepicker({
+    eventPage3Calendar.datepicker({
       dayNames: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
       dayNamesMin: ["일"," 월"," 수"," 목"," 금"," 토"," 일"]
     });
@@ -111,7 +137,7 @@ eventPage5Next.on('click', function() {
     eventPay =  $("#event-pay").val()
     eventRequire =  $("#event-require").val()
     progress(80)
-    $("#calendar-page6").datepicker({
+    eventPage6Calendar.datepicker({
       dayNames: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
       dayNamesMin: ["일"," 월"," 수"," 목"," 금"," 토"," 일"]
     });
@@ -130,13 +156,13 @@ eventPage6Next.on('click', function() {
   eventPage7.toggle(0 , function() {
     matchDate = $("#calendar-page3").val()
     progress(95)
-    $("#name-confirm").val(eventName)
-    $("#cathgory-confirm").val(themeVal + "  |  " + majorVal + "  |  " + genreVal)
-    $("#date-confirm").val(eventDate)
-    $("#match-confirm").val(matchDate)
-    $("#location-confirm").val(sido + " " + city + " " + street + " " + detailLocation)
-    $("#pay-confirm").val(eventPay)
-    $("#require-confirm").val(eventRequire)
+    nameConfirm.val(eventName)
+    cathgoryConfirm.val(themeVal + "  |  " + majorVal + "  |  " + genreVal)
+    dateConfirm.val(eventDate)
+    matchConfirm.val(matchDate)
+    locationConfirm.val(sido + " " + city + " " + street + " " + detailLocation)
+    payConfirm.val(eventPay)
+    requireConfirm.val(eventRequire)
   });
 })
 
@@ -157,8 +183,6 @@ eventPage7Next.on('click', function() {
 eventPage8Home.on('click', function() {
   location.href="index.html"
 })
-
-
 
 function progress(per) {
   progressBar.progressbar({

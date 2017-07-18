@@ -7,20 +7,27 @@
 }
 
 #event-progressbar {
-	position: absolute;
-	width: 70%;
-	height: 25%;
-	left: 15%;
-	top: 30%;
-	border: 2px solid #525252;
-	border-radius: 25px;
-	z-index: 11;
+  position: absolute;
+  width: 86%;
+  height: 10%;
+  left: 7%;
+  bottom: 10%;
+  border: 2px solid #525252;
+  border-radius: 25px;
+  z-index: 11;
 }
 
 #event-page {
   position: absolute;
-  height: 80px;
+  height: 300px;
   width: 100%;
+}
+
+#event-cancelbtn {
+  position: absolute;
+  font-size: 260%;
+  left: 8%;
+  top: 22%;
 }
 
 #event-progress {
@@ -28,7 +35,16 @@
   top: 200px;
   height: 150px;
   width: 100%;
-  background-color: #F5F5F5;
+  background-color: white;
+}
+
+#event-page-text {
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%);
+  font-size: 300%;
+  font-weight: normal;
 }
 
 #event-page1, #event-page2, #event-page3, 
@@ -38,7 +54,7 @@
   top: 250px;
   width: 100%;
   height: 90%;
-  background-color: #F5F5F5;
+  background-color: white;
 }
 
 #event-page1-btn, #event-page2-btn, #event-page3-btn, 
@@ -69,7 +85,7 @@
   position: absolute;
   color: black;
   top: 5%;
-  font-size: 3.5em;
+  font-size: 300%;
   font-weight: normal;
   text-align: center;
   width: 100%;
@@ -90,15 +106,66 @@ select::-ms-expand {
   display: none;
 }
 
-#event-page-text {
+/* 이벤트 공통 끝 */
+
+/* 이벤트 취소 페이지 시작 */
+
+#event-cancelpage {
+  display: none;
+  width: 90%;
+  left: 5%;
+  top: 400px;
+  height: 700px;
   position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  font-size: 250%;
-  font-weight: normal;
+  border-radius: 25px;
+  background-color: white;
+  z-index: 14;
 }
 
-/* 이벤트 공통 끝 */
+#event-cancelpage-backscreen {
+	display: none;
+	position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .6);
+  z-index: 13;
+}
+
+#event-cancelpage-text {
+	position: absolute;
+  color: black;
+  top: 15%;
+  font-size: 4em;
+  font-weight: 500;
+  text-align: center;
+  width: 100%;
+}
+
+#event-cancelpage-return {
+	position: absolute;
+  height: 10%;
+  width: 28%;
+  bottom: 10%;
+  display: inline-block;
+  position: absolute;
+  left: 8%;
+  font-size: 300%;
+}
+
+#event-cancelpage-quit {
+	position: absolute;
+  height: 10%;
+  width: 16%;
+  bottom: 10%;
+  display: inline-block;
+  position: absolute;
+  right: 7%;
+  font-size: 300%;
+}
+
+/* 이벤트 취소 페이지 끝 */
+
 
 /* 이벤트 페이지 1 시작 */
 
@@ -106,7 +173,7 @@ select::-ms-expand {
 #event-page1-text {
 	position: absolute;
 	color: black;
-	top: 25%;
+	top: 20%;
 	font-size: 4.5em;
 	font-weight: 600;
 	text-align: center;
@@ -345,10 +412,10 @@ select::-ms-expand {
 #event-page7 {
 	display: none;
   position: relative;
-  top: 200px;
+  top: 300px;
   width: 100%;
   height: 1500px;
-  background-color: #F5F5F5;
+  background-color: white;
 }
 
 #event-page7-text {
@@ -372,12 +439,14 @@ select::-ms-expand {
   position: absolute;
   left: 10%;
   font-size: 300%;
+  bottom: 25%;
 }
 
 #event-page7-next {
   position: absolute;
   right: 10%;
   font-size: 300%;
+  bottom: 25%;
 }
 
 #event-confirm-list {
@@ -393,9 +462,9 @@ select::-ms-expand {
   left: 15%;
   width: 65%;
   height: 7%;
-  border: 1px solid #F5F5F5;
+  border: 1px solid white;
   border-bottom: 5px solid #252525;
-  background-color: #F5F5F5;
+  background-color: white;
   color: black;
   font-size: 2.5em;
 }
@@ -472,7 +541,7 @@ select::-ms-expand {
 #event-page8-text {
   position: absolute;
   color: black;
-  top: 25%;
+  top: 20%;
   font-size: 4.5em;
   font-weight: 600;
   text-align: center;
