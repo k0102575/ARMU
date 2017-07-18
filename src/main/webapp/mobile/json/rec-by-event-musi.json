@@ -1,13 +1,13 @@
 {
   "list": [
     {
+      "img": "musician/photo/0choi2.jpg",
+      "name": "제이쓴",
+      "score": "5",
       "title" : "제이슨이다. 결혼식 축가 반주와 전체 반주자(피아노)구해요~!구해요구해요구해요구해요구해요",
       "date": "2017년 09월 20일",
       "area": "강원도 원주시",
       "price": "100,000",
-      "musiImg": "musician/photo/0choi2.jpg",
-      "musiName": "멋쟁이",
-      "musiScore": "5",
       "musiTag": ["어쩌구", "저쩌구", "이러쿵"]
     }, {
       "title" : "222제이슨이다. 결혼식 축가 반주와 전체 반주자(피아노)구해요~!구해요구해요구해요구해요구해요",

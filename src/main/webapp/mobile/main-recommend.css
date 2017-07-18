@@ -1,8 +1,18 @@
+.rec-background {
+    height: auto;
+    width: 100%;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
 .rec-container {
   height: auto;
   width: auto;
   text-align: center;
-  /*background-color: #f5f5f5;*/
+  background-color: white;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 .rec-title {
@@ -10,18 +20,19 @@
   color: black;
   font-size: 30px;
   font-weight: 500;
-  margin-left: 5%;
-  margin-top: 7%;
-  margin-bottom: 5%;
+  padding-left: 5%;
+  padding-top: 7%;
+  padding-bottom: 4%;
 }
 
 .rec-container-separator {
   width: 100%;
-  margin-top: 60px;
+  /*margin-top: 60px;*/
   border-bottom: 80px solid #f5f5f5;
 }
 
 /*이벤트 맞춤 추천 뮤지션 시작*/
+/*이벤트 없는 경우 시작*/
 .rec-no-event {
   position: relative;
   hegiht: 900px;
@@ -56,6 +67,106 @@
 .rec-no-event-separator {
   margin-top: 0;
 }
+/*이벤트 없는 경우 끝*/
+
+/*이벤트 있는 경우 시작*/
+.swiper-container {
+    width: 100%;
+    height: auto;
+    margin: 20px auto;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-pagination > span {
+  font-size: 30px;
+  width: 15px;
+  height: 15px;
+}
+
+.rec-by-event-musi {
+  position: relative;
+  display: inline-block;
+  border: 1px solid gray;
+  height: 700px;
+  width: 500px !important;
+  margin: 1%;
+  text-align: justify;
+  z-index: 99;
+}
+
+.rec-by-event-musi-img {
+  display: table;
+  height: 500px;
+  width: 100%;
+  overflow: hidden;
+  background-image: url('musician/photo/0choi2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.rec-by-event-musi-name {
+  display: inline-block;
+  width: auto;
+  margin-top: 5%;
+  margin-left:5%;
+  color: black;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.rec-by-event-musi-score {
+  display: inline-block;
+  margin-left: 20px;
+  color: black;
+  font-size: 28px;
+}
+
+.rec-by-event-musi-fav {
+  position: absolute;
+  display: inline-block;
+  right: 7%;
+  left: auto;
+  top: 62%;
+  transform: translate(7%, -62%);
+  color: white;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.rec-by-event-musi-hashtagbax {
+  margin-top: 2%;
+  margin-left: 2%;
+  height: 90px;
+  overflow: hidden;
+  font-size: 30px;
+  color: black;
+
+}
+
+.rec-by-event-musi-hashtagbax > span {
+  float: left;
+  margin: 0 2%;
+}
+/*이벤트 있는 경우 끝*/
 /*이벤트 맞춤 추천 뮤지션 끝*/
 
 
@@ -158,8 +269,8 @@
 }
 
 .rec-hashtag-title {
-  margin-left: 0;
-  margin-bottom: 5%;
+  padding-left: 0;
+  padding-bottom: 5%;
 }
 
 .rec-hashtag {
