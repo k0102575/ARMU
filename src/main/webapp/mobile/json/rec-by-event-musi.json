@@ -4,20 +4,14 @@
       "img": "musician/photo/0choi2.jpg",
       "name": "제이쓴",
       "score": "5",
-      "title" : "제이슨이다. 결혼식 축가 반주와 전체 반주자(피아노)구해요~!구해요구해요구해요구해요구해요",
-      "date": "2017년 09월 20일",
-      "area": "강원도 원주시",
-      "price": "100,000",
-      "musiTag": ["어쩌구", "저쩌구", "이러쿵"]
+      "favorite" : "true",
+      "tag": ["어쩌구", "저쩌구", "이러쿵"]
     }, {
-      "title" : "222제이슨이다. 결혼식 축가 반주와 전체 반주자(피아노)구해요~!구해요구해요구해요구해요구해요",
-      "date": "2017년 10월 20일",
-      "area": "몰라도 몰라시",
-      "price": "200,000",
-      "musiImg": "musician/photo/0choi2.jpg",
-      "musiName": "가나다",
-      "musiScore": "3",
-      "musiTag": ["피아노", "하하하", "코카콜라"]
+      "img": "musician/photo/0choi2.jpg",
+      "name": "제이쓴",
+      "score": "5",
+      "favorite" : "true",
+      "tag": ["어쩌구", "저쩌구", "이러쿵"]
     }
   ]
 }
