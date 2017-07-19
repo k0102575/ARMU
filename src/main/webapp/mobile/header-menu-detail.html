@@ -15,7 +15,7 @@
 		</div>
 		<div class='menu-category-btn' id='myevent-btn'>나의이벤트</div>
 		<hr class='menu-category-separator'>
-		<div class='menu-category-btn'>관심뮤지션</div>
+		<div class='menu-category-btn' id="menu-category-musician-favor">관심뮤지션</div>
 		<hr class='menu-category-separator'>
 		<div class='menu-category-btn' id="menu-category-event-regist">이벤트 등록하기</div>
 		<hr class='menu-category-separator'>
@@ -38,7 +38,9 @@
 	var container = $("#container"),
 	    menuBtn = $('#header-menu-menu'),
 	    menuBackscreen = $("#menu-backscreen"),
-	    menuToggle = $("#menu-toggle")
+	    menuToggle = $("#menu-toggle"),
+	    musicianFavor = $("#menu-category-musician-favor"),
+	    eventRegist = $("#menu-category-event-regist")
 	    
 	menuBtn.on('click', function() {
 		menuBackscreen.css('display', 'block');
@@ -52,8 +54,12 @@
 		container.css('position', '').css('overflow', '');
 	})
 	
-	$("#menu-category-event-regist").on('click', function(){
+	eventRegist.on('click', function(){
 	 location.href = 'event-regist.html'
+	})
+	
+	musicianFavor.on('click', function() {
+	  location.href = 'musician-favor.html'
 	})
 
 	$('#login-btn').on('click', function() {
