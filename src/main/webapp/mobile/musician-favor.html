@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ARMU MOBILE</title>
+<link rel="stylesheet" href="../node_modules/jquery-ui-dist/jquery-ui.css">
+<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+<link href="common.css" rel="stylesheet" type="text/css" media="all">
+<link href="header.css" rel="stylesheet" type="text/css" media="all">
+<link href="musician-favor.css" rel="stylesheet" type="text/css" media="all">
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../node_modules/handlebars/dist/handlebars.js"></script>
+
+</head>
+<body>
+
+<div id="container">
+
+<div id="header-box">
+  <i class="fa fa-search header-menu" id='header-menu-search' aria-hidden="true"></i>
+	<i class="fa fa-envelope-o header-menu" id='header-menu-email' aria-hidden="true"></i>
+	<span id='musician-favor-text'>관심 뮤지션</span>
+	<i class="fa fa-bars header-menu" id="header-menu-menu" aria-hidden="true"></i>
+	<div id="musician-favor-countbox">
+  <i class="fa fa-heart" aria-hidden="true"></i><span id="musician-favor-count">관심 뮤지션 ??개</span>
+  </div>
+  <!-- musician-favor-countbox -->
+</div>
+<!-- header-box -->
+
+<div id="musician-favor-list">
+
+<script id="musician-favor-template" type="text/x-handlebars-template">
+{{#each list}}
+<div id='musician-favor'>
+  <img id='musician-favor-picture' src='{{musiImg}}'>
+  <div id="musician-favor-preview">
+  <div id="musician-favor-name">{{musiName}}</div>
+  <div id="musician-favor-intro">{{#each musiTag}}#{{this}}&nbsp;{{/each}}</div>
+  <div id="musician-favor-location">{{area}}</div>
+  <button type="button" id="musician-favor-delbtn">삭제</button>
+</div>
+{{/each}}
+</script>
+  
+</div>
+<!-- musician-favor-list -->
+
+</div> <!-- container -->
+
+<i class="fa fa-arrow-circle-o-up" id="move_top_btn" aria-hidden="true"></i>
+
+<div id='header-menu-detail'><!-- include --></div>
+
+<script src="musician-favor.js"></script>
+
+</body>
+</html>

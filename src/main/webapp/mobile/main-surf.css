@@ -308,10 +308,12 @@ input:checked + label {
 	line-height: 1.2;
 	max-height: 100px;
 	text-align: left;
-	word-wrap: break-word;
+	word-break: keep-all;
+	/* word-wrap: break-all; */
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
+	w
 }
 
 #musician-surf-name {

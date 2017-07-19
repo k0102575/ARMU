@@ -1,24 +1,40 @@
 {
   "list": [
     {
-      "title" : "제이슨이다. 결혼식 축가 반주와 전체 반주자(피아노)구해요~!구해요구해요구해요구해요구해요",
-      "date": "2017년 09월 20일",
-      "area": "강원도 원주시",
-      "price": "100,000",
+      "area": "서울시 동대문구",
       "musiImg": "../ARMU-Image/Mobile/19_eventpage/sam1.jpg",
-      "musiName": "멋쟁이",
-      "musiScore": "5",
-      "musiTag": "어쩌구"
+      "musiName": "제이슨1",
+      "musiTag": ["전공", "장르", "테마","전공", "장르", "테마","전공", "장르", "테마","전공", "장르", "테마"]
     },
     {
-      "title" : "제이슨이다. 결혼식 축가 반주와 전체 반주자(피아노)구해요~!구해요구해요구해요구해요구해요",
-      "date": "2017년 09월 20일",
-      "area": "강원도 원주시",
-      "price": "100,000",
-      "musiImg": "../ARMU-Image/Mobile/19_eventpage/sam1.jpg",
-      "musiName": "멋쟁이",
-      "musiScore": "5",
-      "musiTag": "어쩌구"
+      "area": "서울시 강남구",
+      "musiImg": "../ARMU-Image/Mobile/19_eventpage/sam2.jpg",
+      "musiName": "제이슨2",
+      "musiTag": ["전공2", "장르2", "테마2"]
+    },
+    {
+      "area": "서울시 서초구",
+      "musiImg": "../ARMU-Image/Mobile/19_eventpage/sam3.jpg",
+      "musiName": "제이슨3",
+      "musiTag": ["전공3", "장르3", "테마3"]
+    },
+    {
+      "area": "서울시 동작구",
+      "musiImg": "../ARMU-Image/Mobile/19_eventpage/sam4.jpg",
+      "musiName": "제이슨4",
+      "musiTag": ["전공4", "장르4", "테마4"]
+    },
+    {
+      "area": "서울시 강동구",
+      "musiImg": "../ARMU-Image/Mobile/19_eventpage/sam5.jpg",
+      "musiName": "제이슨5",
+      "musiTag": ["전공5", "장르5", "테마5"]
+    },
+    {
+      "area": "서울시 중랑구",
+      "musiImg": "../ARMU-Image/Mobile/19_eventpage/sam6.jpg",
+      "musiName": "제이슨6",
+      "musiTag": ["전공6", "장르6", "테마6"]
     }
   ]
 }
