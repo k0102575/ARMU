@@ -3,28 +3,33 @@
 
 <head>
   <meta charset="utf-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1" user-scalable="no"> -->
   <title>채팅</title>
   <link rel="stylesheet" href="../../node_modules/jquery-ui-dist/jquery-ui.css">
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <link rel="stylesheet" href="../../node_modules/animsition/dist/css/animsition.min.css">
   <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
   <link href="../common.css" rel="stylesheet" type="text/css" media="all">
   <link href="chat.css" rel="stylesheet" type="text/css" media="all">
   <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="../../node_modules/animsition/dist/js/animsition.min.js"></script>
 
 </head>
 
 <body>
+<div  id='chat-container' class="animsition">
+
 <div class="chat-header">
   <h1 class='chat-header-head'>메시지</h1>
-  <a href="../index.html" class='chat-header-close-btn'>닫기</a>
+  <a href="javascript:history.go(-1)" class='chat-header-close-btn'>닫기</a>
   <p class='chat-header-desc'>안 읽은 메시지 2개</p>
 </div>
 <div class="chat-listbox">
   <ul data-role="listview">
       <li>
-        <a href="#" class='chat-list'>
+        <a href="chat-msg.html" class='chat-list'>
           <img src="../musician/photo/m1.jpg" class="chat-list-img"></img>
           <span class='chat-list-name'>임정희
             <span class='chat-list-unread-badge'>3</span>
@@ -81,6 +86,7 @@
   </ul><!--listview-->
 </div><!--chat-listbox-->
 
+</div>
 </body>
 
 <script src='chat.js'></script>

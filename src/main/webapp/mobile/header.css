@@ -61,6 +61,7 @@
   font-size: 300%;
   color: white;
   overflow: scroll;
+  z-index: 100;
 }
 
 #menu-backscreen {
@@ -70,6 +71,7 @@
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, .8);
+  z-index: 99;
 }
 /*메뉴 토글 끝*/
 
