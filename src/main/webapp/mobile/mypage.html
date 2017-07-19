@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>mypage</title>
+  <link href="common.css" rel="stylesheet" type="text/css" media="all">
+  <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="mypage.css">
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+</head>
+
+<body>
+
+  <div id="container">
+    <div id="header">
+      <span style="margin-left:33%">프로필 관리</span><a href="#"><span id="close">닫기</span></a>
+    </div>
+
+    <div id="ccc" class="">
+      <i class="fa fa-3x fa-camera" aria-hidden="true"></i>
+    </div>
+
+
+    <a href="#">
+      <img id="profile-img" src="default-medium.png" alt="">
+    </a>
+    <p id="name">홍길동</p>
+
+    <div class="content"><span class="menu">이메일</span> <span class="data">abacaba@babab.com</span> </div>
+    <div class="content"><span class="menu">저나버노</span> <span class="data">+82 10-8859-2045</span> </div>
+    <div class="content" id="cp"><span class="menu">비밀번호 변경</span></div>
+    <br><br><br><br><br>
+
+    <div class="content"><span class="menu">SNS 계정관리</span></div>
+    <br><br><br><br><br>
+
+    <div class="content">
+      <a href="#">
+        <p class="menu logout">로그아웃</p>
+      </a>
+    </div>
+    <div class="content">
+      <p class="menu logout">회원 탈퇴</p>
+    </div>
+    <br>
+
+    <div id="profile-backscreen"></div>
+    <div id="profile-toggle">
+      <div class="profile-img-menu">
+        <p class="menu">프로필 사진 선택</p>
+      </div>
+      <br>
+      <div class="profile-img-menu" id="cancel">
+        <p class="menu">취소</p>
+      </div>
+    </div>
+
+
+    <div id="cp-backscreen"></div>
+    <div id="change-password">
+      <p style="text-align:center">asdasd@asdfasd.com</p>
+      <br><br> &nbsp;현재비밀번호<input class="abc" type="password" name="" value=""><br>
+       &nbsp;변경비밀번호<input id="pwd01" class="abc" type="password" name="" value=""><br>
+       &nbsp;비밀번호확인<input id="pwd02" class="abc" type="password" name="" value=""><br><br>
+      <center>
+        <input class="btn" id="cp-change"type="button" name="button" value="변경">
+        <input class="btn" id="cp-cancel" type="button" name="button" value="취소">
+      </center>
+      <br>
+    </div>
+
+
+  </div>
+  <!-- container -->
+</body>
+<script type="text/javascript" src="mypage.js"></script>
+
+
+</html>
