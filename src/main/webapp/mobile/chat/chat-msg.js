@@ -4,9 +4,9 @@
 var myAlias = true,
   value = "abc",
   messageBox = $('#messageBox'),
-  btn = $('#btn')
+  sendBtn = $('#send-btn')
 
-btn.on('click', function() {
+sendBtn.on('click', function() {
   $('<li>').addClass(myAlias ? "me" : "him")
     .html(value)
     .appendTo(messageBox)

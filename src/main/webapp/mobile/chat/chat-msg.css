@@ -2,7 +2,7 @@ a, a:before {
   color: black;
   }
 
-  .headerbox {
+  .chat-msg-headerbox {
   position: relative;
   height: 40px;
   border: 1px solid red;
@@ -11,7 +11,7 @@ a, a:before {
   color: black;
 }
 
-.header {
+.chat-msg-header {
   display: inline-block;
 }
 

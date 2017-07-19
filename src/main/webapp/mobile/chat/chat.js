@@ -26,6 +26,10 @@ $(document).ready(function() {
 //		parent.history.back();
 //		return false;
 //	});
-	
-	
+
+$('.chat-list').on('click', function() {
+  location.href = 'chat-msg.html'
+})
+
+
 });
