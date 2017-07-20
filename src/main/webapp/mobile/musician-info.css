@@ -1,0 +1,43 @@
+@CHARSET "UTF-8";
+
+#container {
+	position: relative;
+}
+
+
+/*헤더부분*/
+
+#musician-info-header {
+	border: 1px solid red;
+  position: fixed;
+  height: 100px;
+  width: 100%;
+}
+
+#musician-info-nickname {
+  position: absolute;
+  right: 34%;
+  top: 15%;
+  transform: translate(-34%, 15%);
+  font-size: 250%;
+  font-weight: normal
+ }
+
+#musician-info-prev {
+  position: absolute;
+  left: 3%;
+  top: 15%;
+  transform: translate(-3%, 15%);
+  font-size: 400%;
+}
+
+#musician-info-menu {
+  position: absolute;
+  right: 3%;
+  top: 15%;
+  transform: translate(-3%, 15%);
+  font-size: 300%;
+}
+
+
+/*헤더부분 끗*/

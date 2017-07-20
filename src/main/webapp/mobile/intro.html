@@ -236,7 +236,12 @@ $("#kakao-login").on('click', function() {
 
 $("#face-login").on('click', function(){
   FB.login(function(response) {
-    location.href="index.html"
+    
+    FB.api('/me?fields=id,name,email,age_range,gender,locale,verified', function (response) {
+
+      console.log(JSON.stringify(response));
+  });
+    
    }, {scope: 'public_profile,email'});
 })
 

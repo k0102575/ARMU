@@ -46,6 +46,8 @@ sendBtn.on('click', function() {
             .append($('<div>').addClass('tail').addClass(myAlias ? "me-tail" : "him-tail"))
             .append($('<div>').addClass('tail-white').addClass(myAlias ? "me-tail-white" : "him-tail-white"))
   messageBox.scrollTop(messageBox.prop('scrollHeight'));
+  
+  console.log($(".tail").offset())
 
   num = parseInt(Math.random() * 100)
 

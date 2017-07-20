@@ -5,176 +5,27 @@
 <title>ARMU MOBILE</title>
 <link rel="stylesheet" href="../node_modules/jquery-ui-dist/jquery-ui.css">
 <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="../node_modules/swiper/dist/css/swiper.min.css">
 <link href="common.css" rel="stylesheet" type="text/css" media="all">
-<link href="header.css" rel="stylesheet" type="text/css" media="all">
+<link href="musician-info.css" rel="stylesheet" type="text/css" media="all">
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
-<style>
-
-#container {
-  position: relative;
-}
-
-/*헤더 및 카테고리 시작*/
-
-#header-box {
-  position: fixed;
-  height: 220px;
-  background-color: white;
-}
-
-#musician-favor-text {
-  position: absolute;
-  left: 50%;
-  top: 20%;
-  transform: translate(-50%);
-  font-size: 300%;
-  font-weight: normal;
-}
-
-#category {
-  position: absolute;
-  top: 120px;
-  height: 100px;
-  width: 100%;
-}
-
-.category-menu {
-	color: black;
-	font-size: 250%;
-	font-weight: normal;
-}
-
-#category1 {
-  position: absolute;
-  left: 0%;
-  top: 15%;
-  transform: translate(15%, 15%);
-}
-
-#category2 {
-  position: absolute;
-  right: 40%;
-  top: 15%;
-  transform: translate(-44%, 15%);
-}
-
-#category3 {
-  position: absolute;
-  right: -1%;
-  top: 15%;
-  transform: translate(1%, 15%);
-}
-
-#category-underline {
-  position: absolute;
-  top: 215px;
-  width: 100%;
-  border-bottom: 5px solid lightgray;
-}
-
-#category-underline-bar1 {
-  position: absolute;
-  display: inline-block;
-  width: 33%;
-  border-bottom: 5px solid black;
-}
-
-#category-underline-bar2 {
-  position: absolute;
-  display: none;
-  /*display: inline-block;*/
-  width: 34%;
-  border-bottom: 5px solid black;
-  left: 24.6%;
-  transform: translateX(24.6%);
-}
-
-#category-underline-bar3 {
-  position: absolute;
-display: none;
-  /*display: inline-block;*/
-  width: 33%;
-  border-bottom: 5px solid black;
-  right: 0%;
-  transform: translateX(0%);
-}
-/* 헤더 및 카테고리 끝*/
-
-</style>
-
+<script type="text/javascript" src="../node_modules/handlebars/dist/handlebars.js"></script>
 </head>
 <body>
+
 <div id="container">
 
-	<div id="header-box">
-	  <i class="fa fa-bars header-menu" id="header-menu-menu" aria-hidden="true"></i>
-	  <i class="fa fa-search header-menu" id='header-menu-search' aria-hidden="true"></i>
-	  <i class="fa fa-envelope-o header-menu" id='header-menu-email' aria-hidden="true"></i>
-	  <span id='musician-favor-text'>뮤지션 상세정보</span>
-		<div id="category">
-			<a href='#'><span class='category-menu' id="category1">사진 및 동영상</span></a>
-			<a href='#'><span class='category-menu' id="category2">프로필</span></a>
-			<a href='#'><span class='category-menu' id="category3">팀정보 및 만족도</span></a>
-		</div> 
-		<!-- category -->
-		<div id='category-underline'>
-		  <div id='category-underline-bar1'></div>
-		  <div id='category-underline-bar2'></div>
-		  <div id='category-underline-bar3'></div>
-		</div>
-		<!-- category-underline -->
-	</div>
-	<!-- header-box -->
-	
-
-
+<div id="musician-info-header">
+  <i class="fa fa-angle-left" id="musician-info-prev" aria-hidden="true"></i>
+	<span id='musician-info-nickname'>뮤지션 별명</span>
+	<i class="fa fa-ellipsis-h" id="musician-info-menu" aria-hidden="true"></i>
+</div>
+<!-- musician-info-header -->
 
 </div> <!-- container -->
 
-<div id='header-menu-detail'><!-- include --></div>
 
-<script type="text/javascript">
-
-$(document).ready(function() {
-	var categoryBtn1 = $('#category1'),
-    categoryBtn2 = $('#category2'),
-    categoryBtn3 = $('#category3'),
-    categoryUnderbar1 = $('#category-underline-bar1'),
-    categoryUnderbar2 = $('#category-underline-bar2'),
-    categoryUnderbar3 = $('#category-underline-bar3'),
-    headerMenuMenu = $("#header-menu-menu"),
-    headerMenuDetail = $("#header-menu-detail");
-	
-   headerMenuDetail.load("header-menu-detail.html");
-   
-  /* 카테고리별 메인 화면 띄우기 */
-
-  categoryBtn1.on('click', function() {
-    categoryUnderbar1.css('display', "inline-block")
-    categoryUnderbar2.css('display', "none")
-    categoryUnderbar3.css('display', "none")
-  })
-
-  categoryBtn2.on('click', function() {
-    categoryUnderbar2.css('display', "inline-block")
-    categoryUnderbar1.css('display', "none")
-    categoryUnderbar3.css('display', "none")
-  })
-
-  categoryBtn3.on('click', function() {
-    categoryUnderbar3.css('display', "inline-block")
-    categoryUnderbar1.css('display', "none")
-    categoryUnderbar2.css('display', "none")
-  })
-})
-
-
-
-
-
-</script>
+<script src="musician-info.js"></script>
 
 </body>
 </html>
