@@ -2,27 +2,29 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" user-scalable="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>채팅</title>
-    <!-- <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../node_modules/animsition/dist/css/animsition.min.css">
     <link href="../common.css" rel="stylesheet" type="text/css" media="all">
     <link href="chat-msg.css" rel="stylesheet" type="text/css" media="all">
     <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../../node_modules/animsition/dist/js/animsition.min.js"></script>
+
   </head>
   <body>
-    <div id="chat-msg-container">
+    <div id="chat-msg-container" class='animsition'>
       <div class="chat-msg-headerbox">
         <a href="javascript:history.go(-1)" class='back-btn'><i class="fa fa-angle-left" aria-hidden="true"></i></a>
         <div class="chat-msg-header">홍길동</div>
-      </div>
-      <ul id="messageBox"></ul>
+      </div><!-- chat-msg-headerbox -->
 
-      <button type="button" name="button" id='btn'>눌러봐</button>
+      <div id="messageBox" class='messageBox'></div>
 
-    </div>
+      <button type="button" name="button" id='send-btn'>눌러봐</button>
+
+
+    </div><!--  chat-msg-container -->
   </body>
 
 
