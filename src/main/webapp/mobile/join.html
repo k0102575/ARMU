@@ -201,16 +201,18 @@
 	<!-- container -->
 	
 <script>
-
-
 $(document).ready(
     Kakao.init('fad20b04908b209e1c3d0e3e66518c0b')
 )
 
+$(window).on("load", function() {
+  FB.getLoginStatus(function(response) {
+  });
+})
+
 $("#kakao-login").on('click', function() {
   Kakao.Auth.login({
     success: function(authObj) {
-      console.log(JSON.stringify(authObj))
       location.href="index.html"
     },
     fail: function(err) {
@@ -221,9 +223,9 @@ $("#kakao-login").on('click', function() {
 })
 
 $("#face-login").on('click', function(){
-  FB.login(function(response){
+  FB.login(function(response) {
     location.href="index.html"
-  });
+   }, {scope: 'public_profile,email'});
 })
 
 
