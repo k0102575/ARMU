@@ -38,17 +38,13 @@ messageBox.scrollTop(messageBox.prop('scrollHeight'));
 
 sendBtn.on('click', function() {
 	appendChatBubble()
-})//sendBtn.on()
-
-
+})
 
 msgInput.keyup(function (e) {
 	if (e.keyCode == 13) {
 		sizeUp()
 	}
-	
-	
-});
+})//줄바꿈하기
 
 function sizeUp() {
 	  msgInput.css('height', msgInput.prop('scrollHeight') + 12 + 'px');
@@ -62,7 +58,6 @@ function sizeBack() {
 	msgInputBox.css('line-height', '7vh')
 }
 
-var num;
 function appendChatBubble() {
 	
 	value = msgInput.val()
@@ -81,17 +76,15 @@ function appendChatBubble() {
 	.append($('<div>').addClass('tail').addClass(myAlias ? "me-tail" : "him-tail"))
 	.append($('<div>').addClass('tail-white').addClass(myAlias ? "me-tail-white" : "him-tail-white"))
 	msgInput.val('')
-	messageBox.scrollTop(0);
+	
 	msgInput.focus()
 	sizeBack()
 	
 	resizeMessageBoxPadding()
-	
-	console.log(messageBox.height())
-	$("html, body").animate({ scrollTop: messageBox.height() }, "slow");
+	console.log(messageBox.prop('scrollHeight'))
+	messageBox.scrollTop(messageBox.prop('scrollHeight'))
 
-	num = parseInt(Math.random() * 100)
-
+	var num = parseInt(Math.random() * 100)
 	if (num > 50) {
 		myAlias = false
 	} else {
@@ -99,32 +92,22 @@ function appendChatBubble() {
 	}
 }
 
+
 function resizeMessageBoxPadding() {
 	var padding = parseFloat(messageBox.css('padding-top')) 
+	if(padding < 10 || padding == 10) return;
+	
 	var lastBalloon = $('.chat-balloon:last')
-	if(padding < 10 || padding == 10) {
-		
-	}
 	var totalBalloonHeight = parseFloat(lastBalloon.css('height'))
 							+ parseFloat(lastBalloon.css('margin-top')) 
 							+ parseFloat(lastBalloon.css('margin-bottom'))
 							+ parseFloat(lastBalloon.css('padding-top'))
 							+ parseFloat(lastBalloon.css('padding-bottom'));
 	
-//	console.log('lastBallon: ' + lastBalloon)
-//	console.log('height: ' + lastBalloon.css('height'))
-//	console.log('margin-top: ' + lastBalloon.css('margin-top')) 
-//	console.log('margin-bottom: ' + lastBalloon.css('margin-bottom'))
-//	console.log('padding-top: ' + lastBalloon.css('padding-top'))
-//	console.log('padding-bottom: ' + lastBalloon.css('padding-bottom'))
-//	console.log('now padding: ' + padding)
-//	console.log('total height: ' + totalBalloonHeight)
-
 	var result = padding - totalBalloonHeight;
 	if(result < 10) {
 		result = 10;
 	}
 	
 	messageBox.css('padding-top', result + 'px')
-//	console.log('after padding: ' + messageBox.css('padding-top'))
 }
