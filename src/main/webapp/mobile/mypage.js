@@ -1,4 +1,7 @@
+
 'use strict'
+
+
   $('#profile-img, #ccc').on('click', function() {
     $('#profile-toggle').toggle("slide", {
       direction: "down"
