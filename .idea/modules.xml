@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/armu.iml" filepath="$PROJECT_DIR$/armu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/armu_main.iml" filepath="$PROJECT_DIR$/.idea/modules/armu_main.iml" group="armu" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/armu_test.iml" filepath="$PROJECT_DIR$/.idea/modules/armu_test.iml" group="armu" />
+    </modules>
+  </component>
+</project>

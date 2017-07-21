@@ -82,17 +82,17 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry sourcepath="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.9.RELEASE/d9b39cf6b40a184770bbba169cc34474aa2d034f/spring-beans-4.3.9.RELEASE-sources.jar" kind="lib" path="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.9.RELEASE/daa5abf3779c8cad1a2910e1ea08e4272489d8ae/spring-beans-4.3.9.RELEASE.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.3.9.RELEASE/f85656c1404f6e4fddbc1ca2180748856880913f/spring-core-4.3.9.RELEASE-sources.jar" kind="lib" path="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.3.9.RELEASE/430b7298bfb85d66fb61e19ca8f06231b911e9f5/spring-core-4.3.9.RELEASE.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry sourcepath="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/4.3.9.RELEASE/a83a9d920e596f4397273a53eec3254ec0f4fb84/spring-tx-4.3.9.RELEASE-sources.jar" kind="lib" path="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/4.3.9.RELEASE/7a7b1775e1e604841f8b619e110e43d9929c37ab/spring-tx-4.3.9.RELEASE.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry sourcepath="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.3.9.RELEASE/ac31864038a1c31d5a49c1bef84e5af4a162a655/spring-web-4.3.9.RELEASE-sources.jar" kind="lib" path="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.3.9.RELEASE/91dae64c4280093ad5fb4736a10913c9233479c1/spring-web-4.3.9.RELEASE.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry sourcepath="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/4.3.9.RELEASE/c22b7284000897b976c9ee6c12f74f6bc3a35ccc/spring-context-4.3.9.RELEASE-sources.jar" kind="lib" path="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/4.3.9.RELEASE/a186823724f03b98becd5f93b1fa107fe6f7a7ff/spring-context-4.3.9.RELEASE.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
@@ -102,7 +102,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.9.RELEASE/d9b39cf6b40a184770bbba169cc34474aa2d034f/spring-beans-4.3.9.RELEASE-sources.jar" kind="lib" path="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.9.RELEASE/daa5abf3779c8cad1a2910e1ea08e4272489d8ae/spring-beans-4.3.9.RELEASE.jar">
+	<classpathentry sourcepath="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/4.3.9.RELEASE/c22b7284000897b976c9ee6c12f74f6bc3a35ccc/spring-context-4.3.9.RELEASE-sources.jar" kind="lib" path="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/4.3.9.RELEASE/a186823724f03b98becd5f93b1fa107fe6f7a7ff/spring-context-4.3.9.RELEASE.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
@@ -112,7 +112,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.3.9.RELEASE/f85656c1404f6e4fddbc1ca2180748856880913f/spring-core-4.3.9.RELEASE-sources.jar" kind="lib" path="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.3.9.RELEASE/430b7298bfb85d66fb61e19ca8f06231b911e9f5/spring-core-4.3.9.RELEASE.jar">
+	<classpathentry sourcepath="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.3.9.RELEASE/ac31864038a1c31d5a49c1bef84e5af4a162a655/spring-web-4.3.9.RELEASE-sources.jar" kind="lib" path="C:/Users/bitcamp/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.3.9.RELEASE/91dae64c4280093ad5fb4736a10913c9233479c1/spring-web-4.3.9.RELEASE.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>

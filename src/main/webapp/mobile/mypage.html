@@ -4,16 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <title>mypage</title>
-  <link href="common.css" rel="stylesheet" type="text/css" media="all">
+  <link rel="stylesheet" href="../node_modules/animsition/dist/css/animsition.min.css">
   <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+  <link href="common.css" rel="stylesheet" type="text/css" media="all">
   <link rel="stylesheet" href="mypage.css">
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+      <script src="../node_modules/animsition/dist/js/animsition.min.js"></script>
 </head>
 
 <body>
 
-  <div id="mypage-container">
+  <div id="mypage-container" class="animsition">
     <div id="header">
       <div id="header-title">프로필 관리</div><a href="#"><div id="close">닫기</div></a>
     </div>
@@ -31,7 +33,7 @@
 
     <div class="content"><span class="menu">이메일</span> <span class="data">abacaba@babab.com</span> </div>
     <div class="content"><span class="menu">전화번호</span> <span class="data">+82 10-8859-2045</span> </div>
-    <a href="mypage-cp.html"><div class="content" id="cp"><span class="menu">비밀번호 변경</span><i class="fa fa-chevron-right" aria-hidden="true"></i></div></a>
+    <a href="mypage-cp.html"><div class="content" id="cp"><span class="menu">비밀번호 변경</span><i class="fa fa-angle-right" aria-hidden="true"></i></div></a>
     <br><br><br><br><br>
 
 
@@ -61,6 +63,33 @@
   <!-- container -->
 </body>
 <script type="text/javascript" src="mypage.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $(".animsition").animsition({
+    inClass: 'fade-in-right',
+    outClass: 'fade-out-down',
+    inDuration: 500,
+    outDuration: 700,
+    linkElement: '.animsition-link',
+    // e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
+    loading: true,
+    loadingParentElement: 'body', //animsition wrapper element
+    loadingClass: 'animsition-loading',
+    loadingInner: '', // e.g '<img src="loading.svg" />'
+    timeout: false,
+    timeoutCountdown: 5000,
+    onLoadEvent: true,
+    browser: [ 'animation-duration', '-webkit-animation-duration'],
+    // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
+    // The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
+    overlay : false,
+    overlayClass : 'animsition-overlay-slide',
+    overlayParentElement : 'body',
+    transition: function(url){ window.location.href = url; }
+  });
+});
+
+</script>
 
 
 </html>

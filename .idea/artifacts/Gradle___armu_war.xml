@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Gradle : armu.war">
+    <output-path>$PROJECT_DIR$/build/libs</output-path>
+    <properties id="gradle-properties">
+      <options external-project-path="$PROJECT_DIR$" />
+    </properties>
+    <root id="archive" name="armu.war">
+      <element id="artifact" artifact-name="Gradle : armu.war (exploded)" />
+    </root>
+  </artifact>
+</component>
