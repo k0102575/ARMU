@@ -14,18 +14,13 @@
     $('#profile-backscreen').css('display', 'none');
     // container.css('position', '').css('overflow', '');
   })
-
-  $('#cp').on('click', function() {
-    $('#cp-backscreen').css('display', 'block');
-    $('#change-password').css('display', 'block')
-  })
-  $('#cp-backscreen, #cp-cancel').on('click', function() {
-    $('#change-password').css('display','none')
-    $('#cp-backscreen').css('display', 'none');
-  })
+  //
   var a= $('#pwd01'),
       b= $('#pwd02')
   $('#cp-change').on('click',function() {
-    if(a.val() != b.val())
-    alert('비밀번호가 맞지 않읍니다.')
+    if(a.val() != b.val()){
+      alert('비밀번호가 맞지 않읍니다.')
+    } else {
+      alert('변경 되었읍니다.')
+    }
   })
