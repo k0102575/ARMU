@@ -81,8 +81,7 @@ function appendChatBubble() {
 	sizeBack()
 	
 	resizeMessageBoxPadding()
-	console.log(messageBox.prop('scrollHeight'))
-	messageBox.scrollTop(messageBox.prop('scrollHeight'))
+	messageBox.scrollTop(messageBox.height())
 
 	var num = parseInt(Math.random() * 100)
 	if (num > 50) {

@@ -103,12 +103,13 @@
 }
 
 .user-img {
-	border-radius: 50%;
+	/* border-radius: 50%; */
+	/* border: 3px solid gray; */
 	height: 200px;
 	width: 200px;
-  object-fit: cover;
-  overflow: hidden;
-}
+  /* object-fit: cover;
+  overflow: hidden; */
+} 
 
 #mypage-btn {
 	display: none;
@@ -125,7 +126,15 @@
   border-radius: 50px;
   width: 40%;
   margin: auto;
-  
+}
+
+.menu-mypage-text {
+  font-size: 75%;
+  font-weight: 300;
+  border: 2px solid white;
+  border-radius: 50px;
+  width: 50%;
+  margin: auto;
 }
 
 .menu-login-separator {
