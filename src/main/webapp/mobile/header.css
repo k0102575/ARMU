@@ -97,12 +97,28 @@
   margin-right: 80%;
 }
 
-#login-btn {
+.user-infobox {
   display: inline-block;
   width: 80%;
 }
 
-#menu-login-text {
+.user-img {
+	border-radius: 50%;
+	height: 200px;
+	width: 200px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+#mypage-btn {
+	display: none;
+}
+
+#login-btn {
+	
+}
+
+.menu-login-text {
   font-size: 75%;
   font-weight: 300;
   border: 2px solid white;
