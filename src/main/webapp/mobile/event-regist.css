@@ -559,3 +559,9 @@ select::-ms-expand {
 }
 
 /* 이벤트 페이지 8 끝 */
+
+
+
+select {
+  font-size: 16px;
+}

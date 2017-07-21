@@ -1,20 +1,25 @@
 
-a, a:before {
-  color: black;
-}
+
+
 
 #chat-msg-container {
+	position: relative;
   height: 100%;
   width: 100%;
 }
 
   .chat-msg-headerbox {
-  position: relative;
-  height: 40px;
+  position: fixed;
+  top: 0;
+  display: block;
+  height: 8vh;
+  width: 100%;
   border-bottom: 1px solid lightgray;
   text-align: center;
-  line-height: 40px;
+  line-height: 8vh;
   color: black;
+  background-color: white;
+  z-index: 50;
 }
 
 .chat-msg-header {
@@ -29,13 +34,16 @@ a, a:before {
 
 
 #messageBox {
-	position: relative;
+	position: fixed;
   overflow:scroll;
   width: 100%;
-  height: 70vh;
+  height: 80vh;
   padding: 0;
-  padding-top: 5%;
-  z-index: 5;
+  padding-top: 80vh;
+  padding-bottom: 10px;
+  top: 8%;
+  box-sizing: content-box;
+  vertical-align: bottom;
 }
 
 .sender-img {
@@ -133,14 +141,61 @@ a, a:before {
 
 
 .message-input-box {
+	position: fixed;
+	height: 7vh;
+	max-height: 10vh;
+	bottom: 0;
   width: 100%;
   text-align: center;
   border-top: 0.5px solid lightgray;
+  vertical-align: middle;
+  line-height: 7vh;
+  padding: 0;
+  background-color: white;
 }
 
+
 .msg-input {
+	position: absolute;
+  left: 4%;
+	top: 50%;
+  transform: translateY(-50%);
   display: inline-block;
-  width: 95%;
+  width: 70%;
+  height: 4vh;  
+  max-height: 8vh;
+  outline: none !important;
+  overflow:visible;
   padding: 0;
   font-size: 90%;
+  border: none !important;
+  white-space: pre;
+  
 }
+
+
+#send-btn {
+	position: absolute;
+	right: 4%;
+	top: 50%;
+	transform: translateY(-50%);
+	border: none !important;
+  font-size: 1em;
+  text-align: center;
+  border-radius: 50px;
+  /* line-height: 95px; */
+  box-sizing: border-box;
+  background-color: white !important;
+}
+/* 
+.hidden-submit-btn {
+	visibility:hidden;
+	position:absolute;
+	display: inline-block;
+  width: 70%;
+  padding: 0;
+  font-size: 90%;
+  border: none !important;
+} */
+
+

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1, user-scalable=no">
     <title>채팅</title>
     <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../node_modules/animsition/dist/css/animsition.min.css">
@@ -25,8 +25,11 @@
 
 
     <div class="message-input-box">
-      <input class='msg-input' type="text" name="" value="" placeholder="메시지를 작성하세요">
-      <button type="button" name="button" id='send-btn'>눌러봐</button>
+  
+    <!-- <input type="submit" data-role="none" class='hidden-submit-btn'/> -->
+      <textarea class='msg-input' id='msg-input' placeholder="메시지를 작성하세요"></textarea>
+      <button type="button" name="button" id='send-btn'>보내기</button>
+  
     </div>
 
     </div><!--  chat-msg-container -->
