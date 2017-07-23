@@ -1,0 +1,97 @@
+/* 자기 소개 시작 */
+
+.introduce-header {
+  float: left;
+  top: 100px;
+  width: 100%;
+  height: 60px;
+  background-color: #F5F5F5;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 100px;
+  padding-top: 1%;
+}
+
+.introduce-homepage {
+	float: left;
+	width: 90%;
+  margin-top: 30px;
+  margin-left: 5%;
+  font-size: 2em;
+}
+
+.introduce-introduce {
+  float: left;
+  width: 90%;
+  margin-top: 30px;
+  margin-left: 5%;
+  border: 0px;
+  font-size: 2rem;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: normal;
+	max-height: 435px; 
+}
+
+#introduce-more {
+  float: left;
+  font-size: 2rem;
+  font-weight: 500;
+  display: none;
+  margin-left: 5%;
+}
+
+#introduce-hide {
+  float: left;
+  font-size: 2rem;
+  font-weight: 500;
+  display: none;
+  margin-left: 5%;
+}
+
+/* 자기 소개 끝 */
+
+.introduce-space {
+	float: left;
+	width: 100%;
+	height: 50px;
+	border: 0px;
+}
+
+/* 팀정보 시작 */
+
+.team-introduce-header {
+ 	float: left;
+  top: 100px;
+  width: 100%;
+  height: 60px;
+  background-color: #F5F5F5;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+  padding-top: 1%;
+}
+
+.team-introduce-team {
+	float: left;
+	width: 90%;
+  margin-left: 5%;
+  border: 0px;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.team-introduce-member {
+	float: left;
+	width: 90%;
+  margin-left: 5%;
+  text-align: center;
+  border: 5px solid black;
+  border-radius: 25px;
+  font-size: 2rem;
+	height: auto;
+}
+
+
+
+/* 팀정보 끝 */
