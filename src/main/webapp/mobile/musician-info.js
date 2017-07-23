@@ -4,8 +4,6 @@ var lastScroll = 0,
     musicianInfoBtnContainer = $("#musician-info-btn-container"),
     musicianHeaderInfoImg = $("#musician-header-info-img")
     
-    console.log($("div[name=timeline-container]").length)
-    
     $(window).scroll(function(event){
     
     if($(document).scrollTop() > 545) {

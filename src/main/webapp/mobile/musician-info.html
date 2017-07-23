@@ -4,9 +4,12 @@
 <meta charset="UTF-8">
 <title>ARMU MOBILE</title>
 <link rel="stylesheet" href="../node_modules/jquery-ui-dist/jquery-ui.css">
-<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css">
 <link href="common.css" rel="stylesheet" type="text/css" media="all">
 <link href="musician-info.css" rel="stylesheet" type="text/css" media="all">
+<link href="musician-info-portfolio.css" rel="stylesheet" type="text/css" media="all">
+<link href="musician-info-introduce.css" rel="stylesheet" type="text/css" media="all">
+<link href="musician-info-review.css" rel="stylesheet" type="text/css" media="all">
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
 <script type="text/javascript" src="../node_modules/handlebars/dist/handlebars.js"></script>
@@ -27,7 +30,6 @@
 	  <div id="musician-basic-info-name">뮤지션 이름 (연령대) 성별</div>
 	  <i class="fa fa-heart-o" id="musician-basic-info-favor" aria-hidden="true"></i>
 	  <button type="button" id="musician-basic-info-request-btn">매칭 요청하기</button>
-	  <button type="button" id="musician-basic-info-team-btn">팀 정보</button>
 	  
 	</div>
 	<!-- musician-basic-info -->
@@ -63,62 +65,97 @@
 
   <div id="musician-info-btn-container">
   <button id="musician-info-portfolio-btn">포트폴리오</button>
+  <button id="musician-info-introduce-btn">정보</button>
   <button id="musician-info-review-btn">평점 및 리뷰</button>
   </div>
   
-  <div id="timeline-container">
-  <div id="timeline-line-container">
-  <div id="timeline-line1-one"></div>
-  <img src="../ARMU-Image/Mobile/login/login_01_b.png" id="timeline-mark">
-  </div>
-  <div id="timeline-content">
-  <div id="timeline-date">2017-07-21</div>
-  <div id="timeline-desc">사진에 대한 설명이나 동영상에 대한 설명이 있</div>
-  <img src="musician/photo/m5.jpg" id="timeline-picture">
-  <img src="musician/photo/m4.jpg" id="timeline-picture">
-  <img src="musician/photo/m6.jpg" id="timeline-picture">
-  </div>
-  </div>
-  <!-- timeline-container -->
-  
-    <div id="timeline-container">
-  <div id="timeline-line-container">
-  <div id="timeline-line1-one"></div>
-  <img src="../ARMU-Image/Mobile/login/login_01_b.png" id="timeline-mark">
-  </div>
-  <div id="timeline-content">
-  <div id="timeline-date">2017-07-21</div>
-  <div id="timeline-desc">사진에 대한 설명이나 동영상에 대한 설명이 있</div>
-  <img src="musician/photo/m5.jpg" id="timeline-picture">
-  <img src="musician/photo/m4.jpg" id="timeline-picture">
-  <img src="musician/photo/m6.jpg" id="timeline-picture">
-  </div>
-  </div>
-  <!-- timeline-container -->
-  
-    <div id="timeline-container">
-  <div id="timeline-line-container">
-  <div id="timeline-line1-one"></div>
-  <img src="../ARMU-Image/Mobile/login/login_01_b.png" id="timeline-mark">
-  </div>
-  <div id="timeline-content">
-  <div id="timeline-date">2017-07-21</div>
-  <div id="timeline-desc">사진에 대한 설명이나 동영상에 대한 설명이 있</div>
-  <img src="musician/photo/m5.jpg" id="timeline-picture">
-  <img src="musician/photo/m4.jpg" id="timeline-picture">
-  <img src="musician/photo/m6.jpg" id="timeline-picture">
-  </div>
-  </div>
-  <!-- timeline-container -->
-  
-  
-  
+  <div class='category-main' id='info-portfolio'><!-- include --></div>
+  <div class='category-main' id='info-introduce'><!-- include --></div>
+  <div class='category-main' id='info-review'><!-- include --></div>
   
 </div> <!-- container -->
 
 <i class="fa fa-arrow-circle-o-up" id="move_top_btn" aria-hidden="true"></i>
 
-<script src="musician-info.js"></script>
+<script>
+
+var lastScroll = 0,
+		musicianHeaderInfoImg = $("#musician-header-info-img"),
+		moveTopBtn = $("#move_top_btn"),
+		musicianInfoBtnContainer = $("#musician-info-btn-container"),
+		musicianHeaderInfoImg = $("#musician-header-info-img"),
+		musicianInfoPortfolioBtn = $('#musician-info-portfolio-btn'),
+    musicianInfoIntroduceBtn = $('#musician-info-introduce-btn'),
+		musicianInfoReviewBtn = $('#musician-info-review-btn'),
+		infoPortfolio = $("#info-portfolio"),
+		infoIntroduce = $("#info-introduce"),
+		infoReview = $("#info-review")
+		
+		infoPortfolio.load('musician-info-portfolio.html');
+    infoIntroduce.load('musician-info-introduce.html')
+    infoReview.load('musician-info-review.html'); 
+    
+    infoPortfolio.css('display', 'block')
+    infoIntroduce.css('display', 'none')
+    infoReview.css('display', 'none')
+
+$(window).scroll(function(event){
+
+if($(document).scrollTop() > 545) {
+	musicianInfoBtnContainer.css("position", "fixed")
+	musicianHeaderInfoImg.css("display", "block")
+	musicianHeaderInfoImg.css("top", "9%")
+	 } else if ($(document).scrollTop() < 545) {
+	musicianInfoBtnContainer.css("position", "relative")
+	musicianHeaderInfoImg.css("display", "none")
+	musicianHeaderInfoImg.css("top", "18%")
+}
+
+var st = $(this).scrollTop();
+	if (st > lastScroll){
+	 moveTopBtn.css("display", "block")
+	} else {
+	 moveTopBtn.css("display", "none")
+	}
+	lastScroll = st;
+});
+
+moveTopBtn.on('click', function() {
+  $('html, body').animate({
+    scrollTop : 0
+  }, 400);
+  return false;
+});
+
+musicianInfoPortfolioBtn.on('click', function() {
+  musicianInfoPortfolioBtn.css('border-bottom', '2.5px solid black')
+  musicianInfoIntroduceBtn.css('border-bottom', '1px solid black')
+  musicianInfoReviewBtn.css('border-bottom', '1px solid black')
+  infoPortfolio.css('display', 'block')
+  infoIntroduce.css('display', 'none')
+  infoReview.css('display', 'none')
+})
+
+musicianInfoIntroduceBtn.on('click', function() {
+  musicianInfoPortfolioBtn.css('border-bottom', '1px solid black')
+  musicianInfoIntroduceBtn.css('border-bottom', '2.5px solid black')
+  musicianInfoReviewBtn.css('border-bottom', '1px solid black')
+  infoPortfolio.css('display', 'none')
+  infoIntroduce.css('display', 'block')
+  infoReview.css('display', 'none')
+})
+
+musicianInfoReviewBtn.on('click', function() {
+  musicianInfoPortfolioBtn.css('border-bottom', '1px solid black')
+  musicianInfoIntroduceBtn.css('border-bottom', '1px solid black')
+  musicianInfoReviewBtn.css('border-bottom', '2.5px solid black')
+  infoPortfolio.css('display', 'none')
+  infoIntroduce.css('display', 'none')
+  infoReview.css('display', 'block')
+})
+
+
+</script>
 
 </body>
 </html>
