@@ -17,13 +17,13 @@ if(isEvent) {
 }
 
 function displayOngoingEventList() {
-  $.getJSON('json/act-ongoing-event.json', function(result) {
+  $.getJSON('/event/listOngoing.json', function(result) {
     var templateFn = Handlebars.compile($('#act-ongoing-event-template').text())
-    var generatedHTML = templateFn(result)
+    var generatedHTML = templateFn(result.data)
     var container = $('#act-ongoing-event-container')
     var html = container.html()
     container.html(html + generatedHTML)
-
+    console.log(result.data)
     displayNowRecruitingEventList();
   }, function(err) {
     console.log(err)
@@ -32,9 +32,9 @@ function displayOngoingEventList() {
 
 
 function displayNowRecruitingEventList() {
-  $.getJSON('json/act-now-recruiting-event.json', function(result) {
+  $.getJSON('json/listRecommand.json', function(result) {
     var templateFn = Handlebars.compile($('#act-now-recruiting-event-template').text())
-    var generatedHTML = templateFn(result)
+    var generatedHTML = templateFn(result.data)
     var container = $('#act-now-recruiting-event-container')
     var html = container.html()
     container.html(html + generatedHTML)
@@ -47,9 +47,9 @@ function displayNowRecruitingEventList() {
 
 
 function displayRecentEventList() {
-  $.getJSON('json/act-recent-event.json', function(result) {
+  $.getJSON('json/listRecommand.json', function(result) {
     var templateFn = Handlebars.compile($('#act-recent-event-template').text())
-    var generatedHTML = templateFn(result)
+    var generatedHTML = templateFn(result.data)
     var container = $('#act-recent-event-container')
     var html = container.html()
     container.html(html + generatedHTML)

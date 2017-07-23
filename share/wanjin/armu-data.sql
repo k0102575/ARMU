@@ -20,6 +20,7 @@ insert into team_memb (muno, posi, name) values (3, '베이스기타', '오호�
 -- 전공 분류(mjr_type), 전공(mjr)
 insert into mjr_type (name) values ('보컬');
 insert into mjr_type (name) values ('피아노');
+insert into mjr_type (name) values ('밴드');
 
 insert into mjr (name, mjrtno) values ('남성 보컬', 1);
 insert into mjr (name, mjrtno) values ('여성 보컬', 1);
@@ -36,6 +37,8 @@ insert into mjr (name, mjrtno) values ('클래식 피아노 연주', 2);
 insert into mjr (name, mjrtno) values ('실용음악 피아노 반주', 2);
 insert into mjr (name, mjrtno) values ('실용음악 피아노 연주', 2);
 
+insert into mjr (name, mjrtno) values ('어쿠스틱 밴드(팀)', 3);
+
 
 -- 장르 분류(gnr_type), 장르(gnr)
 insert into gnr_type (name) values ('클래식');
@@ -49,12 +52,16 @@ insert into gnr (name, gnrtno) values ('발라드', 2);
 insert into gnr (name, gnrtno) values ('R&B', 2);
 insert into gnr (name, gnrtno) values ('록/포크', 2);
 insert into gnr (name, gnrtno) values ('힙합', 2);
+insert into gnr (name, gnrtno) values ('어쿠스틱', 2);
 
 insert into gnr (name, gnrtno) values ('CCM', 3);
 insert into gnr (name, gnrtno) values ('교회합창', 3);
 
 insert into gnr (name, gnrtno) values ('뮤지컬', 5);
 
+insert into gnr (name, gnrtno) values ('보사노바', 4);
+insert into gnr (name, gnrtno) values ('모던재즈', 4);
+insert into gnr (name, gnrtno) values ('뉴에이지', 4);
 
 
 -- 테마 분류(thm_type), 테마(thm)
@@ -80,7 +87,7 @@ insert into thm (name, thmtno) values ('대학교 축제', 4);
 -- 뮤지션 전공(mjr_musi)
 insert into mjr_musi (muno, mjrno) values (1, 1);
 insert into mjr_musi (muno, mjrno) values (2, 2);
-
+insert into mjr_musi (muno, mjrno) values (3, 14);
 
 -- 뮤지션 장르(gnr_musi)
 insert into gnr_musi (muno, gnrno) values (1, 1);
@@ -88,6 +95,10 @@ insert into gnr_musi (muno, gnrno) values (1, 6);
 
 insert into gnr_musi (muno, gnrno) values (2, 1);
 insert into gnr_musi (muno, gnrno) values (2, 2);
+
+insert into gnr_musi (muno, gnrno) values (3, 11);
+
+
 
 
 -- 뮤지션 테마(thm_musi)
@@ -98,6 +109,11 @@ insert into thm_musi (muno, thmno) values(2, 2);
 insert into thm_musi (muno, thmno) values(2, 6);
 insert into thm_musi (muno, thmno) values(2, 7);
 insert into thm_musi (muno, thmno) values(2, 8);
+
+insert into thm_musi (muno, thmno) values(3, 6);
+insert into thm_musi (muno, thmno) values(3, 7);
+insert into thm_musi (muno, thmno) values(3, 8);
+insert into thm_musi (muno, thmno) values(3, 1);
 
 
 -- 지역 분류(loc_type), 지역(loc)
@@ -170,3 +186,21 @@ insert into loc (name, loctno) values ('북구', 3);
 insert into loc (name, loctno) values ('수성구', 3);
 insert into loc (name, loctno) values ('달서구', 3);
 insert into loc (name, loctno) values ('달성군', 3);
+
+
+
+--일반회원
+insert into memb (name, phone, pwd, email) values ('엄진영', '010-1111-2222',  password('1111'), 'jinyoungeom@gmail.com');
+
+insert into gmemb (gno) values (4);
+
+-- 이벤트
+insert into evn (title, gno, thmno, mjrno, gnrno, locno, pay, ddt, date) values ("결혼식 축가 구해요~!", 4, 2, 2, 1, 22, 200000, '2017-08-10', '2017-08-20');
+insert into evn (title, gno, thmno, mjrno, gnrno, locno, pay, ddt, date) values ("결혼식 피아노 반주자를 구합니다!", 4, 2, 1, 10, 14, 150000, '2017-08-10', '2017-08-20');
+
+-- 이벤트 참여신청(evn_appy)
+insert into evn_appy (eno, muno) values (1, 1);
+insert into evn_appy (eno, muno) values (1, 2);
+
+-- 이벤트&뮤지션 매칭정보(mtc)
+insert into mtc (muno, eno, mtcdt) values (3, 2, '2017-07-22'); 
