@@ -72,7 +72,7 @@ function appendChatBubble() {
 	.addClass(myAlias ? "me" : "him")
 	.html(value)
 	.appendTo(messageBox)
-	.append($('<img>').attr('src', myAlias ? '' : '../musician/photo/m1.jpg').addClass(myAlias ? '' : 'sender-img'))
+	.append($('<img>').attr('src', myAlias ? '' : '../gmode/photo/musician/m1.jpg').addClass(myAlias ? '' : 'sender-img'))
 	.append($('<div>').addClass('tail').addClass(myAlias ? "me-tail" : "him-tail"))
 	.append($('<div>').addClass('tail-white').addClass(myAlias ? "me-tail-white" : "him-tail-white"))
 	msgInput.val('')
