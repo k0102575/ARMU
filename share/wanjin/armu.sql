@@ -453,11 +453,7 @@ CREATE INDEX IX_gnr
 		name ASC -- 분야명
 	);
 
--- 장르 인덱스2
-CREATE INDEX IX_gnr2
-	ON gnr( -- 장르
-		name ASC -- 분야명
-	);
+
 
 ALTER TABLE gnr
 	MODIFY COLUMN gnrno INTEGER NOT NULL AUTO_INCREMENT COMMENT '장르 번호';

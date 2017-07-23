@@ -1,0 +1,17 @@
+{
+  "list": [
+    {
+      "img": "musician/photo/0choi2.jpg",
+      "name": "제이쓴",
+      "score": "5",
+      "favorite" : "true",
+      "tag": ["어쩌구", "저쩌구", "이러쿵"]
+    }, {
+      "img": "musician/photo/0choi2.jpg",
+      "name": "제이쓴",
+      "score": "5",
+      "favorite" : "true",
+      "tag": ["어쩌구", "저쩌구", "이러쿵"]
+    }
+  ]
+}

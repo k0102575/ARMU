@@ -1,0 +1,103 @@
+body>div {
+	background-color: white !important;
+}
+
+.chat-header {
+  position: relative;
+}
+
+.chat-header-head {
+  margin-top: 2%;
+  font-size: 46px;
+  text-align: center;
+}
+
+.chat-header-close-btn {
+  position: absolute;
+  right: 4%;
+  top: 1%;
+  font-size: 33px;
+  font-weight: 300 !important;
+  color: black !important;
+}
+
+.chat-header-desc {
+  margin-top: 7%;
+  font-size: 38px;
+  text-align: center;
+}
+
+.chat-listbox {
+  margin-top: 5%;
+}
+
+.chat-list {
+  height: 250px;
+  padding: 15px 0 !important;
+  padding-right: 5% !important;
+  padding-left: 250px !important;
+  font-size: 30px;
+}
+
+.chat-list-img {
+  max-height: 100% !important;
+  max-width: 100% !important;
+  height: 220px !important;
+  width:  220px !important;
+  object-fit: cover !important;
+  margin: 24px 13px !important;
+  border-radius: 50%;
+  /*width: 100%;*/
+  overflow: hidden;
+  top: 2% !important;
+}
+
+.chat-list-name {
+  position: relative;
+  z-index: 50;
+  display: block;
+  width: 100%;
+  font-size: 45px;
+  margin-top: 4%;
+}
+
+.chat-list-unread-badge {
+      display: inline-block;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    background-color: black;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 30px;
+    font-weight: 200;
+    color: white;
+    line-height: 31px;
+    vertical-align: top;
+}
+
+.chat-list-lastchat-date {
+  position: absolute;
+  display: inline-block;
+  width: auto;
+  right: -5%;
+  font-size: 35px;
+  font-weight: 300;
+}
+
+.chat-list-msg {
+  display: block;
+  margin-top: 1.5%;
+  font-size: 40px;
+  font-weight: 300;
+  text-overflow: ellipsis;
+  overflow:hidden;
+  white-space: nowrap;
+}
+
+.chat-list-match-status, .chat-list-event-date {
+  display: inline-block;
+  margin-top: 2%;
+  font-size: 37px;
+  font-weight: 300;
+}

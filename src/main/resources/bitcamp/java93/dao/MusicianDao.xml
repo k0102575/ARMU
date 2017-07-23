@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.java93.dao.MusicianDao">
+
+	<resultMap type="musician" id="musicianMap">
+		<id column="mno" property="no" />
+		<result column="name" property="name" />
+		<result column="phone" property="phone" />
+		<result column="pwd" property="password" />
+		<result column="email" property="email" />
+		<result column="pay" property="pay" />
+		<result column="age" property="age" />
+		<result column="team" property="isTeam" />
+		<result column="hpg" property="homepage" />
+		<result column="intro" property="intro" />
+		<result column="path" property="photo" />
+		<collection property="majorList" ofType="string"> 
+	     	<result column="major"/> 
+ 		</collection>
+   	<collection property="genreList" ofType="string"> 
+			  <result column="genre"/> 
+		</collection> 
+		<collection property="themeList" ofType="string"> 
+			 <result column="theme"/> 
+		</collection>
+	</resultMap>
+
+	<sql id="selectBasic">
+		select m.mno, m.name, mu.path
+		from musi mu inner join memb m on mu.muno=m.mno
+	</sql>
+
+	<sql id="selectMajor">
+		select m.mno, m.name, mu.path, mj.name as major
+		from musi mu inner join memb m on mu.muno=m.mno
+		left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on
+		mjm.mjrno=mj.mjrno
+	</sql>
+	
+	<sql id="selectAll">
+    select m.mno, m.name, m.phone, m.email, mu.pay, mu.age, mu.team, mu.hpg, mu.path, mj.name as major, g.name as genre, t.name as theme
+  from musi mu inner join memb m on mu.muno=m.mno
+  left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on mjm.mjrno=mj.mjrno
+  left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g on gm.gnrno=g.gnrno
+  left outer join thm_musi tm on mu.muno=tm.muno left outer join thm t on tm.thmno=t.thmno
+  </sql>
+
+
+	<!-- 
+ -->
+
+	<!-- select m.mno, m.name, m.phone, m.email, mu.pay, mu.age, mu.team, mu.hpg, 
+		mu.path, mj.name as major from musi mu inner join memb m on mu.muno=m.mno 
+		left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on 
+		mjm.mjrno=mj.mjrno union select m.mno, m.name, m.phone, m.email, mu.pay, 
+		mu.age, mu.team, mu.hpg, mu.path, g.name as genre from musi mu inner join 
+		memb m on mu.muno=m.mno left outer join gnr_musi gm on mu.muno=gm.muno left 
+		outer join gnr g on gm.gnrno=g.gnrno union select m.mno, m.name, m.phone, 
+		m.email, mu.pay, mu.age, mu.team, mu.hpg, mu.path, t.name as theme from musi 
+		mu inner join memb m on mu.muno=m.mno left outer join thm_musi tm on mu.muno=tm.muno 
+		left outer join thm t on tm.thmno=t.thmno -->
+
+
+	<select id="selectRecommandList" resultMap="musicianMap">
+		<include refid="selectAll" />
+		order by m.name asc
+	</select>
+
+	<!-- <select id="selectMajorList" resultMap="musicianMap" parameterType="int"> 
+		<include refid="selectMajor"/> where mno = #{no} order by m.name asc </select> -->
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

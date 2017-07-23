@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>change-password</title>
+  <meta name="viewport" content="user-scalable=no">
+  <link rel="stylesheet" href="../node_modules/animsition/dist/css/animsition.min.css">
+  <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+  <link href="common.css" rel="stylesheet" type="text/css" media="all">
+  <link rel="stylesheet" href="mypage.css">
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+  <script src="../node_modules/animsition/dist/js/animsition.min.js"></script>
+</head>
+
+<body>
+
+  <div id="mypage-container" class="animsition">
+    <div id="header">
+      <a href="mypage.html"> <i class="fa fa-angle-left" aria-hidden="true"></i></a>
+      <div id="header-title">비밀번호 변경</div>
+      </a>
+    </div>
+    <br><br><br><br>
+
+
+    <img id="profile-img" src="../ARMU-Image/ARMU_icon/profile-default.png" alt="">
+    <p id="name">홍길동</p>
+    <div id="change-password">
+      <p style="text-align:center">asdasd@asdfasd.com</p>
+      <br><br> &nbsp;현재 비밀번호<input class="cp-content" type="password" name="" value=""><br> &nbsp;변경할 비밀번호
+      <input id="pwd01" class="cp-content" type="password" name="" value=""><br> &nbsp;비밀번호 확인
+      <input id="pwd02" class="cp-content" type="password" name="" value=""><br><br>
+      <center>
+        <a href="mypage.html"><input class="cp-btn" id="cp-cancel" type="button" name="button" value="취소"></a>
+        <input class="cp-btn" id="cp-change" type="button" name="button" value="변경">
+      </center>
+      <br>
+    </div>
+
+
+  </div>
+  <!-- container -->
+</body>
+<script type="text/javascript" src="mypage.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $(".animsition").animsition({
+    inClass: 'fade-in-right',
+    outClass: 'fade-out-down',
+    inDuration: 500,
+    outDuration: 700,
+    linkElement: '.animsition-link',
+    // e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
+    loading: true,
+    loadingParentElement: 'body', //animsition wrapper element
+    loadingClass: 'animsition-loading',
+    loadingInner: '', // e.g '<img src="loading.svg" />'
+    timeout: false,
+    timeoutCountdown: 5000,
+    onLoadEvent: true,
+    browser: [ 'animation-duration', '-webkit-animation-duration'],
+    // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
+    // The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
+    overlay : false,
+    overlayClass : 'animsition-overlay-slide',
+    overlayParentElement : 'body',
+    transition: function(url){ window.location.href = url; }
+  });
+});
+
+</script>
+
+</html>

@@ -22,9 +22,10 @@ if(isEvent) {
 
 
 function displayRecommandByEventMusiList() {
-  $.getJSON('json/rec-by-event-musi.json', function(result) {
+  $.getJSON('../musician/list.json', function(result) {
+	  console.log(result.data)
     var templateFn = Handlebars.compile($('#rec-by-event-musi-template').text())
-    var generatedHTML = templateFn(result)
+    var generatedHTML = templateFn(result.data)
     var container = $('#rec-by-event-musi-container')
     var html = container.html()
     container.html(html + generatedHTML)

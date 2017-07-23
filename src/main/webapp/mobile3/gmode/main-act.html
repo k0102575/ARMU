@@ -1,0 +1,209 @@
+<div class="act-no-event">
+  아직 작성하신 이벤트가 없어요<br><br>
+  <i class="fa fa-frown-o" aria-hidden="true" id='act-no-event-cry'></i><br><br><br>
+  <a href="#" class='act-event-add-btn'>이벤트 등록하기</a>
+</div>
+<!-- act-no-event 끝 -->
+
+<div class="act-yes-event">
+  <!--진행중인 이벤트 -->
+  <div class="act-container" id='act-ongoing-event-container'>
+     <p class='act-title'>진행중인 이벤트</p>
+
+  </div><!-- act-container-->
+  <!-- 진행중인 이벤트 끝 -->
+
+  <!--모집중인 이벤트-->
+  <div class="act-container" id='act-now-recruiting-event-container'>
+    <p class='act-title'>모집중인 이벤트</p>
+  </div><!-- act-container -->
+  <!--모집중인 이벤트 끝-->
+
+  <!--최근 활동-->
+  <div class="act-container" id='act-recent-event-container'>
+    <p class='act-title'>최근 활동</p>
+  </div><!-- act-container-->
+  <!-- 최근 활동 끝 -->
+
+</div>
+<!-- act-yes-event 끝 -->
+
+
+
+<script id="act-ongoing-event-template" type="text/x-handlebars-template">
+{{#each list}}
+  <div class="act-recent-event">
+    <div class="act-recent-event-title"><span>{{title}}</span></div><!-- act-now-recruiting-title -->
+    <div class="act-recent-event-date"><span>{{date}}</span></div>
+    <div class='act-recent-event-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{area}}</span></div>
+    <div class="act-recent-event-price">{{price}}<i class="fa fa-krw" aria-hidden="true"></i></div>
+    <!--함께한 뮤지션-->
+    <div class="act-recent-event-musibox">
+      <span class='act-recent-event-musibox-title'>함께하는 뮤지션: </span>
+      <br>
+      <div class="act-recent-event-musi">
+        <div class="act-recent-event-musi-img"></div>
+        <div class="act-recent-event-musi-name"><span>{{musiName}}</span>
+          <div class="act-recent-event-musi-score">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+          </div>
+        </div>
+          <div class="act-recent-event-musi-hashtagbox">
+            {{#each musiTag}}
+            <span>#{{this}}</span>
+            {{/each}}
+          </div>
+        </div>
+    </div><!-- act-recent-event-musibox -->
+    <!--함께하는 뮤지션 끝-->
+  </div><!-- act-recent-event -->
+{{/each}}
+</script>
+
+<script id="act-now-recruiting-event-template" type="text/x-handlebars-template">
+{{#each list}}
+<div class="act-now-recruiting">
+  <div class="act-now-recruiting-dday">D-{{dDay}}</div>
+  <div class="act-now-recruiting-title"><span>{{title}}</span></div><!-- act-now-recruiting-title -->
+  <div class="act-now-recruiting-date"><span>{{date}}</span></div>
+  <div class='act-now-recruiting-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{area}}</span></div>
+  <div class="act-now-recruiting-price">{{price}}<i class="fa fa-krw" aria-hidden="true"></i></div>
+  <div class="act-now-recruiting-hashtagbox">
+    {{#each tag}}
+    <span>#{{this}}</span>
+    {{/each}}
+  </div>
+
+  <hr class='act-now-recruiting-separator'>
+
+  <!--지원자-->
+  <div class="act-now-recruiting-musibox">
+    <span class='act-now-recruiting-musibox-title'>지원자 <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+    <br>
+    <p class='act-now-recruiting-musibox-subtitle'>뮤지션 <i class="fa fa-long-arrow-right" aria-hidden="true"></i> 내 이벤트 선택</p>
+
+    {{#each applicantList}}
+    <div class="act-now-recruiting-applicant">
+      <div class="act-now-recruiting-applicant-img"></div>
+      <div class="act-now-recruiting-applicant-name"><span>{{name}}</span>
+        <div class="act-now-recruiting-applicant-score">
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star-o" aria-hidden="true"></i>
+        </div><!-- act-now-recruiting-applicant-score -->
+      </div><!-- act-now-recruiting-applicant-name -->
+      <div class="act-now-recruiting-applicant-hashtagbox">
+        {{#each tag}}
+        <span>#{{this}}</span>
+        {{/each}}
+      </div>
+      <hr class='act-now-recruiting-applicant-separator'>
+      <div class="act-now-recruiting-applicant-contents">{{contents}}</div>
+      <div class="act-now-recruiting-applicant-btnbox">
+        <div class="act-now-recruiting-applicant-btn with-line">확정하기</div>
+        <div class="act-now-recruiting-applicant-btn with-line">거절하기</div>
+        <div class="act-now-recruiting-applicant-btn">메세지 보내기</div>
+      </div>
+    </div><!-- act-now-recruiting-applicant -->
+    {{/each}}
+
+  </div><!-- act-now-recruiting-musibox -->
+  <!--지원자 끝-->
+
+  <hr class='act-now-recruiting-separator'>
+
+  <!--내가 요청한 뮤지션-->
+  <div class="act-now-recruiting-musibox act-now-recruiting-calleebox">
+    <span class='act-now-recruiting-musibox-title'>내가 요청한 뮤지션 <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+    <br>
+    <p class='act-now-recruiting-musibox-subtitle'>나 <i class="fa fa-long-arrow-right" aria-hidden="true"></i> 뮤지션 선택</p>
+
+    {{#each calleeList}}
+    <div class="act-now-recruiting-callee">
+      <div class="act-now-recruiting-callee-info">
+        <div class="act-now-recruiting-callee-img"></div>
+        <div class="act-now-recruiting-callee-name"><span>{{name}}</span>
+          <div class="act-now-recruiting-callee-score">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+          </div><!-- act-now-recruiting-applicant-score -->
+        </div><!-- act-now-recruiting-applicant-name -->
+        <div class="act-now-recruiting-callee-hashtagbox">
+          {{#each tag}}
+          <span>#{{this}}</span>
+          {{/each}}
+        </div>
+      </div>
+      <hr class='act-now-recruiting-callee-separator'>
+      <div class="act-now-recruiting-callee-contents">{{contents}}</div>
+      <div class="act-now-recruiting-callee-btnbox">
+        <div class="act-now-recruiting-callee-btn with-line">요청 취소하기</div>
+        <div class="act-now-recruiting-callee-btn">메시지 보내기</div>
+      </div>
+    </div><!-- act-now-recruiting-callee -->
+    {{/each}}
+
+  </div><!-- act-now-recruiting-musibox act-now-recruiting-calleebox -->
+  <!--내가 요청한 뮤지션 끝-->
+
+</div><!-- act-now-recruiting -->
+{{/each}}
+</script>
+
+<script id="act-recent-event-template" type="text/x-handlebars-template">
+{{#each list}}
+<div class="act-recent-event">
+  <div class="act-recent-event-title"><span>{{title}}</span></div><!-- act-now-recruiting-title -->
+  <div class="act-recent-event-date"><span>{{date}}</span></div>
+  <div class='act-recent-event-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{area}}</span></div>
+  <div class="act-recent-event-price">{{price}}<i class="fa fa-krw" aria-hidden="true"></i></div>
+  <!--함께한 뮤지션-->
+  <div class="act-recent-event-musibox">
+    <span class='act-recent-event-musibox-title'>함께한 뮤지션: </span>
+    <br>
+    <div class="act-recent-event-musi">
+        <div class="act-recent-event-musi-img"></div>
+        <div class="act-recent-event-musi-name"><span>{{musiName}}</span>
+          <div class="act-recent-event-musi-score">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="act-recent-event-musi-hashtagbox">
+          {{#each musiTag}}
+          <span>#{{this}}</span>
+          {{/each}}
+        </div>
+      </div>
+  </div><!-- act-recent-event-musibox -->
+  <!--함께한 뮤지션 끝-->
+</div><!-- act-recent-event -->
+{{/each}}
+</script>
+
+<script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
+<script src="/js/mobile/gmode/main-act.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- -->
