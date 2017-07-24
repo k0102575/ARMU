@@ -39,6 +39,8 @@ reviewContentHide.on('click', function() {
 })
 
 function starAdd() {
+  
+  
   for (var i = 1; i <= starInteger; i++) {
     reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
   }
@@ -50,6 +52,13 @@ function starAdd() {
   } else {
     reviewRating.append("<i class='fa fa-star-half-o' aria-hidden='true'></i>")
   }
+  
+  if(starInteger < 4) {
+    for (var i = 1; i <= 4 - starInteger; i++) {
+      reviewRating.append("<i class='fa fa-star-o' aria-hidden='true'></i>")
+    }
+  }
+  
 }
 
 function reviewSetting() {
