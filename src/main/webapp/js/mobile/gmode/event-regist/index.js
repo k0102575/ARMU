@@ -58,11 +58,11 @@ pageCancelPageReturn.on('click', function() {
 })
 
 pageCancelPageQuit.on('click', function() {
-  location.href="index.html"
+  location.href="/mobile/gmode/index.html"
 })
 
 eventPage1Cancel.on('click', function() {
-  location.href="index.html"
+  location.href="/mobile/gmode/index.html"
 })
 
 eventPage1Next.on('click', function() {
@@ -181,7 +181,7 @@ eventPage7Next.on('click', function() {
 })
 
 eventPage8Home.on('click', function() {
-  location.href="index.html"
+  location.href="/mobile/gmode/index.html"
 })
 
 function progress(per) {

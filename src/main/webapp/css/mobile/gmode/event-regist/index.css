@@ -95,7 +95,7 @@ select {
 	-webkit-appearance: none;  /* 네이티브 외형 감추기 */
   -moz-appearance: none;
   appearance: none;
-	background: url(../ARMU-Image/ARMU_icon/mobile_icon/select-arrow.png) no-repeat 95% 50%;
+	background: url(/image/icon/mobile_icon/select-arrow.png) no-repeat 95% 50%;
   background-color: white;
   border: 5px solid #525252;
   color: #525252;
@@ -297,12 +297,12 @@ select::-ms-expand {
 
 .ui-datepicker .ui-datepicker-prev .ui-icon { 
 	width: 32px; height: 32px;
-  background: url(../ARMU-Image/ARMU_icon/mobile_icon/prev.png) top left no-repeat; 
+  background: url(/image/icon/mobile_icon/prev.png) top left no-repeat; 
   }
   
 .ui-datepicker .ui-datepicker-next .ui-icon { 
 	 width: 32px; height: 32px;
-  background: url(../ARMU-Image/ARMU_icon/mobile_icon/next.png) top left no-repeat;  
+  background: url(/image/icon/mobile_icon/next.png) top left no-repeat;  
 	}
 
 /* 이벤트 페이지 3 끝 */

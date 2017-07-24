@@ -5,7 +5,7 @@ var headerMenuDetail = $("#header-menu-detail"),
     moveTopBtn = $("#move_top_btn")
 
 $(document).ready(function() {
-  headerMenuDetail.load("header-menu-detail.html");
+  headerMenuDetail.load("/mobile/header-menu-detail.html");
 })
 
 $.getJSON('json/musician-list.json', function(result) {
