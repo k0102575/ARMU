@@ -23,7 +23,9 @@ var progressBar = $("#event-progressbar"),
     eventPage6 = $("#event-page6"),
     eventPage6Prev = $("#event-page6-prev"),
     eventPage6Next = $("#event-page6-next"),
-    eventPage6Calendar = $("#calendar-page6"),
+    inputRehearseText = $("#input-rehearse-text"),
+    inputRehearseCount = $("#input-rehearse-count"),
+    inputRehearsePay = $("#input-rehearse-pay"),
     eventPage7 = $("#event-page7"),
     eventPage7Prev = $("#event-page7-prev"),
     eventPage7Next = $("#event-page7-next"),
@@ -73,7 +75,7 @@ eventPage1Next.on('click', function() {
 })
 
 eventPage2Prev.on('click', function() {
-  location.href="event-regist.html"
+  location.href="/mobile/gmode/event-regist/index.html"
 })
 
 eventPage2Next.on('click', function() {
@@ -137,10 +139,6 @@ eventPage5Next.on('click', function() {
     eventPay =  $("#event-pay").val()
     eventRequire =  $("#event-require").val()
     progress(80)
-    eventPage6Calendar.datepicker({
-      dayNames: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
-      dayNamesMin: ["일"," 월"," 수"," 목"," 금"," 토"," 일"]
-    });
   });
 })
 
@@ -154,16 +152,21 @@ eventPage6Prev.on('click', function() {
 eventPage6Next.on('click', function() {
   eventPage6.toggle(0);
   eventPage7.toggle(0 , function() {
-    matchDate = $("#calendar-page3").val()
     progress(95)
-    nameConfirm.val(eventName)
-    cathgoryConfirm.val(themeVal + "  |  " + majorVal + "  |  " + genreVal)
-    dateConfirm.val(eventDate)
-    matchConfirm.val(matchDate)
-    locationConfirm.val(sido + " " + city + " " + street + " " + detailLocation)
-    payConfirm.val(eventPay)
-    requireConfirm.val(eventRequire)
   });
+})
+
+$(".btn").on('click', function(event) {
+  if(event.currentTarget.innerText == "네") {
+	  inputRehearseText.css("display", "block")
+  	  inputRehearseCount.css("display", "block")
+  	  inputRehearsePay.css("display", "block")
+  } else if (event.currentTarget.innerText == "아니요") {
+	  inputRehearseText.css("display", "none")
+  	  inputRehearseCount.css("display", "none")
+  	  inputRehearsePay.css("display", "none")
+  }
+  
 })
 
 eventPage7Prev.on('click', function() {

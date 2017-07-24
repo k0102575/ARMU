@@ -54,7 +54,7 @@
     <span id="theme-text">테마</span>
     <select name="theme" id="theme-select-menu" size="1">
       <option class="select-option">테마 선택</option>
-      <option class="select-option" value="테마1" >테마1</option>
+      <option class="select-option" value="테마1">테마1</option>
       <option class="select-option" value="테마2">테마2</option>
       <option class="select-option" value="테마3">테마3</option>
     </select>
@@ -205,18 +205,34 @@
   <div id="event-page6">
   
   <div id="event-page6-text">
-    매칭 확정일을 설정해 주세요
+  리허설이 있어야 하는 이벤트이신가요?
   </div>
-    
-    <div id="calendar-page6"></div>
-    
-    <div id="event-page6-btn">
+	
+	<div id="rehearse-check-btn">
+	  <input id="toggle-on" class="toggle toggle-left" name="toggle" value="false" type="radio">
+		<label for="toggle-on" class="btn">네</label>
+		<input id="toggle-off" class="toggle toggle-right" name="toggle" value="true" type="radio"  checked>
+		<label for="toggle-off" class="btn">아니요</label>
+	</div>
+	
+	<div id="event-rehearse-text">
+  사전 미팅에 대한 정보를 받는다<br>
+  사전 미팅에 대한 정보를 받는다<br>
+  사전 미팅에 대한 정보를 받는다<br>
+  사전 미팅에 대한 정보를 받는다<br>
+  </div>
+  
+  <input type="text" id="input-rehearse-text" placeholder="리허설 정보를 입력하세요">
+  <input type="number" id="input-rehearse-count" placeholder="리허설 횟수를 입력하세요">
+	<input type="number" id="input-rehearse-pay" placeholder="리허설 비용을 입력하세요">
+	
+	<div id="event-page6-btn">
     <div id="event-page6-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
     <div id="event-page6-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
     </div>
-    <!-- event-page6-btn -->
-    
-  </div>
+  <!-- event-page5-btn -->
+
+	</div>
 <!-- 이벤트 페이지6 끝 -->
 
 <!-- 이벤트 페이지7 시작 -->

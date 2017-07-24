@@ -197,40 +197,48 @@ select::-ms-expand {
 	font-size: 12px;
 }
 
-#theme-text {
-  position: absolute;
-  top: 25%;
-  left: 16%;
-  font-size: 2.5em;
-  color: #525252;
+#event-select {
+  width: 100%;
+  position: relative;
+  top: 10%;
+  height: 70%;
 }
+
+#theme-select-menu, #major-select-menu, #genre-select-menu {
+  width: 69%;
+  height: 12%;
+  left: 15%;
+}
+
+#theme-text, #major-text, #genre-text {
+	font-size: 2.6em;
+	position: absolute;
+	left: 15%;
+}
+
 
 #theme-select-menu {
-	left: 7%;
+	top: 20%;
 }
 
-#major-text {
-  position: absolute;
-  top: 25%;
-  left: 45%;
-  font-size: 2.5em;
-  color: #525252;
+#theme-text {
+	top: 12%;
 }
 
 #major-select-menu {
-  left: 37%;
+  top: 45%;
 }
 
-#genre-text {
-  position: absolute;
-  top: 25%;
-  left: 76%;
-  font-size: 2.5em;
-  color: #525252;
+#major-text {
+	top: 38%;
 }
 
 #genre-select-menu {
-  left: 67%;
+  top: 70%;
+}
+
+#genre-text {
+	top: 62%;
 }
 
 /* 이벤트 페이지 2 끝 */
@@ -405,6 +413,135 @@ select::-ms-expand {
 }
 
 /* 이벤트 페이지 5 끝 */
+
+/* 이벤트 페이지 6 시작 */
+
+#rehearse-check-btn {
+	position: absolute;
+	width: 50%;
+  left: 27%;
+  top: 12%;
+}
+
+.btn {
+  border: 3px solid #1a1a1a;
+  display: inline-block;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+  -webkit-transition: background 600ms ease, color 600ms ease;
+  transition: background 600ms ease, color 600ms ease;
+  height: 30px;
+  font-size: 2em;
+  padding-bottom: 30px;
+  }
+
+input[type="radio"].toggle {
+  display: none;
+}
+input[type="radio"].toggle + label {
+  cursor: pointer;
+  min-width: 200px;
+}
+input[type="radio"].toggle + label:hover {
+  background: none;
+  color: #1a1a1a;
+}
+input[type="radio"].toggle + label:after {
+  background: #333333;
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  -webkit-transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+  transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+  width: 100%;
+  z-index: -1;
+}
+input[type="radio"].toggle.toggle-left + label {
+  border-right: 0;
+}
+input[type="radio"].toggle.toggle-left + label:after {
+  left: 100%;
+}
+input[type="radio"].toggle.toggle-right + label {
+  margin-left: -5px;
+}
+input[type="radio"].toggle.toggle-right + label:after {
+  left: -100%;
+}
+input[type="radio"].toggle:checked + label {
+  cursor: default;
+  color: #fff;
+  -webkit-transition: color 200ms;
+  transition: color 200ms;
+}
+input[type="radio"].toggle:checked + label:after {
+  left: 0;
+}
+
+#event-rehearse-text {
+	position: absolute;
+  color: black;
+  top: 20%;
+  font-size: 200%;
+  font-weight: normal;
+  text-align: center;
+  width: 100%;
+}
+
+#event-rehearse-text {
+	position: absolute;
+  color: black;
+  top: 20%;
+  font-size: 200%;
+  font-weight: normal;
+  text-align: center;
+  width: 100%;
+}
+
+#input-rehearse-text {
+  position: absolute;
+  left: 10%;
+  bottom: 50%;
+  width: 75%;
+  height: 12%;
+  border: 5px solid #525252;
+  color: #525252;
+  padding-left: 4%;
+  font-size: 2.6em;
+  display: none;
+}
+
+#input-rehearse-count {
+  position: absolute;
+  left: 10%;
+  bottom: 37%;
+  width: 75%;
+  height: 7%;
+  border: 5px solid #525252;
+  color: #525252;
+  padding-left: 4%;
+  font-size: 2.6em;
+  display: none;
+}
+
+#input-rehearse-pay {
+	position: absolute;
+  left: 10%;
+  bottom: 25%;
+  width: 75%;
+  height: 7%;
+  border: 5px solid #525252;
+  color: #525252;
+  padding-left: 4%;
+  font-size: 2.6em;
+  display: none;
+}
+
+
+
+/* 이벤트 페이지 6 끝 */
 
 /* 이벤트 페이지 7 시작 */
 
