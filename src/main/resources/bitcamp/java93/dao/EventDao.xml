@@ -8,15 +8,15 @@
 		<id column="eno" property="no" />
     <result column="eno" property="no" />
 		<result column="title" property="title" />
-		<result column="gno" property="memberNo" />
+		<result column="gno" property="writer" />
 		<result column="theme" property="theme" />
 		<result column="major" property="major" />
 		<result column="genre" property="genre" />
 		<result column="location" property="location" />
+		<result column="addr" property="address" />
 		<result column="pay" property="pay" />
-		<result column="ddt" property="dueDate" />
 		<result column="req" property="requirement" />
-		<result column="song" property="song" />
+		<result column="cont" property="contents" />
 		<result column="dpay" property="downPay" />
 		<result column="date" property="date" />
 		<association property="musician" column="name" resultMap="musicianMap2">
@@ -41,7 +41,7 @@
   
   
 	<sql id="selectBasic">
-  select eno, title, t.name as theme, mj.name as major, g.name as genre, l.name as location, pay, ddt, date
+  select eno, title, t.name as theme, mj.name as major, g.name as genre, l.name as location, addr, pay, date, cont
   from evn e inner join thm t on e.thmno=t.thmno
   inner join mjr mj on e.mjrno=mj.mjrno
   inner join gnr g on e.gnrno=g.gnrno
@@ -50,7 +50,7 @@
 	
 	<sql id="selectEventAppliedByMusician">
   select e.eno, title, t.name as theme, mj.name as major, g.name as genre, 
-             l.name as location, e.pay, ddt, date, m.mno, m.name
+             l.name as location, addr, e.pay, date, m.mno, m.name
   from evn e inner join thm t on e.thmno=t.thmno
   inner join mjr mj on e.mjrno=mj.mjrno
   inner join gnr g on e.gnrno=g.gnrno
@@ -58,10 +58,12 @@
   left outer join evn_appy ea on e.eno=ea.eno
   left outer join memb m on ea.muno=m.mno
   </sql>
-  
-  <sql id="selectOngoing">
-  select e.eno, title, t.name as theme, mj.name as major, g.name as genre, 
-             l.name as location, e.pay, ddt, date, m.mno, m.name, mu.path as path,
+
+ 
+
+	<select id="selectOngoingList" resultMap="eventMap, musicianMap2">
+	select e.eno, title, t.name as theme, mj.name as major, g.name as genre, 
+             l.name as location, addr, e.pay, date, m.mno, m.name, mu.path as path,
              mj2.name as major2, g2.name as genre2, t2.name as theme2
   from evn e inner join thm t on e.thmno=t.thmno
   inner join mjr mj on e.mjrno=mj.mjrno
@@ -73,13 +75,6 @@
   left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj2 on mjm.mjrno=mj2.mjrno
   left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g2 on gm.gnrno=g2.gnrno
   left outer join thm_musi tm on mu.muno=tm.muno left outer join thm t2 on tm.thmno=t2.thmno
-  </sql>
-
-
- 
-
-	<select id="selectOngoingList" resultMap="eventMap, musicianMap2">
-		<include refid="selectOngoing" />
 		order by title asc
 	</select>
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+	<filteredResources/>
 	<name>armu</name>
 	<comment></comment>
 	<projects/>
@@ -24,5 +25,4 @@
 		</buildCommand>
 	</buildSpec>
 	<linkedResources/>
-	<filteredResources/>
 </projectDescription>

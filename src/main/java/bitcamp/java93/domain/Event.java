@@ -6,15 +6,15 @@ import java.util.ArrayList;
 public class Event {
   int no;
   String title;
-  int memberNo;
+  int writer;
   String theme;
   String major;
   String genre;
   String location;
+  String address;
   int pay;
-  Date dueDate;
   String requirement;
-  String song;
+  String contents;
   int downPay;
   Date date;
   ArrayList<Musician> applicantList;
@@ -32,11 +32,11 @@ public class Event {
   public void setTitle(String title) {
     this.title = title;
   }
-  public int getMemberNo() {
-    return memberNo;
+  public int getWriter() {
+    return writer;
   }
-  public void setMemberNo(int memberNo) {
-    this.memberNo = memberNo;
+  public void setWriter(int writer) {
+    this.writer = writer;
   }
   public String getTheme() {
     return theme;
@@ -62,17 +62,17 @@ public class Event {
   public void setLocation(String location) {
     this.location = location;
   }
+  public String getAddress() {
+    return address;
+  }
+  public void setAddress(String address) {
+    this.address = address;
+  }
   public int getPay() {
     return pay;
   }
   public void setPay(int pay) {
     this.pay = pay;
-  }
-  public Date getDueDate() {
-    return dueDate;
-  }
-  public void setDueDate(Date dueDate) {
-    this.dueDate = dueDate;
   }
   public String getRequirement() {
     return requirement;
@@ -80,11 +80,11 @@ public class Event {
   public void setRequirement(String requirement) {
     this.requirement = requirement;
   }
-  public String getSong() {
-    return song;
+  public String getContents() {
+    return contents;
   }
-  public void setSong(String song) {
-    this.song = song;
+  public void setContents(String contents) {
+    this.contents = contents;
   }
   public int getDownPay() {
     return downPay;
@@ -118,12 +118,11 @@ public class Event {
   }
   @Override
   public String toString() {
-    return "Event [no=" + no + ", title=" + title + ", memberNo=" + memberNo + ", theme=" + theme + ", major=" + major
-        + ", genre=" + genre + ", location=" + location + ", pay=" + pay + ", dueDate=" + dueDate + ", requirement="
-        + requirement + ", song=" + song + ", downPay=" + downPay + ", date=" + date + ", applicantList="
+    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", theme=" + theme + ", major=" + major
+        + ", genre=" + genre + ", location=" + location + ", address=" + address + ", pay=" + pay + ", requirement="
+        + requirement + ", contents=" + contents + ", downPay=" + downPay + ", date=" + date + ", applicantList="
         + applicantList + ", pickedList=" + pickedList + ", musician=" + musician + "]";
   }
   
   
-
-}
+  }

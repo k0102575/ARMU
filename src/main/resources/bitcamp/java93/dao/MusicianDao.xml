@@ -7,10 +7,10 @@
 	<resultMap type="musician" id="musicianMap">
 		<id column="mno" property="no" />
 		<result column="name" property="name" />
+		<result column="nick" property="nickName" />
 		<result column="phone" property="phone" />
 		<result column="pwd" property="password" />
 		<result column="email" property="email" />
-		<result column="pay" property="pay" />
 		<result column="age" property="age" />
 		<result column="team" property="isTeam" />
 		<result column="hpg" property="homepage" />
@@ -28,19 +28,19 @@
 	</resultMap>
 
 	<sql id="selectBasic">
-		select m.mno, m.name, mu.path
+		select m.mno, m.name, m.nick, mu.path
 		from musi mu inner join memb m on mu.muno=m.mno
 	</sql>
 
 	<sql id="selectMajor">
-		select m.mno, m.name, mu.path, mj.name as major
+		select m.mno, m.name, m.nick, mu.path, mj.name as major
 		from musi mu inner join memb m on mu.muno=m.mno
 		left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on
 		mjm.mjrno=mj.mjrno
 	</sql>
 	
 	<sql id="selectAll">
-    select m.mno, m.name, m.phone, m.email, mu.pay, mu.age, mu.team, mu.hpg, mu.path, mj.name as major, g.name as genre, t.name as theme
+    select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, mu.path, mj.name as major, g.name as genre, t.name as theme
   from musi mu inner join memb m on mu.muno=m.mno
   left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on mjm.mjrno=mj.mjrno
   left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g on gm.gnrno=g.gnrno
