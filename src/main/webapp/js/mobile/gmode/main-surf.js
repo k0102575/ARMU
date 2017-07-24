@@ -9,6 +9,10 @@
 //      </div>")
 //})
 
+$("document").ready(function(){
+  displaySurfMusiList()
+})
+
 var surfBackscreen = $("#surf-backscreen"),
     filterContainer = $("#filter-container" ),
     filterCancel = $("#filter-cancel"),
@@ -82,13 +86,17 @@ $( function() {
       " - " + $( "#slider-range" ).slider( "values", 1 )  + "대");
   });
 
+function displaySurfMusiList() {
+  $.getJSON('/musician/listSurf.json', function(result) {
+    var templateFn = Handlebars.compile($('#musician-list-template').text())
+    var generatedHTML = templateFn(result.data)
+    var container = $('#musician-surf-list')
+    container.html(generatedHTML)
+    console.log(result)
+  })
+}
 
-$.getJSON('json/musician-list.json', function(result) {
-  var templateFn = Handlebars.compile($('#musician-list-template').text())
-  var generatedHTML = templateFn(result)
-  var container = $('#musician-surf-list')
-  container.html(generatedHTML)
-})
+
 
 var filterLocTab = $('.filter-loc-sub-tab')
 

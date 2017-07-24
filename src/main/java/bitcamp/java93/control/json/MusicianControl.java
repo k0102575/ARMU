@@ -30,6 +30,17 @@ public class MusicianControl {
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
   
+  @RequestMapping("listSurf")
+  public JsonResult listSurf() throws Exception {
+    
+    HashMap<String,Object> dataMap = new HashMap<>();
+    ArrayList<Musician> musicianList = (ArrayList<Musician>) musicianService.listSurf();
+    
+    System.out.println(musicianList);
+    dataMap.put("listSurf", musicianList);
+    return new JsonResult(JsonResult.SUCCESS, dataMap);
+  }
+  
   @RequestMapping("getProfile")
   public JsonResult getProfile() throws Exception {
     

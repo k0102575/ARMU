@@ -8,11 +8,11 @@ public class Musician extends Member  {
   String homepage;
   String intro;
   String photo;
+  char gender;
   ArrayList<String> majorList;
   ArrayList<String> genreList;
   ArrayList<String> themeList;
   ArrayList<String> locationList;
-  
   public int getAge() {
     return age;
   }
@@ -43,6 +43,12 @@ public class Musician extends Member  {
   public void setPhoto(String photo) {
     this.photo = photo;
   }
+  public char getGender() {
+    return gender;
+  }
+  public void setGender(char gender) {
+    this.gender = gender;
+  }
   public ArrayList<String> getMajorList() {
     return majorList;
   }
@@ -70,8 +76,8 @@ public class Musician extends Member  {
   @Override
   public String toString() {
     return "Musician [age=" + age + ", isTeam=" + isTeam + ", homepage=" + homepage + ", intro=" + intro + ", photo="
-        + photo + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList=" + themeList
-        + ", locationList=" + locationList + "]";
+        + photo + ", gender=" + gender + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList="
+        + themeList + ", locationList=" + locationList + "]";
   }
   
   

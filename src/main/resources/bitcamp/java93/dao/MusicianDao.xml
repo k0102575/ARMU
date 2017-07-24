@@ -4,30 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bitcamp.java93.dao.MusicianDao">
 
-	<resultMap type="musician" id="musicianMap">
-		<id column="mno" property="no" />
-		<result column="name" property="name" />
-		<result column="nick" property="nickName" />
-		<result column="phone" property="phone" />
-		<result column="pwd" property="password" />
-		<result column="email" property="email" />
-		<result column="age" property="age" />
-		<result column="team" property="isTeam" />
-		<result column="hpg" property="homepage" />
-		<result column="intro" property="intro" />
-		<result column="path" property="photo" />
-		<collection property="majorList" ofType="string"> 
-	     	<result column="major"/> 
- 		</collection>
-   	<collection property="genreList" ofType="string"> 
-			  <result column="genre"/> 
-		</collection> 
-		<collection property="themeList" ofType="string"> 
-			 <result column="theme"/> 
-		</collection>
-	</resultMap>
-	
-	 <resultMap type="musician" id="musicianMapBasic">
+  <resultMap type="musician" id="musicianMap">
     <id column="mno" property="no" />
     <result column="name" property="name" />
     <result column="nick" property="nickName" />
@@ -39,22 +16,47 @@
     <result column="hpg" property="homepage" />
     <result column="intro" property="intro" />
     <result column="path" property="photo" />
+    <result column="gender" property="gender" />
+    <collection property="majorList" ofType="string"> 
+        <result column="major"/> 
+    </collection>
+    <collection property="genreList" ofType="string"> 
+        <result column="genre"/> 
+    </collection> 
+    <collection property="themeList" ofType="string"> 
+       <result column="theme"/> 
+    </collection>
+  </resultMap>
+  
+   <resultMap type="musician" id="musicianMapBasic">
+    <id column="mno" property="no" />
+    <result column="name" property="name" />
+    <result column="nick" property="nickName" />
+    <result column="phone" property="phone" />
+    <result column="pwd" property="password" />
+    <result column="email" property="email" />
+    <result column="age" property="age" />
+    <result column="team" property="isTeam" />
+    <result column="hpg" property="homepage" />
+    <result column="intro" property="intro" />
+    <result column="path" property="photo" />
+    <result column="gender" property="gender" />
   </resultMap>
 
-	<sql id="selectBasic">
-		select m.mno, m.name, m.nick, mu.path, pwd, email,phone
-		from musi mu inner join memb m on mu.muno=m.mno
-	</sql>
+ <sql id="selectBasic">
+    select m.mno, m.name, m.nick, mu.path, pwd, email,phone, gender
+    from musi mu inner join memb m on mu.muno=m.mno
+  </sql>
 
-	<sql id="selectMajor">
-		select m.mno, m.name, m.nick, mu.path, mj.name as major
-		from musi mu inner join memb m on mu.muno=m.mno
-		left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on
-		mjm.mjrno=mj.mjrno
-	</sql>
-	
-	<sql id="selectAll">
-    select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, mu.path, mj.name as major, g.name as genre, t.name as theme
+  <sql id="selectMajor">
+    select m.mno, m.name, m.nick, gender, mu.path, mj.name as major
+    from musi mu inner join memb m on mu.muno=m.mno
+    left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on
+    mjm.mjrno=mj.mjrno
+  </sql>
+  
+  <sql id="selectAll">
+    select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, mu.path, mu.gender, mj.name as major, g.name as genre, t.name as theme
   from musi mu inner join memb m on mu.muno=m.mno
   left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on mjm.mjrno=mj.mjrno
   left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g on gm.gnrno=g.gnrno
@@ -62,19 +64,19 @@
   </sql>
 
 
-	<!-- 
+  <!-- 
  -->
 
-	<!-- select m.mno, m.name, m.phone, m.email, mu.pay, mu.age, mu.team, mu.hpg, 
-		mu.path, mj.name as major from musi mu inner join memb m on mu.muno=m.mno 
-		left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on 
-		mjm.mjrno=mj.mjrno union select m.mno, m.name, m.phone, m.email, mu.pay, 
-		mu.age, mu.team, mu.hpg, mu.path, g.name as genre from musi mu inner join 
-		memb m on mu.muno=m.mno left outer join gnr_musi gm on mu.muno=gm.muno left 
-		outer join gnr g on gm.gnrno=g.gnrno union select m.mno, m.name, m.phone, 
-		m.email, mu.pay, mu.age, mu.team, mu.hpg, mu.path, t.name as theme from musi 
-		mu inner join memb m on mu.muno=m.mno left outer join thm_musi tm on mu.muno=tm.muno 
-		left outer join thm t on tm.thmno=t.thmno -->
+  <!-- select m.mno, m.name, m.phone, m.email, mu.pay, mu.age, mu.team, mu.hpg, 
+    mu.path, mj.name as major from musi mu inner join memb m on mu.muno=m.mno 
+    left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on 
+    mjm.mjrno=mj.mjrno union select m.mno, m.name, m.phone, m.email, mu.pay, 
+    mu.age, mu.team, mu.hpg, mu.path, g.name as genre from musi mu inner join 
+    memb m on mu.muno=m.mno left outer join gnr_musi gm on mu.muno=gm.muno left 
+    outer join gnr g on gm.gnrno=g.gnrno union select m.mno, m.name, m.phone, 
+    m.email, mu.pay, mu.age, mu.team, mu.hpg, mu.path, t.name as theme from musi 
+    mu inner join memb m on mu.muno=m.mno left outer join thm_musi tm on mu.muno=tm.muno 
+    left outer join thm t on tm.thmno=t.thmno -->
 
   <select id="selectOne" resultMap="musicianMapBasic">
     <include refid="selectBasic" />
@@ -83,13 +85,18 @@
     
   </select>
 
-	<select id="selectRecommandList" resultMap="musicianMap">
-		<include refid="selectAll" />
-		order by m.name asc
-	</select>
+  <select id="selectRecommandList" resultMap="musicianMap">
+    <include refid="selectAll" />
+    order by m.name asc
+  </select>
 
-	<!-- <select id="selectMajorList" resultMap="musicianMap" parameterType="int"> 
-		<include refid="selectMajor"/> where mno = #{no} order by m.name asc </select> -->
+  <!-- <select id="selectMajorList" resultMap="musicianMap" parameterType="int"> 
+    <include refid="selectMajor"/> where mno = #{no} order by m.name asc </select> -->
+
+  <select id="selectSurfList" resultMap="musicianMap">
+  <include refid="selectAll" />
+  </select>
+  
 </mapper>
 
 

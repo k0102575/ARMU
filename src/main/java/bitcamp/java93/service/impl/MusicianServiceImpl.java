@@ -22,6 +22,10 @@ public class MusicianServiceImpl implements MusicianService {
     return musicianDao.selectRecommandList();
   }
 
+  public List<Musician> listSurf() throws Exception {   
+    return musicianDao.selectSurfList();
+  }
+  
   @Override
   public Musician getProfile() throws Exception {
     return musicianDao.selectOne();

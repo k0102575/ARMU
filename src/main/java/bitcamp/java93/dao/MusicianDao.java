@@ -6,5 +6,6 @@ import bitcamp.java93.domain.Musician;
 
 public interface MusicianDao {
   List<Musician> selectRecommandList();
+  List<Musician> selectSurfList();
   Musician selectOne();
 }
