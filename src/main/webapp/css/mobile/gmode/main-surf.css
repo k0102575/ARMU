@@ -369,11 +369,12 @@ input:checked + label {
 }
 
 #filter-loc-toggle {
+  height: 500px;
+  bottom: 0;
+  visibility: hidden;
   position: fixed;
   background-color: rgb(40,40,40);
   z-index: 1;
-  bottom: 0;
-  bottom: -50%;
 }
 
 #filter-loc-tab {
@@ -384,7 +385,7 @@ input:checked + label {
 }
 
 #filter-loc-backscreen {
-  z-index: 1;
+  top:0;
   position: fixed;
   display: none;
   width: 100%;
@@ -403,16 +404,18 @@ input:checked + label {
   font-size: 250%;
 }
 
-#seoul {
-  margin-left: 0.5%;
+.filter-loc-sub-con {
+  height: 400px;
+  visibility: hidden;
 }
+
 
 .seoul {
   padding: 2% 1%;
   color: white;
   text-align: center;
   display: inline-block;
-  font-size: 230%; 
+  font-size: 230%;
   width: 30.9%;
   border-right: 0.5px solid grey;
   border-bottom: 0.5px solid grey;

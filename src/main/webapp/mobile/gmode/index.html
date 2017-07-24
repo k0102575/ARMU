@@ -138,15 +138,15 @@ display: none;
 	    mainAct = $('#main-act'),
 	    headerBox = $("#header-box"),
 	    headerMenuDetail = $("#header-menu-detail");
-		
-		
+
+
 		headerBox.load("../header-box.html");
 		mainRecommend.load('main-recommend.html');
 		mainSurf.load('main-surf.html');
     mainAct.load('main-act.html');
     headerMenuDetail.load("../header-menu-detail.html");
-    
-    
+
+
    $(".animsition").animsition({
      inClass: 'fade-in',
      outClass: 'fade-out',
@@ -168,17 +168,17 @@ display: none;
      overlayClass : 'animsition-overlay-slide',
      overlayParentElement : 'body',
      transition: function(url){ window.location.href = url; }
-     }); 
-   
+     });
+
 
    /* 카테고리별 메인 화면 띄우기 */
-   mainSurf.css('display', 'none')
+   mainSurf.css('visibility', 'hidden')
    mainAct.css('display', 'none')
 
    categoryBtn1.on('click', function() {
      categoryUnderbar1.css('display', "inline-block")
      mainRecommend.css('display', '')
-     mainSurf.css('bottom', '-100%')
+     mainSurf.css('visibility', 'hidden')
      $('#filter-body').css('display','none')
      mainAct.css('display', 'none')
      categoryUnderbar2.css('display', "none")
@@ -188,7 +188,7 @@ display: none;
    categoryBtn2.on('click', function() {
      categoryUnderbar2.css('display', "inline-block")
      mainSurf.css('display', 'block')
-     mainSurf.css('bottom', '0%')
+     mainSurf.css('visibility', 'visible')
      $('#filter-body').css('display','block')
      mainRecommend.css('display', 'none')
      mainAct.css('display', 'none')
@@ -199,9 +199,8 @@ display: none;
    categoryBtn3.on('click', function() {
      categoryUnderbar3.css('display', "inline-block")
      mainAct.css('display', '')
-     mainSurf.css('display', 'none')
+     mainSurf.css('visibility', 'hidden')
      mainRecommend.css('display', 'none')
-     mainSurf.css('bottom', '-100%')
      $('#filter-body').css('display','none')
      categoryUnderbar1.css('display', "none")
      categoryUnderbar2.css('display', "none")
