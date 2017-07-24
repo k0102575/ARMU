@@ -2,66 +2,96 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>mypage</title>
-  <link rel="stylesheet" href="/node_modules/animsition/dist/css/animsition.min.css">
-  <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
-  <link href="/css/mobile/common.css" rel="stylesheet" type="text/css" media="all">
-  <link rel="stylesheet" href="/css/mobile/mypage/mypage.css">
-  <script src="/node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
-      <script src="/node_modules/animsition/dist/js/animsition.min.js"></script>
+<meta charset="UTF-8">
+<title>mypage</title>
+<link rel="stylesheet"
+	href="/node_modules/animsition/dist/css/animsition.min.css">
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+<link href="/css/mobile/common.css" rel="stylesheet" type="text/css"
+	media="all">
+<link rel="stylesheet" href="/css/mobile/mypage/mypage.css">
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+<script src="/node_modules/animsition/dist/js/animsition.min.js"></script>
 </head>
 
 <body>
 
-  <div id="mypage-container" class="animsition">
-    <div id="header">
-      <div id="header-title">프로필 관리</div><a href="#"><div id="close">닫기</div></a>
-    </div>
-<br><br><br><br>
-    <div id="ccc" class="">
-      <i class="fa fa-3x fa-camera" aria-hidden="true"></i>
-    </div>
+	<div id="mypage-container" class="animsition">
+		<div id="header">
+			<div id="header-title">프로필 관리</div>
+			<a href="#"><div id="close">닫기</div></a>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<div id="ccc" class="">
+			<i class="fa fa-3x fa-camera" aria-hidden="true"></i>
+		</div>
+
+		<div id="profile-container">
+		
+		</div>
 
 
-    <a href="#">
-      <img id="profile-img" src="../ARMU-Image/ARMU_icon/profile-default.png" alt="">
-    </a>
-    <p id="name">홍길동</p>
-    <br><br><br><br>
+		<div class="content">
+			<a href="#">
+				<p class="menu logout">로그아웃</p>
+			</a>
+		</div>
+		<div class="content">
+			<p class="menu logout">회원 탈퇴</p>
+		</div>
+		<br>
 
-    <div class="content"><span class="menu">이메일</span> <span class="data">abacaba@babab.com</span> </div>
-    <div class="content"><span class="menu">전화번호</span> <span class="data">+82 10-8859-2045</span> </div>
-    <a href="mypage-cp.html"><div class="content" id="cp"><span class="menu">비밀번호 변경</span><i class="fa fa-angle-right" aria-hidden="true"></i></div></a>
-    <br><br><br><br><br>
-
-
-    <div class="content">
-      <a href="#">
-        <p class="menu logout">로그아웃</p>
-      </a>
-    </div>
-    <div class="content">
-      <p class="menu logout">회원 탈퇴</p>
-    </div>
-    <br>
-
-    <div id="profile-backscreen"></div>
-    <div id="profile-toggle">
-      <div class="profile-img-menu">
-        <p class="menu">프로필 사진 선택</p>
-      </div>
-      <br>
-      <div class="profile-img-menu" id="cancel">
-        <p class="menu">취소</p>
-      </div>
-    </div>
+		<div id="profile-backscreen"></div>
+		<div id="profile-toggle">
+			<div class="profile-img-menu">
+				<p class="menu">프로필 사진 선택</p>
+			</div>
+			<br>
+			<div class="profile-img-menu" id="cancel">
+				<p class="menu">취소</p>
+			</div>
+		</div>
 
 
-  </div>
-  <!-- container -->
+	</div>
+	<!-- container -->
 </body>
+
+
+<script id="profile-template" type="text/x-handlebars-template">
+  {{#profile}}
+    <a href="#"> <img id="profile-img"
+        src="{{photo}}" alt="">
+      </a>
+      <p id="name">{{name}}</p>
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <div class="content">
+        <span class="menu">이메일</span> <span class="data">{{email}}</span>
+      </div>
+      <div class="content">
+        <span class="menu">전화번호</span> <span class="data">
+          {{phone}}</span>
+      </div>
+
+      <a href="mypage-cp.html"><div class="content" id="cp">
+          <span class="menu">비밀번호 변경</span><i class="fa fa-angle-right"
+            aria-hidden="true"></i>
+        </div></a> <br>
+      <br>
+      <br>
+      <br>
+      <br>
+  {{/profile}}
+</script>
+<script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
 <script type="text/javascript" src="/js/mobile/mypage/mypage.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {

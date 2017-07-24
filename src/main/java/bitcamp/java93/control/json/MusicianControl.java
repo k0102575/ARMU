@@ -30,6 +30,15 @@ public class MusicianControl {
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
   
+  @RequestMapping("getProfile")
+  public JsonResult getProfile() throws Exception {
+    
+    HashMap<String,Object> dataMap = new HashMap<>();
+    
+    dataMap.put("profile", musicianService.getProfile());
+    
+    return new JsonResult(JsonResult.SUCCESS, dataMap);
+  }
   
 }
 

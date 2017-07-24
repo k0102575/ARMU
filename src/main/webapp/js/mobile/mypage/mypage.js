@@ -27,3 +27,20 @@
       alert('변경 되었읍니다.')
     }
   })
+  
+  displayProfile()
+  
+  function displayProfile() {
+  $.getJSON('/musician/getProfile.json', function(result) {
+    var templateFn = Handlebars.compile($('#profile-template').text())
+    var generatedHTML = templateFn(result.data)
+    var container = $('#profile-container')
+    var html = container.html()
+    container.html(html + generatedHTML)
+    
+    console.log(result.data)
+  }, function(err) {
+    console.log(err)
+  })
+}
+

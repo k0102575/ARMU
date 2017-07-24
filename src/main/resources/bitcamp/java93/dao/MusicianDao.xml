@@ -26,9 +26,23 @@
 			 <result column="theme"/> 
 		</collection>
 	</resultMap>
+	
+	 <resultMap type="musician" id="musicianMapBasic">
+    <id column="mno" property="no" />
+    <result column="name" property="name" />
+    <result column="nick" property="nickName" />
+    <result column="phone" property="phone" />
+    <result column="pwd" property="password" />
+    <result column="email" property="email" />
+    <result column="age" property="age" />
+    <result column="team" property="isTeam" />
+    <result column="hpg" property="homepage" />
+    <result column="intro" property="intro" />
+    <result column="path" property="photo" />
+  </resultMap>
 
 	<sql id="selectBasic">
-		select m.mno, m.name, m.nick, mu.path
+		select m.mno, m.name, m.nick, mu.path, pwd, email,phone
 		from musi mu inner join memb m on mu.muno=m.mno
 	</sql>
 
@@ -62,6 +76,12 @@
 		mu inner join memb m on mu.muno=m.mno left outer join thm_musi tm on mu.muno=tm.muno 
 		left outer join thm t on tm.thmno=t.thmno -->
 
+  <select id="selectOne" resultMap="musicianMapBasic">
+    <include refid="selectBasic" />
+    where m.mno=1
+    order by m.name asc
+    
+  </select>
 
 	<select id="selectRecommandList" resultMap="musicianMap">
 		<include refid="selectAll" />

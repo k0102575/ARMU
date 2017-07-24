@@ -21,10 +21,11 @@ public class MusicianServiceImpl implements MusicianService {
   public List<Musician> listRecommand() throws Exception {   
     return musicianDao.selectRecommandList();
   }
-  
-//  private void listMajor() {
-//      musicianDao.selectMajorList(no)
-//  }
+
+  @Override
+  public Musician getProfile() throws Exception {
+    return musicianDao.selectOne();
+  }
   
   
 }
