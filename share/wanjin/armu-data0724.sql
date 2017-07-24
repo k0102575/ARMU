@@ -230,3 +230,9 @@ insert into evn_appy (eno, muno) values (1, 2);
 
 -- 이벤트&뮤지션 매칭정보(mtc)
 insert into mtc (muno, eno, mtcdt) values (3, 2, '2017-07-22');
+
+
+-- 뮤지션 회원들 사진 경로 수정
+update musi set path='/image/musician/photo/0choi2.jpg' where muno=1;
+update musi set path='/image/musician/photo/m1.jpg' where muno=2;
+update musi set path='/image/musician/photo/m4.jpg' where muno=3;
