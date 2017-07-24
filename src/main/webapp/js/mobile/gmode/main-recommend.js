@@ -21,6 +21,12 @@ if(isEvent) {
 
 
 
+
+
+
+
+
+
 function displayRecommandByEventMusiList() {
 	$.getJSON('/musician/listRecommand.json', function(result) {
 
@@ -29,7 +35,13 @@ function displayRecommandByEventMusiList() {
 		var container = $('#rec-by-event-musi-container')
 		var html = container.html()
 		container.html(html + generatedHTML)
-		starAdd()
+		
+		var starInteger = 3,
+		starRealNumber = 0.2,
+		reviewRating = $(".rec-by-event-musi-score")
+		console.log("revieRating", reviewRating)
+		starAdd(starInteger, starRealNumber, reviewRating)
+		
 
 		/*initialize swiper when document ready*/
 		$(document).ready(function () {
@@ -91,20 +103,28 @@ function displayMostPopularCategoryList() {
 
 
 
-var starInteger = 3,
-starRealNumber = 3.2,
-reviewRating = $(".rec-by-event-musi-score")
 
-function starAdd() {
-	for (var i = 1; i <= starInteger; i++) {
-		reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
+function starAdd(starInteger, starRealNumber, reviewRating) {
+	  
+	  
+	  for (var i = 1; i <= starInteger; i++) {
+	    reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
+	  }
+	  
+	  if(starRealNumber >= 0.8) {
+	    reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
+	  } else if(starRealNumber <= 0.3) {
+	    reviewRating.append("<i class='fa fa-star-o' aria-hidden='true'></i>")
+	  } else {
+	    reviewRating.append("<i class='fa fa-star-half-o' aria-hidden='true'></i>")
+	  }
+	  
+	  if(starInteger < 4) {
+	    for (var i = 1; i <= 4 - starInteger; i++) {
+	      reviewRating.append("<i class='fa fa-star-o' aria-hidden='true'></i>")
+	    }
+	  }
+	  
+		
 	}
 
-	if(starRealNumber >= 0.8) {
-		reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
-	} else if(starRealNumber <= 0.3) {
-		reviewRating.append("<i class='fa fa-star-o' aria-hidden='true'></i>")
-	} else {
-		reviewRating.append("<i class='fa fa-star-half-o' aria-hidden='true'></i>")
-	}
-}
