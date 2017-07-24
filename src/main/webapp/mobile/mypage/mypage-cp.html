@@ -23,8 +23,15 @@
     </div>
     <br><br><br><br>
 
-  <div id="profile-cp-template">
-    <img id="profile-img" src="{{photo}}" alt="">
+  <div id="profile-container"></div>
+
+
+  </div>
+  <!-- container -->
+</body>
+<script id="profile-template" type="text/x-handlebars-template">
+  {{#profile}}
+        <img id="profile-img" src="{{photo}}" alt="">
     <p id="name">{{name}}</p>
     
     <div id="change-password">
@@ -38,40 +45,6 @@
       </center>
       <br>
     </div>
-    
-    </div>
-
-
-  </div>
-  <!-- container -->
-</body>
-<script id="profile-cp-template" type="text/x-handlebars-template">
-  {{#profile}}
-    <a href="#"> <img id="profile-img"
-        src="{{photo}}" alt="">
-      </a>
-      <p id="name">{{name}}</p>
-      <br>
-      <br>
-      <br>
-      <br>
-
-      <div class="content">
-        <span class="menu">이메일</span> <span class="data">{{email}}</span>
-      </div>
-      <div class="content">
-        <span class="menu">전화번호</span> <span class="data">
-          {{phone}}</span>
-      </div>
-
-      <a href="mypage-cp.html"><div class="content" id="cp">
-          <span class="menu">비밀번호 변경</span><i class="fa fa-angle-right"
-            aria-hidden="true"></i>
-        </div></a> <br>
-      <br>
-      <br>
-      <br>
-      <br>
   {{/profile}}
 </script>
 <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
