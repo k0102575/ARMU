@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <title>ARMU MOBILE</title>
 <link rel="stylesheet"
-	href="../node_modules/jquery-ui-dist/jquery-ui.css">
-<script src="../node_modules/jquery/dist/jquery.min.js"></script>
-<script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
-<link href="common.css" rel="stylesheet" type="text/css" media="all">
+	href="/node_modules/jquery-ui-dist/jquery-ui.css">
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+<link href="/css/mobile/common.css" rel="stylesheet" type="text/css" media="all">
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
 <style>
 #container {
 	height: 1550px;
@@ -22,7 +22,7 @@
 	height: 100%;
 	width: 100%;
 	background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-		url("../ARMU-Image/Mobile/1_main/main_signup5_1.jpg");
+		url("/image/background/mobile_intro_index.jpg");
 	/*2_2, 2_3, 2_5, 3_2, 3_3, 3_4, 4_2, 4_3, 5_1*/
 	height: 100%;
 	width: 100%;
@@ -184,7 +184,7 @@
 	<div id="container">
 		<div id='container-filter'></div>
 		<div class="header">
-			<img id="armu-img" src="../ARMU-Image/ARMU_Logo/ARMU_ch1.png">
+			<img id="armu-img" src="/image/logo/ARMU_ch1.png">
 			<!-- <span class="armu-text">ARMU</span> -->
 		</div>
 		<!-- header -->
@@ -195,16 +195,16 @@
 		<!-- intro -->
 
 		<div id='login'>
-			<button class="kakao-btn btn" id="kakao-login" type="button"> <img class="kakao-btn-img btn-img" src="../ARMU-Image/login_icon/kakao.png">
+			<button class="kakao-btn btn" id="kakao-login" type="button"> <img class="kakao-btn-img btn-img" src="/image/icon/login/kakao.png">
 			 &nbsp;&nbsp;카카오톡으로 로그인</button>
-			<button class="fb-btn btn" id="face-login" type="button"> <img class="fb-btn-img btn-img" src="../ARMU-Image/login_icon/fb.png">
+			<button class="fb-btn btn" id="face-login" type="button"> <img class="fb-btn-img btn-img" src="/image/icon/login/fb.png">
 			&nbsp;&nbsp;페이스북으로 로그인</button>
-       <a href="signup.html" class="signup-btn btn" type="button"> <img class="signup-btn-img btn-img" src="../ARMU-Image/login_icon/join1.png">
+       <a href="signup.html" class="signup-btn btn" type="button"> <img class="signup-btn-img btn-img" src="/image/icon/login/join1.png">
        &nbsp;&nbsp;회원가입 하러 가기</a>
-       <a href="login.html" class="login-btn btn" type="button"> <img class="login-btn-img btn-img" src="../ARMU-Image/login_icon/login.png">
+       <a href="login.html" class="login-btn btn" type="button"> <img class="login-btn-img btn-img" src="/image/icon/login/login.png">
        &nbsp;&nbsp;기존계정으로 로그인</a>
 
-        <a href="index.html" id='skip-btn' class="btn"> 둘러보기</a>
+        <a href="/mobile/gmode/index.html" id='skip-btn' class="btn"> 둘러보기</a>
 		</div>
 		<!-- login -->
 
@@ -225,7 +225,7 @@ $(window).on("load", function() {
 $("#kakao-login").on('click', function() {
   Kakao.Auth.login({
     success: function(authObj) {
-      location.href="index.html"
+      location.href="/mobile/gmode/index.html"
     },
     fail: function(err) {
        alert(JSON.stringify(err));
@@ -238,7 +238,7 @@ $("#face-login").on('click', function(){
   FB.login(function(response) {
     
     FB.api('/me?fields=id,name,email,age_range,gender,locale,verified', function (response) {
-
+      location.href="/mobile/gmode/index.html"
       console.log(JSON.stringify(response));
   });
     
