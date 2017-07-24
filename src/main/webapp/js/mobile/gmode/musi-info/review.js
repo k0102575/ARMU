@@ -32,21 +32,17 @@ reviewContentHide.on('click', function() {
   reviewContentText.css('display', 'block')
   reviewContentText.css('-webkit-line-clamp', '2')
   reviewContentText.css('-webkit-box-orient', 'vertical')*/
-<<<<<<< Updated upstream
   $(this).parent().parent().css('height', '300px')
   $(this).parent().children()[0].style.height = '105px'
   $(this).parent().children()[1].style.display = 'block'
   $(this).parent().children()[2].style.display = 'none'
-=======
 	$(this).parent().parent().css('height', '200px')
 	$(this).parent().children()[0].style.height = '50px'
 		$(this).parent().children()[1].style.display = 'block'
 			$(this).parent().children()[2].style.display = 'none'
->>>>>>> Stashed changes
 })
 
 function starAdd() {
-<<<<<<< HEAD
   
   
   for (var i = 1; i <= starInteger; i++) {
@@ -67,7 +63,6 @@ function starAdd() {
     }
   }
   
-=======
 	for (var i = 1; i <= starInteger; i++) {
 		reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
 	}
@@ -79,7 +74,6 @@ function starAdd() {
 	} else {
 		reviewRating.append("<i class='fa fa-star-half-o' aria-hidden='true'></i>")
 	}
->>>>>>> origin/master
 }
 
 function reviewSetting() {
@@ -88,16 +82,13 @@ function reviewSetting() {
 			reviewBox[i].style.height = "200px"
 				reviewContentText[i].style.height = "50px"
 		}
-<<<<<<< Updated upstream
 		  
 	    if ((reviewContentText[i].innerText.length) > 50) {
 	      reviewContentMore[i].style.display = "block"
 	      reviewBox[i].style.height = "300px"
-=======
 
 		if ((reviewContentText[i].innerText.length) > 50) {
 			reviewContentMore[i].style.display = "block"
->>>>>>> Stashed changes
 		}
 	}
 }
