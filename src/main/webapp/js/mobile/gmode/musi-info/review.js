@@ -32,8 +32,8 @@ reviewContentHide.on('click', function() {
   reviewContentText.css('display', 'block')
   reviewContentText.css('-webkit-line-clamp', '2')
   reviewContentText.css('-webkit-box-orient', 'vertical')*/
-  $(this).parent().parent().css('height', '200px')
-  $(this).parent().children()[0].style.height = '50px'
+  $(this).parent().parent().css('height', '300px')
+  $(this).parent().children()[0].style.height = '105px'
   $(this).parent().children()[1].style.display = 'block'
   $(this).parent().children()[2].style.display = 'none'
 })
@@ -61,6 +61,7 @@ function reviewSetting() {
 		  
 	    if ((reviewContentText[i].innerText.length) > 50) {
 	      reviewContentMore[i].style.display = "block"
+	      reviewBox[i].style.height = "300px"
 		}
   }
 }

@@ -5,23 +5,23 @@
 	height: auto;
 	width: 100%;
 	top: 100px;
-	height: 500px;
+	height: 650px;
 }
 
 #timeline-container:last-of-type {
-	margin-bottom: 250px;
+	margin-bottom: 200px;
 }
 
 #timeline-line-container {
 	position: absolute;
 	width: 10%;
-	height: 500px;
+	height: 650px;
 }
 
 .timeline-line {
   position: absolute;
   width: 5px;
-  height: 500px;
+  height: 650px;
   background-color: black;
   left: 50%;
 }
@@ -41,7 +41,7 @@
   height: 60%;
   width: 80%;
   margin-right: 7%;
-  margin-top: 17%;
+  margin-top: 21.5%;
 }
 
 #timeline-date {

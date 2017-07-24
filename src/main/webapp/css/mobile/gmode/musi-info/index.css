@@ -40,7 +40,7 @@
   position: relative;
   top: 120px;
   width: 100%;
-  height: 270px;
+  height: 350px;
 }
 
 #musician-basic-info-img {
@@ -79,51 +79,15 @@
   background-color: white;
   border: 1px solid black;
   width: 60%;
-  bottom: 5%;
+  bottom: 15%;
   left: 37%;
-  height: 35%;
+  height: 30%;
   border-radius: 10px;
   font-size: 250%;
   color: black;
 }
 
 /* 뮤지션 기본 정보 끝 */
-
-/* 뮤지션 카테고리 시작 */
-
-#musician-info-cathegory {
-  position: relative;
-  top: 100px;
-  width: 100%;
-  height: auto;
-  padding-top: 7%;
-  padding-bottom: 3%;
-}
-
-#musician-info-major-container, #musician-info-genre-container, #musician-info-location-container {
-	width: 100%;
-	height: auto;
-	margin-bottom: 2%;
-}
-
-#musician-info-major, #musician-info-genre, #musician-info-location {
-float: left;
-  height: auto;
-  width: 15%;
-  display: inline-block;
-  font-size: 2em;
-  margin-left: 5%;
-}
-
-#musician-info-major-content, #musician-info-genre-content, #musician-info-location-content {
-  height: auto;
-  width: 62%;
-  display: inline-block;
-  font-size: 2em;
-  margin-left: 17%;
-}
-
-/* 뮤지션 카테고리 끝 */
 
 /* 뮤지션 버튼 시작 */
 
@@ -170,7 +134,7 @@ float: left;
   display: none;  
 }
 
-.fa-arrow-circle-o-up {
+#move_top_btn {
   font-size: 400%;
   position: fixed;
   bottom: 3%;

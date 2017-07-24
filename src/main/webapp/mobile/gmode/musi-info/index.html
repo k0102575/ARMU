@@ -34,35 +34,6 @@
 	</div>
 	<!-- musician-basic-info -->
 
-  <div id="musician-info-cathegory">
-  
-  <div id="musician-info-major-container">
-  <div id="musician-info-major">전공:</div>
-  <div id="musician-info-major-content">
-  전공:전공:전공:전공:전공:전공:전공:전공
-  </div>
-  </div>
-  <!-- musician-info-major-container -->
-  
-  <div id="musician-info-genre-container">
-  <div id="musician-info-genre">장르:</div>
-  <div id="musician-info-genre-content">
-  장르:장르:장르:장르:장르:장르:장르:장르
-  </div>
-  </div>
-  <!-- "musician-info-genre-container" -->
-  
-  <div id="musician-info-location-container">
-  <div id="musician-info-location">희망 지역:</div>
-  <div id="musician-info-location-content">
-  지역:지역:지역:지역:지역:지역:지역:지역
-  </div>
-  </div>
-  <!-- musician-info-location-container -->
-  
-	</div>
-	<!-- musician-info-cathegory -->
-
   <div id="musician-info-btn-container">
   <button id="musician-info-portfolio-btn">포트폴리오</button>
   <button id="musician-info-introduce-btn">정보</button>
@@ -75,7 +46,7 @@
   
 </div> <!-- container -->
 
-<i class="fa fa-arrow-circle-o-up" id="move_top_btn" aria-hidden="true"></i>
+<i class="fa fa-angle-double-up" id="move_top_btn" aria-hidden="true"></i>
 
 <script>
 
@@ -100,12 +71,13 @@ var lastScroll = 0,
     infoReview.css('display', 'none')
 
 $(window).scroll(function(event){
+  
 
-if($(document).scrollTop() > 545) {
+ if($(document).scrollTop() > 327) {
 	musicianInfoBtnContainer.css("position", "fixed")
 	musicianHeaderInfoImg.css("display", "block")
 	musicianHeaderInfoImg.css("top", "9%")
-	 } else if ($(document).scrollTop() < 545) {
+	 } else if ($(document).scrollTop() < 327) {
 	musicianInfoBtnContainer.css("position", "relative")
 	musicianHeaderInfoImg.css("display", "none")
 	musicianHeaderInfoImg.css("top", "18%")
