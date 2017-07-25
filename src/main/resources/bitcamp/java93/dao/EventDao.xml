@@ -19,7 +19,7 @@
 		<result column="cont" property="contents" />
 		<result column="dpay" property="downPay" />
 		<result column="date" property="date" />
-		<association property="musician" column="name" resultMap="musicianMap2">
+		<association property="musician" resultMap="musicianMap2">
 		</association>
 		  <!-- <collection property="applicantList" ofType="Musician" resultMap="musicianMap" /> --> 
 	</resultMap>

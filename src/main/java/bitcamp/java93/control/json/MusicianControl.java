@@ -2,6 +2,7 @@ package bitcamp.java93.control.json;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 
@@ -20,25 +21,37 @@ public class MusicianControl {
   @Autowired MusicianService musicianService;
   
   @RequestMapping("listRecommand")
-  public JsonResult list() throws Exception {
+  public JsonResult list() {
     
-    HashMap<String,Object> dataMap = new HashMap<>();
-    ArrayList<Musician> musicianList = (ArrayList<Musician>) musicianService.listRecommand();
+    JsonResult result = new JsonResult();
     
-    dataMap.put("listRecommand", musicianList);
+    try {
+      List<Musician> musicianList = musicianService.listRecommand();
+       if(musicianList == null) {
+         result.setStatus(JsonResult.FAIL);
+       } else {
+         result.setStatus(JsonResult.SUCCESS);
+       }
+       
+       HashMap<String,Object> dataMap = new HashMap<>();
+       dataMap.put("listRecommand", musicianList);
+       result.setData(dataMap);
+       
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+    }
     
-    return new JsonResult(JsonResult.SUCCESS, dataMap);
+    return result;
   }
   
   @RequestMapping("listSurf")
   public JsonResult listSurf() throws Exception {
-    
+
     HashMap<String,Object> dataMap = new HashMap<>();
-    ArrayList<Musician> musicianList = (ArrayList<Musician>) musicianService.listSurf();
-    
-    System.out.println(musicianList);
-    dataMap.put("listSurf", musicianList);
-    return new JsonResult(JsonResult.SUCCESS, dataMap);
+     ArrayList<Musician> musicianList = (ArrayList<Musician>) musicianService.listSurf();
+     dataMap.put("listRecommand", musicianList);
+     System.out.println(musicianList);
+     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
   
   @RequestMapping("getProfile")
