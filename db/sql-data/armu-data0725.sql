@@ -242,8 +242,8 @@ insert into evn_appy (eno, muno) values (1, 1);
 insert into evn_appy (eno, muno) values (1, 2);
 
 -- 이벤트&뮤지션 매칭정보(mtc)
-insert into mtc (muno, eno, mtcdt) values (3, 2, '2017-07-22');
-insert into mtc (muno, eno, mtcdt, grade, rev) values (2, 3, '2017-07-24', 4,
+insert into mtc (muno, eno, mtcdt, score) values (3, 2, '2017-07-22', -1);
+insert into mtc (muno, eno, mtcdt, score, rev) values (2, 3, '2017-07-24', 4,
   '연락도 잘 되고, 뭣보다 센스 넘치는 공연이었습니다! ㅎㅎ
   다음 행사에서도 또 부르고 싶은 보컬이에요~!
   다만, 한 가지 아쉬운게 있었는데, 당일날 약속시간보다 살짝 늦게오셨더라구요 ㅠㅠ
