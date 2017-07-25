@@ -48,12 +48,12 @@ public class MusicianControl {
   
   @RequestMapping("listSurf")
   public JsonResult listSurf() throws Exception {
-
+    
     HashMap<String,Object> dataMap = new HashMap<>();
-     ArrayList<Musician> musicianList = (ArrayList<Musician>) musicianService.listSurf();
-     dataMap.put("listRecommand", musicianList);
-     System.out.println(musicianList);
-     return new JsonResult(JsonResult.SUCCESS, dataMap);
+    ArrayList<Musician> musicianList = (ArrayList<Musician>) musicianService.listSurf();
+    
+    dataMap.put("listSurf", musicianList);
+    return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
   
   @RequestMapping("getProfile")
