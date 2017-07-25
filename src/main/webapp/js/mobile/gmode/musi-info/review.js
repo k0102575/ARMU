@@ -62,17 +62,6 @@ function starAdd() {
     }
   }
   
-	for (var i = 1; i <= starInteger; i++) {
-		reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
-	}
-
-	if(starRealNumber >= 0.8) {
-		reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
-	} else if(starRealNumber <= 0.3) {
-		reviewRating.append("<i class='fa fa-star-o' aria-hidden='true'></i>")
-	} else {
-		reviewRating.append("<i class='fa fa-star-half-o' aria-hidden='true'></i>")
-	}
 }
 
 function reviewSetting() {
@@ -91,4 +80,4 @@ function reviewSetting() {
 		}
 	}
 }
-
+}
