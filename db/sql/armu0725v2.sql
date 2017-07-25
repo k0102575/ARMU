@@ -540,7 +540,7 @@ mtcno INTEGER NOT NULL COMMENT '매칭 번호', -- 매칭 번호
 muno  INTEGER NOT NULL COMMENT '뮤지션회원번호', -- 뮤지션회원번호
 eno   INTEGER NOT NULL COMMENT '이벤트 번호', -- 이벤트 번호
 mtcdt DATE    NOT NULL COMMENT '매칭확정날짜', -- 매칭확정날짜
-score INTEGER NOT NULL COMMENT '평점', -- 평점
+score INTEGER NULL     COMMENT '평점', -- 평점
 rev   TEXT    NULL     COMMENT '평가내용', -- 평가내용
 claim TEXT    NULL     COMMENT '신고내용' -- 신고내용
 )

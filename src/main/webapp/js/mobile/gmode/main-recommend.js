@@ -30,21 +30,26 @@ if(isEvent) {
 function displayRecommandByEventMusiList() {
 	$.getJSON('/musician/listRecommand.json', function(result) {
 		if(result.status != 'success') {
-			console.log("getJSON() 실패: ", result.status)
+			console.error("getJSON() 실패: ", result.status)
 			return;
 		}
+		var data = result.data;
+
+		$.each(data.listRecommand, function(i, item) {
+			var starInteger = parseInt(item.score),
+			starRealNumber = item.score - starInteger;
+			starAdd(starInteger, starRealNumber, item)
+		});
+		console.log(data)
 		var templateFn = Handlebars.compile($('#rec-by-event-musi-template').text())
-		var generatedHTML = templateFn(result.data)
+		var generatedHTML = templateFn(data)
 		var container = $('#rec-by-event-musi-container')
 		var html = container.html()
 		container.html(html + generatedHTML)
-		
-		var starInteger = 3,
-		starRealNumber = 0.2,
-		reviewRating = $(".rec-by-event-musi-score")
-		console.log("revieRating", reviewRating)
-		starAdd(starInteger, starRealNumber, reviewRating)
-		
+		console.log(generatedHTML)
+
+
+
 
 		/*initialize swiper when document ready*/
 		$(document).ready(function () {
@@ -94,6 +99,10 @@ function displayPopularMusiList() {
 
 function displayMostPopularCategoryList() {
 	$.getJSON('/musician/listRecommand.json', function(result) {
+//		var tags;
+//		$.each(result.data.listRecommand, function(i, item) {
+//			tags[0] = item
+//		})
 		var templateFn = Handlebars.compile($('#rec-most-popular-category-template').text())
 		var generatedHTML = templateFn(result.data)
 		var container = $('#rec-most-popular-category-container')
@@ -107,27 +116,27 @@ function displayMostPopularCategoryList() {
 
 
 
-function starAdd(starInteger, starRealNumber, reviewRating) {
-	  
-	  
-	  for (var i = 1; i <= starInteger; i++) {
-	    reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
-	  }
-	  
-	  if(starRealNumber >= 0.8) {
-	    reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
-	  } else if(starRealNumber <= 0.3) {
-	    reviewRating.append("<i class='fa fa-star-o' aria-hidden='true'></i>")
-	  } else {
-	    reviewRating.append("<i class='fa fa-star-half-o' aria-hidden='true'></i>")
-	  }
-	  
-	  if(starInteger < 4) {
-	    for (var i = 1; i <= 4 - starInteger; i++) {
-	      reviewRating.append("<i class='fa fa-star-o' aria-hidden='true'></i>")
-	    }
-	  }
-	  
-		
+function starAdd(starInteger, starRealNumber, item) {
+	item.score = "";
+	
+	for (var i = 1; i <= starInteger; i++) {
+		item.score += "<i class='fa fa-star' aria-hidden='true'></i>"
 	}
+
+	if(starRealNumber >= 0.8) {
+		item.score += "<i class='fa fa-star' aria-hidden='true'></i>"
+	} else if(starRealNumber <= 0.3) {
+		item.score += "<i class='fa fa-star-o' aria-hidden='true'></i>"
+	} else {
+		item.score += "<i class='fa fa-star-half-o' aria-hidden='true'></i>"
+	}
+
+	if(starInteger < 4) {
+		for (var i = 1; i <= 4 - starInteger; i++) {
+			item.score += "<i class='fa fa-star-o' aria-hidden='true'></i>"
+		}
+	}
+
+	return item;
+}
 

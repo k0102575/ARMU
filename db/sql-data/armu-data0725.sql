@@ -242,7 +242,7 @@ insert into evn_appy (eno, muno) values (1, 1);
 insert into evn_appy (eno, muno) values (1, 2);
 
 -- 이벤트&뮤지션 매칭정보(mtc)
-insert into mtc (muno, eno, mtcdt, score) values (3, 2, '2017-07-22', -1);
+insert into mtc (muno, eno, mtcdt) values (3, 2, '2017-07-22');
 insert into mtc (muno, eno, mtcdt, score, rev) values (2, 3, '2017-07-24', 4,
   '연락도 잘 되고, 뭣보다 센스 넘치는 공연이었습니다! ㅎㅎ
   다음 행사에서도 또 부르고 싶은 보컬이에요~!
@@ -254,3 +254,8 @@ insert into mtc (muno, eno, mtcdt, score, rev) values (2, 3, '2017-07-24', 4,
 update musi set path='/image/musician/photo/0choi2.jpg' where muno=1;
 update musi set path='/image/musician/photo/m1.jpg' where muno=2;
 update musi set path='/image/musician/photo/m4.jpg' where muno=3;
+
+
+-- 관심뮤지션(fav_musi)
+insert into fav_musi (muno, gno) values (1, 4);
+insert into fav_musi (muno, gno) values (2, 4);

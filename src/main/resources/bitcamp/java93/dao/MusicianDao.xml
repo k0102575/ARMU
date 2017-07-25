@@ -17,6 +17,8 @@
     <result column="intro" property="intro" />
     <result column="path" property="photo" />
     <result column="gender" property="gender" />
+    <result column="score" property="score" />
+    <result column="rev" property="review" />
     <collection property="majorList" ofType="string"> 
         <result column="major"/> 
     </collection>
@@ -41,6 +43,7 @@
     <result column="intro" property="intro" />
     <result column="path" property="photo" />
     <result column="gender" property="gender" />
+    <result column="score" property="score" />
   </resultMap>
 
  <sql id="selectBasic">
@@ -55,12 +58,17 @@
     mjm.mjrno=mj.mjrno
   </sql>
   
+  
+  
   <sql id="selectAll">
-    select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, mu.path, mu.gender, mj.name as major, g.name as genre, t.name as theme
+    select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, mu.path, mu.gender, 
+    mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev
   from musi mu inner join memb m on mu.muno=m.mno
   left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on mjm.mjrno=mj.mjrno
   left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g on gm.gnrno=g.gnrno
   left outer join thm_musi tm on mu.muno=tm.muno left outer join thm t on tm.thmno=t.thmno
+  left outer join mtc on mtc.muno=mu.muno
+  
   </sql>
 
 
