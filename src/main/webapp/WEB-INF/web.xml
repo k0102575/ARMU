@@ -10,7 +10,9 @@
 <!-- ContextLoaderListener가 사용할 스프링 설정 파일의 경로 정보 -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:bitcamp/java93/application-context2332.xml</param-value>
+
+<param-value>classpath:bitcamp/java93/application-context2332.xml</param-value>
+
   </context-param>
 
 <!-- 리스너 등록 -->
