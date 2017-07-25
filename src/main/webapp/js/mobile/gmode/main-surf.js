@@ -13,8 +13,10 @@ $("document").ready(function(){
   displaySurfMusiList()
 })
 
+
+
 var surfBackscreen = $("#surf-backscreen"),
-    filterContainer = $("#filter-container" ),
+    filterContainer = $("#filter-container"),
     filterCancel = $("#filter-cancel"),
     ageGroup = $("#age-group")
 
@@ -23,6 +25,9 @@ $(".filterBtn").on('click', function() {
   ageGroup.val("20대 이하" + " - " + "50대 이상");
   filterContainer.toggle();
 });
+
+
+
 
 filterCancel.on('click', function() {
   filterContainer.toggle();
@@ -43,6 +48,7 @@ var yScroll = new jindo.m.Scroll("seoul", {
     bUseMomentum: false,
     nHeight: 400
 });
+
 yScroll = new jindo.m.Scroll("kyeonggi", {
     bUseHScroll: false,
     bUseVScroll: true,
@@ -85,6 +91,8 @@ yScroll = new jindo.m.Scroll("daejun", {
     bUseMomentum: false,
     nHeight: 400
 });
+
+
 $('#filter-loc').click(function() {
     $("#filter-loc-backscreen").css('display', 'block');
     $('#musician-surf-list').css('overflow','hidden').css('position','fixed')
@@ -130,13 +138,14 @@ $( function() {
       " - " + $( "#slider-range" ).slider( "values", 1 )  + "대");
   });
 
+
 function displaySurfMusiList() {
+  console.log("히히히")
   $.getJSON('/musician/listSurf.json', function(result) {
     var templateFn = Handlebars.compile($('#musician-list-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#musician-surf-list')
     container.html(generatedHTML)
-    console.log(result)
   })
 }
 

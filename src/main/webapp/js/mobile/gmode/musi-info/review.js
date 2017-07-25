@@ -8,9 +8,8 @@ reviewContentHide = $(".review-content-hide"),
 reviewBox = $(".review-box")
 
 $(window).load(function(){
-	starAdd()
 	reviewSetting()
-
+	starAdd()
 })
 
 reviewContentMore.on('click', function() {
