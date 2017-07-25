@@ -448,7 +448,7 @@ input[type="radio"].toggle + label:hover {
   color: #1a1a1a;
 }
 input[type="radio"].toggle + label:after {
-  background: #333333;
+  background: #525252;
   content: "";
   height: 100%;
   position: absolute;
@@ -498,6 +498,7 @@ input[type="radio"].toggle:checked + label:after {
   font-weight: normal;
   text-align: center;
   width: 100%;
+  display:none;
 }
 
 #input-rehearse-text {

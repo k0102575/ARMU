@@ -17,6 +17,11 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+  
+  <!-- 시작 파일 설정 -->
+  <welcome-file-list>
+    <welcome-file>/mobile/index.html</welcome-file>
+  </welcome-file-list>
 
   
 <!-- 프론트 컨트롤러 등록 -->
