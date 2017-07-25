@@ -236,7 +236,7 @@ eventPage8Home.on('click', function() {
 function progress(per) {
   progressBar.progressbar({
     value: per,
-    create: function(event, ui) {$(this).find('.ui-widget-header').css({'background-color':'#525252'})}
+    create: function(event, ui) {$(this).find('.ui-widget-header').css({'background-color': 'rgb(203, 203, 203)'})}
   });
 };
 

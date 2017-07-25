@@ -12,7 +12,7 @@
   height: 10%;
   left: 7%;
   bottom: 10%;
-  border: 2px solid #525252;
+  border: 1px solid #6f6f6f;
   border-radius: 25px;
   z-index: 11;
 }
@@ -97,7 +97,7 @@ select {
   appearance: none;
 	background: url(/image/icon/mobile_icon/select-arrow.png) no-repeat 95% 50%;
   background-color: white;
-  border: 5px solid #525252;
+  border: 1px solid #525252;
   color: #525252;
   position: absolute;
 }
@@ -171,13 +171,14 @@ select::-ms-expand {
 
 
 #event-page1-text {
-	position: absolute;
-	color: black;
-	top: 20%;
-	font-size: 4.5em;
-	font-weight: 600;
-	text-align: center;
-	width: 100%;
+    position: absolute;
+    color: black;
+    top: 30%;
+    font-size: 3.6em;
+    font-weight: 500;
+    padding-left: 10%;
+    padding-right: 10%;
+    /* width: 90%; */
 }
 
 /* 이벤트 페이지 1 끝 */
@@ -188,7 +189,7 @@ select::-ms-expand {
 #sido-select-menu, #city-select-menu, #street-select-menu {
 	padding-left: 4%;
   width: 28%;
-  height: 10%;
+  height: 8%;
   top: 33%;
   font-size: 30px;
 }
@@ -206,7 +207,7 @@ select::-ms-expand {
 
 #theme-select-menu, #major-select-menu, #genre-select-menu {
   width: 69%;
-  height: 12%;
+  height: 8%;
   left: 15%;
 }
 
@@ -226,7 +227,7 @@ select::-ms-expand {
 }
 
 #major-select-menu {
-  top: 45%;
+  top: 46%;
 }
 
 #major-text {
@@ -326,7 +327,7 @@ select::-ms-expand {
 
 #sido-select-menu, #city-select-menu, #street-select-menu{
   width: 69%;
-  height: 12%;
+  height: 8%;
   left: 15%;
 }
 
@@ -345,10 +346,10 @@ select::-ms-expand {
 #detail-location {
   position: absolute;
   left: 15%;
-  bottom: 16%;
+  top: 71%;
   width: 64%;
-  height: 12%;
-  border: 5px solid #525252;
+  height: 8%;
+  border: 1px solid #525252;
   color: #525252;
   padding-left: 4%;
   font-size: 2.6em;
@@ -369,8 +370,8 @@ select::-ms-expand {
 	position: absolute;
   left: 15%;
   width: 64%;
-  height: 12%;
-  border: 5px solid #525252;
+  height: 8%;
+  border: 1px solid #525252;
   color: black;
   padding-left: 4%;
   font-size: 2.6em;
@@ -389,7 +390,7 @@ select::-ms-expand {
 }
 
 #event-pay {
-  bottom: 41%;
+  top: 46%;
 }
 
 #event-pay-text{
@@ -397,11 +398,11 @@ select::-ms-expand {
   font-size: 2.6em;
   position: absolute;
   left: 15%;
-  bottom: 56%;
+  top: 38%;
 }
 
 #event-require {
-  bottom: 13%;
+  top: 70%;
 }
 
 #event-require-text{
@@ -409,7 +410,7 @@ select::-ms-expand {
   font-size: 2.6em;
   position: absolute;
   left: 15%;
-  bottom: 28%;
+  top: 62%;
 }
 
 /* 이벤트 페이지 5 끝 */
@@ -420,11 +421,11 @@ select::-ms-expand {
 	position: absolute;
 	width: 50%;
   left: 27%;
-  top: 12%;
+  top: 20%;
 }
 
 .btn {
-  border: 3px solid #1a1a1a;
+  border: 1px solid #1a1a1a;
   display: inline-block;
   padding: 10px;
   position: relative;
@@ -506,8 +507,8 @@ input[type="radio"].toggle:checked + label:after {
   left: 10%;
   bottom: 50%;
   width: 75%;
-  height: 12%;
-  border: 5px solid #525252;
+  height: 8%;
+  border: 1px solid #525252;
   color: #525252;
   padding-left: 4%;
   font-size: 2.6em;
@@ -520,7 +521,7 @@ input[type="radio"].toggle:checked + label:after {
   bottom: 37%;
   width: 75%;
   height: 7%;
-  border: 5px solid #525252;
+  border: 1px solid #525252;
   color: #525252;
   padding-left: 4%;
   font-size: 2.6em;
@@ -533,7 +534,7 @@ input[type="radio"].toggle:checked + label:after {
   bottom: 25%;
   width: 75%;
   height: 7%;
-  border: 5px solid #525252;
+  border: 1px solid #525252;
   color: #525252;
   padding-left: 4%;
   font-size: 2.6em;
@@ -678,13 +679,14 @@ input[type="radio"].toggle:checked + label:after {
 /* 이벤트 페이지 8 시작 */
 
 #event-page8-text {
-  position: absolute;
-  color: black;
-  top: 20%;
-  font-size: 4.5em;
-  font-weight: 600;
-  text-align: center;
-  width: 100%;
+    position: absolute;
+    color: black;
+    top: 30%;
+    font-size: 3.6em;
+    font-weight: 500;
+    padding-left: 7%;
+    padding-right: 7%;
+    /* width: 90%; */
 }
 
 #event-page8-home {
