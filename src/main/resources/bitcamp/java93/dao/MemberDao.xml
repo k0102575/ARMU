@@ -24,6 +24,13 @@
     order by name asc 
   </select>
   
+  <insert id="insert" parameterType="member" 
+          useGeneratedKeys="true" keyColumn="mno" keyProperty="no">
+    insert into memb(name,phone,pwd,nick,email) 
+    values(#{name},#{phone},password(#{password}),#{nickName},#{email})
+  </insert>
+  
+  
 
 </mapper>
 
