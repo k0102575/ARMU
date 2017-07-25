@@ -402,7 +402,16 @@ select::-ms-expand {
 }
 
 #event-require {
+  position: absolute;
+  left: 15%;
   top: 70%;
+  width: 64%;
+  height: 15%;
+  border: 1px solid #525252;
+  color: #525252;
+  padding-left: 4%;
+  font-size: 2.6em;
+  resize: none;
 }
 
 #event-require-text{
@@ -481,44 +490,10 @@ input[type="radio"].toggle:checked + label:after {
   left: 0;
 }
 
-#event-rehearse-text {
-	position: absolute;
-  color: black;
-  top: 20%;
-  font-size: 200%;
-  font-weight: normal;
-  text-align: center;
-  width: 100%;
-}
-
-#event-rehearse-text {
-	position: absolute;
-  color: black;
-  top: 20%;
-  font-size: 200%;
-  font-weight: normal;
-  text-align: center;
-  width: 100%;
-  display:none;
-}
-
-#input-rehearse-text {
-  position: absolute;
-  left: 10%;
-  bottom: 50%;
-  width: 75%;
-  height: 8%;
-  border: 1px solid #525252;
-  color: #525252;
-  padding-left: 4%;
-  font-size: 2.6em;
-  display: none;
-}
-
 #input-rehearse-count {
   position: absolute;
   left: 10%;
-  bottom: 37%;
+  top: 30%;
   width: 75%;
   height: 7%;
   border: 1px solid #525252;
@@ -531,7 +506,7 @@ input[type="radio"].toggle:checked + label:after {
 #input-rehearse-pay {
 	position: absolute;
   left: 10%;
-  bottom: 25%;
+  top: 45%;
   width: 75%;
   height: 7%;
   border: 1px solid #525252;
@@ -541,7 +516,19 @@ input[type="radio"].toggle:checked + label:after {
   display: none;
 }
 
-
+#input-rehearse-text {
+  position: absolute;
+  left: 10%;
+  top: 60%;
+  width: 75%;
+  height: 15%;
+  border: 1px solid #525252;
+  color: #525252;
+  padding-left: 4%;
+  font-size: 2.6em;
+  display: none;
+  resize: none;
+}
 
 /* 이벤트 페이지 6 끝 */
 
@@ -551,14 +538,14 @@ input[type="radio"].toggle:checked + label:after {
 #event-page7 {
 	display: none;
   position: relative;
-  top: 300px;
+  top: 350px;
   width: 100%;
-  height: 1500px;
+  min-height: 1500px;
   background-color: white;
 }
 
 #event-page7-text {
-	position: absolute;
+	float: left;
   color: black;
   font-size: 300%;
   font-weight: normal;
@@ -567,113 +554,55 @@ input[type="radio"].toggle:checked + label:after {
 }
 
 #event-page7-btn {
-  position: absolute;
-  height: 10%;
+  float: left;
   width: 100%;
-  bottom: 0%;
+  margin-top: 10%;
   display: inline-block;
 }
 
 #event-page7-prev {
-  position: absolute;
-  left: 10%;
+  float: left;
+  margin-left: 10%;
   font-size: 300%;
-  bottom: 25%;
 }
 
 #event-page7-next {
-  position: absolute;
-  right: 10%;
+	float: right;
+	margin-right: 10%;
   font-size: 300%;
-  bottom: 25%;
-}
-
-#event-confirm-list {
-  width: 100%;
-  position: absolute;
-  top: 0%;
-  height: 90%;
 }
 
 #name-confirm, #cathgory-confirm, #date-confirm, #match-confirm,
-#location-confirm, #pay-confirm, #require-confirm {
-	  position: absolute;
-    left: 7%;
-    width: 86%;
-    height: 7%;
-    border: 0px;
-    border-bottom: 1px solid black;
-    background-color: white;
-    color: black;
-    font-size: 2.5em;
-    outline: none;
+#location-confirm, #pay-confirm, #require-confirm, #reherse-confirm-count, #reherse-confirm-pay, #reherse-confirm-info {
+  float: left;
+  margin-left: 7%;
+  width: 86%;
+  min-height: 50px;
+  border: 0px;
+  border-bottom: 1px solid black;
+  background-color: white;
+  color: black;
+  font-size: 2.5em;
+  outline: none;
+  margin-top: 5%;
 }
 
 #name-confirm-text, #cathgory-confirm-text, #date-confirm-text, #match-confirm-text,
-#location-confirm-text, #pay-confirm-text, #require-confirm-text {
-    position: absolute;
-    left: 7%;
-    border: 0px;
-    color: #252525;
-    font-size: 1.75em;
+#location-confirm-text, #pay-confirm-text, #require-confirm-text,
+#reherse-confirm-count-text, #reherse-confirm-pay-text, #reherse-confirm-info-text {
+  float: left;
+  margin-left: 7%;
+  border: 0px;
+  color: #252525;
+  font-size: 1.75em;
+  margin-top: 7%;
 }
 
-#name-confirm {
-	top: 12%;
+#reherse-confirm-count-text, #reherse-confirm-pay-text, #reherse-confirm-info-text,
+#reherse-confirm-count, #reherse-confirm-pay, #reherse-confirm-info {
+	display:none;
 }
 
-#name-confirm-text {
-  top: 8%;
-}
-
-#cathgory-confirm {
-	top: 24%;
-}
-
-#cathgory-confirm-text {
-  top: 20%;
-}
-
-#date-confirm {
-	top: 36%;
-}
-
-#date-confirm-text {
-  top: 32%;
-}
-
-#match-confirm {
-	top: 48%;
-}
-
-#match-confirm-text {
-  top: 44%;
-}
-
-#location-confirm {
-	top: 60%;
-}
-
-#location-confirm-text {
-  top: 56%;
-}
-
-#pay-confirm {
-	top: 72%;
-}
-
-#pay-confirm-text {
-  top: 68%;
-}
-
-#require-confirm {
-	height: 14%;
-	top: 84%;
-}
-
-#require-confirm-text {
-  top: 80%;
-}
 /* 이벤트 페이지 7 끝 */
 
 /* 이벤트 페이지 8 시작 */
@@ -700,8 +629,29 @@ input[type="radio"].toggle:checked + label:after {
 
 /* 이벤트 페이지 8 끝 */
 
-
-
 select {
   font-size: 16px;
+}
+
+.sweet-alert {
+	width: 700px !important;
+	left: 38%;
+	top: 50%;
+	height: 500px;
+}
+
+.sweet-alert h2 {
+	font-size: 3em;
+	top: 20%;
+}
+
+.sweet-alert .sa-confirm-button-container {
+  margin-top: 250px;
+  width: 150px;
+}
+
+.sweet-alert[data-has-cancel-button=false] button {
+  width: 150px;
+  height: 75px;
+  font-size: 2em;
 }

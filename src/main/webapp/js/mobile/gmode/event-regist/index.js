@@ -4,13 +4,11 @@ var progressBar = $("#event-progressbar"),
     pageCancelPageBackscreen = $("#event-cancelpage-backscreen"),
     pageCancelPageReturn = $("#event-cancelpage-return"),
     pageCancelPageQuit = $("#event-cancelpage-quit"),
-    
     // 이벤트 프로그레스바 밑 취소페이지
     
     eventPage1 = $("#event-page1"),
     eventPage1Cancel = $("#event-page1-cancel"),
     eventPage1Next = $("#event-page1-next"),
-    
     //  이벤트 1페이지
     
     eventPage2 = $("#event-page2"),
@@ -18,19 +16,13 @@ var progressBar = $("#event-progressbar"),
     eventPage2Next = $("#event-page2-next"),
     themeSelectMenu = $("#theme-select-menu"),
     majorSelectMenu = $("#major-select-menu"),
-    genereSelectMenu = $("#genre-select-menu"),
-    themeSelectVal = 0,
-    majorSelectVal = 0,
-    genreSelectVal = 0,
-    
+    genreSelectMenu = $("#genre-select-menu"),
     //  이벤트 2페이지
     
     eventPage3 = $("#event-page3"),
     eventPage3Prev = $("#event-page3-prev"),
     eventPage3Next = $("#event-page3-next"),
     eventPage3Calendar = $("#calendar-page3"),
-    eventDate = 0,
-    
     // 이벤트 3페이지
     
     eventPage4 = $("#event-page4"),
@@ -40,13 +32,7 @@ var progressBar = $("#event-progressbar"),
     citySelectMenu =  $("#city-select-menu"),
     streetSelectMenu =  $("#street-select-menu"),
     DetailLocation = $("#detail-location"),
-    sidoSelectVal = 0,
-    citySelectVal = 0,
-    streetSelectVal = 0,
-    DetailLocationVal = 0,
-    
     // 이벤트 4페이지
-    
     
     eventPage5 = $("#event-page5"),
     eventPage5Prev = $("#event-page5-prev"),
@@ -54,20 +40,14 @@ var progressBar = $("#event-progressbar"),
     inputEventName =  $("#event-name"),
     inputEventPay =  $("#event-pay"),
     inputEventRequire =  $("#event-require"),
-    EventNameVal = 0, 
-    EventPayVal = 0, 
-    EventRequireVal = 0,
-    
     // 이벤트 5페이지
     
     eventPage6 = $("#event-page6"),
     eventPage6Prev = $("#event-page6-prev"),
     eventPage6Next = $("#event-page6-next"),
-    eventRehearseText = $("#event-rehearse-text"),
     inputRehearseText = $("#input-rehearse-text"),
     inputRehearseCount = $("#input-rehearse-count"),
     inputRehearsePay = $("#input-rehearse-pay"),
-    
     // 이벤트 6 페이지
     
     eventPage7 = $("#event-page7"),
@@ -79,7 +59,12 @@ var progressBar = $("#event-progressbar"),
     locationConfirm = $("#location-confirm"),
     payConfirm = $("#pay-confirm"),
     requireConfirm = $("#require-confirm"),
-    
+    reherseConfirmCountText = $("#reherse-confirm-count-text"),
+    reherseConfirmPayText = $("#reherse-confirm-pay-text"),
+    reherseConfirmInfoText = $("#reherse-confirm-info-text"),
+    reherseConfirmCount = $("#reherse-confirm-count"),
+    reherseConfirmPay = $("#reherse-confirm-pay"),
+    reherseConfirmInfo = $("#reherse-confirm-info"),
     // 이벤트 7 페이지
     
     eventPage8 = $("#event-page8"),
@@ -122,13 +107,35 @@ eventPage2Prev.on('click', function() {
 })
 
 eventPage2Next.on('click', function() {
+  
+  themeSelectMenu.css("border", "1px solid black")
+  majorSelectMenu.css("border", "1px solid black")
+  genreSelectMenu.css("border", "1px solid black")
+  
+  if(themeSelectMenu.val() == "") {
+    themeSelectMenu.css("border", "1px solid red")
+    swal("테마를 선택하세요!")
+    return
+  } 
+  
+  if(majorSelectMenu.val() == "") {
+    majorSelectMenu.css("border", "1px solid red")
+    swal("전공을 선택하세요!")
+    return
+  } 
+  
+  if(genreSelectMenu.val() == "") {
+    genreSelectMenu.css("border", "1px solid red")
+    swal("장르를 선택하세요!")
+    return
+  } 
+  
   eventPage2.toggle(0);
   eventPage3.toggle(0 , function() {
-    themeSelectVal = themeSelectMenu.val()
-    majorSelectVal = majorSelectMenu.val()
-    genreSelectVal = genereSelectMenu.val()
     progress(35)
     eventPage3Calendar.datepicker({
+      dateFormat: "yy-mm-dd",
+      minDate: 0,
       dayNames: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
       dayNamesMin: ["일"," 월"," 수"," 목"," 금"," 토"," 일"]
     });
@@ -143,9 +150,13 @@ eventPage3Prev.on('click', function() {
 })
 
 eventPage3Next.on('click', function() {
+  if(eventPage3Calendar.val() == "2017-07-25") {
+    swal("오늘 날짜는 선택되지 않습니다")
+    return
+  } 
+  
   eventPage3.toggle(0);
   eventPage4.toggle(0 , function() {
-    eventDate = eventPage3Calendar.val()
     progress(50)
   });
 })
@@ -158,12 +169,38 @@ eventPage4Prev.on('click', function() {
 })
 
 eventPage4Next.on('click', function() {
+  sidoSelectMenu.css("border", "1px solid black")
+  citySelectMenu.css("border", "1px solid black")
+  streetSelectMenu.css("border", "1px solid black")
+  DetailLocation.css("boder", "1px solid black")
+  
+  if(sidoSelectMenu.val() == "") {
+    sidoSelectMenu.css("border", "1px solid red")
+    swal("시/도를 선택하세요!")
+    return
+  } 
+  
+  if(citySelectMenu.val() == "") {
+    citySelectMenu.css("border", "1px solid red")
+    swal("시/군/구를 선택하세요!")
+    return
+  } 
+  
+  if(streetSelectMenu.val() == "") {
+    streetSelectMenu.css("border", "1px solid red")
+    swal("동/면/읍을 선택하세요!")
+    return
+  } 
+  
+  if(DetailLocation.val() == "") {
+    DetailLocation.css("border", "1px solid red")
+    swal("상세주소를 입력하세요")
+    return
+  }
+  
+  
   eventPage4.toggle(0);
   eventPage5.toggle(0 , function() {
-    sidoSelectVal = sidoSelectMenu.val()
-    citySelectVal = citySelectMenu.val()
-    streetSelectVal = streetSelectMenu.val()
-    DetailLocationVal = DetailLocation.val()
     progress(65)
   });
 })
@@ -171,17 +208,29 @@ eventPage4Next.on('click', function() {
 eventPage5Prev.on('click', function() {
   eventPage5.toggle(0);
   eventPage4.toggle(0 , function() {
-    progress(65)
+    progress(50)
   });
 })
 
 eventPage5Next.on('click', function() {
+  
+  inputEventName.css("border", "1px solid black")
+  inputEventPay.css("boder", "1px solid black")
+  
+  if(inputEventName.val() == "") {
+    inputEventName.css("border", "1px solid red")
+    swal("이벤트명을 입력하세요!")
+    return
+  } 
+  
+  if(inputEventPay.val() == "") {
+    inputEventPay.css("border", "1px solid red")
+    swal("금액을 입력하세요!")
+    return
+  } 
+  
   eventPage5.toggle(0);
   eventPage6.toggle(0 , function() {
-    
-    EventNameVal = inputEventName.val(), 
-    EventPayVal = inputEventPay.val(), 
-    EventRequireVal = inputEventRequire.val(),
     progress(80)
   });
 })
@@ -189,7 +238,7 @@ eventPage5Next.on('click', function() {
 eventPage6Prev.on('click', function() {
   eventPage6.toggle(0);
   eventPage5.toggle(0 , function() {
-    progress(80)
+    progress(65)
   });
 })
 
@@ -197,20 +246,31 @@ eventPage6Next.on('click', function() {
   eventPage6.toggle(0);
   eventPage7.toggle(0 , function() {
     progress(95)
+    eventConfirm()
   });
 })
 
 $(".btn").on('click', function(event) {
   if(event.currentTarget.innerText == "네") {
-    eventRehearseText.css("display", "block")
 	  inputRehearseText.css("display", "block")
 	  inputRehearseCount.css("display", "block")
 	  inputRehearsePay.css("display", "block")
+	  reherseConfirmCountText.css("display", "block")
+	  reherseConfirmPayText.css("display", "block")
+	  reherseConfirmInfoText.css("display", "block")
+	  reherseConfirmCount.css("display", "block")
+    reherseConfirmPay.css("display", "block")
+    reherseConfirmInfo.css("display", "block")
   } else if (event.currentTarget.innerText == "아니요") {
-    eventRehearseText.css("display", "none")
 	  inputRehearseText.css("display", "none")
 	  inputRehearseCount.css("display", "none")
 	  inputRehearsePay.css("display", "none")
+	  reherseConfirmCountText.css("display", "none")
+    reherseConfirmPayText.css("display", "none")
+    reherseConfirmInfoText.css("display", "none")
+    reherseConfirmCount.css("display", "none")
+    reherseConfirmPay.css("display", "none")
+    reherseConfirmInfo.css("display", "none")
   }
   
 })
@@ -218,7 +278,7 @@ $(".btn").on('click', function(event) {
 eventPage7Prev.on('click', function() {
   eventPage7.toggle(0);
   eventPage6.toggle(0 , function() {
-    progress(80)
+    progress(95)
   });
 })
 
@@ -240,19 +300,16 @@ function progress(per) {
   });
 };
 
-sidoSelectVal = 0,
-citySelectVal = 0,
-streetSelectVal = 0,
-DetailLocationVal = 0,
-themeSelectVal = 0,
-majorSelectVal = 0,
-genreSelectVal = 0,
-
 function eventConfirm() {
-  nameConfirm = EventNameVal
-  cathgoryConfirm
-  dateConfirm = eventDate
-  locationConfirm
-  payConfirm = EventPayVal
-  requireConfirm = EventRequireVal
+  var cathgory = themeSelectMenu.val() + " | " + majorSelectMenu.val() + " | " + genreSelectMenu.val(),
+      location = sidoSelectMenu.val() + " | " + citySelectMenu.val() + " | " + streetSelectMenu.val() + " | " + DetailLocation.val()
+  nameConfirm.text(inputEventName.val())
+  cathgoryConfirm.text(cathgory)
+  dateConfirm.text(eventPage3Calendar.val())
+  locationConfirm.text(location)
+  payConfirm.text(inputEventPay.val())
+  requireConfirm.text(inputEventRequire.val())
+  reherseConfirmCount.text(inputRehearseCount.val())
+  reherseConfirmPay.text(inputRehearsePay.val())
+  reherseConfirmInfo.text(inputRehearseText.val())
 }
