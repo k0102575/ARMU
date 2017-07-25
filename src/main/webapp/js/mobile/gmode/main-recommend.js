@@ -29,7 +29,10 @@ if(isEvent) {
 
 function displayRecommandByEventMusiList() {
 	$.getJSON('/musician/listRecommand.json', function(result) {
-
+		if(result.status != 'success') {
+			console.log("getJSON() 실패: ", result.status)
+			return;
+		}
 		var templateFn = Handlebars.compile($('#rec-by-event-musi-template').text())
 		var generatedHTML = templateFn(result.data)
 		var container = $('#rec-by-event-musi-container')

@@ -27,11 +27,13 @@ public class MusicianControl {
     
     try {
       List<Musician> musicianList = musicianService.listRecommand();
-       if(musicianList == null) {
-         result.setStatus(JsonResult.FAIL);
-       } else {
-         result.setStatus(JsonResult.SUCCESS);
-       }
+
+//       if(musicianList == null) {
+//         result.setStatus(JsonResult.FAIL);
+//       } else {
+//       }
+      
+       result.setStatus(JsonResult.SUCCESS);
        
        HashMap<String,Object> dataMap = new HashMap<>();
        dataMap.put("listRecommand", musicianList);
