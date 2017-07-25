@@ -28,7 +28,7 @@ var memberToggle = $("#member-toggle" ),
   })
 
   $("#prev-page").click(function() {
-    location.href="intro.html"
+    location.href="/mobile/index.html"
   }) // #prev-page().click
 
   $(".signup-btn").on('click', function() {
