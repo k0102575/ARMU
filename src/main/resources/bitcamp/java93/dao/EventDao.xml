@@ -6,12 +6,8 @@
 
 	<resultMap type="event" id="eventMap">
 		<id column="eno" property="no" />
-    <result column="eno" property="no" />
 		<result column="title" property="title" />
 		<result column="gno" property="writer" />
-		<result column="theme" property="theme" />
-		<result column="major" property="major" />
-		<result column="genre" property="genre" />
 		<result column="location" property="location" />
 		<result column="addr" property="address" />
 		<result column="pay" property="pay" />
@@ -21,7 +17,15 @@
 		<result column="date" property="date" />
 		<association property="musician" resultMap="musicianMap2">
 		</association>
-		  <!-- <collection property="applicantList" ofType="Musician" resultMap="musicianMap" /> --> 
+		<collection property="genreList" ofType="string"> 
+        <result column="genre"/> 
+    </collection> 
+    <collection property="themeList" ofType="string"> 
+        <result column="theme"/> 
+    </collection> 
+    <collection property="majorList" ofType="string"> 
+        <result column="major"/> 
+    </collection> 
 	</resultMap>
 
   <resultMap type="musician" id="musicianMap2">
@@ -62,23 +66,26 @@
  
 
 	<select id="selectOngoingList" resultMap="eventMap, musicianMap2">
-	select e.eno, title, t.name as theme, mj.name as major, g.name as genre, 
-             l.name as location, addr, e.pay, date, m.mno, m.name, mu.path as path,
-             mj2.name as major2, g2.name as genre2, t2.name as theme2
-  from evn e inner join thm t on e.thmno=t.thmno
-  inner join mjr mj on e.mjrno=mj.mjrno
-  inner join gnr g on e.gnrno=g.gnrno
-  inner join loc l on e.locno=l.locno
-  inner join mtc mt on  e.eno=mt.eno
-  inner join memb m on mt.muno=m.mno
-  inner join musi mu on m.mno=mu.muno
-  left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj2 on mjm.mjrno=mj2.mjrno
-  left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g2 on gm.gnrno=g2.gnrno
-  left outer join thm_musi tm on mu.muno=tm.muno left outer join thm t2 on tm.thmno=t2.thmno
-		order by title asc
+select e.title, e.eno, mj.name as major, g.name as genre, t.name as theme, l.name as location,
+addr, e.pay, date, m.mno, m.name, mu.path as path,
+mj2.name as major2, g2.name as genre2, t2.name as theme2
+from evn e 
+left outer join mjr_evn me on e.eno=me.eno
+left outer join gnr_evn ge on e.eno=ge.eno
+left outer join thm_evn te on e.eno=te.eno
+left outer join mjr mj on me.mjrno=mj.mjrno
+left outer join gnr g on ge.gnrno=g.gnrno
+left outer join thm t on te.thmno=t.thmno
+inner join loc l on e.locno=l.locno
+inner join mtc mt on e.eno=mt.eno
+inner join memb m on mt.muno=m.mno
+inner join musi mu on m.mno=mu.muno
+left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj2 on mjm.mjrno=mj2.mjrno
+left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g2 on gm.gnrno=g2.gnrno
+left outer join thm_musi tm on mu.muno=tm.muno left outer join thm t2 on tm.thmno=t2.thmno
+order by title asc
 	</select>
 
-	
 </mapper>
 
 
