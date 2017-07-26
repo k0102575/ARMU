@@ -23,7 +23,6 @@ function displayOngoingEventList() {
     var container = $('#act-ongoing-event-container')
     var html = container.html()
     container.html(html + generatedHTML)
-    console.log(result.data)
     displayNowRecruitingEventList();
   }, function(err) {
     console.log(err)

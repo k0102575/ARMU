@@ -242,12 +242,18 @@
 .rec-best-review-contents {
   position: absolute;
   width: 87%;
-  top: 70%;
+  max-height: 4.5em;
+  top: 73%;
   left: 50%;
-  transform: translate(-50%, -70%);
+  transform: translate(-50%, -73%);
   color: black;
   font-size: 35px;
   font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; 
 }
 
 .rec-see-more {

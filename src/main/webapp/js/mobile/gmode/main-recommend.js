@@ -39,14 +39,13 @@ function displayRecommandByEventMusiList() {
 			var starInteger = parseInt(item.score),
 			starRealNumber = item.score - starInteger;
 			starAdd(starInteger, starRealNumber, item)
+			heartAdd(item)
 		});
-		console.log(data)
 		var templateFn = Handlebars.compile($('#rec-by-event-musi-template').text())
 		var generatedHTML = templateFn(data)
 		var container = $('#rec-by-event-musi-container')
 		var html = container.html()
 		container.html(html + generatedHTML)
-		console.log(generatedHTML)
 
 
 
@@ -138,5 +137,13 @@ function starAdd(starInteger, starRealNumber, item) {
 	}
 
 	return item;
+}
+
+function heartAdd(item) {
+	if (item.isFavorite == 1) {
+		item.isFavorite = '<i class="fa fa-heart" aria-hidden="true"></i>'
+	} else {
+		item.isFavorite = '<i class="fa fa-heart-o" aria-hidden="true"></i>'
+	}
 }
 
