@@ -34,18 +34,21 @@ function displayRecommandByEventMusiList() {
 			return;
 		}
 		var data = result.data;
-
 		$.each(data.listRecommand, function(i, item) {
 			var starInteger = parseInt(item.score),
 			starRealNumber = item.score - starInteger;
 			starAdd(starInteger, starRealNumber, item)
 			heartAdd(item)
 		});
+		
 		var templateFn = Handlebars.compile($('#rec-by-event-musi-template').text())
 		var generatedHTML = templateFn(data)
 		var container = $('#rec-by-event-musi-container')
 		var html = container.html()
 		container.html(html + generatedHTML)
+		
+
+		
 
 
 

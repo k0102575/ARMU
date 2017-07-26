@@ -65,7 +65,7 @@
   
   <sql id="selectAll">
     select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, mu.path, mu.gender, 
-    mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, fm.popu, null as fav
+    mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, fm.popu, fm2.fav
   from musi mu inner join memb m on mu.muno=m.mno
   left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on mjm.mjrno=mj.mjrno
   left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g on gm.gnrno=g.gnrno
@@ -75,8 +75,13 @@
   select count(if(muno is not null, 1, 0)) as popu, muno
   from fav_musi
   group by muno
-  ) fm
-  on fm.muno=mu.muno
+  ) fm on fm.muno=mu.muno
+  left outer join (
+  select count(if(muno is not null, 1, 0)) as fav, muno, gno
+  from fav_musi
+  where gno=5
+  group by muno
+  ) fm2 on fm2.muno=mu.muno
   </sql>
   
  
