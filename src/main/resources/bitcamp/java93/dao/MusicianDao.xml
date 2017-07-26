@@ -84,7 +84,6 @@
   ) fm2 on fm2.muno=mu.muno
   </sql>
   
- 
   <sql id="selectAll_myFavorite">
     select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, mu.path, mu.gender, 
     mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, fm.fav, null as popu
