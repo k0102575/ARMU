@@ -31,7 +31,7 @@ function displayOngoingEventList() {
 
 
 function displayNowRecruitingEventList() {
-  $.getJSON('json/listRecommand.json', function(result) {
+  $.getJSON('/event/listOngoing.json', function(result) {
     var templateFn = Handlebars.compile($('#act-now-recruiting-event-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#act-now-recruiting-event-container')
@@ -46,7 +46,7 @@ function displayNowRecruitingEventList() {
 
 
 function displayRecentEventList() {
-  $.getJSON('json/listRecommand.json', function(result) {
+  $.getJSON('/event/listOngoing.json', function(result) {
     var templateFn = Handlebars.compile($('#act-recent-event-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#act-recent-event-container')

@@ -19,6 +19,8 @@
     <result column="gender" property="gender" />
     <result column="score" property="score" />
     <result column="rev" property="review" />
+    <result column="popu" property="popularity"/>
+    <result column="fav" property="isFavorite"/>
     <collection property="majorList" ofType="string"> 
         <result column="major"/> 
     </collection>
@@ -46,32 +48,6 @@
     <result column="score" property="score" />
   </resultMap>
   
-  <resultMap type="musician" id="musicianMap_includeFavor">
-    <id column="mno" property="no" />
-    <result column="name" property="name" />
-    <result column="nick" property="nickName" />
-    <result column="phone" property="phone" />
-    <result column="pwd" property="password" />
-    <result column="email" property="email" />
-    <result column="age" property="age" />
-    <result column="team" property="isTeam" />
-    <result column="hpg" property="homepage" />
-    <result column="intro" property="intro" />
-    <result column="path" property="photo" />
-    <result column="gender" property="gender" />
-    <result column="score" property="score" />
-    <result column="rev" property="review" />
-    <result column="fav" property="isFavorite" />
-    <collection property="majorList" ofType="string"> 
-        <result column="major"/> 
-    </collection>
-    <collection property="genreList" ofType="string"> 
-        <result column="genre"/> 
-    </collection> 
-    <collection property="themeList" ofType="string"> 
-       <result column="theme"/> 
-    </collection>
-  </resultMap>
 
  <sql id="selectBasic">
     select m.mno, m.name, m.nick, mu.path, pwd, email,phone, gender
@@ -89,30 +65,37 @@
   
   <sql id="selectAll">
     select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, mu.path, mu.gender, 
-    mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev
+    mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, fm.popu, null as fav
   from musi mu inner join memb m on mu.muno=m.mno
   left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on mjm.mjrno=mj.mjrno
   left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g on gm.gnrno=g.gnrno
   left outer join thm_musi tm on mu.muno=tm.muno left outer join thm t on tm.thmno=t.thmno
   left outer join mtc on mtc.muno=mu.muno
-  
+  left outer join (
+  select count(if(muno is not null, 1, 0)) as popu, muno
+  from fav_musi
+  group by muno
+  ) fm
+  on fm.muno=mu.muno
   </sql>
-
-<sql id="selectAll_includeFavor">
-select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, mu.path, mu.gender, 
-    mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, if(fm.muno is not null, 1, 0) as fav
+  
+ 
+  <sql id="selectAll_myFavorite">
+    select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, mu.path, mu.gender, 
+    mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, fm.fav, null as popu
   from musi mu inner join memb m on mu.muno=m.mno
   left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on mjm.mjrno=mj.mjrno
   left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g on gm.gnrno=g.gnrno
   left outer join thm_musi tm on mu.muno=tm.muno left outer join thm t on tm.thmno=t.thmno
   left outer join mtc on mtc.muno=mu.muno
-  left outer join fav_musi fm on fm.muno=mu.muno
+  left outer join (
+  select count(if(muno is not null, 1, 0)) as fav, muno, gno
+  from fav_musi
+  where gno=5
+  group by muno
+  ) fm
+  on fm.muno=mu.muno
   </sql>
-  
-  <!-- select count(if(muno is not null, 1, 0)) as fav
-  from fav_musi -->
-  
-   
 
   <select id="selectOne" resultMap="musicianMapBasic">
     <include refid="selectBasic" />
@@ -121,8 +104,8 @@ select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, mu.path
     
   </select>
 
-  <select id="selectRecommandList" resultMap="musicianMap_includeFavor">
-    <include refid="selectAll_includeFavor" />
+  <select id="selectRecommandList" resultMap="musicianMap">
+    <include refid="selectAll" />
     order by m.name asc
   </select>
 

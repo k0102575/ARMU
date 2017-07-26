@@ -12,6 +12,7 @@ public class Musician extends Member  {
   int score;
   String review;
   boolean isFavorite;
+  int popularity;
   ArrayList<String> majorList;
   ArrayList<String> genreList;
   ArrayList<String> themeList;
@@ -70,6 +71,12 @@ public class Musician extends Member  {
   public void setFavorite(boolean isFavorite) {
     this.isFavorite = isFavorite;
   }
+  public int getPopularity() {
+    return popularity;
+  }
+  public void setPopularity(int popularity) {
+    this.popularity = popularity;
+  }
   public ArrayList<String> getMajorList() {
     return majorList;
   }
@@ -98,10 +105,11 @@ public class Musician extends Member  {
   public String toString() {
     return "Musician [age=" + age + ", isTeam=" + isTeam + ", homepage=" + homepage + ", intro=" + intro + ", photo="
         + photo + ", gender=" + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite
-        + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList=" + themeList + ", locationList="
-        + locationList + "]";
+        + ", popularity=" + popularity + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList="
+        + themeList + ", locationList=" + locationList + "]";
   }
- 
   
 
+
+  
 }
