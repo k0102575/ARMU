@@ -30,6 +30,12 @@
     values(#{name},#{phone},password(#{password}),#{nickName},#{email})
   </insert>
   
+  <select id="selectOneByEmailPassword" resultMap="memberMap" parameterType="map">
+    select  m.email
+    from memb m
+    where email=#{email} and pwd=password(#{password})
+  </select>
+  
   
 
 </mapper>

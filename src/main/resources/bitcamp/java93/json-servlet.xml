@@ -13,6 +13,24 @@
   <!-- *.json 요청을 처리할 페이지 컨트롤러 생성 -->
   <context:component-scan base-package="bitcamp.java93.control.json"/>
   
+<!--        
+
+  <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+      <property name="interceptors">
+   <list>
+    <ref bean="LoginInterCeptor"/>
+   </list>
+  </property>
+    </bean>
+ 
+<bean id="LoginInterCeptor" class="bitcamp.java93.interceptor.LoginInterCeptor" >
+  <property name="urls">
+   <list>
+    <value>/auth/login.json</value>
+   </list>
+  </property>
+ </bean>
+   -->
   <!-- Spring WebMVC 관련 기능을 처리할 객체를 등록한다. -->
   <mvc:annotation-driven/>
 
