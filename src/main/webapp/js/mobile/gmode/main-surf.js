@@ -140,7 +140,6 @@ $( function() {
 
 
 function displaySurfMusiList() {
-  console.log("히히히")
   $.getJSON('/musician/listSurf.json', function(result) {
     var templateFn = Handlebars.compile($('#musician-list-template').text())
     var generatedHTML = templateFn(result.data)
@@ -173,7 +172,6 @@ $(function ($) {
     let $fcon1 = $('.filter-loc-sub-tab')
     let $fcon2 = $('.filter-loc-sub-con')
 
-    console.log($fcon2)
 
     tabMenu($fcon1, $fcon2)
     function tabMenu(els, con) {
