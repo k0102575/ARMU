@@ -5,7 +5,7 @@ import java.util.List;
 import bitcamp.java93.domain.Musician;
 
 public interface MusicianDao {
-  List<Musician> selectRecommandList();
+  List<Musician> selectRecommandList(int no);
   List<Musician> selectSurfList();
   Musician selectOne();
 }

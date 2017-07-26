@@ -18,8 +18,8 @@ public class MusicianServiceImpl implements MusicianService {
   @Autowired
   MusicianDao musicianDao;
   
-  public List<Musician> listRecommand() throws Exception {   
-    return musicianDao.selectRecommandList();
+  public List<Musician> listRecommand(int no) throws Exception {   
+    return musicianDao.selectRecommandList(no);
   }
 
   public List<Musician> listSurf() throws Exception {   

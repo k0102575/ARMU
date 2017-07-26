@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,12 +22,12 @@ public class MusicianControl {
   @Autowired MusicianService musicianService;
   
   @RequestMapping("listRecommand")
-  public JsonResult list() {
+  public JsonResult list(int no) {
     
     JsonResult result = new JsonResult();
     
     try {
-      List<Musician> musicianList = musicianService.listRecommand();
+      List<Musician> musicianList = musicianService.listRecommand(no);
 
 //       if(musicianList == null) {
 //         result.setStatus(JsonResult.FAIL);
