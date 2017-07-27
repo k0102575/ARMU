@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import bitcamp.java93.domain.Member;
 import bitcamp.java93.domain.Musician;
 import bitcamp.java93.service.MusicianService;
 
@@ -21,26 +23,32 @@ public class MusicianControl {
   @Autowired MusicianService musicianService;
   
   @RequestMapping("listRecommand")
-  public JsonResult list() {
+  public JsonResult list(HttpSession session) {
     
     JsonResult result = new JsonResult();
+    Member loginMember = (Member)session.getAttribute("loginMember");
     
-    try {
-      List<Musician> musicianList = musicianService.listRecommand();
-
+    if(loginMember != null) {
+      try {
+        List<Musician> musicianList = musicianService.listRecommand(loginMember);
+        
 //       if(musicianList == null) {
 //         result.setStatus(JsonResult.FAIL);
 //       } else {
 //       }
-      
-       result.setStatus(JsonResult.SUCCESS);
-       
-       HashMap<String,Object> dataMap = new HashMap<>();
-       dataMap.put("listRecommand", musicianList);
-       result.setData(dataMap);
-       
-    } catch (Exception e) {
-      result.setStatus(JsonResult.ERROR);
+        
+        result.setStatus(JsonResult.SUCCESS);
+        
+        HashMap<String,Object> dataMap = new HashMap<>();
+        dataMap.put("listRecommand", musicianList);
+        result.setData(dataMap);
+        
+      } catch (Exception e) {
+        result.setStatus(JsonResult.ERROR);
+      }
+    } else {//loginMember가 없으면
+      result.setStatus(JsonResult.SUCCESS);
+      result.setData("browse");
     }
     
     return result;

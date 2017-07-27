@@ -97,8 +97,7 @@
   select count(if(muno is not null, 1, 0)) as popu, muno
   from fav_musi
   group by muno
-  ) fm
-  on fm.muno=mu.muno
+  ) fm on fm.muno=mu.muno
   left outer join loc_musi lm on lm.muno=m.mno
   left outer join loc l on lm.locno= l.locno
   </sql>

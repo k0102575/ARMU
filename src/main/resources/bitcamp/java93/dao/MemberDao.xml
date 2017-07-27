@@ -31,7 +31,7 @@
   </insert>
   
   <select id="selectOneByEmailPassword" resultMap="memberMap" parameterType="map">
-    select  m.email
+    select  m.email, m.mno, m.name, m.nick, m.phone
     from memb m
     where email=#{email} and pwd=password(#{password})
   </select>

@@ -63,6 +63,11 @@ insert into gnr (name, gnrtno) values ('보사노바', 4);
 insert into gnr (name, gnrtno) values ('모던재즈', 4);
 insert into gnr (name, gnrtno) values ('뉴에이지', 4);
 
+insert into gnr (name, gnrtno) values ('실내악', 1);
+insert into gnr (name, gnrtno) values ('가곡', 1);
+insert into gnr (name, gnrtno) values ('아리아', 1);
+
+
 
 -- 테마 분류(thm_type), 테마(thm)
 insert into thm_type (name) values ('결혼식');
@@ -199,16 +204,16 @@ insert into gmemb (gno) values (6);
 insert into gmemb (gno) values (7);
 
 -- 이벤트
-insert into evn (title, gno, thmno, mjrno, gnrno, locno, pay, addr, date, cont)
-values ("결혼식 축가 구해요~!", 4, 2, 2, 1, 22, 200000, '딩댕동 553-5', '2017-08-20',
+insert into evn (title, gno, locno, pay, addr, date, cont)
+values ("결혼식 축가 구해요~!", 4, 22, 200000, '딩댕동 553-5', '2017-08-20',
 '의정부역 근처 예식장 4월 28일 오후 2시 예식에
 축가 구합니다.
 성악전공하신분이였으면 좋겠습니다.
 학생도 가능하니 연락주세요^^
 페이는 20만원입니다^^');
 
-insert into evn (title, gno, thmno, mjrno, gnrno, locno, pay, addr, date, cont)
-values ("결혼식 피아노 반주자를 구합니다!", 4, 2, 1, 10, 14, 150000, '링딩동 113-1 샤이니웨딩홀', '2017-08-20',
+insert into evn (title, gno, locno, pay, addr, date, cont)
+values ("결혼식 피아노 반주자를 구합니다!", 4, 14, 150000, '링딩동 113-1 샤이니웨딩홀', '2017-08-20',
 '결혼식 피아노 반주자 구합니다.
 
 10월 12일 2013 (SAT) / North Haledon
@@ -230,8 +235,8 @@ angie8102@gmail.com
 
 연락처 꼭 남겨주세요~~~');
 
-insert into evn (title, gno, thmno, mjrno, gnrno, locno, pay, addr, date, cont)
-values ("창립기념행사에 모실 초청공연 연주자를 구합니다!", 4, 7, 2, 10, 6, 300000, '용두동 222 (주)휴스턴', '2017-07-20',
+insert into evn (title, gno, locno, pay, addr, date, cont)
+values ("창립기념행사에 모실 초청공연 연주자를 구합니다!", 4, 6, 300000, '용두동 222 (주)휴스턴', '2017-07-20',
 '(주)휴스턴 창립 11주년 기념식
 
 주제 : 창립 11주년 기념행사
@@ -243,13 +248,67 @@ values ("창립기념행사에 모실 초청공연 연주자를 구합니다!", 
 주소 : 4606 Mangum Rd, Houston, TX 77092
 ');
 
-insert into evn (title, gno, thmno, mjrno, gnrno, locno, pay, addr, date, cont)
-values ("가든파티 연주자를 구합니다~~", 5, 7, 6, 10, 8, 300000, '몰라동 131 몰라캠핑장', '2017-08-30',
+insert into evn (title, gno, locno, pay, addr, date, cont)
+values ("가든파티 연주자를 구합니다~~", 5, 8, 300000, '몰라동 131 몰라캠핑장', '2017-08-30',
 '8월 30일에 모임에서 가든파티를 하는데, 연주가 함께 있는 파티를 하려고 합니다!
 약 5시부터 8시까지 신나는 연주를 해주실 밴드를 모시고자 합니다.
 금액은 협의하여 더 드릴 수 있습니다.
 알뮤 메시지로 연락 부탁드려요!!
 ');
+
+-- 이벤트 전공(mjr_evn)
+insert into mjr_evn (eno, mjrno) values (1, 4);
+insert into mjr_evn (eno, mjrno) values (1, 5);
+insert into mjr_evn (eno, mjrno) values (1, 6);
+insert into mjr_evn (eno, mjrno) values (1, 7);
+insert into mjr_evn (eno, mjrno) values (1, 8);
+insert into mjr_evn (eno, mjrno) values (1, 9);
+insert into mjr_evn (eno, mjrno) values (1, 1);
+insert into mjr_evn (eno, mjrno) values (1, 2);
+
+insert into mjr_evn (eno, mjrno) values (2, 10);
+insert into mjr_evn (eno, mjrno) values (2, 11);
+insert into mjr_evn (eno, mjrno) values (2, 12);
+insert into mjr_evn (eno, mjrno) values (2, 13);
+
+insert into mjr_evn (eno, mjrno) values (3, 1);
+insert into mjr_evn (eno, mjrno) values (3, 2);
+insert into mjr_evn (eno, mjrno) values (3, 3);
+insert into mjr_evn (eno, mjrno) values (3, 14);
+
+insert into mjr_evn (eno, mjrno) values (4, 3);
+insert into mjr_evn (eno, mjrno) values (4, 14);
+
+-- 이벤트 장르(gnr_evn)
+insert into gnr_evn (eno, gnrno) values (1, 13);
+insert into gnr_evn (eno, gnrno) values (1, 14);
+insert into gnr_evn (eno, gnrno) values (1, 1);
+
+insert into gnr_evn (eno, gnrno) values (2, 1);
+insert into gnr_evn (eno, gnrno) values (2, 10);
+insert into gnr_evn (eno, gnrno) values (2, 11);
+insert into gnr_evn (eno, gnrno) values (2, 12);
+
+insert into gnr_evn (eno, gnrno) values (3, 3);
+insert into gnr_evn (eno, gnrno) values (3, 4);
+insert into gnr_evn (eno, gnrno) values (3, 5);
+
+insert into gnr_evn (eno, gnrno) values (4, 3);
+insert into gnr_evn (eno, gnrno) values (4, 4);
+insert into gnr_evn (eno, gnrno) values (4, 5);
+insert into gnr_evn (eno, gnrno) values (4, 10);
+insert into gnr_evn (eno, gnrno) values (4, 11);
+
+-- 이벤트 테마(thm_evn)
+insert into thm_evn (eno, thmno) values (1, 2);
+
+insert into thm_evn (eno, thmno) values (2, 1);
+
+insert into thm_evn (eno, thmno) values (3, 6);
+insert into thm_evn (eno, thmno) values (3, 7);
+
+insert into thm_evn (eno, thmno) values (4, 6);
+
 
 -- 이벤트 참여신청(evn_appy)
 insert into evn_appy (eno, muno) values (1, 1);

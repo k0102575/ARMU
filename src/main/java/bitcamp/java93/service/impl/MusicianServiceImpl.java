@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import bitcamp.java93.dao.MemberDao;
 import bitcamp.java93.dao.MusicianDao;
+import bitcamp.java93.domain.Member;
 import bitcamp.java93.domain.Musician;
 import bitcamp.java93.service.MusicianService;
 
@@ -18,8 +19,8 @@ public class MusicianServiceImpl implements MusicianService {
   @Autowired
   MusicianDao musicianDao;
   
-  public List<Musician> listRecommand() throws Exception {   
-    return musicianDao.selectRecommandList();
+  public List<Musician> listRecommand(Member member) throws Exception {   
+    return musicianDao.selectRecommandList(member);
   }
 
   public List<Musician> listSurf() throws Exception {   
@@ -35,7 +36,6 @@ public class MusicianServiceImpl implements MusicianService {
   public List<Musician> listLocation() throws Exception {
     return musicianDao.musicianLocation();
   }
-  
   
   
   

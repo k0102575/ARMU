@@ -7,9 +7,9 @@ public class Event {
   int no;
   String title;
   int writer;
-  String theme;
-  String major;
-  String genre;
+  ArrayList<String> themeList;
+  ArrayList<String> majorList;
+  ArrayList<String> genreList;
   String location;
   String address;
   int pay;
@@ -38,23 +38,23 @@ public class Event {
   public void setWriter(int writer) {
     this.writer = writer;
   }
-  public String getTheme() {
-    return theme;
+  public ArrayList<String> getThemeList() {
+    return themeList;
   }
-  public void setTheme(String theme) {
-    this.theme = theme;
+  public void setThemeList(ArrayList<String> themeList) {
+    this.themeList = themeList;
   }
-  public String getMajor() {
-    return major;
+  public ArrayList<String> getMajorList() {
+    return majorList;
   }
-  public void setMajor(String major) {
-    this.major = major;
+  public void setMajorList(ArrayList<String> majorList) {
+    this.majorList = majorList;
   }
-  public String getGenre() {
-    return genre;
+  public ArrayList<String> getGenreList() {
+    return genreList;
   }
-  public void setGenre(String genre) {
-    this.genre = genre;
+  public void setGenreList(ArrayList<String> genreList) {
+    this.genreList = genreList;
   }
   public String getLocation() {
     return location;
@@ -118,10 +118,10 @@ public class Event {
   }
   @Override
   public String toString() {
-    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", theme=" + theme + ", major=" + major
-        + ", genre=" + genre + ", location=" + location + ", address=" + address + ", pay=" + pay + ", requirement="
-        + requirement + ", contents=" + contents + ", downPay=" + downPay + ", date=" + date + ", applicantList="
-        + applicantList + ", pickedList=" + pickedList + ", musician=" + musician + "]";
+    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", themeList=" + themeList + ", majorList="
+        + majorList + ", genreList=" + genreList + ", location=" + location + ", address=" + address + ", pay=" + pay
+        + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay + ", date=" + date
+        + ", applicantList=" + applicantList + ", pickedList=" + pickedList + ", musician=" + musician + "]";
   }
   
   
