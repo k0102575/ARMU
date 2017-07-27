@@ -3,54 +3,58 @@ var progressBar = $("#event-progressbar"),
     pageCancelPage = $("#event-cancelpage"),
     pageCancelPageBackscreen = $("#event-cancelpage-backscreen"),
     pageCancelPageReturn = $("#event-cancelpage-return"),
-    pageCancelPageQuit = $("#event-cancelpage-quit"),
+    pageCancelPageQuit = $("#event-cancelpage-quit")
     // 이벤트 프로그레스바 밑 취소페이지
     
-    eventPage1 = $("#event-page1"),
+var eventPage1 = $("#event-page1"),
     eventPage1Cancel = $("#event-page1-cancel"),
-    eventPage1Next = $("#event-page1-next"),
+    eventPage1Next = $("#event-page1-next")
     //  이벤트 1페이지
     
-    eventPage2 = $("#event-page2"),
+var eventPage2 = $("#event-page2"),
     eventPage2Prev = $("#event-page2-prev"),
     eventPage2Next = $("#event-page2-next"),
-    themeSelectMenu = $("#theme-select-menu"),
-    majorSelectMenu = $("#major-select-menu"),
-    genreSelectMenu = $("#genre-select-menu"),
+    themeSelectButton = $("#theme-select-button"),
+    majorSelectButton = $("#major-select-button"),
+    genreSelectButton = $("#genre-select-button"),
+    themeSelectBox = $("#theme-select-box"),
+    majorSelectBox = $("#major-select-box"),
+    genreSelectBox = $("#genre-select-box")
+
     //  이벤트 2페이지
     
-    eventPage3 = $("#event-page3"),
+var eventPage3 = $("#event-page3"),
     eventPage3Prev = $("#event-page3-prev"),
     eventPage3Next = $("#event-page3-next"),
-    eventPage3Calendar = $("#calendar-page3"),
+    eventPage3Calendar = $("#calendar-page3")
     // 이벤트 3페이지
     
-    eventPage4 = $("#event-page4"),
+var eventPage4 = $("#event-page4"),
     eventPage4Prev = $("#event-page4-prev"),
     eventPage4Next = $("#event-page4-next"),
     sidoSelectMenu =  $("#sido-select-menu"),
     citySelectMenu =  $("#city-select-menu"),
     streetSelectMenu =  $("#street-select-menu"),
-    DetailLocation = $("#detail-location"),
+    DetailLocation = $("#detail-location")
     // 이벤트 4페이지
     
-    eventPage5 = $("#event-page5"),
+var eventPage5 = $("#event-page5"),
     eventPage5Prev = $("#event-page5-prev"),
     eventPage5Next = $("#event-page5-next"), 
     inputEventName =  $("#event-name"),
     inputEventPay =  $("#event-pay"),
-    inputEventRequire =  $("#event-require"),
+    inputEventRequire =  $("#event-require")
     // 이벤트 5페이지
     
-    eventPage6 = $("#event-page6"),
+var eventPage6 = $("#event-page6"),
     eventPage6Prev = $("#event-page6-prev"),
     eventPage6Next = $("#event-page6-next"),
     inputRehearseText = $("#input-rehearse-text"),
     inputRehearseCount = $("#input-rehearse-count"),
-    inputRehearsePay = $("#input-rehearse-pay"),
+    inputRehearsePay = $("#input-rehearse-pay")
     // 이벤트 6 페이지
     
-    eventPage7 = $("#event-page7"),
+var eventPage7 = $("#event-page7"),
     eventPage7Prev = $("#event-page7-prev"),
     eventPage7Next = $("#event-page7-next"),
     nameConfirm = $("#name-confirm"),
@@ -64,10 +68,10 @@ var progressBar = $("#event-progressbar"),
     reherseConfirmInfoText = $("#reherse-confirm-info-text"),
     reherseConfirmCount = $("#reherse-confirm-count"),
     reherseConfirmPay = $("#reherse-confirm-pay"),
-    reherseConfirmInfo = $("#reherse-confirm-info"),
+    reherseConfirmInfo = $("#reherse-confirm-info")
     // 이벤트 7 페이지
     
-    eventPage8 = $("#event-page8"),
+var eventPage8 = $("#event-page8"),
     eventPage8Home = $("#event-page8-home")
     
     // 이벤트 8페이지 
@@ -102,13 +106,25 @@ eventPage1Next.on('click', function() {
   });
 })
 
+themeSelectButton.on('click', function() {
+  themeSelectBox.toggle(0)
+})
+
+majorSelectButton.on('click', function() {
+  majorSelectBox.toggle(0)
+})
+
+genreSelectButton.on('click', function() {
+  genreSelectBox.toggle(0)
+})
+
 eventPage2Prev.on('click', function() {
-  location.href="/mobile/gmode/event-regist/index.html"
+  location.href="/mobile/gmode/event/regist.html"
 })
 
 eventPage2Next.on('click', function() {
   
-  themeSelectMenu.css("border", "1px solid black")
+  /*themeSelectMenu.css("border", "1px solid black")
   majorSelectMenu.css("border", "1px solid black")
   genreSelectMenu.css("border", "1px solid black")
   
@@ -128,7 +144,7 @@ eventPage2Next.on('click', function() {
     genreSelectMenu.css("border", "1px solid red")
     swal("장르를 선택하세요!")
     return
-  } 
+  } */
   
   eventPage2.toggle(0);
   eventPage3.toggle(0 , function() {

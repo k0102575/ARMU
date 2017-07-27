@@ -4,7 +4,7 @@ var  emailInput = $(".email-input"),
      passwordInputCheck = $(".password-input-check")
        
 $("#prev-page").on('click', function(){
-  location.href="intro.html"
+  location.href="/mobile/index.html"
   })
   
 $(".login-btn").on('click', function() {
