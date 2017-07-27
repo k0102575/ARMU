@@ -52,20 +52,32 @@
 <div id="musician-surf-list">
 
 <script id="musician-list-template" type="text/x-handlebars-template">
+
 {{#each listSurf}}
 <div id='musician-surf'>
     <img class='musician-surf-picture' src='{{photo}}'>
     <div id="musician-surf-preview">
-      <span id="musician-surf-intro">{{#each musiTag}}#{{this}}&nbsp;{{/each}}</span>
+      <span id="musician-surf-name">{{name}}</span><br> 
+      <span id="musician-surf-location">{{area}}</span><br> <img id="musician-surf-like" src="/image/icon/mobile_icon/heart.png">
+    </div>
+</div>
+{{/each}}
+
+{{#each location}}
+<div id='musician-surf'>
+    <img class='musician-surf-picture' src='{{photo}}'>
+    <div id="musician-surf-preview">
       <span id="musician-surf-name">{{name}}</span><br> 
       <span id="musician-surf-location">{{area}}</span><br> <img id="musician-surf-like" src="/image/icon/mobile_icon/heart.png">
     </div>
 </div>
 {{/each}}
 </script>
-
-
 </div>
+
+
+
+
 <!--musician-surf-list -->
 <div id="filter-body">
 	<div class="filter" id="filter-loc">
@@ -97,7 +109,7 @@
 
 	<div id="local" class="filter-loc-sub-con">
 		<div style="height:100%">
-			<div class="seoul">현재위치</div>
+			<div class="seoul"  id="abca">현재위치</div>
 			<div class="seoul">현재위치</div>
 			<div class="seoul">현재위치</div>
 			<div class="seoul">현재위치</div>

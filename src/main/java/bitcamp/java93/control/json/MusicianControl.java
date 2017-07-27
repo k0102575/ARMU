@@ -66,6 +66,15 @@ public class MusicianControl {
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
   
+  @RequestMapping("listLocation")
+  public JsonResult listLocation() throws Exception {
+    
+    HashMap<String,Object> dataMap = new HashMap<>();
+
+    dataMap.put("location", musicianService.listLocation());
+    
+    return new JsonResult(JsonResult.SUCCESS, dataMap);
+  }
 }
 
 

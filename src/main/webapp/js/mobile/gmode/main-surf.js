@@ -8,11 +8,41 @@
 //      <img id='musician-surf-like' src='../ARMU-Image/ARMU_icon/mobile_icon/heart.png'>\
 //      </div>")
 //})
-
+//
 $("document").ready(function(){
   displaySurfMusiList()
 })
 
+$('#abca').on('click',function(e) {
+  e.preventDefault()
+  displaySurfMusiList2()
+})
+
+
+function displaySurfMusiList() {
+  $.getJSON('/musician/listSurf.json', function(result) {
+    var templateFn = Handlebars.compile($('#musician-list-template').text())
+    console.log($('#musician-list-template'))
+    var generatedHTML = templateFn(result.data)
+    console.log(generatedHTML)
+    var container = $('#musician-surf-list')
+    container.html(generatedHTML)
+  })
+//  $('#musician-surf-list').html('');
+}
+
+
+function displaySurfMusiList2() {
+  $('#musician-surf-list').html('');
+  $.getJSON('/musician/listLocation.json', function(result) {
+    console.log(result)
+    var templateFn = Handlebars.compile($('#musician-list-template').text())
+    var generatedHTML = templateFn(result.data)
+    var container = $('#musician-surf-list')
+    console.log(generatedHTML)
+    container.html(generatedHTML)
+  })
+}
 
 
 var surfBackscreen = $("#surf-backscreen"),
@@ -138,15 +168,6 @@ $( function() {
       " - " + $( "#slider-range" ).slider( "values", 1 )  + "대");
   });
 
-
-function displaySurfMusiList() {
-  $.getJSON('/musician/listSurf.json', function(result) {
-    var templateFn = Handlebars.compile($('#musician-list-template').text())
-    var generatedHTML = templateFn(result.data)
-    var container = $('#musician-surf-list')
-    container.html(generatedHTML)
-  })
-}
 
 
 

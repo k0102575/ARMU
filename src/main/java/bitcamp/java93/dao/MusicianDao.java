@@ -8,4 +8,5 @@ public interface MusicianDao {
   List<Musician> selectRecommandList();
   List<Musician> selectSurfList();
   Musician selectOne();
+  List<Musician> musicianLocation();
 }

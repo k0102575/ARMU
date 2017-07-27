@@ -8,7 +8,7 @@ public interface MusicianService {
   List<Musician> listRecommand() throws Exception;
   List<Musician> listSurf() throws Exception;
   Musician getProfile() throws Exception;
-
+  List<Musician> listLocation() throws Exception;
 }
 
 

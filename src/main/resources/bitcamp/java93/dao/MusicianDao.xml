@@ -30,6 +30,9 @@
     <collection property="themeList" ofType="string"> 
        <result column="theme"/> 
     </collection>
+    <collection property="locationList" ofType="string"> 
+        <result column="location"/> 
+    </collection>
   </resultMap>
   
    <resultMap type="musician" id="musicianMapBasic">
@@ -46,6 +49,25 @@
     <result column="path" property="photo" />
     <result column="gender" property="gender" />
     <result column="score" property="score" />
+  </resultMap>
+  
+  <resultMap type="musician" id="musicianMapBasic2">
+    <id column="mno" property="no" />
+    <result column="name" property="name" />
+    <result column="nick" property="nickName" />
+    <result column="phone" property="phone" />
+    <result column="pwd" property="password" />
+    <result column="email" property="email" />
+    <result column="age" property="age" />
+    <result column="team" property="isTeam" />
+    <result column="hpg" property="homepage" />
+    <result column="intro" property="intro" />
+    <result column="path" property="photo" />
+    <result column="gender" property="gender" />
+    <result column="score" property="score" />
+    <collection property="locationList" ofType="string"> 
+        <result column="location"/> 
+    </collection>
   </resultMap>
   
 
@@ -65,7 +87,7 @@
   
   <sql id="selectAll">
     select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, mu.path, mu.gender, 
-    mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, fm.popu, null as fav
+    mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, fm.popu, null as fav, lm.muno, l.name as location
   from musi mu inner join memb m on mu.muno=m.mno
   left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on mjm.mjrno=mj.mjrno
   left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g on gm.gnrno=g.gnrno
@@ -77,9 +99,13 @@
   group by muno
   ) fm
   on fm.muno=mu.muno
+  left outer join loc_musi lm on lm.muno=m.mno
+  left outer join loc l on lm.locno= l.locno
   </sql>
   
  
+  
+  
   <sql id="selectAll_myFavorite">
     select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, mu.path, mu.gender, 
     mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, fm.fav, null as popu
@@ -114,6 +140,11 @@
 
   <select id="selectSurfList" resultMap="musicianMap">
   <include refid="selectAll" />
+  </select>
+  
+  <select id="musicianLocation" resultMap="musicianMap">
+  <include refid="selectAll" />
+  where l.name like '동대문구'
   </select>
   
 </mapper>

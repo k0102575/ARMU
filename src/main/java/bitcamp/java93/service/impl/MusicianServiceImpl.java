@@ -30,6 +30,13 @@ public class MusicianServiceImpl implements MusicianService {
   public Musician getProfile() throws Exception {
     return musicianDao.selectOne();
   }
+
+  @Override
+  public List<Musician> listLocation() throws Exception {
+    return musicianDao.musicianLocation();
+  }
+  
+  
   
   
 }
