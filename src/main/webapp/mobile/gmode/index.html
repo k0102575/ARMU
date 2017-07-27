@@ -171,15 +171,18 @@ display: none;
      transition: function(url){ window.location.href = url; }
      });
 
-
    /* 카테고리별 메인 화면 띄우기 */
-   mainSurf.css('visibility', 'hidden')
-   mainAct.css('display', 'none')
+
+   $(window).on('load', function () {
+    mainSurf.css('display', 'none')
+    mainAct.css('display', 'none')
+});
 
    categoryBtn1.on('click', function() {
      categoryUnderbar1.css('display', "inline-block")
      mainRecommend.css('display', '')
      mainSurf.css('visibility', 'hidden')
+     mainSurf.css('display', 'none')
      $('#filter-body').css('display','none')
      mainAct.css('display', 'none')
      categoryUnderbar2.css('display', "none")

@@ -122,6 +122,8 @@ yScroll = new jindo.m.Scroll("daejun", {
 $('#filter-loc').click(function() {
     $("#filter-loc-backscreen").css('display', 'block');
     $('#musician-surf-list').css('overflow','hidden').css('position','fixed')
+    $("#filter-loc-toggle").css('display', 'block');
+    $(".filter-loc-sub-con").css('display','block');
     $("#filter-loc-toggle").css('visibility', 'visible');
     $(".filter-loc-sub-con").css('visibility','visible');
     // $("#filter-loc-toggle").toggle("slide", {direction: "down"});
@@ -130,8 +132,8 @@ $('#filter-loc').click(function() {
 $("#filter-loc-backscreen").click(function() {
     // $("#filter-loc-toggle").toggle("slide", {direction: "down"});
     $('#musician-surf-list').css('overflow','').css('position','absolute')
-    $("#filter-loc-toggle").css('visibility', 'hidden');
-    $(".filter-loc-sub-con").css('visibility','hidden')
+    $("#filter-loc-toggle").css('display', 'none');
+    $(".filter-loc-sub-con").css('display','none');
     $("#filter-loc-backscreen").css('display', 'none');
 })
 
