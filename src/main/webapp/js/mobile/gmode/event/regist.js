@@ -123,11 +123,14 @@ eventPage1Next.on('click', function() {
     })
 
     $("#theme-check-check").on('click', function() {
+    	cathgoryConfirm.append("<span class='selectSpan'>테마:  </span>")
       $("input[name=theme]:checked").each(function() {
         categoryThemeNo += $(this).val() + ","
         categoryThemeName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
         themeSelectText.append("<span class='selectSpan'>" + categoryThemeName + "</span>")
+        cathgoryConfirm.append("<span class='selectSpan'>" + categoryThemeName + "</span>")
         });
+    	cathgoryConfirm.append('<br />')
       themeSelectBox.toggle(0)
       menuBackScreen.toggle(0)
     })
@@ -149,11 +152,14 @@ eventPage1Next.on('click', function() {
     })
 
     $("#major-check-check").on('click', function() {
+    	cathgoryConfirm.append("<span class='selectSpan'>전공:  </span>")
       $("input[name=major]:checked").each(function() {
         categoryMajorNo += $(this).val() + ","
         categoryMajorName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
         majorSelectText.append("<span class='selectSpan'>" + categoryMajorName + "</span>")
+        cathgoryConfirm.append("<span class='selectSpan'>" + categoryMajorName + "</span>")
         });
+    	cathgoryConfirm.append('<br />')
       menuBackScreen.toggle(0)
       majorSelectBox.toggle(0)
     })
@@ -175,11 +181,14 @@ eventPage1Next.on('click', function() {
     })
 
     $("#genre-check-check").on('click', function() {
+    	cathgoryConfirm.append("<span class='selectSpan'>장르:  </span>")
       $("input[name=genre]:checked").each(function() {
         categoryGenreNo += $(this).val() + ","
         categoryGenreName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
         genreSelectText.append("<span class='selectSpan'>" + categoryGenreName + "</span>")
+        cathgoryConfirm.append("<span class='selectSpan'>" + categoryGenreName + "</span>")
         });
+    	cathgoryConfirm.append('<br />')
       menuBackScreen.toggle(0)
       genreSelectBox.toggle(0)
     })
@@ -218,7 +227,7 @@ eventPage2Prev.on('click', function() {
 
 eventPage2Next.on('click', function() {
   
-  if(themeSelectText.text() == "") {
+  /*if(themeSelectText.text() == "") {
     swal("테마를 선택하세요!")
     return
   } 
@@ -231,7 +240,7 @@ eventPage2Next.on('click', function() {
   if(genreSelectText.text() == "") {
     swal("장르를 선택하세요!")
     return
-  } 
+  } */
   
   eventPage2.toggle(0);
   eventPage3.toggle(0 , function() {
@@ -253,10 +262,38 @@ eventPage3Prev.on('click', function() {
 })
 
 eventPage3Next.on('click', function() {
-  if(eventPage3Calendar.val() == "2017-07-25") {
+  if(eventPage3Calendar.val() == "2017-07-29") {
     swal("오늘 날짜는 선택되지 않습니다")
     return
   } 
+  
+ $.getJSON('/event/listLocationType.json', function(result) {
+    var templateFn = Handlebars.compile($('#select-sido-template').text())
+    var generatedHTML = templateFn(result.data)
+    var container = sidoSelectMenu
+    container.html(generatedHTML)
+    
+   sidoSelectMenu.change(function(){
+	   var loctno = $(this).val()
+	   var sidoText = $("#sido-select-menu option:selected").text()
+	   optGroup = $('<optgroup>').attr('label', sidoText);
+	   citySelectMenu.append(optGroup);
+
+	   $.getJSON('/event/listLocation.json', {"loctno" : loctno},function(result) {
+	    var templateFn = Handlebars.compile($('#select-city-template').text())
+	    var generatedHTML = templateFn(result.data)
+	    var container = citySelectMenu
+		var html = container.html()
+		container.html(html + generatedHTML)
+	  }, function(err) {
+	    console.log(err)
+	  })
+	   
+    })
+    
+  }, function(err) {
+    console.log(err)
+})
   
   eventPage3.toggle(0);
   eventPage4.toggle(0 , function() {
@@ -272,6 +309,9 @@ eventPage4Prev.on('click', function() {
 })
 
 eventPage4Next.on('click', function() {
+	
+	
+	/*
   sidoSelectMenu.css("border", "1px solid black")
   citySelectMenu.css("border", "1px solid black")
   DetailLocation.css("boder", "1px solid black")
@@ -292,7 +332,7 @@ eventPage4Next.on('click', function() {
     DetailLocation.css("border", "1px solid red")
     swal("상세주소를 입력하세요")
     return
-  }
+  }*/
   
   
   eventPage4.toggle(0);
@@ -397,12 +437,10 @@ function progress(per) {
 };
 
 function eventConfirm() {
-  var cathgory = categoryThemeName.slice(0,-1) + " | " + majorSelectMenu.val() + " | " + genreSelectMenu.val(),
-      location = sidoSelectMenu.val() + " | " + citySelectMenu.val() + " | " + streetSelectMenu.val() + " | " + DetailLocation.val()
+  var locationInfo = sidoSelectMenu.val() + " | " + citySelectMenu.val() + " | " + DetailLocation.val()
   nameConfirm.text(inputEventName.val())
-  cathgoryConfirm.text(cathgory)
   dateConfirm.text(eventPage3Calendar.val())
-  locationConfirm.text(location)
+  locationConfirm.text(locationInfo)
   payConfirm.text(inputEventPay.val())
   requireConfirm.text(inputEventRequire.val())
   reherseConfirmCount.text(inputRehearseCount.val())

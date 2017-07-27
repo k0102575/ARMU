@@ -24,7 +24,7 @@
     </collection>
   </resultMap>
   
-   <resultMap type="category" id="genreMap">
+  <resultMap type="category" id="genreMap">
      <result column="name" property="gnrtname" />
      <collection property="list" ofType="java.util.Map">
        <association property="genreMap" javaType="java.util.Map"> 
@@ -33,6 +33,12 @@
       </association>
     </collection>
   </resultMap>
+  
+  <resultMap type="category" id="locationTypeMap">
+		<id column="loctno" property="loctno" />
+		<result column="loctname" property="loctname" />
+		<result column="locname" property="locname" />
+	</resultMap>
   
     <resultMap type="hashMap" id="hashMap">
     <result javaType="java.lang.String" column="thmename"></result>
@@ -136,6 +142,18 @@ order by title asc
   <select id="selectListGenre" resultMap="genreMap">
   select gnrt.name, gnre.name as gnrename, gnre.gnrno
   from gnr as gnre left outer join gnr_type as gnrt on gnrt.gnrtno = gnre.gnrtno
+  </select>
+  
+  <select id="selectListLocationType" resultMap="locationTypeMap">
+  select loctno, name as loctname 
+  from loc_type
+  order by loctno
+  </select>
+  
+  <select id="selectListLocation" resultMap="locationTypeMap" parameterType="int">
+  select locno, name as locname 
+  from loc where loctno = #{loctno}
+  order by locno
   </select>
 
 </mapper>

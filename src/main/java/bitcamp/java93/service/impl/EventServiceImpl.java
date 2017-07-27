@@ -32,5 +32,13 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectListGenre();
   }
   
+  public  List<Category> listLocationType() throws Exception {   
+    return eventDao.selectListLocationType();
+  }
+  
+  public  List<Category> listLocation(int no) throws Exception {   
+    return eventDao.selectListLocation(no);
+  }
+  
 }
 

@@ -10,4 +10,6 @@ public interface EventDao {
   List<Category> selectListTheme();
   List<Category> selectListMajor();
   List<Category> selectListGenre();
+  List<Category> selectListLocationType();
+  List<Category> selectListLocation(int no);
 }

@@ -196,23 +196,28 @@
   
   <div id="sido-select">
     <select name="sido" id="sido-select-menu">
-      <option class="select-option" value="">시/도</option>
-      <option class="select-option" value="서울">서울</option>
-      <option class="select-option" value="경기도">경기도</option>
-      <option class="select-option" value="인천">인천</option>
     </select>
   </div>
   <!-- sido-select -->
   
+  <script id="select-sido-template" type="text/x-handlebars-template">
+		  <option class="select-option" value="">시/도</option>
+  {{#each listLocationType}}
+      <option class="select-option" value="{{loctno}}">{{loctname}}</option>
+  {{/each}}
+	</script>
+  
   <div id="city-select">
     <select name="city" id="city-select-menu">
-      <option class="select-option" value="">시/군/구</option>
-      <option class="select-option" value="강남구">강남구</option>
-      <option class="select-option" value="서초구">서초구</option>
-      <option class="select-option" value="송파구">송파구</option>
     </select>
   </div>
   <!-- city-select -->
+  
+  <script id="select-city-template" type="text/x-handlebars-template">
+  {{#each listLocation}}
+      <option class="select-option" value="{{locno}}">{{locname}}</option>
+  {{/each}}
+	</script>
   
   <input type="text" id="detail-location" placeholder="상세주소를 입력하세요">
   </div>

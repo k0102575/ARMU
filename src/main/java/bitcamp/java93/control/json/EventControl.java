@@ -46,6 +46,20 @@ public class EventControl {
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
   
+  @RequestMapping("listLocationType")
+  public JsonResult listLocationType() throws Exception {
+    HashMap<String,Object> dataMap = new HashMap<>();
+    dataMap.put("listLocationType", eventService.listLocationType());
+    return new JsonResult(JsonResult.SUCCESS, dataMap);
+  }
+  
+  @RequestMapping("listLocation")
+  public JsonResult listLocation(int loctno) throws Exception {
+    HashMap<String,Object> dataMap = new HashMap<>();
+    dataMap.put("listLocation", eventService.listLocation(loctno));
+    return new JsonResult(JsonResult.SUCCESS, dataMap);
+  }
+  
 }
 
 

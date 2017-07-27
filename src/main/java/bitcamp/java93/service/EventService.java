@@ -10,4 +10,6 @@ public interface EventService {
   List<Category> listTheme() throws Exception;
   List<Category> listMajor() throws Exception;
   List<Category> listGenre() throws Exception;
+  List<Category> listLocationType() throws Exception;
+  List<Category> listLocation(int no) throws Exception;
 }
