@@ -31,6 +31,21 @@ public class EventControl {
     dataMap.put("listTheme", eventService.listTheme());
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
+  
+  @RequestMapping("listMajor")
+  public JsonResult listMajor() throws Exception {
+    HashMap<String,Object> dataMap = new HashMap<>();
+    dataMap.put("listMajor", eventService.listMajor());
+    return new JsonResult(JsonResult.SUCCESS, dataMap);
+  }
+  
+  @RequestMapping("listGenre")
+  public JsonResult listGenre() throws Exception {
+    HashMap<String,Object> dataMap = new HashMap<>();
+    dataMap.put("listGenre", eventService.listGenre());
+    return new JsonResult(JsonResult.SUCCESS, dataMap);
+  }
+  
 }
 
 

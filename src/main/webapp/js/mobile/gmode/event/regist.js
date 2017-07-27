@@ -3,7 +3,8 @@ var progressBar = $("#event-progressbar"),
     pageCancelPage = $("#event-cancelpage"),
     pageCancelPageBackscreen = $("#event-cancelpage-backscreen"),
     pageCancelPageReturn = $("#event-cancelpage-return"),
-    pageCancelPageQuit = $("#event-cancelpage-quit")
+    pageCancelPageQuit = $("#event-cancelpage-quit"),
+    menuBackScreen = $("#menu-backscreen")
     // 이벤트 프로그레스바 밑 취소페이지
     
 var eventPage1 = $("#event-page1"),
@@ -19,7 +20,16 @@ var eventPage2 = $("#event-page2"),
     genreSelectButton = $("#genre-select-button"),
     themeSelectBox = $("#theme-select-box"),
     majorSelectBox = $("#major-select-box"),
-    genreSelectBox = $("#genre-select-box")
+    genreSelectBox = $("#genre-select-box"),
+    themeSelectText = $("#theme-select-text"),
+    majorSelectText = $("#major-select-text"),
+    genreSelectText = $("#genre-select-text"),
+    categoryThemeNo = "",
+    categoryThemeName ="",
+    categoryMajorNo = "",
+    categoryMajorName ="",
+    categoryGenreNo = "",
+    categoryGenreName =""
 
     //  이벤트 2페이지
     
@@ -34,7 +44,6 @@ var eventPage4 = $("#event-page4"),
     eventPage4Next = $("#event-page4-next"),
     sidoSelectMenu =  $("#sido-select-menu"),
     citySelectMenu =  $("#city-select-menu"),
-    streetSelectMenu =  $("#street-select-menu"),
     DetailLocation = $("#detail-location")
     // 이벤트 4페이지
     
@@ -102,11 +111,78 @@ eventPage1Cancel.on('click', function() {
 eventPage1Next.on('click', function() {
   
   $.getJSON('/event/listTheme.json', function(result) {
-    console.log(result.data)
     var templateFn = Handlebars.compile($('#select-theme-template').text())
     var generatedHTML = templateFn(result.data)
-    var container = $('#theme-select-menu')
-    container.html(generatedHTML)
+    var container = $('#theme-select-box')
+    var html = container.html()
+    container.html(html + generatedHTML)
+    
+    $("#theme-check-cancel").on('click', function() {
+        themeSelectBox.toggle(0)
+        menuBackScreen.toggle(0)
+    })
+
+    $("#theme-check-check").on('click', function() {
+      $("input[name=theme]:checked").each(function() {
+        categoryThemeNo += $(this).val() + ","
+        categoryThemeName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
+        themeSelectText.append("<span class='selectSpan'>" + categoryThemeName + "</span>")
+        });
+      themeSelectBox.toggle(0)
+      menuBackScreen.toggle(0)
+    })
+    
+  }, function(err) {
+    console.log(err)
+})
+
+  $.getJSON('/event/listMajor.json', function(result) {
+    var templateFn = Handlebars.compile($('#select-major-template').text())
+    var generatedHTML = templateFn(result.data)
+    var container = $('#major-select-box')
+    var html = container.html()
+    container.html(html + generatedHTML)
+    
+    $("#major-check-cancel").on('click', function() {
+      menuBackScreen.toggle(0)
+      majorSelectBox.toggle(0)
+    })
+
+    $("#major-check-check").on('click', function() {
+      $("input[name=major]:checked").each(function() {
+        categoryMajorNo += $(this).val() + ","
+        categoryMajorName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
+        majorSelectText.append("<span class='selectSpan'>" + categoryMajorName + "</span>")
+        });
+      menuBackScreen.toggle(0)
+      majorSelectBox.toggle(0)
+    })
+    
+  }, function(err) {
+    console.log(err)
+  })
+  
+    $.getJSON('/event/listGenre.json', function(result) {
+    var templateFn = Handlebars.compile($('#select-genre-template').text())
+    var generatedHTML = templateFn(result.data)
+    var container = $('#genre-select-box')
+    var html = container.html()
+    container.html(html + generatedHTML)
+    
+    $("#genre-check-cancel").on('click', function() {
+      menuBackScreen.toggle(0)
+      genreSelectBox.toggle(0)
+    })
+
+    $("#genre-check-check").on('click', function() {
+      $("input[name=genre]:checked").each(function() {
+        categoryGenreNo += $(this).val() + ","
+        categoryGenreName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
+        genreSelectText.append("<span class='selectSpan'>" + categoryGenreName + "</span>")
+        });
+      menuBackScreen.toggle(0)
+      genreSelectBox.toggle(0)
+    })
     
   }, function(err) {
     console.log(err)
@@ -120,14 +196,20 @@ eventPage1Next.on('click', function() {
 
 themeSelectButton.on('click', function() {
   themeSelectBox.toggle(0)
+  menuBackScreen.toggle(0)
+  themeSelectText.text("")
 })
 
 majorSelectButton.on('click', function() {
   majorSelectBox.toggle(0)
+  menuBackScreen.toggle(0)
+  majorSelectText.text("")
 })
 
 genreSelectButton.on('click', function() {
   genreSelectBox.toggle(0)
+  menuBackScreen.toggle(0)
+  genreSelectText.text("")
 })
 
 eventPage2Prev.on('click', function() {
@@ -136,27 +218,20 @@ eventPage2Prev.on('click', function() {
 
 eventPage2Next.on('click', function() {
   
-  /*themeSelectMenu.css("border", "1px solid black")
-  majorSelectMenu.css("border", "1px solid black")
-  genreSelectMenu.css("border", "1px solid black")
-  
-  if(themeSelectMenu.val() == "") {
-    themeSelectMenu.css("border", "1px solid red")
+  if(themeSelectText.text() == "") {
     swal("테마를 선택하세요!")
     return
   } 
   
-  if(majorSelectMenu.val() == "") {
-    majorSelectMenu.css("border", "1px solid red")
+  if(majorSelectText.text() == "") {
     swal("전공을 선택하세요!")
     return
   } 
   
-  if(genreSelectMenu.val() == "") {
-    genreSelectMenu.css("border", "1px solid red")
+  if(genreSelectText.text() == "") {
     swal("장르를 선택하세요!")
     return
-  } */
+  } 
   
   eventPage2.toggle(0);
   eventPage3.toggle(0 , function() {
@@ -199,7 +274,6 @@ eventPage4Prev.on('click', function() {
 eventPage4Next.on('click', function() {
   sidoSelectMenu.css("border", "1px solid black")
   citySelectMenu.css("border", "1px solid black")
-  streetSelectMenu.css("border", "1px solid black")
   DetailLocation.css("boder", "1px solid black")
   
   if(sidoSelectMenu.val() == "") {
@@ -211,12 +285,6 @@ eventPage4Next.on('click', function() {
   if(citySelectMenu.val() == "") {
     citySelectMenu.css("border", "1px solid red")
     swal("시/군/구를 선택하세요!")
-    return
-  } 
-  
-  if(streetSelectMenu.val() == "") {
-    streetSelectMenu.css("border", "1px solid red")
-    swal("동/면/읍을 선택하세요!")
     return
   } 
   
@@ -329,7 +397,7 @@ function progress(per) {
 };
 
 function eventConfirm() {
-  var cathgory = themeSelectMenu.val() + " | " + majorSelectMenu.val() + " | " + genreSelectMenu.val(),
+  var cathgory = categoryThemeName.slice(0,-1) + " | " + majorSelectMenu.val() + " | " + genreSelectMenu.val(),
       location = sidoSelectMenu.val() + " | " + citySelectMenu.val() + " | " + streetSelectMenu.val() + " | " + DetailLocation.val()
   nameConfirm.text(inputEventName.val())
   cathgoryConfirm.text(cathgory)

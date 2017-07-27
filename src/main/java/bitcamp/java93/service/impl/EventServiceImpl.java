@@ -24,5 +24,13 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectListTheme();
   }
   
+  public  List<Category> listMajor() throws Exception {   
+    return eventDao.selectListMajor();
+  }
+  
+  public  List<Category> listGenre() throws Exception {   
+    return eventDao.selectListGenre();
+  }
+  
 }
 

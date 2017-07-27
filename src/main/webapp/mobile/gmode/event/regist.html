@@ -54,55 +54,104 @@
     이벤트 카테고리를 설정해 주세요
   </div>
   
-    <div id="theme-select-button">이벤트 테마를 선택하세요!</div>
+  <div id="menu-backscreen"></div>
+  
+    <div id="theme-select-button">테마</div><i class="fa fa-plus" id="theme-plus" aria-hidden="true"></i>
   <!-- theme-button -->
+    <div id="theme-select-text"></div>
   
-    <div id="major-select-button">뮤지션 전공을 선택하세요!</div>
+    <div id="major-select-button">전공</div><i class="fa fa-plus" id="major-plus" aria-hidden="true"></i>
   <!-- major-button -->
+    <div id="major-select-text"></div>
   
-    <div id="genre-select-button">이벤트 장르를 선택하세요!</div>
+    <div id="genre-select-button">장르</div><i class="fa fa-plus" id="genre-plus" aria-hidden="true"></i>
   <!-- genre-button -->
+    <div id="genre-select-text"></div>
+    
+    
   
   <div id="theme-select-box">
   <div id="theme-select-box-header">
-  <i class="fa fa-angle-left" id="theme-select-box-cancel" aria-hidden="true"></i>
-  이벤트 테마
-  <i class="fa fa-angle-right" id="theme-select-box-check" aria-hidden="true"></i>
+  테마 선택
   </div>
-  
-  <div class="boxes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;결혼식<br><br>
-  <input type="checkbox" id="check-box-1">
-  <label for="check-box-1">웨딩연주</label>
-
-  <input type="checkbox" id="check-box-2">
-  <label for="check-box-2">축가</label>
-
-  <input type="checkbox" id="check-box-3">
-  <label for="check-box-3">앙상블</label>
-  </div>
-  
-    <div class="boxes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;결혼식<br><br>
-  <input type="checkbox" id="check-box-4">
-  <label for="check-box-4">웨딩연주</label>
-
-  <input type="checkbox" id="check-box-5">
-  <label for="check-box-5">축가</label>
-
-  <input type="checkbox" id="check-box-6">
-  <label for="check-box-6">앙상블</label>
-  </div>
-  
   
   </div>
   <!-- theme-select-box -->
   
+  <script id="select-theme-template" type="text/x-handlebars-template">
+  {{#each listTheme}}
+  <div class="boxes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{thmtname}}<br><br>
+  {{#each list}}
+  {{#themeMap}}
+  <input type="checkbox" name="theme" id="theme-box-{{key}}" value="{{key}}">
+  <label for="theme-box-{{key}}">{{value}}</label>
+  {{/themeMap}}
+  {{/each}}
+  {{/each}}
+  <div id="theme-check-btn">
+    <button type="button" id="theme-check-cancel">취소</button>
+    <button type="button" id="theme-check-check">확인</button>
+  </div>
+	</script>
+	
+	<!--  테마 선택 -->
+	
+	  <div id="major-select-box">
+  <div id="major-select-box-header">
+  전공 선택
+  </div>
   
-  <div id="major-select-box">
-  뮤지션 전공
+ 
+  
   </div>
+  <!-- major-select-box -->
+  
+  <script id="select-major-template" type="text/x-handlebars-template">
+  {{#each listMajor}}
+  <div class="boxes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{mjrtname}}<br><br>
+  {{#each list}}
+  {{#majorMap}}
+  <input type="checkbox" name="major" id="major-box-{{key}}" value="{{key}}">
+  <label for="major-box-{{key}}">{{value}}</label>
+  {{/majorMap}}
+  {{/each}}
+  {{/each}}
+ <div id="major-check-btn">
+    <button type="button" id="major-check-cancel">취소</button>
+    <button type="button" id="major-check-check">확인</button>
+  </div>
+  </script>
+  
+  <!--  전공 선택  -->
+  
   <div id="genre-select-box">
-  이벤트 장르
+  <div id="genre-select-box-header">
+  장르 선택
   </div>
+  
+
+  
+  </div>
+  <!-- major-select-box -->
+  
+  <script id="select-genre-template" type="text/x-handlebars-template">
+  {{#each listGenre}}
+  <div class="boxes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{gnrtname}}<br><br>
+  {{#each list}}
+  {{#genreMap}}
+  <input type="checkbox" name="genre" id="genre-box-{{key}}" value="{{key}}">
+  <label for="genre-box-{{key}}">{{value}}</label>
+  {{/genreMap}}
+  {{/each}}
+  {{/each}}
+  <div id="genre-check-btn">
+    <button type="button" id="genre-check-cancel">취소</button>
+    <button type="button" id="genre-check-check">확인</button>
+  </div>
+  </script>
+  
+  <!--  장르 선택  -->
+  
   
   </div>
   <!-- event-select -->
@@ -164,16 +213,6 @@
     </select>
   </div>
   <!-- city-select -->
-  
-  <div id="street-select">
-    <select name="street" id="street-select-menu">
-      <option class="select-option" value="">동/면/읍</option>
-      <option class="select-option" value="서초동">서초동</option>
-      <option class="select-option" value="논현동">논현동</option>
-      <option class="select-option" value="양재동">양재동</option>
-    </select>
-  </div>
-  <!-- street-select -->
   
   <input type="text" id="detail-location" placeholder="상세주소를 입력하세요">
   </div>

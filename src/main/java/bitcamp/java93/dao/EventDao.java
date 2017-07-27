@@ -8,4 +8,6 @@ import bitcamp.java93.domain.Event;
 public interface EventDao {
   List<Event> selectOngoingList();
   List<Category> selectListTheme();
+  List<Category> selectListMajor();
+  List<Category> selectListGenre();
 }

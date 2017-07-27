@@ -4,13 +4,34 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bitcamp.java93.dao.EventDao">
 
-  <resultMap type="category" id="categoryMap">
-    <!-- <result javaType="java.lang.String" column="name" property="thmtname"></result> -->
+  <resultMap type="category" id="themeMap">
      <result column="name" property="thmtname" />
+     <collection property="list" ofType="java.util.Map">
        <association property="themeMap" javaType="java.util.Map"> 
       <result property="key" column="thmno"/> 
        <result property="value" column="thmename"></result>
       </association>
+    </collection>
+  </resultMap>
+  
+    <resultMap type="category" id="majorMap">
+     <result column="name" property="mjrtname" />
+     <collection property="list" ofType="java.util.Map">
+       <association property="majorMap" javaType="java.util.Map"> 
+      <result property="key" column="mjrno"/> 
+       <result property="value" column="majrname"></result>
+      </association>
+    </collection>
+  </resultMap>
+  
+   <resultMap type="category" id="genreMap">
+     <result column="name" property="gnrtname" />
+     <collection property="list" ofType="java.util.Map">
+       <association property="genreMap" javaType="java.util.Map"> 
+      <result property="key" column="gnrno"/> 
+       <result property="value" column="gnrename"></result>
+      </association>
+    </collection>
   </resultMap>
   
     <resultMap type="hashMap" id="hashMap">
@@ -102,9 +123,19 @@ order by title asc
 	</select>
 	
 	 
-  <select id="selectListTheme" resultMap="categoryMap">
+  <select id="selectListTheme" resultMap="themeMap">
   select thmt.name, thme.name as thmename, thme.thmno
   from thm as thme left outer join thm_type as thmt on thmt.thmtno = thme.thmtno
+  </select>
+  
+  <select id="selectListMajor" resultMap="majorMap">
+  select mjrt.name, majr.name as majrname, majr.mjrno
+  from mjr as majr left outer join mjr_type as mjrt on mjrt.mjrtno = majr.mjrtno
+  </select>
+  
+  <select id="selectListGenre" resultMap="genreMap">
+  select gnrt.name, gnre.name as gnrename, gnre.gnrno
+  from gnr as gnre left outer join gnr_type as gnrt on gnrt.gnrtno = gnre.gnrtno
   </select>
 
 </mapper>
