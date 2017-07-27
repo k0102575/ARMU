@@ -100,6 +100,18 @@ eventPage1Cancel.on('click', function() {
 })
 
 eventPage1Next.on('click', function() {
+  
+  $.getJSON('/event/listTheme.json', function(result) {
+    console.log(result.data)
+    var templateFn = Handlebars.compile($('#select-theme-template').text())
+    var generatedHTML = templateFn(result.data)
+    var container = $('#theme-select-menu')
+    container.html(generatedHTML)
+    
+  }, function(err) {
+    console.log(err)
+  })
+  
   eventPage1.toggle(0);
   eventPage2.toggle(0 , function() {
     progress(20)

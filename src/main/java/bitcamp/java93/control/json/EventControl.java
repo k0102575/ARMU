@@ -24,6 +24,13 @@ public class EventControl {
     dataMap.put("listOngoing",eventService.listOngoing());
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
+  
+  @RequestMapping("listTheme")
+  public JsonResult listTheme() throws Exception {
+    HashMap<String,Object> dataMap = new HashMap<>();
+    dataMap.put("listTheme", eventService.listTheme());
+    return new JsonResult(JsonResult.SUCCESS, dataMap);
+  }
 }
 
 

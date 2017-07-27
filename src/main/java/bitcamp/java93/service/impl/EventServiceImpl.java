@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bitcamp.java93.dao.EventDao;
+import bitcamp.java93.domain.Category;
 import bitcamp.java93.domain.Event;
 import bitcamp.java93.service.EventService;
 
@@ -19,11 +20,9 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectOngoingList();
   }
   
+  public  List<Category> listTheme() throws Exception {   
+    return eventDao.selectListTheme();
+  }
+  
 }
-
-
-
-
-
-
 
