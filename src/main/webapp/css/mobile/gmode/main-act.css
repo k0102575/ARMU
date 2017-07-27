@@ -1,10 +1,26 @@
-
 .noti-container {
-	width: 100%;
-	background-color: #f5f5f5;
+  position: relative;
+  width: 100%;
+  background-color: #f5f5f5;
 }
 
 .noti {
-	height: 400px;
-	border-bottom: 1px solid #252525;
+  height: 200px;
+  border-bottom: 1px solid #252525;
+}
+
+.noti-title {
+  display: inline-block;  
+}
+
+.noti-img {
+  height: 140px;
+  width: 140px;
+  object-fit: cover;
+  background-image: url('/image/logo/ARMU_3.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: 1px solid lightgray;
+  border-radius: 50%;
 }
