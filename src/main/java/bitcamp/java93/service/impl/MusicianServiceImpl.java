@@ -28,8 +28,8 @@ public class MusicianServiceImpl implements MusicianService {
   }
   
   @Override
-  public Musician getProfile() throws Exception {
-    return musicianDao.selectOne();
+  public Musician getProfile(Member member) throws Exception {
+    return musicianDao.selectOne(member);
   }
 
   @Override

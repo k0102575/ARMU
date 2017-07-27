@@ -124,9 +124,7 @@
 
   <select id="selectOne" resultMap="musicianMapBasic">
     <include refid="selectBasic" />
-    where m.mno=1
-    order by m.name asc
-    
+    where m.mno=#{no}
   </select>
 
   <select id="selectRecommandList" resultMap="musicianMap">

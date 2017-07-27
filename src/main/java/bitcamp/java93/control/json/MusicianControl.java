@@ -65,13 +65,36 @@ public class MusicianControl {
   }
   
   @RequestMapping("getProfile")
-  public JsonResult getProfile() throws Exception {
+  public JsonResult getProfile(HttpSession session){
     
-    HashMap<String,Object> dataMap = new HashMap<>();
+    JsonResult result = new JsonResult();
+    Member loginMember = (Member)session.getAttribute("loginMember");
     
-    dataMap.put("profile", musicianService.getProfile());
+    if(loginMember != null) {
+      try {
+        Musician musicianProfile = musicianService.getProfile(loginMember);
+        
+//       if(musicianList == null) {
+//         result.setStatus(JsonResult.FAIL);
+//       } else {
+//       }
+        
+        result.setStatus(JsonResult.SUCCESS);
+        
+        HashMap<String,Object> dataMap = new HashMap<>();
+        dataMap.put("profile", musicianProfile);
+
+        result.setData(dataMap);
+      } catch (Exception e) {
+        result.setStatus(JsonResult.ERROR);
+      }
+    } else {//loginMember가 없으면
+      result.setStatus(JsonResult.SUCCESS);
+      result.setData("browse");
+    }
     
-    return new JsonResult(JsonResult.SUCCESS, dataMap);
+    return result;
+  
   }
   
   @RequestMapping("listLocation")

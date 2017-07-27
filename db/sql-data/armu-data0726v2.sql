@@ -334,3 +334,24 @@ insert into fav_musi (muno, gno) values (1, 4);
 insert into fav_musi (muno, gno) values (2, 4);
 insert into fav_musi (muno, gno) values (1, 5);
 insert into fav_musi (muno, gno) values (1, 6);
+
+
+-- 뮤지션 지역정보(loc_musi)
+insert into loc_musi (muno, locno) values (1, 1);
+insert into loc_musi (muno, locno) values (1, 2);
+insert into loc_musi (muno, locno) values (1, 3);
+insert into loc_musi (muno, locno) values (1, 4);
+insert into loc_musi (muno, locno) values (1, 5);
+insert into loc_musi (muno, locno) values (1, 6);
+
+insert into loc_musi (muno, locno) values (2, 6);
+insert into loc_musi (muno, locno) values (2, 7);
+insert into loc_musi (muno, locno) values (2, 8);
+insert into loc_musi (muno, locno) values (2, 9);
+insert into loc_musi (muno, locno) values (2, 10);
+
+insert into loc_musi (muno, locno) values (3, 11);
+insert into loc_musi (muno, locno) values (3, 12);
+insert into loc_musi (muno, locno) values (3, 13);
+insert into loc_musi (muno, locno) values (3, 14);
+insert into loc_musi (muno, locno) values (3, 15);
