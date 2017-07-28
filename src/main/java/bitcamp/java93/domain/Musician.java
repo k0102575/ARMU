@@ -1,6 +1,7 @@
 package bitcamp.java93.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Musician extends Member  {
   int age;
@@ -17,6 +18,14 @@ public class Musician extends Member  {
   ArrayList<String> genreList;
   ArrayList<String> themeList;
   ArrayList<String> locationList;
+  List<String> photoList;
+  
+  public List<String> getPhotoList() {
+    return photoList;
+  }
+  public void setPhotoList(List<String> photoList) {
+    this.photoList = photoList;
+  }
   public int getAge() {
     return age;
   }
@@ -106,7 +115,7 @@ public class Musician extends Member  {
     return "Musician [age=" + age + ", isTeam=" + isTeam + ", homepage=" + homepage + ", intro=" + intro + ", photo="
         + photo + ", gender=" + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite
         + ", popularity=" + popularity + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList="
-        + themeList + ", locationList=" + locationList + "]";
+        + themeList + ", locationList=" + locationList + ", photoList=" + photoList + "]";
   }
   
 

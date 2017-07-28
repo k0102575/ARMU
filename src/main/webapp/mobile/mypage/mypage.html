@@ -4,7 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <title>mypage</title>
-<link rel='shortcut icon' type='image/x-icon' href='/image/favicon/favicon.ico'/>
+<link rel='shortcut icon' type='image/x-icon'
+	href='/image/favicon/favicon.ico' />
 <link rel="stylesheet"
 	href="/node_modules/animsition/dist/css/animsition.min.css">
 <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
@@ -23,17 +24,12 @@
 			<div id="header-title">프로필 관리</div>
 			<a href="#"><div id="close">닫기</div></a>
 		</div>
-		<br>
-		<br>
-		<br>
-		<br>
+		<br> <br> <br> <br>
 		<div id="ccc" class="">
 			<i class="fa fa-3x fa-camera" aria-hidden="true"></i>
 		</div>
 
-		<div id="profile-container">
-		
-		</div>
+		<div id="profile-container"></div>
 
 
 		<div class="content">
@@ -47,27 +43,30 @@
 		<br>
 
 		<div id="profile-backscreen"></div>
-		<div id="profile-toggle">
-			<div class="profile-img-menu guide">
-						<span id="profiletext">프로필 사진 변경</span>
-						<input id="fi-photoupload" type="file" class="form-control upload" name="files" multiple>
-      </div>  
-			<br>
-			<div class="profile-img-menu" id="cancel">
-				<p class="menu">취소</p>
+		<form>
+			<div id="profile-toggle">
+				<div class="profile-img-menu guide">
+					<input id="fi-photoupload" type="file" class="form-control upload"	name="files" multiple> 
+					<input id="fi-filenames" type="hidden" name="filenames">
+				</div>
+				<br>
+				<div class="profile-img-menu" id="cancel">
+					<button type="button" id="profiletext">프로필 사진 변경</button>
+					<p class="menu">취소</p>
+				</div>
 			</div>
-		
+		</form>
 
 
-	</div>
-	<!-- container -->
+
+		<!-- container -->
 </body>
 
 
 <script id="profile-template" type="text/x-handlebars-template">
   {{#profile}}
     <a href="#"> <img id="profile-img"
-        src="{{photo}}" alt="">
+        src="/image/musician/photo/{{photo}}" alt="">
       </a>
       <p id="name">{{name}}</p>
       <br>
@@ -93,6 +92,18 @@
       <br>
   {{/profile}}
 </script>
+<script
+	src="/node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="/node_modules/blueimp-load-image/js/load-image.all.min.js"></script>
+<script src="/node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+<script
+	src="/node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+<script src="/node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+<script
+	src="/node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+<script
+	src="/node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+
 <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
 <script type="text/javascript" src="/js/mobile/mypage/mypage.js"></script>
 <script type="text/javascript">
