@@ -726,6 +726,9 @@ PRIMARY KEY (
 notino -- 알림번호
 );
 
+ALTER TABLE noti
+MODIFY COLUMN notino INTEGER NOT NULL AUTO_INCREMENT COMMENT '알림번호';
+
 -- 일반회원
 ALTER TABLE gmemb
 ADD CONSTRAINT FK_memb_TO_gmemb -- 회원 -> 일반회원

@@ -310,9 +310,10 @@ insert into thm_evn (eno, thmno) values (3, 7);
 insert into thm_evn (eno, thmno) values (4, 6);
 
 
--- 이벤트 참여신청(pr)
+-- 이벤트 홍보(pr)
 insert into pr (eno, muno) values (1, 1);
 insert into pr (eno, muno) values (1, 2);
+insert into pr (eno, muno) values (2, 3);
 
 -- 이벤트&뮤지션 매칭정보(mtc)
 insert into mtc (muno, eno, mtcdt) values (3, 2, '2017-07-22');
@@ -355,3 +356,8 @@ insert into loc_musi (muno, locno) values (3, 12);
 insert into loc_musi (muno, locno) values (3, 13);
 insert into loc_musi (muno, locno) values (3, 14);
 insert into loc_musi (muno, locno) values (3, 15);
+
+
+-- 이벤트 홍보 수락(pr, noti)
+update pr set status='Y' where muno=3 and eno=2;
+insert noti (muno, eno, type, date, cont, prno) values (3, 2, "요청 수락", '2017-07-21', "이벤트 홍보 수락", 3);
