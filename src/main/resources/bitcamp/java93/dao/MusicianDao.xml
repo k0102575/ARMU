@@ -21,6 +21,9 @@
     <result column="rev" property="review" />
     <result column="popu" property="popularity"/>
     <result column="fav" property="isFavorite"/>
+    <collection property="photoList" ofType="string">
+      <result column="path"/>
+    </collection>
     <collection property="majorList" ofType="string"> 
         <result column="major"/> 
     </collection>
@@ -144,6 +147,14 @@
   where l.name like '동대문구'
   </select>
   
+  
+  <update id="updatePhoto" parameterType="map">
+  update musi set 
+  path=#{photoPath}
+  where muno=#{musicianNo}
+  </update>
+  
+   
 </mapper>
 
 

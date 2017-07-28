@@ -10,11 +10,8 @@ public interface MusicianService {
   List<Musician> listSurf() throws Exception;
   Musician getProfile(Member member) throws Exception;
   List<Musician> listLocation() throws Exception;
+  void updatePhoto(int no, String photoPath) throws Exception;
+
 }
-
-
-
-
-
 
 
