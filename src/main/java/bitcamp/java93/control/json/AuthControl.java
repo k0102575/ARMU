@@ -1,7 +1,6 @@
 package bitcamp.java93.control.json;
 
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -24,24 +23,13 @@ public class AuthControl {
   MemberService memberService;
 
   @RequestMapping(path="login", method=RequestMethod.POST)
-  public JsonResult login(String email, String password, String saveEmail, 
-      Model model, HttpServletResponse response) throws Exception {
+  public JsonResult login(String email, String password, Model model) throws Exception {
 
     Member member = null;
       member = memberService.getByEmailPassword(email, password);
     
     if (member != null) { 
       model.addAttribute("loginMember", member);
-      
-      if (saveEmail != null) {
-        Cookie cookie2 = new Cookie("email", email);
-        cookie2.setMaxAge(60 * 60 * 24 * 7); 
-        response.addCookie(cookie2);
-      } else {
-        Cookie cookie2 = new Cookie("email", "");
-        cookie2.setMaxAge(0);
-        response.addCookie(cookie2);
-      }
       
       return new JsonResult(JsonResult.SUCCESS, "ok");
       

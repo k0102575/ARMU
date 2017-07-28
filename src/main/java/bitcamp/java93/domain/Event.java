@@ -1,7 +1,9 @@
 package bitcamp.java93.domain;
 
+import java.sql.Array;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Event {
   int no;
@@ -18,9 +20,18 @@ public class Event {
   String contents;
   int downPay;
   Date date;
+  Object categoryThemeNo;
   ArrayList<Musician> applicantList;
   ArrayList<Musician> pickedList;
   Musician musician;
+  @Override
+  public String toString() {
+    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", themeList=" + themeList + ", majorList="
+        + majorList + ", genreList=" + genreList + ", location=" + location + ", address=" + address + ", pay=" + pay
+        + ", locno=" + locno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
+        + ", date=" + date + ", categoryThemeNo=" + categoryThemeNo + ", applicantList=" + applicantList
+        + ", pickedList=" + pickedList + ", musician=" + musician + "]";
+  }
   public int getNo() {
     return no;
   }
@@ -75,6 +86,12 @@ public class Event {
   public void setPay(int pay) {
     this.pay = pay;
   }
+  public int getLocno() {
+    return locno;
+  }
+  public void setLocno(int locno) {
+    this.locno = locno;
+  }
   public String getRequirement() {
     return requirement;
   }
@@ -99,6 +116,12 @@ public class Event {
   public void setDate(Date date) {
     this.date = date;
   }
+  public Object getCategoryThemeNo() {
+    return categoryThemeNo;
+  }
+  public void setCategoryThemeNo(Object categoryThemeNo) {
+    this.categoryThemeNo = categoryThemeNo;
+  }
   public ArrayList<Musician> getApplicantList() {
     return applicantList;
   }
@@ -117,20 +140,14 @@ public class Event {
   public void setMusician(Musician musician) {
     this.musician = musician;
   }
-  public int getLocno() {
-    return locno;
-  }
-  public void setLocno(int locno) {
-    this.locno = locno;
-  }
-  @Override
-  public String toString() {
-    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", themeList=" + themeList + ", majorList="
-        + majorList + ", genreList=" + genreList + ", location=" + location + ", address=" + address + ", pay=" + pay
-        + ", locno=" + locno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
-        + ", date=" + date + ", applicantList=" + applicantList + ", pickedList=" + pickedList + ", musician="
-        + musician + "]";
-  }
+  
+  
+  
+ 
+  
+  
+
+  
   
   
   }

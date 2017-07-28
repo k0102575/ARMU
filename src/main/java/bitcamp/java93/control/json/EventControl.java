@@ -1,11 +1,11 @@
 package bitcamp.java93.control.json;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -65,10 +65,13 @@ public class EventControl {
   @RequestMapping("add")
   public JsonResult add(Event event) throws Exception {
     
-    System.out.println(event);
-    
     eventService.add(event);
     return new JsonResult(JsonResult.SUCCESS, "ok");
+  }
+  
+  @RequestMapping("addTheme")
+  public void addTheme(@RequestBody int[] categoryThemeNo) throws Exception {
+    System.out.println(categoryThemeNo);
   }
   
 }
