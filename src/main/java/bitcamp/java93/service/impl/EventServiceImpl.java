@@ -40,5 +40,9 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectListLocation(no);
   }
   
+  public  void add(Event event) throws Exception {   
+    eventDao.insert(event);
+  }
+  
 }
 

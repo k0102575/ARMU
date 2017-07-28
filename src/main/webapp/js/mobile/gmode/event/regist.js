@@ -51,8 +51,8 @@ var eventPage5 = $("#event-page5"),
     eventPage5Prev = $("#event-page5-prev"),
     eventPage5Next = $("#event-page5-next"), 
     inputEventName =  $("#event-name"),
-    inputEventPay =  $("#event-pay"),
-    inputEventRequire =  $("#event-require")
+    inputEventConent =  $("#event-content")
+
     // 이벤트 5페이지
     
 var eventPage6 = $("#event-page6"),
@@ -66,24 +66,37 @@ var eventPage6 = $("#event-page6"),
 var eventPage7 = $("#event-page7"),
     eventPage7Prev = $("#event-page7-prev"),
     eventPage7Next = $("#event-page7-next"),
+    inputEventPay =  $("#event-pay"),
+    inputEventRequire =  $("#event-require")
+
+    // 이벤트 7 페이지
+    
+var eventPage8 = $("#event-page8"),
+    eventPage8Prev = $("#event-page8-prev"),
+    eventPage8Next = $("#event-page8-next"),
     nameConfirm = $("#name-confirm"),
     cathgoryConfirm = $("#cathgory-confirm"),
     dateConfirm = $("#date-confirm"),
     locationConfirm = $("#location-confirm"),
     payConfirm = $("#pay-confirm"),
+    contentConfirm = $("#content-confirm"),
     requireConfirm = $("#require-confirm"),
+    themeConfirmText = $("#theme-confirm-text"),
+    majorConfirmText = $("#major-confirm-text"),
+    genreConfirmText = $("#genre-confirm-text"),
     reherseConfirmCountText = $("#reherse-confirm-count-text"),
     reherseConfirmPayText = $("#reherse-confirm-pay-text"),
     reherseConfirmInfoText = $("#reherse-confirm-info-text"),
     reherseConfirmCount = $("#reherse-confirm-count"),
     reherseConfirmPay = $("#reherse-confirm-pay"),
     reherseConfirmInfo = $("#reherse-confirm-info")
-    // 이벤트 7 페이지
-    
-var eventPage8 = $("#event-page8"),
-    eventPage8Home = $("#event-page8-home")
     
     // 이벤트 8페이지 
+    
+    var eventPage9 = $("#event-page9"),
+    eventPage9Home = $("#event-page9-home")
+    
+    // 이벤트 9페이지 
     
 $(document).ready(function() {
   eventPage1.toggle();
@@ -120,19 +133,20 @@ eventPage1Next.on('click', function() {
     $("#theme-check-cancel").on('click', function() {
         themeSelectBox.toggle(0)
         menuBackScreen.toggle(0)
+        $("#theme-check-btn").toggle(0)
     })
 
     $("#theme-check-check").on('click', function() {
-    	cathgoryConfirm.append("<span class='selectSpan'>테마:  </span>")
+      themeConfirmText.append("<span class='selectSpan'>테마:  </span>")
       $("input[name=theme]:checked").each(function() {
         categoryThemeNo += $(this).val() + ","
         categoryThemeName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
         themeSelectText.append("<span class='selectSpan'>" + categoryThemeName + "</span>")
-        cathgoryConfirm.append("<span class='selectSpan'>" + categoryThemeName + "</span>")
+        themeConfirmText.append("<span class='selectSpan'>" + categoryThemeName + "</span>")
         });
-    	cathgoryConfirm.append('<br />')
       themeSelectBox.toggle(0)
       menuBackScreen.toggle(0)
+      $("#theme-check-btn").toggle(0)
     })
     
   }, function(err) {
@@ -149,19 +163,20 @@ eventPage1Next.on('click', function() {
     $("#major-check-cancel").on('click', function() {
       menuBackScreen.toggle(0)
       majorSelectBox.toggle(0)
+      $("#major-check-btn").toggle(0)
     })
 
     $("#major-check-check").on('click', function() {
-    	cathgoryConfirm.append("<span class='selectSpan'>전공:  </span>")
+      majorConfirmText.append("<span class='selectSpan'>전공:  </span>")
       $("input[name=major]:checked").each(function() {
         categoryMajorNo += $(this).val() + ","
         categoryMajorName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
         majorSelectText.append("<span class='selectSpan'>" + categoryMajorName + "</span>")
-        cathgoryConfirm.append("<span class='selectSpan'>" + categoryMajorName + "</span>")
+        majorConfirmText.append("<span class='selectSpan'>" + categoryMajorName + "</span>")
         });
-    	cathgoryConfirm.append('<br />')
       menuBackScreen.toggle(0)
       majorSelectBox.toggle(0)
+      $("#major-check-btn").toggle(0)
     })
     
   }, function(err) {
@@ -178,19 +193,20 @@ eventPage1Next.on('click', function() {
     $("#genre-check-cancel").on('click', function() {
       menuBackScreen.toggle(0)
       genreSelectBox.toggle(0)
+      $("#genre-check-btn").toggle(0)
     })
 
     $("#genre-check-check").on('click', function() {
-    	cathgoryConfirm.append("<span class='selectSpan'>장르:  </span>")
+      genreConfirmText.append("<span class='selectSpan'>장르:  </span>")
       $("input[name=genre]:checked").each(function() {
         categoryGenreNo += $(this).val() + ","
         categoryGenreName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
         genreSelectText.append("<span class='selectSpan'>" + categoryGenreName + "</span>")
-        cathgoryConfirm.append("<span class='selectSpan'>" + categoryGenreName + "</span>")
+        genreConfirmText.append("<span class='selectSpan'>" + categoryGenreName + "</span>")
         });
-    	cathgoryConfirm.append('<br />')
       menuBackScreen.toggle(0)
       genreSelectBox.toggle(0)
+      $("#genre-check-btn").toggle(0)
     })
     
   }, function(err) {
@@ -207,18 +223,21 @@ themeSelectButton.on('click', function() {
   themeSelectBox.toggle(0)
   menuBackScreen.toggle(0)
   themeSelectText.text("")
+  $("#theme-check-btn").toggle(0)
 })
 
 majorSelectButton.on('click', function() {
   majorSelectBox.toggle(0)
   menuBackScreen.toggle(0)
   majorSelectText.text("")
+  $("#major-check-btn").toggle(0)
 })
 
 genreSelectButton.on('click', function() {
   genreSelectBox.toggle(0)
   menuBackScreen.toggle(0)
   genreSelectText.text("")
+  $("#genre-check-btn").toggle(0)
 })
 
 eventPage2Prev.on('click', function() {
@@ -276,6 +295,7 @@ eventPage3Next.on('click', function() {
    sidoSelectMenu.change(function(){
 	   var loctno = $(this).val()
 	   var sidoText = $("#sido-select-menu option:selected").text()
+	   citySelectMenu.html("")
 	   optGroup = $('<optgroup>').attr('label', sidoText);
 	   citySelectMenu.append(optGroup);
 
@@ -353,17 +373,11 @@ eventPage5Next.on('click', function() {
   inputEventName.css("border", "1px solid black")
   inputEventPay.css("boder", "1px solid black")
   
-  if(inputEventName.val() == "") {
+/*  if(inputEventName.val() == "") {
     inputEventName.css("border", "1px solid red")
     swal("이벤트명을 입력하세요!")
     return
-  } 
-  
-  if(inputEventPay.val() == "") {
-    inputEventPay.css("border", "1px solid red")
-    swal("금액을 입력하세요!")
-    return
-  } 
+  } */
   
   eventPage5.toggle(0);
   eventPage6.toggle(0 , function() {
@@ -419,13 +433,43 @@ eventPage7Prev.on('click', function() {
 })
 
 eventPage7Next.on('click', function() {
+  
   eventPage7.toggle(0);
   eventPage8.toggle(0 , function() {
     progress(100)
+    eventConfirm()
   });
 })
 
-eventPage8Home.on('click', function() {
+eventPage8Prev.on('click', function() {
+  eventPage8.toggle(0);
+  eventPage7.toggle(0 , function() {
+    progress(65)
+  });
+})
+
+eventPage8Next.on('click', function() {
+  
+  $.post('/event/add.json', {
+    'writer': 4,
+    'locno': citySelectMenu.val(),
+    'pay': inputEventPay.val(),
+    'requirement': inputEventRequire.val(),
+    'contents': inputEventConent.val(),
+    'address': DetailLocation.val(),
+    'date': eventPage3Calendar.val(),
+    'title': inputEventName.val()
+  }, function(result) {
+    eventPage8.toggle(0);
+    eventPage9.toggle(0 , function() {
+      progress(95)
+    });
+  }, 'json')
+  
+
+})
+
+eventPage9Home.on('click', function() {
   location.href="/mobile/gmode/index.html"
 })
 
@@ -437,11 +481,12 @@ function progress(per) {
 };
 
 function eventConfirm() {
-  var locationInfo = sidoSelectMenu.val() + " | " + citySelectMenu.val() + " | " + DetailLocation.val()
+  var locationInfo = $("#sido-select-menu option:selected").text() + "  " + $("#city-select-menu option:selected").text() + "  " + DetailLocation.val()
   nameConfirm.text(inputEventName.val())
   dateConfirm.text(eventPage3Calendar.val())
   locationConfirm.text(locationInfo)
   payConfirm.text(inputEventPay.val())
+  contentConfirm.text(inputEventConent.val())
   requireConfirm.text(inputEventRequire.val())
   reherseConfirmCount.text(inputRehearseCount.val())
   reherseConfirmPay.text(inputRehearsePay.val())

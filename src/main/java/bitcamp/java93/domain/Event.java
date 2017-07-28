@@ -13,6 +13,7 @@ public class Event {
   String location;
   String address;
   int pay;
+  int locno;
   String requirement;
   String contents;
   int downPay;
@@ -116,12 +117,19 @@ public class Event {
   public void setMusician(Musician musician) {
     this.musician = musician;
   }
+  public int getLocno() {
+    return locno;
+  }
+  public void setLocno(int locno) {
+    this.locno = locno;
+  }
   @Override
   public String toString() {
     return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", themeList=" + themeList + ", majorList="
         + majorList + ", genreList=" + genreList + ", location=" + location + ", address=" + address + ", pay=" + pay
-        + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay + ", date=" + date
-        + ", applicantList=" + applicantList + ", pickedList=" + pickedList + ", musician=" + musician + "]";
+        + ", locno=" + locno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
+        + ", date=" + date + ", applicantList=" + applicantList + ", pickedList=" + pickedList + ", musician="
+        + musician + "]";
   }
   
   

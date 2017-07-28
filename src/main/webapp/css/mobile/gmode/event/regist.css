@@ -57,7 +57,7 @@
 }
 
 #event-page1, #event-page2, #event-page3, 
-#event-page4, #event-page5, #event-page6, #event-page8 {
+#event-page4, #event-page5, #event-page6, #event-page7, #event-page9 {
   display: none;
   position: fixed;
   top: 250px;
@@ -67,7 +67,7 @@
 }
 
 #event-page1-btn, #event-page2-btn, #event-page3-btn, 
-#event-page4-btn, #event-page5-btn, #event-page6-btn, #event-page8-btn {
+#event-page4-btn, #event-page5-btn, #event-page6-btn, #event-page7-btn, #event-page9-btn {
   position: absolute;
   height: 10%;
   width: 100%;
@@ -76,21 +76,21 @@
 }
 
 #event-page1-cancel, #event-page2-prev, #event-page3-prev,
-#event-page4-prev, #event-page5-prev, #event-page6-prev {
+#event-page4-prev, #event-page5-prev, #event-page6-prev, #event-page7-prev {
   position: absolute;
   left: 10%;
   font-size: 300%;
 }
 
 #event-page1-next, #event-page2-next, #event-page3-next,
-#event-page4-next, #event-page5-next, #event-page6-next {
+#event-page4-next, #event-page5-next, #event-page6-next, #event-page7-next {
   position: absolute;
   right: 10%;
   font-size: 300%;
 }
 
 #event-page2-text, #event-page3-text, #event-page4-text,
-#event-page5-text, #event-page6-text {
+#event-page5-text, #event-page6-text, #event-page7-text {
   position: absolute;
   color: black;
   top: 5%;
@@ -297,16 +297,17 @@ select::-ms-expand {
 
 #theme-select-box, #major-select-box, #genre-select-box {
   border: 1px solid black;
-    position: absolute;
-    width: 81%;
-    left: 7%;
-    height: 78%;
-    top: 5%;
-    display: none;
-    background-color: white;
-    z-index: 20;
-    overflow: scroll;
-    padding-left: 50px;
+  position: absolute;
+  width: 84%;
+  left: 5%;
+  height: 78%;
+  top: -3%;
+  display: none;
+  background-color: white;
+  z-index: 20;
+overflow-y:auto; 
+  padding-left: 60px;
+  border-radius: 25px;
 }
 
 #theme-select-box-header, #major-select-box-header, #genre-select-box-header {
@@ -341,14 +342,14 @@ select::-ms-expand {
 }
 
 .boxes {
-    float: left;
-    background: white;
-    width: 100%;
-    min-height: 100px;
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-top: 7%;
-    margin-left: 1px;
+  float: left;
+  background: white;
+  width: 97%;
+  min-height: 100px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-top: 7%;
+  margin-left: 1px;
 }
 
 /*Checkboxes styles*/
@@ -356,10 +357,10 @@ input[type="checkbox"] { display: none; }
 
 input[type="checkbox"] + label {
   display: inline-block;
-  padding-left: 55px;
+  padding-left: 50px;
   margin-bottom: 20px;
   color: black;
-  width: 310px;
+  width: 300px;
   font-weight: normal;
 }
 
@@ -392,10 +393,13 @@ input[type="checkbox"]:checked + label:before {
 }
 
 #theme-check-btn, #major-check-btn, #genre-check-btn {
-  float: left;
-  margin-top: 10%;
-  margin-bottom: 10%;
-  margin-left: 22%;
+  display: none;
+  position: absolute;
+  bottom: 15%;
+  left: 14%;
+  display: none;
+  z-index: 20;
+  width: 100%;
 }
 
 #theme-check-cancel, #theme-check-check, #major-check-cancel, #major-check-check, #genre-check-cancel, #genre-check-check {
@@ -407,8 +411,12 @@ input[type="checkbox"]:checked + label:before {
 
 #theme-check-cancel, #major-check-cancel, #genre-check-cancel {
   background-color: white;
-  color:#525252;
+  color: #525252;
   z-index: 15;
+  background: linear-gradient(rgba(255, 255, 255, 1.45), rgba(255, 255, 255, 1.45));
+  width: 300px;
+    height: 80px;
+    margin-right: 10%;
 }
 
 
@@ -416,6 +424,9 @@ input[type="checkbox"]:checked + label:before {
 	background-color: #525252;
 	color: white;
 	z-index: 15;
+	background: linear-gradient(rgba(0, 0, 0, 1.45), rgba(0, 0, 0, 1.45));
+	width: 300px;
+    height: 80px;
 }
 
 
@@ -495,7 +506,7 @@ input[type="checkbox"]:checked + label:before {
 
 /* 이벤트 페이지 4 시작 */
 
-#sido-select-menu, #city-select-menu, #street-select-menu {
+#sido-select-menu, #city-select-menu {
   padding-left: 4%;
   width: 28%;
   height: 8%;
@@ -510,28 +521,24 @@ input[type="checkbox"]:checked + label:before {
   height: 70%;
 }
 
-#sido-select-menu, #city-select-menu, #street-select-menu{
+#sido-select-menu, #city-select-menu {
   width: 69%;
   height: 8%;
   left: 15%;
 }
 
 #sido-select-menu {
-	top: 17%;
+	top: 20%;
 }
 
 #city-select-menu {
-  top: 35%;
-}
-
-#street-select-menu {
-  top: 53%;
+  top: 40%;
 }
 
 #detail-location {
   position: absolute;
   left: 15%;
-  top: 71%;
+  top: 65%;
   width: 64%;
   height: 8%;
   border: 1px solid #525252;
@@ -551,7 +558,7 @@ input[type="checkbox"]:checked + label:before {
   height: 70%;
 }
 
-#event-name, #event-pay, #event-require {
+#event-name, #event-content {
 	position: absolute;
   left: 15%;
   width: 64%;
@@ -574,24 +581,12 @@ input[type="checkbox"]:checked + label:before {
 	top: 12%;
 }
 
-#event-pay {
-  top: 46%;
-}
-
-#event-pay-text{
-  color: black;
-  font-size: 2.6em;
+#event-content {
   position: absolute;
   left: 15%;
-  top: 38%;
-}
-
-#event-require {
-  position: absolute;
-  left: 15%;
-  top: 70%;
+  top: 50%;
   width: 64%;
-  height: 15%;
+  height: 35%;
   border: 1px solid #525252;
   color: #525252;
   padding-left: 4%;
@@ -599,12 +594,12 @@ input[type="checkbox"]:checked + label:before {
   resize: none;
 }
 
-#event-require-text{
+#event-content-text{
   color: black;
   font-size: 2.6em;
   position: absolute;
   left: 15%;
-  top: 62%;
+  top: 38%;
 }
 
 /* 이벤트 페이지 5 끝 */
@@ -717,10 +712,59 @@ input[type="radio"].toggle:checked + label:after {
 
 /* 이벤트 페이지 6 끝 */
 
+
 /* 이벤트 페이지 7 시작 */
 
+#event-pay, #event-require {
+  position: absolute;
+  left: 15%;
+  width: 64%;
+  height: 8%;
+  border: 1px solid #525252;
+  color: black;
+  padding-left: 4%;
+  font-size: 2.6em;
+}
 
-#event-page7 {
+#event-pay {
+  top: 20%;
+}
+
+#event-pay-text{
+  color: black;
+  font-size: 2.6em;
+  position: absolute;
+  left: 15%;
+  top: 12%;
+}
+
+#event-require {
+  position: absolute;
+  left: 15%;
+  top: 50%;
+  width: 64%;
+  height: 35%;
+  border: 1px solid #525252;
+  color: #525252;
+  padding-left: 4%;
+  font-size: 2.6em;
+  resize: none;
+}
+
+#event-require-text{
+  color: black;
+  font-size: 2.6em;
+  position: absolute;
+  left: 15%;
+  top: 38%;
+}
+
+/* 이벤트 페이지 7 끝 */
+
+/* 이벤트 페이지 8 시작 */
+
+
+#event-page8 {
 	display: none;
   position: relative;
   top: 350px;
@@ -729,7 +773,7 @@ input[type="radio"].toggle:checked + label:after {
   background-color: white;
 }
 
-#event-page7-text {
+#event-page8-text {
 	float: left;
   color: black;
   font-size: 300%;
@@ -738,27 +782,27 @@ input[type="radio"].toggle:checked + label:after {
   width: 100%;
 }
 
-#event-page7-btn {
+#event-page8-btn {
   float: left;
   width: 100%;
   margin-top: 10%;
   display: inline-block;
 }
 
-#event-page7-prev {
+#event-page8-prev {
   float: left;
   margin-left: 10%;
   font-size: 300%;
 }
 
-#event-page7-next {
+#event-page8-next {
 	float: right;
 	margin-right: 10%;
   font-size: 300%;
 }
 
-#name-confirm, #cathgory-confirm, #date-confirm, #match-confirm,
-#location-confirm, #pay-confirm, #require-confirm, #reherse-confirm-count, #reherse-confirm-pay, #reherse-confirm-info {
+#name-confirm, #cathgory-confirm, #date-confirm, #match-confirm,#location-confirm, 
+#pay-confirm, #require-confirm, #content-confirm, #reherse-confirm-count, #reherse-confirm-pay, #reherse-confirm-info {
   float: left;
   margin-left: 7%;
   width: 86%;
@@ -773,7 +817,7 @@ input[type="radio"].toggle:checked + label:after {
 }
 
 #name-confirm-text, #cathgory-confirm-text, #date-confirm-text, #match-confirm-text,
-#location-confirm-text, #pay-confirm-text, #require-confirm-text,
+#location-confirm-text, #pay-confirm-text, #require-confirm-text, #content-confirm-text,
 #reherse-confirm-count-text, #reherse-confirm-pay-text, #reherse-confirm-info-text {
   float: left;
   margin-left: 7%;
@@ -783,16 +827,24 @@ input[type="radio"].toggle:checked + label:after {
   margin-top: 7%;
 }
 
+#theme-confirm-text, #major-confirm-text, #genre-confirm-text {
+  float: left;
+  color: #252525;
+  font-size: 1.75rem;
+  width: 100%;
+  height: auto;
+}
+
 #reherse-confirm-count-text, #reherse-confirm-pay-text, #reherse-confirm-info-text,
 #reherse-confirm-count, #reherse-confirm-pay, #reherse-confirm-info {
 	display:none;
 }
 
-/* 이벤트 페이지 7 끝 */
+/* 이벤트 페이지 8 끝 */
 
-/* 이벤트 페이지 8 시작 */
+/* 이벤트 페이지 9 시작 */
 
-#event-page8-text {
+#event-page9-text {
     position: absolute;
     color: black;
     top: 30%;
@@ -803,7 +855,7 @@ input[type="radio"].toggle:checked + label:after {
     /* width: 90%; */
 }
 
-#event-page8-home {
+#event-page9-home {
   position: absolute;
   height: 100px;
   left: 43%;
@@ -812,7 +864,7 @@ input[type="radio"].toggle:checked + label:after {
   font-weight: normal;
 }
 
-/* 이벤트 페이지 8 끝 */
+/* 이벤트 페이지 9 끝 */
 
 select {
   font-size: 16px;

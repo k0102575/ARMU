@@ -12,4 +12,5 @@ public interface EventDao {
   List<Category> selectListGenre();
   List<Category> selectListLocationType();
   List<Category> selectListLocation(int no);
+  int insert(Event event);
 }

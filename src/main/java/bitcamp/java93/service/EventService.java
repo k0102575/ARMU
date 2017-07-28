@@ -12,4 +12,5 @@ public interface EventService {
   List<Category> listGenre() throws Exception;
   List<Category> listLocationType() throws Exception;
   List<Category> listLocation(int no) throws Exception;
+  void add(Event event) throws Exception;
 }

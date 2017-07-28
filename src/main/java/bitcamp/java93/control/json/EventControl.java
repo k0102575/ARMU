@@ -1,5 +1,6 @@
 package bitcamp.java93.control.json;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.ServletContext;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import bitcamp.java93.domain.Event;
 import bitcamp.java93.service.EventService;
 
 @RestController
@@ -58,6 +60,15 @@ public class EventControl {
     HashMap<String,Object> dataMap = new HashMap<>();
     dataMap.put("listLocation", eventService.listLocation(loctno));
     return new JsonResult(JsonResult.SUCCESS, dataMap);
+  }
+  
+  @RequestMapping("add")
+  public JsonResult add(Event event) throws Exception {
+    
+    System.out.println(event);
+    
+    eventService.add(event);
+    return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
 }
