@@ -1,8 +1,5 @@
 package bitcamp.java93.control.json;
 
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,24 +21,13 @@ public class AuthControl {
   MemberService memberService;
 
   @RequestMapping(path="login", method=RequestMethod.POST)
-  public JsonResult login(String email, String password, String saveEmail, 
-      Model model, HttpServletResponse response) throws Exception {
+  public JsonResult login(String email, String password, Model model) throws Exception {
 
     Member member = null;
       member = memberService.getByEmailPassword(email, password);
     
     if (member != null) { 
       model.addAttribute("loginMember", member);
-      
-      if (saveEmail != null) {
-        Cookie cookie2 = new Cookie("email", email);
-        cookie2.setMaxAge(60 * 60 * 24 * 7); 
-        response.addCookie(cookie2);
-      } else {
-        Cookie cookie2 = new Cookie("email", "");
-        cookie2.setMaxAge(0);
-        response.addCookie(cookie2);
-      }
       
       return new JsonResult(JsonResult.SUCCESS, "ok");
       
@@ -60,7 +46,18 @@ public class AuthControl {
   @RequestMapping("userinfo")
   public JsonResult userinfo(HttpSession session) throws Exception {
     Member loginMember = (Member)session.getAttribute("loginMember");
+    
+    if(loginMember == null) {
+      return new JsonResult(JsonResult.FAIL, "fail");
+    }
+    
     return new JsonResult(JsonResult.SUCCESS, loginMember);
+  }
+  
+  
+  @RequestMapping("browse")
+  public JsonResult browse(HttpSession session, Model model) throws Exception {
+    return new JsonResult(JsonResult.SUCCESS, "browse");
   }
 }
 

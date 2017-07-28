@@ -4,9 +4,9 @@ insert into memb (name, nick, phone, pwd, email) values ('조승우', '조승우
 insert into memb (name, nick, phone, pwd, email) values ('임정희', '임정희', '010-2424-3234',  password('1111'), 'jungheelee@daum.net');
 insert into memb (name, nick, phone, pwd, email) values ('오호라', '오호라밴드', '010-5555-5050',  password('1111'), 'ohora@gmail.com');
 
-insert into musi (muno, age, team, gender, hpg, intro, path) values (1, 35, 0, 'M','http://tistory.seungwoo.com', '저는 짱짱맨 조승우입니다. 조각같은 외모와 매력적인 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!', 'mobile/musician/photo/0choi2.jpg');
-insert into musi (muno, age, team, gender, hpg, intro, path) values (2, 34, 0, 'F', 'http://tistory.jhlee.com', '안녕하세요. 임정희입니다. 저로 말할 것 같으면, 화려한 외모와 옥구슬같은 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!', 'mobile/musician/photo/m1.jpg');
-insert into musi (muno, age, team, gender, hpg, intro, path) values (3, 28, 1, 'M', 'http://tistory.ohora.com', '저희 오호라 밴드는 다른 아마추어 팀들과는 차원이 다른 프로 밴드 그 이상의 실력으로 감동을 드리는 밴드입니다. 다재다능한 팀원들과 5년간 호흡을 맞춰 각종 공연을 많이 해봤습니다. 언제든 알뮤를 통해 연락주세요!!', 'mobile/musician/photo/m2.jpg');
+insert into musi (muno, age, team, gender, hpg, intro, path) values (1, 35, 'N', 'M','http://tistory.seungwoo.com', '저는 짱짱맨 조승우입니다. 조각같은 외모와 매력적인 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!', 'mobile/musician/photo/0choi2.jpg');
+insert into musi (muno, age, team, gender, hpg, intro, path) values (2, 34, 'Y', 'F', 'http://tistory.jhlee.com', '안녕하세요. 임정희입니다. 저로 말할 것 같으면, 화려한 외모와 옥구슬같은 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!', 'mobile/musician/photo/m1.jpg');
+insert into musi (muno, age, team, gender, hpg, intro, path) values (3, 28, 'Y', 'M', 'http://tistory.ohora.com', '저희 오호라 밴드는 다른 아마추어 팀들과는 차원이 다른 프로 밴드 그 이상의 실력으로 감동을 드리는 밴드입니다. 다재다능한 팀원들과 5년간 호흡을 맞춰 각종 공연을 많이 해봤습니다. 언제든 알뮤를 통해 연락주세요!!', 'mobile/musician/photo/m2.jpg');
 
 insert into team (muno, name) values (3, '오호라밴드');
 
@@ -310,9 +310,10 @@ insert into thm_evn (eno, thmno) values (3, 7);
 insert into thm_evn (eno, thmno) values (4, 6);
 
 
--- 이벤트 참여신청(pr)
+-- 이벤트 홍보(pr)
 insert into pr (eno, muno) values (1, 1);
 insert into pr (eno, muno) values (1, 2);
+insert into pr (eno, muno) values (2, 3);
 
 -- 이벤트&뮤지션 매칭정보(mtc)
 insert into mtc (muno, eno, mtcdt) values (3, 2, '2017-07-22');
@@ -355,3 +356,8 @@ insert into loc_musi (muno, locno) values (3, 12);
 insert into loc_musi (muno, locno) values (3, 13);
 insert into loc_musi (muno, locno) values (3, 14);
 insert into loc_musi (muno, locno) values (3, 15);
+
+
+-- 이벤트 홍보 수락(pr, noti)
+update pr set status='Y' where muno=3 and eno=2;
+insert noti (muno, eno, type, date, cont, prno) values (3, 2, "요청 수락", '2017-07-21', "이벤트 홍보 수락", 3);

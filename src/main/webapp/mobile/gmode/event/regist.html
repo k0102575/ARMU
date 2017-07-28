@@ -58,6 +58,7 @@
   
     <div id="theme-select-button">테마</div><i class="fa fa-plus" id="theme-plus" aria-hidden="true"></i>
   <!-- theme-button -->
+  <input id="fi-filenames" type="hidden">
     <div id="theme-select-text"></div>
   
     <div id="major-select-button">전공</div><i class="fa fa-plus" id="major-plus" aria-hidden="true"></i>
@@ -78,6 +79,11 @@
   </div>
   <!-- theme-select-box -->
   
+  <div id="theme-check-btn">
+    <button type="button" id="theme-check-cancel">취소</button>
+    <button type="button" id="theme-check-check">확인</button>
+  </div>
+  
   <script id="select-theme-template" type="text/x-handlebars-template">
   {{#each listTheme}}
   <div class="boxes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{thmtname}}<br><br>
@@ -88,15 +94,11 @@
   {{/themeMap}}
   {{/each}}
   {{/each}}
-  <div id="theme-check-btn">
-    <button type="button" id="theme-check-cancel">취소</button>
-    <button type="button" id="theme-check-check">확인</button>
-  </div>
 	</script>
 	
 	<!--  테마 선택 -->
 	
-	  <div id="major-select-box">
+	<div id="major-select-box">
   <div id="major-select-box-header">
   전공 선택
   </div>
@@ -105,6 +107,11 @@
   
   </div>
   <!-- major-select-box -->
+  
+  <div id="major-check-btn">
+    <button type="button" id="major-check-cancel">취소</button>
+    <button type="button" id="major-check-check">확인</button>
+  </div>
   
   <script id="select-major-template" type="text/x-handlebars-template">
   {{#each listMajor}}
@@ -116,10 +123,6 @@
   {{/majorMap}}
   {{/each}}
   {{/each}}
- <div id="major-check-btn">
-    <button type="button" id="major-check-cancel">취소</button>
-    <button type="button" id="major-check-check">확인</button>
-  </div>
   </script>
   
   <!--  전공 선택  -->
@@ -132,7 +135,12 @@
 
   
   </div>
-  <!-- major-select-box -->
+  <!-- genre-select-box -->
+  
+    <div id="genre-check-btn">
+    <button type="button" id="genre-check-cancel">취소</button>
+    <button type="button" id="genre-check-check">확인</button>
+  </div>
   
   <script id="select-genre-template" type="text/x-handlebars-template">
   {{#each listGenre}}
@@ -144,10 +152,6 @@
   {{/genreMap}}
   {{/each}}
   {{/each}}
-  <div id="genre-check-btn">
-    <button type="button" id="genre-check-cancel">취소</button>
-    <button type="button" id="genre-check-check">확인</button>
-  </div>
   </script>
   
   <!--  장르 선택  -->
@@ -243,14 +247,11 @@
   
   <div id="event-input">
   
-  <span id="event-name-text">이벤트명을 입력하세요 (필수)</span>
+  <span id="event-name-text">이벤트명을 입력하세요</span>
   <input type="text" id="event-name">
   
-  <span id="event-pay-text">금액을 입력하세요 (필수)</span>
-  <input type="number" id="event-pay">
-  
-  <span id="event-require-text">추가 요구사항을 입력하세요 (선택)</span>
-  <textarea id="event-require" placeholder="신청곡, 기타 등등"></textarea>
+  <span id="event-content-text">이벤트 내용를 입력하세요</span>
+  <textarea id="event-content" placeholder="이벤트 내용"></textarea>
   
   </div>
   <!-- event-input -->
@@ -295,18 +296,54 @@
 
 <!-- 이벤트 페이지7 시작 -->
 
-<div id="event-page7">
+  <div id="event-page7">
   
   <div id="event-page7-text">
+    이벤트 정보를 입력하세요
+  </div>
+  
+  <div id="event-input">
+  
+  <span id="event-pay-text">금액을 입력하세요 (필수)</span>
+  <input type="number" id="event-pay">
+  
+  <span id="event-require-text">추가 요구사항을 입력하세요 (선택)</span>
+  <textarea id="event-require" placeholder="신청곡, 기타 등등"></textarea>
+  
+  </div>
+  <!-- event-input -->
+  
+  
+    <div id="event-page7-btn">
+    <div id="event-page7-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
+    <div id="event-page7-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
+    </div>
+    <!-- event-page5-btn -->
+    
+  </div>
+
+
+<!-- 이벤트 페이지7 끝 -->
+
+
+<!-- 이벤트 페이지8 시작 -->
+
+<div id="event-page8">
+  
+  <div id="event-page8-text">
     이벤트 등록전 입력사항을 확인해주세요
   </div>
     
     
-		  <div id="name-confirm-text">이벤트명</div>
-		  <div id="name-confirm"></div>
-		  
+      <div id="name-confirm-text">이벤트명</div>
+      <div id="name-confirm"></div>
+      
       <div id="cathgory-confirm-text">카테고리</div>
-      <div id="cathgory-confirm"></div>
+      <div id="cathgory-confirm">
+      <div id="theme-confirm-text"></div>
+      <div id="major-confirm-text"></div>
+      <div id="genre-confirm-text"></div>
+      </div>
       
       <div id="date-confirm-text">이벤트 날짜</div>
       <div id="date-confirm"></div>
@@ -314,10 +351,13 @@
       <div id="location-confirm-text">장소</div>
       <div id="location-confirm"></div>
       
-		  <div id="pay-confirm-text">금액</div>
-		  <div id="pay-confirm"></div>
-		  
-		  <div id="require-confirm-text">추가 요구사항</div>
+      <div id="pay-confirm-text">금액</div>
+      <div id="pay-confirm"></div>
+      
+      <div id="content-confirm-text">내용</div>
+      <div id="content-confirm"></div>
+      
+      <div id="require-confirm-text">추가 요구사항</div>
       <div id="require-confirm"></div>
       
       <div id="reherse-confirm-count-text">사전 미팅 횟수</div>
@@ -328,34 +368,34 @@
       
       <div id="reherse-confirm-info-text">사전 미팅 정보</div>
       <div id="reherse-confirm-info"></div>
-		  
+      
     
-  <div id="event-page7-btn">
-  <div id="event-page7-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
-  <div id="event-page7-next">등록</div>
+  <div id="event-page8-btn">
+  <div id="event-page8-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
+  <div id="event-page8-next">등록</div>
   </div>
   <!-- event-page7-btn -->
     
 </div>
-<!-- 이벤트 페이지7 끝 -->
+<!-- 이벤트 페이지9 끝 -->
 
-<!-- 이벤트 페이지8 시작 -->
+<!-- 이벤트 페이지9 시작 -->
   
-  <div id="event-page8">
+  <div id="event-page9">
     
-    <div id="event-page8-text">
+    <div id="event-page9-text">
     이벤트 등록에 성공하셨습니다.<br><br>
     뮤지션의 연락을 기다리거나<br>
     뮤지션을 찾아 매칭요청을 하세요.
     </div>
     
-    <div id="event-page8-btn">
-    <div id="event-page8-home"><i class="fa fa-home" aria-hidden="true"></i>홈으로</div>
+    <div id="event-page9-btn">
+    <div id="event-page9-home"><i class="fa fa-home" aria-hidden="true"></i>홈으로</div>
     </div>
-    <!-- event-page8-btn -->
+    <!-- event-page9-btn -->
   
   </div>
-<!-- 이벤트 페이지8 끝 -->
+<!-- 이벤트 페이지9 끝 -->
 
 
 </div> <!-- container -->

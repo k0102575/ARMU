@@ -43,7 +43,6 @@
     <resultMap type="hashMap" id="hashMap">
     <result javaType="java.lang.String" column="thmename"></result>
     <result javaType="int" column="thmno"/> 
-<!--     <result javaType="int" column="thmno"></result> -->
   </resultMap>
 
 	<resultMap type="event" id="eventMap">
@@ -69,7 +68,7 @@
         <result column="major"/> 
     </collection> 
 	</resultMap>
-
+  
   <resultMap type="musician" id="musicianMap2">
     <id column="mno" property="no" />
     <result column="name" property="name" />
@@ -85,27 +84,9 @@
     </collection>
   </resultMap>
   
-  
-	<sql id="selectBasic">
-  select eno, title, t.name as theme, mj.name as major, g.name as genre, l.name as location, addr, pay, date, cont
-  from evn e inner join thm t on e.thmno=t.thmno
-  inner join mjr mj on e.mjrno=mj.mjrno
-  inner join gnr g on e.gnrno=g.gnrno
-  inner join loc l on e.locno=l.locno
-	</sql>
-	
-	<sql id="selectEventAppliedByMusician">
-  select e.eno, title, t.name as theme, mj.name as major, g.name as genre, 
-             l.name as location, addr, e.pay, date, m.mno, m.name
-  from evn e inner join thm t on e.thmno=t.thmno
-  inner join mjr mj on e.mjrno=mj.mjrno
-  inner join gnr g on e.gnrno=g.gnrno
-  inner join loc l on e.locno=l.locno
-  left outer join evn_appy ea on e.eno=ea.eno
-  left outer join memb m on ea.muno=m.mno
-  </sql>
+  <resultMap type="notification" id="notoficationMap">
+  </resultMap>
 
- 
 
 	<select id="selectOngoingList" resultMap="eventMap, musicianMap2">
 select e.title, e.eno, mj.name as major, g.name as genre, t.name as theme, l.name as location,
@@ -126,35 +107,46 @@ left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj2 on mjm.
 left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g2 on gm.gnrno=g2.gnrno
 left outer join thm_musi tm on mu.muno=tm.muno left outer join thm t2 on tm.thmno=t2.thmno
 order by title asc
-	</select>
+	</select><!-- 완진 -->
 	
 	 
   <select id="selectListTheme" resultMap="themeMap">
   select thmt.name, thme.name as thmename, thme.thmno
   from thm as thme left outer join thm_type as thmt on thmt.thmtno = thme.thmtno
-  </select>
+  </select><!-- 승민 -->
   
   <select id="selectListMajor" resultMap="majorMap">
   select mjrt.name, majr.name as majrname, majr.mjrno
   from mjr as majr left outer join mjr_type as mjrt on mjrt.mjrtno = majr.mjrtno
-  </select>
+  </select><!-- 승민 -->
   
   <select id="selectListGenre" resultMap="genreMap">
   select gnrt.name, gnre.name as gnrename, gnre.gnrno
   from gnr as gnre left outer join gnr_type as gnrt on gnrt.gnrtno = gnre.gnrtno
-  </select>
+  </select><!-- 승민 -->
   
   <select id="selectListLocationType" resultMap="locationTypeMap">
   select loctno, name as loctname 
   from loc_type
   order by loctno
-  </select>
+  </select><!-- 승민 -->
   
   <select id="selectListLocation" resultMap="locationTypeMap" parameterType="int">
   select locno, name as locname 
   from loc where loctno = #{loctno}
-  order by locno
-  </select>
+  order by locname
+  </select><!-- 승민 -->
+  
+  <insert id="insert" parameterType="event" 
+          useGeneratedKeys="true" keyColumn="eno" keyProperty="no">
+    insert into evn(gno, locno, pay, req, cont, addr, date, title) 
+    values(#{writer}, #{locno}, #{pay}, #{requirement}, #{contents}, #{address}, #{date}, #{title})
+  </insert><!-- 승민 -->
+  
+  
+<insert id="insertTheme" parameterType="map">
+  insert into thm_evn(eno, thmno) values(#{eventNo} , #{eventTheme})
+</insert>
 
 </mapper>
 

@@ -1,5 +1,6 @@
 package bitcamp.java93.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,27 @@ public class EventServiceImpl implements EventService {
   
   public  List<Category> listLocation(int no) throws Exception {   
     return eventDao.selectListLocation(no);
+  }
+  
+  public  void add(Event event) throws Exception {   
+    eventDao.insert(event);
+  }
+  
+  public  void addTheme(Event event) throws Exception {   
+    this.insertPhoto(4, event.getCategoryThemeNo());
+  }
+  
+  private void insertPhoto(int eventNo, List<String> categoryThemeNo) {
+    if (categoryThemeNo == null)
+      return;
+    
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("eventNo", eventNo);
+    
+    for (String eventTheme : categoryThemeNo) {
+      valueMap.put("eventTheme", eventTheme);
+      eventDao.insertTheme(valueMap);
+    }
   }
   
 }

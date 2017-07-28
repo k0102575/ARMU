@@ -2,6 +2,7 @@ package bitcamp.java93.domain;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Event {
   int no;
@@ -13,13 +14,25 @@ public class Event {
   String location;
   String address;
   int pay;
+  int locno;
   String requirement;
   String contents;
   int downPay;
+  int tmnno;
+  int eno;
   Date date;
+  List<String> categoryThemeNo;
   ArrayList<Musician> applicantList;
   ArrayList<Musician> pickedList;
   Musician musician;
+  @Override
+  public String toString() {
+    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", themeList=" + themeList + ", majorList="
+        + majorList + ", genreList=" + genreList + ", location=" + location + ", address=" + address + ", pay=" + pay
+        + ", locno=" + locno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
+        + ", tmnno=" + tmnno + ", eno=" + eno + ", date=" + date + ", categoryThemeNo=" + categoryThemeNo
+        + ", applicantList=" + applicantList + ", pickedList=" + pickedList + ", musician=" + musician + "]";
+  }
   public int getNo() {
     return no;
   }
@@ -74,6 +87,12 @@ public class Event {
   public void setPay(int pay) {
     this.pay = pay;
   }
+  public int getLocno() {
+    return locno;
+  }
+  public void setLocno(int locno) {
+    this.locno = locno;
+  }
   public String getRequirement() {
     return requirement;
   }
@@ -92,11 +111,29 @@ public class Event {
   public void setDownPay(int downPay) {
     this.downPay = downPay;
   }
+  public int getTmnno() {
+    return tmnno;
+  }
+  public void setTmnno(int tmnno) {
+    this.tmnno = tmnno;
+  }
+  public int getEno() {
+    return eno;
+  }
+  public void setEno(int eno) {
+    this.eno = eno;
+  }
   public Date getDate() {
     return date;
   }
   public void setDate(Date date) {
     this.date = date;
+  }
+  public List<String> getCategoryThemeNo() {
+    return categoryThemeNo;
+  }
+  public void setCategoryThemeNo(List<String> categoryThemeNo) {
+    this.categoryThemeNo = categoryThemeNo;
   }
   public ArrayList<Musician> getApplicantList() {
     return applicantList;
@@ -116,13 +153,13 @@ public class Event {
   public void setMusician(Musician musician) {
     this.musician = musician;
   }
-  @Override
-  public String toString() {
-    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", themeList=" + themeList + ", majorList="
-        + majorList + ", genreList=" + genreList + ", location=" + location + ", address=" + address + ", pay=" + pay
-        + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay + ", date=" + date
-        + ", applicantList=" + applicantList + ", pickedList=" + pickedList + ", musician=" + musician + "]";
-  }
+  
+  
+  
+  
+  
+
+  
   
   
   }

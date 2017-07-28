@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Musician extends Member  {
   int age;
-  boolean isTeam;
+  String isTeam;
   String homepage;
   String intro;
   String photo;
@@ -32,10 +32,10 @@ public class Musician extends Member  {
   public void setAge(int age) {
     this.age = age;
   }
-  public boolean isTeam() {
+  public String getIsTeam() {
     return isTeam;
   }
-  public void setTeam(boolean isTeam) {
+  public void setIsTeam(String isTeam) {
     this.isTeam = isTeam;
   }
   public String getHomepage() {
@@ -118,7 +118,6 @@ public class Musician extends Member  {
         + themeList + ", locationList=" + locationList + ", photoList=" + photoList + "]";
   }
   
-
-
+  
   
 }

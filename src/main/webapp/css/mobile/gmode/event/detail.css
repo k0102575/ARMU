@@ -1,0 +1,108 @@
+@CHARSET "UTF-8";
+
+/*헤더 시작*/
+  .headerbox {
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid black;
+  height: 120px;
+  width: 100%;
+  background-color: white;
+  color: black;
+  text-align: center;
+  line-height: 120px;
+}
+
+.header {
+  display: inline-block;
+  font-size: 250%;
+  font-weight: normal;
+  text-overflow: ellipsis;
+  overflow:hidden;
+  white-space: nowrap;
+  max-width: 70%;
+}
+
+.back-btn {
+    position: absolute;
+    display: inline-block;
+    left: 3%;
+    top: 27%;
+    line-height: 42px;
+    font-size: 300%;
+    color: #252525;
+    font-weight: 300;
+    width: 55px;
+    height: 55px;
+    border-radius: 50px;
+    /* border: 1px solid #252525; */
+}
+
+.more-btn {
+    position: absolute;
+    display: inline-block;
+    right: 3%;
+    top: 27%;
+    line-height: 50px;
+    font-size: 311%;
+    color: #252525;
+    font-weight: 300;
+    width: 55px;
+    height: 55px;
+    /* border: 1px solid #252525; */
+}
+/*헤더 끝*/
+
+.event-container {
+  position: absolute;
+  top: 120px;
+}
+
+.event-title {
+  display: inline-block;
+  width: 90%;
+  font-size: 2.5em;
+  margin-left: 5%;
+  margin-top: 5%;
+  font-weight: 500;
+}
+
+.event-writer {
+  display: inline-block;
+  font-size: 2em;
+  margin-left: 5%;
+  margin-top: 3%;
+  font-weight: 200;
+}
+
+.separator {
+  margin-top: 3%;
+  width: 90%;
+  display: inline-block;
+  margin-left: 5%;
+}
+
+.event-text {
+  display: inline-block;
+  font-size: 2.3em;
+  margin-left: 5%;
+  margin-top: 3%;
+  font-weight: 400;
+  max-width: 75%;
+  vertical-align: top;
+}
+
+.event-cont {
+  margin-left: 7%;
+}
+
+.event-pay {
+  margin-left: 2.5%;
+}
+
+.event-req {
+  max-width: 90%;
+}
+.event-header {
+  font-weight: 600;
+}

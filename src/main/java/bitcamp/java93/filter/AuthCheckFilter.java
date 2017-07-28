@@ -16,7 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import bitcamp.java93.domain.Member;
 
-@WebFilter({"/mobile/chat/*", "/mobile/favor/*", "/mobile/mypage/*", "/mobile/event-regist/*", "/mobile/musi-info/*"})
+/*@WebFilter({"/mobile/chat/*", "/mobile/favor/*", "/mobile/mypage/*", "/mobile/gmode/event/*", "/mobile/gmode/musi-info/*"})*/
+
+/*@WebFilter({"/mobile/gmode/*"})*/
 public class AuthCheckFilter implements Filter {
 
   @Override

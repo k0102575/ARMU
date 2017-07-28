@@ -1,11 +1,11 @@
 "use strict"
 
-var isEvent = true;
+var isRecommandEvent = true;
 
 var noEventView = $('.recruiting-no-event'),
 yesEventView = $('.recruiting-yes-event');
 
-if(isEvent) {
+if(isRecommandEvent) {
 	noEventView.css('display', 'none')
 	yesEventView.css('display', '')
 	
@@ -37,7 +37,8 @@ function controlBtns() {
 	var applicantBtn = $('#recruiting-applicant-btn'),
 		applicantBox = $( "#recruiting-applicant-box" ),
 		calleeBtn = $('#recruiting-callee-btn'),
-		calleeBox = $('#recruiting-callee-box');
+		calleeBox = $('#recruiting-callee-box'),
+		eventBox = $('.event-box');
 	
 applicantBtn.on('click', function(e) {
 	if(applicantBtn.attr('data-open') == "true") {
@@ -63,5 +64,8 @@ calleeBtn.on('click', function(e) {
 	e.preventDefault()
 })
 
+eventBox.on('click', function(e) {
+	location.href = 'detail.html'
+})
 
 }
