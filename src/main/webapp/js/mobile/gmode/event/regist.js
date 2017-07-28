@@ -29,7 +29,8 @@ var eventPage2 = $("#event-page2"),
     categoryMajorName ="",
     categoryGenreNo = "",
     categoryGenreName =""
-var categoryThemeNo = []
+var categoryThemeNo = "",
+    fiFileNames = $("#fi-filenames")
 
     //  이벤트 2페이지
     
@@ -139,7 +140,7 @@ eventPage1Next.on('click', function() {
     $("#theme-check-check").on('click', function() {
       themeConfirmText.append("<span class='selectSpan'>테마:  </span>")
       $("input[name=theme]:checked").each(function() {
-        categoryThemeNo.push(parseInt($(this).val()))
+        categoryThemeNo += $(this).val() + "," 
         categoryThemeName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
         themeSelectText.append("<span class='selectSpan'>" + categoryThemeName + "</span>")
         themeConfirmText.append("<span class='selectSpan'>" + categoryThemeName + "</span>")
@@ -245,16 +246,18 @@ eventPage2Prev.on('click', function() {
 })
 
 eventPage2Next.on('click', function() {
-  console.log(categoryThemeNo)
-  
-  $.post('/event/addTheme.json', JSON.stringify({
-    "categoryThemeNo" : categoryThemeNo,
-  }), function(result) {
+  fiFileNames.val(categoryThemeNo)
+  console.log(fiFileNames.val())
+  $.post('/event/addTheme.json', {
+    "categoryThemeNo" : fiFileNames.val()
+  }, function(result) {
     eventPage8.toggle(0);
     eventPage9.toggle(0 , function() {
       progress(95)
     });
   }, 'json')
+  
+});
 
   /*if(themeSelectText.text() == "") {
     swal("테마를 선택하세요!")
@@ -281,7 +284,6 @@ eventPage2Next.on('click', function() {
       dayNamesMin: ["일"," 월"," 수"," 목"," 금"," 토"," 일"]
     });
   });*/
-})
 
 eventPage3Prev.on('click', function() {
   eventPage3.toggle(0);

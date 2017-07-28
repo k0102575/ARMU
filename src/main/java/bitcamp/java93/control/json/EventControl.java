@@ -1,5 +1,6 @@
 package bitcamp.java93.control.json;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.ServletContext;
@@ -70,8 +71,16 @@ public class EventControl {
   }
   
   @RequestMapping("addTheme")
-  public void addTheme(@RequestBody int[] categoryThemeNo) throws Exception {
-    System.out.println(categoryThemeNo);
+  public JsonResult addTheme(Event event, String categoryThemeNo) throws Exception {
+    String[] nameList = categoryThemeNo.split(",");
+    ArrayList<String> photoList = new ArrayList<>();
+    for (String name : nameList) {
+      photoList.add(name);
+    }
+    event.setCategoryThemeNo(photoList);
+    
+    eventService.addTheme(event);
+    return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
 }

@@ -1,9 +1,8 @@
 package bitcamp.java93.domain;
 
-import java.sql.Array;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 public class Event {
   int no;
@@ -19,8 +18,10 @@ public class Event {
   String requirement;
   String contents;
   int downPay;
+  int tmnno;
+  int eno;
   Date date;
-  Object categoryThemeNo;
+  List<String> categoryThemeNo;
   ArrayList<Musician> applicantList;
   ArrayList<Musician> pickedList;
   Musician musician;
@@ -29,8 +30,8 @@ public class Event {
     return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", themeList=" + themeList + ", majorList="
         + majorList + ", genreList=" + genreList + ", location=" + location + ", address=" + address + ", pay=" + pay
         + ", locno=" + locno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
-        + ", date=" + date + ", categoryThemeNo=" + categoryThemeNo + ", applicantList=" + applicantList
-        + ", pickedList=" + pickedList + ", musician=" + musician + "]";
+        + ", tmnno=" + tmnno + ", eno=" + eno + ", date=" + date + ", categoryThemeNo=" + categoryThemeNo
+        + ", applicantList=" + applicantList + ", pickedList=" + pickedList + ", musician=" + musician + "]";
   }
   public int getNo() {
     return no;
@@ -110,16 +111,28 @@ public class Event {
   public void setDownPay(int downPay) {
     this.downPay = downPay;
   }
+  public int getTmnno() {
+    return tmnno;
+  }
+  public void setTmnno(int tmnno) {
+    this.tmnno = tmnno;
+  }
+  public int getEno() {
+    return eno;
+  }
+  public void setEno(int eno) {
+    this.eno = eno;
+  }
   public Date getDate() {
     return date;
   }
   public void setDate(Date date) {
     this.date = date;
   }
-  public Object getCategoryThemeNo() {
+  public List<String> getCategoryThemeNo() {
     return categoryThemeNo;
   }
-  public void setCategoryThemeNo(Object categoryThemeNo) {
+  public void setCategoryThemeNo(List<String> categoryThemeNo) {
     this.categoryThemeNo = categoryThemeNo;
   }
   public ArrayList<Musician> getApplicantList() {
@@ -143,7 +156,6 @@ public class Event {
   
   
   
- 
   
   
 

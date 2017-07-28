@@ -140,6 +140,11 @@ order by title asc
     insert into evn(gno, locno, pay, req, cont, addr, date, title) 
     values(#{writer}, #{locno}, #{pay}, #{requirement}, #{contents}, #{address}, #{date}, #{title})
   </insert><!-- 승민 -->
+  
+  
+<insert id="insertTheme" parameterType="map">
+  insert into thm_evn(eno, thmno) values(#{eventNo} , #{eventTheme})
+</insert>
 
 </mapper>
 

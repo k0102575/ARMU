@@ -1,6 +1,7 @@
 package bitcamp.java93.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import bitcamp.java93.domain.Category;
 import bitcamp.java93.domain.Event;
@@ -13,4 +14,5 @@ public interface EventDao {
   List<Category> selectListLocationType();
   List<Category> selectListLocation(int no);
   int insert(Event event);
+  int insertTheme(Map<String,Object> valueMap);
 }
