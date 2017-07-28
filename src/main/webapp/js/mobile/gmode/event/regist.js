@@ -246,7 +246,7 @@ eventPage2Prev.on('click', function() {
 })
 
 eventPage2Next.on('click', function() {
-  fiFileNames.val(categoryThemeNo)
+  /*fiFileNames.val(categoryThemeNo)
   console.log(fiFileNames.val())
   $.post('/event/addTheme.json', {
     "categoryThemeNo" : fiFileNames.val()
@@ -255,10 +255,18 @@ eventPage2Next.on('click', function() {
     eventPage9.toggle(0 , function() {
       progress(95)
     });
-  }, 'json')
-  
+  }, 'json')*/
+  eventPage2.toggle(0);
+  eventPage3.toggle(0 , function() {
+    progress(35)
+    eventPage3Calendar.datepicker({
+      dateFormat: "yy-mm-dd",
+      minDate: 0,
+      dayNames: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+      dayNamesMin: ["일"," 월"," 수"," 목"," 금"," 토"," 일"]
+    });
 });
-
+})
   /*if(themeSelectText.text() == "") {
     swal("테마를 선택하세요!")
     return
@@ -273,17 +281,6 @@ eventPage2Next.on('click', function() {
     swal("장르를 선택하세요!")
     return
   } */
-  
-/*  eventPage2.toggle(0);
-  eventPage3.toggle(0 , function() {
-    progress(35)
-    eventPage3Calendar.datepicker({
-      dateFormat: "yy-mm-dd",
-      minDate: 0,
-      dayNames: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
-      dayNamesMin: ["일"," 월"," 수"," 목"," 금"," 토"," 일"]
-    });
-  });*/
 
 eventPage3Prev.on('click', function() {
   eventPage3.toggle(0);

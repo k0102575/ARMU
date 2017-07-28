@@ -1,7 +1,5 @@
 package bitcamp.java93.control.json;
 
-
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +46,18 @@ public class AuthControl {
   @RequestMapping("userinfo")
   public JsonResult userinfo(HttpSession session) throws Exception {
     Member loginMember = (Member)session.getAttribute("loginMember");
+    
+    if(loginMember == null) {
+      return new JsonResult(JsonResult.FAIL, "fail");
+    }
+    
     return new JsonResult(JsonResult.SUCCESS, loginMember);
+  }
+  
+  
+  @RequestMapping("browse")
+  public JsonResult browse(HttpSession session, Model model) throws Exception {
+    return new JsonResult(JsonResult.SUCCESS, "browse");
   }
 }
 

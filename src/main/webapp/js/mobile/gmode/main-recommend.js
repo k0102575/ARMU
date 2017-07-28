@@ -3,15 +3,13 @@
 var noEventView = $('.rec-no-event'),
 yesEventView = $('.rec-yes-event');
 
-var isEvent = true;
+var isRecommandEvent = true;
 
 showRecommandList();
 displayRecommandByEventMusiList();
 displayBestReviewMusiList();
 displayPopularMusiList();
 displayMostPopularCategoryList();
-
-
 
 function displayRecommandByEventMusiList() {
 	$.getJSON('/musician/listRecommand.json', function(result) {

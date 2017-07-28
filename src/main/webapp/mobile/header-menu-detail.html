@@ -16,7 +16,7 @@
 		<div id='mypage-btn' class='user-infobox'>
 		<!-- <img src='../ARMU-Image/Mobile/login/login_03_g.png'> -->
       <img  class='user-img' src='/image/logo/header/login_03_g4.png'> 
-      <p class='menu-mypage-text'>마이페이지</p>
+      <p class='menu-mypage-text'>프로필</p>
     </div>
 		<div class='menu-category-btn' id='myevent-btn'>나의이벤트</div>
 		<hr class='menu-category-separator'>
@@ -37,6 +37,24 @@
 <!-- menu-toggle -->
 <!-- menu slider ended -->
 
+<div id="search-backscreen"></div>
+<div id="search-toggle">
+  <div id='search-contents'>
+   <i class="fa fa-times" id="search-cancel" aria-hidden="true"></i> 
+   
+   <div id="search-icon-container">
+   <i class="fa fa-search" id="search-icon" aria-hidden="true"></i>
+   </div>
+   
+   <input type="text" id="search-text">
+   
+  <!-- search-header -->
+  
+  </div>
+  <!-- search-contents -->
+</div>
+<!-- search-toggle -->
+
 
 <script>
 /*메뉴 관련*/
@@ -45,7 +63,10 @@
 	    menuBackscreen = $("#menu-backscreen"),
 	    menuToggle = $("#menu-toggle"),
 	    musicianFavor = $("#menu-category-musician-favor"),
-	    eventRegist = $("#menu-category-event-regist")
+	    eventRegist = $("#menu-category-event-regist"),
+	    headerMenuSearch = $("#header-menu-search"),
+	    searchToggle = $("#search-toggle"),
+	    searchBackScreen = $("#search-backscreen")
 	    
 	menuBtn.on('click', function() {
 		menuBackscreen.css('display', 'block');
@@ -57,6 +78,18 @@
 		menuToggle.toggle("slide", 300);
 		menuBackscreen.css('display', 'none');
 		container.css('position', '').css('overflow', '');
+	})
+	
+	headerMenuSearch.on('click', function() {
+	  searchToggle.toggle("slide", {direction: 'right'}, 300);
+	  searchBackScreen.css('display', 'block')
+    container.css('position', 'fixed').css('overflow', 'hidden');
+	})
+	
+	searchBackScreen.on('click', function() {
+	  searchToggle.toggle("slide", {direction: 'right'}, 300);
+	  searchBackScreen.css('display', 'none')
+    container.css('position', '').css('overflow', '');
 	})
 	
 	eventRegist.on('click', function(){
@@ -75,18 +108,22 @@
 		location.href = '/mobile/gmode/event/list.html'
 	})
 	
+	 $.getJSON('/auth/userinfo.json', function(result) {
+	   if(result.status == "success") {
+	      $('#mypage-btn').css('display', 'inline-block')
+	                      .on('click', function() {
+	                        location.href = '/mobile/mypage/mypage.html'
+	                      })
+	      $('#login-btn').css('display', 'none')
+	    } else {
+	      $('#mypage-btn').css('display', 'none')
+	        $('#login-btn').css('display', 'inline-block')
+	    }
+  }, function(err) {
+    console.log(err)
+  })
+	
 	/* 로그인 관련*/
-var isLoggedIn = false;
     
-    if(isLoggedIn) {
-    	$('#mypage-btn').css('display', 'inline-block')
-    	                .on('click', function() {
-    	                	location.href = '/mobile/mypage/mypage.html'
-    	                })
-    	$('#login-btn').css('display', 'none')
-    } else {
-    	$('#mypage-btn').css('display', 'none')
-        $('#login-btn').css('display', 'inline-block')
-    }
 
 </script>

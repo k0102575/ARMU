@@ -56,7 +56,7 @@ function displayProfile() {
 
 $(document.body).on('click', '#logout-link', function(event) {
   $.getJSON('/auth/logout.json', function(result) {
-    location.href = '/mobile/gmode/index.html'
+    location.href = '/mobile/index.html'
   })
 })
 
