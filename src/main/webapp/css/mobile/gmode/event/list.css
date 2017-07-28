@@ -264,6 +264,12 @@ body {
   color: white;
   z-index: 1;
 }
+ 
+  
+  .event-box:focus, .event-box:hover, .event-box:active {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
 
 .recruiting-dday {
   /* position: absolute; */
