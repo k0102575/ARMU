@@ -85,14 +85,6 @@
     </collection>
   </resultMap>
 
-	<sql id="selectBasic">
-  select eno, title, t.name as theme, mj.name as major, g.name as genre, l.name as location, addr, pay, date, cont
-  from evn e inner join thm t on e.thmno=t.thmno
-  inner join mjr mj on e.mjrno=mj.mjrno
-  inner join gnr g on e.gnrno=g.gnrno
-  inner join loc l on e.locno=l.locno
-	</sql>
- 
 
 	<select id="selectOngoingList" resultMap="eventMap, musicianMap2">
 select e.title, e.eno, mj.name as major, g.name as genre, t.name as theme, l.name as location,
