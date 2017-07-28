@@ -43,7 +43,6 @@
     <resultMap type="hashMap" id="hashMap">
     <result javaType="java.lang.String" column="thmename"></result>
     <result javaType="int" column="thmno"/> 
-<!--     <result javaType="int" column="thmno"></result> -->
   </resultMap>
 
 	<resultMap type="event" id="eventMap">
@@ -83,6 +82,9 @@
     <collection property="themeList" ofType="string"> 
        <result column="theme2"/> 
     </collection>
+  </resultMap>
+  
+  <resultMap type="notification" id="notoficationMap">
   </resultMap>
 
 

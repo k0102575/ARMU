@@ -7,6 +7,7 @@ import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import bitcamp.java93.domain.Event;
@@ -69,10 +70,6 @@ public class EventControl {
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
-  @RequestMapping("addTheme")
-  public void addTheme(@RequestBody int[] categoryThemeNo) throws Exception {
-    System.out.println(categoryThemeNo);
-  }
   
 }
 

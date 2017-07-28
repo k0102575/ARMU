@@ -245,16 +245,9 @@ eventPage2Prev.on('click', function() {
 })
 
 eventPage2Next.on('click', function() {
-  console.log(categoryThemeNo)
+
   
-  $.post('/event/addTheme.json', JSON.stringify({
-    "categoryThemeNo" : categoryThemeNo,
-  }), function(result) {
-    eventPage8.toggle(0);
-    eventPage9.toggle(0 , function() {
-      progress(95)
-    });
-  }, 'json')
+	
 
   /*if(themeSelectText.text() == "") {
     swal("테마를 선택하세요!")
