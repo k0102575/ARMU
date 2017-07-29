@@ -8,4 +8,5 @@ public interface EventService {
   List<Event> listOngoing() throws Exception;
   void add(Event event) throws Exception;
   void RegistEventCategory(Event event) throws Exception;
+  void RegistEventReherse(Event event) throws Exception;
 }

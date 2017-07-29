@@ -1,0 +1,77 @@
+@CHARSET "UTF-8";
+
+#event-page8 {
+  display: none;
+  position: relative;
+  top: 350px;
+  width: 100%;
+  min-height: 1500px;
+  background-color: white;
+}
+
+#event-page8-text {
+  float: left;
+  color: black;
+  font-size: 300%;
+  font-weight: normal;
+  text-align: center;
+  width: 100%;
+}
+
+#event-page8-btn {
+  float: left;
+  width: 100%;
+  margin-top: 10%;
+  display: inline-block;
+}
+
+#event-page8-prev {
+  float: left;
+  margin-left: 10%;
+  font-size: 300%;
+}
+
+#event-page8-next {
+  float: right;
+  margin-right: 10%;
+  font-size: 300%;
+}
+
+#name-confirm, #cathgory-confirm, #date-confirm, #match-confirm,#location-confirm, 
+#pay-confirm, #require-confirm, #content-confirm, #reherse-confirm-count, #reherse-confirm-pay, #reherse-confirm-info {
+  float: left;
+  margin-left: 7%;
+  width: 86%;
+  min-height: 50px;
+  border: 0px;
+  border-bottom: 1px solid black;
+  background-color: white;
+  color: black;
+  font-size: 2.5em;
+  outline: none;
+  margin-top: 5%;
+}
+
+#name-confirm-text, #cathgory-confirm-text, #date-confirm-text, #match-confirm-text,
+#location-confirm-text, #pay-confirm-text, #require-confirm-text, #content-confirm-text,
+#reherse-confirm-count-text, #reherse-confirm-pay-text, #reherse-confirm-info-text {
+  float: left;
+  margin-left: 7%;
+  border: 0px;
+  color: #252525;
+  font-size: 1.75em;
+  margin-top: 7%;
+}
+
+#theme-confirm-text, #major-confirm-text, #genre-confirm-text {
+  float: left;
+  color: #252525;
+  font-size: 1.75rem;
+  width: 100%;
+  height: auto;
+}
+
+#reherse-confirm-count-text, #reherse-confirm-pay-text, #reherse-confirm-info-text,
+#reherse-confirm-count, #reherse-confirm-pay, #reherse-confirm-info {
+  display:none;
+}

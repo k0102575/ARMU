@@ -763,18 +763,17 @@ input[type="radio"].toggle:checked + label:after {
 
 /* 이벤트 페이지 8 시작 */
 
-
 #event-page8 {
-	display: none;
+  display: none;
   position: relative;
-  top: 350px;
+  top: 300px;
   width: 100%;
   min-height: 1500px;
   background-color: white;
 }
 
 #event-page8-text {
-	float: left;
+  float: left;
   color: black;
   font-size: 300%;
   font-weight: normal;
@@ -782,10 +781,65 @@ input[type="radio"].toggle:checked + label:after {
   width: 100%;
 }
 
+.event-title {
+  display: inline-block;
+  width: 90%;
+  font-size: 2.5em;
+  margin-left: 5%;
+  margin-top: 5%;
+  font-weight: 500;
+}
+
+.event-writer {
+  display: inline-block;
+  font-size: 2em;
+  margin-left: 5%;
+  margin-top: 3%;
+  font-weight: 200;
+}
+
+.separator {
+  margin-top: 3%;
+  width: 90%;
+  display: inline-block;
+  margin-left: 5%;
+}
+
+.event-text {
+  display: inline-block;
+  font-size: 2.3em;
+  margin-left: 5%;
+  margin-top: 3%;
+  font-weight: 400;
+  max-width: 75%;
+  vertical-align: top;
+}
+
+.event-cont {
+  margin-left: 7%;
+}
+
+.event-pay {
+  margin-left: 2.5%;
+}
+
+.event-req {
+  max-width: 90%;
+}
+
+.event-header {
+  font-weight: 600;
+}
+
+ .reherse-header {
+   font-weight: 600;
+ }
+
 #event-page8-btn {
   float: left;
   width: 100%;
   margin-top: 10%;
+  margin-bottom: 10%;
   display: inline-block;
 }
 
@@ -796,49 +850,11 @@ input[type="radio"].toggle:checked + label:after {
 }
 
 #event-page8-next {
-	float: right;
-	margin-right: 10%;
+  float: right;
+  margin-right: 10%;
   font-size: 300%;
 }
 
-#name-confirm, #cathgory-confirm, #date-confirm, #match-confirm,#location-confirm, 
-#pay-confirm, #require-confirm, #content-confirm, #reherse-confirm-count, #reherse-confirm-pay, #reherse-confirm-info {
-  float: left;
-  margin-left: 7%;
-  width: 86%;
-  min-height: 50px;
-  border: 0px;
-  border-bottom: 1px solid black;
-  background-color: white;
-  color: black;
-  font-size: 2.5em;
-  outline: none;
-  margin-top: 5%;
-}
-
-#name-confirm-text, #cathgory-confirm-text, #date-confirm-text, #match-confirm-text,
-#location-confirm-text, #pay-confirm-text, #require-confirm-text, #content-confirm-text,
-#reherse-confirm-count-text, #reherse-confirm-pay-text, #reherse-confirm-info-text {
-  float: left;
-  margin-left: 7%;
-  border: 0px;
-  color: #252525;
-  font-size: 1.75em;
-  margin-top: 7%;
-}
-
-#theme-confirm-text, #major-confirm-text, #genre-confirm-text {
-  float: left;
-  color: #252525;
-  font-size: 1.75rem;
-  width: 100%;
-  height: auto;
-}
-
-#reherse-confirm-count-text, #reherse-confirm-pay-text, #reherse-confirm-info-text,
-#reherse-confirm-count, #reherse-confirm-pay, #reherse-confirm-info {
-	display:none;
-}
 
 /* 이벤트 페이지 8 끝 */
 

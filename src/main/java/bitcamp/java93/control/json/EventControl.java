@@ -27,15 +27,8 @@ public class EventControl {
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
   
-  @RequestMapping("add")
-  public JsonResult add(Event event) throws Exception {
-    
-    eventService.add(event);
-    return new JsonResult(JsonResult.SUCCESS, "ok");
-  }
-  
-  @RequestMapping("RegistEventCategory")
-  public JsonResult eventRegistMajor(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre) throws Exception {
+  @RequestMapping("addReherse")
+  public JsonResult addReherse(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre) throws Exception {
     String[] themeList = eventRegistTheme.split(",");
     String[] majorList = eventRegistMajor.split(",");
     String[] genreList = eventRegistGenre.split(",");
@@ -60,9 +53,43 @@ public class EventControl {
     event.setEventRegistMajor(registMajorList);
     event.setEventRegistGenre(registGenreList);
     
+    eventService.add(event);
+    eventService.RegistEventCategory(event);
+    eventService.RegistEventReherse(event);
+    return new JsonResult(JsonResult.SUCCESS, "ok");
+  }
+  
+  @RequestMapping("add")
+  public JsonResult add(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre) throws Exception {
+    String[] themeList = eventRegistTheme.split(",");
+    String[] majorList = eventRegistMajor.split(",");
+    String[] genreList = eventRegistGenre.split(",");
+    
+    ArrayList<String> registThemeList = new ArrayList<>();
+    ArrayList<String> registMajorList = new ArrayList<>();
+    ArrayList<String> registGenreList = new ArrayList<>();
+    
+    for (String theme : themeList) {
+      registThemeList.add(theme);
+    } 
+    
+    for (String major : majorList) {
+      registMajorList.add(major);
+    } 
+    
+    for (String genre : genreList) {
+      registGenreList.add(genre);
+    } 
+    
+    event.setEventRegistTheme(registThemeList);
+    event.setEventRegistMajor(registMajorList);
+    event.setEventRegistGenre(registGenreList);
+    
+    eventService.add(event);
     eventService.RegistEventCategory(event);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
+  
   
 }
 

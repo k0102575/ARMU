@@ -11,4 +11,5 @@ public interface EventDao {
   int insertTheme(Map<String,Object> themeMap);
   int insertMajor(Map<String,Object> majorMap);
   int insertGenre(Map<String,Object> genreMap);
+  int insertReherse(Event event);
 }

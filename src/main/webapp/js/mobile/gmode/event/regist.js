@@ -77,22 +77,20 @@ var eventPage7 = $("#event-page7"),
 var eventPage8 = $("#event-page8"),
     eventPage8Prev = $("#event-page8-prev"),
     eventPage8Next = $("#event-page8-next"),
-    nameConfirm = $("#name-confirm"),
-    cathgoryConfirm = $("#cathgory-confirm"),
-    dateConfirm = $("#date-confirm"),
-    locationConfirm = $("#location-confirm"),
-    payConfirm = $("#pay-confirm"),
-    contentConfirm = $("#content-confirm"),
-    requireConfirm = $("#require-confirm"),
-    themeConfirmText = $("#theme-confirm-text"),
-    majorConfirmText = $("#major-confirm-text"),
-    genreConfirmText = $("#genre-confirm-text"),
-    reherseConfirmCountText = $("#reherse-confirm-count-text"),
-    reherseConfirmPayText = $("#reherse-confirm-pay-text"),
-    reherseConfirmInfoText = $("#reherse-confirm-info-text"),
-    reherseConfirmCount = $("#reherse-confirm-count"),
-    reherseConfirmPay = $("#reherse-confirm-pay"),
-    reherseConfirmInfo = $("#reherse-confirm-info")
+    titleConfirm = $(".event-title"),
+    dateConfirm = $(".event-date"),
+    locationConfirm = $(".event-location"),
+    payConfirm = $(".event-pay"),
+    contentConfirm = $(".event-desc"),
+    requireConfirm = $(".event-req"),
+    themeConfirmText = $(".event-theme"),
+    majorConfirmText = $(".event-major"),
+    genreConfirmText = $(".event-genre"),
+    reherseConfirmCount = $(".reherse-count"),
+    reherseConfirmPay = $(".reherse-pay"),
+    reherseConfirmInfo = $(".reherse-info"),
+    reherseConfirmLine = $("#reherse-line"),
+    reherseConfirmHeader =$(".reherse-header")
     
     // 이벤트 8페이지 
     
@@ -103,7 +101,7 @@ var eventPage8 = $("#event-page8"),
     
 $(document).ready(function() {
   eventPage1.toggle();
-  progress(5)
+  progress(0)
 })
 
 pageCancelBtn.on('click', function() {
@@ -140,7 +138,6 @@ eventPage1Next.on('click', function() {
     })
 
     $("#theme-check-check").on('click', function() {
-      themeConfirmText.append("<span class='selectSpan'>테마:  </span>")
       $("input[name=theme]:checked").each(function() {
         categoryThemeNo += $(this).val() + "," 
         categoryThemeName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
@@ -170,7 +167,6 @@ eventPage1Next.on('click', function() {
     })
 
     $("#major-check-check").on('click', function() {
-      majorConfirmText.append("<span class='selectSpan'>전공:  </span>")
       $("input[name=major]:checked").each(function() {
         categoryMajorNo += $(this).val() + ","
         categoryMajorName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
@@ -200,7 +196,6 @@ eventPage1Next.on('click', function() {
     })
 
     $("#genre-check-check").on('click', function() {
-      genreConfirmText.append("<span class='selectSpan'>장르:  </span>")
       $("input[name=genre]:checked").each(function() {
         categoryGenreNo += $(this).val() + ","
         categoryGenreName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
@@ -218,8 +213,8 @@ eventPage1Next.on('click', function() {
   
   eventPage1.toggle(0);
   eventPage2.toggle(0 , function() {
-    progress(20)
-  });
+    progress(12.5)
+ });
 })
 
 themeSelectButton.on('click', function() {
@@ -254,31 +249,7 @@ eventPage2Next.on('click', function() {
   majorSelcetHidden.val(categoryMajorNo)
   genreSelcetHidden.val(categoryGenreNo)
   
-  $.post('/event/RegistEventCategory.json', {
-    "eventRegistTheme" : themeSelcetHidden.val(),
-    "eventRegistMajor" : majorSelcetHidden.val(),
-    "eventRegistGenre" : genreSelcetHidden.val()
-  }, function(result) {
-    eventPage8.toggle(0);
-    eventPage9.toggle(0 , function() {
-      progress(95)
-    });
-  }, 'json')
-  
-  
-  
-  eventPage2.toggle(0);
-  eventPage3.toggle(0 , function() {
-    progress(35)
-    eventPage3Calendar.datepicker({
-      dateFormat: "yy-mm-dd",
-      minDate: 0,
-      dayNames: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
-      dayNamesMin: ["일"," 월"," 수"," 목"," 금"," 토"," 일"]
-    });
-});
-})
-  /*if(themeSelectText.text() == "") {
+    if(themeSelectText.text() == "") {
     swal("테마를 선택하세요!")
     return
   } 
@@ -291,17 +262,37 @@ eventPage2Next.on('click', function() {
   if(genreSelectText.text() == "") {
     swal("장르를 선택하세요!")
     return
-  } */
+  }
+  
+  eventPage2.toggle(0);
+  eventPage3.toggle(0 , function() {
+    progress(25)
+    eventPage3Calendar.datepicker({
+      dateFormat: "yy-mm-dd",
+      minDate: 0,
+      dayNames: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+      dayNamesMin: ["일"," 월"," 수"," 목"," 금"," 토"," 일"]
+    });
+});
+})
+ 
 
 eventPage3Prev.on('click', function() {
   eventPage3.toggle(0);
   eventPage2.toggle(0 , function() {
-    progress(20)
+    progress(12.5)
   });
 })
 
 eventPage3Next.on('click', function() {
-  if(eventPage3Calendar.val() == "2017-07-28") {
+  var now = new Date();
+  var year= now.getFullYear();
+  var mon = (now.getMonth()+1)>9 ? ''+(now.getMonth()+1) : '0'+(now.getMonth()+1);
+  var day = now.getDate()>9 ? ''+now.getDate() : '0'+now.getDate();
+          
+  var chan_val = year + '-' + mon + '-' + day;
+  
+  if(eventPage3Calendar.val() == chan_val) {
     swal("오늘 날짜는 선택되지 않습니다")
     return
   } 
@@ -337,21 +328,20 @@ eventPage3Next.on('click', function() {
   
   eventPage3.toggle(0);
   eventPage4.toggle(0 , function() {
-    progress(50)
+    progress(37.5)
   });
 })
 
 eventPage4Prev.on('click', function() {
   eventPage4.toggle(0);
   eventPage3.toggle(0 , function() {
-    progress(35)
+    progress(25)
   });
 })
 
 eventPage4Next.on('click', function() {
 	
 	
-	/*
   sidoSelectMenu.css("border", "1px solid black")
   citySelectMenu.css("border", "1px solid black")
   DetailLocation.css("boder", "1px solid black")
@@ -372,75 +362,91 @@ eventPage4Next.on('click', function() {
     DetailLocation.css("border", "1px solid red")
     swal("상세주소를 입력하세요")
     return
-  }*/
+  }
   
   
   eventPage4.toggle(0);
   eventPage5.toggle(0 , function() {
-    progress(65)
+    progress(50)
   });
 })
 
 eventPage5Prev.on('click', function() {
   eventPage5.toggle(0);
   eventPage4.toggle(0 , function() {
-    progress(50)
+    progress(37.5)
   });
 })
 
 eventPage5Next.on('click', function() {
   
   inputEventName.css("border", "1px solid black")
-  inputEventPay.css("boder", "1px solid black")
+  inputEventConent.css("boder", "1px solid black")
   
-/*  if(inputEventName.val() == "") {
+  if(inputEventName.val() == "") {
     inputEventName.css("border", "1px solid red")
     swal("이벤트명을 입력하세요!")
     return
-  } */
+  } 
+  
+  if(inputEventConent.val() == "") {
+    inputEventConent.css("border", "1px solid red")
+    swal("이벤트 내용을 입력하세요!")
+    return
+  } 
   
   eventPage5.toggle(0);
   eventPage6.toggle(0 , function() {
-    progress(80)
+    progress(62.5)
   });
 })
 
 eventPage6Prev.on('click', function() {
   eventPage6.toggle(0);
   eventPage5.toggle(0 , function() {
-    progress(65)
+    progress(50)
   });
 })
 
 eventPage6Next.on('click', function() {
+  
+  if($("input[name=toggle]:checked").val() == "true") {
+    
+    if(inputRehearseCount.val() == "") {
+      swal("리허설 횟수를 입력하세요!")
+      return
+    } 
+    
+    if(inputRehearsePay.val() == "") {
+      swal("리허설 금액을 입력하세요!")
+      return
+    } 
+    
+    if(inputRehearseText.val() == "") {
+      swal("리허설 정보를 입력하세요!")
+      return
+    } 
+    
+    
+  }
+  
+  reherseCheck($("input[name=toggle]:checked").val())
   eventPage6.toggle(0);
   eventPage7.toggle(0 , function() {
-    progress(95)
-    eventConfirm()
+    progress(75)
   });
 })
 
+
 $(".btn").on('click', function(event) {
   if(event.currentTarget.innerText == "네") {
-	  inputRehearseText.css("display", "block")
-	  inputRehearseCount.css("display", "block")
-	  inputRehearsePay.css("display", "block")
-	  reherseConfirmCountText.css("display", "block")
-	  reherseConfirmPayText.css("display", "block")
-	  reherseConfirmInfoText.css("display", "block")
-	  reherseConfirmCount.css("display", "block")
-    reherseConfirmPay.css("display", "block")
-    reherseConfirmInfo.css("display", "block")
+    inputRehearseText.css("display", "block")
+    inputRehearseCount.css("display", "block")
+    inputRehearsePay.css("display", "block")
   } else if (event.currentTarget.innerText == "아니요") {
-	  inputRehearseText.css("display", "none")
-	  inputRehearseCount.css("display", "none")
-	  inputRehearsePay.css("display", "none")
-	  reherseConfirmCountText.css("display", "none")
-    reherseConfirmPayText.css("display", "none")
-    reherseConfirmInfoText.css("display", "none")
-    reherseConfirmCount.css("display", "none")
-    reherseConfirmPay.css("display", "none")
-    reherseConfirmInfo.css("display", "none")
+    inputRehearseText.css("display", "none")
+    inputRehearseCount.css("display", "none")
+    inputRehearsePay.css("display", "none")
   }
   
 })
@@ -448,15 +454,20 @@ $(".btn").on('click', function(event) {
 eventPage7Prev.on('click', function() {
   eventPage7.toggle(0);
   eventPage6.toggle(0 , function() {
-    progress(95)
+    progress(62.5)
   });
 })
 
 eventPage7Next.on('click', function() {
   
+  if(inputEventPay.val() == "") {
+    swal("금액을 입력하세요!")
+    return
+  } 
+  
   eventPage7.toggle(0);
   eventPage8.toggle(0 , function() {
-    progress(100)
+    progress(87.5)
     eventConfirm()
   });
 })
@@ -464,28 +475,67 @@ eventPage7Next.on('click', function() {
 eventPage8Prev.on('click', function() {
   eventPage8.toggle(0);
   eventPage7.toggle(0 , function() {
-    progress(65)
+    progress(75)
   });
 })
 
 eventPage8Next.on('click', function() {
   
-  $.post('/event/add.json', {
-    'writer': 4,
-    'locno': citySelectMenu.val(),
-    'pay': inputEventPay.val(),
-    'requirement': inputEventRequire.val(),
-    'contents': inputEventConent.val(),
-    'address': DetailLocation.val(),
-    'date': eventPage3Calendar.val(),
-    'title': inputEventName.val()
+/*  $.post('/event/RegistEventCategory.json', {
+    "eventRegistTheme" : themeSelcetHidden.val(),
+    "eventRegistMajor" : majorSelcetHidden.val(),
+    "eventRegistGenre" : genreSelcetHidden.val()
   }, function(result) {
     eventPage8.toggle(0);
     eventPage9.toggle(0 , function() {
       progress(95)
     });
-  }, 'json')
+  }, 'json')*/
   
+  if($("input[name=toggle]:checked").val() =="true") {
+    $.post('/event/addReherse.json', {
+      'writer': 4,
+      'locno': citySelectMenu.val(),
+      'pay': inputEventPay.val(),
+      'requirement': inputEventRequire.val(),
+      'contents': inputEventConent.val(),
+      'address': DetailLocation.val(),
+      'date': eventPage3Calendar.val(),
+      'title': inputEventName.val(),
+      "eventRegistTheme" : themeSelcetHidden.val(),
+      "eventRegistMajor" : majorSelcetHidden.val(),
+      "eventRegistGenre" : genreSelcetHidden.val(),
+      "rhspay" : inputRehearsePay.val(),
+      "rhsnum" : inputRehearseCount.val(),
+      "rhsinfo" : inputRehearseText.val()
+    }, function(result) {
+      console.log(result)
+      eventPage8.toggle(0);
+      eventPage9.toggle(0 , function() {
+        progress(100)
+      });
+    }, 'json')
+  } else if($("input[name=toggle]:checked").val() =="false") {
+    $.post('/event/add.json', {
+      'writer': 4,
+      'locno': citySelectMenu.val(),
+      'pay': inputEventPay.val(),
+      'requirement': inputEventRequire.val(),
+      'contents': inputEventConent.val(),
+      'address': DetailLocation.val(),
+      'date': eventPage3Calendar.val(),
+      'title': inputEventName.val(),
+      "eventRegistTheme" : themeSelcetHidden.val(),
+      "eventRegistMajor" : majorSelcetHidden.val(),
+      "eventRegistGenre" : genreSelcetHidden.val()
+    }, function(result) {
+      console.log(result)
+      eventPage8.toggle(0);
+      eventPage9.toggle(0 , function() {
+        progress(100)
+      });
+    }, 'json')
+  }
 
 })
 
@@ -502,7 +552,7 @@ function progress(per) {
 
 function eventConfirm() {
   var locationInfo = $("#sido-select-menu option:selected").text() + "  " + $("#city-select-menu option:selected").text() + "  " + DetailLocation.val()
-  nameConfirm.text(inputEventName.val())
+  titleConfirm.text(inputEventName.val())
   dateConfirm.text(eventPage3Calendar.val())
   locationConfirm.text(locationInfo)
   payConfirm.text(inputEventPay.val())
@@ -511,4 +561,21 @@ function eventConfirm() {
   reherseConfirmCount.text(inputRehearseCount.val())
   reherseConfirmPay.text(inputRehearsePay.val())
   reherseConfirmInfo.text(inputRehearseText.val())
-}
+} // eventConfirm
+
+function reherseCheck(btn) {
+  if(btn == "true") {
+    reherseConfirmCount.css("display", "block")
+    reherseConfirmPay.css("display", "block")
+    reherseConfirmInfo.css("display", "block")
+    reherseConfirmLine.css("display", "block")
+    reherseConfirmHeader.css("display", "block")
+  } else if (btn == "false") {
+    reherseConfirmCount.css("display", "none")
+    reherseConfirmPay.css("display", "none")
+    reherseConfirmInfo.css("display", "none")
+    reherseConfirmLine.css("display", "none")
+    reherseConfirmHeader.css("display", "none")
+  }
+} // reherseCheck
+

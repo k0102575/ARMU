@@ -275,9 +275,9 @@
   </div>
 	
 	<div id="rehearse-check-btn">
-	  <input id="toggle-on" class="toggle toggle-left" name="toggle" value="false" type="radio">
+	  <input id="toggle-on" class="toggle toggle-left" name="toggle" value="true" type="radio">
 		<label for="toggle-on" class="btn">네</label>
-		<input id="toggle-off" class="toggle toggle-right" name="toggle" value="true" type="radio"  checked>
+		<input id="toggle-off" class="toggle toggle-right" name="toggle" value="false" type="radio"  checked>
 		<label for="toggle-off" class="btn">아니요</label>
 	</div>
 	
@@ -334,50 +334,66 @@
     이벤트 등록전 입력사항을 확인해주세요
   </div>
     
-    
-      <div id="name-confirm-text">이벤트명</div>
-      <div id="name-confirm"></div>
-      
-      <div id="cathgory-confirm-text">카테고리</div>
-      <div id="cathgory-confirm">
-      <div id="theme-confirm-text"></div>
-      <div id="major-confirm-text"></div>
-      <div id="genre-confirm-text"></div>
-      </div>
-      
-      <div id="date-confirm-text">이벤트 날짜</div>
-      <div id="date-confirm"></div>
-      
-      <div id="location-confirm-text">장소</div>
-      <div id="location-confirm"></div>
-      
-      <div id="pay-confirm-text">금액</div>
-      <div id="pay-confirm"></div>
-      
-      <div id="content-confirm-text">내용</div>
-      <div id="content-confirm"></div>
-      
-      <div id="require-confirm-text">추가 요구사항</div>
-      <div id="require-confirm"></div>
-      
-      <div id="reherse-confirm-count-text">사전 미팅 횟수</div>
-      <div id="reherse-confirm-count"></div>
-      
-      <div id="reherse-confirm-pay-text">사전 미팅 비용</div>
-      <div id="reherse-confirm-pay"></div>
-      
-      <div id="reherse-confirm-info-text">사전 미팅 정보</div>
-      <div id="reherse-confirm-info"></div>
-      
+	  <div class='event-title'></div>
+	  <div class='event-writer'></div>
+	  
+	  <hr class='separator'>
+	  
+	  <label class='event-text'><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;</label>
+	  <div class='event-text event-date'></div>
+	  <br>
+	  <label class='event-text'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;</label>
+	  <div class='event-text event-location'></div>
+	  <br>
+	  <label class='event-text'><i class="fa fa-krw" aria-hidden="true"></i></label>
+	  <label class='event-text event-cont'>금액 :</label>
+	  <div class='event-text event-pay'></div>
+	  <label class='event-text'>계약금 :</label>
+	  <div class='event-text event-pay'></div>
+	  <br>
+	  
+	  <hr class='separator'>
+	  <label class='event-text event-header'>테마</label>
+	  <div class='event-text event-theme'></div>
+	  <br>
+	  <label class='event-text event-header'>전공</label>
+	  <div class='event-text event-major'></div>
+	  <br>
+	  <label class='event-text event-header'>장르</label>
+	  <div class='event-text event-genre'></div>
+	  <br>
+	  <label class='event-text event-header'>요구사항</label>
+	  <br>
+	  <div class='event-text event-desc'></div>
+	  <br>
+	  
+	  <hr class='separator'>
+	  <label class='event-text event-header'>이벤트 설명 </label>
+	  <br>
+	  <div class='event-text event-req'></div>
+	  
+	  <hr class='separator' id="reherse-line">
+    <label class='event-text reherse-header'>리허설</label>
+    <br>
+    <label class='event-text reherse-header'>횟수</label>
+    <div class='event-text reherse-count'></div>
+    <br>
+    <label class='event-text reherse-header'>비용</label>
+    <div class='event-text reherse-pay'></div>
+    <br>
+    <label class='event-text reherse-header'>정보</label>
+    <div class='event-text reherse-info'></div>
+    <br>
+	  
     
   <div id="event-page8-btn">
   <div id="event-page8-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
   <div id="event-page8-next">등록</div>
   </div>
-  <!-- event-page7-btn -->
+  <!-- event-page8-btn -->
     
 </div>
-<!-- 이벤트 페이지9 끝 -->
+<!-- 이벤트 페이지8 끝 -->
 
 <!-- 이벤트 페이지9 시작 -->
   

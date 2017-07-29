@@ -25,7 +25,11 @@ public class EventServiceImpl implements EventService {
   }
   
   public  void RegistEventCategory(Event event) throws Exception {   
-    this.registCategory(4, event.getEventRegistTheme(), event.getEventRegistMajor(), event.getEventRegistGenre());
+    this.registCategory(event.getNo(), event.getEventRegistTheme(), event.getEventRegistMajor(), event.getEventRegistGenre());
+  }
+  
+  public  void RegistEventReherse(Event event) throws Exception {   
+    eventDao.insertReherse(event);
   }
   
   private void registCategory(int eventNo, List<String> eventRegistTheme, List<String> eventRegistMajor, List<String> eventRegistGenre) {

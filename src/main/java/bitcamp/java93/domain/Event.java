@@ -19,13 +19,24 @@ public class Event {
   String contents;
   int downPay;
   int tmnno;
-  int eno;
   Date date;
+  int rhspay;
+  int rhsnum;
+  String rhsinfo;
   List<String> EventRegistTheme;
   List<String> EventRegistMajor;
   List<String> EventRegistGenre;
   ArrayList<Musician> applicantList;
   ArrayList<Musician> pickedList;
+  @Override
+  public String toString() {
+    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", themeList=" + themeList + ", majorList="
+        + majorList + ", genreList=" + genreList + ", location=" + location + ", address=" + address + ", pay=" + pay
+        + ", locno=" + locno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
+        + ", tmnno=" + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", rhsinfo=" + rhsinfo
+        + ", EventRegistTheme=" + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre="
+        + EventRegistGenre + ", applicantList=" + applicantList + ", pickedList=" + pickedList + "]";
+  }
   public int getNo() {
     return no;
   }
@@ -110,17 +121,29 @@ public class Event {
   public void setTmnno(int tmnno) {
     this.tmnno = tmnno;
   }
-  public int getEno() {
-    return eno;
-  }
-  public void setEno(int eno) {
-    this.eno = eno;
-  }
   public Date getDate() {
     return date;
   }
   public void setDate(Date date) {
     this.date = date;
+  }
+  public int getRhspay() {
+    return rhspay;
+  }
+  public void setRhspay(int rhspay) {
+    this.rhspay = rhspay;
+  }
+  public int getRhsnum() {
+    return rhsnum;
+  }
+  public void setRhsnum(int rhsnum) {
+    this.rhsnum = rhsnum;
+  }
+  public String getRhsinfo() {
+    return rhsinfo;
+  }
+  public void setRhsinfo(String rhsinfo) {
+    this.rhsinfo = rhsinfo;
   }
   public List<String> getEventRegistTheme() {
     return EventRegistTheme;
@@ -152,23 +175,6 @@ public class Event {
   public void setPickedList(ArrayList<Musician> pickedList) {
     this.pickedList = pickedList;
   }
-  @Override
-  public String toString() {
-    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", themeList=" + themeList + ", majorList="
-        + majorList + ", genreList=" + genreList + ", location=" + location + ", address=" + address + ", pay=" + pay
-        + ", locno=" + locno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
-        + ", tmnno=" + tmnno + ", eno=" + eno + ", date=" + date + ", EventRegistTheme=" + EventRegistTheme
-        + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre + ", applicantList="
-        + applicantList + ", pickedList=" + pickedList + "]";
-  }
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
