@@ -7,6 +7,12 @@ public class Member {
   String phone;
   String password;
   String email;
+  String photo;
+  @Override
+  public String toString() {
+    return "Member [no=" + no + ", name=" + name + ", nickName=" + nickName + ", phone=" + phone + ", password="
+        + password + ", email=" + email + ", photo=" + photo + "]";
+  }
   public int getNo() {
     return no;
   }
@@ -43,11 +49,13 @@ public class Member {
   public void setEmail(String email) {
     this.email = email;
   }
-  @Override
-  public String toString() {
-    return "Member [no=" + no + ", name=" + name + ", nickName=" + nickName + ", phone=" + phone + ", password="
-        + password + ", email=" + email + "]";
+  public String getPhoto() {
+    return photo;
   }
+  public void setPhoto(String photo) {
+    this.photo = photo;
+  }
+ 
   
   
 }

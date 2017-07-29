@@ -90,7 +90,7 @@
   </resultMap>
 
  <sql id="selectBasic">
-    select m.mno, m.name, m.nick, mu.path, pwd, email,phone, gender
+    select m.mno, m.name, m.nick, m.path, pwd, email,phone, gender
     from musi mu inner join memb m on mu.muno=m.mno
   </sql>
 
@@ -102,7 +102,7 @@
   </sql>
   
   <sql id="selectAll">
-    select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, mu.path, mu.gender, 
+    select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, m.path, mu.gender, 
     mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, fm.popu, null as fav, lm.muno, l.name as location
   from musi mu inner join memb m on mu.muno=m.mno
   left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on mjm.mjrno=mj.mjrno
@@ -122,7 +122,7 @@
   
   
   <sql id="selectAll_myFavorite">
-    select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, mu.path, mu.gender, 
+    select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, m.path, mu.gender, 
     mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, fm.fav, null as popu
   from musi mu inner join memb m on mu.muno=m.mno
   left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on mjm.mjrno=mj.mjrno
@@ -144,7 +144,7 @@
   </select>
   
   <select id="selectMusi" resultMap="musicianInfoMap" parameterType="int">
-  select m.mno, m.name, m.nick, mu.age, mu.path, mu.gender
+  select m.mno, m.name, m.nick, mu.age, m.path, mu.gender
   from musi mu inner join memb m on mu.muno=m.mno
   where m.mno=#{no}
   </select>
