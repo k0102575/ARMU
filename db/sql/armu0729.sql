@@ -16,12 +16,6 @@ DROP TABLE IF EXISTS spec RESTRICT;
 -- 경력 파일
 DROP TABLE IF EXISTS spec_path RESTRICT;
 
--- 뮤지션 팀
-DROP TABLE IF EXISTS team RESTRICT;
-
--- 팀원
-DROP TABLE IF EXISTS team_memb RESTRICT;
-
 -- 희망 테마
 DROP TABLE IF EXISTS thm_musi RESTRICT;
 
@@ -224,39 +218,6 @@ spfno -- 경력파일번호
 
 ALTER TABLE spec_path
 MODIFY COLUMN spfno INTEGER NOT NULL AUTO_INCREMENT COMMENT '경력파일번호';
-
--- 뮤지션 팀
-CREATE TABLE team (
-muno INTEGER     NOT NULL COMMENT '뮤지션회원번호', -- 뮤지션회원번호
-name VARCHAR(50) NULL     COMMENT '팀명' -- 팀명
-)
-COMMENT '뮤지션 팀';
-
--- 뮤지션 팀
-ALTER TABLE team
-ADD CONSTRAINT PK_team -- 뮤지션 팀 기본키
-PRIMARY KEY (
-muno -- 뮤지션회원번호
-);
-
--- 팀원
-CREATE TABLE team_memb (
-tmno INTEGER     NOT NULL COMMENT '팀원 번호', -- 팀원 번호
-muno INTEGER     NOT NULL COMMENT '뮤지션회원번호', -- 뮤지션회원번호
-posi VARCHAR(50) NOT NULL COMMENT '포지션', -- 포지션
-name VARCHAR(50) NOT NULL COMMENT '이름' -- 이름
-)
-COMMENT '팀원';
-
--- 팀원
-ALTER TABLE team_memb
-ADD CONSTRAINT PK_team_memb -- 팀원 기본키
-PRIMARY KEY (
-tmno -- 팀원 번호
-);
-
-ALTER TABLE team_memb
-MODIFY COLUMN tmno INTEGER NOT NULL AUTO_INCREMENT COMMENT '팀원 번호';
 
 -- 희망 테마
 CREATE TABLE thm_musi (
@@ -787,26 +748,6 @@ spno -- 경력이력번호
 )
 REFERENCES spec ( -- 경력
 spno -- 경력이력번호
-);
-
--- 뮤지션 팀
-ALTER TABLE team
-ADD CONSTRAINT FK_musi_TO_team -- 뮤지션회원 -> 뮤지션 팀
-FOREIGN KEY (
-muno -- 뮤지션회원번호
-)
-REFERENCES musi ( -- 뮤지션회원
-muno -- 뮤지션회원번호
-);
-
--- 팀원
-ALTER TABLE team_memb
-ADD CONSTRAINT FK_team_TO_team_memb -- 뮤지션 팀 -> 팀원
-FOREIGN KEY (
-muno -- 뮤지션회원번호
-)
-REFERENCES team ( -- 뮤지션 팀
-muno -- 뮤지션회원번호
 );
 
 -- 희망 테마

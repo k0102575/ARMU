@@ -1,0 +1,167 @@
+/* 뮤지션 카테고리 시작 */
+
+#musician-info-cathegory {
+  float: left;
+  width: 90%;
+  margin-top: 50px;
+  margin-left: 5%;
+  border: 0px;
+  font-size: 2rem;
+  overflow: hidden;
+}
+
+#musician-info-major-container, #musician-info-genre-container, #musician-info-location-container {
+  width: 100%;
+  height: auto;
+  margin-bottom: 2%;
+}
+
+#musician-info-major, #musician-info-genre, #musician-info-location {
+  float: left;
+  height: auto;
+  width: 16%;
+  display: inline-block;
+  font-size: 2rem;
+}
+
+#musician-info-major-content, #musician-info-genre-content, #musician-info-location-content {
+  height: auto;
+  width: 74%;
+  display: inline-block;
+  font-size: 2rem;
+  margin-left: 10%;
+}
+
+/* 뮤지션 카테고리 끝 */
+
+/* 자기 소개 시작 */
+
+.musician-info-header {
+  float: left;
+  top: 100px;
+  width: 95%;
+  height: 80px;
+  background-color: #F5F5F5;
+  font-size: 2em;
+  margin-top: 100px;
+  padding-top: 100px;
+  text-align: left;
+  padding-left: 5%;
+}
+
+.introduce-header {
+  float: left;
+  top: 100px;
+  width: 95%;
+  height: 80px;
+  background-color: #F5F5F5;
+  font-size: 2em;
+  margin-top: 50px;
+  padding-top: 100px;
+    text-align: left;
+  padding-left: 5%;
+}
+
+.introduce-homepage {
+	float: left;
+	width: 90%;
+  margin-top: 50px;
+  margin-left: 5%;
+  font-size: 2em;
+}
+
+.introduce-introduce {
+  float: left;
+  width: 90%;
+  margin-top: 30px;
+  margin-left: 5%;
+  border: 0px;
+  font-size: 2rem;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: normal;
+	max-height: 435px; 
+}
+
+#introduce-more {
+  float: left;
+  font-size: 2rem;
+  font-weight: 500;
+  display: none;
+  margin-left: 5%;
+  margin-top: 20px;
+}
+
+#introduce-hide {
+  float: left;
+  font-size: 2rem;
+  font-weight: 500;
+  display: none;
+  margin-left: 5%;
+  margin-top: 20px;
+}
+
+/* 자기 소개 끝 */
+
+.introduce-space {
+	float: left;
+	width: 100%;
+	height: 50px;
+	border: 0px;
+}
+
+/* 팀정보 시작 */
+
+.team-introduce-header {
+  float: left;
+  top: 100px;
+  width: 95%;
+  height: 80px;
+  background-color: #F5F5F5;
+  font-size: 2em;
+  padding-top: 100px;
+    text-align: left;
+  padding-left: 5%;
+}
+
+.team-introduce-team {
+	float: left;
+  width: 90%;
+  font-size: 2rem;
+  margin-left: 5%;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.team-introduce-container {
+	float: left;
+	width: 90%;
+  margin-left: 7%;
+  border: 0px;
+  font-size: 2rem;
+  margin-bottom: 100px;
+  margin-top: 30px;
+  text-align: center;
+  background: white;
+}
+
+
+th {
+  background: white;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  color: black;
+  font-weight: bold;
+  padding: 10px 15px;
+}
+
+td:first-child { 
+	padding-top: 10px;
+}
+
+.table-border-right {
+	border-right: 1px solid black;
+}
+
+
+/* 팀정보 끝 */

@@ -1,0 +1,143 @@
+/* 리뷰 및 평점 헤더 부분 시작 */
+
+.review-container {
+	position: relative;
+	border: 1px solid black;
+	width: 100%;
+	height: auto;
+}
+
+.review-header {
+  float: left;
+  top: 100px;
+  width: 100%;
+  height: 80px;
+  background-color: #F5F5F5;
+  font-size: 2em;
+  text-align: center;
+  margin-top: 100px;
+  padding-top: 3%;
+}
+
+.review-header-text {
+  text-align: left;
+  color: black;
+  font-size: 30px;
+  font-weight: 500;
+  padding-left: 44%;
+  padding-top: 1%;
+}
+
+/* 리뷰 및 평점 헤더 부분 끝 */
+
+/*  평점 시작 */
+
+.review-rating-container {
+  float: left;
+  top: 185px;
+  height: 100px;
+  width: 100%;
+  border-bottom: 1px solid black;
+  padding-bottom: 30px;
+  margin-top: 30px;
+}
+
+.review-rating {
+  float: left;
+  width: 25%;
+  height: 50px;
+  margin-top: 3%;
+  text-align: left;
+  margin-left: 5%;
+}
+
+.review-rating-grade {
+  float: left;
+  width: 20%;
+  margin-left: 5%;
+  margin-top: 0.5%;
+  font-size: 4em;
+}
+
+.review-rating-text {
+  float: right;
+  margin-right: 5%;
+  width: 35%;
+  height: auto;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: black;
+  margin-top: 2%;
+}
+
+.fa-star, .fa-star-half-o, .fa-star-o{
+	font-size: 3em;
+	color: #FFEC86
+}
+
+/*  평점 끝 */
+
+/* 리뷰 시작 */
+
+.review-box {
+  float: left;
+  margin-left: 5%;
+  width: 90%;
+  height: 250px;
+  border: 0px;
+  border-bottom: 1px solid black;
+  padding-bottom: 30px;
+  margin-top: 30px;
+}
+
+.review-date {
+	font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.review-member {
+	font-size: 35px;
+	margin-bottom: 20px;
+}
+
+#review-star {
+	font-size: 35px;
+}
+
+.review-content {
+	width: 94%;
+	display: inline-block;
+	position: relative;
+	margin-bottom: 10px
+}
+
+.review-content-text {
+  font-size: 35px;
+  overflow: hidden;
+  text-overflow: clip;
+  height: 105px;
+/*   display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; */
+}
+
+.review-content-more {
+	float:left;
+  font-size: 35px;
+  display: none;
+  margin-top: 1%;
+}
+
+.review-content-hide {
+  float:left;
+  font-size: 35px;
+  display: none;
+  margin-top: 1%;
+}
+
+.review-box:last-of-type {
+	margin-bottom: 100px;
+}
+
+
+/* 리뷰 끝 */

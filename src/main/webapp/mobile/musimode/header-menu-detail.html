@@ -4,7 +4,7 @@
 <div id="menu-toggle">
 	<div id='menu-contents'>
 		<div id='menu-upper-btn'>
-			<a href='/mobile/gmode/index.html'><img id='home-btn'
+			<a href='/mobile/musimode/index.html'><img id='home-btn'
 				src='/image/icon/mobile_icon/home_bt.png'></a> <img
 				src='/image/icon/change.png'>
 		</div>
@@ -18,13 +18,13 @@
       <img  class='user-img' src='/image/logo/header/login_03_g4.png'> 
       <p class='menu-mypage-text'>프로필</p>
     </div>
-		<div class='menu-category-btn menu-top-btn' id='myevent-btn'>나의이벤트</div>
+		<div class='menu-category-btn menu-top-btn' id='portfolio'>포트폴리오</div>
 		<hr class='menu-category-separator'>
-		<div class='menu-category-btn' id="menu-category-musician-favor">관심뮤지션</div>
+		<div class='menu-category-btn' id="menu-category-event-favor">관심이벤트</div>
 		<hr class='menu-category-separator'>
-		<div class='menu-category-btn' id="menu-category-event-regist">이벤트 등록하기</div>
+		<div class='menu-category-btn' id="menu-category-myevent">나의 이벤트</div>
 		<hr class='menu-category-separator'>
-		<div class='menu-category-btn' id='go-musimode-btn'>뮤지션모드로 전환</div>
+		<div class='menu-category-btn' id='go-gmode-btn'>일반모드로 전환</div>
 		<hr class='menu-category-separator'>
 		<div class='menu-copyright'>
 			<span id='menu-copyright-text'>@COPYRIGHT 2017</span> <img
@@ -62,8 +62,8 @@
 	    menuBtn = $('#header-menu-menu'),
 	    menuBackscreen = $("#menu-backscreen"),
 	    menuToggle = $("#menu-toggle"),
-	    musicianFavor = $("#menu-category-musician-favor"),
-	    eventRegist = $("#menu-category-event-regist"),
+	    eventFavor = $("#menu-category-event-favor"),
+	    myEvent = $("#menu-category-myevent"),
 	    headerMenuSearch = $("#header-menu-search"),
 	    searchToggle = $("#search-toggle"),
 	    searchBackScreen = $("#search-backscreen")
@@ -92,11 +92,11 @@
     container.css('position', '').css('overflow', '');
 	})
 	
-	eventRegist.on('click', function(){
-	 location.href = '/mobile/gmode/event/regist.html'
+	myEvent.on('click', function(){
+	 location.href = '/mobile/musimode/event/list.html'
 	})
 	
-	musicianFavor.on('click', function() {
+	eventFavor.on('click', function() {
 	  location.href = '/mobile/favor/index.html'
 	})
 
@@ -104,14 +104,14 @@
 		location.href = '/mobile/join.html'
 	})
 	
-	$('#myevent-btn').on('click', function() {
-		location.href = '/mobile/gmode/event/list.html'
+	$('#portfolio').on('click', function() {
+		location.href = '/mobile/musimode/musi-info/index.html'
 	})
 	
-	$('#go-musimode-btn').on('click', function() {
-		location.href = '/mobile/musimode/index.html'
-	})
-	
+	$('#go-gmode-btn').on('click', function() {
+    location.href = '/mobile/gmode/index.html'
+  })
+  
 	 $.getJSON('/auth/userinfo.json', function(result) {
 	   if(result.status == "success") {
 	      $('#mypage-btn').css('display', 'inline-block')

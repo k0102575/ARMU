@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no">
+<title>ARMU MOBILE</title>
+<link rel='shortcut icon' type='image/x-icon' href='/image/favicon/favicon.ico'/>
+<link rel="stylesheet" href="/node_modules/jquery-ui-dist/jquery-ui.css">
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/node_modules/sweetalert/dist/sweetalert.css">
+<link href="/css/mobile/common.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/mobile/header.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/mobile/gmode/event/regist.css" rel="stylesheet" type="text/css" media="all">
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+<script src="/node_modules/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript" src="/node_modules/handlebars/dist/handlebars.js"></script>
+</head>
+
+<body>
+<div id="container">
+
+  <div id="event-page">
+    <span id="event-cancelbtn">취소</span>
+    <span id="event-page-text">이벤트 등록</span>
+     <div id="event-progressbar"></div>
+  </div> <!-- event-page -->
+  
+<!-- 이벤트 페이지1 시작 : 이벤트 시작 -->
+	
+  <div id="event-page1">
+    
+    <div id="event-page1-text">
+    <!-- 뮤지션이 필요한 이벤트가 있으신가요? -->
+    조건에 맞는 뮤지션 매칭을 위해<br>
+    질문에 답해주세요.
+    </div>
+    
+    <div id="event-page1-btn">
+    <div id="event-page1-next">시작&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
+    </div>
+    <!-- event-page1-btn -->
+  
+  </div>
+<!-- 이벤트 페이지1 끝 : 이벤트 시작 -->
+
+<!-- 이벤트 페이지2 시작 -->
+
+  <div id="event-page2">
+  
+  <div id="event-select">
+  
+  <div id="event-page2-text">
+    이벤트 카테고리를 설정해 주세요
+  </div>
+  
+  <div id="menu-backscreen"></div>
+  
+    <div id="theme-select-button">테마</div><i class="fa fa-plus" id="theme-plus" aria-hidden="true"></i>
+  <!-- theme-button -->
+  <input id="fi-filenames" type="hidden">
+    <div id="theme-select-text"></div>
+  
+    <div id="major-select-button">전공</div><i class="fa fa-plus" id="major-plus" aria-hidden="true"></i>
+  <!-- major-button -->
+    <div id="major-select-text"></div>
+  
+    <div id="genre-select-button">장르</div><i class="fa fa-plus" id="genre-plus" aria-hidden="true"></i>
+  <!-- genre-button -->
+    <div id="genre-select-text"></div>
+    
+    
+  
+  <div id="theme-select-box">
+  <div id="theme-select-box-header">
+  테마 선택
+  </div>
+  
+  </div>
+  <!-- theme-select-box -->
+  
+  <div id="theme-check-btn">
+    <button type="button" id="theme-check-cancel">취소</button>
+    <button type="button" id="theme-check-check">확인</button>
+  </div>
+  
+  <script id="select-theme-template" type="text/x-handlebars-template">
+  {{#each listTheme}}
+  <div class="boxes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{thmtname}}<br><br>
+  {{#each list}}
+  {{#themeMap}}
+  <input type="checkbox" name="theme" id="theme-box-{{key}}" value="{{key}}">
+  <label for="theme-box-{{key}}">{{value}}</label>
+  {{/themeMap}}
+  {{/each}}
+  {{/each}}
+	</script>
+	
+	<!--  테마 선택 -->
+	
+	<div id="major-select-box">
+  <div id="major-select-box-header">
+  전공 선택
+  </div>
+  
+ 
+  
+  </div>
+  <!-- major-select-box -->
+  
+  <div id="major-check-btn">
+    <button type="button" id="major-check-cancel">취소</button>
+    <button type="button" id="major-check-check">확인</button>
+  </div>
+  
+  <script id="select-major-template" type="text/x-handlebars-template">
+  {{#each listMajor}}
+  <div class="boxes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{mjrtname}}<br><br>
+  {{#each list}}
+  {{#majorMap}}
+  <input type="checkbox" name="major" id="major-box-{{key}}" value="{{key}}">
+  <label for="major-box-{{key}}">{{value}}</label>
+  {{/majorMap}}
+  {{/each}}
+  {{/each}}
+  </script>
+  
+  <!--  전공 선택  -->
+  
+  <div id="genre-select-box">
+  <div id="genre-select-box-header">
+  장르 선택
+  </div>
+  
+
+  
+  </div>
+  <!-- genre-select-box -->
+  
+    <div id="genre-check-btn">
+    <button type="button" id="genre-check-cancel">취소</button>
+    <button type="button" id="genre-check-check">확인</button>
+  </div>
+  
+  <script id="select-genre-template" type="text/x-handlebars-template">
+  {{#each listGenre}}
+  <div class="boxes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{gnrtname}}<br><br>
+  {{#each list}}
+  {{#genreMap}}
+  <input type="checkbox" name="genre" id="genre-box-{{key}}" value="{{key}}">
+  <label for="genre-box-{{key}}">{{value}}</label>
+  {{/genreMap}}
+  {{/each}}
+  {{/each}}
+  </script>
+  
+  <!--  장르 선택  -->
+  
+  
+  </div>
+  <!-- event-select -->
+    
+    <div id="event-page2-btn">
+    <div id="event-page2-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
+    <div id="event-page2-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
+    </div>
+    <!-- event-page2-btn -->
+    
+  </div>
+<!-- 이벤트 페이지2 끝 -->
+
+<!-- 이벤트 페이지3 시작 -->
+
+  <div id="event-page3">
+  
+  <div id="event-page3-text">
+    날짜를 설정해 주세요
+  </div>
+    
+    <div id="calendar-page3"></div>
+    
+    <div id="event-page3-btn">
+    <div id="event-page3-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
+    <div id="event-page3-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
+    </div>
+    <!-- event-page3-btn -->
+    
+  </div>
+<!-- 이벤트 페이지3 끝 -->
+
+<!-- 이벤트 페이지4 시작 -->
+
+  <div id="event-page4">
+  
+  <div id="event-page4-text">
+    장소를 설정해 주세요
+  </div>
+  
+  <div id="location-select">
+  
+  <div id="sido-select">
+    <select name="sido" id="sido-select-menu">
+    </select>
+  </div>
+  <!-- sido-select -->
+  
+  <script id="select-sido-template" type="text/x-handlebars-template">
+		  <option class="select-option" value="">시/도</option>
+  {{#each listLocationType}}
+      <option class="select-option" value="{{loctno}}">{{loctname}}</option>
+  {{/each}}
+	</script>
+  
+  <div id="city-select">
+    <select name="city" id="city-select-menu">
+    </select>
+  </div>
+  <!-- city-select -->
+  
+  <script id="select-city-template" type="text/x-handlebars-template">
+  {{#each listLocation}}
+      <option class="select-option" value="{{locno}}">{{locname}}</option>
+  {{/each}}
+	</script>
+  
+  <input type="text" id="detail-location" placeholder="상세주소를 입력하세요">
+  </div>
+  <!-- location-select -->
+    
+    
+    <div id="event-page4-btn">
+    <div id="event-page4-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
+    <div id="event-page4-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
+    </div>
+    <!-- event-page4-btn -->
+    
+  </div>
+<!-- 이벤트 페이지4 끝 -->
+
+<!-- 이벤트 페이지5 시작 -->
+
+  <div id="event-page5">
+  
+  <div id="event-page5-text">
+    이벤트 정보를 입력하세요
+  </div>
+  
+  <div id="event-input">
+  
+  <span id="event-name-text">이벤트명을 입력하세요</span>
+  <input type="text" id="event-name">
+  
+  <span id="event-content-text">이벤트 내용를 입력하세요</span>
+  <textarea id="event-content" placeholder="이벤트 내용"></textarea>
+  
+  </div>
+  <!-- event-input -->
+  
+  
+    <div id="event-page5-btn">
+    <div id="event-page5-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
+    <div id="event-page5-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
+    </div>
+    <!-- event-page5-btn -->
+    
+  </div>
+<!-- 이벤트 페이지5 끝 -->
+
+<!-- 이벤트 페이지6 시작 -->
+
+  <div id="event-page6">
+  
+  <div id="event-page6-text">
+  뮤지션과 사전 미팅이나 리허설이<br> 필요하신가요?
+  </div>
+	
+	<div id="rehearse-check-btn">
+	  <input id="toggle-on" class="toggle toggle-left" name="toggle" value="false" type="radio">
+		<label for="toggle-on" class="btn">네</label>
+		<input id="toggle-off" class="toggle toggle-right" name="toggle" value="true" type="radio"  checked>
+		<label for="toggle-off" class="btn">아니요</label>
+	</div>
+	
+  <input type="number" id="input-rehearse-count" placeholder="리허설 횟수를 입력하세요">
+	<input type="number" id="input-rehearse-pay" placeholder="리허설 비용을 입력하세요">
+  <textarea id="input-rehearse-text" placeholder="리허설 정보를 입력하세요"></textarea>
+	
+	<div id="event-page6-btn">
+    <div id="event-page6-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
+    <div id="event-page6-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
+    </div>
+  <!-- event-page5-btn -->
+
+	</div>
+<!-- 이벤트 페이지6 끝 -->
+
+<!-- 이벤트 페이지7 시작 -->
+
+  <div id="event-page7">
+  
+  <div id="event-page7-text">
+    이벤트 정보를 입력하세요
+  </div>
+  
+  <div id="event-input">
+  
+  <span id="event-pay-text">금액을 입력하세요 (필수)</span>
+  <input type="number" id="event-pay">
+  
+  <span id="event-require-text">추가 요구사항을 입력하세요 (선택)</span>
+  <textarea id="event-require" placeholder="신청곡, 기타 등등"></textarea>
+  
+  </div>
+  <!-- event-input -->
+  
+  
+    <div id="event-page7-btn">
+    <div id="event-page7-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
+    <div id="event-page7-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
+    </div>
+    <!-- event-page5-btn -->
+    
+  </div>
+
+
+<!-- 이벤트 페이지7 끝 -->
+
+
+<!-- 이벤트 페이지8 시작 -->
+
+<div id="event-page8">
+  
+  <div id="event-page8-text">
+    이벤트 등록전 입력사항을 확인해주세요
+  </div>
+    
+    
+      <div id="name-confirm-text">이벤트명</div>
+      <div id="name-confirm"></div>
+      
+      <div id="cathgory-confirm-text">카테고리</div>
+      <div id="cathgory-confirm">
+      <div id="theme-confirm-text"></div>
+      <div id="major-confirm-text"></div>
+      <div id="genre-confirm-text"></div>
+      </div>
+      
+      <div id="date-confirm-text">이벤트 날짜</div>
+      <div id="date-confirm"></div>
+      
+      <div id="location-confirm-text">장소</div>
+      <div id="location-confirm"></div>
+      
+      <div id="pay-confirm-text">금액</div>
+      <div id="pay-confirm"></div>
+      
+      <div id="content-confirm-text">내용</div>
+      <div id="content-confirm"></div>
+      
+      <div id="require-confirm-text">추가 요구사항</div>
+      <div id="require-confirm"></div>
+      
+      <div id="reherse-confirm-count-text">사전 미팅 횟수</div>
+      <div id="reherse-confirm-count"></div>
+      
+      <div id="reherse-confirm-pay-text">사전 미팅 비용</div>
+      <div id="reherse-confirm-pay"></div>
+      
+      <div id="reherse-confirm-info-text">사전 미팅 정보</div>
+      <div id="reherse-confirm-info"></div>
+      
+    
+  <div id="event-page8-btn">
+  <div id="event-page8-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
+  <div id="event-page8-next">등록</div>
+  </div>
+  <!-- event-page7-btn -->
+    
+</div>
+<!-- 이벤트 페이지9 끝 -->
+
+<!-- 이벤트 페이지9 시작 -->
+  
+  <div id="event-page9">
+    
+    <div id="event-page9-text">
+    이벤트 등록에 성공하셨습니다.<br><br>
+    뮤지션의 연락을 기다리거나<br>
+    뮤지션을 찾아 매칭요청을 하세요.
+    </div>
+    
+    <div id="event-page9-btn">
+    <div id="event-page9-home"><i class="fa fa-home" aria-hidden="true"></i>홈으로</div>
+    </div>
+    <!-- event-page9-btn -->
+  
+  </div>
+<!-- 이벤트 페이지9 끝 -->
+
+
+</div> <!-- container -->
+
+<!-- 취소 알림 시작 -->
+
+  <div id="event-cancelpage-backscreen"></div>
+  <div id="event-cancelpage">
+  <div id="event-cancelpage-text">
+  입력하신 정보가 사라집니다 <br><br>
+  취소하시겠습니까?
+</div>
+<!-- event-cancelpage -->
+  
+  <div id="event-cancelpage-return"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp;돌아가기</div>
+  <div id="event-cancelpage-quit">취소&nbsp;<i class="fa fa-times" aria-hidden="true"></i></div>
+  
+</div>
+<!-- 취소 알림 끝 -->
+
+<div id='header-menu-detail'><!-- include --></div>
+
+<!-- include header-box -->
+
+<script src="/js/mobile/gmode/event/regist.js"></script>
+
+</body>
+</html>

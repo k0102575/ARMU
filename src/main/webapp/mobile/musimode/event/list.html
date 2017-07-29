@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>나의 이벤트</title>
+<link rel='shortcut icon' type='image/x-icon' href='/image/favicon/favicon.ico' />
+<link rel="stylesheet" href="/node_modules/jquery-ui-dist/jquery-ui.css">
+<link rel="stylesheet" href="/node_modules/animsition/dist/css/animsition.min.css">
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+<link href="/css/mobile/common.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/mobile/gmode/event/list.css" rel="stylesheet" type="text/css" media="all">
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+<script src="/node_modules/animsition/dist/js/animsition.min.js"></script>
+</head>
+<body>
+<div class="event-list-headerbox">
+      <a href="javascript:history.go(-1)" class='back-btn'><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+      <div class="event-list-header">나의 이벤트</div>
+    </div> <!-- event-list-headerbox -->
+		
+	
+  <div id="event-type-btn-container">
+  <div id="event-type-recruiting-btn">모집중</div>
+  <div id="event-type-ongoing-btn">진행중</div>
+  <div id="event-type-end-btn">종료</div>
+  </div>
+  
+  <div class='category-main' id='recruiting-list'><!-- include --></div>
+  <div class='category-main' id='ongoing-list'><!-- include --></div>
+  <div class='category-main' id='end-list'><!-- include --></div>
+	
+	
+	<i class="fa fa-angle-double-up" id="move_top_btn" aria-hidden="true"></i>
+
+<script>
+var lastScroll = 0,
+moveTopBtn = $("#move_top_btn"),
+eventTypeBtnContainer = $("#event-type-btn-container"),
+RecruitingBtn = $('#event-type-recruiting-btn'),
+OngoingBtn = $('#event-type-ongoing-btn'),
+endBtn = $('#event-type-end-btn'),
+recruitingList = $("#recruiting-list"),
+ongoingList = $("#ongoing-list"),
+endList = $("#end-list")
+
+recruitingList.load('list-recruiting.html');
+ongoingList.load('list-ongoing.html')
+endList.load('list-end.html'); 
+
+recruitingList.css('display', 'block')
+ongoingList.css('display', 'none')
+endList.css('display', 'none')
+
+$(window).scroll(function(event){
+
+
+if($(document).scrollTop() > 120) {
+eventTypeBtnContainer.css("position", "fixed")
+                     .css("top", 0)
+} else if ($(document).scrollTop() < 120) {
+eventTypeBtnContainer.css("position", "relative")
+                     .css("top", 120)
+}
+
+var st = $(this).scrollTop();
+if (st > lastScroll){
+moveTopBtn.css("display", "block")
+} else {
+moveTopBtn.css("display", "none")
+}
+lastScroll = st;
+});
+
+moveTopBtn.on('click', function() {
+$('html, body').animate({
+scrollTop : 0
+}, 400);
+return false;
+});
+
+
+RecruitingBtn.on('click', function() {
+RecruitingBtn.css('border-bottom', '2px solid #252525')
+OngoingBtn.css('border-bottom', '1px solid lightgray')
+endBtn.css('border-bottom', '1px solid lightgray')
+recruitingList.css('display', 'block')
+ongoingList.css('display', 'none')
+endList.css('display', 'none')
+})
+
+OngoingBtn.on('click', function() {
+RecruitingBtn.css('border-bottom', '1px solid lightgray')
+OngoingBtn.css('border-bottom', '2px solid #252525')
+endBtn.css('border-bottom', '1px solid lightgray')
+recruitingList.css('display', 'none')
+ongoingList.css('display', 'block')
+endList.css('display', 'none')
+})
+
+endBtn.on('click', function() {
+RecruitingBtn.css('border-bottom', '1px solid lightgray')
+OngoingBtn.css('border-bottom', '1px solid lightgray')
+endBtn.css('border-bottom', '2px solid #252525')
+recruitingList.css('display', 'none')
+ongoingList.css('display', 'none')
+endList.css('display', 'block')
+})
+
+
+
+
+
+</script>	
+</body>
+</html>

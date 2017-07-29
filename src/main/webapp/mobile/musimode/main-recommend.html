@@ -1,0 +1,156 @@
+<div class="rec-background">
+  <p class='rec-title'>나에게 꼭 맞는 이벤트</p>
+  <div class="rec-container">
+
+     <div class="swiper-container">
+       <div class="swiper-wrapper" id='rec-event-container'>
+          <div class="rec-event swiper-slide">
+					  <div class="rec-event-title"><span>기업행사 하는데 아아아호호 기업행사를 하는데용요요오오오오오오 </span></div><!-- act-now-recruiting-title -->
+					  <div class="rec-event-date"><span>2017-08-08</span></div>
+					  <div class='rec-event-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{location}}</span></div>
+					  <div class="rec-event-price">13131<i class="fa fa-krw" aria-hidden="true"></i></div>
+					  <div class='rec-event-hashtagbox'>
+					   <span>#어쩌구</span>
+					   <span>#어쩌구</span>
+					   <span>#어쩌구</span>
+					   <span>#어쩌구</span>
+					   <span>#어쩌구</span>
+					  </div>
+          </div><!-- ongoing-event -->
+          
+          <div class="ongoing-event swiper-slide">
+            <div class="ongoing-event-title"><span>기업행사 하는데 아아아호호 기업행사를 하는데용요요오오오오오오 </span></div><!-- act-now-recruiting-title -->
+          <div class='ongoing-edit-btn'><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+            <div class="ongoing-event-date"><span>2017-08-08</span></div>
+            <div class='ongoing-event-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{location}}</span></div>
+            <div class="ongoing-event-price">13131<i class="fa fa-krw" aria-hidden="true"></i></div>
+          </div><!-- ongoing-event -->
+          
+          <div class="ongoing-event swiper-slide">
+            <div class="ongoing-event-title"><span>기업행사 하는데 아아아호호 기업행사를 하는데용요요오오오오오오 </span></div><!-- act-now-recruiting-title -->
+          <div class='ongoing-edit-btn'><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+            <div class="ongoing-event-date"><span>2017-08-08</span></div>
+            <div class='ongoing-event-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{location}}</span></div>
+            <div class="ongoing-event-price">13131<i class="fa fa-krw" aria-hidden="true"></i></div>
+          </div><!-- ongoing-event -->  
+        </div>
+        <br><br>
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      <!-- swiper-container -->
+
+
+  </div><!-- rec-container -->
+
+  <div class='rec-container-separator rec-no-event-separator'></div>
+
+  <p class='rec-title'>제안 받은 이벤트</p>
+  <div class="rec-container" id='rec-best-review-musi-container'>
+
+  </div>
+  <!-- rec-container -->
+  <!-- 제안 받은 이벤트 -->
+  <div class='rec-container-separator'></div>
+
+
+  <p class='rec-title'>인기 분야 TOP 10</p>
+  <div class="rec-container rec-hashtag-container" id='rec-most-popular-category-container'>
+
+  </div>
+  <!-- 인기분야 끝 -->
+  <div class='rec-container-separator'></div>
+
+
+  <p class='rec-title'>최근 이벤트</p>
+  <div class="rec-container" id='rec-popular-musi-container'>
+
+  </div>
+  <!-- rec-container -->
+  <div class='rec-container-separator'></div>
+</div>
+
+
+<script id="rec-event-template" type="text/x-handlebars-template">
+
+  
+{{#each listRecommand}}
+  <div class="rec-event swiper-slide">
+    <div class="rec-event-img" style='background-image: url("{{photo}}")'></div>
+    <div class="rec-event-name"><span>{{nick}}</span>
+      <div class="rec-event-score">{{{score}}}</div>
+    </div>
+    <!-- rec-event-name -->
+    <div class="rec-event-fav">{{{isFavorite}}}</i>
+    </div>
+    <div class="rec-event-hashtagbax">
+      {{#each majorList}} <span>#{{this}}</span> {{/each}}
+      {{#each genreList}} <span>#{{this}}</span> {{/each}}
+      {{#each themeList}} <span>#{{this}}</span> {{/each}}
+    </div>
+  </div>
+  <!-- rec-event -->
+  {{/each}}
+</script>
+
+
+<script id="rec-best-review-musi-template" type="text/x-handlebars-template">
+  {{#each listRecommand}}
+  <div class="rec-best-review">
+    <div class="rec-best-review-img" style='background-image: url("{{photo}}")'></div>
+    <div class="rec-best-review-musi"><span>{{name}}</span>
+      <div class="rec-best-review-musi-score">
+      </div>
+    </div>
+    <!-- rec-best-review-musi -->
+    <div class="rec-best-review-hashtagbox">
+      {{#each majorList}} <span>#{{this}}</span> {{/each}}  
+      {{#each genreList}} <span>#{{this}}</span> {{/each}}
+      {{#each themeList}} <span>#{{this}}</span> {{/each}}
+    </div>
+    <hr class='rec-best-review-separator'>
+    <div class="rec-best-review-contents">
+      "{{review}}"
+    </div>
+    <div class="rec-see-more">
+      더보기 <i class="fa fa-caret-right" aria-hidden="true"></i></div>
+  </div>
+  <!-- rec-best-review -->
+  {{/each}}
+</script>
+
+<script id="rec-popular-musi-template" type="text/x-handlebars-template">
+  {{#each listRecommand}}
+  <div class="rec-popular-musi">
+    <div class="rec-popular-musi-img" style='background-image: url("{{photo}}")'></div>
+    <div class="rec-popular-musi-name"><span>{{name}}</span>
+      <div class="rec-popular-musi-score">
+      </div>
+    </div>
+    <!-- rec-popular-musi-name -->
+    <div class="rec-popular-musi-fav"><i class="fa fa-heart-o" aria-hidden="true"></i></div>
+    <div class="rec-popular-musi-hashtagbax">
+      {{#each majorList}} <span>#{{this}}</span> {{/each}}
+      {{#each genreList}} <span>#{{this}}</span> {{/each}}
+      {{#each themeList}} <span>#{{this}}</span> {{/each}}
+    </div>
+  </div>
+  <!-- rec-popular-musi -->
+  {{/each}}
+</script>
+
+<script id="rec-most-popular-category-template" type="text/x-handlebars-template">
+{{#each listRecommand}}
+<a href="#" class='rec-hashtag'>#{{this}}</a>
+{{/each}}
+</script>
+
+<script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
+<script src="/node_modules/swiper/dist/js/swiper.jquery.min.js"></script>
+<script src='/js/mobile/musimode/main-recommend.js'></script>
+
+
+
+<!-- -->
