@@ -87,12 +87,13 @@ DROP TABLE IF EXISTS noti RESTRICT;
 
 -- 회원
 CREATE TABLE memb (
-mno   INTEGER     NOT NULL COMMENT '회원번호', -- 회원번호
-name  VARCHAR(50) NOT NULL COMMENT '이름', -- 이름
-phone VARCHAR(30) NOT NULL COMMENT '휴대폰번호', -- 휴대폰번호
-pwd   VARCHAR(50) NOT NULL COMMENT '비밀번호', -- 비밀번호
-nick  VARCHAR(50) NOT NULL COMMENT '별명', -- 별명
-email VARCHAR(40) NOT NULL COMMENT '이메일' -- 이메일
+mno   INTEGER      NOT NULL COMMENT '회원번호', -- 회원번호
+name  VARCHAR(50)  NOT NULL COMMENT '이름', -- 이름
+phone VARCHAR(30)  NOT NULL COMMENT '휴대폰번호', -- 휴대폰번호
+pwd   VARCHAR(50)  NOT NULL COMMENT '비밀번호', -- 비밀번호
+path  VARCHAR(255) NULL     COMMENT '프로필사진', -- 프로필사진
+nick  VARCHAR(50)  NOT NULL COMMENT '별명', -- 별명
+email VARCHAR(40)  NOT NULL COMMENT '이메일' -- 이메일
 )
 COMMENT '회원';
 
@@ -138,7 +139,6 @@ age    INTEGER      NOT NULL COMMENT '연령', -- 연령
 team   CHAR(1)      NOT NULL COMMENT '팀 여부', -- 팀 여부
 hpg    VARCHAR(255) NULL     COMMENT '홈페이지', -- 홈페이지
 intro  TEXT         NOT NULL COMMENT '자기소개', -- 자기소개
-path   VARCHAR(255) NULL     COMMENT '프로필사진', -- 프로필사진
 gender CHAR(1)      NOT NULL COMMENT '성별' -- 성별
 )
 COMMENT '뮤지션회원';

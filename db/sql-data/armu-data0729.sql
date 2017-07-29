@@ -1,12 +1,14 @@
 
 -- 뮤지션
-insert into memb (name, nick, phone, pwd, email) values ('조승우', '조승우', '010-1234-1234',  password('1111'), 'seungwoojo@daum.net');
-insert into memb (name, nick, phone, pwd, email) values ('임정희', '임정희', '010-2424-3234',  password('1111'), 'jungheelee@daum.net');
-insert into memb (name, nick, phone, pwd, email) values ('오호라', '오호라밴드', '010-5555-5050',  password('1111'), 'ohora@gmail.com');
+insert into memb (name, nick, phone, pwd, email, path) values ('조승우', '조승우', '010-1234-1234',  password('1111'), 'seungwoojo@daum.net', '/image/musician/photo/0choi2.jpg');
+insert into memb (name, nick, phone, pwd, email, path) values ('임정희', '임정희', '010-2424-3234',  password('1111'), 'jungheelee@daum.net', '/image/musician/photo/m1.jpg');
+insert into memb (name, nick, phone, pwd, email, path) values ('오호라', '오호라밴드', '010-5555-5050',  password('1111'), 'ohora@gmail.com', '/image/musician/photo/m2.jpg');
 
-insert into musi (muno, age, team, gender, hpg, intro, path) values (1, 35, 'N', 'M','http://tistory.seungwoo.com', '저는 짱짱맨 조승우입니다. 조각같은 외모와 매력적인 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!', 'mobile/musician/photo/0choi2.jpg');
-insert into musi (muno, age, team, gender, hpg, intro, path) values (2, 34, 'Y', 'F', 'http://tistory.jhlee.com', '안녕하세요. 임정희입니다. 저로 말할 것 같으면, 화려한 외모와 옥구슬같은 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!', 'mobile/musician/photo/m1.jpg');
-insert into musi (muno, age, team, gender, hpg, intro, path) values (3, 28, 'Y', 'M', 'http://tistory.ohora.com', '저희 오호라 밴드는 다른 아마추어 팀들과는 차원이 다른 프로 밴드 그 이상의 실력으로 감동을 드리는 밴드입니다. 다재다능한 팀원들과 5년간 호흡을 맞춰 각종 공연을 많이 해봤습니다. 언제든 알뮤를 통해 연락주세요!!', 'mobile/musician/photo/m2.jpg');
+
+  -- 뮤지션 회원들 사진 경로 수정
+insert into musi (muno, age, team, gender, hpg, intro) values (1, 35, 'N', 'M','http://tistory.seungwoo.com', '저는 짱짱맨 조승우입니다. 조각같은 외모와 매력적인 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!');
+insert into musi (muno, age, team, gender, hpg, intro) values (2, 34, 'Y', 'F', 'http://tistory.jhlee.com', '안녕하세요. 임정희입니다. 저로 말할 것 같으면, 화려한 외모와 옥구슬같은 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!');
+insert into musi (muno, age, team, gender, hpg, intro) values (3, 28, 'Y', 'M', 'http://tistory.ohora.com', '저희 오호라 밴드는 다른 아마추어 팀들과는 차원이 다른 프로 밴드 그 이상의 실력으로 감동을 드리는 밴드입니다. 다재다능한 팀원들과 5년간 호흡을 맞춰 각종 공연을 많이 해봤습니다. 언제든 알뮤를 통해 연락주세요!!');
 
 -- 전공 분류(mjr_type), 전공(mjr)
 insert into mjr_type (name) values ('보컬');
@@ -184,10 +186,10 @@ insert into loc (name, loctno) values ('달서구', 3);
 insert into loc (name, loctno) values ('달성군', 3);
 
 -- 일반회원
-insert into memb (name, nick, phone, pwd, email) values ('엄진영', '엄신랑', '010-1111-2222',  password('1111'), 'jinyoungeom@gmail.com');
-insert into memb (name, nick, phone, pwd, email) values ('노완진', '기요미', '010-1313-7375',  password('1111'), 'wanzargen@gmail.com');
-insert into memb (name, nick, phone, pwd, email) values ('김승민', '몬나니', '010-3333-8091',  password('1111'), 'seungmin@gmail.com');
-insert into memb (name, nick, phone, pwd, email) values ('박규호', '뀨우호', '010-1423-4523',  password('1111'), 'gggyuu@gmail.com');
+insert into memb (name, nick, phone, pwd, email, path) values ('엄진영', '엄신랑', '010-1111-2222',  password('1111'), 'jinyoungeom@gmail.com', '/image/logo/ARMU_3.png');
+insert into memb (name, nick, phone, pwd, email, path) values ('노완진', '기요미', '010-1313-7375',  password('1111'), 'wanzargen@gmail.com', '/image/logo/ARMU_3.png');
+insert into memb (name, nick, phone, pwd, email, path) values ('김승민', '몬나니', '010-3333-8091',  password('1111'), 'seungmin@gmail.com', '/image/logo/ARMU_3.png');
+insert into memb (name, nick, phone, pwd, email, path) values ('박규호', '뀨우호', '010-1423-4523',  password('1111'), 'gggyuu@gmail.com', '/image/logo/ARMU_3.png');
 
 insert into gmemb (gno) values (4);
 insert into gmemb (gno) values (5);
@@ -313,12 +315,6 @@ insert into mtc (muno, eno, mtcdt, score, rev) values (2, 3, '2017-07-24', 4,
   다음 행사에서도 또 부르고 싶은 보컬이에요~!
   다만, 한 가지 아쉬운게 있었는데, 당일날 약속시간보다 살짝 늦게오셨더라구요 ㅠㅠ
   담부턴 시간을 좀 잘 지켜주세요~!');
-
-
--- 뮤지션 회원들 사진 경로 수정
-update musi set path='/image/musician/photo/0choi2.jpg' where muno=1;
-update musi set path='/image/musician/photo/m1.jpg' where muno=2;
-update musi set path='/image/musician/photo/m4.jpg' where muno=3;
 
 
 -- 관심뮤지션(fav_musi)
