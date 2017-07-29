@@ -18,6 +18,10 @@ $('#abca').on('click',function(e) {
   displaySurfMusiList2()
 })
 
+$(document.body).on('click', '.detail-link', function(event) {
+  event.preventDefault()
+  location.href = '/mobile/gmode/musi-info/index.html?no=' + $(this).attr('data-no') 
+})
 
 function displaySurfMusiList() {
   $.getJSON('/musician/listSurf.json', function(result) {

@@ -55,7 +55,7 @@
 <script id="musician-list-template" type="text/x-handlebars-template">
 
 {{#each listSurf}}
-<div id='musician-surf'>
+<div id='musician-surf'><a class='detail-link' href='#' data-no='{{no}}'>
     <img class='musician-surf-picture' src='{{photo}}'>
     <div id="musician-surf-preview">
       <span id="musician-surf-name">{{name}}</span><br> 

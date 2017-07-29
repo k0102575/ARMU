@@ -32,6 +32,21 @@ public class MusicianServiceImpl implements MusicianService {
   public Musician getProfile(Member member) throws Exception {
     return musicianDao.selectOne(member);
   }
+  
+  @Override
+  public Musician get(int no) throws Exception {
+    return musicianDao.selectMusi(no);
+  }
+  
+  @Override
+  public Musician getReview(int no) throws Exception {
+    return musicianDao.selectMusiReview(no);
+  }
+  
+  @Override
+  public Musician reviewCount(int no) throws Exception {
+    return musicianDao.selectMusiReviewCount(no);
+  }
 
   @Override
   public List<Musician> listLocation() throws Exception {

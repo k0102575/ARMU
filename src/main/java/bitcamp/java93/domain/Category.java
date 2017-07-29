@@ -17,6 +17,7 @@ public class Category {
   String loctname;
   int locno;
   String locname;
+  
   Map<Integer , String> themeMap;
   Map<Integer , String> majorMap;
   Map<Integer , String> genreMap;

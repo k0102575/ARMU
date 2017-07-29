@@ -14,17 +14,18 @@ public class Musician extends Member  {
   String review;
   boolean isFavorite;
   int popularity;
+  int count;
   ArrayList<String> majorList;
   ArrayList<String> genreList;
   ArrayList<String> themeList;
   ArrayList<String> locationList;
   List<String> photoList;
-  
-  public List<String> getPhotoList() {
-    return photoList;
-  }
-  public void setPhotoList(List<String> photoList) {
-    this.photoList = photoList;
+  @Override
+  public String toString() {
+    return "Musician [age=" + age + ", isTeam=" + isTeam + ", homepage=" + homepage + ", intro=" + intro + ", photo="
+        + photo + ", gender=" + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite
+        + ", popularity=" + popularity + ", count=" + count + ", majorList=" + majorList + ", genreList=" + genreList
+        + ", themeList=" + themeList + ", locationList=" + locationList + ", photoList=" + photoList + "]";
   }
   public int getAge() {
     return age;
@@ -86,6 +87,12 @@ public class Musician extends Member  {
   public void setPopularity(int popularity) {
     this.popularity = popularity;
   }
+  public int getCount() {
+    return count;
+  }
+  public void setCount(int count) {
+    this.count = count;
+  }
   public ArrayList<String> getMajorList() {
     return majorList;
   }
@@ -110,13 +117,15 @@ public class Musician extends Member  {
   public void setLocationList(ArrayList<String> locationList) {
     this.locationList = locationList;
   }
-  @Override
-  public String toString() {
-    return "Musician [age=" + age + ", isTeam=" + isTeam + ", homepage=" + homepage + ", intro=" + intro + ", photo="
-        + photo + ", gender=" + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite
-        + ", popularity=" + popularity + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList="
-        + themeList + ", locationList=" + locationList + ", photoList=" + photoList + "]";
+  public List<String> getPhotoList() {
+    return photoList;
   }
+  public void setPhotoList(List<String> photoList) {
+    this.photoList = photoList;
+  }
+  
+   
+  
   
   
   

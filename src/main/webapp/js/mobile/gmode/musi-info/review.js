@@ -5,7 +5,38 @@ reviewContent = $(".review-content"),
 reviewContentText = $(".review-content-text"),
 reviewContentMore = $(".review-content-more"),
 reviewContentHide = $(".review-content-hide"),
-reviewBox = $(".review-box")
+reviewBox = $(".review-box"),
+reviewHeader = $(".review-header")
+
+displayMusiInfoReview()
+    
+function displayMusiInfoReview() {
+  $.getJSON('/musician/musiInfoReview.json',
+      { 
+        "no" : location.href.split('?')[1].split('=')[1]
+      }, function(result) {
+        console.log(result)
+//        var templateFn = Handlebars.compile($('#musician-info-review-template').text())
+//        var generatedHTML = templateFn(result.data)
+//        var container = $('#musician-surf-list')
+//        container.html(generatedHTML)
+  })
+  
+    $.getJSON('/musician/musiInfoReviewCount.json',
+      { 
+        "no" : location.href.split('?')[1].split('=')[1]
+      }, function(result) {
+        var data = result.data.musicianReviewCount
+        
+        if (data == 0){
+          reviewHeader.text("리뷰 0개")
+        } else {
+          reviewHeader.text("리뷰:  " + data.count + " 개")
+        }
+        
+      })
+}
+    
 
 $(window).load(function(){
 	reviewSetting()

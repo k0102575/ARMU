@@ -1,6 +1,6 @@
 <div class="review-container">
 
-	<div class="review-header">리뷰 ??개</div>
+	<div class="review-header"></div>
 	
 	<div class="review-rating-container">
 	<div class="review-rating"></div>
@@ -25,41 +25,21 @@
 	</div> 
 	<!-- review-box -->
 	
-	 	<div class="review-box">
-  <div class="review-date">2017-07-22</div>
-  
-  <div class="review-member"><i class="fa fa-star" id="review-star" aria-hidden="true"></i>4.5 &nbsp;&nbsp;홍길동님&nbsp;&nbsp;결혼식</div>
-  
-	<div class="review-content">
-	<div class="review-content-text"> 
-  리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리
-	</div>
-	<div class="review-content-more"><i class="fa fa-caret-down" aria-hidden="true"></i>더보기</div>
-	<div class="review-content-hide"><i class="fa fa-caret-up" aria-hidden="true"></i>접기</div>
-	</div>
-	<!-- review-content -->
-	</div> 
-	<!-- review-box -->
-	
-	
-	 	<div class="review-box">
-  <div class="review-date">2017-07-22</div>
-  
-  <div class="review-member"><i class="fa fa-star" id="review-star" aria-hidden="true"></i>4.5 &nbsp;&nbsp;홍길동님&nbsp;&nbsp;결혼식</div>
-  
-	<div class="review-content">
-	<div class="review-content-text"> 
-	리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리리뷰리뷰
-	</div>
-	<div class="review-content-more"><i class="fa fa-caret-down" aria-hidden="true"></i>더보기</div>
-	<div class="review-content-hide"><i class="fa fa-caret-up" aria-hidden="true"></i>접기</div>
-	</div>
-	<!-- review-content -->
-	</div> 
-	<!-- review-box -->
-	
+	<script id="musician-info-review-template" type="text/x-handlebars-template">
+
+  {{#each listSurf}}
+  <div id='musician-surf'><a class='detail-link' href='#' data-no='{{no}}'>
+    <img class='musician-surf-picture' src='{{photo}}'>
+    <div id="musician-surf-preview">
+      <span id="musician-surf-name">{{name}}</span><br> 
+      <span id="musician-surf-location">{{area}}</span><br> <img id="musician-surf-like" src="/image/icon/mobile_icon/heart.png">
+    </div>
+  </div>
+  {{/each}}
+
+  </script>
 	
 </div>
-<!-- review-container -->
-
+<!-- review-container  -->
+	
 <script src="/js/mobile/gmode/musi-info/review.js"></script>
