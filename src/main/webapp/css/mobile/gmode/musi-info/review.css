@@ -79,7 +79,7 @@
 
 /* 리뷰 시작 */
 
-.review-box {
+#review-box {
   float: left;
   margin-left: 5%;
   width: 90%;

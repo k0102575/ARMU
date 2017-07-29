@@ -1,5 +1,6 @@
 package bitcamp.java93.domain;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ public class Musician extends Member  {
   boolean isFavorite;
   int popularity;
   int count;
+  String eventTitle;
+  Date eventDate;
   ArrayList<String> majorList;
   ArrayList<String> genreList;
   ArrayList<String> themeList;
@@ -23,8 +26,9 @@ public class Musician extends Member  {
   public String toString() {
     return "Musician [age=" + age + ", isTeam=" + isTeam + ", homepage=" + homepage + ", intro=" + intro + ", gender="
         + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite + ", popularity="
-        + popularity + ", count=" + count + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList="
-        + themeList + ", locationList=" + locationList + ", photoList=" + photoList + "]";
+        + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", majorList="
+        + majorList + ", genreList=" + genreList + ", themeList=" + themeList + ", locationList=" + locationList
+        + ", photoList=" + photoList + "]";
   }
   public int getAge() {
     return age;
@@ -86,6 +90,18 @@ public class Musician extends Member  {
   public void setCount(int count) {
     this.count = count;
   }
+  public String getEventTitle() {
+    return eventTitle;
+  }
+  public void setEventTitle(String eventTitle) {
+    this.eventTitle = eventTitle;
+  }
+  public Date getEventDate() {
+    return eventDate;
+  }
+  public void setEventDate(Date eventDate) {
+    this.eventDate = eventDate;
+  }
   public ArrayList<String> getMajorList() {
     return majorList;
   }
@@ -116,7 +132,6 @@ public class Musician extends Member  {
   public void setPhotoList(List<String> photoList) {
     this.photoList = photoList;
   }
-  
   
   
   

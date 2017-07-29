@@ -2,6 +2,7 @@ var starInteger = parseInt($(".review-rating-grade").text()),
 starRealNumber = $(".review-rating-grade").text() - starInteger,
 reviewRating = $(".review-rating"),
 reviewContent = $(".review-content"),
+musicianInfoPrev = $("#musician-info-prev"),
 reviewContentText = $(".review-content-text"),
 reviewContentMore = $(".review-content-more"),
 reviewContentHide = $(".review-content-hide"),
@@ -15,26 +16,21 @@ function displayMusiInfoReview() {
       { 
         "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {
-        console.log(result)
-//        var templateFn = Handlebars.compile($('#musician-info-review-template').text())
-//        var generatedHTML = templateFn(result.data)
-//        var container = $('#musician-surf-list')
-//        container.html(generatedHTML)
+    	  console.log(result)
+        var data = result.data
+        if (data.musicianReviewCount.count == 0){
+            reviewHeader.text("리뷰 0개")
+          } else {
+            reviewHeader.text("리뷰:  " + data.musicianReviewCount.count + " 개")
+          }
+        
+        var templateFn = Handlebars.compile($('#musician-info-review-template').text())
+        var generatedHTML = templateFn(data)
+		var container = $('.review-container')
+		var html = container.html()
+		container.html(html + generatedHTML)
   })
   
-    $.getJSON('/musician/musiInfoReviewCount.json',
-      { 
-        "no" : location.href.split('?')[1].split('=')[1]
-      }, function(result) {
-        var data = result.data.musicianReviewCount
-        
-        if (data == 0){
-          reviewHeader.text("리뷰 0개")
-        } else {
-          reviewHeader.text("리뷰:  " + data.count + " 개")
-        }
-        
-      })
 }
     
 
@@ -43,33 +39,26 @@ $(window).load(function(){
 	starAdd()
 })
 
+musicianInfoPrev.on('click', function() {
+	location.href = "/mobile/gmode/index.html"
+})
+
 reviewContentMore.on('click', function() {
-	/*  console.log($(this).parent().children()[0])
-  reviewContentText.removeAttr('overflow')
-  reviewContentText.removeAttr('text-overflow')
-  reviewContentText.css('display', 'block')
-  reviewContentText.css('-webkit-line-clamp', '0')
-  reviewContentText.css('-webkit-box-orient', '')*/
 	$(this).parent().parent().css('height', 'auto')
 	$(this).parent().children()[0].style.height = 'auto'
-		$(this).parent().children()[1].style.display = 'none'
-			$(this).parent().children()[2].style.display = 'block'
+	$(this).parent().children()[1].style.display = 'none'
+	$(this).parent().children()[2].style.display = 'block'
 })
 
 reviewContentHide.on('click', function() {
-	/*  reviewContentText.css('overflow', 'hidden')
-  reviewContentText.css('text-overflow', 'clip')
-  reviewContentText.css('display', 'block')
-  reviewContentText.css('-webkit-line-clamp', '2')
-  reviewContentText.css('-webkit-box-orient', 'vertical')*/
   $(this).parent().parent().css('height', '300px')
   $(this).parent().children()[0].style.height = '105px'
   $(this).parent().children()[1].style.display = 'block'
   $(this).parent().children()[2].style.display = 'none'
-	$(this).parent().parent().css('height', '200px')
-	$(this).parent().children()[0].style.height = '50px'
-		$(this).parent().children()[1].style.display = 'block'
-			$(this).parent().children()[2].style.display = 'none'
+  $(this).parent().parent().css('height', '200px')
+  $(this).parent().children()[0].style.height = '50px'
+  $(this).parent().children()[1].style.display = 'block'
+  $(this).parent().children()[2].style.display = 'none'
 })
 
 function starAdd() {

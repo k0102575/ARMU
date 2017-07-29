@@ -130,33 +130,11 @@ public class MusicianControl {
     
     try {
       Musician musicianReview = musicianService.getReview(no);
+      Musician musicianReviewCount = musicianService.reviewCount(no);
       
       if (musicianReview == null) {
         return new JsonResult(JsonResult.SUCCESS, "리뷰가 없습니다.");
       }
-      
-      result.setStatus(JsonResult.SUCCESS);
-      
-      HashMap<String,Object> dataMap = new HashMap<>();
-
-      dataMap.put("musicianReview", musicianReview);
-      
-      result.setData(dataMap);
-      
-    } catch (Exception e) {
-      result.setStatus(JsonResult.ERROR);
-    }
-    
-    return result;
-  }
-  
-  @RequestMapping("musiInfoReviewCount")
-  public JsonResult musiInfoReviewCount(int no) {
-    
-    JsonResult result = new JsonResult();
-    
-    try {
-      Musician musicianReviewCount = musicianService.reviewCount(no);
       
       if (musicianReviewCount == null) {
         return new JsonResult(JsonResult.SUCCESS, "0");
@@ -166,6 +144,7 @@ public class MusicianControl {
       
       HashMap<String,Object> dataMap = new HashMap<>();
 
+      dataMap.put("musicianReview", musicianReview);
       dataMap.put("musicianReviewCount", musicianReviewCount);
       
       result.setData(dataMap);
