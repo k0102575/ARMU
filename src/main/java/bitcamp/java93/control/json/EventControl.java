@@ -27,41 +27,6 @@ public class EventControl {
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
   
-  @RequestMapping("listTheme")
-  public JsonResult listTheme() throws Exception {
-    HashMap<String,Object> dataMap = new HashMap<>();
-    dataMap.put("listTheme", eventService.listTheme());
-    return new JsonResult(JsonResult.SUCCESS, dataMap);
-  }
-  
-  @RequestMapping("listMajor")
-  public JsonResult listMajor() throws Exception {
-    HashMap<String,Object> dataMap = new HashMap<>();
-    dataMap.put("listMajor", eventService.listMajor());
-    return new JsonResult(JsonResult.SUCCESS, dataMap);
-  }
-  
-  @RequestMapping("listGenre")
-  public JsonResult listGenre() throws Exception {
-    HashMap<String,Object> dataMap = new HashMap<>();
-    dataMap.put("listGenre", eventService.listGenre());
-    return new JsonResult(JsonResult.SUCCESS, dataMap);
-  }
-  
-  @RequestMapping("listLocationType")
-  public JsonResult listLocationType() throws Exception {
-    HashMap<String,Object> dataMap = new HashMap<>();
-    dataMap.put("listLocationType", eventService.listLocationType());
-    return new JsonResult(JsonResult.SUCCESS, dataMap);
-  }
-  
-  @RequestMapping("listLocation")
-  public JsonResult listLocation(int loctno) throws Exception {
-    HashMap<String,Object> dataMap = new HashMap<>();
-    dataMap.put("listLocation", eventService.listLocation(loctno));
-    return new JsonResult(JsonResult.SUCCESS, dataMap);
-  }
-  
   @RequestMapping("add")
   public JsonResult add(Event event) throws Exception {
     
@@ -69,16 +34,33 @@ public class EventControl {
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
-  @RequestMapping("addTheme")
-  public JsonResult addTheme(Event event, String categoryThemeNo) throws Exception {
-    String[] nameList = categoryThemeNo.split(",");
-    ArrayList<String> photoList = new ArrayList<>();
-    for (String name : nameList) {
-      photoList.add(name);
-    }
-    event.setCategoryThemeNo(photoList);
+  @RequestMapping("RegistEventCategory")
+  public JsonResult eventRegistMajor(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre) throws Exception {
+    String[] themeList = eventRegistTheme.split(",");
+    String[] majorList = eventRegistMajor.split(",");
+    String[] genreList = eventRegistGenre.split(",");
     
-    eventService.addTheme(event);
+    ArrayList<String> registThemeList = new ArrayList<>();
+    ArrayList<String> registMajorList = new ArrayList<>();
+    ArrayList<String> registGenreList = new ArrayList<>();
+    
+    for (String theme : themeList) {
+      registThemeList.add(theme);
+    } 
+    
+    for (String major : majorList) {
+      registMajorList.add(major);
+    } 
+    
+    for (String genre : genreList) {
+      registGenreList.add(genre);
+    } 
+    
+    event.setEventRegistTheme(registThemeList);
+    event.setEventRegistMajor(registMajorList);
+    event.setEventRegistGenre(registGenreList);
+    
+    eventService.RegistEventCategory(event);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   

@@ -48,7 +48,7 @@ public class AuthControl {
     Member loginMember = (Member)session.getAttribute("loginMember");
     
     if(loginMember == null) {
-      return new JsonResult(JsonResult.FAIL, "fail");
+      return new JsonResult(JsonResult.FAIL, "browse");
     }
     
     return new JsonResult(JsonResult.SUCCESS, loginMember);

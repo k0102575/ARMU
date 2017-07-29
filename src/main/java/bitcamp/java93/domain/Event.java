@@ -21,18 +21,11 @@ public class Event {
   int tmnno;
   int eno;
   Date date;
-  List<String> categoryThemeNo;
+  List<String> EventRegistTheme;
+  List<String> EventRegistMajor;
+  List<String> EventRegistGenre;
   ArrayList<Musician> applicantList;
   ArrayList<Musician> pickedList;
-  Musician musician;
-  @Override
-  public String toString() {
-    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", themeList=" + themeList + ", majorList="
-        + majorList + ", genreList=" + genreList + ", location=" + location + ", address=" + address + ", pay=" + pay
-        + ", locno=" + locno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
-        + ", tmnno=" + tmnno + ", eno=" + eno + ", date=" + date + ", categoryThemeNo=" + categoryThemeNo
-        + ", applicantList=" + applicantList + ", pickedList=" + pickedList + ", musician=" + musician + "]";
-  }
   public int getNo() {
     return no;
   }
@@ -129,11 +122,23 @@ public class Event {
   public void setDate(Date date) {
     this.date = date;
   }
-  public List<String> getCategoryThemeNo() {
-    return categoryThemeNo;
+  public List<String> getEventRegistTheme() {
+    return EventRegistTheme;
   }
-  public void setCategoryThemeNo(List<String> categoryThemeNo) {
-    this.categoryThemeNo = categoryThemeNo;
+  public void setEventRegistTheme(List<String> eventRegistTheme) {
+    EventRegistTheme = eventRegistTheme;
+  }
+  public List<String> getEventRegistMajor() {
+    return EventRegistMajor;
+  }
+  public void setEventRegistMajor(List<String> eventRegistMajor) {
+    EventRegistMajor = eventRegistMajor;
+  }
+  public List<String> getEventRegistGenre() {
+    return EventRegistGenre;
+  }
+  public void setEventRegistGenre(List<String> eventRegistGenre) {
+    EventRegistGenre = eventRegistGenre;
   }
   public ArrayList<Musician> getApplicantList() {
     return applicantList;
@@ -147,18 +152,26 @@ public class Event {
   public void setPickedList(ArrayList<Musician> pickedList) {
     this.pickedList = pickedList;
   }
-  public Musician getMusician() {
-    return musician;
+  @Override
+  public String toString() {
+    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", themeList=" + themeList + ", majorList="
+        + majorList + ", genreList=" + genreList + ", location=" + location + ", address=" + address + ", pay=" + pay
+        + ", locno=" + locno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
+        + ", tmnno=" + tmnno + ", eno=" + eno + ", date=" + date + ", EventRegistTheme=" + EventRegistTheme
+        + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre + ", applicantList="
+        + applicantList + ", pickedList=" + pickedList + "]";
   }
-  public void setMusician(Musician musician) {
-    this.musician = musician;
-  }
   
   
   
   
   
-
+  
+  
+  
+  
+  
+  
   
   
   

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.java93.dao.CategoryDao">
+
+  <resultMap type="category" id="themeMap">
+     <result column="name" property="thmtname" />
+     <collection property="list" ofType="java.util.Map">
+       <association property="themeMap" javaType="java.util.Map"> 
+      <result property="key" column="thmno"/> 
+       <result property="value" column="thmename"></result>
+      </association>
+    </collection>
+  </resultMap>
+  
+    <resultMap type="category" id="majorMap">
+     <result column="name" property="mjrtname" />
+     <collection property="list" ofType="java.util.Map">
+       <association property="majorMap" javaType="java.util.Map"> 
+      <result property="key" column="mjrno"/> 
+       <result property="value" column="majrname"></result>
+      </association>
+    </collection>
+  </resultMap>
+  
+  <resultMap type="category" id="genreMap">
+     <result column="name" property="gnrtname" />
+     <collection property="list" ofType="java.util.Map">
+       <association property="genreMap" javaType="java.util.Map"> 
+      <result property="key" column="gnrno"/> 
+       <result property="value" column="gnrename"></result>
+      </association>
+    </collection>
+  </resultMap>
+  
+  <resultMap type="category" id="locationTypeMap">
+		<id column="loctno" property="loctno" />
+		<result column="loctname" property="loctname" />
+		<result column="locname" property="locname" />
+	</resultMap>
+  
+    <resultMap type="hashMap" id="hashMap">
+    <result javaType="java.lang.String" column="thmename"></result>
+    <result javaType="int" column="thmno"/> 
+  </resultMap>
+
+  <select id="selectListTheme" resultMap="themeMap">
+  select thmt.name, thme.name as thmename, thme.thmno
+  from thm as thme left outer join thm_type as thmt on thmt.thmtno = thme.thmtno
+  </select><!-- 승민 -->
+  
+  <select id="selectListMajor" resultMap="majorMap">
+  select mjrt.name, majr.name as majrname, majr.mjrno
+  from mjr as majr left outer join mjr_type as mjrt on mjrt.mjrtno = majr.mjrtno
+  </select><!-- 승민 -->
+  
+  <select id="selectListGenre" resultMap="genreMap">
+  select gnrt.name, gnre.name as gnrename, gnre.gnrno
+  from gnr as gnre left outer join gnr_type as gnrt on gnrt.gnrtno = gnre.gnrtno
+  </select><!-- 승민 -->
+  
+  <select id="selectListLocationType" resultMap="locationTypeMap">
+  select loctno, name as loctname 
+  from loc_type
+  order by loctno
+  </select><!-- 승민 -->
+  
+  <select id="selectListLocation" resultMap="locationTypeMap" parameterType="int">
+  select locno, name as locname 
+  from loc where loctno = #{loctno}
+  order by locname
+  </select><!-- 승민 -->
+  
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bitcamp.java93.dao.EventDao;
-import bitcamp.java93.domain.Category;
 import bitcamp.java93.domain.Event;
 import bitcamp.java93.service.EventService;
 
@@ -21,45 +20,50 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectOngoingList();
   }
   
-  public  List<Category> listTheme() throws Exception {   
-    return eventDao.selectListTheme();
-  }
-  
-  public  List<Category> listMajor() throws Exception {   
-    return eventDao.selectListMajor();
-  }
-  
-  public  List<Category> listGenre() throws Exception {   
-    return eventDao.selectListGenre();
-  }
-  
-  public  List<Category> listLocationType() throws Exception {   
-    return eventDao.selectListLocationType();
-  }
-  
-  public  List<Category> listLocation(int no) throws Exception {   
-    return eventDao.selectListLocation(no);
-  }
-  
   public  void add(Event event) throws Exception {   
     eventDao.insert(event);
   }
   
-  public  void addTheme(Event event) throws Exception {   
-    this.insertPhoto(4, event.getCategoryThemeNo());
+  public  void RegistEventCategory(Event event) throws Exception {   
+    this.registCategory(4, event.getEventRegistTheme(), event.getEventRegistMajor(), event.getEventRegistGenre());
   }
   
-  private void insertPhoto(int eventNo, List<String> categoryThemeNo) {
-    if (categoryThemeNo == null)
+  private void registCategory(int eventNo, List<String> eventRegistTheme, List<String> eventRegistMajor, List<String> eventRegistGenre) {
+    /*if (eventRegistTheme == null){
       return;
-    
-    HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("eventNo", eventNo);
-    
-    for (String eventTheme : categoryThemeNo) {
-      valueMap.put("eventTheme", eventTheme);
-      eventDao.insertTheme(valueMap);
     }
+    
+    if (eventRegistMajor == null){
+      return;
+    }
+    
+    if (eventRegistGenre == null){
+      return;
+    }*/
+    
+    HashMap<String,Object> themeMap = new HashMap<>();
+    HashMap<String,Object> majorMap = new HashMap<>();
+    HashMap<String,Object> genreMap = new HashMap<>();
+    
+    themeMap.put("eventNo", eventNo);
+    majorMap.put("eventNo", eventNo);
+    genreMap.put("eventNo", eventNo);
+    
+    for (String eventTheme : eventRegistTheme) {
+      themeMap.put("eventTheme", eventTheme);
+      eventDao.insertTheme(themeMap);
+    }
+    
+    for (String eventMajor : eventRegistMajor) {
+      majorMap.put("eventMajor", eventMajor);
+      eventDao.insertMajor(majorMap);
+    }
+    
+    for (String eventGenre : eventRegistGenre) {
+      genreMap.put("eventGenre", eventGenre);
+      eventDao.insertGenre(genreMap);
+    }
+    
   }
   
 }

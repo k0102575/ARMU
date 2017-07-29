@@ -24,13 +24,15 @@ var eventPage2 = $("#event-page2"),
     themeSelectText = $("#theme-select-text"),
     majorSelectText = $("#major-select-text"),
     genreSelectText = $("#genre-select-text"),
+    themeSelcetHidden = $("#theme-select-hidden")
+    majorSelcetHidden = $("#major-select-hidden")
+    genreSelcetHidden = $("#genre-select-hidden")
     categoryThemeName ="",
-    categoryMajorNo = "",
     categoryMajorName ="",
-    categoryGenreNo = "",
-    categoryGenreName =""
-var categoryThemeNo = "",
-    fiFileNames = $("#fi-filenames")
+    categoryGenreName ="",
+    categoryThemeNo = "",
+    categoryMajorNo = "",
+    categoryGenreNo = ""
 
     //  이벤트 2페이지
     
@@ -124,7 +126,7 @@ eventPage1Cancel.on('click', function() {
 
 eventPage1Next.on('click', function() {
   
-  $.getJSON('/event/listTheme.json', function(result) {
+  $.getJSON('/category/listTheme.json', function(result) {
     var templateFn = Handlebars.compile($('#select-theme-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#theme-select-box')
@@ -154,7 +156,7 @@ eventPage1Next.on('click', function() {
     console.log(err)
 })
 
-  $.getJSON('/event/listMajor.json', function(result) {
+  $.getJSON('/category/listMajor.json', function(result) {
     var templateFn = Handlebars.compile($('#select-major-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#major-select-box')
@@ -184,7 +186,7 @@ eventPage1Next.on('click', function() {
     console.log(err)
   })
   
-    $.getJSON('/event/listGenre.json', function(result) {
+    $.getJSON('/category/listGenre.json', function(result) {
     var templateFn = Handlebars.compile($('#select-genre-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#genre-select-box')
@@ -246,16 +248,25 @@ eventPage2Prev.on('click', function() {
 })
 
 eventPage2Next.on('click', function() {
-  /*fiFileNames.val(categoryThemeNo)
-  console.log(fiFileNames.val())
-  $.post('/event/addTheme.json', {
-    "categoryThemeNo" : fiFileNames.val()
+  
+  
+  themeSelcetHidden.val(categoryThemeNo)
+  majorSelcetHidden.val(categoryMajorNo)
+  genreSelcetHidden.val(categoryGenreNo)
+  
+  $.post('/event/RegistEventCategory.json', {
+    "eventRegistTheme" : themeSelcetHidden.val(),
+    "eventRegistMajor" : majorSelcetHidden.val(),
+    "eventRegistGenre" : genreSelcetHidden.val()
   }, function(result) {
     eventPage8.toggle(0);
     eventPage9.toggle(0 , function() {
       progress(95)
     });
-  }, 'json')*/
+  }, 'json')
+  
+  
+  
   eventPage2.toggle(0);
   eventPage3.toggle(0 , function() {
     progress(35)
@@ -290,12 +301,12 @@ eventPage3Prev.on('click', function() {
 })
 
 eventPage3Next.on('click', function() {
-  if(eventPage3Calendar.val() == "2017-07-29") {
+  if(eventPage3Calendar.val() == "2017-07-28") {
     swal("오늘 날짜는 선택되지 않습니다")
     return
   } 
   
- $.getJSON('/event/listLocationType.json', function(result) {
+ $.getJSON('/category/listLocationType.json', function(result) {
     var templateFn = Handlebars.compile($('#select-sido-template').text())
     var generatedHTML = templateFn(result.data)
     var container = sidoSelectMenu
@@ -308,7 +319,7 @@ eventPage3Next.on('click', function() {
 	   optGroup = $('<optgroup>').attr('label', sidoText);
 	   citySelectMenu.append(optGroup);
 
-	   $.getJSON('/event/listLocation.json', {"loctno" : loctno},function(result) {
+	   $.getJSON('/category/listLocation.json', {"loctno" : loctno},function(result) {
 	    var templateFn = Handlebars.compile($('#select-city-template').text())
 	    var generatedHTML = templateFn(result.data)
 	    var container = citySelectMenu
