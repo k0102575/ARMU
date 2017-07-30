@@ -71,6 +71,17 @@
     </collection>
   </resultMap>
   
+  <resultMap type="musician" id="musicianInfoPortfolioMap">
+    <result column="specDate" property="specDate" />
+    <result column="specDscp" property="specDscp" />
+     <collection property="list" ofType="java.util.Map">
+       <association property="fileMap" javaType="java.util.Map"> 
+      <result property="key" column="fileType"/> 
+       <result property="value" column="filePath"></result>
+      </association>
+    </collection>
+  </resultMap>
+  
  <resultMap type="musician" id="musicianMapBasic">
     <id column="mno" property="no" />
     <result column="name" property="name" />
@@ -184,6 +195,13 @@
   left outer join gnr g on gm.gnrno=g.gnrno
   left outer join loc_musi lm on mu.muno=lm.muno 
   left outer join loc l on lm.locno=l.locno
+  where mu.muno = #{no}
+  </select>
+  
+  <select id="selectMusiPortfolio" resultMap="musicianInfoPortfolioMap" parameterType="int">
+  select sp.spdt as specDate, sp.dscp as specDscp, spp.isimg as fileType, spp.path as filePath 
+  from musi mu left outer join spec sp on mu.muno = sp.muno
+  inner join spec_path spp on sp.spno = spp.spno
   where mu.muno = #{no}
   </select>
 

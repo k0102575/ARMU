@@ -52,7 +52,12 @@ public class MusicianServiceImpl implements MusicianService {
   public Musician getIntroduce(int no) throws Exception {
     return musicianDao.selectMusiIntroduce(no);
   }
-
+  
+  @Override
+  public Musician getPortfolio(int no) throws Exception {
+    return musicianDao.selectMusiPortfolio(no);
+  }
+  
   @Override
   public List<Musician> listLocation() throws Exception {
     return musicianDao.musicianLocation();

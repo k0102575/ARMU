@@ -1,4 +1,4 @@
-  <div id="timeline-container">
+<!--   <div id="timeline-container">
   <div id="timeline-line-container">
   <div class="timeline-line"></div>
   <img src="/image/logo/login_01_b.png" id="timeline-mark">
@@ -10,70 +10,35 @@
   <img src="/image/musician/photo/m5.jpg" id="timeline-picture">
   <img src="/image/musician/photo/m3.jpg" id="timeline-picture">
   </div>
-  </div>
-  <!-- timeline-container -->
+  </div> -->
   
+
+<div class="portfolio-container">
+
+
+</div>
+  
+<script id="musician-info-portfolio-template" type="text/x-handlebars-template">
+  {{#getPortfolio}}
   <div id="timeline-container">
   <div id="timeline-line-container">
   <div class="timeline-line"></div>
   <img src="/image/logo/login_01_b.png" id="timeline-mark">
   </div>
   <div id="timeline-content">
-  <div id="timeline-date">2017-07-21</div>
-  <div id="timeline-desc">사진에 대한 설명이나 동영상에 대한 설명이 있</div>
-  <img src="/image/musician/photo/m4.jpg" id="timeline-picture">
-  <img src="/image/musician/photo/m5.jpg" id="timeline-picture">
-  <img src="/image/musician/photo/m3.jpg" id="timeline-picture">
+  <div id="timeline-date">{{specDate}}</div>
+  <div id="timeline-desc">{{specDscp}}</div>
+  {{#each list}}
+  {{#fileMap}}
+  <img src="{{value}}" id="timeline-picture">
+  {{/fileMap}}
+  {{/each}}
   </div>
   </div>
-  <!-- timeline-container -->
+  {{/getPortfolio}}
+</script>
+
   
-    <div id="timeline-container">
-  <div id="timeline-line-container">
-  <div class="timeline-line"></div>
-  <img src="/image/logo/login_01_b.png" id="timeline-mark">
-  </div>
-  <div id="timeline-content">
-  <div id="timeline-date">2017-07-21</div>
-  <div id="timeline-desc">사진에 대한 설명이나 동영상에 대한 설명이 있</div>
-  <img src="/image/musician/photo/m4.jpg" id="timeline-picture">
-  <img src="/image/musician/photo/m5.jpg" id="timeline-picture">
-  <img src="/image/musician/photo/m3.jpg" id="timeline-picture">
-  </div>
-  </div>
-  <!-- timeline-container -->
+<script src="/js/mobile/gmode/musi-info/portfolio.js"></script>
   
-    <div id="timeline-container">
-  <div id="timeline-line-container">
-  <div class="timeline-line"></div>
-  <img src="/image/logo/login_01_b.png" id="timeline-mark">
-  </div>
-  <div id="timeline-content">
-  <div id="timeline-date">2017-07-21</div>
-  <div id="timeline-desc">사진에 대한 설명이나 동영상에 대한 설명이 있</div>
-  <img src="/image/musician/photo/m4.jpg" id="timeline-picture">
-  <img src="/image/musician/photo/m5.jpg" id="timeline-picture">
-  <img src="/image/musician/photo/m3.jpg" id="timeline-picture">
-  </div>
-  </div>
-  <!-- timeline-container -->
-  
-    <div id="timeline-container">
-  <div id="timeline-line-container">
-  <div class="timeline-line"></div>
-  <img src="/image/logo/login_01_b.png" id="timeline-mark">
-  </div>
-  <div id="timeline-content">
-  <div id="timeline-date">2017-07-21</div>
-  <div id="timeline-desc">사진에 대한 설명이나 동영상에 대한 설명이 있</div>
-  <img src="/image/musician/photo/m4.jpg" id="timeline-picture">
-  <img src="/image/musician/photo/m5.jpg" id="timeline-picture">
-  <img src="/image/musician/photo/m3.jpg" id="timeline-picture">
-  </div>
-  </div>
-  <!-- timeline-container -->
-  
-  
-  
-  <script src="/js/mobile/gmode/musi-info/portfolio.js"></script>
   

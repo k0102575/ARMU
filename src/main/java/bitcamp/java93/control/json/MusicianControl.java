@@ -189,9 +189,26 @@ public class MusicianControl {
       dataMap.put("getIntroduce", musicianIntroduce);
       
       result.setData(dataMap);
-      
-
+    return result;
+  }
+  
+  @RequestMapping("musiInfoReviewPortfolio")
+  public JsonResult musiInfoReviewPortfolio(int no) throws Exception {
     
+    JsonResult result = new JsonResult();
+    HashMap<String,Object> dataMap = new HashMap<>();
+    
+
+      Musician musicianPortfolio = musicianService.getPortfolio(no);
+      
+      if (musicianPortfolio == null) {
+        return new JsonResult(JsonResult.SUCCESS, "0");
+      }
+      
+      result.setStatus(JsonResult.SUCCESS);
+      dataMap.put("getPortfolio", musicianPortfolio);
+      
+      result.setData(dataMap);
     return result;
   }
   

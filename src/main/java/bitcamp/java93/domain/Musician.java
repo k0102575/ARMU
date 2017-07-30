@@ -3,6 +3,7 @@ package bitcamp.java93.domain;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Musician extends Member  {
   int age;
@@ -17,6 +18,10 @@ public class Musician extends Member  {
   int count;
   String eventTitle;
   Date eventDate;
+  Date specDate;
+  String specDscp;
+  Map<String , String> fileMap;
+  List<Map<Integer , String>> list;
   ArrayList<String> majorList;
   ArrayList<String> genreList;
   ArrayList<String> themeList;
@@ -26,9 +31,10 @@ public class Musician extends Member  {
   public String toString() {
     return "Musician [age=" + age + ", isTeam=" + isTeam + ", homepage=" + homepage + ", intro=" + intro + ", gender="
         + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite + ", popularity="
-        + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", majorList="
-        + majorList + ", genreList=" + genreList + ", themeList=" + themeList + ", locationList=" + locationList
-        + ", photoList=" + photoList + "]";
+        + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", specDate="
+        + specDate + ", specDscp=" + specDscp + ", fileMap=" + fileMap + ", list=" + list + ", majorList=" + majorList
+        + ", genreList=" + genreList + ", themeList=" + themeList + ", locationList=" + locationList + ", photoList="
+        + photoList + "]";
   }
   public int getAge() {
     return age;
@@ -101,6 +107,30 @@ public class Musician extends Member  {
   }
   public void setEventDate(Date eventDate) {
     this.eventDate = eventDate;
+  }
+  public Date getSpecDate() {
+    return specDate;
+  }
+  public void setSpecDate(Date specDate) {
+    this.specDate = specDate;
+  }
+  public String getSpecDscp() {
+    return specDscp;
+  }
+  public void setSpecDscp(String specDscp) {
+    this.specDscp = specDscp;
+  }
+  public Map<String, String> getFileMap() {
+    return fileMap;
+  }
+  public void setFileMap(Map<String, String> fileMap) {
+    this.fileMap = fileMap;
+  }
+  public List<Map<Integer, String>> getList() {
+    return list;
+  }
+  public void setList(List<Map<Integer, String>> list) {
+    this.list = list;
   }
   public ArrayList<String> getMajorList() {
     return majorList;

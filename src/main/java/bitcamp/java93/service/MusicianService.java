@@ -13,6 +13,7 @@ public interface MusicianService {
   Musician getReview(int no) throws Exception;
   Musician reviewCount(int no) throws Exception;
   Musician getIntroduce(int no) throws Exception;
+  Musician getPortfolio(int no) throws Exception;
   List<Musician> listLocation() throws Exception;
   void updatePhoto(int no, String photoPath) throws Exception;
 }
