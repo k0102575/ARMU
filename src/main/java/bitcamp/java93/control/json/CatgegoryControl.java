@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import bitcamp.java93.service.CategoryService;
-import bitcamp.java93.service.EventService;
 
 @RestController
 @RequestMapping("/category/")

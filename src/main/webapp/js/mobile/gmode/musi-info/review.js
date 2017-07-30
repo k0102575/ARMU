@@ -6,7 +6,7 @@ var reviewContent = $(".review-content"),
 	score = 0
 
 displayMusiInfoReview()
-    
+
 function displayMusiInfoReview() {
   $.getJSON('/musician/musiInfoReview.json',
       { 

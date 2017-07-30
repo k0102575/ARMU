@@ -1,25 +1,29 @@
-<!--   <div id="timeline-container">
-  <div id="timeline-line-container">
-  <div class="timeline-line"></div>
-  <img src="/image/logo/login_01_b.png" id="timeline-mark">
-  </div>
-  <div id="timeline-content">
-  <div id="timeline-date">2017-07-21</div>
-  <div id="timeline-desc">사진에 대한 설명이나 동영상에 대한 설명이 있습니다.사진에 대한 설명이나 동영상에 대한 설명이 있습니다.</div>
-  <img src="/image/musician/photo/m4.jpg" id="timeline-picture">
-  <img src="/image/musician/photo/m5.jpg" id="timeline-picture">
-  <img src="/image/musician/photo/m3.jpg" id="timeline-picture">
-  </div>
-  </div> -->
-  
-
 <div class="portfolio-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4YX3uQcfvjU" frameborder="0" allowfullscreen></iframe>
+<img src="https://img.youtube.com/vi/4YX3uQcfvjU/0.jpg">
 
 
 </div>
   
 <script id="musician-info-portfolio-template" type="text/x-handlebars-template">
-  {{#getPortfolio}}
+{{#getPortfolio}}
+  <div id="spec-backscreen"></div>
+  <div id="spec-detail">
+    <div id="spec-close"><i class="fa fa-times" aria-hidden="true"></i></div>
+    <div id="spec-date">
+    {{specDate}}
+    </div>
+    <div id="spec-desc">
+    {{specDscp}}
+    </div>
+
+    {{#each list}}
+    {{#fileMap}}
+    <img src="{{value}}" id="spec-picture">
+    {{/fileMap}}
+    {{/each}}
+
+  </div>
   <div id="timeline-container">
   <div id="timeline-line-container">
   <div class="timeline-line"></div>
@@ -35,7 +39,7 @@
   {{/each}}
   </div>
   </div>
-  {{/getPortfolio}}
+{{/getPortfolio}}
 </script>
 
   

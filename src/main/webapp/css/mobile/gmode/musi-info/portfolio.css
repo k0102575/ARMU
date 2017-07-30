@@ -82,3 +82,64 @@
   overflow: hidden;
   object-fit: cover;
 }
+
+#spec-backscreen {
+  position: fixed;
+  display: none;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .5);
+  z-index: 13;
+}
+
+#spec-detail {
+  width: 90%;
+  max-height: 1380px;
+  display: none;
+  position: fixed;
+  left: 5%;
+  top: 150px;
+  z-index: 15;
+  background-color: white;
+  border-top: 1px solid black;
+  border-radius: 15px;
+  overflow: scroll;
+  padding-left: 5%;
+  padding-bottom: 5%;
+  box-sizing: border-box;
+  min-height: 700px;
+}
+
+#spec-close {
+  text-align: center;
+  height: 5%;
+  width: 8%;
+  float: right;
+  font-size: 4em;
+  margin-right: 2%;
+}
+
+#spec-date {
+  width: 90%;
+  float: left;
+  font-size: 3em;
+  font-weight: normal;
+  margin-top: 5%;
+}
+
+#spec-desc {
+  width: 90%;
+  float: left;
+  font-size: 2.5em;
+  font-weight: 400;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+#spec-picture {
+  float: left;
+  width: 95%;
+  height: 100%;
+  margin-top: 5%;
+}
