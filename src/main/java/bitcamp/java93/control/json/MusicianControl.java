@@ -67,7 +67,22 @@ public class MusicianControl {
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
   
-
+  @RequestMapping("listSurfFilter")
+  public JsonResult listSurfFilter(int minAge, int maxAge) throws Exception {
+    HashMap<String,Object> dataMap = new HashMap<>();
+      List<Musician> musicianFilterList = (List<Musician>) musicianService.listSurfFilter(minAge, maxAge);
+      dataMap.put("listSurf", musicianFilterList);
+      return new JsonResult(JsonResult.SUCCESS, dataMap);
+  }
+  
+  @RequestMapping("listSurfGenderFilter")
+  public JsonResult listSurfGenderFilter(String gender, int minAge, int maxAge) throws Exception {
+    HashMap<String,Object> dataMap = new HashMap<>();
+      List<Musician> musicianGenderList = (List<Musician>) musicianService.listSurfGenderFilter(gender, minAge, maxAge);
+      dataMap.put("listSurf", musicianGenderList);
+      return new JsonResult(JsonResult.SUCCESS, dataMap);
+    }
+  
   @RequestMapping("getProfile")
   public JsonResult getProfile(HttpSession session){
 

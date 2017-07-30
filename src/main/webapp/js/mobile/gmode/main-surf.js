@@ -18,6 +18,65 @@ $('#abca').on('click',function(e) {
   displaySurfMusiList2()
 })
 
+$("#filter-update").on('click', function() {
+  var checkVal = $(":input:radio[name=gender]:checked").val()
+  
+  if(minAge == 0 && maxAge == 0) {
+	  if(checkVal == "G") {
+		  $.getJSON('/musician/listSurfFilter.json', 
+			{
+			  "minAge" : "10",
+			  "maxAge" : "60"
+			},
+			function(result) {
+				handleList(result)
+		  })
+	  } else {
+		  $.getJSON('/musician/listSurfGenderFilter.json', 
+		    {
+		    "gender" : checkVal,
+	  	    "minAge" : 10,
+		    "maxAge" : 60
+		    },
+	  	  function(result) {
+		    	handleList(result)
+	      })
+	  }
+	  
+  } else {
+	  if(checkVal == "G") {
+		  $.getJSON('/musician/listSurfFilter.json', 
+			{
+			  "minAge" : minAge,
+			  "maxAge" : maxAge
+			},
+			function(result) {
+				handleList(result)
+		  })
+	  } else {
+		  $.getJSON('/musician/listSurfGenderFilter.json', 
+		    {
+		    "gender" : checkVal,
+	  	    "minAge" : minAge,
+		    "maxAge" : maxAge
+		    },
+	  	  function(result) {
+		    	handleList(result)
+	      })
+	  }
+}
+  
+})
+
+function handleList(result) {
+	var templateFn = Handlebars.compile($('#musician-list-template').text())
+    var generatedHTML = templateFn(result.data)
+    var container = $('#musician-surf-list')
+    container.html(generatedHTML)
+    surfBackscreen.css('display', 'none');
+	filterContainer.toggle();
+}
+
 $(document.body).on('click', '.detail-link', function(event) {
   event.preventDefault()
   location.href = '/mobile/gmode/musi-info/index.html?no=' + $(this).attr('data-no') 
@@ -141,6 +200,9 @@ $("#filter-loc-backscreen").click(function() {
     $("#filter-loc-backscreen").css('display', 'none');
 })
 
+var minAge = 0,
+	maxAge = 0;
+
 $( function() {
     $( "#slider-range" ).slider({
       range: true,
@@ -149,6 +211,8 @@ $( function() {
       step: 10,
       values: [ 10, 50 ],
       slide: function( event, ui ) {
+    	  minAge = ui.values[0]
+    	  maxAge = ui.values[1]
 
         if (ui.values[0] == 10 && ui.values[1] == 50) {
           ageGroup.val("20대 이하" + " - " + "50대 이상");

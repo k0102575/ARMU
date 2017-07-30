@@ -9,6 +9,8 @@ import bitcamp.java93.domain.Musician;
 public interface MusicianDao {
   List<Musician> selectRecommandList(Member member);
   List<Musician> selectSurfList();
+  List<Musician> selectSurfListFilter(HashMap<String,Object> valueMap);
+  List<Musician> selectSurfListGenderFilter(HashMap<String,Object> valueMap);
   Musician selectOne(Member member);
   Musician selectMusi(int no);
   Musician selectMusiReview(int no);

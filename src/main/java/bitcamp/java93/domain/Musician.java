@@ -2,6 +2,7 @@ package bitcamp.java93.domain;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +21,10 @@ public class Musician extends Member  {
   Date eventDate;
   Date specDate;
   String specDscp;
+  int minAge;
+  int maxAge;
   Map<String , String> fileMap;
+  HashMap<String , String> valueMap;
   List<Map<Integer , String>> list;
   ArrayList<String> majorList;
   ArrayList<String> genreList;
@@ -32,9 +36,9 @@ public class Musician extends Member  {
     return "Musician [age=" + age + ", isTeam=" + isTeam + ", homepage=" + homepage + ", intro=" + intro + ", gender="
         + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite + ", popularity="
         + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", specDate="
-        + specDate + ", specDscp=" + specDscp + ", fileMap=" + fileMap + ", list=" + list + ", majorList=" + majorList
-        + ", genreList=" + genreList + ", themeList=" + themeList + ", locationList=" + locationList + ", photoList="
-        + photoList + "]";
+        + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge + ", fileMap=" + fileMap
+        + ", valueMap=" + valueMap + ", list=" + list + ", majorList=" + majorList + ", genreList=" + genreList
+        + ", themeList=" + themeList + ", locationList=" + locationList + ", photoList=" + photoList + "]";
   }
   public int getAge() {
     return age;
@@ -120,11 +124,29 @@ public class Musician extends Member  {
   public void setSpecDscp(String specDscp) {
     this.specDscp = specDscp;
   }
+  public int getMinAge() {
+    return minAge;
+  }
+  public void setMinAge(int minAge) {
+    this.minAge = minAge;
+  }
+  public int getMaxAge() {
+    return maxAge;
+  }
+  public void setMaxAge(int maxAge) {
+    this.maxAge = maxAge;
+  }
   public Map<String, String> getFileMap() {
     return fileMap;
   }
   public void setFileMap(Map<String, String> fileMap) {
     this.fileMap = fileMap;
+  }
+  public HashMap<String, String> getValueMap() {
+    return valueMap;
+  }
+  public void setValueMap(HashMap<String, String> valueMap) {
+    this.valueMap = valueMap;
   }
   public List<Map<Integer, String>> getList() {
     return list;
@@ -162,6 +184,7 @@ public class Musician extends Member  {
   public void setPhotoList(List<String> photoList) {
     this.photoList = photoList;
   }
+
   
   
   

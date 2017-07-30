@@ -27,6 +27,21 @@ public class MusicianServiceImpl implements MusicianService {
   public List<Musician> listSurf() throws Exception {   
     return musicianDao.selectSurfList();
   }
+  
+  public List<Musician> listSurfFilter(int minAge, int maxAge) throws Exception {   
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("minAge", minAge);
+    valueMap.put("maxAge", maxAge);
+    return musicianDao.selectSurfListFilter(valueMap);
+  }
+  
+  public List<Musician> listSurfGenderFilter(String gender, int minAge, int maxAge) throws Exception {   
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("gender", gender);
+    valueMap.put("minAge", minAge);
+    valueMap.put("maxAge", maxAge);
+    return musicianDao.selectSurfListGenderFilter(valueMap);
+  }
 
   @Override
   public Musician getProfile(Member member) throws Exception {
