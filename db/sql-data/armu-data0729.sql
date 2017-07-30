@@ -348,3 +348,19 @@ insert into loc_musi (muno, locno) values (3, 15);
 -- 이벤트 홍보 수락(pr, noti)
 update pr set status='Y' where muno=3 and eno=2;
 insert noti (muno, eno, type, date, cont, prno) values (3, 2, "요청 수락", '2017-07-21', "이벤트 홍보 수락", 3);
+
+
+-- 뮤지션 경력 파일 (spec, spec_path)
+insert into spec (muno, spdt, dscp) values(2, '2017-07-23', '저번 결혼식 이벤트때 찍은 사진입니다.');
+insert into spec (muno, spdt, dscp) values(1, '2017-07-22', '짱짱맨 조승우 입니다. 비밀의숲 예고편 영상 올려봅니다.');
+
+
+insert into spec_path (spno, path, isimg) values(1, '/image/event/spec/sam6.jpg', 'Y');
+insert into spec_path (spno, path, isimg) values(1, '/image/event/spec/sam7.jpg', 'Y');
+insert into spec_path (spno, path, isimg) values(2, 'https://youtu.be/9F56WWIPGg0', 'Y');
+
+
+
+
+
+

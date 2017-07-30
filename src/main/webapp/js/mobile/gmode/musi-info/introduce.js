@@ -29,11 +29,18 @@ function displayMusiInfoIntroduce() {
       { 
         "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {
-    	  console.log(result)
+    	  data = result.data.getIntroduce
+    	  console.log(data)
         var templateFn = Handlebars.compile($('#musician-info-introduce-template').text())
-        var generatedHTML = templateFn(result.data)
-  		var container = $('.musician-info-container')
+        var generatedHTML = templateFn(data)
+  		var container = $('#musician-info-cathegory')
   		var html = container.html()
   		container.html(html + generatedHTML)
+  		if(data.homepage == "") {
+  		  $(".introduce-homepage").css("display", "none")
+  		} else {
+		  $(".introduce-homepage").append("<span> " + data.homepage + "</span>")
+		  $(".introduce-introduce").text(data.intro)
+  		}
       })
 }

@@ -1,10 +1,4 @@
 <script id="musician-info-introduce-template" type="text/x-handlebars-template">
-{{#getIntroduce}}
-<div class="musician-info-header">
-기본정보
-</div>
-
-<div id="musician-info-cathegory">
 
 <div id="musician-info-major-container">
 <div id="musician-info-major">전공:</div>
@@ -33,7 +27,15 @@
 </div>
 </div>
 
+
+</script>
+  
+<div class="musician-info-header">
+기본정보
 </div>
+<div id="musician-info-cathegory">
+</div>
+
 
 <div class="introduce-header">
 자기 소개
@@ -41,23 +43,17 @@
 
 <div class="introduce-homepage">
 <i class="fa fa-internet-explorer" aria-hidden="true"></i>
-<a href="{{homepage}}">{{homepage}}</a>
+<a href="" ></a>
 </div>
 
 <div class="introduce-introduce">
-{{intro}}
+
 </div>
 
 <div id="introduce-more"><i class="fa fa-caret-down" aria-hidden="true"></i>&nbsp;더보기</div>
 <div id="introduce-hide"><i class="fa fa-caret-up" aria-hidden="true"></i>&nbsp;숨기기</div>
 
 <div class="introduce-space"></div>
-{{/each}}
-
-</script>
-  
-<div class="musician-info-container">
-</div>
 
 
 <!-- <div class="team-introduce-header">
