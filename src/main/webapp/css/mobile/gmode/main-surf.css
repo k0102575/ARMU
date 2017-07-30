@@ -269,6 +269,7 @@ input:checked + label {
   box-sizing: border-box;
   background-color: white;
   display: inline-block;
+  padding-bottom: 20%;
 }
 
 #musician-surf {
@@ -327,9 +328,12 @@ input:checked + label {
 	 position: absolute;
   left: 5%;
   bottom: 15%;
-  width: auto;
+  width: 80%;
   font-size: 1.5em;
   font-weight: 600;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
 }
 
 #musician-surf-like {
@@ -347,7 +351,7 @@ input:checked + label {
   font-weight: 440;
   position: fixed;
   margin-left: 28%;
-  top: 87%;
+  top: 90%;
   z-index: 1;
   background-color: white;
   width: 44%;

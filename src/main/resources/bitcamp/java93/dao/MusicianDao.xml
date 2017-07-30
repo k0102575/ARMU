@@ -38,7 +38,7 @@
     </collection>
   </resultMap>
   
-  <resultMap type="musician" id="musicianInfoMap">
+   <resultMap type="musician" id="musicianInfoMap">
     <id column="mno" property="no" />
     <result column="name" property="name" />
     <result column="nick" property="nickName" />
@@ -56,7 +56,22 @@
     <result column="eventDate" property="eventDate" />
   </resultMap>
   
-   <resultMap type="musician" id="musicianMapBasic">
+  <resultMap type="musician" id="musicianInfoIntroduceMap">
+    <result column="team" property="isTeam" />
+    <result column="hpg" property="homepage" />
+    <result column="intro" property="intro" />
+    <collection property="majorList" ofType="string"> 
+        <result column="major"/> 
+    </collection>
+    <collection property="genreList" ofType="string"> 
+        <result column="genre"/> 
+    </collection> 
+    <collection property="locationList" ofType="string"> 
+        <result column="location"/> 
+    </collection>
+  </resultMap>
+  
+ <resultMap type="musician" id="musicianMapBasic">
     <id column="mno" property="no" />
     <result column="name" property="name" />
     <result column="nick" property="nickName" />
@@ -151,14 +166,25 @@
   <select id="selectMusiReview" resultMap="musicianInfoReviewMap" parameterType="int">
   select mtc.rev, mtc.score, even.title as eventTitle, DATE_FORMAT(even.date, '%Y-%m-%d') as eventDate, m.name 
   from musi as mu left outer join mtc on mtc.muno=mu.muno
-  inner join evn as even on mtc.eno = even.eno
-  inner join gmemb as g on even.gno = g.gno
-  inner join memb as m on g.gno = m.mno
+  left outer join evn as even on mtc.eno = even.eno
+  left outer join gmemb as g on even.gno = g.gno
+  left outer join memb as m on g.gno = m.mno
 	where mtc.muno = #{no}
   </select>
   
   <select id="selectMusiReviewCount" resultMap="musicianInfoReviewMap" parameterType="int">
   select count(*) as count from mtc where muno = #{no} group by rev;
+  </select>
+  
+  <select id="selectMusiIntroduce" resultMap="musicianInfoIntroduceMap" parameterType="int">
+  select mu.team, mu.hpg, mu.intro, mj.name as major, g.name as genre, l.name as location 
+  from musi mu left outer join mjr_musi mjm on mu.muno=mjm.muno 
+  left outer join mjr mj on mjm.mjrno=mj.mjrno
+  left outer join gnr_musi gm on mu.muno=gm.muno 
+  left outer join gnr g on gm.gnrno=g.gnrno
+  left outer join loc_musi lm on mu.muno=lm.muno 
+  left outer join loc l on lm.locno=l.locno
+  where mu.muno = #{no}
   </select>
 
   <select id="selectRecommandList" resultMap="musicianMap">

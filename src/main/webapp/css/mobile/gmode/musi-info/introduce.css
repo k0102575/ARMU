@@ -1,5 +1,11 @@
 /* 뮤지션 카테고리 시작 */
 
+.musician-info-container {
+	width: 100%;
+	min-height: 1000px;
+	position: relative;
+}
+
 #musician-info-cathegory {
   float: left;
   width: 90%;

@@ -13,10 +13,10 @@ public interface MusicianDao {
   Musician selectMusi(int no);
   Musician selectMusiReview(int no);
   Musician selectMusiReviewCount(int no);
+  Musician selectMusiIntroduce(int no);
   List<Musician> musicianLocation();
   int updatePhoto(HashMap<String, Object> valueMap);
 //  void insertPhoto(Map<String,Object> valueMap);
   List<String> selectPhotoList(int musicianNo);
 //  void deletePhoto(int musicianNo);
-
 }

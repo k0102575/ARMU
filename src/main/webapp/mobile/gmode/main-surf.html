@@ -58,18 +58,46 @@
 <div id='musician-surf'><a class='detail-link' href='#' data-no='{{no}}'>
     <img class='musician-surf-picture' src='{{photo}}'>
     <div id="musician-surf-preview">
+      <div id="musician-surf-intro">
+        {{#each majorList}}
+        {{this}}
+        {{/each}}
+        {{#each genreList}}
+        {{this}}
+        {{/each}}
+      </div>
       <span id="musician-surf-name">{{name}}</span><br> 
-      <span id="musician-surf-location">{{area}}</span><br> <img id="musician-surf-like" src="/image/icon/mobile_icon/heart.png">
+      <span id="musician-surf-location">
+      {{#each locationList}}
+      {{this}}
+      {{/each}}
+      </span>
+      <br> 
+      <img id="musician-surf-like" src="/image/icon/mobile_icon/heart.png">
     </div>
 </div>
 {{/each}}
 
 {{#each location}}
-<div id='musician-surf'>
+<div id='musician-surf'><a class='detail-link' href='#' data-no='{{no}}'>
     <img class='musician-surf-picture' src='{{photo}}'>
     <div id="musician-surf-preview">
+      <div id="musician-surf-intro">
+        {{#each majorList}}
+        {{this}}
+        {{/each}}
+        {{#each genreList}}
+        {{this}}
+        {{/each}}
+      </div>
       <span id="musician-surf-name">{{name}}</span><br> 
-      <span id="musician-surf-location">{{area}}</span><br> <img id="musician-surf-like" src="/image/icon/mobile_icon/heart.png">
+      <span id="musician-surf-location">
+      {{#each locationList}}
+      {{this}}
+      {{/each}}
+      </span>
+      <br> 
+      <img id="musician-surf-like" src="/image/icon/mobile_icon/heart.png">
     </div>
 </div>
 {{/each}}
