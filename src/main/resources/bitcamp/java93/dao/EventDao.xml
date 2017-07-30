@@ -31,6 +31,37 @@
     </collection> 
 	</resultMap>
 	
+	<resultMap type="event" id="eventMapBasic">
+    <id column="eno" property="no" />
+    <result column="title" property="title" />
+    <result column="gno" property="writer" />
+    <result column="location" property="location" />
+    <result column="addr" property="address" />
+    <result column="pay" property="pay" />
+    <result column="req" property="requirement" />
+    <result column="cont" property="contents" />
+    <result column="dpay" property="downPay" />
+    <result column="date" property="date" />
+    <result column="pay" property="rhspay" />
+    <result column="info" property="rhsinfo" />
+    <result column="num" property="rhsnum" />
+    <result column="fav" property="isFavorite" />
+     <association property="writeMember" javaType="Member">
+    <id property="no" column="muno"/>
+    <result property="name" column="name"/>
+    <result property="photo" column="path"/>
+  </association>
+    <collection property="genreList" ofType="string"> 
+        <result column="genre"/> 
+    </collection> 
+    <collection property="themeList" ofType="string"> 
+        <result column="theme"/> 
+    </collection> 
+    <collection property="majorList" ofType="string"> 
+        <result column="major"/> 
+    </collection> 
+  </resultMap>
+	
   <resultMap type="musician" id="musicianMap2">
     <id column="mno" property="no" />
     <result column="name" property="name" />
@@ -70,6 +101,36 @@
   left outer join thm_musi tm on mu.muno=tm.muno left outer join thm t2 on tm.thmno=t2.thmno
   order by title asc
 </select><!-- 완진 -->
+
+<select id="selectRecommandList" resultMap="eventMapBasic" parameterType="int">
+  select e.title, e.eno, e.date,  concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
+  mj.name as major, g.name as genre, t.name as theme, 
+  fe.fav, m.mno, m.name, m.path
+  from evn e
+  inner join memb m on e.gno=m.mno
+  inner join loc l on e.locno=l.locno left outer join loc_type lt on l.loctno=lt.loctno
+  left outer join mjr_evn me on e.eno=me.eno
+  left outer join gnr_evn ge on e.eno=ge.eno
+  left outer join thm_evn te on e.eno=te.eno
+  left outer join mjr mj on me.mjrno=mj.mjrno
+  left outer join gnr g on ge.gnrno=g.gnrno
+  left outer join thm t on te.thmno=t.thmno
+  left outer join mjr_musi mjm on mj.mjrno=mjm.mjrno
+  left outer join gnr_musi gm on g.gnrno=gm.gnrno
+  left outer join thm_musi tm on t.thmno=tm.thmno
+  left outer join (
+select count(if(muno is not null, 1, 0)) as fav, muno, eno
+from fav_evn
+where muno=#{no}
+group by eno 
+) fe on fe.eno=e.eno
+  where mjm.muno=#{no} or gm.muno=#{no} or tm.muno=#{no}
+  order by title asc
+</select><!-- 완진 -->
+
+<!-- <select id="selectTop10CategoryList" resultMap="eventMapBasic">
+ 
+</select>완진 -->
 
 <insert id="insert" parameterType="member" 
         useGeneratedKeys="true" keyColumn="eno" keyProperty="no">

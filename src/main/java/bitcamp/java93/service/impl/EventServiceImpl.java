@@ -69,6 +69,11 @@ public class EventServiceImpl implements EventService {
     }
     
   }
+
+  /*뮤지션모드 > 추천탭 */
+  public List<Event> listRecommand(int no) throws Exception {
+    return eventDao.selectRecommandList(no);
+  }
   
 }
 

@@ -13,6 +13,7 @@
     "blueimp-file-upload": "^9.18.0",
     "bootstrap": "^3.3.7",
     "handlebars": "^4.0.10",
+    "handlebars-intl": "^1.1.2",
     "jquery": "^1.12.4",
     "jquery-ui-dist": "^1.12.1",
     "sweetalert": "^1.1.3",

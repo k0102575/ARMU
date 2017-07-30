@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import bitcamp.java93.domain.Event;
+import bitcamp.java93.domain.Member;
 import bitcamp.java93.service.EventService;
 
 @RestController
@@ -20,11 +22,19 @@ public class EventControl {
   @Autowired EventService eventService;
   
   @RequestMapping("listOngoing")
-  public JsonResult list() throws Exception {
-    
-    HashMap<String,Object> dataMap = new HashMap<>();
-    dataMap.put("listOngoing",eventService.listOngoing());
-    return new JsonResult(JsonResult.SUCCESS, dataMap);
+  public JsonResult listOngoing() {
+    JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listOngoing",eventService.listOngoing());
+
+      result.setData(dataMap);
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
+    return result;
   }
   
   @RequestMapping("addReherse")
@@ -90,6 +100,29 @@ public class EventControl {
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
+  
+  
+  /*/* musimode 나에게 꼭 맞는 이벤트*/
+  @RequestMapping("listRecommand")
+  public JsonResult listRecommand(HttpSession session) {
+    JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listRecommand",eventService.listRecommand(getLoginMember(session).getNo()));
+
+      result.setData(dataMap);
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
+    return result;
+  }
+  
+  private Member getLoginMember(HttpSession session) {
+    Member loginMember = (Member) session.getAttribute("loginMember");
+      return loginMember;
+  }
   
 }
 

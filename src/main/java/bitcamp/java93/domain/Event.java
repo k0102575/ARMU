@@ -8,6 +8,7 @@ public class Event {
   int no;
   String title;
   int writer;
+  Member writeMember;
   ArrayList<String> themeList;
   ArrayList<String> majorList;
   ArrayList<String> genreList;
@@ -23,20 +24,12 @@ public class Event {
   int rhspay;
   int rhsnum;
   String rhsinfo;
+  boolean isFavorite;
   List<String> EventRegistTheme;
   List<String> EventRegistMajor;
   List<String> EventRegistGenre;
   ArrayList<Musician> applicantList;
   ArrayList<Musician> pickedList;
-  @Override
-  public String toString() {
-    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", themeList=" + themeList + ", majorList="
-        + majorList + ", genreList=" + genreList + ", location=" + location + ", address=" + address + ", pay=" + pay
-        + ", locno=" + locno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
-        + ", tmnno=" + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", rhsinfo=" + rhsinfo
-        + ", EventRegistTheme=" + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre="
-        + EventRegistGenre + ", applicantList=" + applicantList + ", pickedList=" + pickedList + "]";
-  }
   public int getNo() {
     return no;
   }
@@ -145,6 +138,12 @@ public class Event {
   public void setRhsinfo(String rhsinfo) {
     this.rhsinfo = rhsinfo;
   }
+  public boolean isFavorite() {
+    return isFavorite;
+  }
+  public void setFavorite(boolean isFavorite) {
+    this.isFavorite = isFavorite;
+  }
   public List<String> getEventRegistTheme() {
     return EventRegistTheme;
   }
@@ -175,10 +174,16 @@ public class Event {
   public void setPickedList(ArrayList<Musician> pickedList) {
     this.pickedList = pickedList;
   }
-  
-  
-  
-  
-  
+  @Override
+  public String toString() {
+    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", themeList=" + themeList + ", majorList="
+        + majorList + ", genreList=" + genreList + ", location=" + location + ", address=" + address + ", pay=" + pay
+        + ", locno=" + locno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
+        + ", tmnno=" + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", rhsinfo=" + rhsinfo
+        + ", isFavorite=" + isFavorite + ", EventRegistTheme=" + EventRegistTheme + ", EventRegistMajor="
+        + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre + ", applicantList=" + applicantList
+        + ", pickedList=" + pickedList + "]";
+  }
+
   
   }

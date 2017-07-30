@@ -12,4 +12,5 @@ public interface EventDao {
   int insertMajor(Map<String,Object> majorMap);
   int insertGenre(Map<String,Object> genreMap);
   int insertReherse(Event event);
+  List<Event> selectRecommandList(int no);//뮤지션모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트
 }

@@ -360,7 +360,8 @@ insert into spec_path (spno, path, isimg) values(1, '/image/event/spec/sam7.jpg'
 insert into spec_path (spno, path, isimg) values(2, 'https://youtu.be/9F56WWIPGg0', 'Y');
 
 
-
-
-
-
+-- 뮤지션 관심이벤트(fav_evn)
+insert into fav_evn (muno, eno) values (3, 3);
+insert into fav_evn (muno, eno) values (3, 4);
+insert into fav_evn (muno, eno) values (2, 4);
+insert into fav_evn (muno, eno) values (1, 4);

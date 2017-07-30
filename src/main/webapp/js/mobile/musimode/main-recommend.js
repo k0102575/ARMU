@@ -1,27 +1,31 @@
 "use strict"
-
-displayRecommandByEventMusiList();
-displayBestReviewMusiList();
-displayPopularMusiList();
+HandlebarsIntl.registerWith(Handlebars);
+displayRecommandEventList();
 displayMostPopularCategoryList();
 
-function displayRecommandByEventMusiList() {
+function displayRecommandEventList() {
 	$.getJSON('/event/listRecommand.json', function(result) {
 		if(result.status != 'success') {
 			console.error("getJSON() 실패: ", result.status)
 			return;
 		}
 		
-		if(result.data == "browse") {
-			hideRecommandList()
-			return;
-		}//받아온 데이터가 없는 경우
+		console.log(result.data)
+//		
+//		var intlData = { locales: 'en-US' }
+//
+//		var context = { price: 1000 };
+//
+//		var html = template(context, { data: {intl: intlData}});
+//		item.pay = {intl: intlData}
 		
 			$.each(result.data.listRecommand, function(i, item) {
 				var starInteger = parseInt(item.score),
 				starRealNumber = item.score - starInteger;
-				starAdd(starInteger, starRealNumber, item)
-				heartAdd(item)
+				starAdd(starInteger, starRealNumber, item)//별점 처리
+				
+				heartAdd(item)//관심정보 처리
+				
 			});
 
 		var templateFn = Handlebars.compile($('#rec-event-template').text())
@@ -69,32 +73,6 @@ $(document).ready(function () {
 });//initialize swiper ended
 
 
-
-
-function displayBestReviewMusiList() {
-	$.getJSON('/event/listRecommand.json', function(result) {
-		var templateFn = Handlebars.compile($('#rec-best-review-musi-template').text())
-		var generatedHTML = templateFn(result.data)
-		var container = $('#rec-best-review-musi-container')
-		var html = container.html()
-		container.html(html + generatedHTML)
-
-	}, function(err) {
-		console.log(err)
-	})
-}
-
-function displayPopularMusiList() {
-	$.getJSON('/event/listRecommand.json', function(result) {
-		var templateFn = Handlebars.compile($('#rec-popular-musi-template').text())
-		var generatedHTML = templateFn(result.data)
-		var container = $('#rec-popular-musi-container')
-		var html = container.html()
-		container.html(html + generatedHTML)
-	}, function(err) {
-		console.log(err)
-	})
-}
 
 function displayMostPopularCategoryList() {
 	$.getJSON('/event/listRecommand.json', function(result) {
