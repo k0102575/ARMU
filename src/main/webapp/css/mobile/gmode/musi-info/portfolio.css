@@ -102,7 +102,6 @@
   top: 150px;
   z-index: 15;
   background-color: white;
-  border-top: 1px solid black;
   border-radius: 15px;
   overflow: scroll;
   padding-left: 5%;
@@ -112,12 +111,15 @@
 }
 
 #spec-close {
-  text-align: center;
-  height: 5%;
-  width: 8%;
-  float: right;
-  font-size: 4em;
-  margin-right: 2%;
+    text-align: right;
+    height: 3%;
+    width: 82%;
+    font-size: 2.5em;
+    position: fixed;
+    z-index: 15;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: white;
 }
 
 #spec-date {
@@ -125,7 +127,7 @@
   float: left;
   font-size: 3em;
   font-weight: normal;
-  margin-top: 5%;
+  margin-top: 10%;
 }
 
 #spec-desc {
@@ -138,6 +140,13 @@
 }
 
 #spec-picture {
+  float: left;
+  width: 95%;
+  height: 100%;
+  margin-top: 5%;
+}
+
+#spec-movie {
   float: left;
   width: 95%;
   height: 100%;

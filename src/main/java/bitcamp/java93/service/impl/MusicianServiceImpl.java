@@ -23,6 +23,10 @@ public class MusicianServiceImpl implements MusicianService {
   public List<Musician> listRecommand(Member member) throws Exception {   
     return musicianDao.selectRecommandList(member);
   }
+  
+  public List<Musician> listFavor(int no) throws Exception {   
+    return musicianDao.selectFavorList(no);
+  }
 
   public List<Musician> listSurf() throws Exception {   
     return musicianDao.selectSurfList();

@@ -357,7 +357,7 @@ insert into spec (muno, spdt, dscp) values(1, '2017-07-22', '짱짱맨 조승우
 
 insert into spec_path (spno, path, isimg) values(1, '/image/event/spec/sam6.jpg', 'Y');
 insert into spec_path (spno, path, isimg) values(1, '/image/event/spec/sam7.jpg', 'Y');
-insert into spec_path (spno, path, isimg) values(2, 'https://youtu.be/9F56WWIPGg0', 'Y');
+insert into spec_path (spno, path, isimg) values(2, 'https://youtu.be/9F56WWIPGg0', 'N');
 
 
 -- 뮤지션 관심이벤트(fav_evn)

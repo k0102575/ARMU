@@ -53,6 +53,16 @@ public class MusicianControl {
 
     return result;
   }
+  
+  @RequestMapping("listFavor")
+  public JsonResult listFavor(HttpSession session) throws Exception {
+    Member loginMember = (Member)session.getAttribute("loginMember");
+    HashMap<String,Object> dataMap = new HashMap<>();
+    ArrayList<Musician> musicianListFavor = (ArrayList<Musician>) musicianService.listFavor(loginMember.getNo());
+
+    dataMap.put("listFavor", musicianListFavor);
+    return new JsonResult(JsonResult.SUCCESS, dataMap);
+  }
 
   @RequestMapping("listSurf")
   public JsonResult listSurf() throws Exception {

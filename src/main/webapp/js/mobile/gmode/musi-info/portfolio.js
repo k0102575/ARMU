@@ -1,3 +1,11 @@
+Handlebars.registerHelper('isIndex', function(key, options) {
+  if (key == "Y") {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
+
 displayMusiInfoPortfolio()
     
 function displayMusiInfoPortfolio() {
@@ -31,6 +39,15 @@ function displayMusiInfoPortfolio() {
           $("#spec-backscreen").css('display', 'none')
           $("#musician-header-info-img").css('display','none')
         })
+        
+        var source = $("#timeline-movie").text().substring(20, 31)
+        $("#timeline-movie").html("")
+        $("#timeline-movie").append("<img id='timeline-picture' src='https://img.youtube.com/vi/" + source + "/0.jpg'>")
+        
+        var sourceMovie = $("#spec-movie").text().substring(20, 31)
+        $("#spec-movie").html("")
+        $("#spec-movie").append("<iframe width='791' height='876' src='https://www.youtube.com/embed/" + source + "?rel=0&amp;showinfo=0' frameborder='0' allowfullscreen></iframe>")
+        
         
       })
 }

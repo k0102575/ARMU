@@ -8,11 +8,12 @@ $(document).ready(function() {
   headerMenuDetail.load("/mobile/header-menu-detail.html");
 })
 
-$.getJSON('json/musician-list.json', function(result) {
-  var templateFn = Handlebars.compile($('#musician-favor-template').text())
+$.getJSON('/musician/listFavor.json', function(result) {
+  console.log(result)
+  /*var templateFn = Handlebars.compile($('#musician-favor-template').text())
   var generatedHTML = templateFn(result)
   var container = $('#musician-favor-list')
-  container.html(generatedHTML)
+  container.html(generatedHTML)*/
 })
   
 var lastScroll = 0;
