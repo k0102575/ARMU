@@ -179,7 +179,7 @@
   
   <sql id="selectAll">
     select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, m.path, mu.gender, 
-    mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, fm.popu, if(fm.fav is not null, 1, 0) as fav, 
+    mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, if(fm.fav is not null, 1, 0) as fav, 
     lm.muno, l.name as location, lt.name as sido
   from musi mu inner join memb m on mu.muno=m.mno
   left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on mjm.mjrno=mj.mjrno
