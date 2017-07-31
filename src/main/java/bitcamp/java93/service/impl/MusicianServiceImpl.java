@@ -43,10 +43,10 @@ public class MusicianServiceImpl implements MusicianService {
     return musicianDao.selectSurfListGenderFilter(valueMap);
   }
 
-  @Override
-  public Musician getProfile(Member member) throws Exception {
-    return musicianDao.selectOne(member);
-  }
+//  @Override
+//  public Musician getProfile(Member member) throws Exception {
+//    return musicianDao.selectOne(member);
+//  }
   
   @Override
   public Musician get(int no) throws Exception {
@@ -88,14 +88,14 @@ public class MusicianServiceImpl implements MusicianService {
 //    musicianDao.insertPhoto(valueMap);
 //  }
 
-  @Override
-  public void updatePhoto(int no, String photoPath) throws Exception {
-    HashMap<String,Object> valueMap = new HashMap<>();
-  valueMap.put("musicianNo", no);
-  valueMap.put("photoPath", photoPath);
-    System.out.println(photoPath);
-    musicianDao.updatePhoto(valueMap);
-  }
+//  @Override
+//  public void updatePhoto(int no, String photoPath) throws Exception {
+//    HashMap<String,Object> valueMap = new HashMap<>();
+//  valueMap.put("memberNo", no);
+//  valueMap.put("photoPath", photoPath);
+//    System.out.println(photoPath);
+//    memberDao.updatePhoto(valueMap);
+//  }
 
   //  public void updatePhoto(Musician musician) throws Exception {
   //    musicianDao.getClass()Photo(musician.getNo()); // 강사의 모든 사진을 지운다.

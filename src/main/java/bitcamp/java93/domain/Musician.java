@@ -24,7 +24,7 @@ public class Musician extends Member  {
   int minAge;
   int maxAge;
   Map<String , String> fileMap;
-  HashMap<String , String> valueMap;
+//  HashMap<String , String> valueMap;
   List<Map<Integer , String>> list;
   ArrayList<String> majorList;
   ArrayList<String> genreList;

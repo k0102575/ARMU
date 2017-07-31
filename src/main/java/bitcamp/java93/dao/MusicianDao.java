@@ -11,15 +11,16 @@ public interface MusicianDao {
   List<Musician> selectSurfList();
   List<Musician> selectSurfListFilter(HashMap<String,Object> valueMap);
   List<Musician> selectSurfListGenderFilter(HashMap<String,Object> valueMap);
-  Musician selectOne(Member member);
+//  Musician selectOne(Member member);
   Musician selectMusi(int no);
   Musician selectMusiReview(int no);
   Musician selectMusiReviewCount(int no);
   Musician selectMusiIntroduce(int no);
   Musician selectMusiPortfolio(int no);
   List<Musician> musicianLocation();
-  int updatePhoto(HashMap<String, Object> valueMap);
+//  int updatePhoto(HashMap<String, Object> valueMap);
+//  List<String> selectPhotoList(int memberNo);
 //  void insertPhoto(Map<String,Object> valueMap);
-  List<String> selectPhotoList(int musicianNo);
+ 
 //  void deletePhoto(int musicianNo);
 }

@@ -36,7 +36,17 @@
     from memb m
     where email=#{email} and pwd=password(#{password})
   </select>
-  
+
+  <select id="selectOne" resultMap="memberMap">
+    select mno, name, nick, path, pwd, email,phone from memb
+    where mno=#{no}
+  </select>
+
+	<update id="updatePhoto" parameterType="map">
+		update memb set
+		path=#{photoPath}
+		where mno=#{memberNo}
+	</update>
   
 
 </mapper>

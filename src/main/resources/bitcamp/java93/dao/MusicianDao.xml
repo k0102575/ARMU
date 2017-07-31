@@ -269,13 +269,12 @@
   where l.name like '동대문구'
   </select>
   
-  
-  <update id="updatePhoto" parameterType="map">
-  update musi set 
-  path=#{photoPath}
-  where muno=#{musicianNo}
-  </update>
-  
+    <!-- <update id="updatePhoto" parameterType="map">
+    update musi set
+    path=#{photoPath}
+    where muno=#{memberNo}
+  </update> -->
+
    
 </mapper>
 

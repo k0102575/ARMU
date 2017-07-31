@@ -26,7 +26,19 @@ public class MemberServiceImpl implements MemberService {
     return memberDao.selectOneByEmailPassword(valueMap);
   }
 
+  @Override
+  public Member getProfile(Member member) throws Exception {
+    return memberDao.selectOne(member); 
+  }
   
+  @Override
+  public void updatePhoto(int no, String photoPath) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+  valueMap.put("memberNo", no);
+  valueMap.put("photoPath", photoPath);
+    System.out.println(photoPath);
+    memberDao.updatePhoto(valueMap);
+  }
   
 }
 

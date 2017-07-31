@@ -104,6 +104,7 @@ a {
 	font-size: 350%;
 	background-color: white;
 	border: 1px solid red;
+  text-align: center;
 }
 
 #profile-toggle {
@@ -166,6 +167,7 @@ a {
 
 #fi-photoupload {
 	position: fixed;
+  left: 5%;
 	height: 103px;
 	width: 90%;
 }

@@ -1,5 +1,7 @@
 package bitcamp.java93.domain;
 
+import java.util.HashMap;
+
 public class Member {
   int no;
   String name;
@@ -8,6 +10,7 @@ public class Member {
   String password;
   String email;
   String photo;
+  HashMap<String , String> valueMap;
   @Override
   public String toString() {
     return "Member [no=" + no + ", name=" + name + ", nickName=" + nickName + ", phone=" + phone + ", password="
