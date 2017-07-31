@@ -117,6 +117,34 @@ body {
   color: white;
 }
 
+input:focus {
+  outline: none;
+  color: white;
+}
+
+button:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: black;
+  font-weight: 700;
+  }
+
+input:focus::-webkit-input-placeholder { 
+  color:transparent; 
+}
+
+@-webkit-keyframes autofill {
+    to {
+        color: white;
+        background: transparent;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+
 .password-check {
 	height: 120px;
 	width: 80%;
@@ -175,17 +203,17 @@ body {
   height: 95px;
   width: 65%;
   left: 20%;
-  transform: translateX(10%);
+  transform: translateY(25%);
   font-size: 200%;
   font-weight: 400;
   text-align: center;
   border-radius: 50px;
   line-height: 95px;
   box-sizing: border-box;
-  bottom: 15%;
+  bottom: 25%;
   color: white;
-  border: 1.5px solid white;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(255, 255, 255, .5);
+  border: 0px;
 }
 
 <!-- 로그인 끝 --> 
@@ -217,12 +245,7 @@ body {
   display:none;
 }
 
-.login-btn {
-  bottom: 25%;
-  color: white;
-  background-color: rgba(255, 255, 255, .7);
-  transform: translateY(25%);
-}
+
 
 <!-- 입력체크 끝 -->
 

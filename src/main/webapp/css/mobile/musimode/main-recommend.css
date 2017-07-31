@@ -77,9 +77,13 @@ background-color: rgba(255, 255, 255, 0.78);
   color: white;
   z-index: 1;
   border-radius: 10px;
-box-shadow: 1px 1px 2px #252525;
-background: linear-gradient(rgba(0, 0, 0, 0.6), rgb(255, 255, 255),rgb(246, 242, 242)), url(/image/event/wedding.jpg);
-    background-size: cover;
+  box-shadow: 1px 1px 2px #252525;
+  background: linear-gradient(
+              rgba(0, 0, 0, 0.6), 
+              rgb(255, 255, 255),
+              rgb(246, 242, 242)), 
+              url(/image/event/wedding2.jpg);
+  background-size: cover;
 }
 
 .rec-event-writerbox {
