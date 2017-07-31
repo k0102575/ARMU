@@ -301,7 +301,7 @@ input:checked + label {
 	width: 90%;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	font-size: 2.5em;
+	font-size: 2em;
 	left: 5%;
 	top: 10px;
 	font-weight: 400;
@@ -321,15 +321,15 @@ input:checked + label {
 	left: 5%;
 	bottom: 30%;
   width: auto;
-  font-size: 1.5em;
+  font-size: 1.8em;
 }
 
 #musician-surf-location {
 	 position: absolute;
   left: 5%;
-  bottom: 15%;
+  bottom: 10%;
   width: 80%;
-  font-size: 1.5em;
+  font-size: 1.8em;
   font-weight: 600;
   white-space: nowrap; 
   overflow: hidden; 
@@ -338,8 +338,8 @@ input:checked + label {
 
 #musician-surf-like {
 	position: absolute;
-	right: 10%;
-	bottom: 25%;
+	right: 5%;
+	bottom: 15%;
 }
 
 /*뮤지션 리스트 끝*/

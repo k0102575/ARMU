@@ -1,10 +1,12 @@
 <script id="musician-info-introduce-template" type="text/x-handlebars-template">
 
+
+
 <div id="musician-info-major-container">
 <div id="musician-info-major">전공:</div>
 <div id="musician-info-major-content">
   {{#each majorList}}
-  {{this}}
+  #{{this}}
   {{/each}}
 </div>
 </div>
@@ -13,7 +15,16 @@
 <div id="musician-info-genre">장르:</div>
 <div id="musician-info-genre-content">
   {{#each genreList}}
-  {{this}}
+  #{{this}}
+  {{/each}}
+</div>
+</div>
+
+<div id="musician-info-theme-container">
+<div id="musician-info-theme">희망 테마:</div>
+<div id="musician-info-theme-content">
+  {{#each themeList}}
+  #{{this}}
   {{/each}}
 </div>
 </div>
@@ -21,6 +32,7 @@
 <div id="musician-info-location-container">
 <div id="musician-info-location">희망 지역:</div>
 <div id="musician-info-location-content">
+  {{sido}}
   {{#each locationList}}
   {{this}}
   {{/each}}
@@ -55,41 +67,5 @@
 
 <div class="introduce-space"></div>
 
-
-<!-- <div class="team-introduce-header">
-팀정보
-</div>
-team-introduce-header
-
-<div class="team-introduce-team">
-알뮤팀&nbsp;&nbsp;|&nbsp;&nbsp;팀원:&nbsp;3명  
-</div>
-
-<table class="team-introduce-container">
-  <thead>
-    <tr>
-      <th class="table-border-right">이름</th>
-      <th>포지션</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="table-border-right">홍길동</td>
-      <td>바이올린</td>
-    </tr>
-    <tr>
-      <td class="table-border-right">임꺽정</td>
-      <td>첼로</td>
-    </tr>
-    <tr>
-      <td class="table-border-right">유관순</td>
-      <td>피아노</td>
-    </tr>
-    <tr>
-      <td class="table-border-right">윤봉길</td>
-      <td>꽹과리</td>
-    </tr>         
-  </tbody>
-</table> -->
 
 <script src="/js/mobile/gmode/musi-info/introduce.js"></script>

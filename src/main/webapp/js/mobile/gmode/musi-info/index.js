@@ -36,9 +36,9 @@ function displayMusiInfo() {
       musicianHeaderInfoImg.attr("src", data.photo)
       musicianBasicInfoImg.attr("src", data.photo)
       if(data.gender == "F") {
-        musicianBasicInfoName.text(data.name + "  " + data.age + "  여성")
+        musicianBasicInfoName.text(data.name + "    " + data.age + "    여성")
       } else if(data.gender == "M") {
-        musicianBasicInfoName.text(data.name + "  " + data.age + "  남성")
+        musicianBasicInfoName.text(data.name + "    " + data.age + "    남성")
       }
   })
 }
