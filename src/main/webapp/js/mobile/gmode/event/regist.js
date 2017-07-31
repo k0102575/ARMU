@@ -125,6 +125,7 @@ eventPage1Cancel.on('click', function() {
 eventPage1Next.on('click', function() {
   
   $.getJSON('/category/listTheme.json', function(result) {
+    console.log(result)
     var templateFn = Handlebars.compile($('#select-theme-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#theme-select-box')

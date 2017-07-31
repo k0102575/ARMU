@@ -84,6 +84,7 @@ $(document.body).on('click', '.detail-link', function(event) {
 
 function displaySurfMusiList() {
   $.getJSON('/musician/listSurf.json', function(result) {
+    console.log(result)
     var templateFn = Handlebars.compile($('#musician-list-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#musician-surf-list')

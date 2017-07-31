@@ -87,6 +87,7 @@
     <result column="age" property="age" />
     <result column="path" property="photo" />
     <result column="gender" property="gender" />
+    <result column="fav" property="fav" />
   </resultMap>
   
   <resultMap type="musician" id="musicianInfoReviewMap">
@@ -178,17 +179,18 @@
   
   <sql id="selectAll">
     select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, m.path, mu.gender, 
-    mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, fm.popu, null as fav, lm.muno, l.name as location, lt.name as sido
+    mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, fm.popu, if(fm.fav is not null, 1, 0) as fav, 
+    lm.muno, l.name as location, lt.name as sido
   from musi mu inner join memb m on mu.muno=m.mno
   left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on mjm.mjrno=mj.mjrno
   left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g on gm.gnrno=g.gnrno
   left outer join thm_musi tm on mu.muno=tm.muno left outer join thm t on tm.thmno=t.thmno
   left outer join mtc on mtc.muno=mu.muno
   left outer join (
-  select count(if(muno is not null, 1, 0)) as popu, muno
+  select count(if(gno is not null, 1, 0)) as fav, gno, muno
   from fav_musi
-  group by muno
-  ) fm on fm.muno=mu.muno
+  where gno= 6
+  group by muno) fm on fm.muno=mu.muno
   left outer join loc_musi lm on lm.muno=m.mno
   left outer join loc l on lm.locno= l.locno
   left outer join loc_type lt on l.loctno = lt.loctno
@@ -216,10 +218,14 @@
     where m.mno=#{no}
   </select>
   
-  <select id="selectMusi" resultMap="musicianInfoMap" parameterType="int">
-  select m.mno, m.name, m.nick, mu.age, m.path, mu.gender
+  <select id="selectMusi" resultMap="musicianInfoMap" parameterType="map">
+  select m.mno, m.name, m.nick, mu.age, m.path, mu.gender, if(fm.fav is not null, 1, 0) as fav
   from musi mu inner join memb m on mu.muno=m.mno
-  where m.mno=#{no}
+  left outer join (select count(if(gno is not null, 1, 0)) as fav, gno, muno
+  from fav_musi
+  where gno=#{myNo}
+  group by muno) fm on fm.muno=mu.muno
+  where m.mno=#{muNo}
   </select>
   
   <select id="selectMusiReview" resultMap="musicianInfoReviewMap" parameterType="int">
@@ -282,6 +288,10 @@
   
   <select id="favorMusiRemove" parameterType="map">
   delete from fav_musi where muno = #{muNo} and gno = #{myNo};
+  </select>
+  
+  <select id="favorMusiAdd" parameterType="map">
+  insert into fav_musi (muno, gno) values (#{muNo}, #{myNo})
   </select>
 
   <select id="selectSurfList" resultMap="musicianMap">

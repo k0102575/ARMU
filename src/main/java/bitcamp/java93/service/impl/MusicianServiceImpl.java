@@ -40,6 +40,14 @@ public class MusicianServiceImpl implements MusicianService {
     valueMap.put("muNo", muNo);
     musicianDao.favorMusiRemove(valueMap);
   }
+  
+  @Override
+  public void favorAdd(int myNo, int muNo) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("myNo", myNo);
+    valueMap.put("muNo", muNo);
+    musicianDao.favorMusiAdd(valueMap);
+  }
 
   public List<Musician> listSurf() throws Exception {   
     return musicianDao.selectSurfList();
@@ -66,8 +74,13 @@ public class MusicianServiceImpl implements MusicianService {
 //  }
   
   @Override
-  public Musician get(int no) throws Exception {
-    return musicianDao.selectMusi(no);
+  public Musician get(int myNo, int muNo) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("myNo", myNo);
+    valueMap.put("muNo", muNo);
+    
+    return musicianDao.selectMusi(valueMap);
+    
   }
   
   @Override

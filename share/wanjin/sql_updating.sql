@@ -30,6 +30,12 @@ from fav_evn
 where muno=3
 group by eno
 
+-- 특정 일반인의 관심 뮤지션 구하기
+select count(if(gno is not null, 1, 0)) as fav, gno, muno
+from fav_musi
+where gno=6
+group by muno
+
 -- 관심 뮤지션 데이터를 통해 인기 있는 뮤지션 구하기
 select count(if(muno is not null, 1, 0)) as popu, muno
   from fav_musi

@@ -15,6 +15,7 @@ public class Musician extends Member  {
   boolean isFavorite;
   int popularity;
   int count;
+  int fav;
   String eventTitle;
   String eventDate;
   String specDate;
@@ -34,9 +35,9 @@ public class Musician extends Member  {
   public String toString() {
     return "Musician [age=" + age + ", isTeam=" + isTeam + ", homepage=" + homepage + ", intro=" + intro + ", gender="
         + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite + ", popularity="
-        + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", specDate="
-        + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge + ", sido=" + sido
-        + ", fileMap=" + fileMap + ", list=" + list + ", majorList=" + majorList + ", genreList=" + genreList
+        + popularity + ", count=" + count + ", fav=" + fav + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate
+        + ", specDate=" + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge + ", sido="
+        + sido + ", fileMap=" + fileMap + ", list=" + list + ", majorList=" + majorList + ", genreList=" + genreList
         + ", themeList=" + themeList + ", locationList=" + locationList + ", photoList=" + photoList + "]";
   }
   public int getAge() {
@@ -98,6 +99,12 @@ public class Musician extends Member  {
   }
   public void setCount(int count) {
     this.count = count;
+  }
+  public int getFav() {
+    return fav;
+  }
+  public void setFav(int fav) {
+    this.fav = fav;
   }
   public String getEventTitle() {
     return eventTitle;
@@ -183,7 +190,9 @@ public class Musician extends Member  {
   public void setPhotoList(List<String> photoList) {
     this.photoList = photoList;
   }
-
+  
+  
+  
   
   
   

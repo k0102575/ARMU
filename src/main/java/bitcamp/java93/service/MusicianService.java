@@ -10,11 +10,12 @@ public interface MusicianService {
   List<Musician> listFavor(int no) throws Exception;
   Musician favorCount(int no) throws Exception;
   void favorRemove(int myNo, int muNo) throws Exception;
+  void favorAdd(int myNo, int muNo) throws Exception;
   List<Musician> listSurf() throws Exception;
   List<Musician> listSurfFilter(int minAge, int maxAge) throws Exception;
   List<Musician> listSurfGenderFilter(String gender, int minAge, int maxAge) throws Exception;
 //  Musician getProfile(Member member) throws Exception;
-  Musician get(int no) throws Exception;
+  Musician get(int myNo, int muNo) throws Exception;
   Musician getReview(int no) throws Exception;
   Musician reviewCount(int no) throws Exception;
   Musician getIntroduce(int no) throws Exception;
