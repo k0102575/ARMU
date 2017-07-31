@@ -10,4 +10,5 @@ public interface CategoryDao {
   List<Category> selectListGenre();
   List<Category> selectListLocationType();
   List<Category> selectListLocation(int no);
+  List<Category> selectTop10CategoryList();
 }

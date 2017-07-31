@@ -10,4 +10,5 @@ public interface EventService {
   void RegistEventCategory(Event event) throws Exception;
   void RegistEventReherse(Event event) throws Exception;
   List<Event> listRecommand(int no) throws Exception;//뮤지션모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트
+  List<Event> listRecent(int no) throws Exception;//뮤지션모드 > 추천탭 > 최근 이벤트 리스트
 }

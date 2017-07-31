@@ -39,6 +39,13 @@
 		<result column="loctname" property="loctname" />
 		<result column="locname" property="locname" />
 	</resultMap>
+	
+	<resultMap type="category" id="categoryMap">
+    <id column="no" property="no" />
+    <result column="tag" property="name" />
+    <result column="count" property="count" />
+    <result column="type" property="type" />
+  </resultMap>
   
     <resultMap type="hashMap" id="hashMap">
     <result javaType="java.lang.String" column="thmename"></result>
@@ -72,6 +79,35 @@
   order by locname
   </select><!-- 승민 -->
   
+  <select id="selectTop10CategoryList" resultMap="categoryMap">
+ select pt.no as no, t.name as tag, count(pt.no) as count, if(pt.no is not null, "theme", "") as type
+from (
+select tm.thmno as no, fm.muno
+from thm_musi tm inner join fav_musi fm on tm.muno=fm.muno
+) pt inner join thm t on pt.no=t.thmno
+group by pt.no
+
+union
+
+select pmj.no as no, mj.name as tag, count(pmj.no) as count, if(pmj.no is not null, "major", "") as type
+from (
+select mjm.mjrno as no, fm.muno
+from mjr_musi mjm inner join fav_musi fm on mjm.muno=fm.muno
+) pmj inner join mjr mj on pmj.no=mj.mjrno
+group by pmj.no
+
+union
+select pg.no as no, g.name as tag, count(pg.no) as count, if(pg.no is not null, "genre", "") as type
+from (
+select gm.gnrno as no, fm.muno
+from gnr_musi gm inner join fav_musi fm on gm.muno=fm.muno
+) pg inner join gnr g on pg.no=g.gnrno
+group by pg.no
+
+order by count desc
+limit 10
+
+</select><!-- 완진 -->
 
 </mapper>
 

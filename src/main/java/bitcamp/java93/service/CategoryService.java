@@ -10,4 +10,5 @@ public interface CategoryService {
   List<Category> listGenre() throws Exception;
   List<Category> listLocationType() throws Exception;
   List<Category> listLocation(int no) throws Exception;
+  List<Category> listTop10() throws Exception;//공통 > 추천탭 > 인기분야 탑 10 리스트
 }

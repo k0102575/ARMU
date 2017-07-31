@@ -52,6 +52,22 @@ public class CatgegoryControl {
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
   
+  @RequestMapping("listTop10")
+  public JsonResult listTop10() {
+    HashMap<String,Object> dataMap = new HashMap<>();
+    JsonResult result = new JsonResult();
+    
+    try {
+      dataMap.put("listTop10", categoryService.listTop10());
+      result.setData(dataMap);
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
+    return result;
+  }
+  
 }
 
 

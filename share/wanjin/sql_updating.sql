@@ -1,91 +1,22 @@
-select m.name, t.name as theme, mj.name as major, g.name as genre,
-eno, title, gno
-from musi mu inner join memb m on mu.muno=m.mno
-left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on mjm.mjrno=mj.mjrno
-left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g on gm.gnrno=g.gnrno
-left outer join thm_musi tm on mu.muno=tm.muno left outer join thm t on tm.thmno=t.thmno
-left outer join evn e on e.thmno=t.thmno or e.mjrno=mj.mjrno
-where e.gno=5
+-- 전공, 테마, 장르를 or조건으로 검사하여 하나라도 같은게 있으면 해당 이벤트를 추천함. >= 오늘날짜 & exclude 매칭된 이벤트
+select e.title, e.eno, e.date,  concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
+  mj.name as major, g.name as genre, t.name as theme,
+  fe.fav, m.mno, m.name, m.path
+  from (select * from evn where date >= curdate() and eno not in (select eno from mtc) order by date asc) e
+  left outer join (
+    select count(if(muno is not null, 1, 0)) as fav, muno, eno
+    from fav_evn where muno=3 group by eno
+  ) fe on fe.eno=e.eno
+  inner join memb m on e.gno=m.mno
+  inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
+  left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on me.mjrno=mj.mjrno
+  left outer join gnr_evn ge on e.eno=ge.eno inner join gnr g on ge.gnrno=g.gnrno
+  left outer join thm_evn te on e.eno=te.eno inner join thm t on te.thmno=t.thmno
+  left outer join mjr_musi mjm on mj.mjrno=mjm.mjrno
+  left outer join gnr_musi gm on g.gnrno=gm.gnrno
+  left outer join thm_musi tm on t.thmno=tm.thmno
+  where (mjm.muno=3 or gm.muno=3 or tm.muno=3)
 
-from (select title, e.thmno, t.name as theme, e.mjrno, mj.name as major, e.gnrno, g.name as genre, e.gno
-from evn e inner join thm t on e.thmno=t.thmno
-inner join mjr mj on e.mjrno=mj.mjrno
-inner join gnr g on e.gnrno=g.gnrno
-where e.gno=5) a
-left outer join mjr_musi mjm on a.mjrno=mjm.mjrno
-
-select title, e.thmno, t.name as theme, e.mjrno, mj.name as major, e.gnrno, g.name as genre, e.gno
-from evn e inner join thm t on e.thmno=t.thmno
-inner join mjr mj on e.mjrno=mj.mjrno
-inner join gnr g on e.gnrno=g.gnrno
-left outer join mjr_musi mjm on mj.mjrno=mjm.mjrno
-left outer join thm_musi tm on t.thmno=tm.thmno
-where e.gno=5
-
-
-left outer join
-
-
-
-select m.mno, m.nick, mu.team, mu.path,
-mj.name as major, g.name as genre, t.name as theme, mtc.score,
-fm.popu, fm2.fav
-from musi mu inner join memb m on mu.muno=m.mno
-left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on mjm.mjrno=mj.mjrno
-left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g on gm.gnrno=g.gnrno
-left outer join thm_musi tm on mu.muno=tm.muno left outer join thm t on tm.thmno=t.thmno
-left outer join mtc on mtc.muno=mu.muno
-left outer join (
-select count(if(muno is not null, 1, 0)) as popu, muno
-from fav_musi
-group by muno
-) fm on fm.muno=mu.muno left outer join (
-  select count(if(muno is not null, 1, 0)) as fav, muno, gno
-  from fav_musi
-  where gno=5
-  group by muno ) fm2 on fm2.muno=mu.muno
-order by m.name asc
-
-
-
-
-
-
-select e.eno, title, t.name as theme, mj.name as major, g.name as genre,
-l.name as location, addr, e.pay, date, m.mno, m.name, mu.path as path,
-mj2.name as major2, g2.name as genre2, t2.name as theme2
-from evn e inner join thm t on e.thmno=t.thmno
-inner join mjr mj on e.mjrno=mj.mjrno
-inner join gnr g on e.gnrno=g.gnrno
-inner join loc l on e.locno=l.locno
-inner join mtc mt on  e.eno=mt.eno
-inner join memb m on mt.muno=m.mno
-inner join musi mu on m.mno=mu.muno
-left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj2 on mjm.mjrno=mj2.mjrno
-left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g2 on gm.gnrno=g2.gnrno
-left outer join thm_musi tm on mu.muno=tm.muno left outer join thm t2 on tm.thmno=t2.thmno
-order by title asc
-
-
-
-
-
-mj2.name as major2, g2.name as genre2, t2.name as theme2, m.mno, m.name
-
--- 전공, 테마, 장르를 or조건으로 검사하여 하나라도 같은게 있으면 해당 이벤트를 추천함.
-select e.title, e.eno, mj.name as major, g.name as genre, t.name as theme
-from evn e
-left outer join mjr_evn me on e.eno=me.eno
-left outer join gnr_evn ge on e.eno=ge.eno
-left outer join thm_evn te on e.eno=te.eno
-left outer join mjr mj on me.mjrno=mj.mjrno
-left outer join gnr g on ge.gnrno=g.gnrno
-left outer join thm t on te.thmno=t.thmno
-left outer join mjr_musi mjm on mj.mjrno=mjm.mjrno
-left outer join gnr_musi gm on g.gnrno=gm.gnrno
-left outer join thm_musi tm on t.thmno=tm.thmno
-where mjm.muno=3 or gm.muno=3 or tm.muno=3
-order by title asc
 
 
 -- 지역 전체 구하기
@@ -93,24 +24,96 @@ select concat(lt.name, ' ', l.name) as location
 from loc l left outer join loc_type lt on l.loctno=lt.loctno
 
 
+-- 특정 뮤지션의 관심 이벤트 구하기
+select count(if(muno is not null, 1, 0)) as fav, muno, eno
+from fav_evn
+where muno=3
+group by eno
 
-select e.title, e.eno, l.name, mj.name as major, g.name as genre, t.name as theme, m.name
-from evn e
-inner join memb m on e.gno=m.mno
-inner join loc l on e.locno=l.locno left outer join loc_type lt on l.loctno=lt.loctno
-left outer join mjr_evn me on e.eno=me.eno
-left outer join gnr_evn ge on e.eno=ge.eno
-left outer join thm_evn te on e.eno=te.eno
-left outer join mjr mj on me.mjrno=mj.mjrno
-left outer join gnr g on ge.gnrno=g.gnrno
-left outer join thm t on te.thmno=t.thmno
-left outer join mjr_musi mjm on mj.mjrno=mjm.mjrno
-left outer join gnr_musi gm on g.gnrno=gm.gnrno
-left outer join thm_musi tm on t.thmno=tm.thmno
+-- 관심 뮤지션 데이터를 통해 인기 있는 뮤지션 구하기
+select count(if(muno is not null, 1, 0)) as popu, muno
+  from fav_musi
+  group by muno
+
+
+-- 인기 테마
+select pt.no as theme_no, t.name as theme, count(pt.no) as theme_count
+from (
+select tm.thmno as no, fm.muno
+from thm_musi tm inner join fav_musi fm on tm.muno=fm.muno
+) pt inner join thm t on pt.no=t.thmno
+group by pt.no;
+
+-- 인기 전공
+select pmj.no as major_no, mj.name as major, count(pmj.no) as major_count
+from (
+select mjm.mjrno as no, fm.muno
+from mjr_musi mjm inner join fav_musi fm on mjm.muno=fm.muno
+) pmj inner join mjr mj on pmj.no=mj.mjrno
+group by pmj.no;
+
+-- 인기 장르
+select pg.no as genre_no, g.name as genre, count(pg.no) as genre_count
+from (
+select gm.gnrno as no, fm.muno
+from gnr_musi gm inner join fav_musi fm on gm.muno=fm.muno
+) pg inner join gnr g on pg.no=g.gnrno
+group by pg.no;
+
+
+-- 인기 분야 탑10 구하기 - 기준: 관심 뮤지션이 많은 뮤지션의 분야
+select pt.no as no, t.name as tag, count(pt.no) as count, if(pt.no is not null, "theme", "") as type
+from (
+select tm.thmno as no, fm.muno
+from thm_musi tm inner join fav_musi fm on tm.muno=fm.muno
+) pt inner join thm t on pt.no=t.thmno
+group by pt.no
+
+union
+
+select pmj.no as no, mj.name as tag, count(pmj.no) as count, if(pmj.no is not null, "major", "") as type
+from (
+select mjm.mjrno as no, fm.muno
+from mjr_musi mjm inner join fav_musi fm on mjm.muno=fm.muno
+) pmj inner join mjr mj on pmj.no=mj.mjrno
+group by pmj.no
+
+union
+select pg.no as no, g.name as tag, count(pg.no) as count, if(pg.no is not null, "genre", "") as type
+from (
+select gm.gnrno as no, fm.muno
+from gnr_musi gm inner join fav_musi fm on gm.muno=fm.muno
+) pg inner join gnr g on pg.no=g.gnrno
+group by pg.no
+
+order by count desc
+limit 10;
+
+
+
+-- 최근 이벤트 리스트 가져오기
+select e.title, e.eno, e.date,  concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
+ mj.name as major, g.name as genre, t.name as theme,
+ fe.fav, m.mno, m.name, m.path
+ from (select * from evn where date >= curdate() and eno not in (select eno from mtc) order by date desc limit 3) e
+ inner join memb m on e.gno=m.mno
+ inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
+ left outer join mjr_evn me on e.eno=me.eno
+ left outer join gnr_evn ge on e.eno=ge.eno
+ left outer join thm_evn te on e.eno=te.eno
+ inner join mjr mj on me.mjrno=mj.mjrno
+ inner join gnr g on ge.gnrno=g.gnrno
+ inner join thm t on te.thmno=t.thmno
 left outer join (
 select count(if(muno is not null, 1, 0)) as fav, muno, eno
 from fav_evn
-where muno=1
-group by eno) fe on fe.eno=e.eno
-where mjm.muno=3 or gm.muno=3 or tm.muno=3
-		order by title asc
+where muno=3
+group by eno
+) fe on fe.eno=e.eno
+
+
+
+-- 최근 등록된 이벤트 가져오기
+ select e.eno, e.title, e.date
+ from evn e
+ where e.date >=curdate()

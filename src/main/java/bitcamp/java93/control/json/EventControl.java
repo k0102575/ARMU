@@ -102,7 +102,7 @@ public class EventControl {
   
   
   
-  /*/* musimode 나에게 꼭 맞는 이벤트*/
+  /* musimode 나에게 꼭 맞는 이벤트*/
   @RequestMapping("listRecommand")
   public JsonResult listRecommand(HttpSession session) {
     JsonResult result = new JsonResult();
@@ -118,6 +118,24 @@ public class EventControl {
     }
     return result;
   }
+  
+  /* musimode 최근 이벤트*/
+  @RequestMapping("listRecent")
+  public JsonResult listRecent(HttpSession session) {
+    JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listRecent",eventService.listRecent(getLoginMember(session).getNo()));
+
+      result.setData(dataMap);
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
+    return result;
+  }
+
   
   private Member getLoginMember(HttpSession session) {
     Member loginMember = (Member) session.getAttribute("loginMember");
