@@ -39,6 +39,27 @@
     </collection>
   </resultMap>
   
+  <resultMap type="musician" id="musicianFavorMap">
+    <id column="mno" property="no" />
+    <result column="name" property="name" />
+    <result column="path" property="photo" />
+    <result column="count" property="count" />
+    <collection property="majorList" ofType="string"> 
+        <result column="major"/> 
+    </collection>
+    <collection property="genreList" ofType="string"> 
+        <result column="genre"/> 
+    </collection> 
+    <collection property="locationList" ofType="string"> 
+        <result column="location"/> 
+    </collection>
+  </resultMap>
+  
+    <resultMap type="musician" id="musicianFavorCountMap">
+    <id column="mno" property="no" />
+    <result column="count" property="count" />
+    </resultMap>
+  
     <resultMap type="musician" id="musicianFilterMap">
     <id column="mno" property="no" />
     <result column="name" property="name" />
@@ -184,7 +205,7 @@
   left outer join (
   select count(if(muno is not null, 1, 0)) as fav, muno, gno
   from fav_musi
-  where gno=5
+  where gno=4
   group by muno
   ) fm
   on fm.muno=mu.muno
@@ -240,8 +261,28 @@
     order by m.name asc
   </select>
 
-  <!-- <select id="selectMajorList" resultMap="musicianMap" parameterType="int"> 
-    <include refid="selectMajor"/> where mno = #{no} order by m.name asc </select> -->
+  <select id="selectFavorList" resultMap="musicianFavorMap" parameterType="int">
+		select m.mno, m.name, m.path, gnr.name as genre, mjr.name as major, loct.name as location
+		from fav_musi fmu 
+		left outer join musi mu on fmu.muno = mu.muno
+		left outer join memb m on m.mno = mu.muno
+		left outer join gnr_musi gnmu on mu.muno = gnmu.muno
+		left outer join gnr gnr on gnmu.gnrno = gnr.gnrno
+		left outer join mjr_musi mjmu on mu.muno = mjmu.muno
+		left outer join mjr mjr on mjmu.mjrno = mjr.mjrno
+		left outer join loc_musi lomu on mu.muno = lomu.muno
+		left outer join loc loc on lomu.locno = loc.locno
+		left outer join loc_type loct on loc.loctno = loct.loctno
+		where gno = #{no}
+  </select>
+  
+  <select id="selectMusiFavorCount" resultMap="musicianFavorCountMap" parameterType="int">
+  select count(*) as count from fav_musi where gno = #{no}
+  </select>
+  
+  <select id="favorMusiRemove" parameterType="map">
+  delete from fav_musi where muno = #{muNo} and gno = #{myNo};
+  </select>
 
   <select id="selectSurfList" resultMap="musicianMap">
   <include refid="selectAll" />

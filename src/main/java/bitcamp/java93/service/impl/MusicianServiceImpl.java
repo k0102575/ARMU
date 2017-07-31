@@ -27,6 +27,19 @@ public class MusicianServiceImpl implements MusicianService {
   public List<Musician> listFavor(int no) throws Exception {   
     return musicianDao.selectFavorList(no);
   }
+  
+  @Override
+  public Musician favorCount(int no) throws Exception {
+    return musicianDao.selectMusiFavorCount(no);
+  }
+  
+  @Override
+  public void favorRemove(int myNo, int muNo) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("myNo", myNo);
+    valueMap.put("muNo", muNo);
+    musicianDao.favorMusiRemove(valueMap);
+  }
 
   public List<Musician> listSurf() throws Exception {   
     return musicianDao.selectSurfList();

@@ -59,9 +59,19 @@ public class MusicianControl {
     Member loginMember = (Member)session.getAttribute("loginMember");
     HashMap<String,Object> dataMap = new HashMap<>();
     ArrayList<Musician> musicianListFavor = (ArrayList<Musician>) musicianService.listFavor(loginMember.getNo());
-
+    Musician musicianFavorCount = musicianService.favorCount(loginMember.getNo());
+    System.out.println(loginMember);
     dataMap.put("listFavor", musicianListFavor);
+    dataMap.put("favorCount", musicianFavorCount);
     return new JsonResult(JsonResult.SUCCESS, dataMap);
+  }
+  
+  @RequestMapping("favorRemove")
+  public JsonResult favorRemove(HttpSession session, int no) throws Exception {
+    Member loginMember = (Member)session.getAttribute("loginMember");
+     musicianService.favorRemove(loginMember.getNo(), no);
+
+    return new JsonResult(JsonResult.SUCCESS, "ok");
   }
 
   @RequestMapping("listSurf")

@@ -24,7 +24,8 @@
 	<span id='musician-favor-text'>관심 뮤지션</span>
 	<i class="fa fa-bars header-menu" id="header-menu-menu" aria-hidden="true"></i>
 	<div id="musician-favor-countbox">
-  <i class="fa fa-heart" aria-hidden="true"></i><span id="musician-favor-count">관심 뮤지션 ??개</span>
+  <span id="musician-favor-count"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+  <span id="musician-favor-count-text"></span>
   </div>
   <!-- musician-favor-countbox -->
 </div>
@@ -32,21 +33,34 @@
 
 <div id="musician-favor-list">
 
-<script id="musician-favor-template" type="text/x-handlebars-template">
-{{#each list}}
-<div id='musician-favor'>
-  <img id='musician-favor-picture' src='{{musiImg}}'>
-  <div id="musician-favor-preview">
-  <div id="musician-favor-name">{{musiName}}</div>
-  <div id="musician-favor-intro">{{#each musiTag}}#{{this}}&nbsp;{{/each}}</div>
-  <div id="musician-favor-location">{{area}}</div>
-  <button type="button" id="musician-favor-delbtn">삭제</button>
-</div>
-{{/each}}
-</script>
+
   
 </div>
 <!-- musician-favor-list -->
+
+<script id="musician-favor-template" type="text/x-handlebars-template">
+
+{{#each listFavor}}
+<div id='musician-favor'>
+  <img id='musician-favor-picture' src='{{photo}}'>
+  <input type="hidden" id="hidden-no" value="{{no}}">
+  <div id="musician-favor-preview">
+  <div id="musician-favor-name">{{name}}</div>
+  <div id="musician-favor-intro">
+     {{#each majorList}}
+     #{{this}}
+     {{/each}}
+     {{#each genreList}}
+     #{{this}}
+     {{/each}}
+  </div>
+  <div id="musician-favor-location">{{locationList}}</div>
+</div>
+  <span><button type="button" id="musician-favor-delbtn">삭제</button><span>
+{{/each}}
+
+</script>
+
 
 </div> <!-- container -->
 

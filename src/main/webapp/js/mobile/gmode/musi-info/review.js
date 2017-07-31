@@ -12,7 +12,6 @@ function displayMusiInfoReview() {
       { 
         "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {
-        console.log(result)
         if (result.data == "0"){
         	$(".review-header").text("진행/완료 이벤트: 0개")
         	$(".review-rating-container").css("display", "none")
