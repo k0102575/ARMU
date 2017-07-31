@@ -118,8 +118,16 @@ group by eno
 ) fe on fe.eno=e.eno
 
 
-
 -- 최근 등록된 이벤트 가져오기
  select e.eno, e.title, e.date
  from evn e
  where e.date >=curdate()
+
+
+-- 특정 뮤지션의 알림 최신순으로 가져오기
+select  notino, n.type, n.date, n.cont, gm.mno as gmno, gm.name gmname, n.eno, e.title, n.muno as musino, m.name as musiname
+from noti n
+inner join memb m on n.muno=m.mno
+inner join evn e on n.eno=e.eno inner join memb gm on e.gno=gm.mno
+where muno=3
+order by date desc

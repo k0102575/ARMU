@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.java93.dao.NotificationDao">
+  
+  <resultMap type="notification" id="notificationMap">
+    <id column="notino" property="no"/>
+    <result column="type" property="type"/>
+    <result column="date" property="date"/>
+    <result column="cont" property="contents"/>
+    <association property="musician" javaType='Member'>
+      <id property="no" column="musino"/>
+    <result property="name" column="musiname"/>
+    <result property="photo" column="musiphoto"/>
+    </association>
+    <association property="writer" javaType='Member'>
+      <id property="no" column="gmno"/>
+    <result property="name" column="gmname"/>
+    <result property="photo" column="gmphoto"/>
+    </association>
+    <association property="event" javaType='Event'>
+      <id property="no" column="eno"/>
+    <result property="title" column="title"/>
+    </association>
+  </resultMap>
+
+
+ <select id="selectNotiList" resultMap="notificationMap" parameterType="int">
+  select  notino, n.type, n.date, n.cont, n.eno, e.title, 
+  gm.mno as gmno, gm.name as gmname, gm.path as gmphoto, 
+  n.muno as musino, m.name as musiname, m.path as musiphoto
+from noti n
+inner join memb m on n.muno=m.mno
+inner join evn e on n.eno=e.eno inner join memb gm on e.gno=gm.mno
+where n.muno=#{no}
+order by date desc
+  </select>
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
