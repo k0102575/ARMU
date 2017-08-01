@@ -43,7 +43,7 @@
   <form action="">
    <div id="search-container">
 	   <i class="fa fa-search" id="search-icon" aria-hidden="true"></i>
-	   <input type="search" id="search-text" placeholder="전공, 장르, 지역으로 뮤지션 검색" autofocus>
+	   <input type="search" id="search-text" placeholder="전공, 장르, 지역으로 뮤지션 검색" autofocus="autofocus">
 	   <i class="fa fa-times-circle" id="search-text-delete" aria-hidden="true"></i>
    </div> 
    </form>
@@ -85,12 +85,14 @@
 	headerMenuSearch.on('click', function() {
 	  searchToggle.toggle("slide", {direction: 'right'}, 300);
 	  searchBackScreen.css('display', 'block')
+	  $('#search-text').focus()
     container.css('position', 'fixed').css('overflow', 'hidden');
 	})
 	
 	searchBackScreen.on('click', function() {
 	  searchToggle.toggle("slide", {direction: 'right'}, 300);
 	  searchBackScreen.css('display', 'none')
+	  $('#search-text').focus()
     container.css('position', '').css('overflow', '');
 	})
 	
@@ -142,5 +144,6 @@
 	
 	/* 로그인 관련*/
     
+
 
 </script>
