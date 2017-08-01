@@ -27,6 +27,7 @@ public class Musician extends Member  {
   Map<String , String> fileMap;
 //  HashMap<String , String> valueMap;
   List<Map<Integer , String>> list;
+  ArrayList<Musician> reviewList;
   ArrayList<String> majorList;
   ArrayList<String> genreList;
   ArrayList<String> themeList;
@@ -38,9 +39,9 @@ public class Musician extends Member  {
         + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite + ", popularity="
         + popularity + ", count=" + count + ", fav=" + fav + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate
         + ", specDate=" + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge
-        + ", location=" + location + ", sido=" + sido + ", fileMap=" + fileMap + ", list=" + list + ", majorList="
-        + majorList + ", genreList=" + genreList + ", themeList=" + themeList + ", locationList=" + locationList
-        + ", photoList=" + photoList + "]";
+        + ", location=" + location + ", sido=" + sido + ", fileMap=" + fileMap + ", list=" + list + ", reviewList="
+        + reviewList + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList=" + themeList
+        + ", locationList=" + locationList + ", photoList=" + photoList + "]";
   }
   public int getAge() {
     return age;
@@ -168,6 +169,12 @@ public class Musician extends Member  {
   public void setList(List<Map<Integer, String>> list) {
     this.list = list;
   }
+  public ArrayList<Musician> getReviewList() {
+    return reviewList;
+  }
+  public void setReviewList(ArrayList<Musician> reviewList) {
+    this.reviewList = reviewList;
+  }
   public ArrayList<String> getMajorList() {
     return majorList;
   }
@@ -198,5 +205,7 @@ public class Musician extends Member  {
   public void setPhotoList(List<String> photoList) {
     this.photoList = photoList;
   }
+  
+  
   
 }

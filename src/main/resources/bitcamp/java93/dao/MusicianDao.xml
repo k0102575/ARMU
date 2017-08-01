@@ -91,10 +91,10 @@
   </resultMap>
   
   <resultMap type="musician" id="musicianInfoReviewMap">
-    <id column="mno" property="no" />
+    <id column="count" property="count" />
     <result column="score" property="score" />
     <result column="rev" property="review" />
-    <result column="count" property="count" />
+    <result column="name" property="name" />
     <result column="path" property="photo" />
     <result column="eventTitle" property="eventTitle" />
     <result column="eventDate" property="eventDate" />
@@ -212,16 +212,16 @@
   </select>
   
   <select id="selectMusiReview" resultMap="musicianInfoReviewMap" parameterType="int">
-  select mtc.rev, mtc.score, even.title as eventTitle, DATE_FORMAT(even.date, '%Y-%m-%d') as eventDate, m.name , m.path
+  select ctr.count, mtc.rev, mtc.score, even.title as eventTitle, DATE_FORMAT(even.date, '%Y-%m-%d') as eventDate, m.name , m.path
   from musi as mu left outer join mtc on mtc.muno=mu.muno
-  left outer join evn as even on mtc.eno = even.eno
-  left outer join memb as g on even.mno = m.mno
-	where mtc.muno = #{no}
+  left outer join (select muno, count(*) as count 
+  from mtc 
+  group by muno) ctr on ctr.muno=mtc.muno
+  left outer join evn even on mtc.eno = even.eno
+  left outer join memb m on even.mno = m.mno
+  where mtc.muno = #{no}
   </select>
   
-  <select id="selectMusiReviewCount" resultMap="musicianInfoReviewMap" parameterType="int">
-  select count(*) as count from mtc where muno = #{no} group by rev;
-  </select>
   
   <select id="selectMusiIntroduce" resultMap="musicianInfoIntroduceMap" parameterType="int">
   select mu.team, mu.hpg, mu.intro, mj.name as major, g.name as genre, l.name as location, lt.name as sido, t.name as theme
@@ -276,7 +276,7 @@
   insert into fav_musi (muno, mno) values (#{muNo}, #{myNo})
   </select>
 
-  <select id="selectSurfList" resultMap="musicianMap">
+  <select id="surfList" resultMap="musicianMap">
   <include refid="selectAll" />
   </select>
   

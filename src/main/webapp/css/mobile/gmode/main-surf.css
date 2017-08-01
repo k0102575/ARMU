@@ -288,6 +288,7 @@ input:checked + label {
   border-top-right-radius: 20px;
   width: 100%;
   height: 70%;
+  object-fit : cover;
 }
 
 #musician-surf-preview {

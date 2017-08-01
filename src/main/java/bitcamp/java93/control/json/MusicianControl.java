@@ -81,13 +81,19 @@ public class MusicianControl {
   }
 
   @RequestMapping("listSurf")
-  public JsonResult listSurf() throws Exception {
-
-    HashMap<String,Object> dataMap = new HashMap<>();
-    ArrayList<Musician> musicianList = (ArrayList<Musician>) musicianService.listSurf();
-
-    dataMap.put("listSurf", musicianList);
-    return new JsonResult(JsonResult.SUCCESS, dataMap);
+  public JsonResult listSurf(HttpSession session) throws Exception {
+    JsonResult result = new JsonResult();
+    
+    try {
+      List<Musician> listSurf = (List<Musician>) musicianService.listSurf(getLoginMember(session).getNo());
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listSurf", listSurf);
+      result.setData(dataMap);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      result.setData(e.getMessage());
+    }
+    return result;
   }
   
   @RequestMapping("listSurfFilter")
@@ -154,16 +160,10 @@ public class MusicianControl {
   
   @RequestMapping("musiInfoReview")
   public JsonResult musiInfoReview(int no) {
-    
     JsonResult result = new JsonResult();
     
     try {
-      Musician musicianReview = musicianService.getReview(no);
-      
-      if (musicianReview == null) {
-        return new JsonResult(JsonResult.SUCCESS, "0");
-      }
-      
+      List<Musician> musicianReview = (List<Musician>) musicianService.listReview(no);
       HashMap<String,Object> dataMap = new HashMap<>();
       dataMap.put("musicianReview", musicianReview);
       
@@ -171,33 +171,8 @@ public class MusicianControl {
       
     } catch (Exception e) {
       result.setStatus(JsonResult.ERROR);
+      result.setData(e.getMessage());
     }
-    
-    return result;
-  }
-  
-  @RequestMapping("musiInfoReviewCount")
-  public JsonResult musiInfoReviewCount(int no) {
-    
-    JsonResult result = new JsonResult();
-    HashMap<String,Object> dataMap = new HashMap<>();
-    
-    try {
-      Musician musicianReviewCount = musicianService.reviewCount(no);
-      
-      if (musicianReviewCount == null) {
-        return new JsonResult(JsonResult.SUCCESS, "0");
-      }
-      
-      result.setStatus(JsonResult.SUCCESS);
-      dataMap.put("musicianReviewCount", musicianReviewCount);
-      
-      result.setData(dataMap);
-      
-    } catch (Exception e) {
-      result.setStatus(JsonResult.ERROR);
-    }
-    
     return result;
   }
   
@@ -309,6 +284,12 @@ public class MusicianControl {
 //    }
 //    return String.format("%d_%d", System.currentTimeMillis(), ++count); 
 //  }
+  
+  
+  private Member getLoginMember(HttpSession session) {
+    Member loginMember = (Member) session.getAttribute("loginMember");
+      return loginMember;
+  }
  
 }
 

@@ -12,13 +12,12 @@ public interface MusicianDao {
   Musician selectMusiFavorCount(int no);
   void favorMusiRemove(HashMap<String,Object> valueMap);
   void favorMusiAdd(HashMap<String,Object> valueMap);
-  List<Musician> selectSurfList();
+  List<Musician> surfList(int no);
   List<Musician> selectSurfListFilter(HashMap<String,Object> valueMap);
   List<Musician> selectSurfListGenderFilter(HashMap<String,Object> valueMap);
 //  Musician selectOne(Member member);
   Musician selectMusi(HashMap<String, Object> valueMap);
-  Musician selectMusiReview(int no);
-  Musician selectMusiReviewCount(int no);
+  List<Musician> selectMusiReview(int no);
   Musician selectMusiIntroduce(int no);
   Musician selectMusiPortfolio(int no);
   List<Musician> musicianLocation();
