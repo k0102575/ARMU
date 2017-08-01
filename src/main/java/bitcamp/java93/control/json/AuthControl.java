@@ -21,7 +21,7 @@ public class AuthControl {
   MemberService memberService;
 
   @RequestMapping(path="login", method=RequestMethod.POST)
-  public JsonResult login(String email, String password, Model model) throws Exception {
+  public JsonResult login(String email, String password, HttpSession session, Model model) throws Exception {
     
     Member member = null;
       member = memberService.getByEmailPassword(email, password);
