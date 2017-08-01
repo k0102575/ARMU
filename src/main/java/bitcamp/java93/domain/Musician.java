@@ -23,6 +23,13 @@ public class Musician extends Member  {
   String specDscp;
   int minAge;
   int maxAge;
+  String location;
+  public String getLocation() {
+    return location;
+  }
+  public void setLocation(String location) {
+    this.location = location;
+  }
   Map<String , String> fileMap;
 //  HashMap<String , String> valueMap;
   List<Map<Integer , String>> list;
@@ -36,8 +43,8 @@ public class Musician extends Member  {
     return "Musician [age=" + age + ", isTeam=" + isTeam + ", homepage=" + homepage + ", intro=" + intro + ", gender="
         + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite + ", popularity="
         + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", specDate="
-        + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge + ", fileMap=" + fileMap
-        + ", valueMap=" + valueMap + ", list=" + list + ", majorList=" + majorList + ", genreList=" + genreList
+        + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge + ", location=" + location
+        + ", fileMap=" + fileMap + ", list=" + list + ", majorList=" + majorList + ", genreList=" + genreList
         + ", themeList=" + themeList + ", locationList=" + locationList + ", photoList=" + photoList + "]";
   }
   public int getAge() {

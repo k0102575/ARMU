@@ -267,6 +267,15 @@
   <select id="musicianLocation" resultMap="musicianMap">
   <include refid="selectAll" />
   where l.name like '동대문구'
+  <!-- where l.name like '%${loc}%' -->
+  </select>
+  
+  <select id="musicianSearch" resultMap="Musician">
+  <include refid="selectAll" />
+where l.name=case when l.name = '' then '%${location}%' else '%${location}%' end
+AND mj.name=case when mj.name = '' then '남성 보컬' else '남성 보컬' end
+AND g.name=case when g.name = '' then 'CCM' else 'CCM' end
+  <!-- where l.name like '%${loc}%' -->
   </select>
   
     <!-- <update id="updatePhoto" parameterType="map">

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import bitcamp.java93.domain.Member;
@@ -233,6 +234,29 @@ public class MusicianControl {
 
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
+
+  @RequestMapping("searchMusician")
+  public JsonResult searchMusician(@RequestParam String location) throws Exception {
+
+    HashMap<String,Object> dataMap = new HashMap<>();
+    List<Musician> searchMusician = (List<Musician>)musicianService.search(location);
+    dataMap.put("search", searchMusician);
+    return new JsonResult(JsonResult.SUCCESS, dataMap);
+    
+//      
+//    HashMap<String,Object> dataMap = new HashMap<>();
+//    ArrayList<Musician> musicianList = (ArrayList<Musician>) musicianService.search(location);
+//
+//    dataMap.put("search", musicianList);
+//    return new JsonResult(JsonResult.SUCCESS, dataMap);
+//
+//    HashMap<String,Object> dataMap = new HashMap<>();
+//
+//    dataMap.put("search", musicianService.search(loc));
+//
+//    return new JsonResult(JsonResult.SUCCESS, dataMap);
+  }
+  
 
   //  @RequestMapping("update")
   //  public JsonResult update(Musician musician, String photo) throws Exception {

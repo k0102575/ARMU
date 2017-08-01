@@ -40,16 +40,17 @@
 <div id="search-backscreen"></div>
 <div id="search-toggle">
   <div id='search-contents'>
-   <i class="fa fa-times" id="search-cancel" aria-hidden="true"></i> 
-   
+  <i class="fa fa-angle-left" id="search-cancel" aria-hidden="true"></i>
+  <form action="">
    <div id="search-container">
-   <i class="fa fa-search" id="search-icon" aria-hidden="true"></i>
-   <input type="text" id="search-text">
-   <i class="fa fa-times-circle-o" id="search-text-delete" aria-hidden="true"></i>
-   </div>
+	   <i class="fa fa-search" id="search-icon" aria-hidden="true"></i>
+	   <input type="search" id="search-text" placeholder="전공, 장르, 지역으로 뮤지션 검색" autofocus>
+	   <i class="fa fa-times-circle" id="search-text-delete" aria-hidden="true"></i>
+   </div> 
+   </form>
+   
    
   <!-- search-header -->
-  
   </div>
   <!-- search-contents -->
 </div>
@@ -66,6 +67,9 @@
 	    eventRegist = $("#menu-category-event-regist"),
 	    headerMenuSearch = $("#header-menu-search"),
 	    searchToggle = $("#search-toggle"),
+	    searchCancel = $('#search-cancel'),
+	    searchText = $('#search-text'),
+	    searchTextDelete = $('#search-text-delete'),
 	    searchBackScreen = $("#search-backscreen")
 	    
 	menuBtn.on('click', function() {
@@ -92,6 +96,16 @@
     container.css('position', '').css('overflow', '');
 	})
 	
+	searchCancel.on('click', function() {
+    searchToggle.toggle("slide", {direction: 'right'}, 300);
+    searchBackScreen.css('display', 'none')
+    container.css('position', '').css('overflow', '');
+  })
+	
+  searchTextDelete.on('click', function(){
+    searchText.val('')
+  })
+  
 	eventRegist.on('click', function(){
 	 location.href = '/mobile/gmode/event/regist.html'
 	})

@@ -144,12 +144,7 @@ yScroll = new jindo.m.Scroll("kyeonggi", {
     bUseMomentum: false,
     nHeight: 400
 });
-yScroll = new jindo.m.Scroll("local", {
-    bUseHScroll: false,
-    bUseVScroll: true,
-    bUseMomentum: false,
-    nHeight: 400
-});
+
 yScroll = new jindo.m.Scroll("incheon", {
     bUseHScroll: false,
     bUseVScroll: true,
@@ -243,16 +238,35 @@ filterLocTab.click(function () {
     filterLocTab.removeClass('on')
     $(this).addClass('on')
 })
-
+var aa;
 var seoul = $('.seoul')
 seoul.click(function () {
-    $('.fa-check').remove()
-    seoul.removeClass('on2')
-    $(this).html('<i class="fa fa-check" aria-hidden="true"></i>'+ $(this).text())
-    $(this).addClass('on2')
+  aa = $(this)
+  console.log(aa)
+  $(this).on('click', function() {
+    console.log(aa.text())
+    $.post('/musician/searchMusician.json',
+      {'location':aa.text()}, function(result) {
+//  location.href = '/mobile/index.html'
+    console.log(result)
+  },'json')
+  })
+  
+  $('.fa-check').remove()
+  seoul.removeClass('on2')
+  $(this).html('<i class="fa fa-check" aria-hidden="true"></i>'+ $(this).text())
+  $(this).addClass('on2')
 })
 
+function displayList() {
+  $.post('/musician/searchMusician.json',
+      {'location':aa.text()}, function(result) {
+//  location.href = '/mobile/index.html'
+    console.log(result)
+  },'json')
+}
 
+console.log(aa)
 $(function ($) {
     let index =null;
     // let $filterwrap = $('.filter-loc-toggle')

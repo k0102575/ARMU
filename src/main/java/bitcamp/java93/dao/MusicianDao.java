@@ -18,6 +18,7 @@ public interface MusicianDao {
   Musician selectMusiIntroduce(int no);
   Musician selectMusiPortfolio(int no);
   List<Musician> musicianLocation();
+  List<Musician> musicianSearch(String location);
 //  int updatePhoto(HashMap<String, Object> valueMap);
 //  List<String> selectPhotoList(int memberNo);
 //  void insertPhoto(Map<String,Object> valueMap);

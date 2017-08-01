@@ -44,7 +44,8 @@
 
 	<update id="updatePhoto" parameterType="map">
 		update memb set
-		path=#{photoPath}
+<!--pwd=password(#{password}) -->
+		path=concat('/image/musician/photo/',#{photoPath})
 		where mno=#{memberNo}
 	</update>
   

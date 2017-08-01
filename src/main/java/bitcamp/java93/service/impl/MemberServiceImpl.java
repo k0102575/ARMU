@@ -13,6 +13,7 @@ import bitcamp.java93.service.MemberService;
 public class MemberServiceImpl implements MemberService {
   @Autowired
   MemberDao memberDao;
+
   
   public void add(Member member) throws Exception {
     memberDao.insert(member);
@@ -33,6 +34,7 @@ public class MemberServiceImpl implements MemberService {
   
   @Override
   public void updatePhoto(int no, String photoPath) throws Exception {
+
     HashMap<String,Object> valueMap = new HashMap<>();
   valueMap.put("memberNo", no);
   valueMap.put("photoPath", photoPath);

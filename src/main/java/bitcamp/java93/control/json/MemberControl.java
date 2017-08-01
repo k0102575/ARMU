@@ -100,7 +100,6 @@ public class MemberControl {
     }
     return String.format("%d_%d", System.currentTimeMillis(), ++count); 
   }
-  
 }
 
 

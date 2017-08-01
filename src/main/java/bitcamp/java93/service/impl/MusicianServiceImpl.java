@@ -77,6 +77,11 @@ public class MusicianServiceImpl implements MusicianService {
   public List<Musician> listLocation() throws Exception {
     return musicianDao.musicianLocation();
   }
+  
+  @Override
+  public List<Musician> search(String location) throws Exception {
+    return musicianDao.musicianSearch(location);
+  }
 
 //  private void insertPhoto(int musicianNo, String photoPath) {
 //    if (photoPath == null)

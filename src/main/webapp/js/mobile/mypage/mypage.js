@@ -67,7 +67,7 @@ $('#fi-photoupload').fileupload({
   dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
   sequentialUploads: true,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
   singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기.
-  autoUpload: true,        // 파일을 추가할 때 자동 업로딩 하지 않도록 설정.
+  autoUpload: true,        // 파일을 추가할 때 자동 업로딩 설정.
   disableImageResize: /Android(?!.*Chrome)|Opera/
         .test(window.navigator && navigator.userAgent), // 안드로이드와 오페라 브라우저는 크기 조정 비활성 시키기
   previewMaxWidth: 100,   // 미리보기 이미지 너비

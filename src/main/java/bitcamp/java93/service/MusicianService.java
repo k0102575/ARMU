@@ -17,6 +17,7 @@ public interface MusicianService {
   Musician getIntroduce(int no) throws Exception;
   Musician getPortfolio(int no) throws Exception;
   List<Musician> listLocation() throws Exception;
+  List<Musician> search(String location) throws Exception;
 //  void updatePhoto(int no, String photoPath) throws Exception;
 }
 
