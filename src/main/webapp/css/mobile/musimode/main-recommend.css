@@ -78,11 +78,7 @@ background-color: rgba(255, 255, 255, 0.78);
   z-index: 1;
   border-radius: 10px;
   box-shadow: 1px 1px 2px #252525;
-  background: linear-gradient(
-              rgba(0, 0, 0, 0.6), 
-              rgb(255, 255, 255),
-              rgb(246, 242, 242)), 
-              url(/image/event/wedding2.jpg);
+  background: linear-gradient( rgb(255, 255, 255), rgba(13, 13, 13, 0.43), rgba(10, 10, 10, 0.5)), url(/image/event/event_24.jpg);
   background-size: cover;
 }
 
@@ -92,7 +88,7 @@ background-color: rgba(255, 255, 255, 0.78);
   width: 100%;
   z-index: 2;
   border-bottom: 1px solid lightgray;
-  background-color: 
+  background-color:
 }
 
 .rec-event-writer-img {
@@ -145,9 +141,9 @@ width: 130px;
 
 .rec-event-date {
   display: inline-block;
-  color: black;
+  color: white;
   font-size: 35px;
-  font-weight: 300;
+  font-weight: 500;
   margin-top: 1%;
   margin-left: 4%;
   width: auto;
@@ -156,9 +152,9 @@ width: 130px;
 
 .rec-event-area {
   display: inline-block;
-  color: black;
+  color: white;
   font-size: 35px;
-  font-weight: 300;
+  font-weight: 500;
   margin-top: 1%;
   margin-left: 4%;
   max-width: 95%;
@@ -173,13 +169,13 @@ width: 130px;
   margin-left: 4%;
   font-size: 34px;
   font-weight: 500;
-  color: black;
+  color: white;
   white-space: nowrap;
 }
 
 .rec-event-hashtagbox {
   height: 145px;
-color: black;
+color: white;
 font-weight: 400;
 margin-left: 2.5%;
 margin-top: 2%;
