@@ -13,6 +13,7 @@ insert into mjr_type (name) values ('보컬');
 insert into mjr_type (name) values ('피아노');
 insert into mjr_type (name) values ('밴드');
 insert into mjr_type (name) values ('현악');
+insert into mjr_type (name) values ('기타');
 
 insert into mjr (name, mjrtno) values ('남성 보컬', 1);
 insert into mjr (name, mjrtno) values ('여성 보컬', 1);
@@ -35,7 +36,12 @@ insert into mjr (name, mjrtno) values ('비올라', 4);
 insert into mjr (name, mjrtno) values ('첼로', 4);
 insert into mjr (name, mjrtno) values ('콘트라베이스', 4);
 insert into mjr (name, mjrtno) values ('현악4중주(팀)', 4);
+insert into mjr (name, mjrtno) values ('클래식기타', 4);
+insert into mjr (name, mjrtno) values ('어쿠스틱기타', 4);
+insert into mjr (name, mjrtno) values ('일렉기타', 4);
+insert into mjr (name, mjrtno) values ('베이스기타', 4);
 
+insert into mjr (name, mjrtno) values ('랩', 5);
 
 -- 장르 분류(gnr_type), 장르(gnr)
 insert into gnr_type (name) values ('클래식');
@@ -68,6 +74,11 @@ insert into gnr (name, gnrtno) values ('협주곡', 1);
 insert into gnr (name, gnrtno) values ('교향곡', 1);
 
 insert into gnr (name, gnrtno) values ('국악', 6);
+
+insert into gnr (name, gnrtno) values ('댄스', 2);
+insert into gnr (name, gnrtno) values ('트로트', 2);
+insert into gnr (name, gnrtno) values ('일렉트로니카', 2);
+insert into gnr (name, gnrtno) values ('인디', 2);
 
 
 -- 테마 분류(thm_type), 테마(thm)
@@ -562,6 +573,9 @@ insert into memb (name, nick, phone, pwd, email, path) values ('김랑랑', '랑
 insert into memb (name, nick, phone, pwd, email, path) values ('장발장', '사라장', '010-4321-4344',  password('1111'), 'sarah@gmail.com', '/image/musician/photo/m17.jpg');
 insert into memb (name, nick, phone, pwd, email, path) values ('송소희', '국악소히', '010-2424-1313',  password('1111'), 'sohee@gmail.com', '/image/musician/photo/m9.jpg');
 insert into memb (name, nick, phone, pwd, email, path) values ('김현악', '빨간건현악', '010-1313-2222',  password('1111'), 'red@gmail.com', '/image/musician/photo/red.jpg');
+insert into memb (name, nick, phone, pwd, email, path) values ('성시경', '성발라', '010-4444-1213',  password('1111'), 'sung@gmail.com', '/image/musician/photo/m3.jpg');
+insert into memb (name, nick, phone, pwd, email, path) values ('왕기현', 'WANG기타', '010-2232-1122',  password('1111'), 'wang@gmail.com', '/image/musician/photo/m15.jpg');
+insert into memb (name, nick, phone, pwd, email, path) values ('비와이', 'BeWHY', '010-2232-1122',  password('1111'), 'bewhy@gmail.com', '/image/musician/photo/m7.jpg');
 
 insert into musi (muno, age, team, gender, intro) values (8, 22, 'N', 'F',
 '현재 경희대 피아노학과에 다니고 있는 대학생입니다.
@@ -591,6 +605,57 @@ insert into musi (muno, age, team, gender, intro) values (11, 35, 'Y', 'F',
 많은 연락 부탁드립니다. 감사합니다.
 ');
 
+insert into musi (muno, age, team, gender, intro) values (12, 41, 'N', 'M',
+'저는 1979년 4월 17일에 대한민국 서울특별시에서 1남 2녀 중 셋째로 태어났습니다.
+어린 시절, 홍콩에서 산 적도 있었고, 미국의 유명한 연예인인 머라이어 캐리의 음악을 듣기 위해서
+영어를 열심히 공부한 적이 있었기 때문에, 영어를 별 어려움 없이 구사합니다.
+
+서울반포초등학교, 반포중학교, 세화고등학교를 졸업한 후, 고려대학교 문과대학 사회학과와
+동 대학 언론대학원 방송학을 졸업하였으며, 방황 끝에 가수의 길을 선택했습니다.
+
+대입 입시생 시절이던 1999년 4월에 MBC 문화방송 시트콤 《남자 셋 여자 셋》에서
+엑스트라 단역급으로 첫 출연한 적이 있고
+이듬해 2000년 9월에 열린 제1회 드림뮤직 신인가수 선발대회 "뜨악 페스티벌" 인터넷 오디션 "발악"을 통해서 가수로 데뷔하였습니다.
+
+첫 번째 싱글은 2000년 11월에 발매된 "내게 오는 길"이었습니다.
+2001년 4월에는 데뷔 앨범인 "처음처럼"이 발매되었고, 신인상을 받았습니다.
+지금까지 7개의 정규 앨범, 3개의 리메이크 및 스페셜 앨범, 1개의 베스트 앨범을 발매했습니다.
+베스트 앨범에는 일본어 제목으로 된 노래가 포함되어 있습니다.
+과거에는 일본에서도 활발히 활동했지만, 요즘은 일본에서는 곡을 내지 않고 있습니다.
+일본에서 활동한 경력이 있기 때문에, 일본어도 어느 정도는 하는 편입니다.
+
+성시경은 데뷔 이후, 오랜 기간동안 감성적인 발라드로 많은 사람들의 사랑을 받고 있습니다.
+2008년 6월 28일에 연세대학교 노천극장에서 열린 마지막 콘서트 이후,
+7월 1일 현역으로 강원도 춘천시에 있는 102 보충대에 입대하였고,
+제1야전군사령부 군악대 군악병으로 복무한뒤 2010년 5월 17일에 제대하였습니다.
+제대 후, 매년 축가콘서트와 연말콘서트를 성황리에 열고있으며,
+MBC FM4U 《FM 음악도시 성시경입니다》의 DJ를 거쳐서, 현재 JTBC 《비정상회담》,
+Olive 《신동엽, 성시경은 오늘 뭐 먹지?》,《올리브쇼 2016 》,
+SBS 《보컬 전쟁 : 신의 목소리》, MBC 《듀엣가요제》, 채널CGV 《무비 버스터즈》의 진행자로 활동하고 있습니다.
+');
+
+insert into musi (muno, age, team, gender, intro) values (13, 51, 'N', 'M',
+'저는 여러 음악 장르에서 연주하며 독주 또는 협주로 연주할 수 있습니다.
+클래식 기타, 어쿠스틱 기타, 전기 기타, 베이스 기타를 모두 연주할 수 있습니다.
+경력은 30년이 넘었으니 염려하지 않으셔도 됩니다.
+직접 노래하면서 기타를 연주할 수도 있고, 직접 작곡한 곡을 연주해드릴 수도 있습니다.
+');
+
+insert into musi (muno, age, team, gender, intro) values (14, 24, 'N', 'M',
+'내 Fan이 된 나의 Star
+만나서 나도 glad
+내 소개를 할게요
+난 Another Class
+
+BewhY 후에 세계가 기억할 내 이름
+새롭게 만들어갈 힙합 역사의 기둥
+
+내 삶은 바로 신이 만든 예술 작품의 Featuring
+나의 불완전을 사용하는 창조주의 Symphony
+나로 인해서 쓰여지는 위대한 History
+어쩌면 이 모든 건 내 이야기가 아닌 His Story
+');
+
 -- 뮤지션 전공 추가
 insert into mjr_musi (muno, mjrno) values (8, 10);
 insert into mjr_musi (muno, mjrno) values (8, 11);
@@ -603,6 +668,19 @@ insert into mjr_musi (muno, mjrno) values (11, 18);
 insert into mjr_musi (muno, mjrno) values (11, 14);
 insert into mjr_musi (muno, mjrno) values (11, 15);
 insert into mjr_musi (muno, mjrno) values (11, 16);
+
+insert into mjr_musi (muno, mjrno) values (12, 1);
+
+insert into mjr_musi (muno, mjrno) values (13, 19);
+insert into mjr_musi (muno, mjrno) values (13, 20);
+insert into mjr_musi (muno, mjrno) values (13, 21);
+insert into mjr_musi (muno, mjrno) values (13, 22);
+insert into mjr_musi (muno, mjrno) values (13, 1);
+
+insert into mjr_musi (muno, mjrno) values (14, 1);
+insert into mjr_musi (muno, mjrno) values (14, 11);
+insert into mjr_musi (muno, mjrno) values (14, 23);
+
 
 -- 뮤지션 장르 추가
 insert into gnr_musi (muno, gnrno) values (8, 9);
@@ -630,6 +708,27 @@ insert into gnr_musi (muno, gnrno) values (11, 12);
 insert into gnr_musi (muno, gnrno) values (11, 10);
 insert into gnr_musi (muno, gnrno) values (11, 11);
 
+insert into gnr_musi (muno, gnrno) values (12, 1);
+insert into gnr_musi (muno, gnrno) values (12, 2);
+insert into gnr_musi (muno, gnrno) values (12, 9);
+insert into gnr_musi (muno, gnrno) values (12, 10);
+
+insert into gnr_musi (muno, gnrno) values (13, 3);
+insert into gnr_musi (muno, gnrno) values (13, 5);
+insert into gnr_musi (muno, gnrno) values (13, 9);
+insert into gnr_musi (muno, gnrno) values (13, 10);
+insert into gnr_musi (muno, gnrno) values (13, 11);
+insert into gnr_musi (muno, gnrno) values (13, 19);
+insert into gnr_musi (muno, gnrno) values (13, 22);
+
+insert into gnr_musi (muno, gnrno) values (14, 2);
+insert into gnr_musi (muno, gnrno) values (14, 3);
+insert into gnr_musi (muno, gnrno) values (14, 4);
+insert into gnr_musi (muno, gnrno) values (14, 6);
+insert into gnr_musi (muno, gnrno) values (14, 21);
+insert into gnr_musi (muno, gnrno) values (14, 22);
+
+
 -- 뮤지션 테마 추가
 insert into thm_musi (muno, thmno) values (8, 1);
 insert into thm_musi (muno, thmno) values (8, 5);
@@ -653,3 +752,80 @@ insert into thm_musi (muno, thmno) values (11, 5);
 insert into thm_musi (muno, thmno) values (11, 6);
 insert into thm_musi (muno, thmno) values (11, 7);
 insert into thm_musi (muno, thmno) values (11, 10);
+
+insert into thm_musi (muno, thmno) values (12, 2);
+insert into thm_musi (muno, thmno) values (12, 6);
+insert into thm_musi (muno, thmno) values (12, 7);
+insert into thm_musi (muno, thmno) values (12, 8);
+insert into thm_musi (muno, thmno) values (12, 9);
+
+insert into thm_musi (muno, thmno) values (13, 1);
+insert into thm_musi (muno, thmno) values (13, 2);
+insert into thm_musi (muno, thmno) values (13, 6);
+insert into thm_musi (muno, thmno) values (13, 7);
+insert into thm_musi (muno, thmno) values (13, 8);
+insert into thm_musi (muno, thmno) values (13, 9);
+
+insert into thm_musi (muno, thmno) values (14, 3);
+insert into thm_musi (muno, thmno) values (14, 6);
+insert into thm_musi (muno, thmno) values (14, 7);
+insert into thm_musi (muno, thmno) values (14, 8);
+insert into thm_musi (muno, thmno) values (14, 9);
+
+-- 뮤지션 지역 추가
+insert into loc_musi (muno, locno) values (8, 26);
+insert into loc_musi (muno, locno) values (8, 27);
+insert into loc_musi (muno, locno) values (8, 28);
+insert into loc_musi (muno, locno) values (8, 29);
+insert into loc_musi (muno, locno) values (8, 36);
+
+insert into loc_musi (muno, locno) values (9, 26);
+insert into loc_musi (muno, locno) values (9, 27);
+insert into loc_musi (muno, locno) values (9, 28);
+insert into loc_musi (muno, locno) values (9, 29);
+insert into loc_musi (muno, locno) values (9, 30);
+
+insert into loc_musi (muno, locno) values (10, 1);
+insert into loc_musi (muno, locno) values (10, 2);
+insert into loc_musi (muno, locno) values (10, 3);
+insert into loc_musi (muno, locno) values (10, 22);
+insert into loc_musi (muno, locno) values (10, 23);
+insert into loc_musi (muno, locno) values (10, 24);
+
+insert into loc_musi (muno, locno) values (11, 1);
+insert into loc_musi (muno, locno) values (11, 2);
+insert into loc_musi (muno, locno) values (11, 9);
+insert into loc_musi (muno, locno) values (11, 10);
+insert into loc_musi (muno, locno) values (11, 12);
+insert into loc_musi (muno, locno) values (11, 19);
+
+insert into loc_musi (muno, locno) values (12, 5);
+insert into loc_musi (muno, locno) values (12, 6);
+insert into loc_musi (muno, locno) values (12, 7);
+insert into loc_musi (muno, locno) values (12, 21);
+insert into loc_musi (muno, locno) values (12, 22);
+insert into loc_musi (muno, locno) values (12, 25);
+insert into loc_musi (muno, locno) values (12, 33);
+insert into loc_musi (muno, locno) values (12, 34);
+insert into loc_musi (muno, locno) values (12, 35);
+insert into loc_musi (muno, locno) values (12, 36);
+
+insert into loc_musi (muno, locno) values (13, 25);
+insert into loc_musi (muno, locno) values (13, 1);
+insert into loc_musi (muno, locno) values (13, 3);
+insert into loc_musi (muno, locno) values (13, 5);
+insert into loc_musi (muno, locno) values (13, 7);
+insert into loc_musi (muno, locno) values (13, 23);
+insert into loc_musi (muno, locno) values (13, 41);
+insert into loc_musi (muno, locno) values (13, 43);
+insert into loc_musi (muno, locno) values (13, 47);
+insert into loc_musi (muno, locno) values (13, 48);
+
+insert into loc_musi (muno, locno) values (14, 25);
+insert into loc_musi (muno, locno) values (14, 1);
+insert into loc_musi (muno, locno) values (14, 3);
+insert into loc_musi (muno, locno) values (14, 5);
+insert into loc_musi (muno, locno) values (14, 7);
+insert into loc_musi (muno, locno) values (14, 8);
+insert into loc_musi (muno, locno) values (14, 9);
+insert into loc_musi (muno, locno) values (14, 10);
