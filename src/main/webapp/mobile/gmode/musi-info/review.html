@@ -1,30 +1,27 @@
 <div class="review-container">
-
 	<div class="review-header"></div>
 	
 	<div class="review-rating-container">
 	<div class="review-rating"></div>
-	<div class="review-rating-grade">4.5</div>
+	<div class="review-rating-grade"></div>
 	<div class="review-rating-text">리뷰는 알뮤를 통해 매칭된 회원이<br> 매칭 완료후, 작성한 것입니다</div>
 	</div>
 	<!-- review-rating-container -->
-	
 
 </div>
-<!-- review-container  -->
-  <!-- <div class="review-date">{{eventDate}}</div> -->
- 
+
 	<script id="musician-info-review-template" type="text/x-handlebars-template">
 
-  {{#musicianReview}}
-      <div id="review-box">
+  {{#each musicianReview}}
+ 
+  <div class="review-box">
   <div class="review-member">
   <span id="review-text">{{eventDate}}</span> &nbsp;&nbsp;&nbsp;
   <span class="review-title">{{eventTitle}}</span>
   </div>
   
   <img id="review-member-img" src="{{photo}}"> <span><i class="fa fa-star" id="review-star" aria-hidden="true"></i></span>
-  <span class="review-score">{{score}}&nbsp;&nbsp;&nbsp;{{name}}</span>
+  <span class="review-score">{{score}}</span>&nbsp;&nbsp;&nbsp;<span class="review-name">{{name}}</span>
 
   <div class="review-content">
   <div class="review-content-text"> 
@@ -32,36 +29,12 @@
   </div>
 <div class="review-content-more"><i class="fa fa-caret-down" aria-hidden="true"></i>더보기</div>
 <div class="review-content-hide"><i class="fa fa-caret-up" aria-hidden="true"></i>접기</div>
-  {{/musicianReview}}
+  </div>
+  </div>
+  {{/each}}
 
 
   </script>
   
-    <script id="musician-info-review0-template" type="text/x-handlebars-template">
-
-    {{#musicianReview}}
-      <div id="review-box">
-  <div class="review-date">{{eventDate}}</div>
-  
-  <div class="review-member">
-  <img id="review-member-img" src="{{photo}}"> <span><i class="fa fa-star" id="review-star" aria-hidden="true"></i></span>
-  <span class="review-score">{{score}}&nbsp;&nbsp;&nbsp;{{name}}</span>
-  <br>
-  <span id="review-text">이벤트명:</span>
-  <span class="review-title">{{eventTitle}}</span>
-  </div>
-
-  <div class="review-content">
-  <div class="review-content-text">
-  아직 완료 되지 않은 이벤트 입니다.
-  </div>
-<div class="review-content-more"><i class="fa fa-caret-down" aria-hidden="true"></i>더보기</div>
-<div class="review-content-hide"><i class="fa fa-caret-up" aria-hidden="true"></i>접기</div>
-  {{/musicianReview}}
-
-  </script>
-
-
-
 	
 <script src="/js/mobile/gmode/musi-info/review.js"></script>

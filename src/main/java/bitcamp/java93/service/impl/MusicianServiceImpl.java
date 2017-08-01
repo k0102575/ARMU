@@ -49,8 +49,8 @@ public class MusicianServiceImpl implements MusicianService {
     musicianDao.favorMusiAdd(valueMap);
   }
 
-  public List<Musician> listSurf() throws Exception {   
-    return musicianDao.selectSurfList();
+  public List<Musician> listSurf(int no) throws Exception {   
+    return musicianDao.surfList(no);
   }
   
   public List<Musician> listSurfFilter(int minAge, int maxAge) throws Exception {   
@@ -84,13 +84,8 @@ public class MusicianServiceImpl implements MusicianService {
   }
   
   @Override
-  public Musician getReview(int no) throws Exception {
+  public List<Musician> listReview(int no) throws Exception {
     return musicianDao.selectMusiReview(no);
-  }
-  
-  @Override
-  public Musician reviewCount(int no) throws Exception {
-    return musicianDao.selectMusiReviewCount(no);
   }
   
   @Override
