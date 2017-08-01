@@ -1,8 +1,6 @@
 package bitcamp.java93.domain;
 
-import java.sql.Date;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,19 +15,16 @@ public class Musician extends Member  {
   boolean isFavorite;
   int popularity;
   int count;
+  int fav;
   String eventTitle;
-  Date eventDate;
-  Date specDate;
+  String eventDate;
+  String specDate;
   String specDscp;
   int minAge;
   int maxAge;
   String location;
-  public String getLocation() {
-    return location;
-  }
-  public void setLocation(String location) {
-    this.location = location;
-  }
+  
+  String sido;
   Map<String , String> fileMap;
 //  HashMap<String , String> valueMap;
   List<Map<Integer , String>> list;
@@ -42,10 +37,11 @@ public class Musician extends Member  {
   public String toString() {
     return "Musician [age=" + age + ", isTeam=" + isTeam + ", homepage=" + homepage + ", intro=" + intro + ", gender="
         + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite + ", popularity="
-        + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", specDate="
-        + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge + ", location=" + location
-        + ", fileMap=" + fileMap + ", list=" + list + ", majorList=" + majorList + ", genreList=" + genreList
-        + ", themeList=" + themeList + ", locationList=" + locationList + ", photoList=" + photoList + "]";
+        + popularity + ", count=" + count + ", fav=" + fav + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate
+        + ", specDate=" + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge
+        + ", location=" + location + ", sido=" + sido + ", fileMap=" + fileMap + ", list=" + list + ", majorList="
+        + majorList + ", genreList=" + genreList + ", themeList=" + themeList + ", locationList=" + locationList
+        + ", photoList=" + photoList + "]";
   }
   public int getAge() {
     return age;
@@ -107,22 +103,28 @@ public class Musician extends Member  {
   public void setCount(int count) {
     this.count = count;
   }
+  public int getFav() {
+    return fav;
+  }
+  public void setFav(int fav) {
+    this.fav = fav;
+  }
   public String getEventTitle() {
     return eventTitle;
   }
   public void setEventTitle(String eventTitle) {
     this.eventTitle = eventTitle;
   }
-  public Date getEventDate() {
+  public String getEventDate() {
     return eventDate;
   }
-  public void setEventDate(Date eventDate) {
+  public void setEventDate(String eventDate) {
     this.eventDate = eventDate;
   }
-  public Date getSpecDate() {
+  public String getSpecDate() {
     return specDate;
   }
-  public void setSpecDate(Date specDate) {
+  public void setSpecDate(String specDate) {
     this.specDate = specDate;
   }
   public String getSpecDscp() {
@@ -143,17 +145,23 @@ public class Musician extends Member  {
   public void setMaxAge(int maxAge) {
     this.maxAge = maxAge;
   }
+  public String getLocation() {
+    return location;
+  }
+  public void setLocation(String location) {
+    this.location = location;
+  }
+  public String getSido() {
+    return sido;
+  }
+  public void setSido(String sido) {
+    this.sido = sido;
+  }
   public Map<String, String> getFileMap() {
     return fileMap;
   }
   public void setFileMap(Map<String, String> fileMap) {
     this.fileMap = fileMap;
-  }
-  public HashMap<String, String> getValueMap() {
-    return valueMap;
-  }
-  public void setValueMap(HashMap<String, String> valueMap) {
-    this.valueMap = valueMap;
   }
   public List<Map<Integer, String>> getList() {
     return list;
@@ -191,11 +199,5 @@ public class Musician extends Member  {
   public void setPhotoList(List<String> photoList) {
     this.photoList = photoList;
   }
-
-  
-  
-  
-  
-  
   
 }

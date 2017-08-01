@@ -14,13 +14,15 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import bitcamp.java93.domain.Member;
+import bitcamp.java93.service.MemberService;
 
-@WebFilter({"/mobile/chat/*", "/mobile/favor/*", "/mobile/mypage/*", "/mobile/gmode/event/*", "/mobile/gmode/musi-info/*"})
-
+@WebFilter({"/mobile/musimode/*","/mobile/chat/*", "/mobile/favor/*", "/mobile/mypage/*", "/mobile/gmode/event/*", "/mobile/gmode/musi-info/*"})
 /*@WebFilter({"/mobile/gmode/*"})*/
 public class AuthCheckFilter implements Filter {
-
+  
   @Override
   public void init(FilterConfig filterConfig) throws ServletException {}
 
@@ -31,12 +33,11 @@ public class AuthCheckFilter implements Filter {
     HttpServletResponse httpResponse = (HttpServletResponse) response;
     
     Member loginMember = (Member)httpRequest.getSession().getAttribute("loginMember");
-    if (loginMember == null) { // 쿠키에 세션ID가 없다면 로그인 화면으로 보낸다.
+    if (loginMember == null) { 
       httpResponse.sendRedirect("/mobile/login.html");
       return;
     }
     
-    // 다음 필터 또는 서블릿을 실행해야 한다.
     chain.doFilter(request, response);
   }
 

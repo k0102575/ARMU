@@ -47,10 +47,10 @@ function displayMusiInfoReview() {
 		})
 
 		reviewContentHide.on('click', function() {
-		  $(this).parent().children()[0].style.height = '105px'
+		  $(this).parent().children()[0].style.height = '160px'
 		  $(this).parent().children()[1].style.display = 'block'
 		  $(this).parent().children()[2].style.display = 'none'
-		  $(this).parent().parent().css('height', '300px')
+		  $(this).parent().parent().css('height', '380px')
 		})
 		
           $.getJSON('/musician/musiInfoReviewCount.json',
@@ -105,13 +105,13 @@ function reviewSetting() {
 	
 	for (var i = 0; i <= $("div[class=review-box]").length; i++) {
 		if ($(".review-content-text").text().length <= 28) {
-			$("#review-box").css("height", "200px")
+			$("#review-box").css("height", "260px")
 			$(".review-content-text").css("height", "50px")
 		}
 		  
 	    if ($(".review-content-text").text().length > 50) {
 	      $(".review-content-more").css("display", "block")
-	      $("#review-box").css("height", "300px")
+	      $("#review-box").css("height", "380px")
 	    }
 		if ($(".review-content-text").text().length > 50) {
 			$(".review-content-more").css("display", "block")

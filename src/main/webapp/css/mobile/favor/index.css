@@ -25,18 +25,18 @@
   width: 50%;
   left: 30%;
   bottom: 5%;
+  font-size: 250%;
+  margin-left: 3%;
 }
 
-.fa-heart {
-  font-size: 250%;
-  color: red;
+.fa-heart-o {
+  color: #ba3d3d;
   margin-left: 5%;
 }
 
 #musician-favor-count {
-  font-size: 250%;
   font-weight: normal;
-  margin-left: 3%;
+  margin-left: -8%;
 }
 
 /* 뮤지션 관심 리스트 시작 */
@@ -72,7 +72,7 @@
 #musician-favor-preview {
   float: right;
   width: 50%;
-  height: 100%;
+  height: 75%;
   display: inline-block;
 }
 
@@ -86,7 +86,7 @@
   width: 85%;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 250%;
+  font-size: 2em;
   margin-top: 4%;
   white-space: normal;
   line-height: 1.2;
@@ -107,13 +107,16 @@
   margin-top: 25px;
 }
 
-#musician-favor-delbtn {
-  width: 50%;
-  height: 13%;
-  background-color: white;
-  border: 1px solid black;
-  font-size: 200%;
-  margin-top: 40px;
+#musician-favor-delbtn { 
+width: 20%;
+    height: 15%;
+    background-color: white;
+    border: 1px solid black;
+    font-size: 200%;
+    z-index: 15;
+    position: relative;
+    bottom: 18%;
+    left: 50%;
 }
 
 .fa-arrow-circle-o-up {

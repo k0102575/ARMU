@@ -1,7 +1,8 @@
 "use strict"
 HandlebarsIntl.registerWith(Handlebars);
 displayRecommandEventList();
-displayMostPopularCategoryList();
+displayTop10CategoryList();
+displayRecentEventList();
 
 function displayRecommandEventList() {
 	$.getJSON('/event/listRecommand.json', function(result) {
@@ -10,22 +11,11 @@ function displayRecommandEventList() {
 			return;
 		}
 		
-		console.log(result.data)
-//		
-//		var intlData = { locales: 'en-US' }
-//
-//		var context = { price: 1000 };
-//
-//		var html = template(context, { data: {intl: intlData}});
-//		item.pay = {intl: intlData}
-		
 			$.each(result.data.listRecommand, function(i, item) {
 				var starInteger = parseInt(item.score),
 				starRealNumber = item.score - starInteger;
 				starAdd(starInteger, starRealNumber, item)//별점 처리
-				
 				heartAdd(item)//관심정보 처리
-				
 			});
 
 		var templateFn = Handlebars.compile($('#rec-event-template').text())
@@ -33,8 +23,6 @@ function displayRecommandEventList() {
 		var container = $('#rec-event-container')
 		var html = container.html()
 		container.html(html + generatedHTML)
-
-
 
 		/*initialize swiper when document ready*/
 		$(document).ready(function () {
@@ -56,30 +44,13 @@ function displayRecommandEventList() {
 	})
 }
 
-/*initialize swiper when document ready*/
-$(document).ready(function () {
-	var mySwiper = new Swiper ('.swiper-container', {
-		pagination: '.swiper-pagination',
-		prevButton: '.swiper-button-prev',
-		nextButton: '.swiper-button-next',
-		centeredSlides: true,
-		paginationClickable: true,
-		spaceBetween: 30,
-		slidesPerView: 'auto',
-		cssWidthAndHeight: true,
-		paginationType: 'bullets',
-		paginationElement: 'span'
-	});
-});//initialize swiper ended
-
-
-
-function displayMostPopularCategoryList() {
-	$.getJSON('/event/listRecommand.json', function(result) {
-//		var tags;
-//		$.each(result.data.listRecommand, function(i, item) {
-//		tags[0] = item
-//		})
+function displayTop10CategoryList() {
+	$.getJSON('/category/listTop10.json', function(result) {
+		if(result.status != 'success') {
+			console.error("getJSON() 실패: ", result.status)
+			return;
+		}
+		
 		var templateFn = Handlebars.compile($('#rec-most-popular-category-template').text())
 		var generatedHTML = templateFn(result.data)
 		var container = $('#rec-most-popular-category-container')
@@ -88,6 +59,28 @@ function displayMostPopularCategoryList() {
 	}, function(err) {
 		console.log(err)
 	})
+}
+
+function displayRecentEventList() {
+  $.getJSON('/event/listRecent.json', function(result) {
+    if(result.status != 'success') {
+      console.error("getJSON() 실패: ", result.status)
+      return;
+    }
+    $.each(result.data.listRecent, function(i, item) {
+      var starInteger = parseInt(item.score),
+      starRealNumber = item.score - starInteger;
+      starAdd(starInteger, starRealNumber, item)//별점 처리
+      heartAdd(item)//관심정보 처리
+    });
+    var templateFn = Handlebars.compile($('#rec-recent-event-template').text())
+    var generatedHTML = templateFn(result.data)
+    var container = $('#rec-recent-event-container')
+    var html = container.html()
+    container.html(html + generatedHTML)
+  }, function(err) {
+    console.log(err)
+  })
 }
 
 

@@ -4,7 +4,7 @@
 
      <div class="swiper-container">
        <div class="swiper-wrapper" id='rec-event-container'>
-
+        <!-- ##handlebars include## -->
         </div><!-- rec-event-container -->
 
         <br><br>
@@ -23,48 +23,15 @@
 
   <p class='rec-title'>인기 분야 TOP 10</p>
   <div class="rec-container rec-hashtag-container" id='rec-most-popular-category-container'>
-    <a href="#" class='rec-hashtag'>#결혼식 축가</a>
-    <a href="#" class='rec-hashtag'>#결혼식 반주</a>
-    <a href="#" class='rec-hashtag'>#대학교 축제</a>
-    <a href="#" class='rec-hashtag'>#어쩌구</a>
-    <a href="#" class='rec-hashtag'>#어쩌구</a>
-    <a href="#" class='rec-hashtag'>#어쩌구</a>
-    <a href="#" class='rec-hashtag'>#어쩌구</a>
-    <a href="#" class='rec-hashtag'>#어쩌구</a>
-    <a href="#" class='rec-hashtag'>#어쩌구</a>
-    <a href="#" class='rec-hashtag'>#어쩌구</a>
+    <!-- ##handlebars include## -->
   </div>
   <!-- 인기분야 끝 -->
   <div class='rec-container-separator'></div>
 
 
   <p class='rec-title'>최근 이벤트</p>
-  <div class="rec-container" id='rec-popular-musi-container'>
-    <div class="rec-event rec-recent-event">
-          
-          <div class='rec-event-writerbox'>
-            <div class="rec-event-writer-img" style='background-image: url("/image/musician/photo/m1.jpg")'></div>
-            <div class="rec-event-title"><span>기업행사 하는데 아아아호호 기업행사를 하는데용요요오오오오오오 </span></div>
-            <div class="rec-event-writer-name"><span>길동이</span></div>
-            <div class='rec-event-favor'><i class="fa fa-heart-o" aria-hidden="true"></i></div>
-            
-            </div>
-            <div class="rec-event-date"><span>2017-08-08</span></div><br>
-            <div class='rec-event-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>왈라왈라가라갈오ㅗ오오오오오오오오오오 어쩌구시 어쩌구구 어쩌구동 어디어디빌딩이에요</span></div><br>
-            <div class="rec-event-price"><i class="fa fa-krw" aria-hidden="true"></i>13,131</div>
-            <div class='rec-event-hashtagbox'>
-             <span>#어쩌구</span>
-             <span>#어쩌구</span>
-             <span>#어쩌구</span>
-             <span>#어쩌구</span>
-             <span>#어쩌구</span>
-             <span>#이러쿵저러쿵 짝짝</span>
-             <span>#이러쿵저러쿵 짝짝</span>
-             <span>#이러쿵저러쿵 짝짝</span>
-             <span>#이러쿵저러쿵 짝짝</span>
-             <span>#이러쿵저러쿵 짝짝</span>
-            </div>
-          </div><!-- rec-event -->
+  <div class="rec-container" id='rec-recent-event-container'>
+  <!-- ##handlebars include## -->
   </div>
   <!-- rec-container -->
   <div class='rec-container-separator'></div>
@@ -95,56 +62,34 @@
   {{/each}}
 </script>
 
-
-<script id="rec-best-review-musi-template" type="text/x-handlebars-template">
-  {{#each listRecommand}}
-  <div class="rec-best-review">
-    <div class="rec-best-review-img" style='background-image: url("{{photo}}")'></div>
-    <div class="rec-best-review-musi"><span>{{name}}</span>
-      <div class="rec-best-review-musi-score">
-      </div>
-    </div>
-    <!-- rec-best-review-musi -->
-    <div class="rec-best-review-hashtagbox">
-      {{#each majorList}} <span>#{{this}}</span> {{/each}}  
-      {{#each genreList}} <span>#{{this}}</span> {{/each}}
-      {{#each themeList}} <span>#{{this}}</span> {{/each}}
-    </div>
-    <hr class='rec-best-review-separator'>
-    <div class="rec-best-review-contents">
-      "{{review}}"
-    </div>
-    <div class="rec-see-more">
-      더보기 <i class="fa fa-caret-right" aria-hidden="true"></i></div>
-  </div>
-  <!-- rec-best-review -->
-  {{/each}}
-</script>
-
-<script id="rec-popular-musi-template" type="text/x-handlebars-template">
-  {{#each listRecommand}}
-  <div class="rec-popular-musi">
-    <div class="rec-popular-musi-img" style='background-image: url("{{photo}}")'></div>
-    <div class="rec-popular-musi-name"><span>{{name}}</span>
-      <div class="rec-popular-musi-score">
-      </div>
-    </div>
-    <!-- rec-popular-musi-name -->
-    <div class="rec-popular-musi-fav"><i class="fa fa-heart-o" aria-hidden="true"></i></div>
-    <div class="rec-popular-musi-hashtagbax">
-      {{#each majorList}} <span>#{{this}}</span> {{/each}}
-      {{#each genreList}} <span>#{{this}}</span> {{/each}}
-      {{#each themeList}} <span>#{{this}}</span> {{/each}}
-    </div>
-  </div>
-  <!-- rec-popular-musi -->
-  {{/each}}
-</script>
-
 <script id="rec-most-popular-category-template" type="text/x-handlebars-template">
-{{#each listRecommand}}
-<a href="#" class='rec-hashtag'>#{{this}}</a>
+{{#each listTop10}}
+<a href="#" class='rec-hashtag'>#{{name}}</a>
 {{/each}}
+</script>
+
+<script id="rec-recent-event-template" type="text/x-handlebars-template">
+{{#each listRecent}}
+  <div class="rec-event rec-recent-event">
+          {{#writeMember}}
+          <div class='rec-event-writerbox'>
+            <div class="rec-event-writer-img" style='background-image: url("{{photo}}")'></div>
+            <div class="rec-event-writer-name"><span>{{name}}</span></div>
+          {{/writeMember}}
+            <div class="rec-event-title"><span>{{title}}</span></div>
+            <div class='rec-event-favor'>{{{isFavorite}}}</div>
+            
+            </div>
+            <div class="rec-event-date"><span>{{date}}</span></div><br>
+            <div class='rec-event-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{location}}&nbsp;{{address}}</span></div><br>
+            <div class="rec-event-price">{{formatNumber pay style="currency" currency="KRW"}}</div>
+            <div class='rec-event-hashtagbox'>
+            {{#majorList}}<span>#{{this}}</span>{{/majorList}}
+            {{#themeList}}<span>#{{this}}</span>{{/themeList}}
+            {{#genreList}}<span>#{{this}}</span>{{/genreList}}
+            </div>
+          </div><!-- rec-event -->
+  {{/each}}
 </script>
 
 <script src="/node_modules/swiper/dist/js/swiper.jquery.min.js"></script>

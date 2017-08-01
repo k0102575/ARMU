@@ -16,13 +16,13 @@
   overflow: hidden;
 }
 
-#musician-info-major-container, #musician-info-genre-container, #musician-info-location-container {
+#musician-info-major-container, #musician-info-genre-container, #musician-info-theme-container, #musician-info-location-container {
   width: 100%;
   height: auto;
   margin-bottom: 2%;
 }
 
-#musician-info-major, #musician-info-genre, #musician-info-location {
+#musician-info-major, #musician-info-genre, #musician-info-theme, #musician-info-location {
   float: left;
   height: auto;
   width: 16%;
@@ -30,7 +30,7 @@
   font-size: 2rem;
 }
 
-#musician-info-major-content, #musician-info-genre-content, #musician-info-location-content {
+#musician-info-major-content, #musician-info-genre-content, #musician-info-theme-content, #musician-info-location-content {
   height: auto;
   width: 74%;
   display: inline-block;

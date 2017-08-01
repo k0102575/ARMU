@@ -34,6 +34,10 @@ public class CategoryServiceImpl implements CategoryService {
   public List<Category> listLocation(int no) throws Exception {   
     return categoryDao.selectListLocation(no);
   }
+
+  public List<Category> listTop10() throws Exception {
+    return categoryDao.selectTop10CategoryList();
+  }
   
   
 }

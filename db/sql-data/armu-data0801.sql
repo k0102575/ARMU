@@ -191,13 +191,8 @@ insert into memb (name, nick, phone, pwd, email, path) values ('노완진', '기
 insert into memb (name, nick, phone, pwd, email, path) values ('김승민', '몬나니', '010-3333-8091',  password('1111'), 'seungmin@gmail.com', '/image/musician/default.png');
 insert into memb (name, nick, phone, pwd, email, path) values ('박규호', '뀨우호', '010-1423-4523',  password('1111'), 'gggyuu@gmail.com', '/image/musician/default.png');
 
-insert into gmemb (gno) values (4);
-insert into gmemb (gno) values (5);
-insert into gmemb (gno) values (6);
-insert into gmemb (gno) values (7);
-
 -- 이벤트
-insert into evn (title, gno, locno, pay, addr, date, cont)
+insert into evn (title, mno, locno, pay, addr, date, cont)
 values ("결혼식 축가 구해요~!", 4, 22, 200000, '딩댕동 553-5', '2017-08-20',
 '의정부역 근처 예식장 4월 28일 오후 2시 예식에
 축가 구합니다.
@@ -205,7 +200,7 @@ values ("결혼식 축가 구해요~!", 4, 22, 200000, '딩댕동 553-5', '2017-
 학생도 가능하니 연락주세요^^
 페이는 20만원입니다^^');
 
-insert into evn (title, gno, locno, pay, addr, date, cont)
+insert into evn (title, mno, locno, pay, addr, date, cont)
 values ("결혼식 피아노 반주자를 구합니다!", 4, 14, 150000, '링딩동 113-1 샤이니웨딩홀', '2017-08-20',
 '결혼식 피아노 반주자 구합니다.
 
@@ -228,7 +223,7 @@ angie8102@gmail.com
 
 연락처 꼭 남겨주세요~~~');
 
-insert into evn (title, gno, locno, pay, addr, date, cont)
+insert into evn (title, mno, locno, pay, addr, date, cont)
 values ("창립기념행사에 모실 초청공연 연주자를 구합니다!", 4, 6, 300000, '용두동 222 (주)휴스턴', '2017-07-20',
 '(주)휴스턴 창립 11주년 기념식
 
@@ -241,7 +236,7 @@ values ("창립기념행사에 모실 초청공연 연주자를 구합니다!", 
 주소 : 4606 Mangum Rd, Houston, TX 77092
 ');
 
-insert into evn (title, gno, locno, pay, addr, date, cont)
+insert into evn (title, mno, locno, pay, addr, date, cont)
 values ("가든파티 연주자를 구합니다~~", 5, 8, 300000, '몰라동 131 몰라캠핑장', '2017-08-30',
 '8월 30일에 모임에서 가든파티를 하는데, 연주가 함께 있는 파티를 하려고 합니다!
 약 5시부터 8시까지 신나는 연주를 해주실 밴드를 모시고자 합니다.
@@ -322,10 +317,10 @@ insert into mtc (muno, eno, mtcdt, score, rev) values (2, 3, '2017-07-24', 4,
 
 
 -- 관심뮤지션(fav_musi)
-insert into fav_musi (muno, gno) values (1, 4);
-insert into fav_musi (muno, gno) values (2, 4);
-insert into fav_musi (muno, gno) values (1, 5);
-insert into fav_musi (muno, gno) values (1, 6);
+insert into fav_musi (muno, mno) values (1, 4);
+insert into fav_musi (muno, mno) values (2, 4);
+insert into fav_musi (muno, mno) values (1, 5);
+insert into fav_musi (muno, mno) values (1, 6);
 
 
 -- 뮤지션 지역정보(loc_musi)

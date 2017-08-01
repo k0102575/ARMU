@@ -32,7 +32,7 @@
   </insert>
   
   <select id="selectOneByEmailPassword" resultMap="memberMap" parameterType="map">
-    select  m.email, m.mno, m.name, m.nick, m.phone
+    select  m.email, m.mno, m.name, m.nick, m.phone, m.path
     from memb m
     where email=#{email} and pwd=password(#{password})
   </select>

@@ -18,6 +18,8 @@
 <script src="/node_modules/animsition/dist/js/animsition.min.js"></script>
 <script type="text/javascript" src="/js/mobile/jindo.desktop.ns.min.js"></script>
 <script type="text/javascript" src="/js/mobile/jindo_mobile_component.js"></script>
+<script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
+<script src="/node_modules/handlebars-intl/dist/handlebars-intl.min.js"></script>
 <style>
 
 /*카테고리 시작*/
@@ -186,6 +188,9 @@ display: none;
      mainAct.css('display', 'none')
      categoryUnderbar2.css('display', "none")
      categoryUnderbar3.css('display', "none")
+     $("#category1").css('font-weight', '900')
+     $("#category2").css('font-weight', 'normal')
+     $("#category3").css('font-weight', 'normal')
    })
 
    categoryBtn2.on('click', function() {
@@ -197,6 +202,9 @@ display: none;
      mainAct.css('display', 'none')
      categoryUnderbar1.css('display', "none")
      categoryUnderbar3.css('display', "none")
+     $("#category1").css('font-weight', 'normal')
+     $("#category2").css('font-weight', '900')
+     $("#category3").css('font-weight', 'normal')
    })
 
    categoryBtn3.on('click', function() {
@@ -207,6 +215,9 @@ display: none;
      $('#filter-body').css('display','none')
      categoryUnderbar1.css('display', "none")
      categoryUnderbar2.css('display', "none")
+     $("#category1").css('font-weight', 'normal')
+     $("#category2").css('font-weight', 'normal')
+     $("#category3").css('font-weight', '900')
    })
 	})
 

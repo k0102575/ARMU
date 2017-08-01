@@ -54,6 +54,31 @@ public class MusicianControl {
 
     return result;
   }
+  
+  @RequestMapping("listFavor")
+  public JsonResult listFavor(HttpSession session) throws Exception {
+    Member loginMember = (Member)session.getAttribute("loginMember");
+    HashMap<String,Object> dataMap = new HashMap<>();
+    ArrayList<Musician> musicianListFavor = (ArrayList<Musician>) musicianService.listFavor(loginMember.getNo());
+    Musician musicianFavorCount = musicianService.favorCount(loginMember.getNo());
+    dataMap.put("listFavor", musicianListFavor);
+    dataMap.put("favorCount", musicianFavorCount);
+    return new JsonResult(JsonResult.SUCCESS, dataMap);
+  }
+  
+  @RequestMapping("favorRemove")
+  public JsonResult favorRemove(HttpSession session, int no) throws Exception {
+    Member loginMember = (Member)session.getAttribute("loginMember");
+     musicianService.favorRemove(loginMember.getNo(), no);
+    return new JsonResult(JsonResult.SUCCESS, "ok");
+  }
+  
+  @RequestMapping("favorAdd")
+  public JsonResult favorAdd(HttpSession session, int no) throws Exception {
+    Member loginMember = (Member)session.getAttribute("loginMember");
+     musicianService.favorAdd(loginMember.getNo(), no);
+    return new JsonResult(JsonResult.SUCCESS, "ok");
+  }
 
   @RequestMapping("listSurf")
   public JsonResult listSurf() throws Exception {
@@ -115,25 +140,16 @@ public class MusicianControl {
 //  }
   
   @RequestMapping("musiInfo")
-  public JsonResult musiInfo(int no) {
+  public JsonResult musiInfo(HttpSession session, int no) throws Exception {
     
-    JsonResult result = new JsonResult();
+    Member loginMember = (Member)session.getAttribute("loginMember");
+    HashMap<String,Object> dataMap = new HashMap<>();
+
+    Musician musician = musicianService.get(loginMember.getNo(), no);
     
-    try {
-      Musician musician = musicianService.get(no);
-      
-      if (musician == null) {
-        return new JsonResult(JsonResult.FAIL, no + "번 뮤지션이 없습니다.");
-      }
-      
-      result.setStatus(JsonResult.SUCCESS);
-      result.setData(musician);
-      
-    } catch (Exception e) {
-      result.setStatus(JsonResult.ERROR);
-    }
+    dataMap.put("musician", musician);
     
-    return result;
+      return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
   
   @RequestMapping("musiInfoReview")
@@ -234,6 +250,9 @@ public class MusicianControl {
 
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
+  
+  
+  
 
   @RequestMapping("searchMusician")
   public JsonResult searchMusician(@RequestParam String location) throws Exception {

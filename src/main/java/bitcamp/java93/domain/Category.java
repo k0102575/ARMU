@@ -17,17 +17,14 @@ public class Category {
   String loctname;
   int locno;
   String locname;
-  
+  String type;
+  int no;
+  String name;
+  int count;
   Map<Integer , String> themeMap;
   Map<Integer , String> majorMap;
   Map<Integer , String> genreMap;
   List<Map<Integer , String>> list;
-  public List<Map<Integer, String>> getList() {
-    return list;
-  }
-  public void setList(List<Map<Integer, String>> list) {
-    this.list = list;
-  }
   public int getThmno() {
     return thmno;
   }
@@ -94,6 +91,42 @@ public class Category {
   public void setLoctname(String loctname) {
     this.loctname = loctname;
   }
+  public int getLocno() {
+    return locno;
+  }
+  public void setLocno(int locno) {
+    this.locno = locno;
+  }
+  public String getLocname() {
+    return locname;
+  }
+  public void setLocname(String locname) {
+    this.locname = locname;
+  }
+  public String getType() {
+    return type;
+  }
+  public void setType(String type) {
+    this.type = type;
+  }
+  public int getNo() {
+    return no;
+  }
+  public void setNo(int no) {
+    this.no = no;
+  }
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+  public int getCount() {
+    return count;
+  }
+  public void setCount(int count) {
+    this.count = count;
+  }
   public Map<Integer, String> getThemeMap() {
     return themeMap;
   }
@@ -112,25 +145,22 @@ public class Category {
   public void setGenreMap(Map<Integer, String> genreMap) {
     this.genreMap = genreMap;
   }
+  public List<Map<Integer, String>> getList() {
+    return list;
+  }
+  public void setList(List<Map<Integer, String>> list) {
+    this.list = list;
+  }
   @Override
   public String toString() {
     return "Category [thmno=" + thmno + ", thmtname=" + thmtname + ", thmname=" + thmname + ", mjrno=" + mjrno
         + ", mjrtname=" + mjrtname + ", mjrname=" + mjrname + ", gnrno=" + gnrno + ", gnrtname=" + gnrtname
         + ", gnrname=" + gnrname + ", loctno=" + loctno + ", loctname=" + loctname + ", locno=" + locno + ", locname="
-        + locname + ", themeMap=" + themeMap + ", majorMap=" + majorMap + ", genreMap=" + genreMap + ", list=" + list
-        + "]";
+        + locname + ", type=" + type + ", no=" + no + ", name=" + name + ", count=" + count + ", themeMap=" + themeMap
+        + ", majorMap=" + majorMap + ", genreMap=" + genreMap + ", list=" + list + "]";
   }
-  public int getLocno() {
-    return locno;
-  }
-  public void setLocno(int locno) {
-    this.locno = locno;
-  }
-  public String getLocname() {
-    return locname;
-  }
-  public void setLocname(String locname) {
-    this.locname = locname;
-  }
+
+  
+  
   
 }

@@ -10,13 +10,12 @@
 		</div>
 		<br>
 		<div id='login-btn' class='user-infobox'>
-			<img src='/image/logo/header/login_01_w.png'>
+			<img class='user-img' src='/image/logo/header/login_01_w.png'>
 			<p class='menu-login-text'>로그인</p>
 		</div>
 		<div id='mypage-btn' class='user-infobox'>
-		<!-- <img src='../ARMU-Image/Mobile/login/login_03_g.png'> -->
-      <img  class='user-img' src='/image/logo/header/login_03_g4.png'> 
-      <p class='menu-mypage-text'>프로필</p>
+      <img  class='user-img' id='user-photo' src='/image/logo/header/login_01_w.png'> 
+      <p class='menu-login-text'>프로필</p>
     </div>
 		<div class='menu-category-btn menu-top-btn' id='myevent-btn'>나의이벤트</div>
 		<hr class='menu-category-separator'>
@@ -55,7 +54,6 @@
   <!-- search-contents -->
 </div>
 <!-- search-toggle -->
-
 
 <script>
 /*메뉴 관련*/
@@ -132,6 +130,7 @@
 	                      .on('click', function() {
 	                        location.href = '/mobile/mypage/mypage.html'
 	                      })
+	      $('#user-photo').attr('src', result.data.photo)
 	      $('#login-btn').css('display', 'none')
 	    } else {
 	      $('#mypage-btn').css('display', 'none')
