@@ -1,7 +1,7 @@
 
 -- 뮤지션
 insert into memb (name, nick, phone, pwd, email, path) values ('조승우', '조승우', '010-1234-1234',  password('1111'), 'seungwoojo@daum.net', '/image/musician/photo/0choi2.jpg');
-insert into memb (name, nick, phone, pwd, email, path) values ('임정희', '임정희', '010-2424-3234',  password('1111'), 'jungheelee@daum.net', '/image/musician/photo/m1.jpg');
+insert into memb (name, nick, phone, pwd, email, path) values ('차지연', 'JIYEON CHA', '010-2424-3234',  password('1111'), 'jiyeon@daum.net', '/image/musician/photo/m1.jpg');
 insert into memb (name, nick, phone, pwd, email, path) values ('오호라', '오호라밴드', '010-5555-5050',  password('1111'), 'ohora@gmail.com', '/image/musician/photo/m2.jpg');
 
 insert into musi (muno, age, team, gender, hpg, intro) values (1, 35, 'N', 'M','http://tistory.seungwoo.com', '저는 짱짱맨 조승우입니다. 조각같은 외모와 매력적인 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!');
@@ -12,6 +12,7 @@ insert into musi (muno, age, team, gender, hpg, intro) values (3, 28, 'Y', 'M', 
 insert into mjr_type (name) values ('보컬');
 insert into mjr_type (name) values ('피아노');
 insert into mjr_type (name) values ('밴드');
+insert into mjr_type (name) values ('현악');
 
 insert into mjr (name, mjrtno) values ('남성 보컬', 1);
 insert into mjr (name, mjrtno) values ('여성 보컬', 1);
@@ -23,13 +24,16 @@ insert into mjr (name, mjrtno) values ('성악 바리톤', 1);
 insert into mjr (name, mjrtno) values ('성악 베이스', 1);
 insert into mjr (name, mjrtno) values ('성악(팀)', 1);
 
-insert into mjr (name, mjrtno) values ('클래식 피아노 반주', 2);
-insert into mjr (name, mjrtno) values ('클래식 피아노 연주', 2);
-insert into mjr (name, mjrtno) values ('실용음악 피아노 반주', 2);
-insert into mjr (name, mjrtno) values ('실용음악 피아노 연주', 2);
+insert into mjr (name, mjrtno) values ('클래식 피아노', 2);
+insert into mjr (name, mjrtno) values ('실용음악 피아노', 2);
 
 insert into mjr (name, mjrtno) values ('어쿠스틱 밴드(팀)', 3);
 insert into mjr (name, mjrtno) values ('록 밴드(팀)', 3);
+
+insert into mjr (name, mjrtno) values ('바이올린', 4);
+insert into mjr (name, mjrtno) values ('비올라', 4);
+insert into mjr (name, mjrtno) values ('첼로', 4);
+insert into mjr (name, mjrtno) values ('콘트라베이스', 4);
 
 
 -- 장르 분류(gnr_type), 장르(gnr)
@@ -58,6 +62,10 @@ insert into gnr (name, gnrtno) values ('뉴에이지', 4);
 insert into gnr (name, gnrtno) values ('실내악', 1);
 insert into gnr (name, gnrtno) values ('가곡', 1);
 insert into gnr (name, gnrtno) values ('아리아', 1);
+insert into gnr (name, gnrtno) values ('클래식 연주곡', 1);
+insert into gnr (name, gnrtno) values ('협주곡', 1);
+insert into gnr (name, gnrtno) values ('교향곡', 1);
+
 
 
 
@@ -84,7 +92,8 @@ insert into thm (name, thmtno) values ('대학교 축제', 4);
 -- 뮤지션 전공(mjr_musi)
 insert into mjr_musi (muno, mjrno) values (1, 1);
 insert into mjr_musi (muno, mjrno) values (2, 2);
-insert into mjr_musi (muno, mjrno) values (3, 14);
+insert into mjr_musi (muno, mjrno) values (3, 12);
+insert into mjr_musi (muno, mjrno) values (3, 13);
 
 -- 뮤지션 장르(gnr_musi)
 insert into gnr_musi (muno, gnrno) values (1, 1);
@@ -441,3 +450,27 @@ insert into musi (muno, age, team, gender, intro) values (9, 27, 'N', 'F',
 특히 웨딩연주의 경우는 함께 하는 친구들이 팀으로도 있어서, 연락주시면 함께 할 수 있습니다.
 언제든 연락주세요 ^^
 ');
+
+-- 뮤지션 전공 추가
+insert into mjr_musi (muno, mjrno) values (8, 14);
+
+insert into mjr_musi (muno, mjrno) values (9, 10);
+insert into mjr_musi (muno, mjrno) values (9, 11);
+
+-- 뮤지션 장르 추가
+insert into gnr_musi (muno, gnrno) values (8, 9);
+insert into gnr_musi (muno, gnrno) values (8, 10);
+insert into gnr_musi (muno, gnrno) values (8, 11);
+insert into gnr_musi (muno, gnrno) values (8, 12);
+insert into gnr_musi (muno, gnrno) values (8, 13);
+insert into gnr_musi (muno, gnrno) values (8, 14);
+insert into gnr_musi (muno, gnrno) values (8, 15);
+insert into gnr_musi (muno, gnrno) values (8, 16);
+
+insert into gnr_musi (muno, gnrno) values (9, 11);
+insert into gnr_musi (muno, gnrno) values (9, 12);
+insert into gnr_musi (muno, gnrno) values (9, 15);
+insert into gnr_musi (muno, gnrno) values (9, 16);
+insert into gnr_musi (muno, gnrno) values (9, 17);
+
+-- 뮤지션 테마 추가
