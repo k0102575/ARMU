@@ -194,6 +194,100 @@ insert into loc (name, loctno) values ('수성구', 3);
 insert into loc (name, loctno) values ('달서구', 3);
 insert into loc (name, loctno) values ('달성군', 3);
 
+insert into loc (name, loctno) values ('중구', 4);
+insert into loc (name, loctno) values ('동구', 4);
+insert into loc (name, loctno) values ('남구', 4);
+insert into loc (name, loctno) values ('연수구', 4);
+insert into loc (name, loctno) values ('남동구', 4);
+insert into loc (name, loctno) values ('부평구', 4);
+insert into loc (name, loctno) values ('계양구', 4);
+insert into loc (name, loctno) values ('옹진군', 4);
+
+insert into loc (name, loctno) values ('동구', 5);
+insert into loc (name, loctno) values ('중구', 5);
+insert into loc (name, loctno) values ('남구', 5);
+insert into loc (name, loctno) values ('북구', 5);
+insert into loc (name, loctno) values ('광산구', 5);
+
+insert into loc (name, loctno) values ('동구', 6);
+insert into loc (name, loctno) values ('중구', 6);
+insert into loc (name, loctno) values ('서구', 6);
+insert into loc (name, loctno) values ('유성구', 6);
+insert into loc (name, loctno) values ('대덕구', 6);
+
+insert into loc (name, loctno) values ('중구', 7);
+insert into loc (name, loctno) values ('동구', 7);
+insert into loc (name, loctno) values ('남구', 7);
+insert into loc (name, loctno) values ('북구', 7);
+insert into loc (name, loctno) values ('울주군', 7);
+
+insert into loc (name, loctno) values ('한솔동', 8);
+insert into loc (name, loctno) values ('도담동', 8);
+insert into loc (name, loctno) values ('연기면', 8);
+insert into loc (name, loctno) values ('금남면', 8);
+insert into loc (name, loctno) values ('장군면', 8);
+
+insert into loc (name, loctno) values ('수원시', 9);
+insert into loc (name, loctno) values ('성남시', 9);
+insert into loc (name, loctno) values ('의정부시', 9);
+insert into loc (name, loctno) values ('안양시', 9);
+insert into loc (name, loctno) values ('부천시', 9);
+insert into loc (name, loctno) values ('광명시', 9);
+insert into loc (name, loctno) values ('평택시', 9);
+insert into loc (name, loctno) values ('안산시', 9);
+insert into loc (name, loctno) values ('고양시', 9);
+insert into loc (name, loctno) values ('안성시', 9);
+
+insert into loc (name, loctno) values ('춘천시', 10);
+insert into loc (name, loctno) values ('원주시', 10);
+insert into loc (name, loctno) values ('강릉시', 10);
+insert into loc (name, loctno) values ('횡성군', 10);
+insert into loc (name, loctno) values ('홍천군', 10);
+insert into loc (name, loctno) values ('정선군', 10);
+insert into loc (name, loctno) values ('철원군', 10);
+
+insert into loc (name, loctno) values ('청주시', 11);
+insert into loc (name, loctno) values ('충주시', 11);
+insert into loc (name, loctno) values ('제천시', 11);
+insert into loc (name, loctno) values ('괴산군', 11);
+insert into loc (name, loctno) values ('단양군', 11);
+insert into loc (name, loctno) values ('음성군', 11);
+insert into loc (name, loctno) values ('진천군', 11);
+
+insert into loc (name, loctno) values ('천안시', 12);
+insert into loc (name, loctno) values ('공주시', 12);
+insert into loc (name, loctno) values ('보령시', 12);
+insert into loc (name, loctno) values ('아산시', 12);
+insert into loc (name, loctno) values ('서산시', 12);
+insert into loc (name, loctno) values ('논산시', 12);
+insert into loc (name, loctno) values ('계룡시', 12);
+
+insert into loc (name, loctno) values ('익산시', 13);
+insert into loc (name, loctno) values ('군산시', 13);
+insert into loc (name, loctno) values ('김제시', 13);
+insert into loc (name, loctno) values ('정읍시', 13);
+
+insert into loc (name, loctno) values ('목포시', 14);
+insert into loc (name, loctno) values ('여수시', 14);
+insert into loc (name, loctno) values ('순천시', 14);
+insert into loc (name, loctno) values ('광양시', 14);
+
+insert into loc (name, loctno) values ('포항시', 15);
+insert into loc (name, loctno) values ('구미시', 15);
+insert into loc (name, loctno) values ('안동시', 15);
+insert into loc (name, loctno) values ('김천시', 15);
+insert into loc (name, loctno) values ('경주시', 15);
+
+insert into loc (name, loctno) values ('창원시', 16);
+insert into loc (name, loctno) values ('김해시', 16);
+insert into loc (name, loctno) values ('진주시', 16);
+insert into loc (name, loctno) values ('사천시', 16);
+insert into loc (name, loctno) values ('통영시', 16);
+
+insert into loc (name, loctno) values ('제주시', 17);
+insert into loc (name, loctno) values ('서귀포시', 17);
+
+
 -- 일반회원
 insert into memb (name, nick, phone, pwd, email, path) values ('엄진영', '엄신랑', '010-1111-2222',  password('1111'), 'jinyoungeom@gmail.com', '/image/musician/default.png');
 insert into memb (name, nick, phone, pwd, email, path) values ('노완진', '기요미', '010-1313-7375',  password('1111'), 'wanzargen@gmail.com', '/image/musician/default.png');
