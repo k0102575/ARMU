@@ -270,7 +270,7 @@ function displayList() {
       seoul.removeClass('on2')
       $(this).html('<i class="fa fa-check" aria-hidden="true"></i>'+ $(this).text())
       $(this).addClass('on2')
-})
+}
 
 function displayList(result) {
   var templateFn = Handlebars.compile($('#musician-list-template').text())
