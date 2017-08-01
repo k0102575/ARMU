@@ -1,14 +1,3 @@
-//$(".autoDiv").on('click', function() {
-//  $("#musician-surf-list").append(
-//      "<div id='musician-surf'><img class='musician-surf-picture' src='../ARMU-Image/Mobile/19_eventpage/e_2.jpg'>\
-//      <div id='musician-surf-preview'>\
-//      <span id='musician-surf-intro'>#전공#전공#장르#프리뷰#전공#장르#프리뷰#전공#전공#장르#프리뷰#전공#장르#프리뷰</span>\
-//      <span id='musician-surf-name'>이름</span><br>\
-//      <span id='musician-surf-location'>지역</span><br>\
-//      <img id='musician-surf-like' src='../ARMU-Image/ARMU_icon/mobile_icon/heart.png'>\
-//      </div>")
-//})
-//
 $("document").ready(function(){
   displaySurfMusiList()
 })
@@ -17,6 +6,14 @@ $('#abca').on('click',function(e) {
   e.preventDefault()
   displaySurfMusiList2()
 })
+
+Handlebars.registerHelper('isIndex', function(isFavorite, options) {
+  if (isFavorite == true) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
 
 $("#filter-update").on('click', function() {
   var checkVal = $(":input:radio[name=gender]:checked").val()
@@ -90,7 +87,6 @@ function displaySurfMusiList() {
     var container = $('#musician-surf-list')
     container.html(generatedHTML)
   })
-  
   
 }
 
@@ -244,13 +240,10 @@ var aa;
 var seoul = $('.seoul')
 seoul.click(function () {
   aa = $(this)
-  console.log(aa)
   $(this).on('click', function() {
-    console.log(aa.text())
     $.post('/musician/searchMusician.json',
       {'location':aa.text()}, function(result) {
 //  location.href = '/mobile/index.html'
-    console.log(result)
   },'json')
   })
   
@@ -264,11 +257,9 @@ function displayList() {
   $.post('/musician/searchMusician.json',
       {'location':aa.text()}, function(result) {
 //  location.href = '/mobile/index.html'
-    console.log(result)
   },'json')
 }
 
-console.log(aa)
 $(function ($) {
     let index =null;
     // let $filterwrap = $('.filter-loc-toggle')

@@ -71,7 +71,11 @@
       {{sido}}
       </span>
       <br> 
-      <img id="musician-surf-like" src="/image/icon/mobile_icon/heart.png">
+      {{#isIndex isFavorite}}
+      <i id="musician-surf-like-favor" class="fa fa-heart-o" aria-hidden="true"></i>
+      {{else}}
+      <i id="musician-surf-like" class="fa fa-heart-o" aria-hidden="true"></i>
+      {{/isIndex}}
     </div>
 </div>
 {{/each}}
@@ -93,7 +97,11 @@
       {{sido}}
       </span>
       <br> 
-      <img id="musician-surf-like" src="/image/icon/mobile_icon/heart.png">
+      {{#isIndex isFavorite}}
+      <i id="musician-surf-like-favor" class="fa fa-heart-o" aria-hidden="true"></i>
+      {{else}}
+      <i id="musician-surf-like" class="fa fa-heart-o" aria-hidden="true"></i>
+      {{/isIndex}}
     </div>
 </div>
 {{/each}}
