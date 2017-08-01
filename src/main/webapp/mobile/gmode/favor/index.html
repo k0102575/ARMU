@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
 <link href="/css/mobile/common.css" rel="stylesheet" type="text/css" media="all">
 <link href="/css/mobile/header.css" rel="stylesheet" type="text/css" media="all">
-<link href="/css/mobile/favor/index.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/mobile/gmode/favor/index.css" rel="stylesheet" type="text/css" media="all">
 <script src="/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/node_modules/handlebars/dist/handlebars.js"></script>
@@ -43,7 +43,7 @@
 {{#each listFavor}}
 <div id='musician-favor'>
   <img id='musician-favor-picture' src='{{photo}}'>
-  <input type="hidden" id="hidden-no" value="{{no}}">
+  
   <div id="musician-favor-preview">
   <div id="musician-favor-name">{{name}}</div>
   <div id="musician-favor-intro">
@@ -56,7 +56,9 @@
   </div>
   <div id="musician-favor-location">{{locationList}}</div>
 </div>
-  <span><button type="button" id="musician-favor-delbtn">삭제</button><span>
+  <span><button type="button" class="musician-favor-delbtn">삭제</button>
+<input type="hidden" id="hidden-no" value="{{no}}"><span>
+</div>
 {{/each}}
 
 </script>
@@ -68,7 +70,7 @@
 
 <div id='header-menu-detail'><!-- include --></div>
 
-<script src="/js/mobile/favor/index.js"></script>
+<script src="/js/mobile/gmode/favor/index.js"></script>
 
 </body>
 </html>

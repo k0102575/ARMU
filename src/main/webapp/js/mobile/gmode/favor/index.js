@@ -9,27 +9,31 @@ $(document).ready(function() {
 })
 
 $.getJSON('/musician/listFavor.json', function(result) {
-  console.log(result)
   var templateFn = Handlebars.compile($('#musician-favor-template').text())
   var generatedHTML = templateFn(result.data)
   var container = $('#musician-favor-list')
   container.html(generatedHTML)
   
-  $("#musician-favor-count-text").text("관심 뮤지션 : " + result.data.favorCount.count + " 명")
+  if(result.data.listFavor.length == 0) {
+    $("#musician-favor-count-text").text("관심 뮤지션 :  0  명")
+  } else {
+    $("#musician-favor-count-text").text("관심 뮤지션 : " + result.data.listFavor[0].count + "명")
+  }
   
-  $("#musician-favor-delbtn").on('click', function (event) {
-    event.preventDefault()
-    
-  $.post('/musician/favorRemove.json', {
-    'no': $("#hidden-no").val()
-  }, function(result) {
-    alert("뮤지션이 관심 목록에서 삭제되었습니다.")
-    location.reload();
-  }, 'json')
-    
-  })
+  var musicianFavorDelbtn = $(".musician-favor-delbtn")
+  musicianFavorDelbtn.on('click', function (event) {
+    var no = $(this).parent().children()[1].value
+$.post('/musician/favorRemove.json', {
+  'no': no
+}, function(result) {
+  alert("뮤지션이 관심 목록에서 삭제되었습니다.")
+  location.reload();
+}, 'json')
   
 })
+  
+})
+
 
 $(document.body).on('click', '#musician-favor-preview', function(event) {
   location.href = '/mobile/gmode/musi-info/index.html?no=' + $("#hidden-no").val() 

@@ -75,12 +75,6 @@
     </collection>
   </resultMap>
   
-  
-    <resultMap type="musician" id="musicianFavorCountMap">
-    <id column="mno" property="no" />
-    <result column="count" property="count" />
-    </resultMap>
-  
    <resultMap type="musician" id="musicianInfoMap">
     <id column="mno" property="no" />
     <result column="name" property="name" />
@@ -223,7 +217,7 @@
   </select>
   
   <select id="favorMusiAdd" parameterType="map">
-  insert into fav_musi (muno, mno) values (#{muNo}, #{myNo})
+  insert into fav_musi (mno, muno) values (#{myNo}, #{muNo})
   </select>
 
   <select id="surfList" resultMap="musicianMap">
@@ -269,7 +263,6 @@
     path=#{photoPath}
     where muno=#{memberNo}
   </update> -->
-
    
 </mapper>
 

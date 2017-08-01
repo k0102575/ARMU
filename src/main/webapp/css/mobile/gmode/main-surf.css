@@ -338,7 +338,7 @@ input:checked + label {
   text-overflow: ellipsis;
 }
 
-#musician-surf-like {
+.surfLike {
 	position: absolute;
 	right: 5%;
 	bottom: 15%;

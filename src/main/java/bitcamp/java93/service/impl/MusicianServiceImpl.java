@@ -44,9 +44,10 @@ public class MusicianServiceImpl implements MusicianService {
   @Override
   public void favorAdd(int myNo, int muNo) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("myno", myNo);
+    valueMap.put("myNo", myNo);
     valueMap.put("muNo", muNo);
-    musicianDao.favorMusiAdd(valueMap);
+    System.out.println(valueMap);
+       musicianDao.favorMusiAdd(valueMap);
   }
 
   public List<Musician> listSurf(int no) throws Exception {   

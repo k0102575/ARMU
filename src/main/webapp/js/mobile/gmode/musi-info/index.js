@@ -44,11 +44,9 @@ function displayMusiInfo() {
         }
       }
       
-     $("#hidden-no").val(data.no)
-     
       $("#musician-basic-info-favor").on("click", function() {
         $.post('/musician/favorAdd.json', {
-          'no': $("#hidden-no").val()
+          'no': location.href.split('?')[1].split('=')[1]
         }, function(result) {
           alert("뮤지션이 관심 목록에 추가되었습니다.")
           location.reload();

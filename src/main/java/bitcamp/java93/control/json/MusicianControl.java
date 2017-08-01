@@ -1,6 +1,5 @@
 package bitcamp.java93.control.json;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -56,26 +55,29 @@ public class MusicianControl {
   
   @RequestMapping("listFavor")
   public JsonResult listFavor(HttpSession session) throws Exception {
-    Member loginMember = (Member)session.getAttribute("loginMember");
-    HashMap<String,Object> dataMap = new HashMap<>();
-    ArrayList<Musician> musicianListFavor = (ArrayList<Musician>) musicianService.listFavor(loginMember.getNo());
-    Musician musicianFavorCount = musicianService.favorCount(loginMember.getNo());
-    dataMap.put("listFavor", musicianListFavor);
-    dataMap.put("favorCount", musicianFavorCount);
-    return new JsonResult(JsonResult.SUCCESS, dataMap);
+    JsonResult result = new JsonResult();
+    
+    try {
+      List<Musician> listFavor = (List<Musician>) musicianService.listFavor(getLoginMember(session).getNo());
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listFavor", listFavor);
+      result.setData(dataMap);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      result.setData(e.getMessage());
+    }
+    return result;
   }
   
   @RequestMapping("favorRemove")
   public JsonResult favorRemove(HttpSession session, int no) throws Exception {
-    Member loginMember = (Member)session.getAttribute("loginMember");
-     musicianService.favorRemove(loginMember.getNo(), no);
+     musicianService.favorRemove(getLoginMember(session).getNo(), no);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
   @RequestMapping("favorAdd")
   public JsonResult favorAdd(HttpSession session, int no) throws Exception {
-    Member loginMember = (Member)session.getAttribute("loginMember");
-     musicianService.favorAdd(loginMember.getNo(), no);
+    musicianService.favorAdd(getLoginMember(session).getNo(), no);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
 
@@ -113,9 +115,7 @@ public class MusicianControl {
   
   @RequestMapping("musiInfo")
   public JsonResult musiInfo(HttpSession session, int no) throws Exception {
-    
     JsonResult result = new JsonResult();
-    
     try {
       Musician musician = musicianService.get(getLoginMember(session).getNo(), no);
       HashMap<String,Object> dataMap = new HashMap<>();
@@ -126,20 +126,16 @@ public class MusicianControl {
       result.setData(e.getMessage());
     }
     return result;
-    
   }
   
   @RequestMapping("musiInfoReview")
   public JsonResult musiInfoReview(int no) {
     JsonResult result = new JsonResult();
-    
     try {
       List<Musician> musicianReview = (List<Musician>) musicianService.listReview(no);
       HashMap<String,Object> dataMap = new HashMap<>();
       dataMap.put("musicianReview", musicianReview);
-      
       result.setData(dataMap);
-      
     } catch (Exception e) {
       result.setStatus(JsonResult.ERROR);
       result.setData(e.getMessage());
@@ -149,40 +145,28 @@ public class MusicianControl {
   
   @RequestMapping("musiInfoReviewIntroduce")
   public JsonResult musiInfoReviewIntroduce(int no) throws Exception {
-    
     JsonResult result = new JsonResult();
     HashMap<String,Object> dataMap = new HashMap<>();
-    
-
       Musician musicianIntroduce = musicianService.getIntroduce(no);
-      
       if (musicianIntroduce == null) {
         return new JsonResult(JsonResult.SUCCESS, "0");
       }
-      
       result.setStatus(JsonResult.SUCCESS);
       dataMap.put("getIntroduce", musicianIntroduce);
-      
       result.setData(dataMap);
     return result;
   }
   
   @RequestMapping("musiInfoReviewPortfolio")
   public JsonResult musiInfoReviewPortfolio(int no) throws Exception {
-    
     JsonResult result = new JsonResult();
     HashMap<String,Object> dataMap = new HashMap<>();
-    
-
       Musician musicianPortfolio = musicianService.getPortfolio(no);
-      
       if (musicianPortfolio == null) {
         return new JsonResult(JsonResult.SUCCESS, "0");
       }
-      
       result.setStatus(JsonResult.SUCCESS);
       dataMap.put("getPortfolio", musicianPortfolio);
-      
       result.setData(dataMap);
     return result;
   }

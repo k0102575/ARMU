@@ -1,19 +1,21 @@
-$("document").ready(function(){
+$(document).ready(function() {
+/*  Handlebars.registerHelper('isIndex', function(isFavorite, options) {
+    if (isFavorite == true) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
+  })*/
   displaySurfMusiList()
 })
+
+
+
 
 $('#abca').on('click',function(e) {
   e.preventDefault()
   displaySurfMusiList2()
 })
-
-Handlebars.registerHelper('isIndex', function(isFavorite, options) {
-  if (isFavorite == true) {
-    return options.fn(this);
-  } else {
-    return options.inverse(this);
-  }
-});
 
 $("#filter-update").on('click', function() {
   var checkVal = $(":input:radio[name=gender]:checked").val()
@@ -85,9 +87,18 @@ function displaySurfMusiList() {
     var generatedHTML = templateFn(result.data)
     var container = $('#musician-surf-list')
     container.html(generatedHTML)
+    var surfLike = $(".surfLike")
+    for(var i = 0; i <= result.data.listSurf.length -1; i++){
+        
+      if(result.data.listSurf[i].isFavorite == true){
+        surfLike[i].style.color = "#ba3d3d"
+      }
+    }
+    
   })
-  
 }
+
+
 
 
 function displaySurfMusiList2() {
