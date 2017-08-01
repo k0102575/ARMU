@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import bitcamp.java93.domain.Member;
@@ -105,39 +104,6 @@ public class MusicianControl {
       dataMap.put("listSurf", musicianGenderList);
       return new JsonResult(JsonResult.SUCCESS, dataMap);
     }
-  
-//  @RequestMapping("getProfile")
-//  public JsonResult getProfile(HttpSession session){
-//
-//    JsonResult result = new JsonResult();
-//    Member loginMember = (Member)session.getAttribute("loginMember");
-//
-//    if(loginMember != null) {
-//      try {
-//        Musician musicianProfile = musicianService.getProfile(loginMember);
-//
-//        //       if(musicianList == null) {
-//        //         result.setStatus(JsonResult.FAIL);
-//        //       } else {
-//        //       }
-//
-//        result.setStatus(JsonResult.SUCCESS);
-//
-//        HashMap<String,Object> dataMap = new HashMap<>();
-//        dataMap.put("profile", musicianProfile);
-//
-//        result.setData(dataMap);
-//      } catch (Exception e) {
-//        result.setStatus(JsonResult.ERROR);
-//      }
-//    } else {//loginMember가 없으면
-//      result.setStatus(JsonResult.SUCCESS);
-//      result.setData("browse");
-//    }
-//
-//    return result;
-//
-//  }
   
   @RequestMapping("musiInfo")
   public JsonResult musiInfo(HttpSession session, int no) throws Exception {
@@ -255,61 +221,12 @@ public class MusicianControl {
   
 
   @RequestMapping("searchMusician")
-  public JsonResult searchMusician(@RequestParam String location) throws Exception {
-
+  public JsonResult searchMusician(String location) throws Exception {
     HashMap<String,Object> dataMap = new HashMap<>();
-    List<Musician> searchMusician = (List<Musician>)musicianService.search(location);
-    dataMap.put("search", searchMusician);
+    List<Musician> search= (List<Musician>)musicianService.searchMusician(location);
+    dataMap.put("listSurf", search);
     return new JsonResult(JsonResult.SUCCESS, dataMap);
-    
-//      
-//    HashMap<String,Object> dataMap = new HashMap<>();
-//    ArrayList<Musician> musicianList = (ArrayList<Musician>) musicianService.search(location);
-//
-//    dataMap.put("search", musicianList);
-//    return new JsonResult(JsonResult.SUCCESS, dataMap);
-//
-//    HashMap<String,Object> dataMap = new HashMap<>();
-//
-//    dataMap.put("search", musicianService.search(loc));
-//
-//    return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
-  
-
-  //  @RequestMapping("update")
-  //  public JsonResult update(Musician musician, String photo) throws Exception {
-  //    System.out.println(musician);
-  //    musicianService.updatePhoto(musician, musician.getPhoto());
-  //    return new JsonResult(JsonResult.SUCCESS, "ok");
-  //  }
-
-//  @RequestMapping("update")
-//  public JsonResult updatePhoto(@RequestParam int no,MultipartFile[] files) throws Exception {
-//
-//    ArrayList<Object> fileList = new ArrayList<>();
-//    for (int i = 0; i < files.length; i++) {
-//      if (files[i].isEmpty()) 
-//        continue;
-//
-//      String filename = getNewFilename();
-//      musicianService.updatePhoto(no ,filename);
-//      File file =new File(servletContext.getRealPath("/image/musician/photo/" + filename));
-//      System.out.println(file);
-//      files[i].transferTo(file);
-//      fileList.add(filename);
-//    }
-//    return new JsonResult(JsonResult.SUCCESS, fileList);
-//  }
-//
-//  int count = 0;
-//  synchronized private String getNewFilename() {
-//    if (count > 100) {
-//      count = 0;
-//    }
-//    return String.format("%d_%d", System.currentTimeMillis(), ++count); 
-//  }
- 
 }
 
 

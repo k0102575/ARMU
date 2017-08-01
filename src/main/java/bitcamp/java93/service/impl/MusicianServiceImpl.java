@@ -109,9 +109,14 @@ public class MusicianServiceImpl implements MusicianService {
   }
   
   @Override
-  public List<Musician> search(String location) throws Exception {
-    return musicianDao.musicianSearch(location);
+  public List<Musician> searchMusician(String location) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("location", location);
+    System.out.println("service"+valueMap);
+    System.out.println("service"+location);
+    return musicianDao.musicianSearch(valueMap);
   }
+
 
 //  private void insertPhoto(int musicianNo, String photoPath) {
 //    if (photoPath == null)
