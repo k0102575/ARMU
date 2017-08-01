@@ -14,10 +14,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import bitcamp.java93.domain.Member;
-import bitcamp.java93.service.MemberService;
 
 @WebFilter({"/mobile/musimode/*","/mobile/chat/*", "/mobile/favor/*", "/mobile/mypage/*", "/mobile/gmode/event/*", "/mobile/gmode/musi-info/*"})
 /*@WebFilter({"/mobile/gmode/*"})*/

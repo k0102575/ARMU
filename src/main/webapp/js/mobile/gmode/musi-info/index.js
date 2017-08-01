@@ -34,12 +34,16 @@ function displayMusiInfo() {
       musicianInfoNickName.text(data.nickName)
       musicianHeaderInfoImg.attr("src", data.photo)
       musicianBasicInfoImg.attr("src", data.photo)
-      if(data.gender == "F") {
-        musicianBasicInfoName.text(data.name + "    " + data.age + "    여성")
-      } else if(data.gender == "M") {
-        musicianBasicInfoName.text(data.name + "    " + data.age + "    남성")
+      if(data.isTeam == "Y") {
+        musicianBasicInfoName.text(data.nickName + "  (팀)")
+      } else {
+        if(data.gender == "F") {
+          musicianBasicInfoName.text(data.name + "    " + data.age + "    여성")
+        } else if(data.gender == "M") {
+          musicianBasicInfoName.text(data.name + "    " + data.age + "    남성")
+        }
       }
-       
+      
      $("#hidden-no").val(data.no)
      
       $("#musician-basic-info-favor").on("click", function() {

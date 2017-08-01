@@ -55,12 +55,7 @@
     </collection>
   </resultMap>
   
-    <resultMap type="musician" id="musicianFavorCountMap">
-    <id column="mno" property="no" />
-    <result column="count" property="count" />
-    </resultMap>
-  
-    <resultMap type="musician" id="musicianFilterMap">
+      <resultMap type="musician" id="musicianFilterMap">
     <id column="mno" property="no" />
     <result column="name" property="name" />
     <result column="nick" property="nickName" />
@@ -80,6 +75,12 @@
     </collection>
   </resultMap>
   
+  
+    <resultMap type="musician" id="musicianFavorCountMap">
+    <id column="mno" property="no" />
+    <result column="count" property="count" />
+    </resultMap>
+  
    <resultMap type="musician" id="musicianInfoMap">
     <id column="mno" property="no" />
     <result column="name" property="name" />
@@ -88,6 +89,7 @@
     <result column="path" property="photo" />
     <result column="gender" property="gender" />
     <result column="fav" property="fav" />
+    <result column="team" property="isTeam" />
   </resultMap>
   
   <resultMap type="musician" id="musicianInfoReviewMap">
@@ -130,53 +132,6 @@
     </collection>
   </resultMap>
   
- <resultMap type="musician" id="musicianMapBasic">
-    <id column="mno" property="no" />
-    <result column="name" property="name" />
-    <result column="nick" property="nickName" />
-    <result column="phone" property="phone" />
-    <result column="pwd" property="password" />
-    <result column="email" property="email" />
-    <result column="age" property="age" />
-    <result column="team" property="isTeam" />
-    <result column="hpg" property="homepage" />
-    <result column="intro" property="intro" />
-    <result column="path" property="photo" />
-    <result column="gender" property="gender" />
-    <result column="score" property="score" />
-  </resultMap>
-  
-  <resultMap type="musician" id="musicianMapBasic2">
-    <id column="mno" property="no" />
-    <result column="name" property="name" />
-    <result column="nick" property="nickName" />
-    <result column="phone" property="phone" />
-    <result column="pwd" property="password" />
-    <result column="email" property="email" />
-    <result column="age" property="age" />
-    <result column="team" property="isTeam" />
-    <result column="hpg" property="homepage" />
-    <result column="intro" property="intro" />
-    <result column="path" property="photo" />
-    <result column="gender" property="gender" />
-    <result column="score" property="score" />
-    <collection property="locationList" ofType="string"> 
-        <result column="location"/> 
-    </collection>
-  </resultMap>
-
- <sql id="selectBasic">
-    select m.mno, m.name, m.nick, m.path, pwd, email,phone, gender
-    from musi mu inner join memb m on mu.muno=m.mno
-  </sql>
-
-  <sql id="selectMajor">
-    select m.mno, m.name, m.nick, gender, mu.path, mj.name as major
-    from musi mu inner join memb m on mu.muno=m.mno
-    left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on
-    mjm.mjrno=mj.mjrno
-  </sql>
-  
   <sql id="selectAll">
   select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, m.path, mu.gender, 
   mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, if(fm.fav is not null, 1, 0) as fav, 
@@ -196,19 +151,14 @@
   left outer join loc_type lt on l.loctno = lt.loctno
   </sql>
   
-  <select id="selectOne" resultMap="musicianMapBasic">
-    <include refid="selectBasic" />
-    where m.mno=#{no}
-  </select>
-  
   <select id="selectMusi" resultMap="musicianInfoMap" parameterType="map">
-  select m.mno, m.name, m.nick, mu.age, m.path, mu.gender, if(fm.fav is not null, 1, 0) as fav
+  select m.mno, m.name, m.nick, mu.age, m.path, mu.team, mu.gender, if(fm.fav is not null, 1, 0) as fav
   from musi mu inner join memb m on mu.muno=m.mno
   left outer join (select count(if(mno is not null, 1, 0)) as fav, mno, muno
   from fav_musi
   where mno=#{myNo}
   group by muno) fm on fm.muno=mu.muno
-  where m.mno=#{muNo}
+  where mu.muno=#{muNo}
   </select>
   
   <select id="selectMusiReview" resultMap="musicianInfoReviewMap" parameterType="int">
@@ -224,7 +174,7 @@
   
   
   <select id="selectMusiIntroduce" resultMap="musicianInfoIntroduceMap" parameterType="int">
-  select mu.team, mu.hpg, mu.intro, mj.name as major, g.name as genre, l.name as location, lt.name as sido, t.name as theme
+  select mu.hpg, mu.intro, mj.name as major, g.name as genre, l.name as location, lt.name as sido, t.name as theme
   from musi mu left outer join mjr_musi mjm on mu.muno=mjm.muno 
   left outer join mjr mj on mjm.mjrno=mj.mjrno
   left outer join gnr_musi gm on mu.muno=gm.muno 
@@ -250,9 +200,13 @@
   </select>
 
   <select id="selectFavorList" resultMap="musicianFavorMap" parameterType="int">
-		select m.mno, m.name, m.path, gnr.name as genre, mjr.name as major, loct.name as location
-		from fav_musi fmu 
+		select ctr.count, m.mno, m.name, m.path, gnr.name as genre, mjr.name as major, loct.name as location
+		from fav_musi fmu
+		left outer join memb gm on fmu.mno=gm.mno
 		left outer join musi mu on fmu.muno = mu.muno
+		left outer join (select mno, count(*) as count 
+    from fav_musi 
+    group by mno) ctr on ctr.mno=fmu.mno
 		left outer join memb m on m.mno = mu.muno
 		left outer join gnr_musi gnmu on mu.muno = gnmu.muno
 		left outer join gnr gnr on gnmu.gnrno = gnr.gnrno
@@ -261,11 +215,7 @@
 		left outer join loc_musi lomu on mu.muno = lomu.muno
 		left outer join loc loc on lomu.locno = loc.locno
 		left outer join loc_type loct on loc.loctno = loct.loctno
-		where m.mno = #{no}
-  </select>
-  
-  <select id="selectMusiFavorCount" resultMap="musicianFavorCountMap" parameterType="int">
-  select count(*) as count from fav_musi where mno = #{no}
+		where gm.mno = #{no}
   </select>
   
   <select id="favorMusiRemove" parameterType="map">
@@ -280,28 +230,15 @@
   <include refid="selectAll" />
   </select>
   
-  <select id="selectSurfListFilter" resultMap="musicianFilterMap" parameterType="map">
-  select m.mno, m.name, mu.age, mu.team, m.path, mu.gender, 
-  mj.name as major, g.name as genre, lm.muno, l.name as location
-  from musi mu inner join memb m on mu.muno=m.mno
-  left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on mjm.mjrno=mj.mjrno
-  left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g on gm.gnrno=g.gnrno
-  left outer join mtc on mtc.muno=mu.muno
-  left outer join loc_musi lm on lm.muno=m.mno
-  left outer join loc l on lm.locno= l.locno
+  <select id="selectSurfListFilter" resultMap="musicianMap" parameterType="map">
+  <include refid="selectAll" />
   where mu.age <![CDATA[ > ]]>  #{minAge} and 
   mu.age  <![CDATA[ < ]]> #{maxAge}
   </select>
   
-  <select id="selectSurfListGenderFilter" resultMap="musicianFilterMap" parameterType="map">
-  select m.mno, m.name, mu.age, mu.team, m.path, mu.gender, 
-  mj.name as major, g.name as genre, lm.muno, l.name as location
-  from musi mu inner join memb m on mu.muno=m.mno
-  left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on mjm.mjrno=mj.mjrno
-  left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g on gm.gnrno=g.gnrno
-  left outer join mtc on mtc.muno=mu.muno
-  left outer join loc_musi lm on lm.muno=m.mno
-  left outer join loc l on lm.locno= l.locno
+  <select id="selectSurfListGenderFilter" resultMap="musicianMap" parameterType="map">
+  <include refid="selectAll" />
+  
   where mu.gender = #{gender} and 
   mu.age <![CDATA[ > ]]> #{minAge} and 
   mu.age <![CDATA[ < ]]> #{maxAge}

@@ -9,6 +9,7 @@ $(document).ready(function() {
 })
 
 $.getJSON('/musician/listFavor.json', function(result) {
+  console.log(result)
   var templateFn = Handlebars.compile($('#musician-favor-template').text())
   var generatedHTML = templateFn(result.data)
   var container = $('#musician-favor-list')

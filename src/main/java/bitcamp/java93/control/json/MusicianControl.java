@@ -114,14 +114,19 @@ public class MusicianControl {
   @RequestMapping("musiInfo")
   public JsonResult musiInfo(HttpSession session, int no) throws Exception {
     
-    Member loginMember = (Member)session.getAttribute("loginMember");
-    HashMap<String,Object> dataMap = new HashMap<>();
-
-    Musician musician = musicianService.get(loginMember.getNo(), no);
+    JsonResult result = new JsonResult();
     
-    dataMap.put("musician", musician);
+    try {
+      Musician musician = musicianService.get(getLoginMember(session).getNo(), no);
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("musician", musician);
+      result.setData(dataMap);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      result.setData(e.getMessage());
+    }
+    return result;
     
-      return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
   
   @RequestMapping("musiInfoReview")
