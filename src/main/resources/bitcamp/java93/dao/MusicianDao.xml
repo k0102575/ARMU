@@ -187,9 +187,9 @@
   left outer join thm_musi tm on mu.muno=tm.muno left outer join thm t on tm.thmno=t.thmno
   left outer join mtc on mtc.muno=mu.muno
   left outer join (
-  select count(if(gno is not null, 1, 0)) as fav, gno, muno
+  select count(if(mno is not null, 1, 0)) as fav, mno, muno
   from fav_musi
-  where gno= 6
+  where mno = 6
   group by muno) fm on fm.muno=mu.muno
   left outer join loc_musi lm on lm.muno=m.mno
   left outer join loc l on lm.locno= l.locno
@@ -205,9 +205,9 @@
   left outer join thm_musi tm on mu.muno=tm.muno left outer join thm t on tm.thmno=t.thmno
   left outer join mtc on mtc.muno=mu.muno
   left outer join (
-  select count(if(muno is not null, 1, 0)) as fav, muno, gno
+  select count(if(muno is not null, 1, 0)) as fav, muno, mno
   from fav_musi
-  where gno=4
+  where mno=4
   group by muno
   ) fm
   on fm.muno=mu.muno
@@ -221,9 +221,9 @@
   <select id="selectMusi" resultMap="musicianInfoMap" parameterType="map">
   select m.mno, m.name, m.nick, mu.age, m.path, mu.gender, if(fm.fav is not null, 1, 0) as fav
   from musi mu inner join memb m on mu.muno=m.mno
-  left outer join (select count(if(gno is not null, 1, 0)) as fav, gno, muno
+  left outer join (select count(if(mno is not null, 1, 0)) as fav, mno, muno
   from fav_musi
-  where gno=#{myNo}
+  where mno=#{myNo}
   group by muno) fm on fm.muno=mu.muno
   where m.mno=#{muNo}
   </select>
@@ -232,8 +232,7 @@
   select mtc.rev, mtc.score, even.title as eventTitle, DATE_FORMAT(even.date, '%Y-%m-%d') as eventDate, m.name , m.path
   from musi as mu left outer join mtc on mtc.muno=mu.muno
   left outer join evn as even on mtc.eno = even.eno
-  left outer join gmemb as g on even.gno = g.gno
-  left outer join memb as m on g.gno = m.mno
+  left outer join memb as g on even.mno = m.mno
 	where mtc.muno = #{no}
   </select>
   
@@ -279,19 +278,19 @@
 		left outer join loc_musi lomu on mu.muno = lomu.muno
 		left outer join loc loc on lomu.locno = loc.locno
 		left outer join loc_type loct on loc.loctno = loct.loctno
-		where gno = #{no}
+		where m.mno = #{no}
   </select>
   
   <select id="selectMusiFavorCount" resultMap="musicianFavorCountMap" parameterType="int">
-  select count(*) as count from fav_musi where gno = #{no}
+  select count(*) as count from fav_musi where mno = #{no}
   </select>
   
   <select id="favorMusiRemove" parameterType="map">
-  delete from fav_musi where muno = #{muNo} and gno = #{myNo};
+  delete from fav_musi where muno = #{muNo} and mno = #{myNo};
   </select>
   
   <select id="favorMusiAdd" parameterType="map">
-  insert into fav_musi (muno, gno) values (#{muNo}, #{myNo})
+  insert into fav_musi (muno, mno) values (#{muNo}, #{myNo})
   </select>
 
   <select id="selectSurfList" resultMap="musicianMap">
@@ -331,14 +330,14 @@
   <!-- where l.name like '%${loc}%' -->
   </select>
   
-  <select id="musicianSearch" resultMap="Musician">
+  <select id="musicianSearch" resultMap="musicianMap">
   <include refid="selectAll" />
-where l.name=case when l.name = '' then '%${location}%' else '%${location}%' end
-AND mj.name=case when mj.name = '' then '남성 보컬' else '남성 보컬' end
-AND g.name=case when g.name = '' then 'CCM' else 'CCM' end
-  <!-- where l.name like '%${loc}%' -->
+  where l.name=case when l.name = '' then '%${location}%' else '%${location}%' end
+  AND mj.name=case when mj.name = '' then '남성 보컬' else '남성 보컬' end
+  AND g.name=case when g.name = '' then 'CCM' else 'CCM' end
+  where l.name like '%${loc}%'
   </select>
-  
+   
     <!-- <update id="updatePhoto" parameterType="map">
     update musi set
     path=#{photoPath}

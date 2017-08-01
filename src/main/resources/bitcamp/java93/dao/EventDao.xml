@@ -7,7 +7,7 @@
 	<resultMap type="event" id="eventMap">
 		<id column="eno" property="no" />
 		<result column="title" property="title" />
-		<result column="gno" property="writer" />
+		<result column="mno" property="writer" />
 		<result column="location" property="location" />
 		<result column="addr" property="address" />
 		<result column="pay" property="pay" />
@@ -34,7 +34,7 @@
 	<resultMap type="event" id="eventMapBasic">
     <id column="eno" property="no" />
     <result column="title" property="title" />
-    <result column="gno" property="writer" />
+    <result column="mno" property="writer" />
     <result column="location" property="location" />
     <result column="addr" property="address" />
     <result column="pay" property="pay" />
@@ -111,7 +111,7 @@
     select count(if(muno is not null, 1, 0)) as fav, muno, eno
     from fav_evn where muno=#{no} group by eno
   ) fe on fe.eno=e.eno
-  inner join memb m on e.gno=m.mno
+  inner join memb m on e.mno=m.mno
   inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
   left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on me.mjrno=mj.mjrno
   left outer join gnr_evn ge on e.eno=ge.eno inner join gnr g on ge.gnrno=g.gnrno
@@ -127,7 +127,7 @@ select e.title, e.eno, e.date,  concat(lt.name, ' ', l.name) as location, e.addr
  mj.name as major, g.name as genre, t.name as theme,
  fe.fav, m.mno, m.name, m.path
  from (select * from evn where date >= curdate() and eno not in (select eno from mtc) order by date desc limit 3) e
- inner join memb m on e.gno=m.mno
+ inner join memb m on e.mno=m.mno
  inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
  left outer join mjr_evn me on e.eno=me.eno
  left outer join gnr_evn ge on e.eno=ge.eno
@@ -145,7 +145,7 @@ group by eno
 
 <insert id="insert" parameterType="member" 
         useGeneratedKeys="true" keyColumn="eno" keyProperty="no">
-  insert into evn(eno, gno, locno, pay, req, cont, addr, date, title) 
+  insert into evn(eno, mno, locno, pay, req, cont, addr, date, title) 
   values(#{no}, #{writer}, #{locno}, #{pay}, #{requirement}, #{contents}, #{address}, #{date}, #{title})
 </insert><!-- 승민 -->
 

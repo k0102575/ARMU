@@ -22,10 +22,9 @@ public class AuthControl {
 
   @RequestMapping(path="login", method=RequestMethod.POST)
   public JsonResult login(String email, String password, Model model) throws Exception {
-
+    
     Member member = null;
       member = memberService.getByEmailPassword(email, password);
-    
     if (member != null) { 
       model.addAttribute("loginMember", member);
       

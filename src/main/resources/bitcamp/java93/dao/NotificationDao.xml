@@ -32,7 +32,7 @@
   n.muno as musino, m.name as musiname, m.path as musiphoto
 from noti n
 inner join memb m on n.muno=m.mno
-inner join evn e on n.eno=e.eno inner join memb gm on e.gno=gm.mno
+inner join evn e on n.eno=e.eno inner join memb gm on e.mno=gm.mno
 where n.muno=#{no}
 order by date desc
   </select>

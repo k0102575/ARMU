@@ -23,7 +23,6 @@ public class Musician extends Member  {
   int minAge;
   int maxAge;
   String location;
-  
   String sido;
   Map<String , String> fileMap;
 //  HashMap<String , String> valueMap;
