@@ -236,7 +236,7 @@ filterLocTab.click(function () {
     filterLocTab.removeClass('on')
     $(this).addClass('on')
 })
-var aa;
+
 var seoul = $('.seoul')
 seoul.click(function () {
   aa = $(this)
@@ -258,6 +258,26 @@ function displayList() {
       {'location':aa.text()}, function(result) {
 //  location.href = '/mobile/index.html'
   },'json')
+  var aa = $(this).text()
+  $.getJSON('/musician/searchMusician.json', 
+      {"location" : aa},
+      function(result) {
+        console.log(result)
+        displayList(result)
+      })
+
+      $('.fa-check').remove()
+      seoul.removeClass('on2')
+      $(this).html('<i class="fa fa-check" aria-hidden="true"></i>'+ $(this).text())
+      $(this).addClass('on2')
+})
+
+function displayList(result) {
+  var templateFn = Handlebars.compile($('#musician-list-template').text())
+  var generatedHTML = templateFn(result.data)
+  var container = $('#musician-surf-list')
+  container.html(generatedHTML)
+  surfBackscreen.css('display', 'none');
 }
 
 $(function ($) {

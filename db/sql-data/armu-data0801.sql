@@ -2,7 +2,7 @@
 -- 뮤지션
 insert into memb (name, nick, phone, pwd, email, path) values ('조승우', '조승우', '010-1234-1234',  password('1111'), 'seungwoojo@daum.net', '/image/musician/photo/0choi2.jpg');
 insert into memb (name, nick, phone, pwd, email, path) values ('차지연', 'JIYEON CHA', '010-2424-3234',  password('1111'), 'jiyeon@daum.net', '/image/musician/photo/m1.jpg');
-insert into memb (name, nick, phone, pwd, email, path) values ('오호라', '오호라밴드', '010-5555-5050',  password('1111'), 'ohora@gmail.com', '/image/musician/photo/m2.jpg');
+insert into memb (name, nick, phone, pwd, email, path) values ('오호라', '오호라밴드', '010-5555-5050',  password('1111'), 'ohora@gmail.com', '/image/musician/photo/band.jpg');
 
 insert into musi (muno, age, team, gender, hpg, intro) values (1, 35, 'N', 'M','http://tistory.seungwoo.com', '저는 짱짱맨 조승우입니다. 조각같은 외모와 매력적인 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!');
 insert into musi (muno, age, team, gender, hpg, intro) values (2, 34, 'Y', 'F', 'http://tistory.jhlee.com', '안녕하세요. 임정희입니다. 저로 말할 것 같으면, 화려한 외모와 옥구슬같은 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!');
@@ -81,11 +81,14 @@ insert into thm (name, thmtno) values ('결혼식 축가', 1);
 insert into thm (name, thmtno) values ('교회 예배', 2);
 insert into thm (name, thmtno) values ('교회 찬양대', 2);
 
-insert into thm (name, thmtno) values ('연주회 오브리', 3);
+insert into thm (name, thmtno) values ('연주회', 3);
 insert into thm (name, thmtno) values ('축하공연', 3);
 
 insert into thm (name, thmtno) values ('기업행사', 4);
 insert into thm (name, thmtno) values ('대학교 축제', 4);
+insert into thm (name, thmtno) values ('파티', 4);
+
+insert into thm (name, thmtno) values ('졸업연주', 3);
 
 
 
@@ -103,9 +106,6 @@ insert into gnr_musi (muno, gnrno) values (2, 1);
 insert into gnr_musi (muno, gnrno) values (2, 2);
 
 insert into gnr_musi (muno, gnrno) values (3, 11);
-
-
-
 
 -- 뮤지션 테마(thm_musi)
 insert into thm_musi (muno, thmno) values(1, 2);
@@ -334,6 +334,14 @@ insert into mjr_evn (eno, mjrno) values (3, 14);
 insert into mjr_evn (eno, mjrno) values (4, 3);
 insert into mjr_evn (eno, mjrno) values (4, 14);
 
+insert into mjr_evn (eno, mjrno) values (5, 14);
+insert into mjr_evn (eno, mjrno) values (5, 15);
+
+insert into mjr_evn (eno, mjrno) values (6, 10);
+
+insert into mjr_evn (eno, mjrno) values (7, 12);
+insert into mjr_evn (eno, mjrno) values (7, 13);
+
 -- 이벤트 장르(gnr_evn)
 insert into gnr_evn (eno, gnrno) values (1, 13);
 insert into gnr_evn (eno, gnrno) values (1, 14);
@@ -354,6 +362,19 @@ insert into gnr_evn (eno, gnrno) values (4, 5);
 insert into gnr_evn (eno, gnrno) values (4, 10);
 insert into gnr_evn (eno, gnrno) values (4, 11);
 
+insert into gnr_evn (eno, gnrno) values (5, 15);
+insert into gnr_evn (eno, gnrno) values (5, 16);
+insert into gnr_evn (eno, gnrno) values (5, 17);
+
+insert into gnr_evn (eno, gnrno) values (6, 12);
+insert into gnr_evn (eno, gnrno) values (6, 13);
+insert into gnr_evn (eno, gnrno) values (6, 14);
+insert into gnr_evn (eno, gnrno) values (6, 15);
+
+insert into gnr_evn (eno, gnrno) values (7, 3);
+insert into gnr_evn (eno, gnrno) values (7, 4);
+insert into gnr_evn (eno, gnrno) values (7, 5);
+
 -- 이벤트 테마(thm_evn)
 insert into thm_evn (eno, thmno) values (1, 2);
 
@@ -363,6 +384,14 @@ insert into thm_evn (eno, thmno) values (3, 6);
 insert into thm_evn (eno, thmno) values (3, 7);
 
 insert into thm_evn (eno, thmno) values (4, 6);
+
+insert into thm_evn (eno, thmno) values (5, 10);
+
+insert into thm_evn (eno, thmno) values (6, 10);
+
+insert into thm_evn (eno, thmno) values (7, 6);
+insert into thm_evn (eno, thmno) values (7, 8);
+insert into thm_evn (eno, thmno) values (7, 9);
 
 
 -- 이벤트 홍보(pr)
@@ -452,10 +481,10 @@ insert into musi (muno, age, team, gender, intro) values (9, 27, 'N', 'F',
 ');
 
 -- 뮤지션 전공 추가
-insert into mjr_musi (muno, mjrno) values (8, 14);
+insert into mjr_musi (muno, mjrno) values (8, 10);
+insert into mjr_musi (muno, mjrno) values (8, 11);
 
-insert into mjr_musi (muno, mjrno) values (9, 10);
-insert into mjr_musi (muno, mjrno) values (9, 11);
+insert into mjr_musi (muno, mjrno) values (9, 14);
 
 -- 뮤지션 장르 추가
 insert into gnr_musi (muno, gnrno) values (8, 9);
@@ -467,6 +496,7 @@ insert into gnr_musi (muno, gnrno) values (8, 14);
 insert into gnr_musi (muno, gnrno) values (8, 15);
 insert into gnr_musi (muno, gnrno) values (8, 16);
 
+insert into gnr_musi (muno, gnrno) values (9, 6);
 insert into gnr_musi (muno, gnrno) values (9, 11);
 insert into gnr_musi (muno, gnrno) values (9, 12);
 insert into gnr_musi (muno, gnrno) values (9, 15);
@@ -474,3 +504,13 @@ insert into gnr_musi (muno, gnrno) values (9, 16);
 insert into gnr_musi (muno, gnrno) values (9, 17);
 
 -- 뮤지션 테마 추가
+insert into thm_musi (muno, thmno) values (8, 1);
+insert into thm_musi (muno, thmno) values (8, 5);
+insert into thm_musi (muno, thmno) values (8, 6);
+insert into thm_musi (muno, thmno) values (8, 10);
+
+insert into thm_musi (muno, thmno) values (9, 1);
+insert into thm_musi (muno, thmno) values (9, 3);
+insert into thm_musi (muno, thmno) values (9, 5);
+insert into thm_musi (muno, thmno) values (9, 6);
+insert into thm_musi (muno, thmno) values (9, 10);

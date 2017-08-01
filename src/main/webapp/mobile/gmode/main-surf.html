@@ -79,32 +79,6 @@
     </div>
 </div>
 {{/each}}
-
-{{#each location}}
-<div id='musician-surf'><a class='detail-link' href='#' data-no='{{no}}'>
-    <img class='musician-surf-picture' src='{{photo}}'>
-    <div id="musician-surf-preview">
-      <div id="musician-surf-intro">
-        {{#each majorList}}
-        {{this}}
-        {{/each}}
-        {{#each genreList}}
-        {{this}}
-        {{/each}}
-      </div>
-      <span id="musician-surf-name">{{nickName}}</span><br> 
-      <span id="musician-surf-location">
-      {{sido}}
-      </span>
-      <br> 
-      {{#isIndex isFavorite}}
-      <i id="musician-surf-like-favor" class="fa fa-heart-o" aria-hidden="true"></i>
-      {{else}}
-      <i id="musician-surf-like" class="fa fa-heart-o" aria-hidden="true"></i>
-      {{/isIndex}}
-    </div>
-</div>
-{{/each}}
 </script>
 
 
