@@ -5,7 +5,7 @@ insert into memb (name, nick, phone, pwd, email, path) values ('차지연', 'JIY
 insert into memb (name, nick, phone, pwd, email, path) values ('오호라', '오호라밴드', '010-5555-5050',  password('1111'), 'ohora@gmail.com', '/image/musician/photo/band.jpg');
 
 insert into musi (muno, age, team, gender, hpg, intro) values (1, 35, 'N', 'M','http://tistory.seungwoo.com', '저는 짱짱맨 조승우입니다. 조각같은 외모와 매력적인 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!');
-insert into musi (muno, age, team, gender, hpg, intro) values (2, 34, 'Y', 'F', 'http://tistory.jhlee.com', '안녕하세요. 임정희입니다. 저로 말할 것 같으면, 화려한 외모와 옥구슬같은 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!');
+insert into musi (muno, age, team, gender, hpg, intro) values (2, 34, 'N', 'F', 'http://tistory.jhlee.com', '안녕하세요. 임정희입니다. 저로 말할 것 같으면, 화려한 외모와 옥구슬같은 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!');
 insert into musi (muno, age, team, gender, hpg, intro) values (3, 28, 'Y', 'M', 'http://tistory.ohora.com', '저희 오호라 밴드는 다른 아마추어 팀들과는 차원이 다른 프로 밴드 그 이상의 실력으로 감동을 드리는 밴드입니다. 다재다능한 팀원들과 5년간 호흡을 맞춰 각종 공연을 많이 해봤습니다. 언제든 알뮤를 통해 연락주세요!!');
 
 -- 전공 분류(mjr_type), 전공(mjr)
@@ -34,6 +34,7 @@ insert into mjr (name, mjrtno) values ('바이올린', 4);
 insert into mjr (name, mjrtno) values ('비올라', 4);
 insert into mjr (name, mjrtno) values ('첼로', 4);
 insert into mjr (name, mjrtno) values ('콘트라베이스', 4);
+insert into mjr (name, mjrtno) values ('현악4중주(팀)', 4);
 
 
 -- 장르 분류(gnr_type), 장르(gnr)
@@ -66,7 +67,7 @@ insert into gnr (name, gnrtno) values ('클래식 연주곡', 1);
 insert into gnr (name, gnrtno) values ('협주곡', 1);
 insert into gnr (name, gnrtno) values ('교향곡', 1);
 
-
+insert into gnr (name, gnrtno) values ('국악', 6);
 
 
 -- 테마 분류(thm_type), 테마(thm)
@@ -465,6 +466,8 @@ insert into fav_evn (muno, eno) values (1, 4);
 -- 뮤지션 추가
 insert into memb (name, nick, phone, pwd, email, path) values ('김랑랑', '랑랑', '010-1234-1234',  password('1111'), 'lang@gmail.com', '/image/musician/photo/m2.jpg');
 insert into memb (name, nick, phone, pwd, email, path) values ('장발장', '사라장', '010-4321-4344',  password('1111'), 'sarah@gmail.com', '/image/musician/photo/m17.jpg');
+insert into memb (name, nick, phone, pwd, email, path) values ('송소희', '국악소히', '010-2424-1313',  password('1111'), 'sohee@gmail.com', '/image/musician/photo/m9.jpg');
+insert into memb (name, nick, phone, pwd, email, path) values ('김현악', '빨간건현악', '010-1313-2222',  password('1111'), 'red@gmail.com', '/image/musician/photo/red.jpg');
 
 insert into musi (muno, age, team, gender, intro) values (8, 22, 'N', 'F',
 '현재 경희대 피아노학과에 다니고 있는 대학생입니다.
@@ -480,11 +483,32 @@ insert into musi (muno, age, team, gender, intro) values (9, 27, 'N', 'F',
 언제든 연락주세요 ^^
 ');
 
+insert into musi (muno, age, team, gender, intro) values (10, 21, 'N', 'F',
+'국악을 사랑하는 국악소녀 송소희입니다.
+각종 국악 공연을 통해 많은 경력을 쌓았으며,
+한국을 빛낸 자랑스런 한국인 대상에서 대상을 수상한 수상 경력 또한 있습니다.
+국악이 필요한 곳에 불러주세요~!
+');
+
+insert into musi (muno, age, team, gender, intro) values (11, 35, 'Y', 'F',
+'저희 "빨간건 현악"팀은 4년간 함께 해온 팀입니다.
+결혼식 연주는 물론 각종 피로연에서 연주를 해드리고 있습니다.
+저희 멤버는 남지현(바이올린), 허가윤(바이올린), 전지윤(비올라), 권소현(첼로) 이렇게 4명입니다.
+많은 연락 부탁드립니다. 감사합니다.
+');
+
 -- 뮤지션 전공 추가
 insert into mjr_musi (muno, mjrno) values (8, 10);
 insert into mjr_musi (muno, mjrno) values (8, 11);
 
 insert into mjr_musi (muno, mjrno) values (9, 14);
+
+insert into mjr_musi (muno, mjrno) values (10, 2);
+
+insert into mjr_musi (muno, mjrno) values (11, 18);
+insert into mjr_musi (muno, mjrno) values (11, 14);
+insert into mjr_musi (muno, mjrno) values (11, 15);
+insert into mjr_musi (muno, mjrno) values (11, 16);
 
 -- 뮤지션 장르 추가
 insert into gnr_musi (muno, gnrno) values (8, 9);
@@ -503,6 +527,15 @@ insert into gnr_musi (muno, gnrno) values (9, 15);
 insert into gnr_musi (muno, gnrno) values (9, 16);
 insert into gnr_musi (muno, gnrno) values (9, 17);
 
+insert into gnr_musi (muno, gnrno) values (10, 18);
+
+insert into gnr_musi (muno, gnrno) values (11, 15);
+insert into gnr_musi (muno, gnrno) values (11, 16);
+insert into gnr_musi (muno, gnrno) values (11, 17);
+insert into gnr_musi (muno, gnrno) values (11, 12);
+insert into gnr_musi (muno, gnrno) values (11, 10);
+insert into gnr_musi (muno, gnrno) values (11, 11);
+
 -- 뮤지션 테마 추가
 insert into thm_musi (muno, thmno) values (8, 1);
 insert into thm_musi (muno, thmno) values (8, 5);
@@ -514,3 +547,15 @@ insert into thm_musi (muno, thmno) values (9, 3);
 insert into thm_musi (muno, thmno) values (9, 5);
 insert into thm_musi (muno, thmno) values (9, 6);
 insert into thm_musi (muno, thmno) values (9, 10);
+
+insert into thm_musi (muno, thmno) values (10, 6);
+insert into thm_musi (muno, thmno) values (10, 7);
+insert into thm_musi (muno, thmno) values (10, 9);
+
+insert into thm_musi (muno, thmno) values (11, 1);
+insert into thm_musi (muno, thmno) values (11, 3);
+insert into thm_musi (muno, thmno) values (11, 4);
+insert into thm_musi (muno, thmno) values (11, 5);
+insert into thm_musi (muno, thmno) values (11, 6);
+insert into thm_musi (muno, thmno) values (11, 7);
+insert into thm_musi (muno, thmno) values (11, 10);
