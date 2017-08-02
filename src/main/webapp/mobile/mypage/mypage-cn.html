@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="user-scalable=no">
-  <title>change-password</title>
+  <title>change-nickname</title>
   <link rel='shortcut icon' type='image/x-icon' href='/image/favicon/favicon.ico'/>
   <link rel="stylesheet" href="/node_modules/animsition/dist/css/animsition.min.css">
   <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
@@ -20,34 +20,23 @@
   <div id="mypage-container" class="animsition">
     <div id="header">
       <a href="mypage.html"> <i id="close" class="fa fa-angle-left" aria-hidden="true"></i></a>
-      <div id="header-title">비밀번호 변경</div>
+      <span id="header-title">닉네임 변경</span><span id="header-enter">확인</span>
     </div>
     <br><br><br><br>
 
-  <div id="profile-container"></div>
+  <div id="profile-container">
+     <p id="guide">변경할 닉네임을 입력해 주세요. <span id="guide-no">0/20</span></p>
+    <div>
+      <input id="nick" class="cn-content" type="text" name="" value="" placeholder="변경할 닉네임을 입력해 주세요." maxlength="19"><br>
+      <i class="fa
+ fa-times-circle" id="delete" aria-hidden="true"></i>
+    </div>
+  </div>
 
 
   </div>
   <!-- container -->
 </body>
-<script id="profile-template" type="text/x-handlebars-template">
-  {{#profile}}
-        <img id="profile-img" src="{{photo}}" alt="">
-    <p id="name">{{name}}</p>
-    
-    <div id="change-password">
-      <p style="text-align:center">{{email}}</p>
-      <br><br> &nbsp;현재 비밀번호<input class="cp-content" type="password" name="" value=""><br> &nbsp;변경할 비밀번호
-      <input id="pwd01" class="cp-content" type="password" name="" value=""><br> &nbsp;비밀번호 확인
-      <input id="pwd02" class="cp-content" type="password" name="" value=""><br><br>
-      <center>
-        <a href="mypage.html"><input class="cp-btn" id="cp-cancel" type="button" name="button" value="취소"></a>
-        <input class="cp-btn" id="cp-change" type="button" name="button" value="변경">
-      </center>
-      <br>
-    </div>
-  {{/profile}}
-</script>
 <script
   src="/node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
 <script src="/node_modules/blueimp-load-image/js/load-image.all.min.js"></script>
@@ -61,7 +50,7 @@
   src="/node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
 
 <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
-<script type="text/javascript" src="/js/mobile/mypage/mypage.js"></script>
+<script type="text/javascript" src="/js/mobile/mypage/mypage-cn.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
   $(".animsition").animsition({

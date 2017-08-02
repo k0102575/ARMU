@@ -22,10 +22,12 @@
 	<div id="mypage-container" class="animsition">
 		<div id="header">
 			<div id="header-title">프로필 관리</div>
-			<a href="#"><i id="close" class="fa fa-angle-left" aria-hidden="true"></i></a>
+			<a href="javascript:history.go(-1)"><i id="close" class="fa fa-angle-left" aria-hidden="true"></i></a>
 		</div>
 		<br> <br> <br> <br>
 		<div id="ccc" class="">
+		<input id="fi-photoupload" type="file" class="form-control upload"  name="files" multiple> 
+          <input id="fi-filenames" type="hidden" name="filenames">
 			<i class="fa fa-3x fa-camera" aria-hidden="true"></i>
 		</div>
 		<div id="profile-container"></div>
@@ -40,21 +42,6 @@
 		</div>
 		<br>
 
-		<div id="profile-backscreen"></div>
-		<form>
-			<div id="profile-toggle">
-				<div class="profile-img-menu guide menu">
-				프로필 사진 변경
-					<input id="fi-photoupload" type="file" class="form-control upload"	name="files" multiple> 
-					<input id="fi-filenames" type="hidden" name="filenames">
-				</div>
-				<br>
-				<div class="profile-img-menu" id="cancel">
-					<!-- <button type="button" id="profiletext">프로필 사진 변경</button> -->
-					<p class="menu">취소</p>
-				</div>
-			</div>
-		</form>
 </div>
 
 
@@ -64,15 +51,16 @@
 
 <script id="profile-template" type="text/x-handlebars-template">
   {{#profile}}
-    <a href="#"> <img id="profile-img"
-        src="{{photo}}" alt="">
-      </a>
-      <p id="name">{{name}}</p>
+    <img id="profile-img" src="{{photo}}" alt="">
+      <p id="name"><a href="mypage-cn.html">{{nickName}}&nbsp<i class="fa fa-pencil pen" aria-hidden="true"></i></a></p>
       <br>
       <br>
       <br>
       <br>
 
+       <div class="content">
+        <span class="menu">이름</span> <span class="data">{{name}}</span>
+      </div>
       <div class="content">
         <span class="menu">이메일</span> <span class="data">{{email}}</span>
       </div>
@@ -92,11 +80,6 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-
-      <br>
-      <br>
   {{/profile}}
 </script>
 <script

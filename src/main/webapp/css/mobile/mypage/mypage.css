@@ -25,6 +25,14 @@ body {
 	background-color: black;
 }
 
+#header-enter{
+	position:fixed;
+  right:1%;
+  top:30px;
+  color:white;
+  background-color: black;  
+}
+
 #close {
 	position: absolute;
 	left: 3%;
@@ -102,7 +110,7 @@ body {
 }
 
 .red-btn {
-	color: red;
+	color: #8069ef;
 	text-align: center;
 	    left: 50%;
     transform: translateX(-50%);
@@ -114,28 +122,6 @@ body {
 
 a {
 	color: black;
-}
-
-.profile-img-menu {
-	padding-top: 1.5%;
-	padding-bottom: 1.5%;
-	border-radius: 15px;
-	margin: auto;
-	width: 90%;
-	height: 88px;
-	font-size: 350%;
-	background-color: white;
-	border: 1px solid red;
-  text-align: center;
-}
-
-#profile-toggle {
-	position: fixed;
-	bottom: 3%;
-	display: none;
-	width: 100%;
-	background-position: center;
-	overflow: scroll;
 }
 
 #profile-backscreen {
@@ -189,9 +175,12 @@ a {
 
 #fi-photoupload {
 	position: fixed;
-  left: 5%;
-	height: 103px;
-	width: 90%;
+	width: 300px;
+	height: 300px;
+	position: fixed;
+	top: 12.5%;
+	left: 50.5%;
+	transform: translateX(-50%);
 }
 
 .upload {
@@ -201,4 +190,32 @@ a {
 
 .content>.menu{
   line-height: 2rem;
+}
+
+.pen {
+	color: #8069ef;
+}
+#guide {
+	margin-left: 4%;
+	font-size: 2rem;
+	color: #252525;
+}
+#guide-no{
+	 float:right;
+	 margin-right:4%;
+}
+#nick {
+	    width: 96%;
+    border: 0px;
+    margin-top: 2%;
+    height: 90px;
+    padding-left: 4%;
+    font-size: 2.3rem;
+}
+#delete{
+	    position: absolute;
+    right: 6%;
+    top: 84%;
+    font-size: 2rem;
+    color: #999999;
 }

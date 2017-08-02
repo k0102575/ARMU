@@ -31,6 +31,11 @@ public class MemberServiceImpl implements MemberService {
   public Member getProfile(Member member) throws Exception {
     return memberDao.selectOne(member); 
   }
+   
+  public void updateNick(Member member) throws Exception {
+    memberDao.updateNick(member);
+  }
+  
   
   @Override
   public void updatePhoto(int no, String photoPath) throws Exception {

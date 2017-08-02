@@ -74,8 +74,14 @@ public class MemberControl {
     return result;
 
   }
-  
+   
   @RequestMapping("update")
+  public JsonResult update(Member member) throws Exception {
+    memberService.updateNick(member);
+    return new JsonResult(JsonResult.SUCCESS, "ok");
+  }
+  
+  @RequestMapping("updatePhoto")
   public JsonResult updatePhoto(@RequestParam int no,MultipartFile[] files) throws Exception {
 
     ArrayList<Object> fileList = new ArrayList<>();
