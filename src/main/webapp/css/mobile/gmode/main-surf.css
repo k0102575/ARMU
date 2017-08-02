@@ -4,13 +4,22 @@
 
 .filterBtn {
   position: absolute;
-  width: 100px;
+  width: 18%;
   height: 50px;
-  left: 5%;
   top: 20%;
+  left: 7.5%;
   font-size: 2em;
   border: 0px;
-  background-color: white;
+  background-color: #f5f5f5;
+  color: black;
+}
+
+#filter-btn-icon{
+  position: absolute;
+  font-size: 2.8em;
+  left: 3%;
+  color: #8069ef;
+  top: 23%;
 }
 
 
@@ -31,8 +40,8 @@
   width: 90%;
   height: 50%;
   left:5%;
-  background-color: #F5F5F5;
-  border-radius: 30px;
+  background-color: white;
+  border-radius: 25px;
   z-index: 12;
 }
 
@@ -45,13 +54,13 @@
 
 #filter-text {
   position: absolute;
- 	color: black;
-	font-size: 3em;
-	font-weight: normal;
+  color: black;
+  font-size: 2.5em;
+  font-weight: normal;
   left: 50%;
-  top: 6%;
+  top: 14%;
   transform: translate(-50%, 6%);
-  font-weight: 600;
+  font-weight: 400;
 }
 
 #filter-btn {
@@ -64,28 +73,32 @@
 
 #filter-cancel {
   position: absolute;
-  left: 18%;
-  transform: translate(-35%, 15%);
+  left: 0%;
   color: black;
   font-size: 2em;
-  font-weight: 600;
   width: 50%;
   height: 100%;
   text-align: center;
-  top: 5%;
+  color: #525252;
+  z-index: 15;
+  background-color: white;
+  background: linear-gradient(rgba(255, 255, 255, 1.45), rgba(255, 255, 255, 1.45));
+  line-height: 95px;
+  border-bottom-left-radius: 25px;
 }
 
 #filter-update {
   position: absolute;
-  color: black;
+  color: white;
   font-size: 2em;
+  right: 0;
   font-weight: 600;
-  right: -18%;
-  transform: translate(-35%, 15%);
   width: 50%;
   height: 100%;
   text-align: center;
-  top: 5%;
+  background: linear-gradient(rgba(0, 0, 0, 1.45), rgba(0, 0, 0, 1.45));
+  line-height: 95px;
+  border-bottom-right-radius: 25px;
 }
 
 .hr-sero {
@@ -111,7 +124,6 @@ label {
   background-color: white;
   text-align: center;
   font-size: 2em;
-  font-weight: 600;
 }
 
 label::before {
@@ -119,38 +131,40 @@ label::before {
 }
 
 input:checked + label {
-	border: 2px solid black;
+	border: 2px solid #8069ef;
 	z-index: 100;
+	font-weight: 600;
 }
 
 #gender-text {
-	position: absolute;
-	top: 15%;
-	left: 5%;
-	font-size: 2.5em;
-	font-weight: 500;
+  position: absolute;
+  top: 19%;
+  left: 5%;
+  font-size: 2.5em;
+  font-weight: 500;
 }
 
 #gender-all {
-	position: absolute;
-	top: 25%;
-	left: 5%;
+  position: absolute;
+  top: 30%;
+  left: 5%;
 }
 
 #gender-male {
 	position: absolute;
-	top: 25%;
+	top: 30%;
 	left: 35%;
 }
 
 #gender-female {
 	position: absolute;
-	top: 25%;
+	top: 30%;
 	left: 64%;
 }
+
 #age-text {
 	position: absolute;
-	top: 50%;
+	top: 55%;
 	left: 5%;
 	font-size: 2.5em;
 	font-weight: 500;
@@ -159,8 +173,8 @@ input:checked + label {
  #age-10s, #age-20s, #age-30s,
 #age-40s, #age-50s, #age-60s {
   position: absolute;
-  bottom: 24%;
-  font-size: 1.5em;
+  top: 72%;
+  font-size: 2em;
 }
 
 #age-10s {
@@ -168,28 +182,28 @@ input:checked + label {
 }
 
 #age-20s {
-  left: 26%;
+  left: 25%;
 }
 
 #age-30s {
-  left: 46.5%;
+  left: 45%;
 }
 
 #age-40s {
-  left: 66%;
+  left: 65.5%;
 }
 
 #age-50s {
-  left: 83%;
+  left: 81%;
 }
 
 
 #age-group {
 	position: absolute;
   top: 50%;
-  left: 52%;
+  left: 55%;
   font-size: 2.5em;
-  background-color: #F5F5F5;
+  background-color: white;
   border: 0px;
   width: 41%;
   text-align: center;
@@ -197,12 +211,12 @@ input:checked + label {
 
 #slider-range {
 	position: absolute;
-	bottom: 25%;
-	left: 7%;
+	top: 65%;
+	left: 8%;
   width: 80%;
 	height: 10%;
 	border: 0px;
-	background-color: #F5F5F5;
+	background-color: white;
 }
 
 .slider-max-range {
@@ -218,7 +232,7 @@ input:checked + label {
 .ui-slider .ui-slider-range {
 	height: 11%;
 	margin-top: 3%;
-	background-color: #BEAED4;
+	background-color: #8069ef;
 	z-index: 2;
 }
 
@@ -232,6 +246,50 @@ input:checked + label {
 }
 
 /* 필터 부분 끝 */
+
+/* 로그인 안된 부분 시작 */
+
+.surf-no-login {
+  position: relative;
+  hegiht: 900px;
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+  top: 20%;
+  color: darkgray;
+  overflow: visible;
+  background-color: #f5f5f5;
+}
+
+#surf-no-login-cry {
+  font-size: 80px;
+  color: darkgray;
+}
+
+.surf-log-in-btn {
+  position: absolute;
+  font-size: 35px;
+  font-weight: 400;
+  height: 65px;
+  width: 400px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50px;
+  border: 1px solid white;
+  line-height: 60px;
+  color: white;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, .85);
+}
+
+.rec-no-event-separator {
+  margin-top: 0;
+}
+
+
+/* 로그인 안된 부분 끝 */
+
+
 
 /* 뮤지션 정렬 시작 */
 #musician-surf-sort {
@@ -356,24 +414,30 @@ input:checked + label {
 /*뮤지션 리스트 끝*/
 
 #filter-body {
-  box-shadow: 3px 3px 20px 2px rgba(167, 167, 167, 0.8);
-  border-radius: 40px;
-  font-size: 2.3em;
-  font-weight: 440;
-  position: fixed;
-  margin-left: 28%;
-  top: 90%;
-  z-index: 1;
-  background-color: white;
-  width: 44%;
-  height: 80px;
-  padding-left: 2%;
-  display: none;
+    box-shadow: 3px 3px 20px 2px rgba(167, 167, 167, 0.8);
+    border-radius: 40px;
+    font-size: 2.3em;
+    font-weight: 440;
+    position: fixed;
+    margin-left: 26%;
+    top: 90%;
+    z-index: 1;
+    background-color: white;
+    width: 48%;
+    height: 80px;
+    padding-left: 2%;
+    display: none;
 }
 
 .filter {
-  padding: 3% 7%;
+  padding: 3% 4%;
   display: inline-block;
+  color: black;
+  font-weight: 500;
+}
+
+.fa-caret-down:before {
+    color: #8069ef;
 }
 
 #filter-major {

@@ -84,17 +84,28 @@ public class MusicianControl {
   @RequestMapping("listSurf")
   public JsonResult listSurf(HttpSession session) throws Exception {
     JsonResult result = new JsonResult();
-    
-    try {
-      List<Musician> listSurf = (List<Musician>) musicianService.listSurf(getLoginMember(session).getNo());
-      HashMap<String,Object> dataMap = new HashMap<>();
-      dataMap.put("listSurf", listSurf);
-      result.setData(dataMap);
-    } catch (Exception e) {
-      result.setStatus(JsonResult.ERROR);
-      result.setData(e.getMessage());
+    Member loginMember = (Member)session.getAttribute("loginMember");
+
+    if(loginMember != null) {
+      try {
+        List<Musician> listSurf = (List<Musician>) musicianService.listSurf(loginMember.getNo());
+
+        result.setStatus(JsonResult.SUCCESS);
+
+        HashMap<String,Object> dataMap = new HashMap<>();
+        dataMap.put("listSurf", listSurf);
+        result.setData(dataMap);
+
+      } catch (Exception e) {
+        result.setStatus(JsonResult.ERROR);
+      }
+    } else {//loginMember가 없으면
+      result.setStatus(JsonResult.SUCCESS);
+      result.setData("browse");
     }
+
     return result;
+    
   }
   
   @RequestMapping("listSurfFilter")

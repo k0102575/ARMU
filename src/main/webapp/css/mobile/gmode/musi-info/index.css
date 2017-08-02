@@ -30,8 +30,8 @@
 #musician-info-prev {
   position: absolute;
   left: 3%;
-  top: 10%;
-  transform: translate(-3%, 10%);
+  top: 12%;
+  transform: translate(-3%, 12%);
   font-size: 400%;
   color:white;
 }

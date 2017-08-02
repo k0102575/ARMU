@@ -32,11 +32,23 @@
   width: 100%;
 }
 
+#event-header {
+	border-bottom: 1px solid black;
+  position: fixed;
+  height: 120px;
+  width: 100%;
+  background-color: black;
+  z-index: 15;
+}
+
 #event-cancelbtn {
   position: absolute;
-  font-size: 260%;
-  left: 8%;
-  top: 22%;
+  left: 3%;
+  top: 21%;
+  transform: translate(-3%, 20%);
+  font-size: 300%;
+  color: white;
+  font-weight: 100;
 }
 
 #event-progress {
@@ -48,12 +60,15 @@
 }
 
 #event-page-text {
-  position: absolute;
-  left: 50%;
-  top: 20%;
-  transform: translate(-50%);
-  font-size: 300%;
-  font-weight: normal;
+    position: absolute;
+    right: 15%;
+    top: 13%;
+    transform: translate(-15%, 15%);
+    font-size: 250%;
+    font-weight: normal;
+    color: white;
+    width: 50%;
+    text-align: center;
 }
 
 #event-page1, #event-page2, #event-page3, 
@@ -893,9 +908,13 @@ select {
 	height: 500px;
 }
 
+.sweet-alert .sa-icon .sa-warning .pulseWarning {
+    border-color: #8069ef;
+}
+
 .sweet-alert h2 {
 	font-size: 3em;
-	top: 20%;
+	top: 10%;
 }
 
 .sweet-alert .sa-confirm-button-container {
@@ -903,8 +922,82 @@ select {
   width: 150px;
 }
 
+.sweet-alert button {
+    background-color: #8CD4F5;
+    color: white;
+    border: none;
+    box-shadow: none;
+    font-size: 2rem;
+    font-weight: 500;
+    -webkit-border-radius: 4px;
+    border-radius: 5px;
+    padding: 10px 32px;
+    margin: 26px 5px 0 5px;
+    width: 160px;
+}
+
+.sa-button-container {
+	position: absolute;
+	top: 26%;
+  left: 27%;
+}
+
+.checkSwal > .sa-button-container {
+	 position: absolute;
+  top: 20%;
+  left: 39%;
+}
+
+.checkSwal > h2 {
+    font-size: 3em;
+    top: 15%;
+}
+
+.sweet-alert .checkSwal {
+  width: 700px !important;
+  left: 38%;
+  top: 50%;
+  height: 465px;
+}
+
 .sweet-alert[data-has-cancel-button=false] button {
   width: 150px;
   height: 75px;
   font-size: 2em;
+}
+
+@-webkit-keyframes pulseWarning {
+  0% {
+    border-color: #8069ef; }
+  100% {
+    border-color: #8069ef; } }
+
+@keyframes pulseWarning {
+  0% {
+    border-color: #8069ef; }
+  100% {
+    border-color: #8069ef; } }
+    
+    @-webkit-keyframes pulseWarningIns {
+  0% {
+    background-color: #8069ef; }
+  100% {
+    background-color: #8069ef; } }
+
+@keyframes pulseWarningIns {
+  0% {
+    background-color: #8069ef; }
+  100% {
+    background-color: #8069ef; } }
+
+.sweet-alert .sa-icon.sa-warning .sa-body {
+    position: absolute;
+    width: 5px;
+    height: 47px;
+    left: 50%;
+    top: 10px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    margin-left: -2px;
+    background-color: #8069ef;
 }

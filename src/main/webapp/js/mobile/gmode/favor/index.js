@@ -2,7 +2,8 @@ var headerMenuDetail = $("#header-menu-detail"),
     headerMenuMenu = $("#header-menu-menu"),
     headerMenuEmail = $("#header-menu-email"),
     headerMenuSearch = $("#header-menu-search"),
-    moveTopBtn = $("#move_top_btn")
+    moveTopBtn = $("#move_top_btn"),
+    musicianFavorPrev = $("#musician-favor-prev")
 
 $(document).ready(function() {
   headerMenuDetail.load("/mobile/header-menu-detail.html");
@@ -66,3 +67,7 @@ moveTopBtn.on('click', function() {
     }, 400);
     return false;
 });
+
+musicianFavorPrev.on('click', function() {
+  location.href = "/mobile/gmode/index.html"
+})

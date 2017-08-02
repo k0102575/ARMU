@@ -105,11 +105,27 @@ $(document).ready(function() {
 })
 
 pageCancelBtn.on('click', function() {
-  pageCancelPageBackscreen.css('display', 'block');
-  pageCancelPage.toggle(0);
+  swal({
+    title: "입력하신 정보가 사라집니다 \n\n" +
+    		"취소하시겠습니까?",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#8069ef",
+    confirmButtonText: "네",
+    closeOnConfirm: false,
+    cancelButtonText: "아니요"
+  },
+  function(){
+    location.href = "/mobile/gmode/index.html"
+  });
+  
+/*  pageCancelPageBackscreen.css('display', 'block');
+  pageCancelPage.toggle(0);*/
+
+
 })
 
-pageCancelPageReturn.on('click', function() {
+/*pageCancelPageReturn.on('click', function() {
   pageCancelPage.toggle(0);
   pageCancelPageBackscreen.css('display', 'none');
 })
@@ -121,11 +137,10 @@ pageCancelPageQuit.on('click', function() {
 eventPage1Cancel.on('click', function() {
   location.href="/mobile/gmode/index.html"
 })
-
+*/
 eventPage1Next.on('click', function() {
   
   $.getJSON('/category/listTheme.json', function(result) {
-    console.log(result)
     var templateFn = Handlebars.compile($('#select-theme-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#theme-select-box')
@@ -251,17 +266,38 @@ eventPage2Next.on('click', function() {
   genreSelcetHidden.val(categoryGenreNo)
   
     if(themeSelectText.text() == "") {
-    swal("테마를 선택하세요!")
+      swal({
+        title: "테마를 선택 하세요!",
+        type: "warning",
+        showCancelButton: false,
+        confirmButtonColor: "#8069ef",
+        confirmButtonText: "확인",
+        customClass: "checkSwal"
+      });
     return
   } 
   
   if(majorSelectText.text() == "") {
-    swal("전공을 선택하세요!")
+    swal({
+      title: "전공을 선택 하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
     return
   } 
   
   if(genreSelectText.text() == "") {
-    swal("장르를 선택하세요!")
+    swal({
+      title: "장르를 선택 하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
     return
   }
   
@@ -294,7 +330,14 @@ eventPage3Next.on('click', function() {
   var chan_val = year + '-' + mon + '-' + day;
   
   if(eventPage3Calendar.val() == chan_val) {
-    swal("오늘 날짜는 선택되지 않습니다")
+    swal({
+      title: "오늘 날짜는 선택되지 않습니다",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
     return
   } 
   
@@ -349,19 +392,40 @@ eventPage4Next.on('click', function() {
   
   if(sidoSelectMenu.val() == "") {
     sidoSelectMenu.css("border", "1px solid red")
-    swal("시/도를 선택하세요!")
+    swal({
+      title: "시/도를 선택 하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
     return
   } 
   
   if(citySelectMenu.val() == "") {
     citySelectMenu.css("border", "1px solid red")
-    swal("시/군/구를 선택하세요!")
+    swal({
+      title: "시/군구를 선택 하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
     return
   } 
   
   if(DetailLocation.val() == "") {
     DetailLocation.css("border", "1px solid red")
-    swal("상세주소를 입력하세요")
+    swal({
+      title: "상세주소를 선택 하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
     return
   }
   
@@ -386,13 +450,27 @@ eventPage5Next.on('click', function() {
   
   if(inputEventName.val() == "") {
     inputEventName.css("border", "1px solid red")
-    swal("이벤트명을 입력하세요!")
+    swal({
+      title: "이벤트명을 입력하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
     return
   } 
   
   if(inputEventConent.val() == "") {
     inputEventConent.css("border", "1px solid red")
-    swal("이벤트 내용을 입력하세요!")
+    swal({
+      title: "이벤트 내용을 입력하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
     return
   } 
   
@@ -414,17 +492,38 @@ eventPage6Next.on('click', function() {
   if($("input[name=toggle]:checked").val() == "true") {
     
     if(inputRehearseCount.val() == "") {
-      swal("리허설 횟수를 입력하세요!")
+      swal({
+        title: "리허설 횟수를 입력하세요!",
+        type: "warning",
+        showCancelButton: false,
+        confirmButtonColor: "#8069ef",
+        confirmButtonText: "확인",
+        customClass: "checkSwal"
+      });
       return
     } 
     
     if(inputRehearsePay.val() == "") {
-      swal("리허설 금액을 입력하세요!")
+      swal({
+        title: "리허설 금액을 입력하세요!",
+        type: "warning",
+        showCancelButton: false,
+        confirmButtonColor: "#8069ef",
+        confirmButtonText: "확인",
+        customClass: "checkSwal"
+      });
       return
     } 
     
     if(inputRehearseText.val() == "") {
-      swal("리허설 정보를 입력하세요!")
+      swal({
+        title: "리허설 정보를 입력하세요!",
+        type: "warning",
+        showCancelButton: false,
+        confirmButtonColor: "#8069ef",
+        confirmButtonText: "확인",
+        customClass: "checkSwal"
+      });
       return
     } 
     
@@ -462,7 +561,14 @@ eventPage7Prev.on('click', function() {
 eventPage7Next.on('click', function() {
   
   if(inputEventPay.val() == "") {
-    swal("금액을 입력하세요!")
+    swal({
+      title: "금액을 선택 하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
     return
   } 
   
@@ -510,7 +616,6 @@ eventPage8Next.on('click', function() {
       "rhsnum" : inputRehearseCount.val(),
       "rhsinfo" : inputRehearseText.val()
     }, function(result) {
-      console.log(result)
       eventPage8.toggle(0);
       eventPage9.toggle(0 , function() {
         progress(100)
@@ -530,7 +635,6 @@ eventPage8Next.on('click', function() {
       "eventRegistMajor" : majorSelcetHidden.val(),
       "eventRegistGenre" : genreSelcetHidden.val()
     }, function(result) {
-      console.log(result)
       eventPage8.toggle(0);
       eventPage9.toggle(0 , function() {
         progress(100)
@@ -547,7 +651,7 @@ eventPage9Home.on('click', function() {
 function progress(per) {
   progressBar.progressbar({
     value: per,
-    create: function(event, ui) {$(this).find('.ui-widget-header').css({'background-color': 'rgb(203, 203, 203)'})}
+    create: function(event, ui) {$(this).find('.ui-widget-header').css({'background-color': 'rgb(128, 105, 239)'})}
   });
 };
 

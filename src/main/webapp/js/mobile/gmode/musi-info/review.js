@@ -1,5 +1,4 @@
 var reviewContent = $(".review-content"),
-	musicianInfoPrev = $("#musician-info-prev"),
 	reviewContentText = $(".review-content-text"),
 	reviewBox = $(".review-box"),
 	count = 0,
@@ -83,10 +82,6 @@ function displayMusiInfoReview() {
 
 $(window).load(function(){
 	starAdd()
-})
-
-musicianInfoPrev.on('click', function() {
-	location.href = "/mobile/gmode/index.html"
 })
 
 function starAdd() {

@@ -1,11 +1,4 @@
 $(document).ready(function() {
-/*  Handlebars.registerHelper('isIndex', function(isFavorite, options) {
-    if (isFavorite == true) {
-      return options.fn(this);
-    } else {
-      return options.inverse(this);
-    }
-  })*/
   displaySurfMusiList()
 })
 
@@ -83,16 +76,26 @@ $(document.body).on('click', '.detail-link', function(event) {
 
 function displaySurfMusiList() {
   $.getJSON('/musician/listSurf.json', function(result) {
-    var templateFn = Handlebars.compile($('#musician-list-template').text())
-    var generatedHTML = templateFn(result.data)
-    var container = $('#musician-surf-list')
-    container.html(generatedHTML)
-    var surfLike = $(".surfLike")
-    for(var i = 0; i <= result.data.listSurf.length -1; i++){
-        
-      if(result.data.listSurf[i].isFavorite == true){
-        surfLike[i].style.color = "#ba3d3d"
-      }
+    if(result.data == "browse") {
+      $("#musician-surf-list").css("height", "1280px")
+      $(".filterBtn").css("display", "none")
+      $("#filter-body").css("top", "100%")
+      return;
+    }
+    
+    if(result.status == "success") {
+      var templateFn = Handlebars.compile($('#musician-list-template').text())
+      var generatedHTML = templateFn(result.data)
+      var container = $('#musician-surf-list')
+      container.html(generatedHTML)
+      var surfLike = $(".surfLike")
+      for(var i = 0; i <= result.data.listSurf.length -1; i++){
+          
+        if(result.data.listSurf[i].isFavorite == true){
+          surfLike[i].style.color = "#ba3d3d"
+        }
+    }
+
     }
     
   })
@@ -219,16 +222,16 @@ $( function() {
 
         if (ui.values[0] == 10 && ui.values[1] == 50) {
           ageGroup.val("20대 이하" + " - " + "50대 이상");
-          ageGroup.css("left", "52%").css("width", "41%");
+          ageGroup.css("left", "55%").css("width", "41%");
         } else if (ui.values[1] == 50) {
           ageGroup.val(ui.values[0] + "대" +  " - " + "50대 이상");
-          ageGroup.css("left", "57%").css("width", "36%");
+          ageGroup.css("left", "62%").css("width", "36%");
         } else if (ui.values[0] == 10) {
           ageGroup.val("20대 이하" + " - " + ui.values[ 1 ] + "대");
-          ageGroup.css("left", "57%").css("width", "36%");
+          ageGroup.css("left", "62%").css("width", "36%");
         } else {
           ageGroup.val(ui.values[ 0 ] + "대" + " - " + ui.values[ 1 ] + "대");
-          ageGroup.css("left", "60%").css("width", "36%");
+          ageGroup.css("left", "67%").css("width", "31%");
         } // if
 
         }

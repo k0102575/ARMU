@@ -4,29 +4,43 @@
   position: relative;
 }
 
-#header-box {
+
+#musician-favor-header {
+  border-bottom: 1px solid black;
   position: fixed;
-  height: 200px;
-  z-index: 11;
-  background-color: white;
+  height: 120px;
+  width: 100%;
+  background-color: black;
+  z-index: 15;
 }
 
-#musician-favor-text {
+#musician-favor-nickname {
+    position: absolute;
+    right: 15%;
+    top: 13%;
+    transform: translate(-15%, 15%);
+    font-size: 250%;
+    font-weight: normal;
+    color: white;
+    width: 50%;
+    text-align: center;
+ }
+
+#musician-favor-prev {
   position: absolute;
-  left: 50%;
-  top: 20%;
-  transform: translate(-50%);
-  font-size: 300%;
-  font-weight: normal;
+  left: 3%;
+  top: 12%;
+  transform: translate(-3%, 12%);
+  font-size: 400%;
+  color:white;
 }
-
 #musician-favor-countbox {
-  position: absolute;
-  width: 50%;
-  left: 30%;
-  bottom: 5%;
-  font-size: 250%;
-  margin-left: 3%;
+    position: relative;
+    width: 50%;
+    left: 33%;
+    top: 140px;
+    font-size: 250%;
+    margin-left: 3%;
 }
 
 .fa-heart-o {
@@ -42,7 +56,7 @@
 /* 뮤지션 관심 리스트 시작 */
 #musician-favor-list {
   position: absolute;
-  top: 200px;
+  top: 250px;
   width: 100%;
   height: auto;
   box-sizing: border-box;

@@ -9,7 +9,8 @@ var lastScroll = 0,
     musicianInfoNickName = $("#musician-info-nickname"),
     musicianHeaderInfoImg = $("#musician-header-info-img"),
     musicianBasicInfoImg = $("#musician-basic-info-img"),
-    musicianBasicInfoName = $("#musician-basic-info-name")
+    musicianBasicInfoName = $("#musician-basic-info-name"),
+    musicianInfoPrev = $("#musician-info-prev")
     
     infoPortfolio = $("#info-portfolio"),
     infoIntroduce = $("#info-introduce"),
@@ -121,4 +122,7 @@ musicianInfoReviewBtn.on('click', function() {
   infoReview.css('display', 'block')
 })
 
+musicianInfoPrev.on('click', function() {
+  location.href = "/mobile/gmode/index.html"
+})
 
