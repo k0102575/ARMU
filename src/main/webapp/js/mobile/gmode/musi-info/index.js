@@ -49,8 +49,16 @@ function displayMusiInfo() {
         $.post('/musician/favorAdd.json', {
           'no': location.href.split('?')[1].split('=')[1]
         }, function(result) {
-          alert("뮤지션이 관심 목록에 추가되었습니다.")
-          location.reload();
+          swal({
+            title: "관심뮤지션 리스트에 \n\n뮤지션이 추가되었습니다!",
+            type: "success",
+            showCancelButton: false,
+            confirmButtonColor: "#8069ef",
+            confirmButtonText: "확인",
+            customClass: "checkSwal"
+          },function() {
+            location.reload()
+          });
         }, 'json')
       })
       

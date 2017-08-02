@@ -143,7 +143,7 @@ group by eno
 ) fe on fe.eno=e.eno
 </select><!-- 완진 -->
 
-<insert id="insert" parameterType="member" 
+<insert id="insert" parameterType="event" 
         useGeneratedKeys="true" keyColumn="eno" keyProperty="no">
   insert into evn(eno, mno, locno, pay, req, cont, addr, date, title) 
   values(#{no}, #{writer}, #{locno}, #{pay}, #{requirement}, #{contents}, #{address}, #{date}, #{title})

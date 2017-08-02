@@ -7,6 +7,10 @@ var headerMenuDetail = $("#header-menu-detail"),
 
 $(document).ready(function() {
   headerMenuDetail.load("/mobile/header-menu-detail.html");
+  $('#dialog').dialog({
+    autoOpen: false,
+    resizable: false,
+  });
 })
 
 $.getJSON('/musician/listFavor.json', function(result) {
@@ -27,8 +31,16 @@ $.getJSON('/musician/listFavor.json', function(result) {
 $.post('/musician/favorRemove.json', {
   'no': no
 }, function(result) {
-  alert("뮤지션이 관심 목록에서 삭제되었습니다.")
-  location.reload();
+  swal({
+    title: "관심뮤지션 리스트에서 \n\n뮤지션이 삭제되었습니다!",
+    type: "success",
+    showCancelButton: false,
+    confirmButtonColor: "#8069ef",
+    confirmButtonText: "확인",
+    customClass: "checkSwal"
+  },function() {
+    location.reload()
+  });
 }, 'json')
   
 })

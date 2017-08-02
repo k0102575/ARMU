@@ -38,7 +38,7 @@ public class EventControl {
   }
   
   @RequestMapping("addReherse")
-  public JsonResult addReherse(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre) throws Exception {
+  public JsonResult addReherse(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre, HttpSession session) throws Exception {
     String[] themeList = eventRegistTheme.split(",");
     String[] majorList = eventRegistMajor.split(",");
     String[] genreList = eventRegistGenre.split(",");
@@ -62,7 +62,7 @@ public class EventControl {
     event.setEventRegistTheme(registThemeList);
     event.setEventRegistMajor(registMajorList);
     event.setEventRegistGenre(registGenreList);
-    
+    event.setWriter(getLoginMember(session).getNo());
     eventService.add(event);
     eventService.RegistEventCategory(event);
     eventService.RegistEventReherse(event);
@@ -70,7 +70,7 @@ public class EventControl {
   }
   
   @RequestMapping("add")
-  public JsonResult add(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre) throws Exception {
+  public JsonResult add(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre, HttpSession session) throws Exception {
     String[] themeList = eventRegistTheme.split(",");
     String[] majorList = eventRegistMajor.split(",");
     String[] genreList = eventRegistGenre.split(",");
@@ -95,7 +95,9 @@ public class EventControl {
     event.setEventRegistMajor(registMajorList);
     event.setEventRegistGenre(registGenreList);
     
+    event.setWriter(getLoginMember(session).getNo());
     eventService.add(event);
+    
     eventService.RegistEventCategory(event);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }

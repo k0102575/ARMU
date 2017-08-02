@@ -623,7 +623,6 @@ eventPage8Next.on('click', function() {
     }, 'json')
   } else if($("input[name=toggle]:checked").val() =="false") {
     $.post('/event/add.json', {
-      'writer': 4,
       'locno': citySelectMenu.val(),
       'pay': inputEventPay.val(),
       'requirement': inputEventRequire.val(),
