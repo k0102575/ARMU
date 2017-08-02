@@ -217,13 +217,8 @@
   </select> <!-- 승민 -->
   
   <select id="favorMusiAdd" parameterType="map">
-<<<<<<< Updated upstream
-  insert into fav_musi (mno, muno) values (#{myNo}, #{muNo})
-  </select>
-=======
   insert into fav_musi (muno, mno) values (#{muNo}, #{myNo})
   </select> <!-- 승민 -->
->>>>>>> Stashed changes
 
   <select id="surfList" resultMap="musicianMap">
   <include refid="selectAll" />
