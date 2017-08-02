@@ -2,63 +2,33 @@ $(document).ready(function() {
   displaySurfMusiList()
 })
 
-
-
-
-$('#abca').on('click',function(e) {
-  e.preventDefault()
-  displaySurfMusiList2()
-})
-
 $("#filter-update").on('click', function() {
   var checkVal = $(":input:radio[name=gender]:checked").val()
   
   if(minAge == 0 && maxAge == 0) {
-	  if(checkVal == "G") {
 		  $.getJSON('/musician/listSurfFilter.json', 
 			{
+		    "gender" : checkVal,
 			  "minAge" : "10",
 			  "maxAge" : "60"
 			},
 			function(result) {
 				handleList(result)
+				filterContainer.toggle();
 		  })
-	  } else {
-		  $.getJSON('/musician/listSurfGenderFilter.json', 
-		    {
-		    "gender" : checkVal,
-	  	    "minAge" : 10,
-		    "maxAge" : 60
-		    },
-	  	  function(result) {
-		    	handleList(result)
-	      })
-	  }
-	  
-  } else {
-	  if(checkVal == "G") {
+		  return
+	  } 
 		  $.getJSON('/musician/listSurfFilter.json', 
 			{
+		    "gender" : checkVal,
 			  "minAge" : minAge,
 			  "maxAge" : maxAge
 			},
 			function(result) {
 				handleList(result)
+				filterContainer.toggle();
 		  })
-	  } else {
-		  $.getJSON('/musician/listSurfGenderFilter.json', 
-		    {
-		    "gender" : checkVal,
-	  	    "minAge" : minAge,
-		    "maxAge" : maxAge
-		    },
-	  	  function(result) {
-		    	handleList(result)
-	      })
-	  }
-}
-  
-})
+	  })
 
 function handleList(result) {
 	var templateFn = Handlebars.compile($('#musician-list-template').text())
@@ -66,7 +36,6 @@ function handleList(result) {
     var container = $('#musician-surf-list')
     container.html(generatedHTML)
     surfBackscreen.css('display', 'none');
-	filterContainer.toggle();
 }
 
 $(document.body).on('click', '.detail-link', function(event) {
@@ -79,6 +48,7 @@ function displaySurfMusiList() {
     if(result.data == "browse") {
       $("#musician-surf-list").css("height", "1280px")
       $(".filterBtn").css("display", "none")
+      $("#filter-btn-icon").css("display", "none")
       $("#filter-body").css("top", "100%")
       return;
     }
@@ -100,20 +70,6 @@ function displaySurfMusiList() {
     
   })
 }
-
-
-
-
-function displaySurfMusiList2() {
-  $('#musician-surf-list').html('');
-  $.getJSON('/musician/listLocation.json', function(result) {
-    var templateFn = Handlebars.compile($('#musician-list-template').text())
-    var generatedHTML = templateFn(result.data)
-    var container = $('#musician-surf-list')
-    container.html(generatedHTML)
-  })
-}
-
 
 var surfBackscreen = $("#surf-backscreen"),
     filterContainer = $("#filter-container"),
@@ -253,12 +209,22 @@ filterLocTab.click(function () {
 var seoul = $('.seoul')
 seoul.click(function () {
   aa = $(this)
-  $(this).on('click', function() {
     $.post('/musician/searchMusician.json',
       {'location':aa.text()}, function(result) {
-//  location.href = '/mobile/index.html'
+        handleList(result)        
+        
+        var surfLike = $(".surfLike")
+        for(var i = 0; i <= result.data.listSurf.length -1; i++){
+            
+          if(result.data.listSurf[i].isFavorite == true){
+            surfLike[i].style.color = "#ba3d3d"
+          }
+      }
+        
+        
+        
+        
   },'json')
-  })
   
   $('.fa-check').remove()
   seoul.removeClass('on2')
@@ -266,39 +232,11 @@ seoul.click(function () {
   $(this).addClass('on2')
 })
 
-function displayList() {
-  $.post('/musician/searchMusician.json',
-      {'location':aa.text()}, function(result) {
-//  location.href = '/mobile/index.html'
-  },'json')
-  var aa = $(this).text()
-  $.getJSON('/musician/searchMusician.json', 
-      {"location" : aa},
-      function(result) {
-        console.log(result)
-        displayList(result)
-      })
-
-      $('.fa-check').remove()
-      seoul.removeClass('on2')
-      $(this).html('<i class="fa fa-check" aria-hidden="true"></i>'+ $(this).text())
-      $(this).addClass('on2')
-}
-
-function displayList(result) {
-  var templateFn = Handlebars.compile($('#musician-list-template').text())
-  var generatedHTML = templateFn(result.data)
-  var container = $('#musician-surf-list')
-  container.html(generatedHTML)
-  surfBackscreen.css('display', 'none');
-}
-
 $(function ($) {
     let index =null;
     // let $filterwrap = $('.filter-loc-toggle')
     let $fcon1 = $('.filter-loc-sub-tab')
     let $fcon2 = $('.filter-loc-sub-con')
-
 
     tabMenu($fcon1, $fcon2)
     function tabMenu(els, con) {

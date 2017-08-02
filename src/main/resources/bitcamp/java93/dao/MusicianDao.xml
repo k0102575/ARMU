@@ -55,26 +55,6 @@
     </collection>
   </resultMap>
   
-      <resultMap type="musician" id="musicianFilterMap">
-    <id column="mno" property="no" />
-    <result column="name" property="name" />
-    <result column="nick" property="nickName" />
-    <result column="age" property="age" />
-    <result column="team" property="isTeam" />
-    <result column="hpg" property="homepage" />
-    <result column="path" property="photo" />
-    <result column="gender" property="gender" />
-    <collection property="majorList" ofType="string"> 
-        <result column="major"/> 
-    </collection>
-    <collection property="genreList" ofType="string"> 
-        <result column="genre"/> 
-    </collection> 
-    <collection property="locationList" ofType="string"> 
-        <result column="location"/> 
-    </collection>
-  </resultMap>
-  
    <resultMap type="musician" id="musicianInfoMap">
     <id column="mno" property="no" />
     <result column="name" property="name" />
@@ -226,43 +206,23 @@
   
   <select id="selectSurfListFilter" resultMap="musicianMap" parameterType="map">
   <include refid="selectAll" />
+  <if test ='gender =="G"'>
   where mu.age <![CDATA[ > ]]>  #{minAge} and 
   mu.age  <![CDATA[ < ]]> #{maxAge}
-  </select>
-  
-  <select id="selectSurfListGenderFilter" resultMap="musicianMap" parameterType="map">
-  <include refid="selectAll" />
-  
+  </if>
+  <if test ='gender !="G"'>
   where mu.gender = #{gender} and 
   mu.age <![CDATA[ > ]]> #{minAge} and 
   mu.age <![CDATA[ < ]]> #{maxAge}
-  </select>
+  </if>
+  </select> <!-- 승민 -->
   
-  <select id="musicianLocation" resultMap="musicianMap">
+  <select id="musicianSearch" resultMap="musicianMap" parameterType="map">
   <include refid="selectAll" />
-  where l.name like '동대문구'
-  <!-- where l.name like '%${loc}%' -->
-  </select>
-  
-  <select id="musicianSearch" resultMap="musicianFilterMap" parameterType="map">
-  select m.mno, m.name, mu.age, mu.team, m.path, mu.gender, 
-  mj.name as major, g.name as genre, lm.muno, l.name as location
-  from musi mu inner join memb m on mu.muno=m.mno
-  left outer join mjr_musi mjm on mu.muno=mjm.muno left outer join mjr mj on mjm.mjrno=mj.mjrno
-  left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g on gm.gnrno=g.gnrno
-  left outer join mtc on mtc.muno=mu.muno
-  left outer join loc_musi lm on lm.muno=m.mno
-  left outer join loc l on lm.locno= l.locno
   where l.name=case when l.name = '' then '동대문구' else #{location} end
   AND mj.name=case when mj.name = '' then '남성 보컬' else '남성 보컬' end
   AND g.name=case when g.name = '' then 'CCM' else 'CCM' end
   </select>
-   
-    <!-- <update id="updatePhoto" parameterType="map">
-    update musi set
-    path=#{photoPath}
-    where muno=#{memberNo}
-  </update> -->
    
 </mapper>
 

@@ -31,11 +31,6 @@ public class MusicianControl {
       try {
         List<Musician> musicianList = musicianService.listRecommand(loginMember);
 
-        //       if(musicianList == null) {
-        //         result.setStatus(JsonResult.FAIL);
-        //       } else {
-        //       }
-
         result.setStatus(JsonResult.SUCCESS);
 
         HashMap<String,Object> dataMap = new HashMap<>();
@@ -109,20 +104,12 @@ public class MusicianControl {
   }
   
   @RequestMapping("listSurfFilter")
-  public JsonResult listSurfFilter(int minAge, int maxAge) throws Exception {
+  public JsonResult listSurfFilter(String gender, int minAge, int maxAge) throws Exception {
     HashMap<String,Object> dataMap = new HashMap<>();
-      List<Musician> musicianFilterList = (List<Musician>) musicianService.listSurfFilter(minAge, maxAge);
+      List<Musician> musicianFilterList = (List<Musician>) musicianService.listSurfFilter(gender, minAge, maxAge);
       dataMap.put("listSurf", musicianFilterList);
       return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
-  
-  @RequestMapping("listSurfGenderFilter")
-  public JsonResult listSurfGenderFilter(String gender, int minAge, int maxAge) throws Exception {
-    HashMap<String,Object> dataMap = new HashMap<>();
-      List<Musician> musicianGenderList = (List<Musician>) musicianService.listSurfGenderFilter(gender, minAge, maxAge);
-      dataMap.put("listSurf", musicianGenderList);
-      return new JsonResult(JsonResult.SUCCESS, dataMap);
-    }
   
   @RequestMapping("musiInfo")
   public JsonResult musiInfo(HttpSession session, int no) throws Exception {
@@ -182,30 +169,17 @@ public class MusicianControl {
     return result;
   }
   
-  @RequestMapping("listLocation")
-  public JsonResult listLocation() throws Exception {
-
-    HashMap<String,Object> dataMap = new HashMap<>();
-
-    dataMap.put("location", musicianService.listLocation());
-
-    return new JsonResult(JsonResult.SUCCESS, dataMap);
-  }
-  
-  
-  
-
   @RequestMapping("searchMusician")
-  public JsonResult searchMusician(String location) throws Exception {
+  public JsonResult searchMusician(HttpSession session, String location) throws Exception {
     HashMap<String,Object> dataMap = new HashMap<>();
-    List<Musician> search= (List<Musician>)musicianService.searchMusician(location);
+    List<Musician> search= (List<Musician>)musicianService.searchMusician(getLoginMember(session).getNo() ,location);
     dataMap.put("listSurf", search);
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
   
   private Member getLoginMember(HttpSession session) {
     Member loginMember = (Member) session.getAttribute("loginMember");
-      return loginMember;
+    return loginMember;
   }
  
 }

@@ -29,11 +29,6 @@ public class MusicianServiceImpl implements MusicianService {
   }
   
   @Override
-  public Musician favorCount(int no) throws Exception {
-    return musicianDao.selectMusiFavorCount(no);
-  }
-  
-  @Override
   public void favorRemove(int myNo, int muNo) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("myNo", myNo);
@@ -54,34 +49,21 @@ public class MusicianServiceImpl implements MusicianService {
     return musicianDao.surfList(no);
   }
   
-  public List<Musician> listSurfFilter(int minAge, int maxAge) throws Exception {   
-    HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("minAge", minAge);
-    valueMap.put("maxAge", maxAge);
-    return musicianDao.selectSurfListFilter(valueMap);
-  }
-  
-  public List<Musician> listSurfGenderFilter(String gender, int minAge, int maxAge) throws Exception {   
+  public List<Musician> listSurfFilter(String gender, int minAge, int maxAge) throws Exception {   
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("gender", gender);
     valueMap.put("minAge", minAge);
     valueMap.put("maxAge", maxAge);
-    return musicianDao.selectSurfListGenderFilter(valueMap);
+    System.out.println(valueMap);
+    return musicianDao.selectSurfListFilter(valueMap);
   }
-
-//  @Override
-//  public Musician getProfile(Member member) throws Exception {
-//    return musicianDao.selectOne(member);
-//  }
   
   @Override
   public Musician get(int myNo, int muNo) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("myNo", myNo);
     valueMap.put("muNo", muNo);
-    
     return musicianDao.selectMusi(valueMap);
-    
   }
   
   @Override
@@ -100,45 +82,12 @@ public class MusicianServiceImpl implements MusicianService {
   }
   
   @Override
-  public List<Musician> listLocation() throws Exception {
-    return musicianDao.musicianLocation();
-  }
-  
-  @Override
-  public List<Musician> searchMusician(String location) throws Exception {
+  public List<Musician> searchMusician(int no, String location) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("no", no);
     valueMap.put("location", location);
-    System.out.println("service"+valueMap);
-    System.out.println("service"+location);
     return musicianDao.musicianSearch(valueMap);
   }
-
-
-//  private void insertPhoto(int musicianNo, String photoPath) {
-//    if (photoPath == null)
-//      return;
-//
-//    HashMap<String,Object> valueMap = new HashMap<>();
-//    valueMap.put("musicianNo", musicianNo);
-//    valueMap.put("photoPath", photoPath);
-//    musicianDao.insertPhoto(valueMap);
-//  }
-
-//  @Override
-//  public void updatePhoto(int no, String photoPath) throws Exception {
-//    HashMap<String,Object> valueMap = new HashMap<>();
-//  valueMap.put("memberNo", no);
-//  valueMap.put("photoPath", photoPath);
-//    System.out.println(photoPath);
-//    memberDao.updatePhoto(valueMap);
-//  }
-
-  //  public void updatePhoto(Musician musician) throws Exception {
-  //    musicianDao.getClass()Photo(musician.getNo()); // 강사의 모든 사진을 지운다.
-  //    this.insertPhoto(teacher.getNo(), teacher.getPhotoList()); // 강사 사진 추가
-  //  }
-
-
 
 }
 
