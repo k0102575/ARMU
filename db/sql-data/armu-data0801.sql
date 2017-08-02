@@ -102,6 +102,7 @@ insert into thm (name, thmtno) values ('파티', 4);
 
 insert into thm (name, thmtno) values ('졸업연주', 3);
 
+insert into thm (name, thmtno) values ('기타행사', 4);
 
 
 -- 뮤지션 전공(mjr_musi)
@@ -338,12 +339,12 @@ angie8102@gmail.com
 연락처 꼭 남겨주세요~~~');
 
 insert into evn (title, mno, locno, pay, addr, date, cont)
-values ("창립기념행사에 모실 초청공연 연주자를 구합니다!", 4, 6, 300000, '용두동 222 (주)휴스턴', '2017-07-20',
+values ("창립기념행사에 모실 초청공연 연주자를 구합니다!", 4, 6, 300000, '용두동 222 (주)휴스턴', '2017-07-31',
 '(주)휴스턴 창립 11주년 기념식
 
 주제 : 창립 11주년 기념행사
 
-일시 : 7월 20일 오후 8시 30분
+일시 : 7월 31일 오후 8시 30분
 
 장소 : 휴스턴 회사
 
@@ -417,6 +418,24 @@ values ("대학교 축제에 모실 밴드 연주자를 모집합니다!", 5, 14
 끝나는 시간은 넉넉잡아 10시가 될 것이니 참고해주세요~!!
 ');
 
+insert into evn (title, mno, locno, pay, addr, date, cont)
+values ("클래식 대잔치에 모실 연주자분들을 모십니다!", 5, 8, 100000, '거꾸로 94 잔디밭', '2017-07-27',
+'클래식 대잔치에 모실 분들을 구합니다.
+
+피아노, 악기, 성악 모두 필요하니 누구든 언제든 연락주세요~!
+');
+
+insert into evn (title, mno, locno, pay, addr, date, cont)
+values ("허경영교회 찬양대 피아노반주 하루 대타 구합니다!", 5, 8, 100000, '십자가로 22 허경영교회 3층 찬양대연습실', '2017-07-08',
+'저는 허경영교회 3부예배 찬양대 피아노 반주를 하고 있는데,
+다담주에 급한 일이 있어서 대타가 필요합니다.
+
+꼭 전공자 아니어도 되고, 반주 어느정도 할 줄 아시면 곡 연습해서 오시면 됩니다.
+2시간 연습 후 예배 올라가니 약 3시간 30분정도 소요된다고 보시면 됩니다.
+
+연락부탁드려요.
+');
+
 -- 이벤트 전공(mjr_evn)
 insert into mjr_evn (eno, mjrno) values (1, 4);
 insert into mjr_evn (eno, mjrno) values (1, 5);
@@ -429,16 +448,18 @@ insert into mjr_evn (eno, mjrno) values (1, 2);
 
 insert into mjr_evn (eno, mjrno) values (2, 10);
 insert into mjr_evn (eno, mjrno) values (2, 11);
-insert into mjr_evn (eno, mjrno) values (2, 12);
-insert into mjr_evn (eno, mjrno) values (2, 13);
 
 insert into mjr_evn (eno, mjrno) values (3, 1);
 insert into mjr_evn (eno, mjrno) values (3, 2);
 insert into mjr_evn (eno, mjrno) values (3, 3);
-insert into mjr_evn (eno, mjrno) values (3, 14);
+insert into mjr_evn (eno, mjrno) values (3, 12);
+insert into mjr_evn (eno, mjrno) values (3, 13);
 
 insert into mjr_evn (eno, mjrno) values (4, 3);
-insert into mjr_evn (eno, mjrno) values (4, 14);
+insert into mjr_evn (eno, mjrno) values (4, 12);
+insert into mjr_evn (eno, mjrno) values (4, 3);
+insert into mjr_evn (eno, mjrno) values (4, 19);
+insert into mjr_evn (eno, mjrno) values (4, 20);
 
 insert into mjr_evn (eno, mjrno) values (5, 14);
 insert into mjr_evn (eno, mjrno) values (5, 15);
@@ -447,6 +468,24 @@ insert into mjr_evn (eno, mjrno) values (6, 10);
 
 insert into mjr_evn (eno, mjrno) values (7, 12);
 insert into mjr_evn (eno, mjrno) values (7, 13);
+
+insert into mjr_evn (eno, mjrno) values (8, 4);
+insert into mjr_evn (eno, mjrno) values (8, 5);
+insert into mjr_evn (eno, mjrno) values (8, 6);
+insert into mjr_evn (eno, mjrno) values (8, 7);
+insert into mjr_evn (eno, mjrno) values (8, 8);
+insert into mjr_evn (eno, mjrno) values (8, 9);
+insert into mjr_evn (eno, mjrno) values (8, 10);
+insert into mjr_evn (eno, mjrno) values (8, 14);
+insert into mjr_evn (eno, mjrno) values (8, 15);
+insert into mjr_evn (eno, mjrno) values (8, 16);
+insert into mjr_evn (eno, mjrno) values (8, 17);
+insert into mjr_evn (eno, mjrno) values (8, 18);
+insert into mjr_evn (eno, mjrno) values (8, 19);
+
+insert into mjr_evn (eno, mjrno) values (9, 10);
+insert into mjr_evn (eno, mjrno) values (9, 11);
+
 
 -- 이벤트 장르(gnr_evn)
 insert into gnr_evn (eno, gnrno) values (1, 13);
@@ -481,6 +520,18 @@ insert into gnr_evn (eno, gnrno) values (7, 3);
 insert into gnr_evn (eno, gnrno) values (7, 4);
 insert into gnr_evn (eno, gnrno) values (7, 5);
 
+insert into gnr_evn (eno, gnrno) values (8, 12);
+insert into gnr_evn (eno, gnrno) values (8, 13);
+insert into gnr_evn (eno, gnrno) values (8, 14);
+insert into gnr_evn (eno, gnrno) values (8, 15);
+insert into gnr_evn (eno, gnrno) values (8, 16);
+insert into gnr_evn (eno, gnrno) values (8, 17);
+
+insert into gnr_evn (eno, gnrno) values (9, 6);
+insert into gnr_evn (eno, gnrno) values (9, 7);
+insert into gnr_evn (eno, gnrno) values (9, 11);
+insert into gnr_evn (eno, gnrno) values (9, 15);
+
 -- 이벤트 테마(thm_evn)
 insert into thm_evn (eno, thmno) values (1, 2);
 
@@ -499,6 +550,10 @@ insert into thm_evn (eno, thmno) values (7, 6);
 insert into thm_evn (eno, thmno) values (7, 8);
 insert into thm_evn (eno, thmno) values (7, 9);
 
+insert into thm_evn (eno, thmno) values (8, 11);
+
+insert into thm_evn (eno, thmno) values (9, 4);
+
 
 -- 이벤트 홍보(pr)
 insert into pr (eno, muno) values (1, 1);
@@ -511,11 +566,19 @@ insert noti (muno, eno, type, date, cont, prno) values (3, 2, "참여요청", '2
 
 -- 이벤트&뮤지션 매칭정보(mtc)
 insert into mtc (muno, eno, mtcdt) values (3, 2, '2017-07-22');
+
 insert into mtc (muno, eno, mtcdt, score, rev) values (2, 3, '2017-07-24', 4,
-  '연락도 잘 되고, 뭣보다 센스 넘치는 공연이었습니다! ㅎㅎ
-  다음 행사에서도 또 부르고 싶은 보컬이에요~!
-  다만, 한 가지 아쉬운게 있었는데, 당일날 약속시간보다 살짝 늦게오셨더라구요 ㅠㅠ
-  담부턴 시간을 좀 잘 지켜주세요~!');
+'연락도 잘 되고, 뭣보다 센스 넘치는 공연이었습니다! ㅎㅎ
+다음 행사에서도 또 부르고 싶은 보컬이에요~!
+다만, 한 가지 아쉬운게 있었는데, 당일날 약속시간보다 살짝 늦게오셨더라구요 ㅠㅠ
+담부턴 시간을 좀 잘 지켜주세요~!');
+
+insert into mtc (muno, eno, mtcdt, score, rev) values (3, 8, '2017-06-29', 3,
+'감사합니다.ㅎㅎ
+정말 급했는데 선뜻 빠르게 연락주셔서 문제 없이 한 주 잘 넘어갔네요.ㅎㅎ
+그런데 지휘자님 말로는 악보를 잘 볼 줄 모르신다고;;
+다음에는 악보연습 더 하신 후에 대타 뛰어주세요;;ㅎㅎ
+그럼 늘 행복하세요~');
 
 
 -- 관심뮤지션(fav_musi)
@@ -829,3 +892,117 @@ insert into loc_musi (muno, locno) values (14, 7);
 insert into loc_musi (muno, locno) values (14, 8);
 insert into loc_musi (muno, locno) values (14, 9);
 insert into loc_musi (muno, locno) values (14, 10);
+
+
+-- 뮤지션 관심뮤지션 추가
+insert into fav_musi (mno, muno) values (5, 14);
+insert into fav_musi (mno, muno) values (5, 3);
+
+insert into fav_musi (mno, muno) values (4, 8);
+insert into fav_musi (mno, muno) values (4, 10);
+insert into fav_musi (mno, muno) values (4, 14);
+
+insert into fav_musi (mno, muno) values (6, 9);
+insert into fav_musi (mno, muno) values (6, 11);
+
+insert into fav_musi (mno, muno) values (7, 8);
+insert into fav_musi (mno, muno) values (7, 14);
+
+
+-- 이벤트 추가(지난 이벤트라서 major, theme, genre 설정하지 않음)
+
+insert into evn (title, mno, locno, pay, addr, date, cont)
+values ("이러쿵 저러쿵 노래자랑 연주자 구합니다!", 6, 13, 100000, '이러쿵로 22 이러쿵건물 3층', '2017-07-15',
+'이러쿵 저러쿵 이벤트가 있어요.
+이러쿵저러쿵이 필요해요.
+연락주세요!
+');
+
+insert into evn (title, mno, locno, pay, addr, date, cont)
+values ("가나다라마바사아 연주회가 있습니다.", 7, 13, 100000, '훈민정음로 22 이러쿵건물 3층', '2017-07-16',
+'이러쿵 저러쿵 이벤트가 있어요.
+이러쿵저러쿵이 필요해요.
+연락주세요!
+');
+
+insert into evn (title, mno, locno, pay, addr, date, cont)
+values ("이런저런 이벤트가 있어요!", 6, 13, 100000, '이러쿵로 22 요러쿵 2층', '2017-07-17',
+'이러쿵 저러쿵 이벤트가 있어요.
+이러쿵저러쿵이 필요해요.
+연락주세요!
+');
+
+insert into evn (title, mno, locno, pay, addr, date, cont)
+values ("결혼을 합니다!", 5, 13, 100000, '이러쿵로 22 가나다라 1층', '2017-07-18',
+'이러쿵 저러쿵 이벤트가 있어요.
+이러쿵저러쿵이 필요해요.
+연락주세요!
+');
+
+insert into evn (title, mno, locno, pay, addr, date, cont)
+values ("결혼을 합니다!", 6, 13, 100000, '이러쿵로 22 가나다라 1층', '2017-07-18',
+'이러쿵 저러쿵 이벤트가 있어요.
+이러쿵저러쿵이 필요해요.
+연락주세요!
+');
+
+insert into evn (title, mno, locno, pay, addr, date, cont)
+values ("결혼을 합니다!", 7, 13, 100000, '이러쿵로 22 가나다라 1층', '2017-07-18',
+'이러쿵 저러쿵 이벤트가 있어요.
+이러쿵저러쿵이 필요해요.
+연락주세요!
+');
+
+insert into evn (title, mno, locno, pay, addr, date, cont)
+values ("결혼을 합니다!", 4, 13, 100000, '이러쿵로 22 가나다라 1층', '2017-07-18',
+'이러쿵 저러쿵 이벤트가 있어요.
+이러쿵저러쿵이 필요해요.
+연락주세요!
+');
+
+insert into evn (title, mno, locno, pay, addr, date, cont)
+values ("결혼을 합니다!", 5, 13, 100000, '이러쿵로 22 가나다라 1층', '2017-07-18',
+'이러쿵 저러쿵 이벤트가 있어요.
+이러쿵저러쿵이 필요해요.
+연락주세요!
+');
+
+-- 매칭정보 추가
+insert into mtc (muno, eno, mtcdt, score, rev) values (12, 10, '2017-06-19', 5,
+'전..감동이었어요..정말 최고의 노래였습니다 ㅠㅠ
+목소리 정말 감미로워요 !!! 백점 만점에 백점입니다!
+잘자요~');
+
+insert into mtc (muno, eno, mtcdt, score, rev) values (14, 11, '2017-06-19', 4,
+'와우 최고의 랩이었습니다. b 역시 믿고 쓰는 알뮤네요.
+이 뮤지션을 추천합니다~ ^0^');
+
+insert into mtc (muno, eno, mtcdt, score, rev) values (13, 12, '2017-06-19', 3,
+'아 악기연주는 좋았으나..선곡이 영..
+센스가 좀.. 너무 올드해요 ㅠㅠ
+담엔 선곡좀 신경써주세요.
+진짜 이벤트 내용에 하나도 안맞는 곡 선곡해서 난처해 죽는줄알았어요.');
+
+insert into mtc (muno, eno, mtcdt, score, rev) values (1, 13, '2017-06-19', 5,
+'아 정말 한 편의 뮤지컬을 보는 것 같았습니다.
+나중에 기회가 된다면 꼭 다시 부르고 싶은 분입니다.^^
+외모에 반하고 노래에 또 한 번 반합니다 ^^');
+
+insert into mtc (muno, eno, mtcdt, score, rev) values (9, 14, '2017-06-19', 1,
+'1점이 아깝다 - - 최악이다. 내 결혼식 다망쳤어.');
+
+insert into mtc (muno, eno, mtcdt, score, rev) values (9, 15, '2017-06-19', 2,
+'아... 연습좀 하고오세요 제발요.');
+
+insert into mtc (muno, eno, mtcdt, score, rev) values (11, 16, '2017-06-19', 4,
+'와. 현악 4중주가 이렇게 좋았나요. 꼭 또 듣고싶습니다.');
+
+insert into mtc (muno, eno, mtcdt, score, rev) values (11, 17, '2017-06-19', 3,
+'최고에요!
+유쾌한 분들이십니다~! 추천이요!');
+
+insert into mtc (muno, eno, mtcdt, score, rev) values (11, 8, '2017-07-12', 5,
+'연주 정말 좋았습니다.^^
+다음 행사에도 꼭 부를 예정입니다.
+특히 빨간색 드레스가 인상깊었습니다 ㅎㅎ
+항상 좋은 일 가득하고 흥하시길.');

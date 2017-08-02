@@ -134,3 +134,113 @@ inner join memb m on n.muno=m.mno
 inner join evn e on n.eno=e.eno inner join memb gm on e.gno=gm.mno
 where n.muno=3
 order by date desc
+
+
+-- list Recommand 추천 뮤지션 리스트 가져오기
+  select mum.mno, mum.name, mum.nick, mu.team, mum.path, fm.fav, if(mtc.score is not null, mtc.score, 0) as score,
+  tag.mjrno, tag.thmno, tag.gnrno, tag.major, tag.theme, tag.genre
+  from musi mu
+  inner join memb mum on mu.muno=mum.mno
+  left outer join mjr_musi mjm on mu.muno=mjm.muno
+  left outer join thm_musi tm on mu.muno=tm.muno
+  left outer join gnr_musi gm on mu.muno=gm.muno
+  inner join (
+    select e.eno, e.title, m.name as writer,
+    mjr.mjrno, mjr.name as major, thm.thmno, thm.name as theme, gnr.gnrno, gnr.name as genre
+    from (
+      select * from evn where date >= curdate() order by date asc
+    ) e inner join memb m on m.mno=e.mno
+    left outer join mjr_evn on e.eno=mjr_evn.eno inner join mjr on mjr.mjrno=mjr_evn.mjrno
+    left outer join thm_evn on e.eno=thm_evn.eno inner join thm on thm.thmno=thm_evn.thmno
+    left outer join gnr_evn on e.eno=gnr_evn.eno inner join gnr on gnr.gnrno=gnr_evn.gnrno
+    where e.mno=4
+  ) tag on (tag.mjrno=mjm.mjrno and tag.thmno=tm.thmno) or
+           (tag.gnrno=gm.gnrno and tag.thmno=tm.thmno) or
+           (tag.gnrno=gm.gnrno and tag.mjrno=mjm.mjrno)
+  left outer join (
+    select count(if(mno is not null, 1, 0)) as fav, mno, muno
+    from fav_musi
+    where mno = 4
+    group by muno
+  ) fm on fm.muno=mu.muno
+  left outer join (
+    select avg(score) as score, muno
+    from mtc
+    group by muno
+  ) mtc on mtc.muno=mu.muno
+
+
+-- 특정 일반회원이 작성한 이벤트(>오늘날짜)의 모든 장르, 테마, 전공 리스트 가져오기
+select e.eno, e.title, m.name as writer,
+mjr.mjrno, mjr.name as major, thm.thmno, thm.name as theme, gnr.gnrno, gnr.name as genre
+from (select * from evn where date >= curdate() order by date asc) e inner join memb m on m.mno=e.mno
+left outer join mjr_evn on e.eno=mjr_evn.eno inner join mjr on mjr.mjrno=mjr_evn.mjrno
+left outer join thm_evn on e.eno=thm_evn.eno inner join thm on thm.thmno=thm_evn.thmno
+left outer join gnr_evn on e.eno=gnr_evn.eno inner join gnr on gnr.gnrno=gnr_evn.gnrno
+where e.mno=4
+
+-- 위와 같음
+select e.eno, e.title, mjr.name, thm.name, gnr.name
+from evn e
+inner join memb m on m.mno=e.mno
+left outer join mjr_evn on e.eno=mjr_evn.eno inner join mjr on mjr.mjrno=mjr_evn.mjrno
+left outer join thm_evn on e.eno=thm_evn.eno inner join thm on thm.thmno=thm_evn.thmno
+left outer join gnr_evn on e.eno=gnr_evn.eno inner join gnr on gnr.gnrno=gnr_evn.gnrno
+where date >= curdate() and e.mno=4 order by date asc
+
+
+
+-- 뮤지션별로 별점 가져오기
+select avg(score) as score, muno
+from mtc
+group by muno
+
+
+-- list BestReview Musicians 높은 평점의 리뷰를 받은 뮤지션의 정보와 해당 리뷰 가져오기
+select mt.mtcno, mt.eno, mt.muno, mt.score,
+mum.nick, mum.path, mj.name as major, g.name as genre, t.name as theme
+from musi mu inner join (
+  select m.mtcno, m.eno, m.muno, m.score, m.rev
+  from (
+    select max(score) as score, muno,
+    substring_index(group_concat(mtcno order by score desc), ',', 1) as mtcno
+    from mtc
+    group by muno
+    order by score desc
+  ) dmtc inner join mtc m on dmtc.mtcno=m.mtcno
+  order by m.score desc
+  limit 3
+) mt on mt.muno=mu.muno
+inner join memb mum on mu.muno=mum.mno
+left outer join mjr_musi mjm on mu.muno=mjm.muno
+left outer join gnr_musi gm on mu.muno=gm.muno
+left outer join thm_musi tm on mu.muno=tm.muno
+inner join mjr mj on mjm.mjrno=mj.mjrno
+inner join gnr g on gm.gnrno=g.gnrno
+inner join thm t on tm.thmno=t.thmno
+
+
+
+-- list popular musicians 관심 뮤지션으로 가장 많이 등록된 뮤지션부터 4명 가져오기
+select mum.mno, mum.nick, mum.path, sc.score, mj.name as major, g.name as genre, t.name as theme
+from musi mu
+inner join memb mum on mu.muno=mum.mno
+inner join (
+  select count(if(muno is not null, 1, 0)) as popu, muno
+  from fav_musi
+  group by muno
+  order by popu desc
+  limit 4
+) pomu on pomu.muno = mu.muno
+left outer join (
+  select avg(score) as score, muno
+  from mtc
+  group by muno
+) sc on sc.muno=mu.muno
+left outer join mjr_musi mjm on mu.muno=mjm.muno
+left outer join gnr_musi gm on mu.muno=gm.muno
+left outer join thm_musi tm on mu.muno=tm.muno
+inner join mjr mj on mjm.mjrno=mj.mjrno
+inner join gnr g on gm.gnrno=g.gnrno
+inner join thm t on tm.thmno=t.thmno
+order by mu.muno desc

@@ -1,6 +1,6 @@
 <div class="rec-background">
   <p class='rec-title'>내 이벤트에 꼭 맞는 뮤지션</p>
-  <div class="rec-container">
+  <div class="rec-container rec-no-event-container">
 
     <div class="rec-no-event">
       <br> 아직 작성하신 이벤트가 없어요<br><br>
@@ -60,7 +60,7 @@
   {{#each listRecommand}}
   <div class="rec-by-event-musi swiper-slide">
     <div class="rec-by-event-musi-img" style='background-image: url("{{photo}}")'></div>
-    <div class="rec-by-event-musi-name"><span>{{nick}}</span>
+    <div class="rec-by-event-musi-name"><span>{{nickName}}</span>
       <div class="rec-by-event-musi-score">{{{score}}}</div>
     </div>
     <!-- rec-by-event-musi-name -->
@@ -78,12 +78,11 @@
 
 
 <script id="rec-best-review-musi-template" type="text/x-handlebars-template">
-  {{#each listRecommand}}
+  {{#each listBestReview}}
   <div class="rec-best-review">
     <div class="rec-best-review-img" style='background-image: url("{{photo}}")'></div>
-    <div class="rec-best-review-musi"><span>{{nick}}</span>
-      <div class="rec-best-review-musi-score">
-      </div>
+    <div class="rec-best-review-musi"><span>{{nickName}}</span>
+      <div class="rec-best-review-musi-score">{{{score}}}</div>
     </div>
     <!-- rec-best-review-musi -->
     <div class="rec-best-review-hashtagbox">
@@ -102,16 +101,21 @@
   {{/each}}
 </script>
 
+<script id="rec-most-popular-category-template" type="text/x-handlebars-template">
+{{#each listTop10}}
+<a href="#" class='rec-hashtag'>#{{name}}</a>
+{{/each}}
+</script>
+
 <script id="rec-popular-musi-template" type="text/x-handlebars-template">
-  {{#each listRecommand}}
+  {{#each listPopular}}
   <div class="rec-popular-musi">
     <div class="rec-popular-musi-img" style='background-image: url("{{photo}}")'></div>
-    <div class="rec-popular-musi-name"><span>{{name}}</span>
-      <div class="rec-popular-musi-score">
+    <div class="rec-popular-musi-name"><span>{{nickName}}</span>
+      <div class="rec-popular-musi-score">{{{score}}}
       </div>
     </div>
     <!-- rec-popular-musi-name -->
-    <div class="rec-popular-musi-fav"><i class="fa fa-heart-o" aria-hidden="true"></i></div>
     <div class="rec-popular-musi-hashtagbax">
       {{#each majorList}} <span>#{{this}}</span> {{/each}}
       {{#each genreList}} <span>#{{this}}</span> {{/each}}
@@ -122,11 +126,7 @@
   {{/each}}
 </script>
 
-<script id="rec-most-popular-category-template" type="text/x-handlebars-template">
-{{#each listRecommand}}
-<a href="#" class='rec-hashtag'>#{{this}}</a>
-{{/each}}
-</script>
+
 
 <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
 <script src="/node_modules/swiper/dist/js/swiper.jquery.min.js"></script>
