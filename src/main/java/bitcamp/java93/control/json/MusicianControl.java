@@ -29,7 +29,7 @@ public class MusicianControl {
 
     if(loginMember != null) {
       try {
-        List<Musician> musicianList = musicianService.listRecommand(loginMember);
+        List<Musician> musicianList = musicianService.listRecommand(loginMember.getNo());
 
         result.setStatus(JsonResult.SUCCESS);
 
@@ -38,6 +38,7 @@ public class MusicianControl {
         result.setData(dataMap);
 
       } catch (Exception e) {
+        e.printStackTrace();
         result.setStatus(JsonResult.ERROR);
       }
     } else {//loginMember가 없으면
@@ -47,11 +48,54 @@ public class MusicianControl {
 
     return result;
   }
-  
+
+  @RequestMapping("listBestReview")
+  public JsonResult listBestReview(HttpSession session) {
+
+    JsonResult result = new JsonResult();
+
+    try {
+      List<Musician> musicianList = musicianService.listBestReview();
+
+      result.setStatus(JsonResult.SUCCESS);
+
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listBestReview", musicianList);
+      result.setData(dataMap);
+
+    } catch (Exception e) {
+      e.printStackTrace();
+      result.setStatus(JsonResult.ERROR);
+    }
+
+    return result;
+  }
+
+  @RequestMapping("listPopular")
+  public JsonResult listPopular(HttpSession session) {
+
+    JsonResult result = new JsonResult();
+
+    try {
+      List<Musician> musicianList = musicianService.listPopular();
+
+      result.setStatus(JsonResult.SUCCESS);
+
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listPopular", musicianList);
+      result.setData(dataMap);
+
+    } catch (Exception e) {
+      e.printStackTrace();
+      result.setStatus(JsonResult.ERROR);
+    }
+
+    return result;
+  }
   @RequestMapping("listFavor")
   public JsonResult listFavor(HttpSession session) throws Exception {
     JsonResult result = new JsonResult();
-    
+
     try {
       List<Musician> listFavor = (List<Musician>) musicianService.listFavor(getLoginMember(session).getNo());
       HashMap<String,Object> dataMap = new HashMap<>();
@@ -63,13 +107,13 @@ public class MusicianControl {
     }
     return result;
   }
-  
+
   @RequestMapping("favorRemove")
   public JsonResult favorRemove(HttpSession session, int no) throws Exception {
-     musicianService.favorRemove(getLoginMember(session).getNo(), no);
+    musicianService.favorRemove(getLoginMember(session).getNo(), no);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
-  
+
   @RequestMapping("favorAdd")
   public JsonResult favorAdd(HttpSession session, int no) throws Exception {
     musicianService.favorAdd(getLoginMember(session).getNo(), no);
@@ -100,17 +144,17 @@ public class MusicianControl {
     }
 
     return result;
-    
+
   }
-  
+
   @RequestMapping("listSurfFilter")
   public JsonResult listSurfFilter(String gender, int minAge, int maxAge) throws Exception {
     HashMap<String,Object> dataMap = new HashMap<>();
-      List<Musician> musicianFilterList = (List<Musician>) musicianService.listSurfFilter(gender, minAge, maxAge);
-      dataMap.put("listSurf", musicianFilterList);
-      return new JsonResult(JsonResult.SUCCESS, dataMap);
+    List<Musician> musicianFilterList = (List<Musician>) musicianService.listSurfFilter(gender, minAge, maxAge);
+    dataMap.put("listSurf", musicianFilterList);
+    return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
-  
+
   @RequestMapping("musiInfo")
   public JsonResult musiInfo(HttpSession session, int no) throws Exception {
     JsonResult result = new JsonResult();
@@ -125,7 +169,7 @@ public class MusicianControl {
     }
     return result;
   }
-  
+
   @RequestMapping("musiInfoReview")
   public JsonResult musiInfoReview(int no) {
     JsonResult result = new JsonResult();
@@ -140,35 +184,35 @@ public class MusicianControl {
     }
     return result;
   }
-  
+
   @RequestMapping("musiInfoReviewIntroduce")
   public JsonResult musiInfoReviewIntroduce(int no) throws Exception {
     JsonResult result = new JsonResult();
     HashMap<String,Object> dataMap = new HashMap<>();
-      Musician musicianIntroduce = musicianService.getIntroduce(no);
-      if (musicianIntroduce == null) {
-        return new JsonResult(JsonResult.SUCCESS, "0");
-      }
-      result.setStatus(JsonResult.SUCCESS);
-      dataMap.put("getIntroduce", musicianIntroduce);
-      result.setData(dataMap);
+    Musician musicianIntroduce = musicianService.getIntroduce(no);
+    if (musicianIntroduce == null) {
+      return new JsonResult(JsonResult.SUCCESS, "0");
+    }
+    result.setStatus(JsonResult.SUCCESS);
+    dataMap.put("getIntroduce", musicianIntroduce);
+    result.setData(dataMap);
     return result;
   }
-  
+
   @RequestMapping("musiInfoReviewPortfolio")
   public JsonResult musiInfoReviewPortfolio(int no) throws Exception {
     JsonResult result = new JsonResult();
     HashMap<String,Object> dataMap = new HashMap<>();
-      Musician musicianPortfolio = musicianService.getPortfolio(no);
-      if (musicianPortfolio == null) {
-        return new JsonResult(JsonResult.SUCCESS, "0");
-      }
-      result.setStatus(JsonResult.SUCCESS);
-      dataMap.put("getPortfolio", musicianPortfolio);
-      result.setData(dataMap);
+    Musician musicianPortfolio = musicianService.getPortfolio(no);
+    if (musicianPortfolio == null) {
+      return new JsonResult(JsonResult.SUCCESS, "0");
+    }
+    result.setStatus(JsonResult.SUCCESS);
+    dataMap.put("getPortfolio", musicianPortfolio);
+    result.setData(dataMap);
     return result;
   }
-  
+
   @RequestMapping("searchMusician")
   public JsonResult searchMusician(HttpSession session, String location) throws Exception {
     HashMap<String,Object> dataMap = new HashMap<>();
@@ -176,12 +220,12 @@ public class MusicianControl {
     dataMap.put("listSurf", search);
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
-  
+
   private Member getLoginMember(HttpSession session) {
     Member loginMember = (Member) session.getAttribute("loginMember");
     return loginMember;
   }
- 
+
 }
 
 

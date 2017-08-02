@@ -6,7 +6,9 @@ import bitcamp.java93.domain.Member;
 import bitcamp.java93.domain.Musician;
 
 public interface MusicianService {
-  List<Musician> listRecommand(Member member) throws Exception;
+  List<Musician> listRecommand(int no) throws Exception;
+  List<Musician> listBestReview() throws Exception;
+  List<Musician> listPopular() throws Exception;
   List<Musician> listFavor(int no) throws Exception;
   void favorRemove(int myNo, int muNo) throws Exception;
   void favorAdd(int myNo, int muNo) throws Exception;

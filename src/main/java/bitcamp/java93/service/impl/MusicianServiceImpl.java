@@ -20,8 +20,8 @@ public class MusicianServiceImpl implements MusicianService {
   @Autowired
   MusicianDao musicianDao;
 
-  public List<Musician> listRecommand(Member member) throws Exception {   
-    return musicianDao.selectRecommandList(member);
+  public List<Musician> listRecommand(int no) throws Exception {   
+    return musicianDao.selectRecommandList(no);
   }
   
   public List<Musician> listFavor(int no) throws Exception {   
@@ -87,6 +87,14 @@ public class MusicianServiceImpl implements MusicianService {
     valueMap.put("no", no);
     valueMap.put("location", location);
     return musicianDao.musicianSearch(valueMap);
+  }
+
+  public List<Musician> listBestReview() throws Exception {
+    return musicianDao.selectBestReviewList();
+  }
+
+  public List<Musician> listPopular() throws Exception {
+    return musicianDao.selectPopularList();
   }
 
 }

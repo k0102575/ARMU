@@ -19,7 +19,6 @@
     <result column="gender" property="gender" />
     <result column="score" property="score" />
     <result column="rev" property="review" />
-    <result column="popu" property="popularity"/>
     <result column="fav" property="isFavorite"/>
     <result column="sido" property="sido"/>
     <collection property="photoList" ofType="string">
@@ -106,6 +105,11 @@
     </collection>
   </resultMap>
   
+  
+  <sql id="selectBasic">
+  
+  </sql>
+  
   <sql id="selectAll">
   select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, m.path, mu.gender, 
   mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, if(fm.fav is not null, 1, 0) as fav, 
@@ -168,10 +172,89 @@
   where mu.muno = #{no}
   </select> <!-- 승민 -->
 
-  <select id="selectRecommandList" resultMap="musicianMap">
-    <include refid="selectAll" />
-    order by m.name asc
+  <select id="selectRecommandList" resultMap="musicianMap" parameterType="int">
+  select mum.mno, mum.name, mum.nick, mu.team, mum.path, fm.fav, if(mtc.score is not null, mtc.score, 0) as score,
+  tag.mjrno, tag.thmno, tag.gnrno, tag.major, tag.theme, tag.genre, null as location
+  from musi mu
+  inner join memb mum on mu.muno=mum.mno
+  left outer join mjr_musi mjm on mu.muno=mjm.muno
+  left outer join thm_musi tm on mu.muno=tm.muno
+  left outer join gnr_musi gm on mu.muno=gm.muno
+  inner join (
+    select e.eno, e.title, m.name as writer,
+    mjr.mjrno, mjr.name as major, thm.thmno, thm.name as theme, gnr.gnrno, gnr.name as genre
+    from (
+      select * from evn where date >= curdate() order by date asc
+    ) e inner join memb m on m.mno=e.mno
+    left outer join mjr_evn on e.eno=mjr_evn.eno inner join mjr on mjr.mjrno=mjr_evn.mjrno
+    left outer join thm_evn on e.eno=thm_evn.eno inner join thm on thm.thmno=thm_evn.thmno
+    left outer join gnr_evn on e.eno=gnr_evn.eno inner join gnr on gnr.gnrno=gnr_evn.gnrno
+    where e.mno=#{no}
+  ) tag on (tag.mjrno=mjm.mjrno and tag.thmno=tm.thmno) or
+           (tag.gnrno=gm.gnrno and tag.thmno=tm.thmno) or
+           (tag.gnrno=gm.gnrno and tag.mjrno=mjm.mjrno)
+  left outer join (
+    select count(if(mno is not null, 1, 0)) as fav, mno, muno
+    from fav_musi
+    where mno = #{no}
+    group by muno
+  ) fm on fm.muno=mu.muno
+  left outer join (
+    select avg(score) as score, muno
+    from mtc
+    group by muno
+  ) mtc on mtc.muno=mu.muno
+    order by mum.name asc
   </select> <!-- 완진 -->
+  
+  <select id="selectBestReviewList" resultMap="musicianMap">
+    select mt.mtcno, mt.eno, mt.muno as mno, mt.score, mt.rev,
+		mum.nick, mum.path, mj.name as major, g.name as genre, t.name as theme, null as location
+		from musi mu inner join (
+		  select m.mtcno, m.eno, m.muno, m.score, m.rev
+		  from (
+		    select max(score) as score, muno,
+		    substring_index(group_concat(mtcno order by score desc), ',', 1) as mtcno
+		    from mtc
+		    group by muno
+		    order by score desc
+		  ) dmtc inner join mtc m on dmtc.mtcno=m.mtcno
+		  order by m.score desc
+		  limit 3
+		) mt on mt.muno=mu.muno
+		inner join memb mum on mu.muno=mum.mno
+		left outer join mjr_musi mjm on mu.muno=mjm.muno
+		left outer join gnr_musi gm on mu.muno=gm.muno
+		left outer join thm_musi tm on mu.muno=tm.muno
+		inner join mjr mj on mjm.mjrno=mj.mjrno
+		inner join gnr g on gm.gnrno=g.gnrno
+		inner join thm t on tm.thmno=t.thmno
+  </select>
+  
+  <select id="selectPopularList" resultMap="musicianMap">
+  select mum.mno, mum.nick, mum.path, sc.score, mj.name as major, g.name as genre, t.name as theme, null as location
+	from musi mu
+	inner join memb mum on mu.muno=mum.mno
+	inner join (
+	  select count(if(muno is not null, 1, 0)) as popu, muno
+	  from fav_musi
+	  group by muno
+	  order by popu desc
+	  limit 4
+	) pomu on pomu.muno = mu.muno
+	left outer join (
+	  select avg(score) as score, muno
+	  from mtc
+	  group by muno
+	) sc on sc.muno=mu.muno
+	left outer join mjr_musi mjm on mu.muno=mjm.muno
+	left outer join gnr_musi gm on mu.muno=gm.muno
+	left outer join thm_musi tm on mu.muno=tm.muno
+	inner join mjr mj on mjm.mjrno=mj.mjrno
+	inner join gnr g on gm.gnrno=g.gnrno
+	inner join thm t on tm.thmno=t.thmno
+	order by mu.muno desc
+  </select>
 
   <select id="selectFavorList" resultMap="musicianFavorMap" parameterType="int">
 		select ctr.count, m.mno, m.name, m.path, gnr.name as genre, mjr.name as major, loct.name as location

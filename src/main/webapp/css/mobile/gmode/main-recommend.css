@@ -33,6 +33,11 @@
 
 /*이벤트 맞춤 추천 뮤지션 시작*/
 /*이벤트 없는 경우 시작*/
+.rec-no-event-container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .rec-no-event {
   position: relative;
   hegiht: 900px;
@@ -171,15 +176,19 @@
 
 
 /*베스트 뮤지션 리뷰 시작*/
+#rec-best-review-musi-container {
+  background-color: #f5f5f5;
+}
+
 .rec-best-review {
   position: relative;
   display: inline-block;
-  border: 1px solid gray;
   background-color: white;
   height: 450px;
   width:95%;
   margin-bottom: 3%;
   text-align: justify;
+  box-shadow: 0px 1px 0px 0px gray;
 }
 
 .rec-best-review-img {
@@ -223,7 +232,8 @@
   font-weight: 500;
   color: black;
   width: 70%;
-  overflow: auto;
+  overflow: hidden;
+  height: 90px;
 }
 
 .rec-best-review-hashtagbox > span {
@@ -298,10 +308,15 @@
 
 
 /*인기 뮤지션 시작*/
+#rec-popular-musi-container{
+  padding-bottom: 6%;
+  background-color: #f5f5f5;
+}
+
 .rec-popular-musi {
   position: relative;
   display: inline-block;
-  border: 1px solid gray;
+  box-shadow: 0px 1px 6px 0px gray;
   height: 600px;
   width: 45%;
   margin: 1%;
