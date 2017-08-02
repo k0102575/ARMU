@@ -1,8 +1,8 @@
 
 -- 뮤지션
-insert into memb (name, nick, phone, pwd, email, path) values ('조승우', '조승우', '010-1234-1234',  password('1111'), 'seungwoojo@daum.net', '/image/musician/photo/0choi2.jpg');
+insert into memb (name, nick, phone, pwd, email, path) values ('조승우', '황시목', '010-1234-1234',  password('1111'), 'seungwoojo@daum.net', '/image/musician/photo/j.jpg');
 insert into memb (name, nick, phone, pwd, email, path) values ('차지연', 'JIYEON CHA', '010-2424-3234',  password('1111'), 'jiyeon@daum.net', '/image/musician/photo/m1.jpg');
-insert into memb (name, nick, phone, pwd, email, path) values ('오호라', '오호라밴드', '010-5555-5050',  password('1111'), 'ohora@gmail.com', '/image/musician/photo/band.jpg');
+insert into memb (name, nick, phone, pwd, email, path) values ('오호라', '오호라밴드', '010-5555-5050',  password('1111'), 'ohora@gmail.com', '/image/musician/photo/cn.jpg');
 
 insert into musi (muno, age, team, gender, hpg, intro) values (1, 35, 'N', 'M','http://tistory.seungwoo.com', '저는 짱짱맨 조승우입니다. 조각같은 외모와 매력적인 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!');
 insert into musi (muno, age, team, gender, hpg, intro) values (2, 34, 'N', 'F', 'http://tistory.jhlee.com', '안녕하세요. 임정희입니다. 저로 말할 것 같으면, 화려한 외모와 옥구슬같은 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!');

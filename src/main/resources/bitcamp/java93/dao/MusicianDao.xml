@@ -153,7 +153,7 @@
   where mno=#{myNo}
   group by muno) fm on fm.muno=mu.muno
   where mu.muno=#{muNo}
-  </select>
+  </select> <!-- 승민 -->
   
   <select id="selectMusiReview" resultMap="musicianInfoReviewMap" parameterType="int">
   select ctr.count, mtc.rev, mtc.score, even.title as eventTitle, DATE_FORMAT(even.date, '%Y-%m-%d') as eventDate, m.name , m.path
@@ -164,7 +164,7 @@
   left outer join evn even on mtc.eno = even.eno
   left outer join memb m on even.mno = m.mno
   where mtc.muno = #{no}
-  </select>
+  </select> <!-- 승민 -->
   
   
   <select id="selectMusiIntroduce" resultMap="musicianInfoIntroduceMap" parameterType="int">
@@ -179,19 +179,19 @@
   left outer join loc l on lm.locno=l.locno
   left outer join loc_type lt on l.loctno = lt.loctno
   where mu.muno = #{no}
-  </select>
+  </select> <!-- 승민 -->
   
   <select id="selectMusiPortfolio" resultMap="musicianInfoPortfolioMap" parameterType="int">
   select sp.spdt as specDate, sp.dscp as specDscp, spp.isimg as fileType, spp.path as filePath 
   from musi mu left outer join spec sp on mu.muno = sp.muno
   inner join spec_path spp on sp.spno = spp.spno
   where mu.muno = #{no}
-  </select>
+  </select> <!-- 승민 -->
 
   <select id="selectRecommandList" resultMap="musicianMap">
     <include refid="selectAll" />
     order by m.name asc
-  </select>
+  </select> <!-- 완진 -->
 
   <select id="selectFavorList" resultMap="musicianFavorMap" parameterType="int">
 		select ctr.count, m.mno, m.name, m.path, gnr.name as genre, mjr.name as major, loct.name as location
@@ -210,19 +210,24 @@
 		left outer join loc loc on lomu.locno = loc.locno
 		left outer join loc_type loct on loc.loctno = loct.loctno
 		where gm.mno = #{no}
-  </select>
+  </select> <!-- 승민 -->
   
   <select id="favorMusiRemove" parameterType="map">
   delete from fav_musi where muno = #{muNo} and mno = #{myNo};
-  </select>
+  </select> <!-- 승민 -->
   
   <select id="favorMusiAdd" parameterType="map">
+<<<<<<< Updated upstream
   insert into fav_musi (mno, muno) values (#{myNo}, #{muNo})
   </select>
+=======
+  insert into fav_musi (muno, mno) values (#{muNo}, #{myNo})
+  </select> <!-- 승민 -->
+>>>>>>> Stashed changes
 
   <select id="surfList" resultMap="musicianMap">
   <include refid="selectAll" />
-  </select>
+  </select> <!-- 승민 -->
   
   <select id="selectSurfListFilter" resultMap="musicianMap" parameterType="map">
   <include refid="selectAll" />
