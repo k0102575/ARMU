@@ -45,6 +45,7 @@ $(document.body).on('click', '.detail-link', function(event) {
 
 function displaySurfMusiList() {
   $.getJSON('/musician/listSurf.json', function(result) {
+    console.log(result)
     if(result.data == "browse") {
       $("#musician-surf-list").css("height", "1280px")
       $(".filterBtn").css("display", "none")
