@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no">
+<title>ARMU MOBILE</title>
+<link rel='shortcut icon' type='image/x-icon' href='/image/favicon/favicon.ico'/>
+<link rel="stylesheet" href="/node_modules/jquery-ui-dist/jquery-ui.css">
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/node_modules/sweetalert/dist/sweetalert.css">
+<link href="/css/mobile/common.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/mobile/header.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/musi_signup.css" rel="stylesheet" type="text/css" media="all">
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+<script src="/node_modules/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript" src="/node_modules/handlebars/dist/handlebars.js"></script>
+</head>
+<body>
+<div id="container">
+
+  <div id="signup-header">
+    <img id="signup-cancel-btn" src="/image/icon/access-denied.png">
+    <span id="signup-page-text">뮤지션 가입</span>
+    <div id="signup-progressbar"></div>
+  </div>
+  <!-- signup-header -->
+  
+<!-- 회원가입 페이지1 시작 : 성별과 별명 시작 -->
+  
+  <div id="signup-page1">
+  
+  <div id="signup-page1-nickname-text">별명을 입력하세요</div>
+  <input type="text" id="musi-nickname">
+  
+  <div class="signup-page1-gender">
+  <input id="toggle-on" class="toggle toggle-left" name="gender-toggle" value="true" type="radio">
+  <label for="toggle-on" class="gender-btn"><i class="fa fa-male" aria-hidden="true"></i></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input id="toggle-off" class="toggle toggle-right" name="gender-toggle" value="false" type="radio">
+  <label for="toggle-off" class="gender-btn"><i class="fa fa-female" aria-hidden="true"></i></label>
+  </div>
+  <!-- gender-container -->
+  
+  <div id="signup-page1-btn">
+  <div id="signup-page1-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
+  </div>
+  <!-- signup-page1-btn -->
+    
+  </div>
+<!-- 회원가입 페이지1 끝 : 성별과 별명 끝 -->
+
+<!-- 회원가입 페이지2 시작 : 카테고리 시작 -->
+
+  <div id="signup-page2">
+  
+  <div id="signup-select">
+  
+  <div id="signup-page2-text">
+    희망 카테고리를 설정해 주세요
+  </div>
+  
+  <div id="menu-backscreen"></div>
+  
+    <div id="theme-select-button">테마</div><i class="fa fa-plus-square-o" id="theme-plus" aria-hidden="true"></i>
+    <!-- theme-button -->
+    <input id="theme-select-hidden" type="hidden">
+    <div id="theme-select-text"></div>
+  
+    <div id="major-select-button">전공</div><i class="fa fa-plus-square-o" id="major-plus" aria-hidden="true"></i>
+    <!-- major-button -->
+    <input id="major-select-hidden" type="hidden">
+    <div id="major-select-text"></div>
+  
+    <div id="genre-select-button">장르</div><i class="fa fa-plus-square-o" id="genre-plus" aria-hidden="true"></i>
+    <!-- genre-button -->
+    <input id="genre-select-hidden" type="hidden">
+    <div id="genre-select-text"></div>
+  
+  <div id="theme-select-box">
+  <div id="theme-select-box-header">
+  테마 선택
+  </div>
+  
+  </div>
+  <!-- theme-select-box -->
+  
+  <div id="theme-check-btn">
+    <button type="button" id="theme-check-cancel">취소</button>
+    <button type="button" id="theme-check-check">확인</button>
+  </div>
+  
+  <script id="select-theme-template" type="text/x-handlebars-template">
+  {{#each listTheme}}
+  <div class="boxes"><span class="category-title">{{thmtname}}</span><br><br><br>
+  {{#each list}}
+  {{#themeMap}}
+  <input type="checkbox" name="theme" id="theme-box-{{key}}" value="{{key}}">
+  <label for="theme-box-{{key}}">{{value}}</label>
+  {{/themeMap}}
+  {{/each}}
+  {{/each}}
+  </script>
+  
+  <!--  테마 선택 -->
+  
+  <div id="major-select-box">
+  <div id="major-select-box-header">
+  전공 선택
+  </div>
+  
+  </div>
+  <!-- major-select-box -->
+  
+  <div id="major-check-btn">
+    <button type="button" id="major-check-cancel">취소</button>
+    <button type="button" id="major-check-check">확인</button>
+  </div>
+  
+  <script id="select-major-template" type="text/x-handlebars-template">
+  {{#each listMajor}}
+  <div class="boxes"><span class="category-title">{{mjrt  name}}</span><br><br><br>
+  {{#each list}}
+  {{#majorMap}}
+  <input type="checkbox" name="major" id="major-box-{{key}}" value="{{key}}">
+  <label for="major-box-{{key}}">{{value}}</label>
+  {{/majorMap}}
+  {{/each}}
+  {{/each}}
+  </script>
+  
+  <!--  전공 선택  -->
+  
+  <div id="genre-select-box">
+  <div id="genre-select-box-header">
+  장르 선택
+  </div>
+  
+  </div>
+  <!-- genre-select-box -->
+  
+    <div id="genre-check-btn">
+    <button type="button" id="genre-check-cancel">취소</button>
+    <button type="button" id="genre-check-check">확인</button>
+  </div>
+  
+  <script id="select-genre-template" type="text/x-handlebars-template">
+  {{#each listGenre}}
+  <div class="boxes"><span class="category-title">{{gnrtname}}</span><br><br><br>
+  {{#each list}}
+  {{#genreMap}}
+  <input type="checkbox" name="genre" id="genre-box-{{key}}" value="{{key}}">
+  <label for="genre-box-{{key}}">{{value}}</label>
+  {{/genreMap}}
+  {{/each}}
+  {{/each}}
+  </script>
+  
+  <!--  장르 선택  -->
+  </div>
+  <!-- signup-select -->
+    
+    <div id="signup-page2-btn">
+    <div id="signup-page2-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
+    <div id="signup-page2-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
+    </div>
+    <!-- signup-page2-btn -->
+    
+  </div>
+<!-- 회원가입 페이지2 끝 : 카테고리 끝 -->
+
+<!-- 회원가입 페이지3 시작 : 연령 / 팀여부 / 홈페이지 시작 -->
+
+  <div id="signup-page3">
+  
+  <div id="signup-page3-age-text">연령을 입력하세요</div>
+  <input type="text" id="musi-age">
+  
+  <div id="signup-page3-team-text">팀이신가요?</div>
+  <div id="team-check-btn">
+    <input id="toggle-team-on" class="toggle toggle-left" name="team-toggle" value="true" type="radio"  checked="checked">
+    <label for="toggle-team-on" class="team-btn">아니요</label>
+    <input id="toggle-team-off" class="toggle toggle-right" name="team-toggle" value="false" type="radio">
+    <label for="toggle-team-off" class="team-btn">네</label>
+  </div>
+  
+  <div id="signup-page3-btn">
+  <div id="signup-page3-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
+  <div id="signup-page3-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
+  </div>
+  <!-- signup-page3-btn -->
+  
+  </div>
+<!-- 회원가입 페이지3 끝 : 연령 / 팀여부 / 홈페이지 끝 -->
+
+<!-- 회원가입 페이지4 시작 : 홈페이지 / 자기소개 시작 -->
+
+  <div id="signup-page4">
+  
+  <div id="signup-page4-homepage-text">홈페이지를 입력하세요</div>
+  <input type="text" id="musi-homepage">
+  
+  <div id="signup-page4-intro-text">자기소개를 입력하세요</div>
+  <textarea id="signup-intro" placeholder="자기소개"></textarea>
+  
+  <div id="signup-page4-btn">
+  <div id="signup-page4-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
+  <div id="signup-page4-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
+  </div>
+  <!-- signup-page4-btn -->
+  </div>
+  
+<!-- 회원가입 페이지4 끝 : 홈페이지 / 자기소개 끝 -->
+
+<!-- 회원가입 페이지5 끝 : 회원가입 확인 시작 -->
+
+<div id="event-page8">
+  
+  <div id="event-page8-text">
+    이벤트 등록전 입력사항을 확인해주세요
+  </div>
+    
+    <div class='event-title'></div>
+    <div class='event-writer'></div>
+    
+    <hr class='separator'>
+    
+    <label class='event-text'><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;</label>
+    <div class='event-text event-date'></div>
+    <br>
+    <label class='event-text'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;</label>
+    <div class='event-text event-location'></div>
+    <br>
+    <label class='event-text'><i class="fa fa-krw" aria-hidden="true"></i></label>
+    <label class='event-text event-cont'>금액 :</label>
+    <div class='event-text event-pay'></div>
+    <label class='event-text'>계약금 :</label>
+    <div class='event-text event-pay'></div>
+    <br>
+    
+    <hr class='separator'>
+    <label class='event-text event-header'>테마</label>
+    <div class='event-text event-theme'></div>
+    <br>
+    <label class='event-text event-header'>전공</label>
+    <div class='event-text event-major'></div>
+    <br>
+    <label class='event-text event-header'>장르</label>
+    <div class='event-text event-genre'></div>
+    <br>
+    <label class='event-text event-header'>요구사항</label>
+    <br>
+    <div class='event-text event-desc'></div>
+    <br>
+    
+    <hr class='separator'>
+    <label class='event-text event-header'>이벤트 설명 </label>
+    <br>
+    <div class='event-text event-req'></div>
+    
+    <hr class='separator' id="reherse-line">
+    <label class='event-text reherse-header'>리허설</label>
+    <br>
+    <label class='event-text reherse-header'>횟수</label>
+    <div class='event-text reherse-count'></div>
+    <br>
+    <label class='event-text reherse-header'>비용</label>
+    <div class='event-text reherse-pay'></div>
+    <br>
+    <label class='event-text reherse-header'>정보</label>
+    <div class='event-text reherse-info'></div>
+    <br>
+    
+    
+  <div id="event-page8-btn">
+  <div id="event-page8-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
+  <div id="event-page8-next">등록</div>
+  </div>
+</div>
+  
+<!-- 회원가입 페이지5 끝 : 회원가입 확인 끝 -->
+
+</div> <!-- container -->
+
+<script src="/js/musi_signup.js"></script>
+
+</body>
+</html>

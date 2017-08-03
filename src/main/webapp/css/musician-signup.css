@@ -105,7 +105,7 @@ input[type="radio"].toggle.toggle-right + label:after {
 }
 input[type="radio"].toggle:checked + label {
   cursor: default;
-  color: #ffec86;
+  color: #8069ef;
 }
 input[type="radio"].toggle:checked + label:after {
   left: 0;

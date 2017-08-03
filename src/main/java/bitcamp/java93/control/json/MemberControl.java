@@ -117,6 +117,23 @@ public class MemberControl {
     }
     return new JsonResult(JsonResult.SUCCESS, fileList);
   }
+  
+  @RequestMapping("signUpPhoto")
+  public JsonResult signUpPhoto(MultipartFile[] files) throws Exception {
+
+    ArrayList<Object> fileList = new ArrayList<>();
+    for (int i = 0; i < files.length; i++) {
+      if (files[i].isEmpty()) 
+        continue;
+
+      String filename = getNewFilename();
+      File file =new File(servletContext.getRealPath("/image/musician/photo/" + filename));
+      System.out.println(file);
+      files[i].transferTo(file);
+      fileList.add(filename);
+    }
+    return new JsonResult(JsonResult.SUCCESS, fileList);
+  }
 
   int count = 0;
   synchronized private String getNewFilename() {

@@ -1,0 +1,692 @@
+@CHARSET "UTF-8";
+
+/* alert 시작 */
+
+.sweet-alert {
+  width: 700px !important;
+  left: 38%;
+  top: 50%;
+  height: 500px;
+}
+
+.sweet-alert .sa-icon .sa-warning .pulseWarning {
+    border-color: #8069ef;
+}
+
+.sweet-alert h2 {
+  font-size: 3em;
+  top: 10%;
+}
+
+.sweet-alert .sa-confirm-button-container {
+  margin-top: 250px;
+  width: 150px;
+}
+
+.sweet-alert button {
+    background-color: #8CD4F5;
+    color: white;
+    border: none;
+    box-shadow: none;
+    font-size: 2rem;
+    font-weight: 500;
+    -webkit-border-radius: 4px;
+    border-radius: 5px;
+    padding: 10px 32px;
+    margin: 26px 5px 0 5px;
+    width: 160px;
+}
+
+.sa-button-container {
+  position: absolute;
+  top: 26%;
+  left: 27%;
+}
+
+.checkSwal > .sa-button-container {
+   position: absolute;
+  top: 20%;
+  left: 39%;
+}
+
+.checkSwal > h2 {
+    font-size: 3em;
+    top: 15%;
+}
+
+.sweet-alert .checkSwal {
+  width: 700px !important;
+  left: 38%;
+  top: 50%;
+  height: 465px;
+}
+
+.sweet-alert[data-has-cancel-button=false] button {
+  width: 150px;
+  height: 75px;
+  font-size: 2em;
+}
+
+@-webkit-keyframes pulseWarning {
+  0% {
+    border-color: #8069ef; }
+  100% {
+    border-color: #8069ef; } }
+
+@keyframes pulseWarning {
+  0% {
+    border-color: #8069ef; }
+  100% {
+    border-color: #8069ef; } }
+    
+    @-webkit-keyframes pulseWarningIns {
+  0% {
+    background-color: #8069ef; }
+  100% {
+    background-color: #8069ef; } }
+
+@keyframes pulseWarningIns {
+  0% {
+    background-color: #8069ef; }
+  100% {
+    background-color: #8069ef; } }
+
+.sweet-alert .sa-icon.sa-warning .sa-body {
+    position: absolute;
+    width: 5px;
+    height: 47px;
+    left: 50%;
+    top: 10px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    margin-left: -2px;
+    background-color: #8069ef;
+}
+/* alert 끝  */
+
+/* 이벤트 공통 시작 */
+
+#container {
+  position: fixed;
+  width: 100%;
+  min-height: 1550px;
+  height: auto;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("/image/background/mobile_intro_index.jpg");
+  background-size: cover;
+}
+
+#menu-backscreen {
+  position: fixed;
+  display: none;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  url("/image/background/mobile_intro_index.jpg");
+    background-size: cover;
+  z-index: 19;
+}
+
+#signup-header {
+  position: fixed;
+  height: 300px;
+  width: 100%;
+  z-index: 15;
+}
+
+#signup-progressbar {
+  position: absolute;
+  width: 86%;
+  height: 10%;
+  left: 7%;
+  bottom: 20%;
+  border: 2px solid #6f6f6f;
+  border-radius: 25px;
+  background: none;
+}
+
+.ui-widget-header {
+	border: 0px;
+}
+
+#signup-cancel-btn {
+  position: absolute;
+  left: 3%;
+  top: 17%;
+  transform: translate(-3%, 13%);
+  font-size: 4em;
+  color: white;
+  font-weight: 100;
+}
+
+#signup-page-text {
+  position: absolute;
+  left: 43%;
+  top: 23%;
+  transform: translate(-15%, -45%);
+  font-size: 250%;
+  font-weight: normal;
+  color: white;
+}
+
+#signup-page1, #signup-page2, #signup-page3, #signup-page4 {
+	display: none;
+  position: fixed;
+  top: 300px;
+  width: 100%;
+  height: 80%;
+}
+
+#signup-page2-text {
+  position: absolute;
+  color: white;
+  top: 0%;
+  font-size: 300%;
+  font-weight: normal;
+  text-align: center;
+  width: 100%;
+}
+
+#signup-page1-btn, #signup-page2-btn, #signup-page3-btn, #signup-page4-btn {
+  position: absolute;
+  height: 10%;
+  width: 100%;
+  bottom: 0%;
+  display: inline-block;
+}
+
+#signup-page2-prev, #signup-page3-prev, #signup-page4-prev {
+  position: absolute;
+  left: 10%;
+  font-size: 300%;
+  color: white;
+}
+
+#signup-page1-next, #signup-page2-next, #signup-page3-next, #signup-page4-next {
+  position: absolute;
+  right: 10%;
+  font-size: 300%;
+  color: white;
+}
+
+/* 이벤트 공통 부분 끝 */
+
+/* 이벤트 페이지 1 시작 */
+
+#signup-page1-nickname-text {
+  color: white;
+  font-size: 2.6em;
+  position: absolute;
+  left: 10%;
+  top: 15%;
+}
+
+#musi-nickname {
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  height: 8%;
+  font-size: 2em;
+  font-weight: 400;
+  border-radius: 0px;
+  box-sizing: border-box;
+  color: white;
+  top: 23%;
+  border: 0;
+  border-radius: 10px;
+  padding-left: 4%;
+  background-color: rgba(255,255,255, 0.15);
+}
+
+.signup-page1-gender {
+  min-height: 100px;
+  width: 50%;
+  position: absolute;
+  color: white;
+  font-size: 6em;
+  font-weight: 400;
+  top: 40%;
+  left: 30%;
+}
+
+.gender-btn {
+  display: inline-block;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+  height: 30px;
+  font-size: 2em;
+  padding-bottom: 30px;
+}
+
+input[name="gender-toggle"].toggle {
+  display: none;
+}
+input[name="gender-toggle"].toggle + label {
+  min-width: 14px;
+}
+input[name="gender-toggle"].toggle + label:after {
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  -webkit-transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+  transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+  width: 100%;
+  z-index: -1;
+}
+input[name="gender-toggle"].toggle.toggle-left + label {
+  border-right: 0;
+}
+input[name="gender-toggle"].toggle.toggle-left + label:after {
+  left: 100%;
+}
+input[name="gender-toggle"].toggle.toggle-right + label {
+  margin-left: -5px;
+}
+input[name="gender-toggle"].toggle.toggle-right + label:after {
+  left: -100%;
+}
+input[name="gender-toggle"].toggle:checked + label {
+  cursor: default;
+  color: #8069ef;
+}
+input[name="gender-toggle"].toggle:checked + label:after {
+  left: 0;
+}
+
+/* 이벤트 페이지 1 끝 */
+
+/* 이벤트 페이지 2 시작 */
+
+#theme-select-button, #major-select-button, #genre-select-button {
+  font-size: 2.6em;
+  position: absolute;
+  left: 18%;
+  width: 16%;
+  height: auto;
+  border: 0px;
+  text-align: left;
+  display: block;
+  z-index: 11;
+  color:white;
+}
+
+#theme-select-button {
+  top: 20%;
+}
+
+#theme-plus {
+  top: 21%;
+  position: absolute;
+  left: 27%;
+  border-radius: 10px;
+  color: white;
+  line-height: 30px;
+}
+
+#major-plus {
+  top: 41%;
+  position: absolute;
+  left: 27%;
+  border-radius: 10px;
+  color: white;
+  line-height: 30px;
+}
+
+#genre-plus {
+  top: 61%;
+  position: absolute;
+  left: 27%;
+  border-radius: 10px;
+  color: white;
+  line-height: 30px;
+}
+
+.fa-plus-square-o {
+    font-size: 3em;
+    padding: 1% 1.3%;
+    border-radius: 10px;
+}
+
+#theme-select-text {
+  position: absolute;
+  top: 20%;
+  width: 55%;
+  left: 37%;
+  min-height: 100px;
+  max-height: 300px;
+  font-size: 2.2em;
+  font-weight: lighter;
+  color: white;
+}
+
+#major-select-text {
+  position: absolute;
+  top: 40%;
+  width: 55%;
+  left: 37%;
+  min-height: 100px;
+  max-height: 300px;
+  font-size: 2.2em;
+  font-weight: lighter;
+  color: white;
+}
+
+#genre-select-text {
+  position: absolute;
+  top: 60%;
+  width: 55%;
+  left: 37%;
+  min-height: 100px;
+  max-height: 300px;
+  font-size: 2.2em;
+  font-weight: lighter;
+  color: white;
+}
+
+.selectSpan {
+  float: left;
+  margin-right: 14px;
+  }
+
+#major-select-button {
+  top: 40%;
+}
+
+#genre-select-button {
+  top: 60%;
+}
+
+#theme-select-box, #major-select-box, #genre-select-box {
+  border: 1px solid black;
+  position: absolute;
+  width: 84%;
+  left: 5%;
+  height: 78%;
+  top: 0%;
+  display: none;
+  background-color: rgba(255,255,255, 0.15);
+  z-index: 20;
+  overflow-y: auto;
+  padding-left: 60px;
+  border-radius: 25px;
+  color: white;
+}
+
+#theme-select-box-header, #major-select-box-header, #genre-select-box-header {
+  float: left;
+  font-size: 2.6rem;
+  width: 50%;
+  text-align: center;
+  height: 100px;
+  z-index: 11;
+  border: 0px;
+  margin-left: 21%;
+  padding-top: 60px;
+  color: white;
+}
+
+#theme-select-box-button, #major-select-box-button, #genre-select-box-button {
+  position: relative;
+  width: 100%;
+  height: 89%;
+  top: 100px;
+}
+
+#theme-select-box-cancel, #major-select-box-cancel, #genre-select-box-cancel {
+  position: absolute;
+  left: 0%;
+  top: 5%;
+}
+
+#theme-select-box-check, #major-select-box-check, #genre-select-box-check {
+  position: absolute;
+  right: 0%;
+  top: 5%;
+}
+
+.boxes {
+  float: left;
+  width: 97%;
+  min-height: 100px;
+  font-size: 2rem;
+  font-weight: 300;
+  margin-top: 7%;
+  margin-left: 1px;
+  color: white;
+}
+
+.category-title {
+	position: absolute;
+	left: 10%;
+  font-size: 3rem;
+}
+
+/*Checkboxes styles*/
+input[type="checkbox"] { display: none; }
+
+input[type="checkbox"] + label {
+	color: white;
+  display: inline-block;
+  padding-left: 50px;
+  margin-bottom: 20px;
+  width: 299px;
+  font-weight: normal;
+}
+
+input[type="checkbox"] + label:last-child { margin-bottom: 100px; }
+
+input[type="checkbox"] + label:before {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 2px solid white;
+  position: relative;
+  left: -15px;
+  top: 12px;
+  opacity: .6;
+  transition: all .12s, border-color .08s;
+}
+
+input[type="checkbox"]:checked + label:before {
+  display: inline-block;
+  width: 10px;
+  left: -15px;
+  top: 12px;
+  border-radius: 0;
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#theme-check-btn, #major-check-btn, #genre-check-btn {
+  display: none;
+  position: absolute;
+  top: 85%;
+  left: 14%;
+  display: none;
+  z-index: 20;
+  width: 100%;
+}
+
+#theme-check-cancel, #theme-check-check, #major-check-cancel, #major-check-check, #genre-check-cancel, #genre-check-check {
+  width: 200px;
+  height: 70px;
+  border: 1px solid #1a1a1a;
+  font-size: 2rem;
+}
+
+#theme-check-cancel, #major-check-cancel, #genre-check-cancel {
+  color: #525252;
+  z-index: 15;
+   background: rgba(255,255,255, 0.5);
+  width: 300px;
+  height: 80px;
+  margin-right: 10%;
+  color: white;
+}
+
+#theme-check-check, #major-check-check, #genre-check-check {
+  color: white;
+  z-index: 15;
+  background: rgba(0,0,0, 0.5);
+  width: 300px;
+    height: 80px;
+  border: 2.5px solid white;
+}
+
+/* 이벤트 페이지 2 끝 */
+
+/* 이벤트 페이지 3 시작 */
+
+#signup-page3-age-text {
+  color: white;
+  font-size: 2.6em;
+  position: absolute;
+  left: 10%;
+  top: 15%;
+}
+
+#musi-age {
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  height: 8%;
+  font-size: 2em;
+  font-weight: 400;
+  border-radius: 0px;
+  box-sizing: border-box;
+  color: white;
+  top: 23%;
+  border: 0;
+  border-radius: 10px;
+  padding-left: 4%;
+  background-color: rgba(255,255,255, 0.15);
+}
+
+#signup-page3-team-text {
+	color: white;
+  font-size: 2.6em;
+  position: absolute;
+  left: 10%;
+  top: 45%;
+}
+
+#team-check-btn {
+  position: absolute;
+  width: 50%;
+  left: 27%;
+  top: 60%;
+}
+
+.team-btn {
+  display: inline-block;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+  height: 30px;
+  font-size: 2em;
+  padding-bottom: 30px;
+  color:white;
+}
+
+input[name="team-toggle"].toggle {
+  display: none;
+}
+input[name="team-toggle"].toggle + label {
+  min-width: 200px;
+  border: 2.5px solid white;
+}
+input[name="team-toggle"].toggle + label:hover {
+}
+input[name="team-toggle"].toggle + label:after {
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  -webkit-transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+  transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+  width: 100%;
+  z-index: -1;
+  color:white;
+}
+
+input[name="team-toggle"].toggle.toggle-left + label {
+  border-right: 0;
+  }
+input[name="team-toggle"].toggle.toggle-left + label:after {
+  left: 100%;
+}
+input[name="team-toggle"].toggle.toggle-right + label {
+  margin-left: -5px;
+}
+input[name="team-toggle"].toggle.toggle-right + label:after {
+  left: -100%;
+}
+input[name="team-toggle"].toggle:checked + label {
+  background: rgba(128, 105, 239, 0.5);
+}
+input[name="team-toggle"].toggle:checked + label:after {
+  left: 0;
+  background: rgba(128, 105, 239, 0.5);
+}
+
+/* 이벤트 페이지 3 끝 */
+
+/* 이벤트 페이지 4 시작 */
+
+#signup-page4-homepage-text {
+  color: white;
+  font-size: 2.6em;
+  position: absolute;
+  left: 10%;
+  top: 15%;
+}
+
+#musi-homepage {
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  height: 8%;
+  font-size: 2em;
+  font-weight: 400;
+  border-radius: 0px;
+  box-sizing: border-box;
+  color: white;
+  top: 23%;
+  border: 0;
+  border-radius: 10px;
+  padding-left: 4%;
+  background-color: rgba(255,255,255, 0.15);
+}
+
+#signup-page4-intro-text {
+  color: white;
+  font-size: 2.6em;
+  position: absolute;
+  left: 10%;
+  top: 38%;
+}
+
+#signup-intro {
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  width: 80%;
+  height: 35%;
+  padding-left: 4%;
+  font-size: 2.3em;
+  resize: none;
+  padding-top: 20px;
+  border: 0;
+  border-radius: 10px;
+  color: white;
+  background-color: rgba(255,255,255, 0.15);
+}
+
+/* 이벤트 페이지 4 끝 */

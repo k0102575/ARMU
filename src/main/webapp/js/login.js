@@ -28,7 +28,17 @@ $(".login-btn").on('click', function() {
           location.href="/mobile/gmode/index.html"
         }
         if(result.data == "fail") {
-          alert("로그인에 실패했습니다")
+          swal({
+            title: "로그인에 실패했습니다!",
+            type: "warning",
+            showCancelButton: false,
+            confirmButtonColor: "#8069ef",
+            confirmButtonText: "확인",
+            customClass: "checkSwal"
+          });
+          
+          
+        
         }
         
       }, 'json')

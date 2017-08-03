@@ -23,6 +23,7 @@ public class Musician extends Member  {
   int maxAge;
   String location;
   String sido;
+  int fav;
   Map<String , String> fileMap;
   List<Map<Integer , String>> list;
   ArrayList<Musician> reviewList;
@@ -37,9 +38,9 @@ public class Musician extends Member  {
         + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite + ", popularity="
         + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", specDate="
         + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge + ", location=" + location
-        + ", sido=" + sido + ", fileMap=" + fileMap + ", list=" + list + ", reviewList=" + reviewList + ", majorList="
-        + majorList + ", genreList=" + genreList + ", themeList=" + themeList + ", locationList=" + locationList
-        + ", photoList=" + photoList + "]";
+        + ", sido=" + sido + ", fav=" + fav + ", fileMap=" + fileMap + ", list=" + list + ", reviewList=" + reviewList
+        + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList=" + themeList + ", locationList="
+        + locationList + ", photoList=" + photoList + "]";
   }
   public int getAge() {
     return age;
@@ -149,6 +150,12 @@ public class Musician extends Member  {
   public void setSido(String sido) {
     this.sido = sido;
   }
+  public int getFav() {
+    return fav;
+  }
+  public void setFav(int fav) {
+    this.fav = fav;
+  }
   public Map<String, String> getFileMap() {
     return fileMap;
   }
@@ -197,7 +204,9 @@ public class Musician extends Member  {
   public void setPhotoList(List<String> photoList) {
     this.photoList = photoList;
   }
- 
+  
+  
+  
   
   
   

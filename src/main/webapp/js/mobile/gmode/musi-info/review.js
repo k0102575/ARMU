@@ -95,6 +95,10 @@ function starAdd() {
     reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
   }
   
+  if(starInteger == 5) {
+    return;
+  }
+  
   if(starRealNumber >= 0.8) {
     reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
   } else if(starRealNumber <= 0.3) {
@@ -110,4 +114,6 @@ function starAdd() {
   }
   
 }
+
+
 

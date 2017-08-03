@@ -32,7 +32,7 @@ function displayMusiInfo() {
         "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {
         console.log(result)
-/*      var data = result.data.musician
+      var data = result.data.musician
       musicianInfoNickName.text(data.nickName)
       musicianHeaderInfoImg.attr("src", data.photo)
       musicianBasicInfoImg.attr("src", data.photo)
@@ -44,7 +44,7 @@ function displayMusiInfo() {
         } else if(data.gender == "M") {
           musicianBasicInfoName.text(data.name + "    " + data.age + "    남성")
         }
-      }*/
+      }
       
       $("#musician-basic-info-favor").on("click", function() {
         $.post('/musician/favorAdd.json', {

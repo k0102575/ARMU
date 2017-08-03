@@ -89,14 +89,13 @@
 
 #filter-update {
   position: absolute;
-  color: white;
+  color: #8069ef;
   font-size: 2em;
   right: 0;
   font-weight: 600;
   width: 50%;
   height: 100%;
   text-align: center;
-  background: linear-gradient(rgba(0, 0, 0, 1.45), rgba(0, 0, 0, 1.45));
   line-height: 95px;
   border-bottom-right-radius: 25px;
 }
