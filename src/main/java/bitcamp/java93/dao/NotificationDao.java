@@ -6,4 +6,5 @@ import bitcamp.java93.domain.Notification;
 
 public interface NotificationDao {
   List<Notification> selectNotiList(int no);
+  List<Notification> selectMusiNotiList(int no);
 }

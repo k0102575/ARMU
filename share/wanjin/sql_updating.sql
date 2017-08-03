@@ -122,8 +122,16 @@ group by eno
 select  notino, n.type, n.date, n.cont, gm.mno as gmno, gm.name gmname, n.eno, e.title, n.muno as musino, m.name as musiname
 from noti n
 inner join memb m on n.muno=m.mno
-inner join evn e on n.eno=e.eno inner join memb gm on e.gno=gm.mno
+inner join evn e on n.eno=e.eno inner join memb gm on e.mno=gm.mno
 where muno=3
+order by date desc
+
+-- 특정 회원의 알림 최신순으로 가져오기
+select  notino, n.type, n.date, n.cont, gm.mno as gmno, gm.name gmname, n.eno, e.title, n.muno as musino, m.name as musiname
+from noti n
+inner join memb m on n.muno=m.mno
+inner join evn e on n.eno=e.eno inner join memb gm on e.mno=gm.mno
+where gm.mno=4
 order by date desc
 
 select  notino, n.type, n.date, n.cont, n.eno, e.title,
@@ -244,3 +252,13 @@ inner join mjr mj on mjm.mjrno=mj.mjrno
 inner join gnr g on gm.gnrno=g.gnrno
 inner join thm t on tm.thmno=t.thmno
 order by mu.muno desc
+
+
+
+-- 매칭정보 확인하기
+select mtcno, e.mno, e.eno,title, muno, mtcdt from mtc inner join evn e on mtc.eno=e.eno order by mtcdt asc;
+
+
+-- 채팅 리스트 가져오기
+select chatno, isread, date, msg, muno, mno, who
+from chat

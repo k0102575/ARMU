@@ -18,6 +18,10 @@ public class NotificationServiceImpl implements NotificationService {
   public List<Notification> listNoti(int no) throws Exception {
     return notificationDao.selectNotiList(no);
   }
+
+  public List<Notification> listMusiNoti(int no) throws Exception {
+    return notificationDao.selectMusiNotiList(no);
+  }
  
 }
 

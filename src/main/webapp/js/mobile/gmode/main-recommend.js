@@ -21,8 +21,8 @@ function displayRecommandByEventMusiList() {
     if(result.data == "browse") {
       hideRecommandList()
       return;
-    }//받아온 데이터가 없는 경우
-
+    }
+    
     $.each(result.data.listRecommand, function(i, item) {
       var starInteger = parseInt(item.score),
       starRealNumber = item.score - starInteger;
@@ -74,8 +74,7 @@ function displayBestReviewMusiList() {
       console.error("getJSON() 실패: ", result.status)
       return;
     }
-
-
+    
     $.each(result.data.listBestReview, function(i, item) {
       var starInteger = parseInt(item.score),
       starRealNumber = item.score - starInteger;
@@ -140,6 +139,10 @@ function starAdd(starInteger, starRealNumber, item) {
 
   for (var i = 1; i <= starInteger; i++) {
     item.score += "<i class='fa fa-star' aria-hidden='true'></i>"
+  }
+
+  if(starInteger >= 5) {
+    return;
   }
 
   if(starRealNumber >= 0.8) {

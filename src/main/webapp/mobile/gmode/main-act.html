@@ -1,46 +1,33 @@
-<div class='noti-container'>
-<div class='noti'>
-  <div class='noti-img'></div>
-  <div class='noti-header'>
-    <span class='noti-type'>알림유형&nbsp;</span>
-    <span class='noti-date'>&nbsp;&nbsp;2017-07-24</span>
-  </div>
-  <div class='noti-contents'>조승우 뮤지션이 "결혼 축가 구해요" 이벤트에 지원하셨습니다. </div>
+
+    <div class="surf-no-login no-view">
+      <br> 로그인을 해주세요!<br><br>
+      <i class="fa fa-frown-o" aria-hidden="true" id='surf-no-login-cry'></i><br><br>
+      <a href="/mobile/login.html" class='surf-log-in-btn'>로그인 하러가기</a><br><br>
+    </div>
+
+
+<div class="surf-no-login no-data-view">
+      <br> 활동 내역이 없습니다.<br><br>
+    </div>
+
+<div class='noti-container yes-view' id='noti-container'>
 </div>
 
-<div class='noti'>
-  <div class='noti-img'></div>
-  <div class='noti-header'>
-    <span class='noti-type'>알림유형&nbsp;</span>
-    <span class='noti-date'>&nbsp;&nbsp;2017-07-24</span>
-  </div>
-  <div class='noti-contents'>조승우 뮤지션이 "결혼 축가 구해요" 이벤트에 지원하셨습니다. </div>
-</div>
 
-<div class='noti'>
-  <div class='noti-img'></div>
-  <div class='noti-header'>
-    <span class='noti-type'>알림유형&nbsp;</span>
-    <span class='noti-date'>&nbsp;&nbsp;2017-07-24</span>
-  </div>
-  <div class='noti-contents'>조승우 뮤지션이 "결혼 축가 구해요" 이벤트에 지원하셨습니다. </div>
-</div>
 
-<div class='noti'>
-  <div class='noti-img'></div>
-  <div class='noti-header'>
-    <span class='noti-type'>알림유형&nbsp;</span>
-    <span class='noti-date'>&nbsp;&nbsp;2017-07-24</span>
-  </div>
-  <div class='noti-contents'>조승우 뮤지션이 "결혼 축가 구해요" 이벤트에 지원하셨습니다. </div>
-</div>
 
+<script id="noti-template" type="text/x-handlebars-template">
+{{#each listNoti}}
 <div class='noti'>
-  <div class='noti-img'></div>
+{{#musician}}
+  <div class='noti-img'style='background-image: url("{{photo}}")'></div>
+{{/musician}}
   <div class='noti-header'>
-    <span class='noti-type'>알림유형&nbsp;</span>
-    <span class='noti-date'>&nbsp;&nbsp;2017-07-24</span>
+    <span class='noti-type'>{{type}}&nbsp;</span>
+    <span class='noti-date'>&nbsp;&nbsp;{{date}}</span>
   </div>
-  <div class='noti-contents'>조승우 뮤지션이 "결혼 축가 구해요" 이벤트에 지원하셨습니다. </div>
+  <div class='noti-contents'> 뮤지션이 "결혼 축가 구해요" 이벤트에 지원하셨습니다. </div>
 </div>
-</div>
+{{/each}}
+</script>
+<script src='/js/mobile/gmode/main-act.js'></script>

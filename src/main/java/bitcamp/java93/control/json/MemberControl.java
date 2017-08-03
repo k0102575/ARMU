@@ -27,7 +27,6 @@ public class MemberControl {
   @RequestMapping("add")
   public JsonResult add(Member member) throws Exception {
     
-    System.out.println(member);
     
     JsonResult result = new JsonResult();
     

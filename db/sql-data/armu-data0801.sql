@@ -1006,3 +1006,13 @@ insert into mtc (muno, eno, mtcdt, score, rev) values (11, 8, '2017-07-12', 5,
 다음 행사에도 꼭 부를 예정입니다.
 특히 빨간색 드레스가 인상깊었습니다 ㅎㅎ
 항상 좋은 일 가득하고 흥하시길.');
+
+
+-- 채팅 추가
+insert into chat (muno, mno, isread, msg, date, who) values (1, 5, 'Y', '매칭되었습니다!', '2017-06-19 13:00:00', 0);
+insert into chat (muno, mno, isread, msg, date, who) values (1, 5, 'Y', '안녕하세요~', '2017-06-19 13:10:00', 1);
+insert into chat (muno, mno, isread, msg, date, who) values (1, 5, 'Y', '아 네 안녕하세요 ㅎㅎ', '2017-06-19 13:12:00', 5);
+insert into chat (muno, mno, isread, msg, date, who) values (1, 5, 'Y', '전화번호좀 알려주세요~', '2017-06-19 13:14:00', 1);
+insert into chat (muno, mno, isread, msg, date, who) values (1, 5, 'Y', '제 전화번호는 010-3121-3233이에요!', '2017-06-19 13:15:00', 1);
+insert into chat (muno, mno, isread, msg, date, who) values (1, 5, 'Y', '저는 010-1123-2411이에요. 카톡 드릴게요 ㅎㅎ', '2017-06-19 13:16:00', 5);
+insert into chat (muno, mno, isread, msg, date, who) values (1, 5, 'Y', '네~!!', '2017-06-19 13:21:00', 1);

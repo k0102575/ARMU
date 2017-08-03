@@ -2,32 +2,30 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="bitcamp.java93.dao.NotificationDao">
+<mapper namespace="bitcamp.java93.dao.ChatDao">
   
-  <resultMap type="notification" id="notificationMap">
-    <id column="notino" property="no"/>
-    <result column="type" property="type"/>
+  <resultMap type="chat" id="chatMap">
+    <id column="chatno" property="no"/>
+    <result column="isread" property="isRead"/>
     <result column="date" property="date"/>
-    <result column="cont" property="contents"/>
+    <result column="msg" property="message"/>
+    <result column="who" property="senderNo"/>
     <association property="musician" javaType='Member'>
       <id property="no" column="musino"/>
     <result property="name" column="musiname"/>
+    <result property="nickName" column="musinick"/>
     <result property="photo" column="musiphoto"/>
     </association>
     <association property="writer" javaType='Member'>
       <id property="no" column="gmno"/>
     <result property="name" column="gmname"/>
+    <result property="nickName" column="gmnick"/>
     <result property="photo" column="gmphoto"/>
-    </association>
-    <association property="event" javaType='Event'>
-      <id property="no" column="eno"/>
-    <result property="title" column="title"/>
     </association>
   </resultMap>
 
 
-
- <select id="selectNotiList" resultMap="notificationMap" parameterType="int">
+ <select id="selectChatList" resultMap="chatMap" parameterType="int">
   select  notino, n.type, n.date, n.cont, n.eno, e.title, 
   gm.mno as gmno, gm.name as gmname, gm.path as gmphoto, 
   n.muno as musino, m.name as musiname, m.path as musiphoto
@@ -38,7 +36,7 @@ where gm.mno=#{no}
 order by date desc
   </select>
   
-  <select id="selectMusiNotiList" resultMap="notificationMap" parameterType="int">
+  <select id="selectMusiChatList" resultMap="chatMap" parameterType="int">
   select  notino, n.type, n.date, n.cont, n.eno, e.title, 
   gm.mno as gmno, gm.name as gmname, gm.path as gmphoto, 
   n.muno as musino, m.name as musiname, m.path as musiphoto
@@ -50,8 +48,6 @@ order by date desc
   </select>
   
 </mapper>
-
-
 
 
 
