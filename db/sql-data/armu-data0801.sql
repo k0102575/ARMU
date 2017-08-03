@@ -1,12 +1,12 @@
 
 -- 뮤지션
-insert into memb (name, nick, phone, pwd, email, path) values ('조승우', '황시목', '010-1234-1234',  password('1111'), 'seungwoojo@daum.net', '/image/musician/photo/j.jpg');
-insert into memb (name, nick, phone, pwd, email, path) values ('차지연', 'JIYEON CHA', '010-2424-3234',  password('1111'), 'jiyeon@daum.net', '/image/musician/photo/m1.jpg');
-insert into memb (name, nick, phone, pwd, email, path) values ('오호라', '오호라밴드', '010-5555-5050',  password('1111'), 'ohora@gmail.com', '/image/musician/photo/cn.jpg');
+insert into memb (name, phone, pwd, email, path) values ('조승우', '010-1234-1234',  password('1111'), 'seungwoojo@daum.net', '/image/musician/photo/j.jpg');
+insert into memb (name, phone, pwd, email, path) values ('차지연', '010-2424-3234',  password('1111'), 'jiyeon@daum.net', '/image/musician/photo/m1.jpg');
+insert into memb (name, phone, pwd, email, path) values ('오호라', '010-5555-5050',  password('1111'), 'ohora@gmail.com', '/image/musician/photo/cn.jpg');
 
-insert into musi (muno, age, team, gender, hpg, intro) values (1, 35, 'N', 'M','http://tistory.seungwoo.com', '저는 짱짱맨 조승우입니다. 조각같은 외모와 매력적인 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!');
-insert into musi (muno, age, team, gender, hpg, intro) values (2, 34, 'N', 'F', 'http://tistory.jhlee.com', '안녕하세요. 임정희입니다. 저로 말할 것 같으면, 화려한 외모와 옥구슬같은 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!');
-insert into musi (muno, age, team, gender, hpg, intro) values (3, 28, 'Y', 'M', 'http://tistory.ohora.com', '저희 오호라 밴드는 다른 아마추어 팀들과는 차원이 다른 프로 밴드 그 이상의 실력으로 감동을 드리는 밴드입니다. 다재다능한 팀원들과 5년간 호흡을 맞춰 각종 공연을 많이 해봤습니다. 언제든 알뮤를 통해 연락주세요!!');
+insert into musi (muno, nick, age, team, gender, hpg, intro) values (1, '황시목', 35, 'N', 'M','http://tistory.seungwoo.com', '저는 짱짱맨 조승우입니다. 조각같은 외모와 매력적인 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!');
+insert into musi (muno, nick, age, team, gender, hpg, intro) values (2, 'JIYEON CHA', 34, 'N', 'F', 'http://tistory.jhlee.com', '안녕하세요. 임정희입니다. 저로 말할 것 같으면, 화려한 외모와 옥구슬같은 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!');
+insert into musi (muno, nick, age, team, gender, hpg, intro) values (3, '오호라밴드', 28, 'Y', 'M', 'http://tistory.ohora.com', '저희 오호라 밴드는 다른 아마추어 팀들과는 차원이 다른 프로 밴드 그 이상의 실력으로 감동을 드리는 밴드입니다. 다재다능한 팀원들과 5년간 호흡을 맞춰 각종 공연을 많이 해봤습니다. 언제든 알뮤를 통해 연락주세요!!');
 
 -- 전공 분류(mjr_type), 전공(mjr)
 insert into mjr_type (name) values ('보컬');
@@ -301,10 +301,10 @@ insert into loc (name, loctno) values ('서귀포시', 17);
 
 
 -- 일반회원
-insert into memb (name, nick, phone, pwd, email, path) values ('엄진영', '엄신랑', '010-1111-2222',  password('1111'), 'jinyoungeom@gmail.com', '/image/musician/default.png');
-insert into memb (name, nick, phone, pwd, email, path) values ('노완진', '기요미', '010-1313-7375',  password('1111'), 'wanzargen@gmail.com', '/image/musician/default.png');
-insert into memb (name, nick, phone, pwd, email, path) values ('김승민', '몬나니', '010-3333-8091',  password('1111'), 'seungmin@gmail.com', '/image/musician/default.png');
-insert into memb (name, nick, phone, pwd, email, path) values ('박규호', '뀨우호', '010-1423-4523',  password('1111'), 'gggyuu@gmail.com', '/image/musician/default.png');
+insert into memb (name, phone, pwd, email, path) values ('엄진영', '010-1111-2222',  password('1111'), 'jinyoungeom@gmail.com', '/image/musician/default.png');
+insert into memb (name, phone, pwd, email, path) values ('노완진', '010-1313-7375',  password('1111'), 'wanzargen@gmail.com', '/image/musician/default.png');
+insert into memb (name, phone, pwd, email, path) values ('김승민', '010-3333-8091',  password('1111'), 'seungmin@gmail.com', '/image/musician/default.png');
+insert into memb (name, phone, pwd, email, path) values ('박규호', '010-1423-4523',  password('1111'), 'gggyuu@gmail.com', '/image/musician/default.png');
 
 -- 이벤트
 insert into evn (title, mno, locno, pay, addr, date, cont)
@@ -457,7 +457,6 @@ insert into mjr_evn (eno, mjrno) values (3, 13);
 
 insert into mjr_evn (eno, mjrno) values (4, 3);
 insert into mjr_evn (eno, mjrno) values (4, 12);
-insert into mjr_evn (eno, mjrno) values (4, 3);
 insert into mjr_evn (eno, mjrno) values (4, 19);
 insert into mjr_evn (eno, mjrno) values (4, 20);
 
@@ -632,21 +631,21 @@ insert into fav_evn (muno, eno) values (2, 4);
 insert into fav_evn (muno, eno) values (1, 4);
 
 -- 뮤지션 추가
-insert into memb (name, nick, phone, pwd, email, path) values ('김랑랑', '랑랑', '010-1234-1234',  password('1111'), 'lang@gmail.com', '/image/musician/photo/m2.jpg');
-insert into memb (name, nick, phone, pwd, email, path) values ('장발장', '사라장', '010-4321-4344',  password('1111'), 'sarah@gmail.com', '/image/musician/photo/m17.jpg');
-insert into memb (name, nick, phone, pwd, email, path) values ('송소희', '국악소히', '010-2424-1313',  password('1111'), 'sohee@gmail.com', '/image/musician/photo/m9.jpg');
-insert into memb (name, nick, phone, pwd, email, path) values ('김현악', '빨간건현악', '010-1313-2222',  password('1111'), 'red@gmail.com', '/image/musician/photo/red.jpg');
-insert into memb (name, nick, phone, pwd, email, path) values ('성시경', '성발라', '010-4444-1213',  password('1111'), 'sung@gmail.com', '/image/musician/photo/m3.jpg');
-insert into memb (name, nick, phone, pwd, email, path) values ('왕기현', 'WANG기타', '010-2232-1122',  password('1111'), 'wang@gmail.com', '/image/musician/photo/m15.jpg');
-insert into memb (name, nick, phone, pwd, email, path) values ('비와이', 'BeWHY', '010-2232-1122',  password('1111'), 'bewhy@gmail.com', '/image/musician/photo/m7.jpg');
+insert into memb (name, phone, pwd, email, path) values ('김랑랑', '010-1234-1234',  password('1111'), 'lang@gmail.com', '/image/musician/photo/m2.jpg');
+insert into memb (name, phone, pwd, email, path) values ('장발장', '010-4321-4344',  password('1111'), 'sarah@gmail.com', '/image/musician/photo/m17.jpg');
+insert into memb (name, phone, pwd, email, path) values ('송소희', '010-2424-1313',  password('1111'), 'sohee@gmail.com', '/image/musician/photo/m9.jpg');
+insert into memb (name, phone, pwd, email, path) values ('김현악', '010-1313-2222',  password('1111'), 'red@gmail.com', '/image/musician/photo/red.jpg');
+insert into memb (name, phone, pwd, email, path) values ('성시경', '010-4444-1213',  password('1111'), 'sung@gmail.com', '/image/musician/photo/m3.jpg');
+insert into memb (name, phone, pwd, email, path) values ('왕기현', '010-2232-1122',  password('1111'), 'wang@gmail.com', '/image/musician/photo/m15.jpg');
+insert into memb (name, phone, pwd, email, path) values ('비와이', '010-2232-1122',  password('1111'), 'bewhy@gmail.com', '/image/musician/photo/m7.jpg');
 
-insert into musi (muno, age, team, gender, intro) values (8, 22, 'N', 'F',
+insert into musi (muno, nick, age, team, gender, intro) values (8, '랑랑', 22, 'N', 'F',
 '현재 경희대 피아노학과에 다니고 있는 대학생입니다.
 나이는 어리지만 선화예고 출신이라서 웬만한 반주나 연주곡은 자신있습니다.
 지금 현재 휴학하고 실용음악도 배우고 있어서 재즈피아노에도 관심이 많습니다.
 전공은 클래식이지만 실용음악도 가능하니 연락 주세요~!');
 
-insert into musi (muno, age, team, gender, intro) values (9, 27, 'N', 'F',
+insert into musi (muno, nick, age, team, gender, intro) values (9, '사라장', 27, 'N', 'F',
 '안녕하세요. 저는 현재 한세대 작곡과 석사과정을 밟고 있는 대학원생입니다.
 대학교는 이화여대에서 바이올린을 전공했습니다.
 결혼식 현악 4중주, 교회 앙상블 등 다양하게 아르바이트를 많이 해봤습니다.
@@ -654,21 +653,21 @@ insert into musi (muno, age, team, gender, intro) values (9, 27, 'N', 'F',
 언제든 연락주세요 ^^
 ');
 
-insert into musi (muno, age, team, gender, intro) values (10, 21, 'N', 'F',
+insert into musi (muno, nick, age, team, gender, intro) values (10, '국악소히', 21, 'N', 'F',
 '국악을 사랑하는 국악소녀 송소희입니다.
 각종 국악 공연을 통해 많은 경력을 쌓았으며,
 한국을 빛낸 자랑스런 한국인 대상에서 대상을 수상한 수상 경력 또한 있습니다.
 국악이 필요한 곳에 불러주세요~!
 ');
 
-insert into musi (muno, age, team, gender, intro) values (11, 35, 'Y', 'F',
+insert into musi (muno, nick, age, team, gender, intro) values (11, '빨간건현악', 35, 'Y', 'F',
 '저희 "빨간건 현악"팀은 4년간 함께 해온 팀입니다.
 결혼식 연주는 물론 각종 피로연에서 연주를 해드리고 있습니다.
 저희 멤버는 남지현(바이올린), 허가윤(바이올린), 전지윤(비올라), 권소현(첼로) 이렇게 4명입니다.
 많은 연락 부탁드립니다. 감사합니다.
 ');
 
-insert into musi (muno, age, team, gender, intro) values (12, 41, 'N', 'M',
+insert into musi (muno, nick, age, team, gender, intro) values (12, '성발라', 41, 'N', 'M',
 '저는 1979년 4월 17일에 대한민국 서울특별시에서 1남 2녀 중 셋째로 태어났습니다.
 어린 시절, 홍콩에서 산 적도 있었고, 미국의 유명한 연예인인 머라이어 캐리의 음악을 듣기 위해서
 영어를 열심히 공부한 적이 있었기 때문에, 영어를 별 어려움 없이 구사합니다.
@@ -697,14 +696,14 @@ Olive 《신동엽, 성시경은 오늘 뭐 먹지?》,《올리브쇼 2016 》,
 SBS 《보컬 전쟁 : 신의 목소리》, MBC 《듀엣가요제》, 채널CGV 《무비 버스터즈》의 진행자로 활동하고 있습니다.
 ');
 
-insert into musi (muno, age, team, gender, intro) values (13, 51, 'N', 'M',
+insert into musi (muno, nick, age, team, gender, intro) values (13, 'WANG기타', 51, 'N', 'M',
 '저는 여러 음악 장르에서 연주하며 독주 또는 협주로 연주할 수 있습니다.
 클래식 기타, 어쿠스틱 기타, 전기 기타, 베이스 기타를 모두 연주할 수 있습니다.
 경력은 30년이 넘었으니 염려하지 않으셔도 됩니다.
 직접 노래하면서 기타를 연주할 수도 있고, 직접 작곡한 곡을 연주해드릴 수도 있습니다.
 ');
 
-insert into musi (muno, age, team, gender, intro) values (14, 24, 'N', 'M',
+insert into musi (muno, nick, age, team, gender, intro) values (14, 'BeWHY', 24, 'N', 'M',
 '내 Fan이 된 나의 Star
 만나서 나도 glad
 내 소개를 할게요

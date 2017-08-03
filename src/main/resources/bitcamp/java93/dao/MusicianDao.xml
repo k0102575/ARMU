@@ -111,7 +111,7 @@
   </sql>
   
   <sql id="selectAll">
-  select m.mno, m.name, m.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, m.path, mu.gender, 
+  select m.mno, m.name, mu.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, m.path, mu.gender, 
   mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, if(fm.fav is not null, 1, 0) as fav, 
   lm.muno, l.name as location, lt.name as sido
   from musi mu inner join memb m on mu.muno=m.mno
@@ -130,7 +130,7 @@
   </sql>
   
   <select id="selectMusi" resultMap="musicianInfoMap" parameterType="map">
-  select m.mno, m.name, m.nick, mu.age, m.path, mu.team, mu.gender, if(fm.fav is not null, 1, 0) as fav
+  select m.mno, m.name, mu.nick, mu.age, m.path, mu.team, mu.gender, if(fm.fav is not null, 1, 0) as fav
   from musi mu inner join memb m on mu.muno=m.mno
   left outer join (select count(if(mno is not null, 1, 0)) as fav, mno, muno
   from fav_musi
@@ -173,7 +173,7 @@
   </select> <!-- 승민 -->
 
   <select id="selectRecommandList" resultMap="musicianMap" parameterType="int">
-  select mum.mno, mum.name, mum.nick, mu.team, mum.path, fm.fav, if(mtc.score is not null, mtc.score, 0) as score,
+  select mum.mno, mum.name, mu.nick, mu.team, mum.path, fm.fav, if(mtc.score is not null, mtc.score, 0) as score,
   tag.mjrno, tag.thmno, tag.gnrno, tag.major, tag.theme, tag.genre, null as location
   from musi mu
   inner join memb mum on mu.muno=mum.mno
@@ -209,7 +209,7 @@
   
   <select id="selectBestReviewList" resultMap="musicianMap">
     select mt.mtcno, mt.eno, mt.muno as mno, mt.score, mt.rev,
-		mum.nick, mum.path, mj.name as major, g.name as genre, t.name as theme, null as location
+		mu.nick, mum.path, mj.name as major, g.name as genre, t.name as theme, null as location
 		from musi mu inner join (
 		  select m.mtcno, m.eno, m.muno, m.score, m.rev
 		  from (
@@ -232,7 +232,7 @@
   </select>
   
   <select id="selectPopularList" resultMap="musicianMap">
-  select mum.mno, mum.nick, mum.path, sc.score, mj.name as major, g.name as genre, t.name as theme, null as location
+  select mum.mno, mu.nick, mum.path, sc.score, mj.name as major, g.name as genre, t.name as theme, null as location
 	from musi mu
 	inner join memb mum on mu.muno=mum.mno
 	inner join (

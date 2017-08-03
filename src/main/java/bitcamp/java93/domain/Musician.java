@@ -24,6 +24,7 @@ public class Musician extends Member  {
   String location;
   String sido;
   int fav;
+  String nickName;
   Map<String , String> fileMap;
   List<Map<Integer , String>> list;
   ArrayList<Musician> reviewList;
@@ -38,9 +39,9 @@ public class Musician extends Member  {
         + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite + ", popularity="
         + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", specDate="
         + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge + ", location=" + location
-        + ", sido=" + sido + ", fav=" + fav + ", fileMap=" + fileMap + ", list=" + list + ", reviewList=" + reviewList
-        + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList=" + themeList + ", locationList="
-        + locationList + ", photoList=" + photoList + "]";
+        + ", sido=" + sido + ", fav=" + fav + ", nickName=" + nickName + ", fileMap=" + fileMap + ", list=" + list
+        + ", reviewList=" + reviewList + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList="
+        + themeList + ", locationList=" + locationList + ", photoList=" + photoList + "]";
   }
   public int getAge() {
     return age;
@@ -155,6 +156,12 @@ public class Musician extends Member  {
   }
   public void setFav(int fav) {
     this.fav = fav;
+  }
+  public String getNickName() {
+    return nickName;
+  }
+  public void setNickName(String nickName) {
+    this.nickName = nickName;
   }
   public Map<String, String> getFileMap() {
     return fileMap;

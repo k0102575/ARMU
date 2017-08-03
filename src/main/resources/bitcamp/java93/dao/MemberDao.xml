@@ -8,7 +8,6 @@
   <resultMap type="member" id="memberMap">
     <id column="mno" property="no"/>
     <result column="name" property="name"/>
-    <result column="nick" property="nickName"/>
     <result column="phone" property="phone"/>
     <result column="pwd" property="password"/>
     <result column="email" property="email"/>
@@ -16,7 +15,7 @@
   </resultMap>
 
   <sql id="select1">
-    select mno, nick, name, phone, email 
+    select mno, name, phone, email 
     from memb
   </sql>
 
@@ -27,18 +26,18 @@
   
   <insert id="insert" parameterType="member" 
           useGeneratedKeys="true" keyColumn="mno" keyProperty="no">
-    insert into memb(name,phone,pwd,nick,email) 
-    values(#{name},#{phone},password(#{password}),#{nickName},#{email})
+    insert into memb(name,phone,pwd,email) 
+    values(#{name},#{phone},password(#{password}),#{email})
   </insert>
   
   <select id="selectOneByEmailPassword" resultMap="memberMap" parameterType="map">
-    select  m.email, m.mno, m.name, m.nick, m.phone, m.path
+    select  m.email, m.mno, m.name, m.phone, m.path
     from memb m
     where email=#{email} and pwd=password(#{password})
   </select>
 
   <select id="selectOne" resultMap="memberMap">
-    select mno, name, nick, path, pwd, email,phone from memb
+    select mno, name, path, pwd, email,phone from memb
     where mno=#{no}
   </select>
 

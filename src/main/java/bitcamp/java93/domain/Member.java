@@ -5,7 +5,6 @@ import java.util.HashMap;
 public class Member {
   int no;
   String name;
-  String nickName;
   String phone;
   String password;
   String email;
@@ -13,8 +12,8 @@ public class Member {
   HashMap<String , String> valueMap;
   @Override
   public String toString() {
-    return "Member [no=" + no + ", name=" + name + ", nickName=" + nickName + ", phone=" + phone + ", password="
-        + password + ", email=" + email + ", photo=" + photo + "]";
+    return "Member [no=" + no + ", name=" + name + ", phone=" + phone + ", password=" + password + ", email=" + email
+        + ", photo=" + photo + ", valueMap=" + valueMap + "]";
   }
   public int getNo() {
     return no;
@@ -27,12 +26,6 @@ public class Member {
   }
   public void setName(String name) {
     this.name = name;
-  }
-  public String getNickName() {
-    return nickName;
-  }
-  public void setNickName(String nickName) {
-    this.nickName = nickName;
   }
   public String getPhone() {
     return phone;
@@ -58,7 +51,11 @@ public class Member {
   public void setPhoto(String photo) {
     this.photo = photo;
   }
- 
-  
+  public HashMap<String, String> getValueMap() {
+    return valueMap;
+  }
+  public void setValueMap(HashMap<String, String> valueMap) {
+    this.valueMap = valueMap;
+  }
   
 }
