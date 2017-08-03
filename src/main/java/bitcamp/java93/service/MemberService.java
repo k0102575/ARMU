@@ -7,6 +7,7 @@ public interface MemberService {
   Member getByEmailPassword(String email, String password) throws Exception;
   Member getProfile(Member member) throws Exception;
   void updateNick(Member member) throws Exception;
+  void updatePwd(Member member) throws Exception;
   void updatePhoto(int no, String photoPath) throws Exception;
 }
 

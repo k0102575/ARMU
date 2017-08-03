@@ -48,11 +48,16 @@
       nick=#{nickName}
     where mno=#{no}
   </update>
+  
+  <update id="updatePwd" parameterType="member">
+    update memb set 
+      pwd=password(#{password})
+    where mno=#{no}
+  </update>
 
   <update id="updatePhoto" parameterType="map">
     update memb set
-<!--pwd=password(#{password}) -->
-    path=concat('/image/musician/photo/',#{photoPath})
+    path=concat('/image/profile/',#{photoPath},'_140.png')
     where mno=#{memberNo}
   </update>
 </mapper>

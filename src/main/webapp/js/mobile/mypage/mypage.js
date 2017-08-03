@@ -84,11 +84,6 @@ $('#fi-photoupload').fileupload({
       console.log(imlibsData.data);
       var file = imlibsData.data[0];
       console.log(file)
-
-      $('#profile-toggle').toggle("slide", {
-        direction: "down"
-      }, 300);
-      $('#profile-backscreen').css('display', 'none');
     }
 });
 

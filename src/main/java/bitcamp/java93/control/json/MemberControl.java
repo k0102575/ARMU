@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import bitcamp.java93.domain.Member;
 import bitcamp.java93.service.MemberService;
+import net.coobird.thumbnailator.Thumbnails;
 
 @RestController
 @RequestMapping("/member/")
@@ -75,9 +76,15 @@ public class MemberControl {
 
   }
    
-  @RequestMapping("update")
-  public JsonResult update(Member member) throws Exception {
+  @RequestMapping("updateNick")
+  public JsonResult updateNick(Member member) throws Exception {
     memberService.updateNick(member);
+    return new JsonResult(JsonResult.SUCCESS, "ok");
+  }
+  
+  @RequestMapping("updatePwd")
+  public JsonResult updatePwd(Member member) throws Exception {
+    memberService.updatePwd(member);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
@@ -91,10 +98,22 @@ public class MemberControl {
 
       String filename = getNewFilename();
       memberService.updatePhoto(no ,filename);
-      File file =new File(servletContext.getRealPath("/image/musician/photo/" + filename));
-      System.out.println(file);
+      File file =new File(servletContext.getRealPath("/image/profile/" + filename));
       files[i].transferTo(file);
-      fileList.add(filename);
+      
+      File thumbnail = new File(servletContext.getRealPath("image/profile/" + filename + "_80"));
+      Thumbnails.of(file).size(80, 80).outputFormat("png").toFile(thumbnail);
+      
+      thumbnail = new File(servletContext.getRealPath("image/profile/" + filename + "_140"));
+      Thumbnails.of(file).size(140, 140).outputFormat("png").toFile(thumbnail);
+      
+      thumbnail = new File(servletContext.getRealPath("image/profile/" + filename + "_300"));
+      Thumbnails.of(file).size(300, 300).outputFormat("png").toFile(thumbnail);
+      
+      HashMap<String,Object> fileMap = new HashMap<>();
+      fileMap.put("filename", filename);
+      fileMap.put("filesize", files[i].getSize());
+      fileList.add(fileMap);
     }
     return new JsonResult(JsonResult.SUCCESS, fileList);
   }

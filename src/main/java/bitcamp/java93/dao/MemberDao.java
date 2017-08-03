@@ -14,4 +14,5 @@ public interface MemberDao {
   List<String> selectPhotoList(int memberNo);
   Member selectOne(Member member);
   void updateNick(Member member);
+  void updatePwd(Member member);
 }

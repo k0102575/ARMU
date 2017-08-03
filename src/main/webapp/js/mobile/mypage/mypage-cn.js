@@ -2,7 +2,6 @@
 'use strict'
 
 
-
 var mno;
 displayProfile()
 function displayProfile() {
@@ -25,7 +24,13 @@ function displayProfile() {
     container.html(html + generatedHTML)
     $('#nick').val(result.data.profile.nickName)
     var nick1=$('#nick').val() 
-//    $('#guide-no').text(nick1.length+'/20')
+    $('#guide-no').text(nick1.length+'/20')
+    if($('#nick').val().length != 0) {
+      $('#dn').css('display','block')
+    }
+    $('#dn').on('click', function(){
+      delText()
+    })
     abc(nick1)
     return mno=result.data.profile.no
   }, function(err) {
@@ -37,7 +42,7 @@ function updateNick() {
   console.log(mno)
   var nick= $('#nick')  
   console.log(nick.val())
-  $.post('/member/update.json',
+  $.post('/member/updateNick.json',
       {'nickName':nick.val(),
         'no': mno
       }, function(result) {
@@ -58,14 +63,25 @@ function abc(a) {
     var b=$('#nick').val()
     var c = (b.length==0)
     $('#guide-no').text(b.length+'/20')
-    if(b== a || c){
-      $('#header-enter').css('color','white')
+    if(c) {
+       $('#dn').css('display','none')
     } else {
-      $('#header-enter').css('color','#ffec86')
-      $('#header-enter').on('click', function(){
+      $('#dn').css('display','block')
+    }
+    if(b== a || c){
+      $('#nick-enter').css('color','lightgray')
+    } else {
+      $('#nick-enter').css('color','#ffec86')
+      $('#nick-enter').on('click', function(){
         updateNick()
       })
     }
   })
 }
 
+function delText() {
+  $('#nick').val('')
+  $('#dn').css('display','none')
+  $('#guide-no').text($('#nick').val().length+'/20')
+  $('#nick-enter').css('color','lightgray')
+}

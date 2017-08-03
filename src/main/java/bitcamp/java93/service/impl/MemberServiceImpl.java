@@ -36,6 +36,10 @@ public class MemberServiceImpl implements MemberService {
     memberDao.updateNick(member);
   }
   
+  public void updatePwd(Member member) throws Exception {
+    memberDao.updatePwd(member);
+  }
+  
   
   @Override
   public void updatePhoto(int no, String photoPath) throws Exception {

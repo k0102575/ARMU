@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/node_modules/animsition/dist/css/animsition.min.css">
   <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
   <link href="/css/mobile/common.css" rel="stylesheet" type="text/css" media="all">
+  <link rel="stylesheet" type="text/css" href="/node_modules/sweetalert/dist/sweetalert.css">
   <link rel="stylesheet" href="/css/mobile/mypage/mypage.css">
   <script src="/node_modules/jquery/dist/jquery.min.js"></script>
   <script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
@@ -20,34 +21,31 @@
   <div id="mypage-container" class="animsition">
     <div id="header">
       <a href="mypage.html"> <i id="close" class="fa fa-angle-left" aria-hidden="true"></i></a>
-      <div id="header-title">비밀번호 변경</div>
+      <span id="header-title">비밀번호 변경 <span class="header-enter" id="pwd-enter">확인</span></span>
     </div>
     <br><br><br><br>
 
-  <div id="profile-container"></div>
+  <div id="profile-container">
+    <p id="guide">현재 비밀번호</p>
+      <input id="pwd1" class="cp-content" type="password" name="" value="" placeholder="현재 비밀번호"><br>
+      <p class="checkError">비밀번호가 맞지 않습니다.</p>
+      <i class="fa fa-times-circle deleteText dp" id="dp1" aria-hidden="true"></i>
+    <p id="guide">변경할 비밀번호</p>
+      <input id="pwd2" class="cp-content" type="password" name="" value="" placeholder="변경할 비밀번호"><br>
+      <p class="checkError2">비밀번호를 확인해 주세요.</p>
+      <i class="fa fa-times-circle deleteText dp" id="dp2" aria-hidden="true"></i>
+    <p id="guide">비밀번호 확인</p>
+    <form action="">
+      <input id="pwd3" class="cp-content" type="password" name="" value="" placeholder="비밀번호 확인"><br>
+      <p class="checkError2">비밀번호를 확인해 주세요.</p>
+      <i class="fa fa-times-circle deleteText dp" id="dp3" aria-hidden="true"></i>
+      </form>
+  </div>
 
 
   </div>
   <!-- container -->
 </body>
-<script id="profile-template" type="text/x-handlebars-template">
-  {{#profile}}
-        <img id="profile-img" src="{{photo}}" alt="">
-    <p id="name">{{name}}</p>
-    
-    <div id="change-password">
-      <p style="text-align:center">{{email}}</p>
-      <br><br> &nbsp;현재 비밀번호<input class="cp-content" type="password" name="" value=""><br> &nbsp;변경할 비밀번호
-      <input id="pwd01" class="cp-content" type="password" name="" value=""><br> &nbsp;비밀번호 확인
-      <input id="pwd02" class="cp-content" type="password" name="" value=""><br><br>
-      <center>
-        <a href="mypage.html"><input class="cp-btn" id="cp-cancel" type="button" name="button" value="취소"></a>
-        <input class="cp-btn" id="cp-change" type="button" name="button" value="변경">
-      </center>
-      <br>
-    </div>
-  {{/profile}}
-</script>
 <script
   src="/node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
 <script src="/node_modules/blueimp-load-image/js/load-image.all.min.js"></script>
@@ -61,7 +59,9 @@
   src="/node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
 
 <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
-<script type="text/javascript" src="/js/mobile/mypage/mypage.js"></script>
+<script type="text/javascript" src="/node_modules/crypto-js/crypto-js.js"></script>
+<script src="/node_modules/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript" src="/js/mobile/mypage/mypage-cp.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
   $(".animsition").animsition({
