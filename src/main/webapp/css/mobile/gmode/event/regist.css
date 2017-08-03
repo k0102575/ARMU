@@ -333,7 +333,7 @@ overflow-y:auto;
     z-index: 11;
     border: 0px;
     margin-left: 21%;
-    padding-top: 20px;
+    padding-top: 60px;
 }
 
 #theme-select-box-button, #major-select-box-button, #genre-select-box-button {
@@ -360,10 +360,16 @@ overflow-y:auto;
   background: white;
   width: 97%;
   min-height: 100px;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
   margin-top: 7%;
   margin-left: 1px;
+}
+
+.category-title {
+  position: absolute;
+  left: 10%;
+  font-size: 3rem;
 }
 
 /*Checkboxes styles*/
@@ -374,7 +380,7 @@ input[type="checkbox"] + label {
   padding-left: 50px;
   margin-bottom: 20px;
   color: black;
-  width: 300px;
+  width: 299px;
   font-weight: normal;
 }
 

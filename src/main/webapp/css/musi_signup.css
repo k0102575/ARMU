@@ -170,7 +170,7 @@
   color: white;
 }
 
-#signup-page1, #signup-page2, #signup-page3, #signup-page4 {
+#signup-page1, #signup-page2, #signup-page3, #signup-page4, #signup-page5, #signup-page6 {
 	display: none;
   position: fixed;
   top: 300px;
@@ -178,7 +178,7 @@
   height: 80%;
 }
 
-#signup-page2-text {
+#signup-page3-text {
   position: absolute;
   color: white;
   top: 0%;
@@ -188,7 +188,7 @@
   width: 100%;
 }
 
-#signup-page1-btn, #signup-page2-btn, #signup-page3-btn, #signup-page4-btn {
+#signup-page1-btn, #signup-page2-btn, #signup-page3-btn, #signup-page4-btn, #signup-page5-btn, #signup-page6-btn {
   position: absolute;
   height: 10%;
   width: 100%;
@@ -196,14 +196,14 @@
   display: inline-block;
 }
 
-#signup-page2-prev, #signup-page3-prev, #signup-page4-prev {
+#signup-page2-prev, #signup-page3-prev, #signup-page4-prev, #signup-page5-prev, #signup-page6-prev {
   position: absolute;
   left: 10%;
   font-size: 300%;
   color: white;
 }
 
-#signup-page1-next, #signup-page2-next, #signup-page3-next, #signup-page4-next {
+#signup-page1-next, #signup-page2-next, #signup-page3-next, #signup-page4-next, #signup-page5-next, #signup-page6-next {
   position: absolute;
   right: 10%;
   font-size: 300%;
@@ -239,7 +239,103 @@
   background-color: rgba(255,255,255, 0.15);
 }
 
-.signup-page1-gender {
+#signup-page1-team-text {
+  color: white;
+  font-size: 2.6em;
+  position: absolute;
+  left: 10%;
+  top: 45%;
+}
+
+#team-check-btn {
+  position: absolute;
+  width: 50%;
+  left: 27%;
+  top: 60%;
+}
+
+.team-btn {
+  display: inline-block;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+  height: 30px;
+  font-size: 2em;
+  padding-bottom: 30px;
+  color:white;
+}
+
+input[name="team-toggle"].toggle {
+  display: none;
+}
+input[name="team-toggle"].toggle + label {
+  min-width: 200px;
+  border: 2.5px solid white;
+}
+input[name="team-toggle"].toggle + label:hover {
+}
+input[name="team-toggle"].toggle + label:after {
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  -webkit-transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+  transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+  width: 100%;
+  z-index: -1;
+  color:white;
+}
+
+input[name="team-toggle"].toggle.toggle-left + label {
+  border-right: 0;
+  }
+input[name="team-toggle"].toggle.toggle-left + label:after {
+  left: 100%;
+}
+input[name="team-toggle"].toggle.toggle-right + label {
+  margin-left: -5px;
+}
+input[name="team-toggle"].toggle.toggle-right + label:after {
+  left: -100%;
+}
+input[name="team-toggle"].toggle:checked + label {
+  background: rgba(128, 105, 239, 0.5);
+}
+input[name="team-toggle"].toggle:checked + label:after {
+  left: 0;
+  background: rgba(128, 105, 239, 0.5);
+}
+
+/* 이벤트 페이지 1 끝 */
+
+/* 이벤트 페이지 2 시작 */
+
+#signup-page2-age-text {
+  color: white;
+  font-size: 2.6em;
+  position: absolute;
+  left: 10%;
+  top: 15%;
+}
+
+#musi-age {
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  height: 8%;
+  font-size: 2em;
+  font-weight: 400;
+  border-radius: 0px;
+  box-sizing: border-box;
+  color: white;
+  top: 23%;
+  border: 0;
+  border-radius: 10px;
+  padding-left: 4%;
+  background-color: rgba(255,255,255, 0.15);
+}
+
+.signup-page2-gender {
   min-height: 100px;
   width: 50%;
   position: absolute;
@@ -296,9 +392,9 @@ input[name="gender-toggle"].toggle:checked + label:after {
   left: 0;
 }
 
-/* 이벤트 페이지 1 끝 */
+/* 이벤트 페이지 2 끝 */
 
-/* 이벤트 페이지 2 시작 */
+/* 이벤트 페이지 3 시작 */
 
 #theme-select-button, #major-select-button, #genre-select-button {
   font-size: 2.6em;
@@ -540,107 +636,18 @@ input[type="checkbox"]:checked + label:before {
   border: 2.5px solid white;
 }
 
-/* 이벤트 페이지 2 끝 */
-
-/* 이벤트 페이지 3 시작 */
-
-#signup-page3-age-text {
-  color: white;
-  font-size: 2.6em;
-  position: absolute;
-  left: 10%;
-  top: 15%;
-}
-
-#musi-age {
-  position: absolute;
-  left: 10%;
-  width: 80%;
-  height: 8%;
-  font-size: 2em;
-  font-weight: 400;
-  border-radius: 0px;
-  box-sizing: border-box;
-  color: white;
-  top: 23%;
-  border: 0;
-  border-radius: 10px;
-  padding-left: 4%;
-  background-color: rgba(255,255,255, 0.15);
-}
-
-#signup-page3-team-text {
-	color: white;
-  font-size: 2.6em;
-  position: absolute;
-  left: 10%;
-  top: 45%;
-}
-
-#team-check-btn {
-  position: absolute;
-  width: 50%;
-  left: 27%;
-  top: 60%;
-}
-
-.team-btn {
-  display: inline-block;
-  padding: 10px;
-  position: relative;
-  text-align: center;
-  height: 30px;
-  font-size: 2em;
-  padding-bottom: 30px;
-  color:white;
-}
-
-input[name="team-toggle"].toggle {
-  display: none;
-}
-input[name="team-toggle"].toggle + label {
-  min-width: 200px;
-  border: 2.5px solid white;
-}
-input[name="team-toggle"].toggle + label:hover {
-}
-input[name="team-toggle"].toggle + label:after {
-  content: "";
-  height: 100%;
-  position: absolute;
-  top: 0;
-  -webkit-transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
-  transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
-  width: 100%;
-  z-index: -1;
-  color:white;
-}
-
-input[name="team-toggle"].toggle.toggle-left + label {
-  border-right: 0;
-  }
-input[name="team-toggle"].toggle.toggle-left + label:after {
-  left: 100%;
-}
-input[name="team-toggle"].toggle.toggle-right + label {
-  margin-left: -5px;
-}
-input[name="team-toggle"].toggle.toggle-right + label:after {
-  left: -100%;
-}
-input[name="team-toggle"].toggle:checked + label {
-  background: rgba(128, 105, 239, 0.5);
-}
-input[name="team-toggle"].toggle:checked + label:after {
-  left: 0;
-  background: rgba(128, 105, 239, 0.5);
-}
-
 /* 이벤트 페이지 3 끝 */
 
 /* 이벤트 페이지 4 시작 */
 
-#signup-page4-homepage-text {
+
+
+/* 이벤트 페이지 4 시작 */
+
+
+/* 이벤트 페이지 5 시작 */
+
+#signup-page5-homepage-text {
   color: white;
   font-size: 2.6em;
   position: absolute;
@@ -665,7 +672,7 @@ input[name="team-toggle"].toggle:checked + label:after {
   background-color: rgba(255,255,255, 0.15);
 }
 
-#signup-page4-intro-text {
+#signup-page5-intro-text {
   color: white;
   font-size: 2.6em;
   position: absolute;
@@ -689,4 +696,4 @@ input[name="team-toggle"].toggle:checked + label:after {
   background-color: rgba(255,255,255, 0.15);
 }
 
-/* 이벤트 페이지 4 끝 */
+/* 이벤트 페이지 5 끝 */

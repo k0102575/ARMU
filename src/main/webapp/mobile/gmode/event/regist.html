@@ -88,7 +88,7 @@
   
   <script id="select-theme-template" type="text/x-handlebars-template">
   {{#each listTheme}}
-  <div class="boxes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{thmtname}}<br><br>
+  <div class="boxes"><span class="category-title">{{thmtname}}</span><br><br><br>
   {{#each list}}
   {{#themeMap}}
   <input type="checkbox" name="theme" id="theme-box-{{key}}" value="{{key}}">
@@ -117,7 +117,7 @@
   
   <script id="select-major-template" type="text/x-handlebars-template">
   {{#each listMajor}}
-  <div class="boxes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{mjrtname}}<br><br>
+  <div class="boxes"><span class="category-title">{{mjrtname}}</span><br><br><br>
   {{#each list}}
   {{#majorMap}}
   <input type="checkbox" name="major" id="major-box-{{key}}" value="{{key}}">
@@ -146,7 +146,7 @@
   
   <script id="select-genre-template" type="text/x-handlebars-template">
   {{#each listGenre}}
-  <div class="boxes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{gnrtname}}<br><br>
+  <div class="boxes"><span class="category-title">{{gnrtname}}</span><br><br><br>
   {{#each list}}
   {{#genreMap}}
   <input type="checkbox" name="genre" id="genre-box-{{key}}" value="{{key}}">
