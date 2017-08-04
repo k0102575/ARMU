@@ -38,6 +38,7 @@ $.getJSON('/member/getProfile.json', function(result) {
     var html = container.html()
     container.html(html + generatedHTML)
     $('.pen').css('display','none')
+    $('#atag').removeAttr('href')
     return mno=result.data.profile.no
   }, function(err) {
     console.log(err)

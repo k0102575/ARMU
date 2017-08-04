@@ -50,7 +50,6 @@ function checkPwd1(a) {
     var b = $('#pwd1').val()
     var result = ("*"+CryptoJS.SHA1(CryptoJS.SHA1(b))).toUpperCase();
     if(a!=result){
-      $('#pwd1').css('border','1px solid red')
       $('.checkError').css('display','block')
     } else {
       $('#pwd1').css('border','0')
@@ -62,10 +61,8 @@ function checkPwd1(a) {
 function checkPwd2() {
   $('#pwd3,#pwd2').on('keyup', function() {
     if($('#pwd2').val() != $('#pwd3').val()) {
-      $('#pwd2,#pwd3').css('border','1px solid red')
       $('.checkError2').css('display','block')
     } else {
-      $('#pwd2,#pwd3').css('border','0')
       $('.checkError2').css('display','none')
       $('#pwd-enter').on('click', function() {
         updatePwd()
