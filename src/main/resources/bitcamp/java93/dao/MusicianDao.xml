@@ -308,6 +308,12 @@
   </select>
    
    
+     <insert id="insert" parameterType="musician" 
+          useGeneratedKeys="true" keyColumn="muno" keyProperty="no">
+    insert into musi(muno, team, age, hpg, intro, gender, nick) 
+    values(#{no},#{isTeam},#{age},#{homepage},#{intro},#{gender},#{nickName})
+  </insert>
+   
      <update id="updateNick" parameterType="musician">
     update musi set 
       nick=#{nickName}

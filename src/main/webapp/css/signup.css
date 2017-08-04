@@ -293,7 +293,7 @@ body {
   position: absolute;
   display: none;
   top: 0%;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   background-image: url("/image/background/mobile_signup.jpg");
   background-repeat: no-repeat;

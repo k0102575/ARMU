@@ -57,9 +57,9 @@
   <input type="text" id="musi-age">
   
   <div class="signup-page2-gender">
-  <input id="toggle-on" class="toggle toggle-left" name="gender-toggle" value="true" type="radio">
+  <input id="toggle-on" class="toggle toggle-left" name="gender-toggle" value="M" type="radio">
   <label for="toggle-on" class="gender-btn"><i class="fa fa-male" aria-hidden="true"></i></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <input id="toggle-off" class="toggle toggle-right" name="gender-toggle" value="false" type="radio">
+  <input id="toggle-off" class="toggle toggle-right" name="gender-toggle" value="F" type="radio">
   <label for="toggle-off" class="gender-btn"><i class="fa fa-female" aria-hidden="true"></i></label>
   </div>
   <!-- gender-container -->
@@ -83,8 +83,7 @@
   
   <div id="signup-select">
   
-  
-  <div id="menu-backscreen"></div>
+    <div id="signup-page3-backscreen"></div>
   
     <div id="theme-select-button">테마</div><i class="fa fa-plus-square-o" id="theme-plus" aria-hidden="true"></i>
     <!-- theme-button -->
@@ -188,7 +187,7 @@
     <div id="signup-page3-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
     <div id="signup-page3-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
     </div>
-    <!-- signup-page2-btn -->
+    <!-- signup-page3-btn -->
     
   </div>
 <!-- 회원가입 페이지3 끝 : 카테고리 끝 -->
@@ -197,19 +196,56 @@
 
 <div id="signup-page4">
   
-  <div id="signup-page4-btn">
-  <div id="signup-page4-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
-  <div id="signup-page4-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
+  <div id="signup-page4-text">
+    희망 지역을 설정해 주세요
   </div>
-</div>
   
+  <div id="signup-page4-backscreen"></div>
+  
+  <div id="location-type-container">
+  <input id="location-select-hidden" type="hidden">
+  </div>
+  <!-- location-type-container -->
+  <div id="location-text-box">
+  
+  </div>
+
+    <div id="signup-page4-btn">
+    <div id="signup-page4-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>
+    <div id="signup-page4-next">다음&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></div>
+    </div>
+    <!-- signup-page4-btn -->
+  
+  <div id="location-button-box">
+  </div>
+  <!-- location-button-box -->
+  
+  <div id="location-check-btn">
+    <button type="button" id="location-check-cancel">취소</button>
+    <button type="button" id="location-check-check">확인</button>
+  </div>
+  
+  <script id="location-type-template" type="text/x-handlebars-template">
+  {{#each listLocationType}}
+    <button type="button" class="location-type-button" value="{{loctno}}">{{loctname}}</button>
+  {{/each}}
+  </script>
+  
+  <script id="location-button-template" type="text/x-handlebars-template">
+  {{#each listLocation}}
+    <input type="checkbox" name="location" id="location-button-{{locno}}" value="{{locno}}">
+    <label for="location-button-{{locno}}">{{locname}}</label>
+  {{/each}}
+  </script>
+  
+</div>
 <!-- 회원가입 페이지4 끝 : 희망지역 끝 -->
 
 <!-- 회원가입 페이지5 시작 : 홈페이지 / 자기소개 시작 -->
 
   <div id="signup-page5">
   
-  <div id="signup-page5-homepage-text">홈페이지를 입력하세요</div>
+  <div id="signup-page5-homepage-text">홈페이지를 입력하세요 (선택)</div>
   <input type="text" id="musi-homepage">
   
   <div id="signup-page5-intro-text">자기소개를 입력하세요</div>
@@ -228,7 +264,30 @@
 
 <div id="signup-page6">
   
+  <div id="signup-page6-text">
+    회원가입전 입력사항을 확인해주세요
+  </div>
   
+  <hr class='separator'>
+  <label class='signup-text signup-header'>테마</label>
+  <div class='signup-text signup-theme'></div>
+  <br>
+  <label class='signup-text signup-header'>전공</label>
+  <div class='signup-text signup-major'></div>
+  <br>
+  <label class='signup-text signup-header'>장르</label>
+  <div class='signup-text signup-genre'></div>
+  <br>
+  <label class='signup-text signup-header'>지역</label>
+  <div class='signup-text signup-location'></div>
+  <br>
+  <hr class='separator'>
+  <div class="select-div">
+  </div>
+  <hr class='separator'>
+  <label class='signup-text signup-header'>자기소개</label>
+  <br>
+  <div class='signup-text signup-info'></div>
   
   <div id="signup-page6-btn">
   <div id="signup-page6-prev"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;이전</div>

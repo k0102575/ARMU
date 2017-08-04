@@ -1,5 +1,6 @@
 package bitcamp.java93.control.json;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -223,6 +224,52 @@ public class MusicianControl {
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
   
+  
+  @RequestMapping("add")
+  public void add(Musician musician, String musicianAddTheme, String musicianAddMajor,
+    String musicianAddGenre, String musicianAddLocation, HttpSession session) throws Exception {
+
+    String[] themeList = musicianAddTheme.split(",");
+    String[] majorList = musicianAddMajor.split(",");
+    String[] genreList = musicianAddGenre.split(",");
+    String[] locationList = musicianAddLocation.split(",");
+    
+    ArrayList<String> addThemeList = new ArrayList<>();
+    ArrayList<String> addMajorList = new ArrayList<>();
+    ArrayList<String> addGenreList = new ArrayList<>();
+    ArrayList<String> addLocationList = new ArrayList<>();
+    
+    for (String theme : themeList) {
+      addThemeList.add(theme);
+    } 
+    
+    for (String major : majorList) {
+      addMajorList.add(major);
+    } 
+    
+    for (String genre : genreList) {
+      addGenreList.add(genre);
+    } 
+    
+    for (String location : locationList) {
+      addLocationList.add(location);
+    } 
+    
+    musician.setThemeList(addThemeList);
+    musician.setMajorList(addMajorList);
+    musician.setGenreList(addGenreList);
+    musician.setLocationList(addLocationList);
+    musician.setNo(getLoginMember(session).getNo());
+    
+/*    try {
+      musicianService.add(musician);
+      return new JsonResult(JsonResult.SUCCESS, "ok");
+      
+    } catch (Exception e) {
+      return new JsonResult(JsonResult.FAIL, "fail");
+    }*/
+/*    musicianService.musicianAddHope(musician); 
+*/  }
 
   private Member getLoginMember(HttpSession session) {
     Member loginMember = (Member) session.getAttribute("loginMember");
