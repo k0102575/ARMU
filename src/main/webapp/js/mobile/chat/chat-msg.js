@@ -27,16 +27,22 @@ $(document).ready(function() {
 	});
 })//$(document).ready()
 
-var myAlias = true,
-messageBox = $('#messageBox'),
+var messageBox = $('#messageBox'),
 sendBtn = $('#send-btn'),
 msgInput = $('#msg-input'),
 msgInputBox = $('.message-input-box'),
-musicianNo = location.href.split('?')[1].split('=')[1];
+loc = decodeURIComponent(location.href),
+musicianNo = loc.split('?')[1].split('=')[1].split('&')[0],
+musicianNick = loc.split('?')[1].split('&')[1].split('=')[1];
+
 
 messageBox.scrollTop(messageBox.prop('scrollHeight'));
+$('.chat-msg-header').text(musicianNick)
 
 displayChatBubbles()
+
+
+
 
 function displayChatBubbles() {
 
@@ -45,12 +51,12 @@ function displayChatBubbles() {
       console.error("getJSON() 실패: ", result.status)
       return;
     }
-    
+    console.log(result.data)
     $.each(result.data.listChat, function(i, item) {
-      appendChatBubble(item.message)
+      appendChatBubble(item.message, item.senderNo != musicianNo)
+      
     });
     
-
   }, function(err) {
     console.log(err)
   })
@@ -58,7 +64,7 @@ function displayChatBubbles() {
 }
 
 
-function appendChatBubble(value) {
+function appendChatBubble(value, myAlias) {
 	
 	/*space나 줄바꿈만 있는 경우 버블을 추가하지 않음.*/
 	var text = value.replace(/\r?\n/g, '');
@@ -81,12 +87,6 @@ function appendChatBubble(value) {
 	resizeMessageBoxPadding()
 	messageBox.scrollTop(messageBox.height())
 
-	var num = parseInt(Math.random() * 100)
-	if (num > 50) {
-		myAlias = false
-	} else {
-		myAlias = true
-	}
 }
 
 function resizeMessageBoxPadding() {
