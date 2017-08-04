@@ -1,3 +1,8 @@
+"use strict"
+
+HandlebarsIntl.registerWith(Handlebars);
+
+
 $(document).ready(function() {
   $(".animsition").animsition({
     inClass: 'fade-in-up',
@@ -27,9 +32,46 @@ $(document).ready(function() {
 //		return false;
 //	});
 
-$('.chat-list').on('click', function() {
-  location.href = 'chat-msg.html'
-})
 
+displayList()
 
 });
+
+
+
+function displayList() {
+
+  $.getJSON('/chat/list.json', function(result) {
+    if(result.status != 'success') {
+      console.error("getJSON() 실패: ", result.status)
+      return;
+    }
+    
+    
+    
+    var totalUnread = 0;
+    $.each(result.data.list, function(i, item) {
+      totalUnread += item.unread
+    });
+    $('#total-unread').text(totalUnread + '개')
+    var templateFn = Handlebars.compile($('#list-template').text())
+    var generatedHTML = templateFn(result.data)
+    var container = $('#list-container')
+    var html = container.html()
+    container.html(html + generatedHTML)
+    container.listview("refresh")
+   
+    var chatList = $('.chat-list')
+    
+    $.each(chatList, function(i, item) {
+      $(item).on('click', function() {
+        location.href = $(item).attr('data-href')
+      })
+    })
+    
+    
+  }, function(err) {
+    console.log(err)
+  })
+
+}

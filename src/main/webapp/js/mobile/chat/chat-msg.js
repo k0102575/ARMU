@@ -4,7 +4,7 @@ $(document).ready(function() {
 	$(".animsition").animsition({
 		inClass: 'fade-in-right',
 		outClass: 'fade-out-left',
-		inDuration: 500,
+		inDuration: 700,
 		outDuration: 700,
 		linkElement: '.animsition-link',
 		// e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
@@ -31,7 +31,8 @@ var myAlias = true,
 messageBox = $('#messageBox'),
 sendBtn = $('#send-btn'),
 msgInput = $('#msg-input'),
-msgInputBox = $('.message-input-box');
+msgInputBox = $('.message-input-box'),
+musicianNo = location.href.split('?')[1].split('=')[1];
 
 messageBox.scrollTop(messageBox.prop('scrollHeight'));
 
@@ -39,13 +40,12 @@ displayChatBubbles()
 
 function displayChatBubbles() {
 
-  $.getJSON('/chat/listChat.json', {"musicianNo": 1}, function(result) {
+  $.getJSON('/chat/listChat.json', {"musicianNo": musicianNo}, function(result) {
     if(result.status != 'success') {
       console.error("getJSON() 실패: ", result.status)
       return;
     }
     
-    console.log(result.data)
     $.each(result.data.listChat, function(i, item) {
       appendChatBubble(item.message)
     });

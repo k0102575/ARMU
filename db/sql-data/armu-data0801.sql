@@ -1017,5 +1017,13 @@ insert into chat (muno, mno, isread, msg, date, who) values (1, 5, 'Y', '저는 
 insert into chat (muno, mno, isread, msg, date, who) values (1, 5, 'Y', '네~!!', '2017-06-19 13:21:00', 1);
 
 insert into chat (muno, mno, isread, msg, date, who) values (11, 5, 'Y', '매칭되었습니다!', '2017-06-19 17:00:00', 0);
-insert into chat (muno, mno, isread, msg, date, who) values (11, 5, 'Y', '안녕하세요, 빨간건현악입니다.^^', '2017-06-19 17:21:00', 11);
-insert into chat (muno, mno, isread, msg, date, who) values (11, 5, 'Y', 'ㅎㅎ 안녕하세용', '2017-06-19 17:21:00', 5);
+insert into chat (muno, mno, isread, msg, date, who) values (11, 5, 'Y','안녕하세요, 빨간건현악입니다.^^', '2017-06-19 17:21:00', 11);
+insert into chat (muno, mno, isread, msg, date, who) values (11, 5, 'Y','ㅎㅎ 안녕하세용', '2017-06-19 17:21:00', 5);
+insert into chat (muno, mno, isread, msg, date, who) values (11, 5, 'Y','이벤트 소개에 남겨주신 내용 잘 봤습니다. 혹시 전화통화 가능할까요?', '2017-06-20 09:21:00', 11);
+insert into chat (muno, mno, isread, msg, date, who) values (11, 5, 'N','가능하신 시간 알려주시면 전화드릴게요 !', '2017-06-20 10:03:00', 11);
+insert into chat (muno, mno, isread, msg, date, who) values (11, 5, 'N','아니면 먼저 전화주셔두 되구요~', '2017-06-20 10:03:22', 11);
+insert into chat (muno, mno, isread, msg, date, who) values (11, 5, 'N','제 번호 알려드릴게요~', '2017-06-20 10:04:22', 11);
+
+insert into chat (muno, mno, isread, msg, date, who) values (11, 4, 'Y','매칭되었습니다!', '2017-06-19 17:00:00', 0);
+insert into chat (muno, mno, isread, msg, date, who) values (11, 4, 'N','안녕하세요! 빨간건현악입니다. ^^ 매칭 감사드려요~!', '2017-06-19 17:00:00', 11);
+insert into chat (muno, mno, isread, msg, date, who) values (11, 4, 'N','이거 보시면 답장 주세요 ㅎ', '2017-06-19 17:12:03', 11);

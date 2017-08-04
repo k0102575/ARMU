@@ -16,6 +16,8 @@
   <script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
   <script src="/node_modules/animsition/dist/js/animsition.min.js"></script>
+  <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
+<script src="/node_modules/handlebars-intl/dist/handlebars-intl.min.js"></script>
 
 </head>
 
@@ -24,71 +26,44 @@
 
 <div class="chat-header">
   <h1 class='chat-header-head'>메시지</h1>
-  <a href="javascript:history.go(-1)" class='chat-header-close-btn'>닫기</a>
-  <p class='chat-header-desc'>안 읽은 메시지 2개</p>
+  <a href="javascript:history.go(-1)" class='chat-header-close-btn'><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+  <p class='chat-header-desc'>안 읽은 메시지&nbsp;&nbsp;<span id='total-unread'></span></p>
 </div>
 <div class="chat-listbox">
-  <ul data-role="listview">
-      <li>
-        <a href="javascript:void(0)" class='chat-list'>
-          <img src="/image/musician/photo/m1.jpg" class="chat-list-img"></img>
-          <span class='chat-list-name'>임정희
-            <span class='chat-list-unread-badge'>3</span>
-            <span class='chat-list-lastchat-date'>7월 16일</span>
-          </span>
-          <span class='chat-list-msg'>안녕하세요. 오늘 뵙기로 한 몰라요입니다. 몇시쯤 뵐까요? 저는 오후 7시가 좋은데~ 편하실 때 답장 주세요!!</span>
-          <span class='chat-list-match-status'>진행중</span>
-          &middot;
-          <span class='chat-list-event-date'>2017-09-18</span>
-          </a>
-      </li>
-      <li>
-        <a href="#" class='chat-list'>
-          <img src="/image/musician/photo/m2.jpg" class="chat-list-img"></img>
-          <span class='chat-list-name'>지나가는행인
-            <span class='chat-list-unread-badge'>3</span>
-            <span class='chat-list-lastchat-date'>7월 16일</span>
-          </span>
-          <span class='chat-list-msg'>안녕하세요. 오늘 뵙기로 한 몰라요입니다. 몇시쯤 뵐까요? 저는 오후 7시가 좋은데~ 편하실 때 답장 주세요!!</span>
-          <span class='chat-list-match-status'>진행중</span>
-          &middot;
-          <span class='chat-list-event-date'>2017-09-18</span>
-          </a>
-      </li>
-      <li>
-        <a href="#" class='chat-list'>
-          <img src="/image/musician/photo/m3.jpg" class="chat-list-img"></img>
-          <span class='chat-list-name'>성시경
-            <span class='chat-list-unread-badge'>3</span>
-            <span class='chat-list-lastchat-date'>7월 16일</span>
-          </span>
-          <span class='chat-list-msg'>안녕하세요. 오늘 뵙기로 한 몰라요입니다. 몇시쯤 뵐까요? 저는 오후 7시가 좋은데~ 편하실 때 답장 주세요!!</span>
-          <span class='chat-list-match-status'>진행중</span>
-          &middot;
-          <span class='chat-list-event-date'>2017-09-18</span>
-          </a>
-      </li>
-      <li>
-        <a href="#" class='chat-list'>
-          <img src="/image/musician/photo/m4.jpg" class="chat-list-img"></img>
-          <span class='chat-list-name'>박효신인가
-            <span class='chat-list-unread-badge'>3</span>
-            <span class='chat-list-lastchat-date'>7월 16일</span>
-          </span>
-          <span class='chat-list-msg'>안녕하세요. 오늘 뵙기로 한 몰라요입니다. 몇시쯤 뵐까요? 저는 오후 7시가 좋은데~ 편하실 때 답장 주세요!!</span>
-          <span class='chat-list-match-status'>진행중</span>
-          &middot;
-          <span class='chat-list-event-date'>2017-09-18</span>
-          </a>
-      </li>
+  <ul data-role="listview" id='list-container'>
 
 
 
   </ul><!--listview-->
 </div><!--chat-listbox-->
-
 </div>
 </body>
 
+<script id="list-template" type="text/x-handlebars-template">
+{{#each list}}
+<li>
+{{#musician}}
+<a href="javascript:void(0)" data-href="chat-msg.html?musino={{no}}"
+ class='chat-list'>
+  <img src="{{photo}}" class="chat-list-img"></img>
+  <span class='chat-list-name'>{{nickName}}
+{{/musician}}
+  {{#if unread}}
+    <span class='chat-list-unread-badge'>{{unread}}</span>
+  {{/if}}
+    <span class='chat-list-lastchat-date'>{{formatRelative date units="day"}}</span>
+  </span>
+  <span class='chat-list-msg'>{{message}}</span>
+  <span class='chat-list-match-status'>{{status}}</span>
+  &middot;
+  <span class='chat-list-event-date'>{{formatDate eventDate}}</span>
+  </a>
+</li>
+{{/each}}
+
+{{#unless list}}
+<div class='no-list-view'> 메시지 내역이 없습니다. </div>
+{{/unless}}
+</script>
 <script src='/js/mobile/chat/index.js'></script>
 </html>

@@ -1,6 +1,7 @@
 package bitcamp.java93.domain;
 
 import java.sql.Date;
+import java.sql.Time;
 
 public class Chat {
   int no;
@@ -9,7 +10,11 @@ public class Chat {
   boolean isRead;
   String message;
   Date date;
+  Time time;
   int senderNo;
+  Date eventDate;
+  String status;
+  int unread;
   public int getNo() {
     return no;
   }
@@ -41,10 +46,18 @@ public class Chat {
     this.message = message;
   }
   public Date getDate() {
+//    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyy-mm-dd");
+//    return dateFormat.format(date);
     return date;
   }
   public void setDate(Date date) {
     this.date = date;
+  }
+  public Time getTime() {
+    return time;
+  }
+  public void setTime(Time time) {
+    this.time = time;
   }
   public int getSenderNo() {
     return senderNo;
@@ -52,10 +65,29 @@ public class Chat {
   public void setSenderNo(int senderNo) {
     this.senderNo = senderNo;
   }
+  public Date getEventDate() {
+    return eventDate;
+  }
+  public void setEventDate(Date eventDate) {
+    this.eventDate = eventDate;
+  }
+  public String getStatus() {
+    return status;
+  }
+  public void setStatus(String status) {
+    this.status = status;
+  }
+  public int getUnread() {
+    return unread;
+  }
+  public void setUnread(int unread) {
+    this.unread = unread;
+  }
   @Override
   public String toString() {
     return "Chat [no=" + no + ", writer=" + writer + ", musician=" + musician + ", isRead=" + isRead + ", message="
-        + message + ", date=" + date + ", senderNo=" + senderNo + "]";
+        + message + ", date=" + date + ", time=" + time + ", senderNo=" + senderNo + ", eventDate=" + eventDate
+        + ", status=" + status + ", unread=" + unread + "]";
   }
   
   

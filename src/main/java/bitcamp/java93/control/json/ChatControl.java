@@ -21,18 +21,37 @@ public class ChatControl {
   @Autowired ServletContext servletContext;
   @Autowired ChatService chatService;
 
+  
+  @RequestMapping("list")
+  public JsonResult list(HttpSession session) {
+    JsonResult result = new JsonResult();
+    try {
+      int no = getLoginMember(session).getNo();
+      List<Chat> list = chatService.list(no);
+
+      result.setStatus(JsonResult.SUCCESS);
+
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("list", list);
+      result.setData(dataMap);
+
+    } catch (Exception e) {
+      e.printStackTrace();
+      result.setStatus(JsonResult.ERROR);
+    }
+
+    return result;
+  }
+  
   @RequestMapping("listChat")
   public JsonResult listChat(int musicianNo, HttpSession session) {
     JsonResult result = new JsonResult();
     try {
       int writerNo = getLoginMember(session).getNo();
-      System.out.println(writerNo);
-      System.out.println(musicianNo);
       HashMap<String, Object> paramMap = new HashMap<>();
       paramMap.put("mno", writerNo);
       paramMap.put("muno", musicianNo);
       List<Chat> chatList = chatService.listChat(paramMap);
-
       result.setStatus(JsonResult.SUCCESS);
 
       HashMap<String,Object> dataMap = new HashMap<>();
@@ -45,8 +64,6 @@ public class ChatControl {
     }
 
     return result;
-
-
   }
 
   @RequestMapping("listMusiChat")

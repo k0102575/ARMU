@@ -6,6 +6,7 @@ import java.util.Map;
 import bitcamp.java93.domain.Chat;
 
 public interface ChatService {
-  List<Chat> listMusiChat(int no) throws Exception;
+  List<Chat> list(int no) throws Exception;
   List<Chat> listChat(Map<String, Object> info) throws Exception;
+  List<Chat> listMusiChat(int no) throws Exception;
 }

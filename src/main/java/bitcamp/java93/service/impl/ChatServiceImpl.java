@@ -16,13 +16,19 @@ public class ChatServiceImpl implements ChatService {
   @Autowired
   ChatDao chatDao;
 
-  public List<Chat> listMusiChat(int no) throws Exception {
-    return chatDao.selectMusiChatList(no);
+  public List<Chat> list(int no) throws Exception {
+    return chatDao.selectList(no);
   }
   
   public List<Chat> listChat(Map<String, Object> info) throws Exception {
     return chatDao.selectChatList(info);
   }
+  
+  public List<Chat> listMusiChat(int no) throws Exception {
+    return chatDao.selectMusiChatList(no);
+  }
+  
+
   
   
 }

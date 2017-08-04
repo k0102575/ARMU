@@ -270,10 +270,30 @@ where c.mno=5 and c.muno=1
 order by date asc
 
 
--- 특정 회원의 전체 채팅 목록 가져오기
-select c.mno, group_concat(c.muno) as musino
-from chat c
-group by c.mno
+-- 특정 회원의 전체 뮤지션과의 채팅 목록 가져오기
+select mu.mno as musino, musi.nick as musinick, mu.path as musiphoto, c.mno,
+cast(c.date as date) as date, cast(c.date as time) as time, c.msg, e.date as edate, e.status, c.unread
+from memb mu inner join (
+  select mno, muno,
+  substring_index(group_concat(date order by date desc), ',', 1) as date,
+  substring_index(group_concat(msg order by date desc), ',', 1) as msg,
+  sum(if(isread='N', 1, 0)) as unread
+  from chat
+  group by mno, muno
+  having mno=5
+) c on mu.mno=c.muno
+inner join musi on mu.mno=musi.muno
+inner join (
+  select muno, max(date) as date, if(max(date) < curdate(), '완료', '진행중') as status
+  from (
+    select mt.muno, e.eno, e.date as date
+    from mtc mt inner join evn e on (mt.eno=e.eno and e.mno=5)
+    inner join memb m on e.mno=m.mno
+  ) e
+  group by e.muno
+) e on mu.mno=e.muno
+order by e.date desc
 
 
-substring_index(group_concat(mtcno order by score desc), ',', 1) as mtcno
+
+<select id="selectList" resultMap="chatMap" parameterType="int">

@@ -8,8 +8,12 @@
     <id column="chatno" property="no"/>
     <result column="isread" property="isRead"/>
     <result column="date" property="date"/>
+    <result column="time" property="time"/>
     <result column="msg" property="message"/>
     <result column="who" property="senderNo"/>
+    <result column="edate" property="eventDate"/>
+    <result column="status" property="status"/>
+    <result column="unread" property="unread"/>
     <association property="musician" javaType='Musician'>
       <id property="no" column="musino"/>
     <result property="name" column="musiname"/>
@@ -24,16 +28,46 @@
   </resultMap>
 
 
+
+ <select id="selectList" resultMap="chatMap" parameterType="int">
+  select mu.mno as musino, musi.nick as musinick, mu.path as musiphoto,
+cast(c.date as date) as date, cast(c.date as time) as time, c.msg, e.date as edate, e.status, c.unread
+from memb mu inner join (
+  select mno, muno,
+  substring_index(group_concat(date order by date desc), ',', 1) as date,
+  substring_index(group_concat(msg order by date desc), ',', 1) as msg,
+  sum(if(isread='N', 1, 0)) as unread
+  from chat
+  group by mno, muno
+  having mno=#{no}
+) c on mu.mno=c.muno
+inner join musi on mu.mno=musi.muno
+inner join (
+  select muno, max(date) as date, if(max(date) &lt; curdate(), '완료', '진행중') as status
+  from (
+    select mt.muno, e.eno, e.date as date
+    from mtc mt inner join evn e on (mt.eno=e.eno and e.mno=#{no})
+    inner join memb m on e.mno=m.mno
+  ) e
+  group by e.muno
+) e on mu.mno=e.muno
+order by e.date desc
+ </select>
+ 
+ 
+ 
  <select id="selectChatList" resultMap="chatMap" parameterType="map">
-  select chatno, isread, date, msg, c.muno, c.mno, who,
+  select chatno, isread, cast(date as date) as date, cast(date as time) as time, msg, c.muno, c.mno, who,
 mu.mno as musino, mu.name as musiname, musi.nick as musinick, mu.path as musiphoto,
 m.mno as gmno, m.name as gmname, m.path as gmphoto
 from chat c
 inner join memb mu on c.muno=mu.mno inner join musi on mu.mno=musi.muno
 inner join memb m on c.mno=m.mno
-where c.mno=5 and c.muno=1
+where c.mno=#{mno} and c.muno=#{muno}
 order by date asc
   </select>
+  
+  
   
   <select id="selectMusiChatList" resultMap="chatMap" parameterType="map">
   select chatno, isread, date, msg, c.muno, c.mno, who,
