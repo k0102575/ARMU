@@ -256,12 +256,11 @@ a {
   right: 20%;
   margin-top: -12%;
 }
-
 .sweet-alert {
-   width: 700px !important;
-   left: 38%;
-   top: 50%;
-   height: 500px;
+  width: 700px !important;
+  left: 38%;
+  top: 50%;
+  height: 500px;
 }
 
 .sweet-alert .sa-icon .sa-warning .pulseWarning {
@@ -269,8 +268,8 @@ a {
 }
 
 .sweet-alert h2 {
-   font-size: 3em;
-   top: 10%;
+  font-size: 3em;
+  top: 10%;
 }
 
 .sweet-alert .sa-confirm-button-container {
@@ -293,20 +292,29 @@ a {
 }
 
 .sa-button-container {
-   position: absolute;
-   top: 26%;
+  position: absolute;
+  top: 26%;
   left: 27%;
 }
 
 .checkSwal > .sa-button-container {
-    position: absolute;
+   position: absolute;
   top: 20%;
   left: 39%;
 }
 
-.checkSwal > h2 {
-    font-size: 3em;
-    top: 15%;
+.checkSwal > h2  {
+	font-size: 3em;
+	top: 15%;
+	font-weight: 500;
+}
+
+.sweet-alert .sa-icon.sa-success .sa-line {
+    background-color: #8069ef;
+}
+
+.sweet-alert .sa-icon.sa-success .sa-placeholder {
+   border: 4px solid #8069ef;
 }
 
 .sweet-alert .checkSwal {

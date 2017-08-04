@@ -40,7 +40,7 @@ function updatePwd() {
       {'password':pwd.val(),
         'no': mno
       }, function(result) {
-  location.href = '/mobile/mypage/mypage.html'
+//  location.href = '/mobile/mypage/mypage.html'
   },'json')
 }
 
@@ -79,18 +79,13 @@ function checkPwd2() {
 $('#pwd-enter').on('click', function () {
   swal({
     title: "비밀번호가 변경되었습니다.",
-    type: "warning",
+    type: "success",
     showCancelButton: false,
     confirmButtonColor: "#8069ef",
     confirmButtonText: "확인",
     customClass: "checkSwal"
+  }, function() {
+    location.href = '/mobile/mypage/mypage.html'
   });
 })
-
-function delText() {
-  $('#nick').val('')
-  $('#dn').css('display','none')
-  $('#guide-no').text($('#nick').val().length+'/20')
-  $('#nick-enter').css('color','lightgray')
-}
 
