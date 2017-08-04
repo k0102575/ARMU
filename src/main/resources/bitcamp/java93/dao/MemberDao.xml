@@ -46,7 +46,7 @@
     where email=#{email} and pwd=password(#{password})
   </select>
 
- <select id="selectOne" resultMap="memberMap2">
+ <select id="selectOne" resultMap="memberMap">
     select m.mno, m.name, m.path, m.pwd, m.email, m.phone 
     from memb m
     where m.mno=#{no}
