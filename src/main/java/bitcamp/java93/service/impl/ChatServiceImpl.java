@@ -1,6 +1,7 @@
 package bitcamp.java93.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,8 @@ public class ChatServiceImpl implements ChatService {
     return chatDao.selectMusiChatList(no);
   }
   
-  public List<Chat> listChat(int no) throws Exception {
-    return chatDao.selectMusiChatList(no);
+  public List<Chat> listChat(Map<String, Object> info) throws Exception {
+    return chatDao.selectChatList(info);
   }
   
   

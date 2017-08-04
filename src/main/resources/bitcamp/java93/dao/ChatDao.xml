@@ -10,7 +10,7 @@
     <result column="date" property="date"/>
     <result column="msg" property="message"/>
     <result column="who" property="senderNo"/>
-    <association property="musician" javaType='Member'>
+    <association property="musician" javaType='Musician'>
       <id property="no" column="musino"/>
     <result property="name" column="musiname"/>
     <result property="nickName" column="musinick"/>
@@ -19,32 +19,31 @@
     <association property="writer" javaType='Member'>
       <id property="no" column="gmno"/>
     <result property="name" column="gmname"/>
-    <result property="nickName" column="gmnick"/>
     <result property="photo" column="gmphoto"/>
     </association>
   </resultMap>
 
 
- <select id="selectChatList" resultMap="chatMap" parameterType="int">
-  select  notino, n.type, n.date, n.cont, n.eno, e.title, 
-  gm.mno as gmno, gm.name as gmname, gm.path as gmphoto, 
-  n.muno as musino, m.name as musiname, m.path as musiphoto
-from noti n
-inner join memb m on n.muno=m.mno
-inner join evn e on n.eno=e.eno inner join memb gm on e.mno=gm.mno
-where gm.mno=#{no}
-order by date desc
+ <select id="selectChatList" resultMap="chatMap" parameterType="map">
+  select chatno, isread, date, msg, c.muno, c.mno, who,
+mu.mno as musino, mu.name as musiname, musi.nick as musinick, mu.path as musiphoto,
+m.mno as gmno, m.name as gmname, m.path as gmphoto
+from chat c
+inner join memb mu on c.muno=mu.mno inner join musi on mu.mno=musi.muno
+inner join memb m on c.mno=m.mno
+where c.mno=5 and c.muno=1
+order by date asc
   </select>
   
-  <select id="selectMusiChatList" resultMap="chatMap" parameterType="int">
-  select  notino, n.type, n.date, n.cont, n.eno, e.title, 
-  gm.mno as gmno, gm.name as gmname, gm.path as gmphoto, 
-  n.muno as musino, m.name as musiname, m.path as musiphoto
-from noti n
-inner join memb m on n.muno=m.mno
-inner join evn e on n.eno=e.eno inner join memb gm on e.mno=gm.mno
-where n.muno=#{no}
-order by date desc
+  <select id="selectMusiChatList" resultMap="chatMap" parameterType="map">
+  select chatno, isread, date, msg, c.muno, c.mno, who,
+mu.mno as musino, mu.name as musiname, musi.nick as musinick, mu.path as musiphoto,
+m.mno as gmno, m.name as gmname, m.path as gmphoto
+from chat c
+inner join memb mu on c.muno=mu.mno inner join musi on mu.mno=musi.muno
+inner join memb m on c.mno=m.mno
+where c.mno=#{mno} and c.muno=#{muno}
+order by date asc
   </select>
   
 </mapper>

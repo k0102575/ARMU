@@ -22,11 +22,16 @@ public class ChatControl {
   @Autowired ChatService chatService;
 
   @RequestMapping("listChat")
-  public JsonResult listChat(HttpSession session) {
+  public JsonResult listChat(int musicianNo, HttpSession session) {
     JsonResult result = new JsonResult();
-
     try {
-      List<Chat> chatList = chatService.listChat(getLoginMember(session).getNo());
+      int writerNo = getLoginMember(session).getNo();
+      System.out.println(writerNo);
+      System.out.println(musicianNo);
+      HashMap<String, Object> paramMap = new HashMap<>();
+      paramMap.put("mno", writerNo);
+      paramMap.put("muno", musicianNo);
+      List<Chat> chatList = chatService.listChat(paramMap);
 
       result.setStatus(JsonResult.SUCCESS);
 
@@ -49,7 +54,7 @@ public class ChatControl {
     JsonResult result = new JsonResult();
 
     try {
-      List<Chat> chatList = chatService.listChat(getLoginMember(session).getNo());
+      List<Chat> chatList = chatService.listMusiChat(getLoginMember(session).getNo());
 
       result.setStatus(JsonResult.SUCCESS);
 

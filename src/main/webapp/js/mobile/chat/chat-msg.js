@@ -28,7 +28,6 @@ $(document).ready(function() {
 })//$(document).ready()
 
 var myAlias = true,
-value = '',
 messageBox = $('#messageBox'),
 sendBtn = $('#send-btn'),
 msgInput = $('#msg-input'),
@@ -36,31 +35,30 @@ msgInputBox = $('.message-input-box');
 
 messageBox.scrollTop(messageBox.prop('scrollHeight'));
 
-sendBtn.on('click', function() {
-	appendChatBubble()
-})
+displayChatBubbles()
 
-msgInput.keyup(function (e) {
-	if (e.keyCode == 13) {
-		sizeUp()
-	}
-})//줄바꿈하기
+function displayChatBubbles() {
 
-function sizeUp() {
-	  msgInput.css('height', msgInput.prop('scrollHeight') + 12 + 'px');
-	  msgInputBox.css('height', msgInputBox.prop('scrollHeight') + 12 + 'px');
-	  msgInputBox.css('line-height', msgInputBox.prop('scrollHeight') + 12 + 'px');
-	}
+  $.getJSON('/chat/listChat.json', {"musicianNo": 1}, function(result) {
+    if(result.status != 'success') {
+      console.error("getJSON() 실패: ", result.status)
+      return;
+    }
+    
+    console.log(result.data)
+    $.each(result.data.listChat, function(i, item) {
+      appendChatBubble(item.message)
+    });
+    
 
-function sizeBack() {
-	msgInput.css('height', '4vh')
-	msgInputBox.css('height', '7vh')
-	msgInputBox.css('line-height', '7vh')
+  }, function(err) {
+    console.log(err)
+  })
+
 }
 
-function appendChatBubble() {
-	
-	value = msgInput.val()
+
+function appendChatBubble(value) {
 	
 	/*space나 줄바꿈만 있는 경우 버블을 추가하지 않음.*/
 	var text = value.replace(/\r?\n/g, '');
@@ -91,7 +89,6 @@ function appendChatBubble() {
 	}
 }
 
-
 function resizeMessageBoxPadding() {
 	var padding = parseFloat(messageBox.css('padding-top')) 
 	if(padding < 10 || padding == 10) return;
@@ -109,4 +106,27 @@ function resizeMessageBoxPadding() {
 	}
 	
 	messageBox.css('padding-top', result + 'px')
+}
+
+
+sendBtn.on('click', function() {
+  appendChatBubble(msgInput.val())
+})
+
+msgInput.keyup(function (e) {
+  if (e.keyCode == 13) {
+    sizeUp()
+  }
+})//줄바꿈하기
+
+function sizeUp() {
+    msgInput.css('height', msgInput.prop('scrollHeight') + 12 + 'px');
+    msgInputBox.css('height', msgInputBox.prop('scrollHeight') + 12 + 'px');
+    msgInputBox.css('line-height', msgInputBox.prop('scrollHeight') + 12 + 'px');
+  }
+
+function sizeBack() {
+  msgInput.css('height', '4vh')
+  msgInputBox.css('height', '7vh')
+  msgInputBox.css('line-height', '7vh')
 }

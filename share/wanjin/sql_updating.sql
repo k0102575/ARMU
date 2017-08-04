@@ -259,6 +259,21 @@ order by mu.muno desc
 select mtcno, e.mno, e.eno,title, muno, mtcdt from mtc inner join evn e on mtc.eno=e.eno order by mtcdt asc;
 
 
--- 채팅 리스트 가져오기
-select chatno, isread, date, msg, muno, mno, who
-from chat
+-- 특정 회원과 뮤지션의 채팅내역 가져오기
+select chatno, isread, date, msg, c.muno, c.mno, who,
+mu.mno as musino, mu.name as musiname, musi.nick as musinick, mu.path as musiphoto,
+m.mno as gmno, m.name as gmname, m.path as gmphoto
+from chat c
+inner join memb mu on c.muno=mu.mno inner join musi on mu.mno=musi.muno
+inner join memb m on c.mno=m.mno
+where c.mno=5 and c.muno=1
+order by date asc
+
+
+-- 특정 회원의 전체 채팅 목록 가져오기
+select c.mno, group_concat(c.muno) as musino
+from chat c
+group by c.mno
+
+
+substring_index(group_concat(mtcno order by score desc), ',', 1) as mtcno
