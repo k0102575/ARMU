@@ -31,11 +31,10 @@ public class MemberServiceImpl implements MemberService {
   public Member getProfile(Member member) throws Exception {
     return memberDao.selectOne(member); 
   }
-   
-  public void updateNick(Member member) throws Exception {
-    memberDao.updateNick(member);
+  public Member getProfile2(Member member) throws Exception {
+    return memberDao.selectMusi(member); 
   }
-  
+   
   public void updatePwd(Member member) throws Exception {
     memberDao.updatePwd(member);
   }

@@ -228,6 +228,12 @@ public class MusicianControl {
     Member loginMember = (Member) session.getAttribute("loginMember");
     return loginMember;
   }
+  
+  @RequestMapping("updateNick")
+  public JsonResult updateNick(Member member) throws Exception {
+    musicianService.updateNick(member);
+    return new JsonResult(JsonResult.SUCCESS, "ok");
+  }
 
 }
 

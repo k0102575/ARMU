@@ -2,6 +2,7 @@ package bitcamp.java93.service;
 
 import java.util.List;
 
+import bitcamp.java93.domain.Member;
 import bitcamp.java93.domain.Musician;
 
 public interface MusicianService {
@@ -19,6 +20,7 @@ public interface MusicianService {
   Musician getPortfolio(int no) throws Exception;
   List<Musician> searchMusician(int no, String location) throws Exception;
 //  void updatePhoto(int no, String photoPath) throws Exception;
+  void updateNick(Member member) throws Exception;
 }
 
 

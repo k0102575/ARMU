@@ -307,6 +307,12 @@
   AND g.name=case when g.name = '' then 'CCM' else 'CCM' end
   </select>
    
+   
+     <update id="updateNick" parameterType="musician">
+    update musi set 
+      nick=#{nickName}
+    where muno=#{no}
+  </update>
 </mapper>
 
 

@@ -13,6 +13,16 @@
     <result column="email" property="email"/>
     <result column="path" property="photo"/>
   </resultMap>
+  
+  <resultMap type="musician" id="memberMap2">
+    <id column="mno" property="no"/>
+    <result column="name" property="name"/>
+    <result column="phone" property="phone"/>
+    <result column="pwd" property="password"/>
+    <result column="email" property="email"/>
+    <result column="path" property="photo"/>
+    <result column="nick" property="nickName"/>
+  </resultMap>
 
   <sql id="select1">
     select mno, name, phone, email 
@@ -36,17 +46,20 @@
     where email=#{email} and pwd=password(#{password})
   </select>
 
-  <select id="selectOne" resultMap="memberMap">
-    select mno, name, path, pwd, email,phone from memb
-    where mno=#{no}
+ <select id="selectOne" resultMap="memberMap2">
+    select m.mno, m.name, m.path, m.pwd, m.email, m.phone 
+    from memb m
+    where m.mno=#{no}
   </select>
 
-  
-  <update id="updateNick" parameterType="member">
-    update memb set 
-      nick=#{nickName}
-    where mno=#{no}
-  </update>
+  <select id="selectMusi" resultMap="memberMap2">
+    select m.mno, m.name, m.path, m.pwd, m.email, m.phone, mu.nick 
+    from memb m
+    inner join musi mu
+    on m.mno=mu.muno
+    where m.mno=#{no}
+  </select>
+
   
   <update id="updatePwd" parameterType="member">
     update memb set 

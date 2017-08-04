@@ -96,6 +96,10 @@ public class MusicianServiceImpl implements MusicianService {
   public List<Musician> listPopular() throws Exception {
     return musicianDao.selectPopularList();
   }
+  
+  public void updateNick(Member member) throws Exception {
+    musicianDao.updateNick(member);
+  }
 
 }
 

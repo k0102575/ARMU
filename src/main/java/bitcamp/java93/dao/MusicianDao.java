@@ -3,6 +3,7 @@ package bitcamp.java93.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import bitcamp.java93.domain.Member;
 import bitcamp.java93.domain.Musician;
 
 public interface MusicianDao {
@@ -19,4 +20,5 @@ public interface MusicianDao {
   Musician selectMusiIntroduce(int no);
   Musician selectMusiPortfolio(int no);
   List<Musician> musicianSearch(HashMap<String,Object> valueMap);
+  void updateNick(Member member);
 }

@@ -1,39 +1,43 @@
 
 'use strict'
 
-
-
-var a= $('#pwd01'),
-      b= $('#pwd02')
-$('#cp-change').on('click',function() {
-  if(a.val() != b.val()){
-    alert('비밀번호가 맞지 않습니다.')
-  } else {
-    alert('변경 되었습니다.')
-  }
-})
-
-
 var mno;
-displayProfile()
-function displayProfile() {
-  $.getJSON('/member/getProfile.json', function(result) {
-
+$( document ).ready(function() {
+    $.getJSON('/member/getMusiProfile.json', function(result) {
     if(result.status != 'success') {
       console.error("getJSON() 실패: ", result.status)
       return;
     }
-
-    if(result.data == "browse") {
-//    hideRecommandList()
-      return;
-    }//받아온 데이터가 없는 경우
-
+    if(result.data.profile==undefined){
+      displayProfile()
+    }
     var templateFn = Handlebars.compile($('#profile-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#profile-container')
     var html = container.html()
     container.html(html + generatedHTML)
+    return mno=result.data.profile.no
+  }, function(err) {
+    console.log(err)
+  })
+  
+});
+
+
+
+function displayProfile() {
+$.getJSON('/member/getProfile.json', function(result) {
+    
+    if(result.status != 'success') {
+      console.error("getJSON() 실패: ", result.status)
+      return;
+    }
+    var templateFn = Handlebars.compile($('#profile-template').text())
+    var generatedHTML = templateFn(result.data)
+    var container = $('#profile-container')
+    var html = container.html()
+    container.html(html + generatedHTML)
+    $('.pen').css('display','none')
     return mno=result.data.profile.no
   }, function(err) {
     console.log(err)

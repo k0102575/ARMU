@@ -47,10 +47,41 @@ public class MemberControl {
 
     JsonResult result = new JsonResult();
     Member loginMember = (Member)session.getAttribute("loginMember");
-
+    System.out.println(loginMember);
     if(loginMember != null) {
       try {
         Member memberProfile = memberService.getProfile(loginMember);
+
+        //       if(musicianList == null) {
+        //         result.setStatus(JsonResult.FAIL);
+        //       } else {
+        //       }
+
+        result.setStatus(JsonResult.SUCCESS);
+
+        HashMap<String,Object> dataMap = new HashMap<>();
+        dataMap.put("profile", memberProfile);
+
+        result.setData(dataMap);
+      } catch (Exception e) {
+        result.setStatus(JsonResult.ERROR);
+      }
+    } else {//loginMember가 없으면
+      result.setStatus(JsonResult.SUCCESS);
+      result.setData("browse");
+    }
+    return result;
+  }
+  
+  @RequestMapping("getMusiProfile")
+  public JsonResult getProfile2(HttpSession session){
+
+    JsonResult result = new JsonResult();
+    Member loginMember = (Member)session.getAttribute("loginMember");
+
+    if(loginMember != null) {
+      try {
+        Member memberProfile = memberService.getProfile2(loginMember);
 
         //       if(musicianList == null) {
         //         result.setStatus(JsonResult.FAIL);
@@ -75,11 +106,6 @@ public class MemberControl {
 
   }
    
-  @RequestMapping("updateNick")
-  public JsonResult updateNick(Member member) throws Exception {
-    memberService.updateNick(member);
-    return new JsonResult(JsonResult.SUCCESS, "ok");
-  }
   
   @RequestMapping("updatePwd")
   public JsonResult updatePwd(Member member) throws Exception {
