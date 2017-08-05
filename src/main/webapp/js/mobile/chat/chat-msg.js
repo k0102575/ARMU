@@ -25,6 +25,7 @@ $(document).ready(function() {
 			window.location.href = url;
 		}
 	});
+	
 })//$(document).ready()
 
 var messageBox = $('#messageBox'),
@@ -44,6 +45,7 @@ displayChatBubbles()
 
 
 
+
 function displayChatBubbles() {
 
   $.getJSON('/chat/listChat.json', {"musicianNo": musicianNo}, function(result) {
@@ -51,7 +53,8 @@ function displayChatBubbles() {
       console.error("getJSON() 실패: ", result.status)
       return;
     }
-    console.log(result.data)
+    var msgBoxPadding = parseFloat(messageBox.css('padding-top')) - parseFloat(msgInput.css('height'))
+    messageBox.css('padding-top', msgBoxPadding)
     $.each(result.data.listChat, function(i, item) {
       appendChatBubble(item.message, item.senderNo != musicianNo)
       
@@ -85,12 +88,15 @@ function appendChatBubble(value, myAlias) {
 	sizeBack()
 	
 	resizeMessageBoxPadding()
+
 	messageBox.scrollTop(messageBox.height())
+	
 
 }
 
 function resizeMessageBoxPadding() {
 	var padding = parseFloat(messageBox.css('padding-top')) 
+	
 	if(padding < 10 || padding == 10) return;
 	
 	var lastBalloon = $('.chat-balloon:last')
@@ -99,6 +105,7 @@ function resizeMessageBoxPadding() {
 							+ parseFloat(lastBalloon.css('margin-bottom'))
 							+ parseFloat(lastBalloon.css('padding-top'))
 							+ parseFloat(lastBalloon.css('padding-bottom'));
+	
 	
 	var result = padding - totalBalloonHeight;
 	if(result < 10) {
@@ -117,6 +124,7 @@ msgInput.keyup(function (e) {
   if (e.keyCode == 13) {
     sizeUp()
   }
+  e.preventDefault()
 })//줄바꿈하기
 
 function sizeUp() {
