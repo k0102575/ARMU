@@ -307,9 +307,8 @@
   AND g.name=case when g.name = '' then 'CCM' else 'CCM' end
   </select>
    
-   
   <insert id="insert" parameterType="musician" 
-          useGeneratedKeys="true" keyColumn="muno" keyProperty="no">
+          useGeneratedKeys="true" keyColumn="mno" keyProperty="no">
     insert into musi(muno, team, age, hpg, intro, gender, nick) 
     values(#{no},#{isTeam},#{age},#{homepage},#{intro},#{gender},#{nickName})
   </insert>

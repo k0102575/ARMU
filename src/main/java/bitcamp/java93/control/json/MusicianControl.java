@@ -263,8 +263,6 @@ public class MusicianControl {
     musician.setLocationList(addLocationList);
     musician.setNo(getLoginMember(session).getNo());
     
-    System.out.println(musician);
-    
     try {
       musicianService.add(musician);
       categoryService.addMusiCategory(musician); 

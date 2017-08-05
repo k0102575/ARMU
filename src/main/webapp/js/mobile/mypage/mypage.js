@@ -51,7 +51,6 @@ $(document.body).on('click', '#logout-link', function(event) {
   })
 })
 
-
 var fiFilenames = $('#fi-filenames');
 $('#fi-photoupload').fileupload({
   url: '/member/updatePhoto.json',

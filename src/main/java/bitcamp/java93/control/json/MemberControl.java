@@ -144,19 +144,30 @@ public class MemberControl {
     return new JsonResult(JsonResult.SUCCESS, fileList);
   }
   
-  @RequestMapping("signUpPhoto")
-  public JsonResult signUpPhoto(MultipartFile[] files) throws Exception {
-
+  @RequestMapping("signupPhoto")
+  public JsonResult signupPhoto(MultipartFile[] files) throws Exception {
     ArrayList<Object> fileList = new ArrayList<>();
     for (int i = 0; i < files.length; i++) {
       if (files[i].isEmpty()) 
         continue;
 
       String filename = getNewFilename();
-      File file =new File(servletContext.getRealPath("/image/musician/photo/" + filename));
-      System.out.println(file);
+      File file =new File(servletContext.getRealPath("/image/profile/" + filename));
       files[i].transferTo(file);
-      fileList.add(filename);
+      
+      File thumbnail = new File(servletContext.getRealPath("image/profile/" + filename + "_80"));
+      Thumbnails.of(file).size(80, 80).outputFormat("png").toFile(thumbnail);
+      
+      thumbnail = new File(servletContext.getRealPath("image/profile/" + filename + "_140"));
+      Thumbnails.of(file).size(140, 140).outputFormat("png").toFile(thumbnail);
+      
+      thumbnail = new File(servletContext.getRealPath("image/profile/" + filename + "_300"));
+      Thumbnails.of(file).size(300, 300).outputFormat("png").toFile(thumbnail);
+      
+      HashMap<String,Object> fileMap = new HashMap<>();
+      fileMap.put("filename", filename);
+      fileMap.put("filesize", files[i].getSize());
+      fileList.add(fileMap);
     }
     return new JsonResult(JsonResult.SUCCESS, fileList);
   }
