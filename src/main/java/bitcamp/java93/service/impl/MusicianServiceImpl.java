@@ -102,44 +102,12 @@ public class MusicianServiceImpl implements MusicianService {
     musicianDao.insert(musician);
   }
   
-  public  void RegistEventCategory(Musician musician) throws Exception {   
-    this.registCategory(musician.getNo(), musician.getThemeList(), musician.getMajorList(), musician.getGenreList(), musician.getLocationList());
-  }
-  
-  
-  private void registCategory(int musiNo, List<String> themeList, List<String> majorList, List<String> genreList, List<String> locationList) {
-    HashMap<String,Object> themeMap = new HashMap<>();
-    HashMap<String,Object> majorMap = new HashMap<>();
-    HashMap<String,Object> genreMap = new HashMap<>();
-    HashMap<String,Object> locationMap = new HashMap<>();
-    
-    themeMap.put("musiNo", musiNo);
-    majorMap.put("musiNo", musiNo);
-    genreMap.put("musiNo", musiNo);
-    locationMap.put("musiNo", musiNo);
-    /*
-    for (String musiTheme : themeList) {
-      themeMap.put("musiTheme", musiTheme);
-      musicianDao.hopeTheme(themeMap);
-    }
-    
-    for (String musiMajor : majorList) {
-      majorMap.put("musiMajor", musiMajor);
-      musicianDao.hopeMajor(majorMap);
-    }
-    
-    for (String musiGenre : genreList) {
-      genreMap.put("musiGenre", musiGenre);
-      musicianDao.hopeGenre(genreMap);
-    }
-    
-    for (String musiLocation : locationList) {
-      genreMap.put("musiLocation", musiLocation);
-      musicianDao.hopeLocation(genreMap);
-    }*/
-  }
   public void updateNick(Member member) throws Exception {
     musicianDao.updateNick(member);
+  }
+  
+  public Musician getByMuno(int no) throws Exception {
+    return musicianDao.selectMusiNo(no);
   }
 
 }

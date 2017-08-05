@@ -109,6 +109,26 @@ limit 10
 
 </select><!-- 완진 -->
 
+<insert id="themeMusi" parameterType="map">
+  insert into thm_musi(muno, thmno) 
+  values(#{musiNo}, #{musiTheme})
+</insert><!-- 승민 -->
+
+<insert id="majorMusi" parameterType="map">
+  insert into mjr_musi(muno, mjrno) 
+  values(#{musiNo}, #{musiMajor})
+</insert><!-- 승민 -->
+
+<insert id="genreMusi" parameterType="map">
+  insert into gnr_musi(muno, gnrno) 
+  values(#{musiNo}, #{musiGenre})
+</insert><!-- 승민 -->
+
+<insert id="locationMusi" parameterType="map">
+  insert into loc_musi(muno, locno) 
+  values(#{musiNo}, #{musiLocation})
+</insert><!-- 승민 -->
+
 </mapper>
 
 

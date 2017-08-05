@@ -11,6 +11,7 @@
 <link href="/css/mobile/common.css" rel="stylesheet" type="text/css" media="all">
 <link href="/css/mobile/header.css" rel="stylesheet" type="text/css" media="all">
 <link href="/css/musi_signup.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/alert.css" rel="stylesheet" type="text/css" media="all">
 <script src="/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
 <script src="/node_modules/sweetalert/dist/sweetalert.min.js"></script>
@@ -54,7 +55,7 @@
   <div id="signup-page2">
   
   <div id="signup-page2-age-text">연령을 입력하세요</div>
-  <input type="text" id="musi-age">
+  <input type="number" id="musi-age">
   
   <div class="signup-page2-gender">
   <input id="toggle-on" class="toggle toggle-left" name="gender-toggle" value="M" type="radio">
@@ -298,6 +299,30 @@
 <!-- 회원가입 페이지5 끝 : 회원가입 확인 끝 -->
 
 </div> <!-- container -->
+
+<div id="member-backscreen"></div>
+  <div id="member-toggle">
+    <div id='member-contents'>
+    
+    <div id="member-text">
+    <br>
+    뮤지션 회원가입을 축하합니다
+    </div> <!-- member-text -->
+    <div id="musician-text">
+    <br>
+    뮤지션으로 회원가입을 원하시면<br>
+    뮤지션 회원가입을 눌러주세요
+    </div> <!-- musician-text -->
+    
+    <div id="btnDiv">
+    <a href="/mobile/gmode/index.html" class="login-btn btn" type="button">홈 화면으로</a>
+    </div> <!-- btnDiv -->
+    
+    </div>
+    <!-- menu-contents -->
+  </div>
+  <!-- menu-toggle -->
+  <!-- menu slider ended -->
 
 <script src="/js/musi_signup.js"></script>
 

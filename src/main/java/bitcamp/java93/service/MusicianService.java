@@ -23,6 +23,7 @@ public interface MusicianService {
   /*  void musicianAddHope(Musician musician) throws Exception;*/
 //  void updatePhoto(int no, String photoPath) throws Exception;
   void updateNick(Member member) throws Exception;
+  Musician getByMuno(int no) throws Exception;
 }
 
 

@@ -31,7 +31,6 @@ function displayMusiInfo() {
       { 
         "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {
-        console.log(result)
       var data = result.data.musician
       musicianInfoNickName.text(data.nickName)
       musicianHeaderInfoImg.attr("src", data.photo)
@@ -47,20 +46,40 @@ function displayMusiInfo() {
       }
       
       $("#musician-basic-info-favor").on("click", function() {
-        $.post('/musician/favorAdd.json', {
-          'no': location.href.split('?')[1].split('=')[1]
-        }, function(result) {
-          swal({
-            title: "관심뮤지션 리스트에 \n\n뮤지션이 추가되었습니다!",
-            type: "success",
-            showCancelButton: false,
-            confirmButtonColor: "#8069ef",
-            confirmButtonText: "확인",
-            customClass: "checkSwal"
-          },function() {
-            location.reload()
-          });
-        }, 'json')
+        if(data.fav == 0) {
+          $.post('/musician/favorAdd.json', {
+            'no': location.href.split('?')[1].split('=')[1]
+          }, function(result) {
+            swal({
+              title: "관심뮤지션 리스트에 \n\n뮤지션이 추가되었습니다!",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#8069ef",
+              confirmButtonText: "확인",
+              customClass: "checkSwal"
+            },function() {
+              location.reload()
+            });
+          }, 'json')
+        } else if (data.fav == 1) {
+          $.post('/musician/favorRemove.json', {
+            "no" : location.href.split('?')[1].split('=')[1]
+          }, function(result) {
+            swal({
+              title: "관심뮤지션 리스트에서 \n\n뮤지션이 삭제되었습니다!",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#8069ef",
+              confirmButtonText: "확인",
+              customClass: "checkSwal"
+            },function() {
+              location.reload()
+            });
+          }, 'json')
+          
+        }
+        
+
       })
       
       if(data.fav == 1) {

@@ -123,7 +123,34 @@
 	})
 	
 	$('#go-musimode-btn').on('click', function() {
-		location.href = '/mobile/musimode/index.html'
+	  
+	  $.getJSON('/auth/checkMusi.json', function(result) {
+	    if(result.data == "musician") {
+	      location.href ='/mobile/musimode/index.html'
+	    }
+	    
+	    if(result.data == 'member') {
+	      swal({
+	        title: "뮤지션회원이 아닙니다 \n\n" +
+	            "뮤지션으로 가입하시겠어요?",
+	        type: "warning",
+	        showCancelButton: true,
+	        confirmButtonColor: "#8069ef",
+	        confirmButtonText: "네",
+	        closeOnConfirm: false,
+	        cancelButtonText: "아니요"
+	      },
+	      function(){
+	        location.href = "/mobile/musi_signup.html"
+	      });
+	    }
+	    
+	    
+	    
+	  }, function(err) {
+	    console.log(err)
+	  })
+	  
 	})
 	
 	 $.getJSON('/auth/userinfo.json', function(result) {

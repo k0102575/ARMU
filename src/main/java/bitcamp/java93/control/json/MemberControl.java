@@ -8,9 +8,11 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import bitcamp.java93.domain.Member;
@@ -19,27 +21,26 @@ import net.coobird.thumbnailator.Thumbnails;
 
 @RestController
 @RequestMapping("/member/")
+@SessionAttributes({"loginMember"})
 public class MemberControl {
   
   @Autowired ServletContext servletContext;
   @Autowired MemberService memberService;
   
   @RequestMapping("add")
-  public JsonResult add(Member member) throws Exception {
+  public JsonResult add(Member member,HttpSession session, Model model) throws Exception {
     
-    
-    JsonResult result = new JsonResult();
-    
-    try {
-      memberService.add(member);
+    memberService.add(member);
 
+    if (member != null) { 
+      model.addAttribute("loginMember", member);
+      
       return new JsonResult(JsonResult.SUCCESS, "ok");
-       
-    } catch (Exception e) {
-      result.setStatus(JsonResult.ERROR);
+      
+    }else {
+      return new JsonResult(JsonResult.FAIL, "fail");
     }
     
-    return result;
   }
   
   @RequestMapping("getProfile")

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import bitcamp.java93.domain.Member;
 import bitcamp.java93.domain.Musician;
+import bitcamp.java93.service.CategoryService;
 import bitcamp.java93.service.MusicianService;
 
 @RestController
@@ -23,6 +24,7 @@ public class MusicianControl {
 
   @Autowired ServletContext servletContext;
   @Autowired MusicianService musicianService;
+  @Autowired CategoryService categoryService;
 
   @RequestMapping("listRecommand")
   public JsonResult list(HttpSession session) {
@@ -226,9 +228,9 @@ public class MusicianControl {
   
   
   @RequestMapping("add")
-  public void add(Musician musician, String musicianAddTheme, String musicianAddMajor,
+  public JsonResult add(Musician musician, String musicianAddTheme, String musicianAddMajor,
     String musicianAddGenre, String musicianAddLocation, HttpSession session) throws Exception {
-
+    
     String[] themeList = musicianAddTheme.split(",");
     String[] majorList = musicianAddMajor.split(",");
     String[] genreList = musicianAddGenre.split(",");
@@ -261,15 +263,17 @@ public class MusicianControl {
     musician.setLocationList(addLocationList);
     musician.setNo(getLoginMember(session).getNo());
     
-/*    try {
+    System.out.println(musician);
+    
+    try {
       musicianService.add(musician);
+      categoryService.addMusiCategory(musician); 
       return new JsonResult(JsonResult.SUCCESS, "ok");
       
     } catch (Exception e) {
       return new JsonResult(JsonResult.FAIL, "fail");
-    }*/
-/*    musicianService.musicianAddHope(musician); 
-*/  }
+    }
+  }
 
   private Member getLoginMember(HttpSession session) {
     Member loginMember = (Member) session.getAttribute("loginMember");

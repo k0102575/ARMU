@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import bitcamp.java93.domain.Member;
+import bitcamp.java93.domain.Musician;
 import bitcamp.java93.service.MemberService;
+import bitcamp.java93.service.MusicianService;
 
 @RestController
 @RequestMapping("/auth/")
@@ -19,6 +21,8 @@ import bitcamp.java93.service.MemberService;
 public class AuthControl {
   @Autowired
   MemberService memberService;
+  @Autowired
+  MusicianService musicianService;
 
   @RequestMapping(path="login", method=RequestMethod.POST)
   public JsonResult login(String email, String password, HttpSession session, Model model) throws Exception {
@@ -58,6 +62,22 @@ public class AuthControl {
   public JsonResult browse(HttpSession session, Model model) throws Exception {
     return new JsonResult(JsonResult.SUCCESS, "browse");
   }
+  
+  @RequestMapping("checkMusi")
+  public JsonResult logout(HttpSession session) throws Exception {
+    
+    Member loginMember = (Member) session.getAttribute("loginMember");
+    
+    Musician musician = musicianService.getByMuno(loginMember.getNo());
+    
+    if(musician != null) {
+      return new JsonResult(JsonResult.SUCCESS, "musician");
+    }
+    
+    return new JsonResult(JsonResult.SUCCESS, "member");
+    
+  }
+  
 }
 
 

@@ -1,0 +1,33 @@
+<link rel="stylesheet" type="text/css" href="/node_modules/sweetalert/dist/sweetalert.css">
+<link href="/css/alert.css" rel="stylesheet" type="text/css" media="all">
+
+<script src="/node_modules/sweetalert/dist/sweetalert.min.js"></script>
+
+
+버튼 2개짜리 js
+
+swal({
+    title: "입력하신 정보가 사라집니다 \n\n" +
+        "취소하시겠습니까?",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#8069ef",
+    confirmButtonText: "네",
+    closeOnConfirm: false,
+    cancelButtonText: "아니요"
+  },
+  function(){
+  
+});
+
+
+버튼 1개짜리 js
+
+swal({
+  title: "테마를 선택 하세요!",
+  type: "warning",
+  showCancelButton: false,
+  confirmButtonColor: "#8069ef",
+  confirmButtonText: "확인",
+  customClass: "checkSwal"
+});

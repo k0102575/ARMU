@@ -308,7 +308,7 @@
   </select>
    
    
-     <insert id="insert" parameterType="musician" 
+  <insert id="insert" parameterType="musician" 
           useGeneratedKeys="true" keyColumn="muno" keyProperty="no">
     insert into musi(muno, team, age, hpg, intro, gender, nick) 
     values(#{no},#{isTeam},#{age},#{homepage},#{intro},#{gender},#{nickName})
@@ -319,6 +319,12 @@
       nick=#{nickName}
     where muno=#{no}
   </update>
+  
+  <select id="selectMusiNo" parameterType="int" resultMap="musicianInfoMap">
+    SELECT * FROM musi 
+    WHERE muno LIKE CONCAT('%', #{no}, '%')
+  </select>
+  
 </mapper>
 
 
