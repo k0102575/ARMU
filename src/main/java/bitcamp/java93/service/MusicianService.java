@@ -15,6 +15,7 @@ public interface MusicianService {
   List<Musician> listSurf(int no) throws Exception;
   List<Musician> listSurfFilter(String gender, int minAge, int maxAge) throws Exception;
   Musician get(int myNo, int muNo) throws Exception;
+  Musician getMyPortfolio(int myNo) throws Exception;
   List<Musician> listReview(int no) throws Exception;
   Musician getIntroduce(int no) throws Exception;
   Musician getPortfolio(int no) throws Exception;

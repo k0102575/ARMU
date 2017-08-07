@@ -61,19 +61,25 @@
           <input type="text" class="phone-input" placeholder="휴대폰 번호">
           <p class="phone-input-check check">휴대폰 번호를 입력해 주세요</p>
         </div>
-        <div>
+        <input type="text" class="photo-input" placeholder="프로필 사진">
+        
+        <div id="photo-container">
+        <div class="filebox">
+        <label for="fi-photoupload">+</label> 
           <input id="fi-photoupload" type="file" class="form-control upload"  name="files"> 
+           </div>
           <input id="fi-filenames" type="hidden" name="filenames">
           <div id="profile-img"></div>
+          <button type="button" class="signup-btn">회원 가입</button>
+					 <div id="consent-menu">
+					 이용 약관/개인정보 보호 방침
+					 </div> <!-- consent-menu -->
         </div>
-        <button type="button" class="signup-btn">회원 가입</button>
       </form>
+      
     </div>
     <!-- login -->
     
-    <div id="consent-menu">
-    이용 약관/개인정보 보호 방침
-    </div> <!-- consent-menu -->
     
   </div>
   <!-- container -->

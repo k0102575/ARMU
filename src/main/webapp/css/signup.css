@@ -13,7 +13,7 @@ body {
 }
 
 #container {
-  height: 1550px;
+  height: 100vh;
   width: 100%;
   position: relative;
 }
@@ -24,7 +24,7 @@ body {
   width: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url("/image/background/mobile_intro_index.jpg");
-  height: 100%;
+  height: 100vh;
   width: 100%;
   background-size: cover;
    -webkit-filter: blur(50px);
@@ -34,10 +34,7 @@ body {
   filter: blur(5px); 
 }
 
-<!-- 뒤로가기 시작 -->
-.prev-btn {
-  
-}
+/* 뒤로가기 시작 */
 
 #prev-page {
   position: absolute;
@@ -46,10 +43,9 @@ body {
   width: 60px;
 }
 
-<!-- 뒤로가기 끝 -->
-<!--헤더 시작 -->
-#header {
-}
+/* 뒤로가기 끝 */
+
+/* 헤더 시작 */
 
 #header {
   position: absolute;
@@ -69,12 +65,9 @@ body {
   font-weight: 200;
 }
 
-<!-- 헤더 끝 -->
+/* 헤더 끝 */
 
-<!--회원가입 시작 -->
-#signup {
-  
-}
+/* 회원가입 시작 */
 
 ::-webkit-input-placeholder { /* Chrome */
   color: white;
@@ -185,15 +178,11 @@ body {
   color: white;
 }
 
-#fi-photoupload {
-	
-}
-
-#fi-photoupload {
-	height: 120px;
-  width: 40%;
+.photo-input {
+  height: 120px;
+  width: 80%;
   position: absolute;
-  top: 73%;
+  top: 65%;
   left: 10%;
   font-size: 2em;
   font-weight: 400;
@@ -206,15 +195,22 @@ body {
   color: white;
 }
 
-#profile-img {
+#fi-photoupload {
+height: 120px;
+    width: 40%;
+    font-size: 2em;
+    font-weight: 400;
+    box-sizing: border-box;
+    background-color: black;
+    border: 0px;
+    border-radius: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    padding-top: 50px;
+    color: white;
 }
 
 #profile-img {
-  height: 300px;
-  width: 630px;
-  position: absolute;
-  top: 67%;
-  right: 10%;
+  width: 800px;
   font-size: 2em;
   font-weight: 400;
   box-sizing: border-box;
@@ -222,42 +218,40 @@ body {
   border-radius: 0px;
   color: white;
   background-repeat: no-repeat;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  border-radius: 15px;
 }
 
 .signup-btn {
-  position: absolute;
-  height: 95px;
-  width: 65%;
-  left: 10%;
-  transform: translateX(10%);
-  font-size: 200%;
-  font-weight: 400;
-  text-align: center;
-  border-radius: 50px;
-  line-height: 95px;
-  box-sizing: border-box;
-  bottom: 7%;
-  color: white;
-  border: 1.5px solid white;
-  background: rgba(0, 0, 0, 0);``
+    height: 95px;
+    width: 65%;
+    margin-left: 5%;
+    transform: translateX(10%);
+    font-size: 200%;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 50px;
+    line-height: 95px;
+    box-sizing: border-box;
+    bottom: 7%;
+    color: white;
+    border: 1.5px solid white;
+    background: rgba(0, 0, 0, 0);
 }
 
 #consent-menu {
-  position: absolute;
-  bottom: 2%;
-  left: 30%;
+  margin-left: 23%;
+  margin-top: 4%;
   color: white;
   font-size: 2em;
   font-weight: 400;
+margin-bottom: 10%;
 }
 
-<!-- 회원가입 끝 --> 
+/* 회원가입 끝 */
 
-<!-- 입력 체크 시작 -->
-
-.check {
-
-}
+/* 입력체크 시작 */
 
 .email-input-check {
   position: absolute;
@@ -319,17 +313,12 @@ body {
   display: none;
 }
 
-<!-- 입력 체크 끝 -->
+/* 입력 체크 끝 */
 
-
-<!-- 회원가입 버튼 시작 -->
-
-#member-backscreen {
-
-}
+/* 회원가입 버튼 시작 */
 
 #member-toggle {
-  position: absolute;
+  position: fixed;
   display: none;
   top: 0%;
   height: 100vh;
@@ -361,9 +350,6 @@ body {
   color: white;
 }
 
-#btnDiv{
-}
-
 .btn {
   position: absolute;
   height: 95px;
@@ -393,33 +379,40 @@ body {
   /* background-color: White; */
 }
 
-<!-- 회원가입 버튼 끝 -->
+/* 회원가입 버튼 끝 */
 
-/* 스마트폰 (가로 및 세로) ----------- */
-@media only screen and (min-device-width : 320px) and (max-device-width
-  : 480px) {
-}
-/*------- 스마트폰에서 아이폰 사이 ---------*/
-@media only screen and (min-device-width : 481px) and (max-device-width
-  : 767px) {
-}
-
-/* 아이패드 (가로 및 세로) -----------*/
-@media only screen and (min-device-width : 768px) and (max-device-width
-  : 1223px) {
+#photo-container {
+  position: absolute;
+  width: 100%;
+  min-height: 500px;
+  top: 63%;
+  padding-left: 10%;
+  box-sizing: border-box;
+  padding-top: 9%;
 }
 
-/*------데탑!!!!!!!!----------
-/*----- 노트북/pc중간 스크린----
-@media only screen and (min-width : 1224px) and (max-device-width : 1823px) {
-body {
-color: aqua;
-}
-}
-/* 대형 스크린 -----------
-@media only screen and (min-width : 1824px) {
-body {
-color: orange;
-}
-}
-*/
+/* 파일 업로드 시작*/
+
+.filebox label { 
+  height: 55px;
+  width: 55px;
+  margin-left: 20%;
+  transform: translateX(10%);
+  font-size: 300%;
+  font-weight: 400;
+  text-align: center;
+  border-radius: 50px;
+  line-height: 43px;
+  box-sizing: border-box;
+  display: inline-block;
+  color: white;
+  border: 1.5px solid white;
+  background: rgba(0, 0, 0, 0);
+	 } 
+	
+	
+.filebox input[type="file"] { /* 파일 필드 숨기기 */ position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0; }
+
+
+/* 파일 업로드 끝 */
+

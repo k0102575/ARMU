@@ -67,6 +67,11 @@ public class MusicianServiceImpl implements MusicianService {
   }
   
   @Override
+  public Musician getMyPortfolio(int myNo) throws Exception {
+    return musicianDao.myMusiInfo(myNo);
+  }
+  
+  @Override
   public List<Musician> listReview(int no) throws Exception {
     return musicianDao.selectMusiReview(no);
   }

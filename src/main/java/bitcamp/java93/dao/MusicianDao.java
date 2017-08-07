@@ -16,6 +16,7 @@ public interface MusicianDao {
   List<Musician> surfList(int no);
   List<Musician> selectSurfListFilter(HashMap<String,Object> valueMap);
   Musician selectMusi(HashMap<String, Object> valueMap);
+  Musician myMusiInfo(int myNo);
   List<Musician> selectMusiReview(int no);
   Musician selectMusiIntroduce(int no);
   Musician selectMusiPortfolio(int no);

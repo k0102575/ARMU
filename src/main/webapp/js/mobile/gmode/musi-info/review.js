@@ -18,7 +18,7 @@ function displayMusiInfoReview() {
           
           var totalCount = result.data.musicianReview[0].count
               score = 0;
-          $(".review-header").text("진행/완료된 이벤트  "+ count +"개")
+          $(".review-header").text("진행/완료된 이벤트  "+ totalCount +"개")
           
           var templateFn = Handlebars.compile($('#musician-info-review-template').text())
           var generatedHTML = templateFn(result.data)

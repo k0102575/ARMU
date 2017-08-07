@@ -106,7 +106,7 @@ $(document).ready(function() {
 
 pageCancelBtn.on('click', function() {
   swal({
-    title: "입력하신 정보가 사라집니다 \n\n" +
+    title: "입력하신 정보가 사라집니다. \n\n" +
     		"취소하시겠습니까?",
     type: "warning",
     showCancelButton: true,

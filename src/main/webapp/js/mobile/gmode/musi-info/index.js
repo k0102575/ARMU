@@ -158,11 +158,24 @@ musicianInfoReviewBtn.on('click', function() {
 function matchRequest() {
   $.getJSON('/event/checkEvent.json',
   function(result) {
+    if(result.data.eventList.length == 0 ) {
+      var templateFn = Handlebars.compile($('#select-no-event-template').text())
+      var generatedHTML = templateFn(result.data)
+      var container = $('#musician-info-toggle')
+      var html = container.html()
+      container.html(html + generatedHTML)
+    }
+    
     var templateFn = Handlebars.compile($('#select-event-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#musician-info-toggle')
     var html = container.html()
     container.html(html + generatedHTML)
+    
+    $("#signup-cancel-btn").on('click', function() {
+      requestToggle.toggle()
+      requestBackScreen.css("display", "none")
+    })
     
     $(".request-button").on('click', function() {
       var no = $(this).val()
@@ -181,6 +194,18 @@ function matchRequest() {
           'muNo': location.href.split('?')[1].split('=')[1],
           'eNo': no
         }, function(result) {
+          if(result.status == "error"){
+            swal({
+              title: "이미 매칭 진행중인 뮤지션입니다!",
+              type: "warning",
+              showCancelButton: false,
+              confirmButtonColor: "#8069ef",
+              confirmButtonText: "확인",
+              customClass: "checkSwal"
+            },function(){
+             location.reload() 
+            })
+          }
           
           if(result.data == "success") {
             swal({
@@ -204,10 +229,10 @@ function matchRequest() {
 )}
 
 
+
 requestBtn.on('click', function() {
   requestToggle.toggle()
   requestBackScreen.css("display", "block")
-  eventCheckBtn.toggle()
 })
 
 musicianInfoPrev.on('click', function() {

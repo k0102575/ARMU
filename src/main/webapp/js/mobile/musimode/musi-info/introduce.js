@@ -1,24 +1,44 @@
-var introduce = $(".introduce-introduce"),
-	introduceMore = $("#introduce-more"),
-	introduceHide = $("#introduce-hide")
-
-$(window).load(function(){
-  if(introduce.text().length >= 270) {
-	introduceMore.css('display', 'block')
+$(function() {
+  var introduce = $(".introduce-introduce"),
+  introduceMore = $("#introduce-more"),
+  introduceHide = $("#introduce-hide")
+  
+   if(introduce.text().length >= 270) {
+      introduceMore.css('display', 'block')
   }
+   
+   introduceMore.on("click", function() {
+      introduce.css({"maxHeight":"none"})
+      introduce.css("height", "auto")
+      introduceMore.css("display", "none")
+      introduceHide.css("display", "block")
+    })
+
+    introduceHide.on("click", function() {
+      introduce.css({"maxHeight":"435px"})
+      introduce.css("height", "none")
+      introduceMore.css("display", "block")
+      introduceHide.css("display", "none")
+    })
 })
 
-introduceMore.on("click", function() {
-	introduce.css({"maxHeight":"none"})
-	introduce.css("height", "auto")
-	introduceMore.css("display", "none")
-	introduceHide.css("display", "block")
-})
+displayMusiInfoIntroduce()
 
-introduceHide.on("click", function() {
-	introduce.css({"maxHeight":"435px"})
-	introduce.css("height", "none")
-	introduceMore.css("display", "block")
-	introduceHide.css("display", "none")
-})
-
+    
+function displayMusiInfoIntroduce() {
+  $.getJSON('/musician/musiInfoMyIntroduce.json', function(result) {
+        data = result.data.getIntroduce
+        var templateFn = Handlebars.compile($('#musician-info-introduce-template').text())
+        var generatedHTML = templateFn(data)
+      var container = $('#musician-info-cathegory')
+      var html = container.html()
+      container.html(html + generatedHTML)
+      if(data.homepage == "0") {
+        $(".introduce-homepage").css("display", "none")
+        $(".introduce-introduce").text(data.intro)
+      } else {
+      $(".introduce-homepage").append("<span> " + data.homepage + "</span>")
+      $(".introduce-introduce").text(data.intro)
+      }
+      })
+}

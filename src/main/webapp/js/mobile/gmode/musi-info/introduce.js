@@ -29,14 +29,16 @@ function displayMusiInfoIntroduce() {
       { 
         "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {
+        console.log(result)
     	  data = result.data.getIntroduce
         var templateFn = Handlebars.compile($('#musician-info-introduce-template').text())
         var generatedHTML = templateFn(data)
   		var container = $('#musician-info-cathegory')
   		var html = container.html()
   		container.html(html + generatedHTML)
-  		if(data.homepage == "") {
+  		if(data.homepage == "0") {
   		  $(".introduce-homepage").css("display", "none")
+  		  $(".introduce-introduce").text(data.intro)
   		} else {
 		  $(".introduce-homepage").append("<span> " + data.homepage + "</span>")
 		  $(".introduce-introduce").text(data.intro)

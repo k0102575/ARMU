@@ -46,7 +46,7 @@
   
   <div id="musician-info-backscreen"></div>
 	<div id="musician-info-toggle">
-	<div id="event-header">나의 이벤트 목록</div>
+	<div id="event-header"><img id="signup-cancel-btn" src="/image/icon/access-black.png">나의 이벤트 목록</div>
 	
 	 <script id="select-event-template" type="text/x-handlebars-template">
   {{#each eventList}}
@@ -64,6 +64,15 @@
     </div>
   </div>
   {{/each}}
+  </script>
+  
+   <script id="select-no-event-template" type="text/x-handlebars-template">
+    <div class="rec-no-event">
+      <br> 아직 작성하신 이벤트가 없어요<br><br>
+      <i class="fa fa-frown-o" aria-hidden="true" id='rec-no-event-cry'></i><br><br>
+      <a href="/mobile/gmode/event/regist.html" class='rec-event-add-btn'>이벤트 등록하기</a><br><br>
+    </div>
+    <!-- rec-no-event -->
   </script>
 
 	  

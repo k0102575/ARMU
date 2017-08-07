@@ -139,6 +139,12 @@
   where mu.muno=#{muNo}
   </select> <!-- 승민 -->
   
+  <select id="myMusiInfo" resultMap="musicianInfoMap" parameterType="map">
+  select m.mno, m.name, mu.nick, mu.age, m.path, mu.team, mu.gender
+  from musi mu inner join memb m on mu.muno=m.mno
+  where mu.muno= #{myNo}
+  </select> <!-- 승민 -->
+  
   <select id="selectMusiReview" resultMap="musicianInfoReviewMap" parameterType="int">
   select ctr.count, mtc.rev, mtc.score, even.title as eventTitle, DATE_FORMAT(even.date, '%Y-%m-%d') as eventDate, m.name , m.path
   from musi as mu left outer join mtc on mtc.muno=mu.muno
@@ -152,7 +158,7 @@
   
   
   <select id="selectMusiIntroduce" resultMap="musicianInfoIntroduceMap" parameterType="int">
-  select mu.hpg, mu.intro, mj.name as major, g.name as genre, l.name as location, lt.name as sido, t.name as theme
+  select if(mu.hpg is not null, mu.hpg, 0) as hpg, mu.intro, mj.name as major, g.name as genre, l.name as location, lt.name as sido, t.name as theme
   from musi mu left outer join mjr_musi mjm on mu.muno=mjm.muno 
   left outer join mjr mj on mjm.mjrno=mj.mjrno
   left outer join gnr_musi gm on mu.muno=gm.muno 
@@ -388,7 +394,7 @@
   
   <select id="selectMusiNo" parameterType="int" resultMap="musicianInfoMap">
     SELECT * FROM musi 
-    WHERE muno LIKE CONCAT('%', #{no}, '%')
+    WHERE muno = #{no}
   </select>
   
 </mapper>

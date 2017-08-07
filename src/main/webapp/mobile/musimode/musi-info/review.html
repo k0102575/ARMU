@@ -1,65 +1,40 @@
 <div class="review-container">
+  <div class="review-header"></div>
+  
+  <div class="review-rating-container">
+  <div class="review-rating"></div>
+  <div class="review-rating-grade"></div>
+  <div class="review-rating-text">리뷰는 알뮤를 통해 매칭된 회원이<br> 매칭 완료후, 작성한 것입니다</div>
+  </div>
+  <!-- review-rating-container -->
 
-	<div class="review-header">리뷰 ??개</div>
-	
-	<div class="review-rating-container">
-	<div class="review-rating"></div>
-	<div class="review-rating-grade">4.5</div>
-	<div class="review-rating-text">리뷰는 알뮤를 통해 매칭된 회원이<br> 매칭 완료후, 작성한 것입니다</div>
-	</div>
-	<!-- review-rating-container -->
-	
- 	<div class="review-box">
-  <div class="review-date">2017-07-22</div>
-  
-  <div class="review-member"><i class="fa fa-star" id="review-star" aria-hidden="true"></i></div>
-  
-	<div class="review-content">
-	<div class="review-content-text"> 
-	리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리
-	</div>
-	<div class="review-content-more"><i class="fa fa-caret-down" aria-hidden="true"></i>더보기</div>
-	<div class="review-content-hide"><i class="fa fa-caret-up" aria-hidden="true"></i>접기</div>
-	</div>
-	<!-- review-content -->
-	</div> 
-	<!-- review-box -->
-	
-	 	<div class="review-box">
-  <div class="review-date">2017-07-22</div>
-  
-  <div class="review-member"><i class="fa fa-star" id="review-star" aria-hidden="true"></i>4.5 &nbsp;&nbsp;홍길동님&nbsp;&nbsp;결혼식</div>
-  
-	<div class="review-content">
-	<div class="review-content-text"> 
-  리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리
-	</div>
-	<div class="review-content-more"><i class="fa fa-caret-down" aria-hidden="true"></i>더보기</div>
-	<div class="review-content-hide"><i class="fa fa-caret-up" aria-hidden="true"></i>접기</div>
-	</div>
-	<!-- review-content -->
-	</div> 
-	<!-- review-box -->
-	
-	
-	 	<div class="review-box">
-  <div class="review-date">2017-07-22</div>
-  
-  <div class="review-member"><i class="fa fa-star" id="review-star" aria-hidden="true"></i>4.5 &nbsp;&nbsp;홍길동님&nbsp;&nbsp;결혼식</div>
-  
-	<div class="review-content">
-	<div class="review-content-text"> 
-	리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리리뷰리뷰
-	</div>
-	<div class="review-content-more"><i class="fa fa-caret-down" aria-hidden="true"></i>더보기</div>
-	<div class="review-content-hide"><i class="fa fa-caret-up" aria-hidden="true"></i>접기</div>
-	</div>
-	<!-- review-content -->
-	</div> 
-	<!-- review-box -->
-	
-	
 </div>
-<!-- review-container -->
 
-<script src="/js/mobile/gmode/musi-info/review.js"></script>
+  <script id="musician-info-review-template" type="text/x-handlebars-template">
+
+  {{#each musicianReview}}
+ 
+  <div class="review-box">
+  <div class="review-member">
+  <span id="review-text">{{eventDate}}</span> &nbsp;&nbsp;&nbsp;
+  <span class="review-title">{{eventTitle}}</span>
+  </div>
+  
+  <img id="review-member-img" src="{{photo}}"> <span><i class="fa fa-star" id="review-star" aria-hidden="true"></i></span>
+  <span class="review-score">{{score}}</span>&nbsp;&nbsp;&nbsp;<span class="review-name">{{name}}</span>
+
+  <div class="review-content">
+  <div class="review-content-text"> 
+  {{review}}
+  </div>
+<div class="review-content-more"><i class="fa fa-caret-down" aria-hidden="true"></i>더보기</div>
+<div class="review-content-hide"><i class="fa fa-caret-up" aria-hidden="true"></i>접기</div>
+  </div>
+  </div>
+  {{/each}}
+
+
+  </script>
+  
+  
+<script src="/js/mobile/musimode/musi-info/review.js"></script>
