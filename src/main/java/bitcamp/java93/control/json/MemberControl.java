@@ -48,7 +48,6 @@ public class MemberControl {
 
     JsonResult result = new JsonResult();
     Member loginMember = (Member)session.getAttribute("loginMember");
-    System.out.println(loginMember);
     if(loginMember != null) {
       try {
         Member memberProfile = memberService.getProfile(loginMember);
@@ -178,6 +177,11 @@ public class MemberControl {
       count = 0;
     }
     return String.format("%d_%d", System.currentTimeMillis(), ++count); 
+  }
+  
+  private Member getLoginMember(HttpSession session) {
+    Member loginMember = (Member) session.getAttribute("loginMember");
+    return loginMember;
   }
 }
 

@@ -80,5 +80,16 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectRecentList(no);
   }
   
+  public List<Event> checkEvent(int no) throws Exception {
+    return eventDao.selectEventList(no);
+  }
+  
+  public void prEvent(int muNo, int eNo) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("muNo", muNo);
+    valueMap.put("eNo", eNo);
+    eventDao.eventRequest(valueMap);
+  }
+  
 }
 

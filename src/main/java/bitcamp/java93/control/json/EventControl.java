@@ -2,6 +2,7 @@ package bitcamp.java93.control.json;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -137,7 +138,49 @@ public class EventControl {
     }
     return result;
   }
+  
+  @RequestMapping("checkEvent")
+  public JsonResult checkEvent(HttpSession session){
 
+    JsonResult result = new JsonResult();
+      try {
+        List<Event> eventList = eventService.checkEvent(getLoginMember(session).getNo());
+        
+        if (eventList != null) {
+          result.setStatus(JsonResult.SUCCESS);
+
+          HashMap<String,Object> dataMap = new HashMap<>();
+          dataMap.put("eventList", eventList);
+
+          result.setData(dataMap);
+        } else { 
+          return new JsonResult(JsonResult.SUCCESS, "noEvent");
+        }
+        
+      } catch (Exception e) {
+        result.setStatus(JsonResult.ERROR);
+      }
+      
+    return result;
+  }
+
+  @RequestMapping("prEvent")
+  public JsonResult prEvent(int muNo, int eNo){
+
+    JsonResult result = new JsonResult();
+      try {
+        eventService.prEvent(muNo, eNo);
+        
+        return new JsonResult(JsonResult.SUCCESS, "success");
+        
+      } catch (Exception e) {
+        result.setStatus(JsonResult.ERROR);
+      }
+      
+    return result;
+  }
+  
+  
   
   private Member getLoginMember(HttpSession session) {
     Member loginMember = (Member) session.getAttribute("loginMember");

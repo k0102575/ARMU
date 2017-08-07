@@ -31,6 +31,16 @@
     </collection> 
 	</resultMap>
 	
+	 <resultMap type="event" id="eventSelectMap">
+    <id column="eno" property="no" />
+    <result column="title" property="title" />
+    <result column="loctname" property="city" />
+    <result column="locname" property="location" />
+    <result column="addr" property="address" />
+    <result column="pay" property="pay" />
+    <result column="date" property="date" />
+  </resultMap>
+	
 	<resultMap type="event" id="eventMapBasic">
     <id column="eno" property="no" />
     <result column="title" property="title" />
@@ -168,6 +178,20 @@ group by eno
   insert into rhs(eno, pay, info, num) 
   values(#{no}, #{rhspay}, #{rhsinfo}, #{rhsnum})
 </insert><!-- 승민 -->
+
+
+<select id="selectEventList" resultMap="eventSelectMap" parameterType="int">
+	select even.eno, even.pay, even.date, even.title, loct.name as loctname, loc.name as locname, even.addr
+	from evn even 
+    left outer join loc loc on even.locno = loc.locno
+    left outer join loc_type loct on loc.loctno = loct.loctno
+	where mno = #{no}
+</select><!-- 승민 -->
+
+<insert id="eventRequest" parameterType="map">
+  insert into pr(muno, eno)
+  values(#{muNo}, #{eNo});
+</insert>
 	
 </mapper>
 

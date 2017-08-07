@@ -27,6 +27,7 @@ $( document ).ready(function() {
 
 function displayProfile() {
 $.getJSON('/member/getProfile.json', function(result) {
+  console.log(result)
     
     if(result.status != 'success') {
       console.error("getJSON() 실패: ", result.status)

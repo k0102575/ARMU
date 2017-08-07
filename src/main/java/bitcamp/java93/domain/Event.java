@@ -12,6 +12,7 @@ public class Event {
   ArrayList<String> themeList;
   ArrayList<String> majorList;
   ArrayList<String> genreList;
+  String city;
   String location;
   String address;
   int pay;
@@ -30,6 +31,16 @@ public class Event {
   List<String> EventRegistGenre;
   ArrayList<Musician> applicantList;
   ArrayList<Musician> pickedList;
+  @Override
+  public String toString() {
+    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", writeMember=" + writeMember
+        + ", themeList=" + themeList + ", majorList=" + majorList + ", genreList=" + genreList + ", city=" + city
+        + ", location=" + location + ", address=" + address + ", pay=" + pay + ", locno=" + locno + ", requirement="
+        + requirement + ", contents=" + contents + ", downPay=" + downPay + ", tmnno=" + tmnno + ", date=" + date
+        + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", rhsinfo=" + rhsinfo + ", isFavorite=" + isFavorite
+        + ", EventRegistTheme=" + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre="
+        + EventRegistGenre + ", applicantList=" + applicantList + ", pickedList=" + pickedList + "]";
+  }
   public int getNo() {
     return no;
   }
@@ -48,6 +59,12 @@ public class Event {
   public void setWriter(int writer) {
     this.writer = writer;
   }
+  public Member getWriteMember() {
+    return writeMember;
+  }
+  public void setWriteMember(Member writeMember) {
+    this.writeMember = writeMember;
+  }
   public ArrayList<String> getThemeList() {
     return themeList;
   }
@@ -65,6 +82,12 @@ public class Event {
   }
   public void setGenreList(ArrayList<String> genreList) {
     this.genreList = genreList;
+  }
+  public String getCity() {
+    return city;
+  }
+  public void setCity(String city) {
+    this.city = city;
   }
   public String getLocation() {
     return location;
@@ -174,16 +197,9 @@ public class Event {
   public void setPickedList(ArrayList<Musician> pickedList) {
     this.pickedList = pickedList;
   }
-  @Override
-  public String toString() {
-    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", themeList=" + themeList + ", majorList="
-        + majorList + ", genreList=" + genreList + ", location=" + location + ", address=" + address + ", pay=" + pay
-        + ", locno=" + locno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
-        + ", tmnno=" + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", rhsinfo=" + rhsinfo
-        + ", isFavorite=" + isFavorite + ", EventRegistTheme=" + EventRegistTheme + ", EventRegistMajor="
-        + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre + ", applicantList=" + applicantList
-        + ", pickedList=" + pickedList + "]";
-  }
-
+  
+  
+  
+  
   
   }

@@ -10,7 +10,11 @@ var lastScroll = 0,
     musicianHeaderInfoImg = $("#musician-header-info-img"),
     musicianBasicInfoImg = $("#musician-basic-info-img"),
     musicianBasicInfoName = $("#musician-basic-info-name"),
-    musicianInfoPrev = $("#musician-info-prev")
+    musicianInfoPrev = $("#musician-info-prev"),
+    requestBtn = $("#musician-basic-info-request-btn"),
+    requestToggle = $("#musician-info-toggle"),
+    requestBackScreen = $("#musician-info-backscreen"),
+    eventCheckBtn = $("#event-check-btn")
     
     infoPortfolio = $("#info-portfolio"),
     infoIntroduce = $("#info-introduce"),
@@ -25,6 +29,7 @@ var lastScroll = 0,
     infoReview.css('display', 'none')
 
 displayMusiInfo()
+matchRequest()
     
 function displayMusiInfo() {
   $.getJSON('/musician/musiInfo.json',
@@ -148,6 +153,61 @@ musicianInfoReviewBtn.on('click', function() {
   infoPortfolio.css('display', 'none')
   infoIntroduce.css('display', 'none')
   infoReview.css('display', 'block')
+})
+
+function matchRequest() {
+  $.getJSON('/event/checkEvent.json',
+  function(result) {
+    var templateFn = Handlebars.compile($('#select-event-template').text())
+    var generatedHTML = templateFn(result.data)
+    var container = $('#musician-info-toggle')
+    var html = container.html()
+    container.html(html + generatedHTML)
+    
+    $(".request-button").on('click', function() {
+      var no = $(this).val()
+      swal({
+        title: "이 이벤트에 대해 \n\n" +
+        		"매칭 요청을 하시겠어요?" ,
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#8069ef",
+        confirmButtonText: "네",
+        closeOnConfirm: false,
+        cancelButtonText: "아니요"
+      },
+      function(){
+        $.post('/event/prEvent.json', {
+          'muNo': location.href.split('?')[1].split('=')[1],
+          'eNo': no
+        }, function(result) {
+          
+          if(result.data == "success") {
+            swal({
+              title: "매칭요청이 성공했습니다!",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#8069ef",
+              confirmButtonText: "확인",
+              customClass: "checkSwal"
+            },function(){
+             location.reload() 
+            })
+          }
+          
+        }, 'json')
+        
+    });
+    })
+    
+  }
+)}
+
+
+requestBtn.on('click', function() {
+  requestToggle.toggle()
+  requestBackScreen.css("display", "block")
+  eventCheckBtn.toggle()
 })
 
 musicianInfoPrev.on('click', function() {

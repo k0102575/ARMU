@@ -213,7 +213,127 @@
   object-fit: cover;
 }
 
-
 /* 타임라인 끝 */
 
+/* 매칭요청하기 시작 */
 
+#musician-info-toggle {
+  border: 1px solid black;
+  position: fixed;
+  width: 90%;
+  left: 5%;
+  height: 80%;
+  top: 15%;
+  display: none;
+  background-color: white;
+  z-index: 20;
+  overflow-y:auto; 
+  border-radius: 25px;
+}
+
+#musician-info-backscreen {
+  position: fixed;
+  display: none;
+  top: 0px;
+  width: 100%;
+  height: 92.5%;
+  background: rgba(0, 0, 0, .4);
+  z-index: 15;
+  top: 120px;
+}
+
+#event-header {
+  width: 100%;
+  height: 5%;
+  text-align: center;
+  margin-top: 7%;
+  font-size: 3em;
+  font-weight: 400;
+  margin-bottom: 10%;
+}
+
+.recruiting {
+    position: relative;
+    background-color: white;
+    border: 0px;
+    border-bottom: 1px solid lightgray;
+    height: auto;
+    width: 100%;
+    margin-top: 5%;
+    padding-bottom: 3%;
+    color: white;
+    z-index: 1;
+}
+
+.recruiting:LAST-OF-TYPE {
+	margin-bottom: 10%;
+}
+
+.recruiting-title {
+    margin-top: 3%;
+    margin-left: 3%;
+    font-size: 40px;
+    font-weight: 400;
+    color: black;
+    width: 80%;
+}
+
+.recruiting-date {
+  color: black;
+  font-size: 30px;
+  font-weight: 300;
+  margin-top: 1%;
+  margin-left: 4%;
+  width: auto;
+  white-space: nowrap;
+}
+
+.recruiting-area {
+  color: black;
+  font-size: 30px;
+  font-weight: 300;
+  margin-top: 1%;
+  margin-left: 4%;
+  width: auto;
+  display: inline-block;
+}
+
+#recruting-location {
+    display: inline-block;
+    color: black;
+    font-size: 30px;
+    font-weight: 300;
+    margin-top: 1%;
+    /* margin-left: 4%; */
+    width: 77%;
+}
+
+.recruiting-price {
+  margin-top: 1%;
+  margin-left: 4%;
+  font-size: 34px;
+  font-weight: 500;
+  color: black;
+  white-space: nowrap;
+}
+
+.event-request-btn {
+	border: 1px solid white;
+	background-color: white;
+}
+
+.request-button {
+    position: absolute;
+    right: 3%;
+    top: 35%;
+    width: 75px;
+    height: 75px;
+    border: 1px solid #8069ef;
+    border-radius: 50px;
+    background-color: white;
+    font-size: 2rem;
+    color: #8069ef;
+}
+
+
+/* 매칭요청하기 끝 */

@@ -8,8 +8,8 @@
 <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="/node_modules/sweetalert/dist/sweetalert.css">
 <link href="/css/mobile/common.css" rel="stylesheet" type="text/css" media="all">
-<link href="/css/mobile/gmode/musi-info/index.css" rel="stylesheet" type="text/css" media="all">
 <link href="/css/alert.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/mobile/gmode/musi-info/index.css" rel="stylesheet" type="text/css" media="all">
 <link href="/css/mobile/gmode/musi-info/portfolio.css" rel="stylesheet" type="text/css" media="all">
 <link href="/css/mobile/gmode/musi-info/introduce.css" rel="stylesheet" type="text/css" media="all">
 <link href="/css/mobile/gmode/musi-info/review.css" rel="stylesheet" type="text/css" media="all">
@@ -43,6 +43,33 @@
   <button id="musician-info-introduce-btn">정보</button>
   <button id="musician-info-review-btn">평점 및 리뷰</button>
   </div>
+  
+  <div id="musician-info-backscreen"></div>
+	<div id="musician-info-toggle">
+	<div id="event-header">나의 이벤트 목록</div>
+	
+	 <script id="select-event-template" type="text/x-handlebars-template">
+  {{#each eventList}}
+  <div class="recruiting">
+    <div class="event-box">
+    <div class="recruiting-title">
+    {{title}}
+    </div>
+    <div class="recruiting-date"><span>{{date}}</span></div>
+    <div class='recruiting-area'><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+    <div id="recruting-location">{{city}}&nbsp;{{location}}&nbsp;{{address}}</div>
+    <div class="recruiting-price"><i class="fa fa-krw" aria-hidden="true"></i>{{pay}}</div>
+  <button type="button" class="request-button" value="{{no}}">요청
+  </button>
+    </div>
+  </div>
+  {{/each}}
+  </script>
+
+	  
+	</div>
+	<!-- menu-toggle -->
+	<!-- menu slider ended -->
   
   <div class='category-main' id='info-portfolio'><!-- include --></div>
   <div class='category-main' id='info-introduce'><!-- include --></div>
