@@ -296,4 +296,21 @@ order by e.date desc
 
 
 
-<select id="selectList" resultMap="chatMap" parameterType="int">
+-- 날짜 포맷대로 가져오기
+select date_format(date, '%Y-%m-%d') from evn;
+
+
+
+
+
+-- 특정 전공 타입에 따라 뮤지션 정보 가져오기
+select memb.mno, memb.name, mj.name, g.name, t.name, mjt.name
+from musi mu inner join memb on mu.muno=memb.mno
+left outer join mjr_musi mjm on mu.muno=mjm.muno
+left outer join gnr_musi gm on mu.muno=gm.muno
+left outer join thm_musi tm on mu.muno=tm.muno
+inner join mjr mj on mjm.mjrno=mj.mjrno
+inner join gnr g on gm.gnrno=g.gnrno
+inner join thm t on tm.thmno=t.thmno
+left outer join mjr_type mjt on mj.mjrtno=mjt.mjrtno
+where mjt.mjrtno=1

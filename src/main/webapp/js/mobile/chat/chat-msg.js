@@ -1,4 +1,5 @@
 "use strict"
+moment().format();
 
 $(document).ready(function() {
 	$(".animsition").animsition({
@@ -56,7 +57,7 @@ function displayChatBubbles() {
     var msgBoxPadding = parseFloat(messageBox.css('padding-top')) - parseFloat(msgInput.css('height'))
     messageBox.css('padding-top', msgBoxPadding)
     $.each(result.data.listChat, function(i, item) {
-      appendChatBubble(item.message, item.senderNo != musicianNo)
+      appendChatBubble(item.message, item.senderNo != musicianNo, false)
       
     });
     
@@ -67,7 +68,7 @@ function displayChatBubbles() {
 }
 
 
-function appendChatBubble(value, myAlias) {
+function appendChatBubble(value, isMyAlias, isSendData) {
 	
 	/*space나 줄바꿈만 있는 경우 버블을 추가하지 않음.*/
 	var text = value.replace(/\r?\n/g, '');
@@ -76,12 +77,15 @@ function appendChatBubble(value, myAlias) {
 	
 	value = value.replace(/\r?\n/g, '<br />');
 	$('<div>').addClass('chat-balloon')
-	.addClass(myAlias ? "me" : "him")
+	.addClass(isMyAlias ? "me" : "him")
 	.html(value)
 	.appendTo(messageBox)
-	.append($('<img>').attr('src', myAlias ? '' : '/image/musician/photo/m1.jpg').addClass(myAlias ? '' : 'sender-img'))
-	.append($('<div>').addClass('tail').addClass(myAlias ? "me-tail" : "him-tail"))
-	.append($('<div>').addClass('tail-white').addClass(myAlias ? "me-tail-white" : "him-tail-white"))
+	.append($('<img>').attr('src', isMyAlias ? '' : '/image/musician/photo/m1.jpg').addClass(isMyAlias ? '' : 'sender-img'))
+	.append($('<div>').addClass('tail').addClass(isMyAlias ? "me-tail" : "him-tail"))
+	.append($('<div>').addClass('tail-white').addClass(isMyAlias ? "me-tail-white" : "him-tail-white"))
+
+	if(isSendData) postChat(value) 
+	  
 	msgInput.val('')
 	
 	msgInput.focus()
@@ -90,9 +94,28 @@ function appendChatBubble(value, myAlias) {
 	resizeMessageBoxPadding()
 
 	messageBox.scrollTop(messageBox.height())
-	
-
 }
+
+
+function postChat(value) {
+  var date = new Date()
+  console.log(musicianNo)
+  $.post('/chat/add.json', 
+    { 'no' : musicianNo,
+      'message': value,
+      'date': moment(date).format('YYYY-MM-DD'),
+      'time': moment(date).format('hh:mm:ss'),
+      'senderNo': musicianNo
+    }
+    , function(result) {
+      if(result.status != 'success') {
+        console.log('서버 전송 실패!')
+        return;
+      }
+    }, 'json')
+  
+}
+
 
 function resizeMessageBoxPadding() {
 	var padding = parseFloat(messageBox.css('padding-top')) 
@@ -117,7 +140,7 @@ function resizeMessageBoxPadding() {
 
 
 sendBtn.on('click', function() {
-  appendChatBubble(msgInput.val())
+  appendChatBubble(msgInput.val(), true, true)
 })
 
 msgInput.keyup(function (e) {

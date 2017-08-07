@@ -8,5 +8,6 @@ import bitcamp.java93.domain.Chat;
 public interface ChatDao {
   List<Chat> selectList(int no);
   List<Chat> selectChatList(Map<String, Object> info);
+  int insertChat(Chat chat);
   List<Chat> selectMusiChatList(int no);
 }

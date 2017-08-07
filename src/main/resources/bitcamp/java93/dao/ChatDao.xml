@@ -80,6 +80,14 @@ where c.mno=#{mno} and c.muno=#{muno}
 order by date asc
   </select>
   
+  
+  <insert id="insertChat" parameterType="chat" 
+          useGeneratedKeys="true" keyColumn="chatno" keyProperty="no">
+    insert into chat(muno, mno, isread, msg, date, who) 
+    values(#{no}, #{senderNo}, 'N', #{message}, 
+    concat(#{date}, " ", #{time}), #{senderNo})
+  </insert>
+  
 </mapper>
 
 

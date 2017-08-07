@@ -11,6 +11,7 @@
     <link href="/css/mobile/chat/chat-msg.css" rel="stylesheet" type="text/css" media="all">
     <script src="/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="/node_modules/animsition/dist/js/animsition.min.js"></script>
+    <script src="/node_modules/moment/min/moment.min.js"></script>
 
   </head>
   <body>
@@ -28,9 +29,10 @@
     <div class="message-input-box">
   
     <!-- <input type="submit" data-role="none" class='hidden-submit-btn'/> -->
+    <form>
       <textarea class='msg-input' id='msg-input' placeholder="메시지를 작성하세요"></textarea>
       <button type="button" name="button" id='send-btn'>보내기</button>
-  
+    </form>
     </div>
     </div><!--  chat-msg-container -->
   </body>

@@ -20,7 +20,6 @@ public class ChatControl {
 
   @Autowired ServletContext servletContext;
   @Autowired ChatService chatService;
-
   
   @RequestMapping("list")
   public JsonResult list(HttpSession session) {
@@ -65,6 +64,32 @@ public class ChatControl {
 
     return result;
   }
+  
+  
+  @RequestMapping("add")
+  public JsonResult add(Chat chat, HttpSession session) {
+    JsonResult result = new JsonResult();
+    
+    if (chat != null) { 
+      try {
+        chat.setSenderNo(getLoginMember(session).getNo());
+        int rs = chatService.addChat(chat);
+        
+        result.setStatus(JsonResult.SUCCESS);
+        result.setData(rs);
+      } catch (Exception e) {
+        e.printStackTrace();
+        result.setStatus(JsonResult.ERROR);
+      }
+      
+    } else {
+      result.setStatus(JsonResult.FAIL);
+      result.setData("no chat data");
+    }
+
+    return result;
+  }
+  
 
   @RequestMapping("listMusiChat")
   public JsonResult listMusiChat(HttpSession session) throws Exception {

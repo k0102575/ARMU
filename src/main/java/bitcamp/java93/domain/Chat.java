@@ -9,10 +9,10 @@ public class Chat {
   Member musician;
   boolean isRead;
   String message;
-  Date date;
-  Time time;
+  String date;
+  String time;
   int senderNo;
-  Date eventDate;
+  String eventDate;
   String status;
   int unread;
   public int getNo() {
@@ -45,18 +45,16 @@ public class Chat {
   public void setMessage(String message) {
     this.message = message;
   }
-  public Date getDate() {
-//    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyy-mm-dd");
-//    return dateFormat.format(date);
+  public String getDate() {
     return date;
   }
-  public void setDate(Date date) {
+  public void setDate(String date) {
     this.date = date;
   }
-  public Time getTime() {
+  public String getTime() {
     return time;
   }
-  public void setTime(Time time) {
+  public void setTime(String time) {
     this.time = time;
   }
   public int getSenderNo() {
@@ -65,10 +63,10 @@ public class Chat {
   public void setSenderNo(int senderNo) {
     this.senderNo = senderNo;
   }
-  public Date getEventDate() {
+  public String getEventDate() {
     return eventDate;
   }
-  public void setEventDate(Date eventDate) {
+  public void setEventDate(String eventDate) {
     this.eventDate = eventDate;
   }
   public String getStatus() {
@@ -89,6 +87,7 @@ public class Chat {
         + message + ", date=" + date + ", time=" + time + ", senderNo=" + senderNo + ", eventDate=" + eventDate
         + ", status=" + status + ", unread=" + unread + "]";
   }
+  
   
   
 }

@@ -27,9 +27,9 @@ public class ChatServiceImpl implements ChatService {
   public List<Chat> listMusiChat(int no) throws Exception {
     return chatDao.selectMusiChatList(no);
   }
-  
 
-  
-  
+  public int addChat(Chat chat) throws Exception {
+    return chatDao.insertChat(chat);
+  }
 }
 
