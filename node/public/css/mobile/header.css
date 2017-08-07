@@ -1,0 +1,259 @@
+
+/*헤더부분*/
+
+#header-box {
+	position: relative;
+  height: 120px;
+  width: 100%;
+}
+
+.header-menu {
+  float: right;
+  color: black;
+}
+
+#header-menu-logo {
+  position: absolute;
+  right: 34%;
+  top: 15%;
+  transform: translate(-34%, 15%);
+ }
+
+#header-menu-search {
+  position: absolute;
+  right: 3%;
+  top: 25%;
+  transform: translate(-3%, 25%);
+  font-size: 40px;
+}
+
+#header-menu-menu {
+  position: absolute;
+  left: 3.5%;
+  top: 25%;
+  transform: translate(-3.5%, 25%);
+  font-size: 40px;
+}
+
+#header-menu-email {
+  position: absolute;
+  right: 13%;
+  top: 25%;
+  transform: translate(-13%, 25%);
+  font-size: 40px;
+}
+
+
+/*헤더부분 끗*/
+
+
+/*메뉴 토글 시작*/
+#menu-toggle {
+  position: fixed;
+  top: 0px;
+  display: none;
+  width: 700px;
+  height: 100%;
+  background-image: url("/image/background/mobile_menu.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-size: 300%;
+  color: white;
+  overflow: scroll;
+  z-index: 100;
+}
+
+#menu-backscreen {
+  position: fixed;
+  display: none;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, .8);
+  z-index: 99;
+}
+/*메뉴 토글 끝*/
+
+/*메뉴 콘텐츠 시작*/
+#menu-contents {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 85%;
+  height: auto;
+}
+
+#menu-upper-btn {
+  margin: 1% 0;
+  font-size: 70%;
+  font-weight: 300;
+  color: rgba(255, 255, 255, .9);
+}
+
+#home-btn {
+  margin-right: 80%;
+}
+
+.user-infobox {
+  display: inline-block;
+  width: 80%;
+}
+
+.user-img {
+	 border-radius: 100%;
+	height: 200px;
+	width: 200px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+#mypage-btn {
+	display: none;
+}
+
+#login-btn {
+
+}
+
+.menu-login-text {
+  font-size: 75%;
+  font-weight: 300;
+  border: 2px solid white;
+  border-radius: 50px;
+  width: 40%;
+  margin: auto;
+	margin-top: 5%;
+}
+
+.menu-login-separator {
+  margin: 20% 0 3% 0;
+}
+
+.menu-category-separator {
+  margin: 3% 0%;
+}
+
+.menu-category-btn {
+  font-size: 75%;
+  font-weight: 300;
+  color: rgba(255, 255, 255, .9);
+  text-align: left;
+  margin-left: 4%;
+}
+
+.menu-top-btn {
+	margin: 20% 0 0 4%;
+}
+
+.menu-copyright {
+  margin-top: 80%;
+  font-size: 50%;
+  color: rgba(255, 255, 255, .9);
+}
+
+#menu-copyright-text {
+  vertical-align: 10px;
+}
+
+#menu-copyright-img {
+  width: 100px;
+}
+/*메뉴 콘텐츠 끝*/
+
+
+/*검색 토글 시작*/
+#search-toggle {
+  position: fixed;
+  top: 0px;
+  display: none;
+  width: 100%;
+  height: 220px;
+  font-size: 300%;
+  color: black;
+  overflow: scroll;
+  z-index: 100;
+  background-color: white;
+  border-bottom: 1px solid black;
+}
+
+#search-cancel {
+    position: absolute;
+    font-size: 4rem;
+    top: 9%;
+    left: 3%;
+}
+
+#search-icon-container {
+  position: absolute;
+  top: 7%;
+  left: 20%;
+  padding-right: 50px;
+  border-bottom: 1px solid gray;
+  width: 50px;
+}
+
+#search-icon {
+    font-size: 1em;
+    color: black;
+    position: absolute;
+    right: 7%;
+    z-index: 1;
+    top: 52%;
+}
+
+#search-text {
+	 -webkit-border-radius: 0 !important;
+  position: absolute;
+    top: 50%;
+    left: 6%;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom: 1px solid gray;
+    height: 70px;
+    width: 87%;
+    outline: none;
+    padding-left: 2%;
+    padding-bottom: 2%;
+    font-size: 44px;
+}
+#search-text-delete{
+	position: absolute;
+    right: 15%;
+    top: 54%;
+    font-size: 0.8em;
+    color: #999999;
+}
+
+#search-text:focus {
+	border-radius: 0px;
+	-webkit-border-radius: 0 !important;
+	outline-style: none;
+	outline-width: 0;
+	-webkit-appearance:none;
+  outline: none;
+  box-shadow: none !important;
+  background-clip: padding-box;
+  background: transparent;
+	outline: none;
+	-webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-text-size-adjust: 2rem;
+  font-size: 44px !important;
+}
+
+#search-backscreen {
+  position: fixed;
+  display: none;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .7);
+  z-index: 99;
+}
+
+/*검색 토글 끝*/
+

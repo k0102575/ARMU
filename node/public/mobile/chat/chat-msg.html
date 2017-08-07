@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1, user-scalable=no">
+    <title>채팅</title>
+    <link rel='shortcut icon' type='image/x-icon' href='/image/favicon/favicon.ico'/>
+    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/node_modules/animsition/dist/css/animsition.min.css">
+    <link href="/css/mobile/common.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/mobile/chat/chat-msg.css" rel="stylesheet" type="text/css" media="all">
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/animsition/dist/js/animsition.min.js"></script>
+    <script src="/node_modules/moment/min/moment.min.js"></script>
+
+  </head>
+  <body>
+    <div id="chat-msg-container" class='animsition'>
+      <div class="chat-msg-headerbox">
+        <a href="javascript:history.go(-1)" class='back-btn'><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        <div class="chat-msg-header">홍길동</div>
+      </div><!-- chat-msg-headerbox -->
+
+      <div id="messageBox" class='messageBox'></div>
+
+
+
+
+    <div class="message-input-box">
+
+    <!-- <input type="submit" data-role="none" class='hidden-submit-btn'/> -->
+    <form>
+      <textarea class='msg-input' id='msg-input' placeholder="메시지를 작성하세요"></textarea>
+      <button type="button" name="button" id='send-btn'>보내기</button>
+    </form>
+    </div>
+    </div><!--  chat-msg-container -->
+  </body>
+
+
+  <script src="/js/mobile/chat/chat-msg.js"></script>
+</html>

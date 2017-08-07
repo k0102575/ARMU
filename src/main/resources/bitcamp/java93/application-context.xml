@@ -76,6 +76,9 @@
 	<!-- 트랜잭션을 처리하는 방법2 -->
 	<!-- @Transactional 애노테이션을 처리할 객체 등록 -->
 	<!-- <tx:annotation-driven transaction-manager="txManager"/> -->
+	
+	
+	
 </beans>
 
 

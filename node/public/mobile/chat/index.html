@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1" user-scalable="no"> -->
+  <title>채팅</title>
+  <link rel='shortcut icon' type='image/x-icon' href='/image/favicon/favicon.ico'/>
+  <link rel="stylesheet" href="/node_modules/jquery-ui-dist/jquery-ui.css">
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <link rel="stylesheet" href="/node_modules/animsition/dist/css/animsition.min.css">
+  <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+  <link href="/css/mobile/common.css" rel="stylesheet" type="text/css" media="all">
+  <link href="/css/mobile/chat/index.css" rel="stylesheet" type="text/css" media="all">
+  <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="/node_modules/animsition/dist/js/animsition.min.js"></script>
+  <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
+<script src="/node_modules/handlebars-intl/dist/handlebars-intl.min.js"></script>
+
+</head>
+
+<body>
+<div  id='chat-container' class="animsition">
+
+<div class="chat-header">
+  <h1 class='chat-header-head'>메시지</h1>
+  <a href="javascript:history.go(-1)" class='chat-header-close-btn'><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+  <p class='chat-header-desc'>안 읽은 메시지&nbsp;&nbsp;<span id='total-unread'></span></p>
+</div>
+<div class="chat-listbox">
+  <ul data-role="listview" id='list-container'>
+
+
+
+  </ul><!--listview-->
+</div><!--chat-listbox-->
+</div>
+</body>
+
+<script id="list-template" type="text/x-handlebars-template">
+{{#each list}}
+<li>
+{{#musician}}
+<a href="javascript:void(0)" data-href="chat-msg.html?musino={{no}}&nickname={{nickName}}"
+ class='chat-list'>
+  <img src="{{photo}}" class="chat-list-img"></img>
+  <span class='chat-list-name'>{{nickName}}
+{{/musician}}
+  {{#if unread}}
+    <span class='chat-list-unread-badge'>{{unread}}</span>
+  {{/if}}
+    <span class='chat-list-lastchat-date'>{{formatRelative date units="day"}}</span>
+  </span>
+  <span class='chat-list-msg'>{{message}}</span>
+  <span class='chat-list-match-status'>{{status}}</span>
+  &middot;
+  <span class='chat-list-event-date'>{{formatDate eventDate}}</span>
+  </a>
+</li>
+{{/each}}
+
+{{#unless list}}
+<div class='no-list-view'> 메시지 내역이 없습니다. </div>
+{{/unless}}
+</script>
+<script src='/js/mobile/chat/index.js'></script>
+</html>

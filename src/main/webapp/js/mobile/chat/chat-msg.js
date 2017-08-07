@@ -113,6 +113,10 @@ function postChat(value) {
         return;
       }
     }, 'json')
+    
+    
+    
+
   
 }
 
