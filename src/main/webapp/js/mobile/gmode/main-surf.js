@@ -145,22 +145,68 @@ yScroll = new jindo.m.Scroll("daejun", {
 
 
 $('#filter-loc').click(function() {
-    $("#filter-loc-backscreen").css('display', 'block');
-    $('#musician-surf-list').css('overflow','hidden').css('position','fixed')
+  $("#filter-loc-backscreen").css('display','block')
+    $("#filter-loc-backscreen").on('touchmove', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    });
+    $('#musician-surf-list').css('overflow','hidden').css('position','absolute')
     $("#filter-loc-toggle").css('display', 'block');
     $(".filter-loc-sub-con").css('display','block');
     $("#filter-loc-toggle").css('visibility', 'visible');
     $(".filter-loc-sub-con").css('visibility','visible');
-    // $("#filter-loc-toggle").toggle("slide", {direction: "down"});
 });
 
 $("#filter-loc-backscreen").click(function() {
-    // $("#filter-loc-toggle").toggle("slide", {direction: "down"});
     $('#musician-surf-list').css('overflow','').css('position','absolute')
     $("#filter-loc-toggle").css('display', 'none');
     $(".filter-loc-sub-con").css('display','none');
     $("#filter-loc-backscreen").css('display', 'none');
 })
+
+$('#filter-major').click(function() {
+    $("#filter-mjr-backscreen").css('display', 'block');
+    $("#filter-mjr-backscreen").on('touchmove', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    });
+    $('#musician-surf-list').css('overflow','hidden').css('position','fixed')
+    $("#filter-mjr-toggle").css('display', 'block');
+    $(".filter-mjr-sub-con").css('display','block');
+    $("#filter-mjr-toggle").css('visibility', 'visible');
+    $(".filter-mjr-sub-con").css('visibility','visible');
+});
+
+$("#filter-mjr-backscreen").click(function() {
+    $('#musician-surf-list').css('overflow','').css('position','absolute')
+    $("#filter-mjr-toggle").css('display', 'none');
+    $(".filter-mjr-sub-con").css('display','none');
+    $("#filter-mjr-backscreen").css('display', 'none');
+})
+
+$('#filter-genre').click(function() {
+    $("#filter-gen-backscreen").css('display', 'block');
+    $("#filter-gen-backscreen").on('touchmove', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    });
+    $('#musician-surf-list').css('overflow','hidden').css('position','fixed')
+    $("#filter-gen-toggle").css('display', 'block');
+    $(".filter-gen-sub-con").css('display','block');
+    $("#filter-gen-toggle").css('visibility', 'visible');
+    $(".filter-gen-sub-con").css('visibility','visible');
+});
+
+$("#filter-gen-backscreen").click(function() {
+    $('#musician-surf-list').css('overflow','').css('position','absolute')
+    $("#filter-gen-toggle").css('display', 'none');
+    $(".filter-gen-sub-con").css('display','none');
+    $("#filter-gen-backscreen").css('display', 'none');
+})
+
 
 var minAge = 0,
 	maxAge = 0;
@@ -206,12 +252,22 @@ filterLocTab.click(function () {
     $(this).addClass('on')
 })
 
-var seoul = $('.seoul')
+var seoul = $('.loc')
+var major = $('.mjr')
+var genre = $('.gen')
+var loc,mjr,gen;
+var indexL, indexM, indexG;
 seoul.click(function () {
-  aa = $(this)
+  console.log(indexL,indexM,indexG)
+  if(mjr==undefined)
+    mjr='선택안됨'
+  if(gen==undefined)
+    gen='선택안됨'
+  loc = $(this).text()
+  console.log(loc,mjr,gen)
     $.post('/musician/searchMusician.json',
-      {'location':aa.text()}, function(result) {
-        handleList(result)        
+      {'location':loc, 'major':mjr, 'genre':gen}, function(result) {
+        handleList(result)
         
         var surfLike = $(".surfLike")
         for(var i = 0; i <= result.data.listSurf.length -1; i++){
@@ -220,16 +276,69 @@ seoul.click(function () {
             surfLike[i].style.color = "#ba3d3d"
           }
       }
+  },'json')
+  
+//  $('.fa-check').remove()
+//  seoul.removeClass('on2')
+  $(this).html('<i class="fa fa-check" aria-hidden="true"></i>'+ $(this).text())
+  $(this).addClass('on2')
+  return loc;
+})
+
+major.click(function () {
+  console.log(indexL,indexM,indexG)
+  if(loc==undefined)
+    loc='선택안됨'
+  if(gen==undefined)
+    gen='선택안됨'
+  mjr = $(this).text()
+  console.log(loc,mjr,gen)
+    $.post('/musician/searchMusician.json',
+      {'location':loc, 'major':mjr, 'genre':gen}, function(result) {
+        handleList(result)
         
-        
-        
-        
+        var surfLike = $(".surfLike")
+        for(var i = 0; i <= result.data.listSurf.length -1; i++){
+            
+          if(result.data.listSurf[i].isFavorite == true){
+            surfLike[i].style.color = "#ba3d3d"
+          }
+      }
   },'json')
   
   $('.fa-check').remove()
-  seoul.removeClass('on2')
+  major.removeClass('on2')
   $(this).html('<i class="fa fa-check" aria-hidden="true"></i>'+ $(this).text())
   $(this).addClass('on2')
+  return mjr;
+})
+
+genre.click(function () {
+  console.log(indexL,indexM,indexG)
+  if(loc==undefined)
+    loc='선택안됨'
+  if(mjr==undefined)
+    mjr='선택안됨'
+  gen = $(this).text()
+  console.log(loc,mjr,gen)
+    $.post('/musician/searchMusician.json',
+      {'location':loc, 'major':mjr, 'genre':gen}, function(result) {
+        handleList(result)
+        
+        var surfLike = $(".surfLike")
+        for(var i = 0; i <= result.data.listSurf.length -1; i++){
+            
+          if(result.data.listSurf[i].isFavorite == true){
+            surfLike[i].style.color = "#ba3d3d"
+          }
+      }
+  },'json')
+  
+  $('.fa-check').remove()
+  genre.removeClass('on2')
+  $(this).html('<i class="fa fa-check" aria-hidden="true"></i>'+ $(this).text())
+  $(this).addClass('on2')
+  return gen;
 })
 
 $(function ($) {
@@ -241,6 +350,64 @@ $(function ($) {
     tabMenu($fcon1, $fcon2)
     function tabMenu(els, con) {
       els.on('click', function () {
+        indexL = $(this).index()+1;
+          els.removeClass('on')
+          $(this).addClass('on')
+          index = $(this).index()
+
+          con.css("visibility","hidden")
+          con.css("height","0")
+          con.eq(index).css("visibility","visible")
+          con.eq(index).css("height","400px")
+      })
+    }
+})
+
+var filterMjrTab = $('.filter-mjr-sub-tab')
+
+filterMjrTab.click(function () {
+    filterMjrTab.removeClass('on')
+    $(this).addClass('on')
+})
+
+$(function ($) {
+    let index =null;
+    // let $filterwrap = $('.filter-loc-toggle')
+    let $fcon1 = $('.filter-mjr-sub-tab')
+    let $fcon2 = $('.filter-mjr-sub-con')
+
+    tabMenu($fcon1, $fcon2)
+    function tabMenu(els, con) {
+      els.on('click', function () {
+          indexM = $(this).index()+1;
+          els.removeClass('on')
+          $(this).addClass('on')
+          index = $(this).index()
+
+          con.css("visibility","hidden")
+          con.css("height","0")
+          con.eq(index).css("visibility","visible")
+          con.eq(index).css("height","400px")
+      })
+    }
+})
+
+var filterGenTab = $('.filter-gen-sub-tab')
+
+filterGenTab.click(function () {
+    filterGenTab.removeClass('on')
+    $(this).addClass('on')
+})
+
+$(function ($) {
+    let index =null;
+    // let $filterwrap = $('.filter-loc-toggle')
+    let $fcon1 = $('.filter-gen-sub-tab')
+    let $fcon2 = $('.filter-gen-sub-con')
+    tabMenu($fcon1, $fcon2)
+    function tabMenu(els, con) {
+      els.on('click', function () {
+          indexG = $(this).index()+1;
           els.removeClass('on')
           $(this).addClass('on')
           index = $(this).index()

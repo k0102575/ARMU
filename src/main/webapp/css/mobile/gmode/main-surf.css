@@ -418,11 +418,12 @@ input:checked + label {
     font-size: 2.3em;
     font-weight: 440;
     position: fixed;
-    margin-left: 26%;
+    left: 50%;
+    transform: translateX(-50%);
     top: 90%;
     z-index: 1;
     background-color: white;
-    width: 48%;
+    width: 46%;
     height: 80px;
     padding-left: 2%;
     display: none;
@@ -440,8 +441,8 @@ input:checked + label {
 }
 
 #filter-major {
-  padding-left: 8%;
-  padding-right: 8%;
+  padding-left: 6%;
+  padding-right: 5%;
   border-left: 1px solid grey;
   border-right: 1px solid grey;
 }
@@ -473,7 +474,7 @@ input:checked + label {
 
 .filter-loc-sub-tab {
   display: inline-block;
-  width: 10.87%; /*탭 개수에 따라서 비율을 맞춰야 함*/
+  width: 12.27%; /*탭 개수에 따라서 비율을 맞춰야 함*/
   height: 65%;
   color: white;
   padding-top: 1.5%;
@@ -487,8 +488,91 @@ input:checked + label {
   visibility: hidden;
 }
 
+#filter-mjr-toggle {
+	width:100%;
+  height: 500px;
+  bottom: 0;
+  visibility: hidden;
+  position: fixed;
+  background-color: rgb(40,40,40);
+  z-index: 1;
+}
 
-.seoul {
+#filter-mjr-tab {
+  font-size: 100%;
+  border-bottom: 1px solid grey;
+  height: 99px;
+}
+
+#filter-mjr-backscreen {
+  top:0;
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, .6);
+}
+
+.filter-mjr-sub-tab {
+  display: inline-block;
+  width: 19.5%; /*탭 개수에 따라서 비율을 맞춰야 함*/
+  height: 65%;
+  color: white;
+ padding-top: 2%;
+    padding-bottom: 2%;
+  text-align: center;
+  font-size: 250%;
+}
+
+.filter-mjr-sub-con {
+  height: 400px;
+  visibility: hidden;
+}
+
+#filter-gen-toggle {
+  width:100%;
+  height: 500px;
+  bottom: 0;
+  visibility: hidden;
+  position: fixed;
+  background-color: rgb(40,40,40);
+  z-index: 1;
+}
+
+#filter-gen-tab {
+  font-size: 100%;
+  border-bottom: 1px solid grey;
+  height: 99px;
+}
+
+#filter-gen-backscreen {
+  top:0;
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, .6);
+}
+
+.filter-gen-sub-tab {
+  display: inline-block;
+  width: 11.1%; /*탭 개수에 따라서 비율을 맞춰야 함*/
+  height: 65%;
+  color: white;
+ padding-top: 1.5%;
+  padding-bottom: 1.1%;
+  text-align: center;
+  font-size: 250%;
+}
+
+.filter-gen-sub-con {
+  height: 400px;
+  visibility: hidden;
+}
+
+
+
+.loc, .mjr, .gen{
   padding: 2% 1%;
   color: white;
   text-align: center;
