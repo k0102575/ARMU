@@ -1,69 +1,121 @@
-<script id="musician-info-introduce-template" type="text/x-handlebars-template">
+<div id="musician-introduce-page">
+<div id="introduce-backscreen"></div>
 
-<div id="musician-info-major-container">
-<div id="musician-info-major">전공:</div>
-<div id="musician-info-major-content">
-  {{#each majorList}}
-  #{{this}}
-  {{/each}}
-</div>
-</div>
+  <div id="theme-select-button">테마</div><i class="fa fa-plus-square-o" id="theme-plus" aria-hidden="true"></i>
+  <!-- theme-button -->
+  <input id="theme-select-hidden" type="hidden">
+  <div id="theme-select-text"></div>
 
-<div id="musician-info-genre-container">
-<div id="musician-info-genre">장르:</div>
-<div id="musician-info-genre-content">
-  {{#each genreList}}
-  #{{this}}
-  {{/each}}
-</div>
-</div>
+  <div id="major-select-button">전공</div><i class="fa fa-plus-square-o" id="major-plus" aria-hidden="true"></i>
+  <!-- major-button -->
+  <input id="major-select-hidden" type="hidden">
+  <div id="major-select-text"></div>
 
-<div id="musician-info-theme-container">
-<div id="musician-info-theme">희망 테마:</div>
-<div id="musician-info-theme-content">
-  {{#each themeList}}
-  #{{this}}
-  {{/each}}
-</div>
-</div>
-
-<div id="musician-info-location-container">
-<div id="musician-info-location">희망 지역:</div>
-<div id="musician-info-location-content">
-  {{sido}}
-  {{#each locationList}}
-  {{this}}
-  {{/each}}
-</div>
-</div>
-
-
-</script>
+  <div id="genre-select-button">장르</div><i class="fa fa-plus-square-o" id="genre-plus" aria-hidden="true"></i>
+  <!-- genre-button -->
+  <input id="genre-select-hidden" type="hidden">
+  <div id="genre-select-text"></div>
   
-<div class="musician-info-header">
-기본정보
-</div>
-<div id="musician-info-cathegory">
-</div>
+  <div id="location-select-button">지역</div><i class="fa fa-plus-square-o" id="genre-plus" aria-hidden="true"></i>
+  <!-- genre-button -->
+  <input id="location-select-hidden" type="hidden">
+  <div id="location-select-text"></div>
+  
+  <div id="theme-select-box">
+  <div id="theme-select-box-header">
+  테마 선택
+  </div>
+  </div>
+  <!-- theme-select-box -->
+  <div id="theme-check-btn">
+    <button type="button" id="theme-check-cancel">취소</button>
+    <button type="button" id="theme-check-check">확인</button>
+  </div>
+  
+  
+  <script id="select-theme-template" type="text/x-handlebars-template">
+  {{#each listTheme}}
+  <div class="boxes"><span class="category-title">{{thmtname}}</span><br><br><br>
+  {{#each list}}
+  {{#themeMap}}
+  <input type="checkbox" name="theme" id="theme-box-{{key}}" value="{{key}}">
+  <label for="theme-box-{{key}}">{{value}}</label>
+  {{/themeMap}}
+  {{/each}}
+  {{/each}}
+  </script>
+  
+  <!--  테마 선택 -->
+  
+  <div id="major-select-box">
+  <div id="major-select-box-header">
+  전공 선택
+  </div>
+  </div>
+  <!-- major-select-box -->
+  <div id="major-check-btn">
+    <button type="button" id="major-check-cancel">취소</button>
+    <button type="button" id="major-check-check">확인</button>
+  </div>
+  
+  
+  <script id="select-major-template" type="text/x-handlebars-template">
+  {{#each listMajor}}
+  <div class="boxes"><span class="category-title">{{mjrtname}}</span><br><br><br>
+  {{#each list}}
+  {{#majorMap}}
+  <input type="checkbox" name="major" id="major-box-{{key}}" value="{{key}}">
+  <label for="major-box-{{key}}">{{value}}</label>
+  {{/majorMap}}
+  {{/each}}
+  {{/each}}
+  </script>
+  
+  <!--  전공 선택  -->
+  
+  <div id="genre-select-box">
+  <div id="genre-select-box-header">
+  장르 선택
+  </div>
+  </div>
+  <!-- genre-select-box -->
+  <div id="genre-check-btn">
+    <button type="button" id="genre-check-cancel">취소</button>
+    <button type="button" id="genre-check-check">확인</button>
+  </div>
+  
+  
+  <script id="select-genre-template" type="text/x-handlebars-template">
+  {{#each listGenre}}
+  <div class="boxes"><span class="category-title">{{gnrtname}}</span><br><br><br>
+  {{#each list}}
+  {{#genreMap}}
+  <input type="checkbox" name="genre" id="genre-box-{{key}}" value="{{key}}">
+  <label for="genre-box-{{key}}">{{value}}</label>
+  {{/genreMap}}
+  {{/each}}
+  {{/each}}
+  </script>
+  
+  <!--  장르 선택  -->
+  </div>
+  
+  <div id="location-type-container">
+  <input id="location-select-hidden" type="hidden">
+  
+  </div>
 
-
-<div class="introduce-header">
-자기 소개
-</div>
-
-<div class="introduce-homepage">
-<i class="fa fa-internet-explorer" aria-hidden="true"></i>
-<a href="" ></a>
-</div>
-
-<div class="introduce-introduce">
-
-</div>
-
-<div id="introduce-more"><i class="fa fa-caret-down" aria-hidden="true"></i>&nbsp;더보기</div>
-<div id="introduce-hide"><i class="fa fa-caret-up" aria-hidden="true"></i>&nbsp;숨기기</div>
-
-<div class="introduce-space"></div>
-
-
+   <script id="location-type-template" type="text/x-handlebars-template">
+  {{#each listLocationType}}
+    <button type="button" class="location-type-button" value="{{loctno}}">{{loctname}}</button>
+  {{/each}}
+  </script>
+  
+  <!-- signup-select -->
+  
+  
+  
+  
+  
 <script src="/js/mobile/musimode/musi-info/introduce.js"></script>
+  

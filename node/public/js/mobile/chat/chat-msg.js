@@ -100,8 +100,8 @@ function appendChatBubble(value, isMyAlias, isSendData) {
 var ws = new WebSocket('ws://192.168.0.22:8888/chat/send.json');
 ws.onopen = function (event) {
 	var obj = {
-							'receiver': parseInt(musicianNo),
-							'sender': 4
+							'receiver': 4,
+							'sender': parseInt(musicianNo)
 						}
 	ws.send(JSON.stringify(obj))
 }

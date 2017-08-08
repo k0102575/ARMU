@@ -17,6 +17,7 @@ function displayMusiInfoPortfolio() {
         var container = $('.portfolio-container')
         var html = container.html()
         container.html(html + generatedHTML)
+        $("#musician-portfolio-edit-btn").css("display", "none")
         return
       }
     
