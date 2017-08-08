@@ -26,17 +26,23 @@ router.ws('/send.json', function(ws, req) {
         msg = obj.message;
 
     if(!myMap.has('user')) {
-      console.log('새로운 유저');
       var receiver = obj.receiver,
           sender = obj.sender;
       myMap.set('user', sender)
       myMap.set('ws', ws)
       myMap.set('opponent', receiver)
+      console.log('새로운 유저!\n유저 넘버: ' + myMap.get('user') +
+                  ', wsID: ' + myMap.get('ws')._socket._handle.fd +
+                  ', 상대방 넘버: ' + myMap.get('opponent'));
       setCommunicator(myMap)
       return;
     }
 
-    if(myMap.has('oppMap')) broadcast(myMap, msg)
+    if(myMap.has('oppMap')) {
+      console.log('상대 웹소킷 찾음');
+      broadcast(myMap, msg)
+    }
+
 
     ws.send('서버 왈 : ' + msg);
   });
@@ -46,8 +52,9 @@ function setCommunicator(myMap) {
   var oppMap;
   for(var i = 0; i < clients.length; i ++) {
     oppMap = clients[i]
+    console.log('상대 찾는 중...' + oppMap.get('user'));
     if((oppMap.get('opponent') == myMap.get('user')) && (oppMap.get('user') == myMap.get('opponent'))) {
-      console.log('상대방 찾음');
+      console.log('상대 찾음');
       myMap.set('oppMap', oppMap)
       oppMap.set('oppMap', myMap)
       return;

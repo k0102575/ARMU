@@ -30,13 +30,13 @@ $(document).ready(function() {
 })//$(document).ready()
 
 var messageBox = $('#messageBox'),
-sendBtn = $('#send-btn'),
-msgInput = $('#msg-input'),
-msgInputBox = $('.message-input-box'),
-loc = decodeURIComponent(location.href),
-musicianNo = loc.split('?')[1].split('=')[1].split('&')[0],
-musicianNick = loc.split('?')[1].split('&')[1].split('=')[1];
-
+		sendBtn = $('#send-btn'),
+		msgInput = $('#msg-input'),
+		msgInputBox = $('.message-input-box'),
+		params = decodeURIComponent(location.href).split('?')[1],
+		musicianNo = parseInt(params.split('&')[0].split('=')[1]),
+		musicianNick = params.split('&')[1].split('=')[1],
+		senderNo = parseInt(params.split('&')[2].split('=')[1]);
 
 messageBox.scrollTop(messageBox.prop('scrollHeight'));
 $('.chat-msg-header').text(musicianNick)
@@ -100,8 +100,8 @@ function appendChatBubble(value, isMyAlias, isSendData) {
 var ws = new WebSocket('ws://192.168.0.22:8888/chat/send.json');
 ws.onopen = function (event) {
 	var obj = {
-							'receiver': parseInt(musicianNo),
-							'sender': 4
+							'receiver': musicianNo,
+							'sender': senderNo
 						}
 	ws.send(JSON.stringify(obj))
 }
