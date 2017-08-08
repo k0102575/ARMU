@@ -32,7 +32,6 @@ var memberToggle = $("#member-toggle" ),
   }) // #prev-page().click
 
   $(".signup-btn").on('click', function() {
-    
     if(emailInput.val().length == 0) {
       emailInput.css("border-bottom", "2px solid red");
       emailInputCheck.css("display", "block")
@@ -76,7 +75,7 @@ var memberToggle = $("#member-toggle" ),
         'phone': phoneInput.val(),
         'password': passwordInput1.val(),
         'email': emailInput.val(),
-        'photo' : fiFilenames.val()
+        'photo' : '/image/profile/'+ fiFilenames.val() + '_140.png'
       }, function(result) {
         memberToggle.toggle()
       }, 'json')

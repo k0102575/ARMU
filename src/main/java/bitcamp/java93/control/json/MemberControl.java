@@ -40,7 +40,6 @@ public class MemberControl {
     }else {
       return new JsonResult(JsonResult.FAIL, "fail");
     }
-    
   }
   
   @RequestMapping("getProfile")

@@ -146,8 +146,6 @@
 	      });
 	    }
 	    
-	    
-	    
 	  }, function(err) {
 	    console.log(err)
 	  })
@@ -155,6 +153,7 @@
 	})
 	
 	 $.getJSON('/auth/userinfo.json', function(result) {
+	     console.log(result)
 	   if(result.status == "success") {
 	      $('#mypage-btn').css('display', 'inline-block')
 	                      .on('click', function() {

@@ -37,7 +37,7 @@
   <insert id="insert" parameterType="member" 
           useGeneratedKeys="true" keyColumn="mno" keyProperty="no">
     insert into memb(name,phone,pwd,email,path) 
-    values(#{name},#{phone},password(#{password}),#{email},concat('/image/profile/',#{photo},'_140.png'))
+    values(#{name},#{phone},password(#{password}),#{email},#{photo})
   </insert>
   
   <select id="selectOneByEmailPassword" resultMap="memberMap" parameterType="map">
