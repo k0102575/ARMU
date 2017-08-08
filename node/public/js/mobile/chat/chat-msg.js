@@ -108,6 +108,7 @@ ws.onopen = function (event) {
 
 ws.onmessage = function (event) {
  console.log(event.data);
+ appendChatBubble(event.data, false, false)
 };
 
 

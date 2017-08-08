@@ -43,8 +43,7 @@ router.ws('/send.json', function(ws, req) {
       broadcast(myMap, msg)
     }
 
-
-    ws.send('서버 왈 : ' + msg);
+    send('내가 보낸 메시지 : ' + msg);
   });
 });
 
@@ -63,7 +62,7 @@ function setCommunicator(myMap) {
 }//broadcast()
 
 function broadcast(myMap, msg) {
-  console.log('브로드 캐스트 => ' + myMap.get('opponent'));
+  console.log('브로드 캐스트 => ' + myMap.get('opponent') + ', wsID: ' + myMap.get('oppMap').get('ws')._socket._handle.fd);
   myMap.get('oppMap').get('ws').send(msg)
 }
 
