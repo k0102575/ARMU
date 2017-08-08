@@ -129,6 +129,19 @@
     <collection property="locationList" ofType="string"> 
         <result column="location"/> 
     </collection>
+        <collection property="majorNoList" ofType="Integer"> 
+        <result column="majorNo"/> 
+    </collection>
+    <collection property="genreNoList" ofType="Integer"> 
+        <result column="genreNo"/> 
+    </collection> 
+    <collection property="themeNoList" ofType="Integer"> 
+       <result column="themeNo"/> 
+    </collection>
+    <collection property="locationNoList" ofType="Integer"> 
+        <result column="locationNo"/> 
+    </collection>
+    
   </resultMap>
   
   <resultMap type="musician" id="musicianInfoPortfolioMap">
@@ -195,7 +208,8 @@
   
   
   <select id="selectMusiIntroduce" resultMap="musicianInfoIntroduceMap" parameterType="int">
-  select if(mu.hpg is not null, mu.hpg, 0) as hpg, mu.intro, mj.name as major, g.name as genre, l.name as location, lt.name as sido, t.name as theme
+  select if(mu.hpg is not null, mu.hpg, 0) as hpg, mu.intro, mj.mjrno as majorNo, mj.name as major,
+  g.gnrno as genreNo, g.name as genre, l.locno as locationNo, l.name as location, lt.name as sido, t.thmno as themeNo, t.name as theme
   from musi mu left outer join mjr_musi mjm on mu.muno=mjm.muno 
   left outer join mjr mj on mjm.mjrno=mj.mjrno
   left outer join gnr_musi gm on mu.muno=gm.muno 

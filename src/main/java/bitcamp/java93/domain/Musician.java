@@ -35,6 +35,10 @@ public class Musician extends Member  {
   ArrayList<String> genreList;
   ArrayList<String> themeList;
   ArrayList<String> locationList;
+  ArrayList<Integer> majorNoList;
+  ArrayList<Integer> genreNoList;
+  ArrayList<Integer> themeNoList;
+  ArrayList<Integer> locationNoList;
   List<String> photoList;
   @Override
   public String toString() {

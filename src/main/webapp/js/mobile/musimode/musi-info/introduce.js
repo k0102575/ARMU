@@ -13,9 +13,6 @@ var themeSelectButton = $("#theme-select-button"),
     themeCheckBtn = $("#theme-check-btn"),
     majorCheckBtn = $("#major-check-btn"),
     genreCheckBtn = $("#genre-check-btn"),
-    themeSelcetHidden = $("#theme-select-hidden"),
-    majorSelcetHidden = $("#major-select-hidden"),
-    genreSelcetHidden = $("#genre-select-hidden"),
     categoryThemeName ="",
     categoryMajorName ="",
     categoryGenreName ="",
@@ -55,6 +52,12 @@ locationSelectButton.on('click', function() {
   locationSelectText.html("")
 })
 
+$("#introduce-edit-btn").on('click', function() {
+  
+  
+  
+})
+
 function displayMusiInfoIntroduce() {
   $.getJSON('/musician/musiInfoMyIntroduce.json', function(result) {
     var data = result.data.getIntroduce
@@ -63,12 +66,24 @@ function displayMusiInfoIntroduce() {
       themeSelectText.append("<span class='selectSpan'>#" + theme + "</span>")
     }
     
+    for (var i = 0; i < data.themeNoList.length; i++) {
+      categoryThemeNo += data.themeNoList[i] + ","
+    }
+    
     for(var major of data.majorList) {
       majorSelectText.append("<span class='selectSpan'>#" + major + "</span>")
     }
     
+    for (var i = 0; i < data.majorNoList.length; i++) {
+      categoryMajorNo += data.majorNoList[i] + ","
+    }
+    
     for(var genre of data.genreList) {
       genreSelectText.append("<span class='selectSpan'>#" + genre + "</span>")
+    }
+    
+    for (var i = 0; i < data.genreNoList.length; i++) {
+      categoryGenreNo += data.genreNoList[i] + ","
     }
     
     locationSelectText.append("<span class='selectSpan'>" + data.sido + "</span>")
@@ -76,6 +91,11 @@ function displayMusiInfoIntroduce() {
       locationSelectText.append("<span class='selectSpan'>#" + location + "</span>")
     }
     
+    for (var i = 0; i < data.locationNoList.length; i++) {
+      locationNo += data.locationNoList[i] + ","
+    }
+    
+    $("#intro-homepage").val(data.homepage)
     $("#intro-text").val(data.intro)
 })
 }
@@ -96,6 +116,7 @@ function getCategory() {
 
       $("#theme-check-check").on('click', function() {
         themeSelectText.html("")
+        categoryThemeNo = ""
         $("input[name=theme]:checked").each(function() {
           categoryThemeNo += $(this).val() + "," 
           categoryThemeName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
@@ -125,6 +146,7 @@ function getCategory() {
 
       $("#major-check-check").on('click', function() {
         majorSelectText.html("")
+        categoryMajorNo = ""
         $("input[name=major]:checked").each(function() {
           categoryMajorNo += $(this).val() + ","
           categoryMajorName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
@@ -146,6 +168,7 @@ function getCategory() {
     var html = container.html()
     container.html(html + generatedHTML)
     
+    
     $("#genre-check-cancel").on('click', function() {
       backScreen.toggle(0)
       genreSelectBox.toggle(0)
@@ -154,6 +177,7 @@ function getCategory() {
   
     $("#genre-check-check").on('click', function() {
       genreSelectText.html("")
+      categoryGenreNo = ""
       $("input[name=genre]:checked").each(function() {
         categoryGenreNo += $(this).val() + ","
         categoryGenreName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
@@ -184,7 +208,7 @@ function getLocation() {
     
     $("#location-check-check").on('click', function() {
       $("#location-select-text").append("<span class='selectSpan'>" + $("#location-button-box-header").text() + "</span>")
-    
+      locationNo = ""
       $("input[name=location]:checked").each(function() {
         locationNo += $(this).val() + ","
         locationName = "#" + $("label[for='"+$(this).attr('id') +"']").text()

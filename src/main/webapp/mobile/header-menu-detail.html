@@ -125,7 +125,6 @@
 	$('#go-musimode-btn').on('click', function() {
 	  
 	  $.getJSON('/auth/checkMusi.json', function(result) {
-	    console.log(result)
 	    if(result.data == "musician") {
 	      location.href ='/mobile/musimode/index.html'
 	    }
@@ -153,7 +152,6 @@
 	})
 	
 	 $.getJSON('/auth/userinfo.json', function(result) {
-	     console.log(result)
 	   if(result.status == "success") {
 	      $('#mypage-btn').css('display', 'inline-block')
 	                      .on('click', function() {

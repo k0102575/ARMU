@@ -269,6 +269,24 @@ input[type="checkbox"]:checked + label:before {
   padding-left: 35px;
 }
 
+#intro-homepage-text {
+  float: left;
+  font-size: 2.5rem;
+  margin-left: 7%;
+  margin-top: 3%;
+}
+
+#intro-homepage {
+  float: left;
+  width: 80%;
+  border: 0px;
+  border-bottom: 1px solid black;
+  margin-left: 3%;
+  height: 100px;
+  margin-bottom: 2%;
+  font-size: 2.5rem;
+}
+
 #intro-text {
 	margin-top: 25px;
   width: 85%;
@@ -282,6 +300,7 @@ input[type="checkbox"]:checked + label:before {
   color: black;
   margin-bottom: 100px;
   background-color: rgba(255,255,255, 0.15);
+  overflow: visible;
 }
 
 #introduce-edit-btn {
