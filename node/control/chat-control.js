@@ -1,5 +1,4 @@
 // 학생 정보를 다루는 서비스를 정의한다.
-const net = require('net')
 const express = require('express')
 const datasource = require('../util/datasource')
 const studentDao = require('../dao/student-dao')
@@ -14,10 +13,6 @@ studentService.setMemberDao(memberDao)
 
 const router = express.Router()
 
-//
-router.post('/send.json', function(request, response) {
-    console.log('포스트 요청 들어옴')
-})
 
 router.ws('/send.json', function(ws, req) {
   console.log('router.ws 콜백함수 실행됨')

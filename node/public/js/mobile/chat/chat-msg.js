@@ -97,7 +97,7 @@ function appendChatBubble(value, isMyAlias, isSendData) {
 }
 
 
-var ws = new WebSocket('ws://localhost:8888/chat/send.json');
+var ws = new WebSocket('ws://192.168.0.22:8888/chat/send.json');
 ws.onopen = function (event) {
 }
 
