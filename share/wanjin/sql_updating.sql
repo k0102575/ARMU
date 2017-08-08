@@ -269,6 +269,17 @@ inner join memb m on c.mno=m.mno
 where c.mno=5 and c.muno=1
 order by date asc
 
+-- 위와 같음
+select chatno, isread, cast(date as date) as date, cast(date as time) as time, msg, c.muno, c.mno, who,
+mu.mno as musino, mu.name as musiname, musi.nick as musinick, mu.path as musiphoto,
+m.mno as gmno, m.name as gmname, m.path as gmphoto
+from chat c
+inner join memb mu on c.muno=mu.mno inner join musi on mu.mno=musi.muno
+inner join memb m on c.mno=m.mno
+where c.mno=4 and c.muno=11
+order by date asc
+
+
 
 -- 특정 회원의 전체 뮤지션과의 채팅 목록 가져오기
 select mu.mno as musino, musi.nick as musinick, mu.path as musiphoto, c.mno,

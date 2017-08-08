@@ -30,7 +30,7 @@
 
 
  <select id="selectList" resultMap="chatMap" parameterType="int">
-  select mu.mno as musino, musi.nick as musinick, mu.path as musiphoto,
+  select c.mno as gmno, mu.mno as musino, musi.nick as musinick, mu.path as musiphoto,
 cast(c.date as date) as date, cast(c.date as time) as time, c.msg, e.date as edate, e.status, c.unread
 from memb mu inner join (
   select mno, muno,

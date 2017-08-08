@@ -43,7 +43,14 @@
 {{#each list}}
 <li>
 {{#musician}}
-<a href="javascript:void(0)" data-href="chat-msg.html?musino={{no}}&nickname={{nickName}}"
+<a href="javascript:void(0)" 
+data-href="http://192.168.0.22:8888/mobile/chat/chat-msg.html?
+receiverNo={{no}}&nickname={{nickName}}
+{{/musician}}
+{{#writer}}
+&senderNo={{no}}"
+{{/writer}}
+{{#musician}}
  class='chat-list'>
   <img src="{{photo}}" class="chat-list-img"></img>
   <span class='chat-list-name'>{{nickName}}
