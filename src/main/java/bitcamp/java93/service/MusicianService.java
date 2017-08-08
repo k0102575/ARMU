@@ -19,7 +19,7 @@ public interface MusicianService {
   List<Musician> listReview(int no) throws Exception;
   Musician getIntroduce(int no) throws Exception;
   Musician getPortfolio(int no) throws Exception;
-  List<Musician> searchMusician(int no, String location,String major, String genre) throws Exception;
+  List<Musician> searchMusician(int no, String location,String major, String genre,int indexNo) throws Exception;
   void add(Musician musician) throws Exception;
   /*  void musicianAddHope(Musician musician) throws Exception;*/
 //  void updatePhoto(int no, String photoPath) throws Exception;

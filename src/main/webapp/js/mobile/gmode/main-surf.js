@@ -175,8 +175,6 @@ $('#filter-major').click(function() {
     $('#musician-surf-list').css('overflow','hidden').css('position','fixed')
     $("#filter-mjr-toggle").css('display', 'block');
     $(".filter-mjr-sub-con").css('display','block');
-    $("#filter-mjr-toggle").css('visibility', 'visible');
-    $(".filter-mjr-sub-con").css('visibility','visible');
 });
 
 $("#filter-mjr-backscreen").click(function() {
@@ -196,8 +194,6 @@ $('#filter-genre').click(function() {
     $('#musician-surf-list').css('overflow','hidden').css('position','fixed')
     $("#filter-gen-toggle").css('display', 'block');
     $(".filter-gen-sub-con").css('display','block');
-    $("#filter-gen-toggle").css('visibility', 'visible');
-    $(".filter-gen-sub-con").css('visibility','visible');
 });
 
 $("#filter-gen-backscreen").click(function() {
@@ -256,9 +252,9 @@ var seoul = $('.loc')
 var major = $('.mjr')
 var genre = $('.gen')
 var loc,mjr,gen;
-var indexL, indexM, indexG;
+var indexNo=1;
 seoul.click(function () {
-  console.log(indexL,indexM,indexG)
+  console.log(indexNo)
   if(mjr==undefined)
     mjr='선택안됨'
   if(gen==undefined)
@@ -266,7 +262,7 @@ seoul.click(function () {
   loc = $(this).text()
   console.log(loc,mjr,gen)
     $.post('/musician/searchMusician.json',
-      {'location':loc, 'major':mjr, 'genre':gen}, function(result) {
+      {'location':loc, 'major':mjr, 'genre':gen,'indexNo':indexNo}, function(result) {
         handleList(result)
         
         var surfLike = $(".surfLike")
@@ -278,15 +274,15 @@ seoul.click(function () {
       }
   },'json')
   
-//  $('.fa-check').remove()
-//  seoul.removeClass('on2')
+  $('.fa-check').remove()
+  seoul.removeClass('on2')
   $(this).html('<i class="fa fa-check" aria-hidden="true"></i>'+ $(this).text())
   $(this).addClass('on2')
   return loc;
 })
 
 major.click(function () {
-  console.log(indexL,indexM,indexG)
+  console.log(indexNo)
   if(loc==undefined)
     loc='선택안됨'
   if(gen==undefined)
@@ -294,7 +290,7 @@ major.click(function () {
   mjr = $(this).text()
   console.log(loc,mjr,gen)
     $.post('/musician/searchMusician.json',
-      {'location':loc, 'major':mjr, 'genre':gen}, function(result) {
+      {'location':loc, 'major':mjr, 'genre':gen,'indexNo':indexNo}, function(result) {
         handleList(result)
         
         var surfLike = $(".surfLike")
@@ -314,7 +310,7 @@ major.click(function () {
 })
 
 genre.click(function () {
-  console.log(indexL,indexM,indexG)
+  console.log(indexNo)
   if(loc==undefined)
     loc='선택안됨'
   if(mjr==undefined)
@@ -322,7 +318,7 @@ genre.click(function () {
   gen = $(this).text()
   console.log(loc,mjr,gen)
     $.post('/musician/searchMusician.json',
-      {'location':loc, 'major':mjr, 'genre':gen}, function(result) {
+      {'location':loc, 'major':mjr, 'genre':gen,'indexNo':indexNo}, function(result) {
         handleList(result)
         
         var surfLike = $(".surfLike")
@@ -350,7 +346,7 @@ $(function ($) {
     tabMenu($fcon1, $fcon2)
     function tabMenu(els, con) {
       els.on('click', function () {
-        indexL = $(this).index()+1;
+        indexNo = $(this).index()+1;
           els.removeClass('on')
           $(this).addClass('on')
           index = $(this).index()
@@ -379,7 +375,7 @@ $(function ($) {
     tabMenu($fcon1, $fcon2)
     function tabMenu(els, con) {
       els.on('click', function () {
-          indexM = $(this).index()+1;
+        indexNo = $(this).index()+1;
           els.removeClass('on')
           $(this).addClass('on')
           index = $(this).index()
@@ -407,7 +403,7 @@ $(function ($) {
     tabMenu($fcon1, $fcon2)
     function tabMenu(els, con) {
       els.on('click', function () {
-          indexG = $(this).index()+1;
+        indexNo = $(this).index()+1;
           els.removeClass('on')
           $(this).addClass('on')
           index = $(this).index()

@@ -24,6 +24,7 @@ public class Musician extends Member  {
   String location;
   String sido;
   int fav;
+  int indexNo;
   String nickName;
   Map<String , String> fileMap;
   List<Map<Integer , String>> list;
@@ -39,9 +40,9 @@ public class Musician extends Member  {
         + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite + ", popularity="
         + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", specDate="
         + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge + ", location=" + location
-        + ", sido=" + sido + ", fav=" + fav + ", nickName=" + nickName + ", fileMap=" + fileMap + ", list=" + list
-        + ", reviewList=" + reviewList + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList="
-        + themeList + ", locationList=" + locationList + ", photoList=" + photoList + "]";
+        + ", sido=" + sido + ", fav=" + fav + ", indexNo=" + indexNo + ", nickName=" + nickName + ", fileMap=" + fileMap
+        + ", list=" + list + ", reviewList=" + reviewList + ", majorList=" + majorList + ", genreList=" + genreList
+        + ", themeList=" + themeList + ", locationList=" + locationList + ", photoList=" + photoList + "]";
   }
   public int getAge() {
     return age;
@@ -210,6 +211,12 @@ public class Musician extends Member  {
   }
   public void setPhotoList(List<String> photoList) {
     this.photoList = photoList;
+  }
+  public int getIndexNo() {
+    return indexNo;
+  }
+  public void setIndexNo(int indexNo) {
+    this.indexNo = indexNo;
   }
   
   
