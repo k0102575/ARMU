@@ -252,9 +252,9 @@ var seoul = $('.loc')
 var major = $('.mjr')
 var genre = $('.gen')
 var loc,mjr,gen;
-var indexNo=1;
+var indexL=1, 
+indexM=1, indexG =1;
 seoul.click(function () {
-  console.log(indexNo)
   if(mjr==undefined)
     mjr='선택안됨'
   if(gen==undefined)
@@ -262,7 +262,7 @@ seoul.click(function () {
   loc = $(this).text()
   console.log(loc,mjr,gen)
     $.post('/musician/searchMusician.json',
-      {'location':loc, 'major':mjr, 'genre':gen,'indexNo':indexNo}, function(result) {
+      {'location':loc, 'major':mjr, 'genre':gen, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG}, function(result) {
         handleList(result)
         
         var surfLike = $(".surfLike")
@@ -282,15 +282,14 @@ seoul.click(function () {
 })
 
 major.click(function () {
-  console.log(indexNo)
   if(loc==undefined)
     loc='선택안됨'
   if(gen==undefined)
     gen='선택안됨'
   mjr = $(this).text()
-  console.log(loc,mjr,gen)
+//  console.log(loc,mjr,gen)
     $.post('/musician/searchMusician.json',
-      {'location':loc, 'major':mjr, 'genre':gen,'indexNo':indexNo}, function(result) {
+      {'location':loc, 'major':mjr, 'genre':gen,'indexL':indexL,'indexM':indexM,'indexG':indexG}, function(result) {
         handleList(result)
         
         var surfLike = $(".surfLike")
@@ -310,15 +309,14 @@ major.click(function () {
 })
 
 genre.click(function () {
-  console.log(indexNo)
   if(loc==undefined)
     loc='선택안됨'
   if(mjr==undefined)
     mjr='선택안됨'
   gen = $(this).text()
-  console.log(loc,mjr,gen)
+//  console.log(loc,mjr,gen)
     $.post('/musician/searchMusician.json',
-      {'location':loc, 'major':mjr, 'genre':gen,'indexNo':indexNo}, function(result) {
+      {'location':loc, 'major':mjr, 'genre':gen,'indexL':indexL,'indexM':indexM,'indexG':indexG}, function(result) {
         handleList(result)
         
         var surfLike = $(".surfLike")
@@ -346,7 +344,7 @@ $(function ($) {
     tabMenu($fcon1, $fcon2)
     function tabMenu(els, con) {
       els.on('click', function () {
-        indexNo = $(this).index()+1;
+        indexL = $(this).index()+1;
           els.removeClass('on')
           $(this).addClass('on')
           index = $(this).index()
@@ -375,7 +373,7 @@ $(function ($) {
     tabMenu($fcon1, $fcon2)
     function tabMenu(els, con) {
       els.on('click', function () {
-        indexNo = $(this).index()+1;
+          indexM = $(this).index()+1;
           els.removeClass('on')
           $(this).addClass('on')
           index = $(this).index()
@@ -403,7 +401,7 @@ $(function ($) {
     tabMenu($fcon1, $fcon2)
     function tabMenu(els, con) {
       els.on('click', function () {
-        indexNo = $(this).index()+1;
+          indexG = $(this).index()+1;
           els.removeClass('on')
           $(this).addClass('on')
           index = $(this).index()

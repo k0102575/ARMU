@@ -55,7 +55,9 @@
     <result column="rev" property="review" />
     <result column="fav" property="isFavorite"/>
     <result column="sido" property="sido"/>
-    <result column="indexNo" property="indexNo"/>
+    <result column="indexL" property="indexL"/>
+    <result column="indexM" property="indexM"/>
+    <result column="indexG" property="indexG"/>
     <collection property="photoList" ofType="string">
       <result column="path"/>
     </collection>
@@ -367,47 +369,78 @@
 	left outer join gnr_type gnrt on g.gnrtno=gnrt.gnrtno
 	<choose>
 	<when test="location == '전체'">
-		where lt.loctno=#{indexNo}
+		where lt.loctno=#{indexL}
 		<choose>
-      <when test="major == '전체'">
-    AND mj.mjrtno=#{indexNo}
-  </when>
-  <when test="genre== '전체'">
-    AND g.gnrtno=#{indexNo}
-  </when>
-  <otherwise>
-  
-  </otherwise>
+			<when test="major == '전체'">
+				AND mj.mjrtno=#{indexM}
+				<if test="genre =='전체'">
+        AND g.gnrtno=#{indexG}
+        </if>
+			</when>
+			<when test="major != '전체' and major !='선택안됨'">
+			   AND mj.name=#{major}
+			</when>
+			<when test="genre== '전체'">
+				AND g.gnrtno=#{indexG}
+				<if test="major=='전체'">
+        AND mj.mjrtno=#{indexM}
+        </if>
+			</when>
+			<when test="genre != '전체' and genre !='선택안됨'">
+         AND g.name=#{genre}
+      </when>
 		</choose>
 	</when>
+	
 	<when test="major == '전체'">
-    where mj.mjrtno=#{indexNo}
+    where mj.mjrtno=#{indexM}
     <choose>
-      <when test="location== '전체'">
-    AND lt.loctno=#{indexNo}
-  </when>
-  <when test="genre== '전체'">
-    AND g.gnrtno=#{indexNo}
-  </when>
-  <otherwise>
-  
-  </otherwise>
+      <when test="location == '전체'">
+        AND lt.loctno=#{indexL}
+        <if test="genre =='전체'">
+        AND g.gnrtno=#{indexG}
+        </if>
+      </when>
+      <when test="location != '전체' and location !='선택안됨'">
+         AND l.name=#{location}
+      </when>
+      <when test="genre== '전체'">
+        AND g.gnrtno=#{indexG}
+        <if test="location == '전체'">
+          AND lt.loctno=#{indexL}
+        </if>
+      </when>
+      <when test="genre != '전체' and genre !='선택안됨'">
+         AND g.name=#{genre}
+      </when>
     </choose>
   </when>
-  <when test="genre== '전체'">
-    where g.gnrtno=#{indexNo}
+  
+  <when test="genre == '전체'">
+    where g.gnrtno=#{indexG}
     <choose>
       <when test="major == '전체'">
-    AND mj.mjrtno=#{indexNo}
-  </when>
-  <when test="location== '전체'">
-    AND lt.loctno=#{indexNo}
-  </when>
-  <otherwise>
-  
-  </otherwise>
+        AND mj.mjrtno=#{indexM}
+        <if test="location == '전체'">
+          AND lt.loctno=#{indexL}
+        </if>
+      </when>
+      <when test="major != '전체' and major !='선택안됨'">
+         AND mj.name=#{major}
+      </when>
+      <when test="location== '전체'">
+        AND lt.loctno=#{indexL}
+        <if test="major=='전체'">
+        AND mj.mjrtno=#{indexM}
+        </if>
+      </when>
+      <when test="location != '전체' and location !='선택안됨'">
+         AND l.name=#{location}
+      </when>
     </choose>
   </when>
+  
+  
 	<when test='location == "선택안됨"'>
 		<choose>
 			<when test="major == '선택안됨'">

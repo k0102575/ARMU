@@ -24,7 +24,9 @@ public class Musician extends Member  {
   String location;
   String sido;
   int fav;
-  int indexNo;
+  int indexL;
+  int indexM;
+  int indexG;
   String nickName;
   Map<String , String> fileMap;
   List<Map<Integer , String>> list;
@@ -40,9 +42,10 @@ public class Musician extends Member  {
         + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite + ", popularity="
         + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", specDate="
         + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge + ", location=" + location
-        + ", sido=" + sido + ", fav=" + fav + ", indexNo=" + indexNo + ", nickName=" + nickName + ", fileMap=" + fileMap
-        + ", list=" + list + ", reviewList=" + reviewList + ", majorList=" + majorList + ", genreList=" + genreList
-        + ", themeList=" + themeList + ", locationList=" + locationList + ", photoList=" + photoList + "]";
+        + ", sido=" + sido + ", fav=" + fav + ", indexL=" + indexL + ", indexM=" + indexM + ", indexG=" + indexG
+        + ", nickName=" + nickName + ", fileMap=" + fileMap + ", list=" + list + ", reviewList=" + reviewList
+        + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList=" + themeList + ", locationList="
+        + locationList + ", photoList=" + photoList + "]";
   }
   public int getAge() {
     return age;
@@ -212,11 +215,23 @@ public class Musician extends Member  {
   public void setPhotoList(List<String> photoList) {
     this.photoList = photoList;
   }
-  public int getIndexNo() {
-    return indexNo;
+  public int getIndexL() {
+    return indexL;
   }
-  public void setIndexNo(int indexNo) {
-    this.indexNo = indexNo;
+  public void setIndexL(int indexL) {
+    this.indexL = indexL;
+  }
+  public int getIndexM() {
+    return indexM;
+  }
+  public void setIndexM(int indexM) {
+    this.indexM = indexM;
+  }
+  public int getIndexG() {
+    return indexG;
+  }
+  public void setIndexG(int indexG) {
+    this.indexG = indexG;
   }
   
   
