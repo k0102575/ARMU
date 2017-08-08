@@ -16,10 +16,7 @@ var expressWs = require('express-ws')(app);
 
 
 //
-// app.post('/chat/send.json', function(req, res, next){
-//   console.log('포스트 요청이 들어왔어', req.testing);
-//   res.end();
-// });
+
 
 // app.ws('/chat/send.json', function(ws, req) {
 //   ws.on('message', function(msg) {

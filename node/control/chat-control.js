@@ -13,14 +13,52 @@ studentService.setMemberDao(memberDao)
 
 const router = express.Router()
 
+var clients = []
+
 
 router.ws('/send.json', function(ws, req) {
-  console.log('router.ws 콜백함수 실행됨')
-  ws.on('message', function(msg) {
-    ws.send('서버에서 보냈어!' + msg);
-    console.log('ws.on() 콜백 함수 실행')
+  var myMap = new Map;
+  clients.push(myMap)
+  console.log('연결됨');
+
+  ws.on('message', function(str) {
+    var obj = JSON.parse(str),
+        msg = obj.message;
+
+    if(!myMap.has('user')) {
+      console.log('새로운 유저');
+      var receiver = obj.receiver,
+          sender = obj.sender;
+      myMap.set('user', sender)
+      myMap.set('ws', ws)
+      myMap.set('opponent', receiver)
+      setCommunicator(myMap)
+      return;
+    }
+
+    if(myMap.has('oppMap')) broadcast(myMap, msg)
+
+    ws.send('서버 왈 : ' + msg);
   });
 });
+
+function setCommunicator(myMap) {
+  var oppMap;
+  for(var i = 0; i < clients.length; i ++) {
+    oppMap = clients[i]
+    if((oppMap.get('opponent') == myMap.get('user')) && (oppMap.get('user') == myMap.get('opponent'))) {
+      console.log('상대방 찾음');
+      myMap.set('oppMap', oppMap)
+      oppMap.set('oppMap', myMap)
+      return;
+    }
+  }//for()
+}//broadcast()
+
+function broadcast(myMap, msg) {
+  console.log('브로드 캐스트 => ' + myMap.get('opponent'));
+  myMap.get('oppMap').get('ws').send(msg)
+}
 
 //app.use("/ws-stuff", router);
 

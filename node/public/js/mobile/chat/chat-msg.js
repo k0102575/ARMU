@@ -99,6 +99,11 @@ function appendChatBubble(value, isMyAlias, isSendData) {
 
 var ws = new WebSocket('ws://192.168.0.22:8888/chat/send.json');
 ws.onopen = function (event) {
+	var obj = {
+							'receiver': parseInt(musicianNo),
+							'sender': 4
+						}
+	ws.send(JSON.stringify(obj))
 }
 
 ws.onmessage = function (event) {
@@ -107,11 +112,12 @@ ws.onmessage = function (event) {
 
 
 
-
 function postChat(value) {
   var date = new Date()
-
-	ws.send(value)
+	var obj = {
+		'message': value
+	}
+	ws.send(JSON.stringify(obj))
 
 	// $.post('/chat/send.json', {
   //     'message': value

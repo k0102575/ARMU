@@ -314,3 +314,85 @@ inner join gnr g on gm.gnrno=g.gnrno
 inner join thm t on tm.thmno=t.thmno
 left outer join mjr_type mjt on mj.mjrtno=mjt.mjrtno
 where mjt.mjrtno=1
+
+
+
+
+
+
+
+
+
+
+ select m.mno, m.name as memb_name, mu.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, m.path, mu.gender,
+  mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, if(fm.fav is not null, 1, 0) as fav,
+  lm.muno, l.name as location, lt.name as sido , mjrt.name as mjrt_name, gnrt.name as gnrt_n
+  from musi mu inner join memb m on mu.muno=m.mno
+  left outer join mjr_musi mjm on mu.muno=mjm.muno
+  left outer join mjr mj on mj.mjrno=mjm.mjrno
+  left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g on gm.gnrno=g.gnrno
+  left outer join thm_musi tm on mu.muno=tm.muno left outer join thm t on tm.thmno=t.thmno
+  left outer join mtc on mtc.muno=mu.muno
+  left outer join (
+  select count(if(mno is not null, 1, 0)) as fav, mno, muno
+  from fav_musi
+  where mno = 1
+  group by muno) fm on fm.muno=mu.muno
+  left outer join loc_musi lm on lm.muno=m.mno
+  left outer join loc l on lm.locno= l.locno
+  left outer join loc_type lt on l.loctno = lt.loctno
+  left outer join mjr_type mjrt on mj.mjrtno=mjrt.mjrtno
+  left outer join gnr_type gnrt on g.gnrtno=gnrt.gnrtno
+  where g.name= '발라드'
+  <choose>
+		<when test='location == "선택안됨"'>
+			<choose>
+			 <when test="major == '선택안됨'">
+  		  where g.name= #{genre}
+			 </when>
+			 <when test="genre == '선택안됨'">
+        where mj.name= #{major}
+       </when>
+       <otherwise>
+        where g.name= #{genre} AND
+        mj.name= #{major}
+       </otherwise>
+			</choose>
+		</when>
+
+		<when test='major == "선택안됨"'>
+      <choose>
+       <when test="location == '선택안됨'">
+        where g.name= #{genre}
+       </when>
+       <when test="genre == '선택안됨'">
+        where l.name= #{location}
+       </when>
+       <otherwise>
+        where l.name= #{location} AND
+        g.name= #{genre}
+       </otherwise>
+      </choose>
+    </when>
+
+    <when test='genre == "선택안됨"'>
+      <choose>
+       <when test="location == '선택안됨'">
+        where mj.name= #{major}
+       </when>
+       <when test="major == '선택안됨'">
+        where l.name= #{location}
+       </when>
+       <otherwise>
+        where l.name= #{location} AND
+        mj.name= #{major}
+       </otherwise>
+      </choose>
+    </when>
+
+    <otherwise>
+    where l.name=#{location} AND
+    mj.name = #{major} AND
+    g.name = #{genre}
+    </otherwise>
+  </choose>
