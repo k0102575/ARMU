@@ -98,19 +98,39 @@
   </script>
   
   <!--  장르 선택  -->
-  </div>
-  
   <div id="location-type-container">
   <input id="location-select-hidden" type="hidden">
   
   </div>
-
+  
+  <div id="location-button-box">
+  </div>
+  <!-- location-button-box -->
+  
+  <div id='location-check-btn'>
+  <button type='button' id='location-check-cancel'>취소</button>
+  <button type='button' id='location-check-check'>확인</button>
+  </div>
+  
    <script id="location-type-template" type="text/x-handlebars-template">
   {{#each listLocationType}}
     <button type="button" class="location-type-button" value="{{loctno}}">{{loctname}}</button>
   {{/each}}
   </script>
   
+  <script id="location-button-template" type="text/x-handlebars-template">
+  {{#each listLocation}}
+    <input type="checkbox" name="location" id="location-button-{{locno}}" value="{{locno}}">
+    <label for="location-button-{{locno}}">{{locname}}</label>
+  {{/each}}
+  </script>
+  
+  <div id="intro-header">자기소개</div>
+  <textarea id="intro-text"></textarea>
+  
+  <button type='button' id='introduce-edit-btn'>적용하기</button>
+  
+  </div>
   <!-- signup-select -->
   
   

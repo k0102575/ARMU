@@ -155,26 +155,23 @@ input[type="checkbox"]:checked + label:before {
 #theme-check-cancel, #major-check-cancel, #genre-check-cancel {
   color: #525252;
   z-index: 15;
-  background: rgba(255,255,255, 0.5);
+  background: linear-gradient(rgba(255, 255, 255, 1.45), rgba(255, 255, 255, 1.45));
   width: 300px;
   height: 80px;
   margin-right: 10%;
-  color: white;
 }
 
 #theme-check-check, #major-check-check, #genre-check-check {
   color: white;
   z-index: 15;
-  background: rgba(0,0,0, 0.5);
+  background: linear-gradient(rgba(0, 0, 0, 1.45), rgba(0, 0, 0, 1.45));
   width: 300px;
-    height: 80px;
-  border: 2.5px solid white;
+  height: 80px;
 }
 
 #location-type-container {
 	display: none;
   margin-left: 5%;
-  margin-top: 10%;
   width: 90%;
   margin-bottom: 10%;
   float: left;
@@ -194,12 +191,51 @@ input[type="checkbox"]:checked + label:before {
   margin-top: 2%;
 }
 
+#location-button-box {
+  border: 1px solid black;
+  position: fixed;
+  width: 84%;
+  left: 5%;
+  height: 65%;
+  top: 20%;
+  display: none;
+  background-color: white;
+  z-index: 20;
+  overflow-y: auto;
+  padding-left: 60px;
+  border-radius: 25px;
+  color: black;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+#location-button-box-header {
+   font-size: 2.6rem;
+   width: 50%;
+   text-align: center;
+   height: 100px;
+   z-index: 11;
+   border: 0px;
+   margin-left: 21%;
+   padding-top: 60px;
+}
+
+#location-text-box {
+  margin-left: 7%;
+  margin-top: 5%;
+  width: 87%;
+  color:white;
+  font-size: 2.2rem;
+  
+}
 
 #location-check-btn {
-  bottom: 5%;
-  left: 14%;
   z-index: 20;
   width: 85%;
+  position: fixed;
+  left: 15%;
+  bottom: 7%;
+  display: none;
 }
 
 #location-check-cancel {
@@ -214,12 +250,52 @@ input[type="checkbox"]:checked + label:before {
 }
 
 #location-check-check {
-  border: 2.5px solid white;
   font-size: 2rem;
   color: white;
   z-index: 15;
   background: linear-gradient(rgba(0, 0, 0, 1.45), rgba(0, 0, 0, 1.45));
   width: 300px;
   height: 80px;
+}
+
+#intro-header {
+  width: 100%;
+  height: 100px;
+  background-color: #F5F5F5;
+  float: left;
+  font-size: 2rem;
+  padding-top: 30px;
+  box-sizing: border-box;
+  padding-left: 35px;
+}
+
+#intro-text {
+	margin-top: 25px;
+  width: 85%;
+  margin-left: 3%;
+  height: 350px;
+  padding-left: 4%;
+  resize: none;
+  padding-top: 20px;
+  border: 0;
+  border-radius: 10px;
+  color: black;
+  margin-bottom: 100px;
+  background-color: rgba(255,255,255, 0.15);
+}
+
+#introduce-edit-btn {
+    font-size: 35px;
+    font-weight: 400;
+    height: 65px;
+    width: 400px;
+    border-radius: 50px;
+    border: 1px solid white;
+    line-height: 60px;
+    color: white;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, .85);
+    margin-left: 30%;
+    margin-bottom: 10%;
 }
 

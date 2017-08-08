@@ -111,21 +111,24 @@
     location.href = '/mobile/gmode/index.html'
   })
   
-	 $.getJSON('/auth/userinfo.json', function(result) {
-	   if(result.status == "success") {
-	      $('#mypage-btn').css('display', 'inline-block')
-	                      .on('click', function() {
-	                        location.href = '/mobile/mypage/mypage.html'
-	                      })
-        $('#user-photo').attr('src', result.data.photo)
-	      $('#login-btn').css('display', 'none')
-	    } else {
-	      $('#mypage-btn').css('display', 'none')
-	        $('#login-btn').css('display', 'inline-block')
-	    }
-  }, function(err) {
-    console.log(err)
-  })
+  $.getJSON('/auth/userinfo.json', function(result) {
+    console.log(result)
+    if(result.status == "success") {
+       $('#mypage-btn').css('display', 'inline-block')
+                       .on('click', function() {
+                         location.href = '/mobile/mypage/mypage.html'
+                       })
+       $('#user-photo').attr('src', result.data.photo)
+       $('#login-btn').css('display', 'none')
+     } else {
+       $('#mypage-btn').css('display', 'none')
+         $('#login-btn').css('display', 'inline-block')
+     }
+ }, function(err) {
+   console.log(err)
+ })
+  
+
 	
 	/* 로그인 관련*/
     

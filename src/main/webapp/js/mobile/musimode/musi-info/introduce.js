@@ -13,15 +13,19 @@ var themeSelectButton = $("#theme-select-button"),
     themeCheckBtn = $("#theme-check-btn"),
     majorCheckBtn = $("#major-check-btn"),
     genreCheckBtn = $("#genre-check-btn"),
-    themeSelcetHidden = $("#theme-select-hidden")
-    majorSelcetHidden = $("#major-select-hidden")
-    genreSelcetHidden = $("#genre-select-hidden")
+    themeSelcetHidden = $("#theme-select-hidden"),
+    majorSelcetHidden = $("#major-select-hidden"),
+    genreSelcetHidden = $("#genre-select-hidden"),
     categoryThemeName ="",
     categoryMajorName ="",
     categoryGenreName ="",
     categoryThemeNo = "",
     categoryMajorNo = "",
-    categoryGenreNo = ""
+    categoryGenreNo = "",
+    locationTextBox = $("#location-text-box"),
+    locationSelcetHidden = $("#location-select-hidden"),
+    locationName ="",
+    locationNo = ""
     
 displayMusiInfoIntroduce()
 getCategory()
@@ -54,6 +58,7 @@ locationSelectButton.on('click', function() {
 function displayMusiInfoIntroduce() {
   $.getJSON('/musician/musiInfoMyIntroduce.json', function(result) {
     var data = result.data.getIntroduce
+    console.log(data)
     for(var theme of data.themeList) {
       themeSelectText.append("<span class='selectSpan'>#" + theme + "</span>")
     }
@@ -70,6 +75,8 @@ function displayMusiInfoIntroduce() {
     for(var location of data.locationList) {
       locationSelectText.append("<span class='selectSpan'>#" + location + "</span>")
     }
+    
+    $("#intro-text").val(data.intro)
 })
 }
 
@@ -164,10 +171,50 @@ function getCategory() {
 
 function getLocation() {
   $.getJSON('/category/listLocationType.json', function(result) {
-    console.log(result)
     var templateFn = Handlebars.compile($('#location-type-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $("#location-type-container")
     container.html(generatedHTML)
+    
+    $("#location-check-cancel").on('click', function() {
+    $("#location-button-box").toggle(0)
+    backScreen.toggle(0)
+    $("#location-check-btn").toggle(0)
+    })
+    
+    $("#location-check-check").on('click', function() {
+      $("#location-select-text").append("<span class='selectSpan'>" + $("#location-button-box-header").text() + "</span>")
+    
+      $("input[name=location]:checked").each(function() {
+        locationNo += $(this).val() + ","
+        locationName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
+      $("#location-select-text").append("<span class='selectSpan'>" + locationName + "</span>")
+      });
+      $("#location-select-text").append("<br/>\r\n")
+      
+      $("#location-button-box").toggle(0)
+      backScreen.toggle(0)
+      $("#location-check-btn").toggle(0)
+    })
+    
+    $(".location-type-button").on('click', function() {
+       var loctno = $(this).val(),
+           loctname = $(this).text()
+       $(this).css("background", "rgba(255,255,255, 0.5)")
+       $.getJSON('/category/listLocation.json', {"loctno" : loctno}, function(result) {
+       var templateFn = Handlebars.compile($('#location-button-template').text())
+       var generatedHTML = templateFn(result.data)
+       var container = $("#location-button-box")
+       container.html("")
+       container.append("<div id='location-button-box-header'> "+ loctname +" </div>")
+       var html = container.html()
+       container.html(html + generatedHTML)
+       
+       $("#location-button-box").toggle(0)
+       backScreen.toggle(0)
+       $("#location-check-btn").toggle(0)
+    })
+    
+})
 })
 }
