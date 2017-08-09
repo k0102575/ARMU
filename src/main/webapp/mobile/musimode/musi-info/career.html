@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ARMU MOBILE</title>
+<link rel='shortcut icon' type='image/x-icon' href='/image/favicon/favicon.ico'/>
+<link rel="stylesheet" href="/node_modules/jquery-ui-dist/jquery-ui.css">
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/node_modules/sweetalert/dist/sweetalert.css">
+<link href="/css/mobile/common.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/alert.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/mobile/musimode/musi-info/career.css" rel="stylesheet" type="text/css" media="all">
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+<script src="/node_modules/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript" src="/node_modules/handlebars/dist/handlebars.js"></script>
+<script src="/node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="/node_modules/blueimp-load-image/js/load-image.all.min.js"></script>
+<script src="/node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+<script src="/node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+<script src="/node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+<script src="/node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+<script src="/node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="spec-backscreen"></div>
+
+  <div class="career-info-header">
+    <i class="fa fa-angle-left" class="musician-info-prev" aria-hclassden="true"></i>
+    <span class='musician-info-nickname'>포트폴리오 편집</span>
+  </div>
+  <!-- musician-info-header -->
+  
+  <div class="portfolio-container">
+    <div id="spec-detail">
+    <div id="spec-close">닫기</div>
+    <input id="spec-date" type="date"></input>
+    <textarea rows="5" cols="50" id="spec-desc">
+    </textarea>
+    
+    <div id="spec-picture">
+    사진<br>
+    <input id="fi-filenames" type="hidden" name="filenames">
+    <label for="fi-photoupload">+</label> 
+    <input id="fi-photoupload" type="file" class="form-control upload"  name="files"> 
+    <div id="profile-img"></div>
+    </div>
+    
+    
+    </div>
+    <!-- spec-detail -->
+    
+    </div>
+    <!-- portfolio-container -->
+    
+  </div>
+  <!-- container -->
+<script id="musician-info-portfolio-template" type="text/x-handlebars-template">
+{{#each getPortfolio}}
+  <div class="timeline-container">
+  <div class="timeline-line-container">
+  <div class="timeline-line"></div>
+  <img src="/image/logo/login_01_b.png" class="timeline-mark">
+  </div>
+  <div class="timeline-content">
+  <div class="timeline-date">{{specDate}}</div>
+  <div class="timeline-desc">{{specDscp}}</div>
+  {{#each list}}
+  {{#fileMap}} {{#isIndex key}}
+  <img src="{{value}}" class="timeline-picture">
+  {{else}}
+  <span class="timeline-movie">
+  {{value}}
+  </span>
+  {{/isIndex}}
+  {{/fileMap}}
+  {{/each}}
+  </div>
+  </div>
+{{/each}}
+</script>
+<!-- 
+  <div class="spec-detail">
+    <div class="spec-close">닫기</div>
+  </div> -->
+<script id="musician-info0-portfolio-template" type="text/x-handlebars-template">
+
+  <div class="timeline-container">
+  <div class="timeline-line-container">
+  <div class="timeline-line"></div>
+  <img src="/image/logo/login_01_b.png" class="timeline-mark">
+  </div>
+  <div class="timeline-content">
+  <div class="timeline-date"></div>
+  <div class="timeline-desc"></div>
+  </div>
+  </div>
+</script>
+  
+
+<script src="/js/mobile/musimode/musi-info/career.js"></script>
+</body>
+</html>

@@ -9,7 +9,7 @@ Handlebars.registerHelper('isIndex', function(key, options) {
 displayMusiInfoPortfolio()
     
 function displayMusiInfoPortfolio() {
-  $.getJSON('/musician/musiInfoReviewPortfolio.json',
+  $.getJSON('/musician/musiInfoPortfolio.json',
       { 
         "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {

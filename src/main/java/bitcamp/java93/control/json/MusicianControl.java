@@ -1,5 +1,6 @@
 package bitcamp.java93.control.json;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,11 +11,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import bitcamp.java93.domain.Member;
 import bitcamp.java93.domain.Musician;
 import bitcamp.java93.service.CategoryService;
 import bitcamp.java93.service.MusicianService;
+import net.coobird.thumbnailator.Thumbnails;
 
 @RestController
 @RequestMapping("/musician/")
@@ -220,7 +223,7 @@ public class MusicianControl {
     return result;
   }
   
-  @RequestMapping("musiInfoReviewIntroduce")
+  @RequestMapping("musiInfoIntroduce")
   public JsonResult musiInfoReviewIntroduce(int no) throws Exception {
     JsonResult result = new JsonResult();
     HashMap<String,Object> dataMap = new HashMap<>();
@@ -248,11 +251,11 @@ public class MusicianControl {
     return result;
   }
   
-  @RequestMapping("musiInfoReviewPortfolio")
+  @RequestMapping("musiInfoPortfolio")
   public JsonResult musiInfoReviewPortfolio(int no) throws Exception {
     JsonResult result = new JsonResult();
     HashMap<String,Object> dataMap = new HashMap<>();
-    Musician musicianPortfolio = musicianService.getPortfolio(no);
+    List<Musician> musicianPortfolio = musicianService.getPortfolio(no);
     if (musicianPortfolio == null) {
       return new JsonResult(JsonResult.SUCCESS, "0");
     }
@@ -266,7 +269,7 @@ public class MusicianControl {
   public JsonResult musiInfoMyPortfolio(HttpSession session) throws Exception {
     JsonResult result = new JsonResult();
     HashMap<String,Object> dataMap = new HashMap<>();
-    Musician musicianPortfolio = musicianService.getPortfolio(getLoginMember(session).getNo());
+    List<Musician> musicianPortfolio = musicianService.getPortfolio(getLoginMember(session).getNo());
     if (musicianPortfolio == null) {
       return new JsonResult(JsonResult.SUCCESS, "0");
     }
@@ -386,6 +389,43 @@ public class MusicianControl {
     musicianService.changeMusiInfo(getLoginMember(session).getNo(), musician);
     
     return new JsonResult(JsonResult.SUCCESS, "ok");
+  }
+  
+  @RequestMapping("career")
+  public JsonResult career(MultipartFile[] files) throws Exception {
+    System.out.println(files);
+    ArrayList<Object> fileList = new ArrayList<>();
+    for (int i = 0; i < files.length; i++) {
+      if (files[i].isEmpty()) 
+        continue;
+
+      String filename = getNewFilename();
+      File file =new File(servletContext.getRealPath("/image/profile/" + filename));
+      files[i].transferTo(file);
+      
+      File thumbnail = new File(servletContext.getRealPath("image/profile/" + filename + "_80"));
+      Thumbnails.of(file).size(80, 80).outputFormat("png").toFile(thumbnail);
+      
+      thumbnail = new File(servletContext.getRealPath("image/profile/" + filename + "_140"));
+      Thumbnails.of(file).size(140, 140).outputFormat("png").toFile(thumbnail);
+      
+      thumbnail = new File(servletContext.getRealPath("image/profile/" + filename + "_300"));
+      Thumbnails.of(file).size(300, 300).outputFormat("png").toFile(thumbnail);
+      
+      HashMap<String,Object> fileMap = new HashMap<>();
+      fileMap.put("filename", filename);
+      fileMap.put("filesize", files[i].getSize());
+      fileList.add(fileMap);
+    }
+    return new JsonResult(JsonResult.SUCCESS, fileList);
+  }
+  
+  int count = 0;
+  synchronized private String getNewFilename() {
+    if (count > 100) {
+      count = 0;
+    }
+    return String.format("%d_%d", System.currentTimeMillis(), ++count); 
   }
 
 }

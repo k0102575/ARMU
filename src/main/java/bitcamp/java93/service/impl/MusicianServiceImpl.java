@@ -82,7 +82,7 @@ public class MusicianServiceImpl implements MusicianService {
   }
   
   @Override
-  public Musician getPortfolio(int no) throws Exception {
+  public List<Musician> getPortfolio(int no) throws Exception {
     return musicianDao.selectMusiPortfolio(no);
   }
   

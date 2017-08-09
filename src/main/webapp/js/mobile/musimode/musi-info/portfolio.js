@@ -11,7 +11,7 @@ displayMusiInfoPortfolio()
 function displayMusiInfoPortfolio() {
   $.getJSON('/musician/musiInfoMyPortfolio.json', function(result) {
       
-      if(result.data == 0) {
+      if(result.data.getPortfolio.length == 0) {
         var templateFn = Handlebars.compile($('#musician-info0-portfolio-template').text())
         var generatedHTML = templateFn(result.data)
         var container = $('.portfolio-container')
@@ -27,7 +27,11 @@ function displayMusiInfoPortfolio() {
     var html = container.html()
     container.html(html + generatedHTML)
       
-      var timeLine = $('.timeline-line')
+    var timeLine = $('.timeline-line')
+    
+    $("#musician-portfolio-edit-btn").on('click', function() {
+      location.href= "/mobile/musimode/musi-info/career.html"
+    })
       
     if($("div[id=timeline-container]").length <= 1) {
       timeLine.css("background", "radial-gradient(circle, black, black, white)")

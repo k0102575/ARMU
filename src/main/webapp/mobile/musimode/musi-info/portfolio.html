@@ -9,7 +9,7 @@
 <button type="button" id="musician-portfolio-edit-btn">편집 하기</button>
 
 <script id="musician-info-portfolio-template" type="text/x-handlebars-template">
-{{#getPortfolio}}
+{{#each getPortfolio}}
   <div id="spec-backscreen"></div>
   <div id="spec-detail">
     <div id="spec-close">닫기</div>
@@ -52,14 +52,14 @@
   {{/each}}
   </div>
   </div>
-{{/getPortfolio}}
+{{/each}}
 </script>
 
 <script id="musician-info0-portfolio-template" type="text/x-handlebars-template">
     <div class="rec-no-portfolio">
       <br> 아직 작성하신 포트폴리오가 없어요<br><br>
       <i class="fa fa-frown-o" aria-hidden="true" id='rec-no-event-cry'></i><br><br>
-      <a href="/mobile/gmode/event/regist.html" class='rec-event-add-btn'>포트폴리오 등록하기</a><br><br>
+      <a href="/mobile/musimode/musi-info/career.html" class='rec-event-add-btn'>포트폴리오 등록하기</a><br><br>
     </div>
     <!-- rec-no-event -->
 </script>

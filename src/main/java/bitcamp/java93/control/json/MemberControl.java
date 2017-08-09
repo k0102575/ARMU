@@ -144,6 +144,7 @@ public class MemberControl {
   
   @RequestMapping("signupPhoto")
   public JsonResult signupPhoto(MultipartFile[] files) throws Exception {
+    System.out.println(files);
     ArrayList<Object> fileList = new ArrayList<>();
     for (int i = 0; i < files.length; i++) {
       if (files[i].isEmpty()) 

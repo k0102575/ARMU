@@ -25,7 +25,7 @@ $(function() {
 displayMusiInfoIntroduce()
     
 function displayMusiInfoIntroduce() {
-  $.getJSON('/musician/musiInfoReviewIntroduce.json',
+  $.getJSON('/musician/musiInfoIntroduce.json',
       { 
         "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {
