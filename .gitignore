@@ -9,5 +9,6 @@
 **/.log
 **/.DS_Store
 **/.settings
+**/.idea
 **/.project
 !build.gradle

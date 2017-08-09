@@ -260,7 +260,7 @@ seoul.click(function () {
   if(gen==undefined)
     gen='선택안됨'
   loc = $(this).text()
-  console.log(loc,mjr,gen)
+//  console.log(loc,mjr,gen)
     $.post('/musician/searchMusician.json',
       {'location':loc, 'major':mjr, 'genre':gen, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG}, function(result) {
         handleList(result)
@@ -274,9 +274,9 @@ seoul.click(function () {
       }
   },'json')
   
-  $('.fa-check').remove()
+  $('.check1').remove()
   seoul.removeClass('on2')
-  $(this).html('<i class="fa fa-check" aria-hidden="true"></i>'+ $(this).text())
+  $(this).html('<i class="fa fa-check check1" aria-hidden="true"></i>'+ $(this).text())
   $(this).addClass('on2')
   return loc;
 })
@@ -301,9 +301,9 @@ major.click(function () {
       }
   },'json')
   
-  $('.fa-check').remove()
+  $('.check2').remove()
   major.removeClass('on2')
-  $(this).html('<i class="fa fa-check" aria-hidden="true"></i>'+ $(this).text())
+  $(this).html('<i class="fa fa-check check2" aria-hidden="true"></i>'+ $(this).text())
   $(this).addClass('on2')
   return mjr;
 })
@@ -328,9 +328,9 @@ genre.click(function () {
       }
   },'json')
   
-  $('.fa-check').remove()
+  $('.check3').remove()
   genre.removeClass('on2')
-  $(this).html('<i class="fa fa-check" aria-hidden="true"></i>'+ $(this).text())
+  $(this).html('<i class="fa fa-check check3" aria-hidden="true"></i>'+ $(this).text())
   $(this).addClass('on2')
   return gen;
 })
