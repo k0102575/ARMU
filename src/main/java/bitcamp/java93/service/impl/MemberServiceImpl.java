@@ -50,6 +50,13 @@ public class MemberServiceImpl implements MemberService {
     memberDao.updatePhoto(valueMap);
   }
   
+  public void remove(int no) throws Exception {
+    int count = memberDao.delete(no);
+    if (count < 1) {
+      throw new Exception("회원 정보가 없습니다.");
+    }
+  }
+  
 }
 
 

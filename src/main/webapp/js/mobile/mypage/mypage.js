@@ -1,7 +1,7 @@
 
 'use strict'
 
-var mno;
+var mno, muno;
 $( document ).ready(function() {
     $.getJSON('/member/getMusiProfile.json', function(result) {
     if(result.status != 'success') {
@@ -16,7 +16,8 @@ $( document ).ready(function() {
     var container = $('#profile-container')
     var html = container.html()
     container.html(html + generatedHTML)
-    return mno=result.data.profile.no
+    if(muno!=undefined)
+    return muno=result.data.profile.no
   }, function(err) {
     console.log(err)
   })
@@ -58,10 +59,17 @@ function logout() {
 }
 
 $('.exit').on('click', function() {
-  $.post('/musician/delete.json', {'no':mno}, function(result) {
+  if (mno!= undefined){
+    $.post('/member/delete.json', {'no':mno}, function(result) {
     logout()
     location.href='/mobile/gmode/index.html'
   }, 'json')
+  } else {
+    $.post('/musician/delete.json', {'no':muno}, function(result) {
+    logout()
+    location.href='/mobile/gmode/index.html'
+    }, 'json')
+  }
 })
 
 var fiFilenames = $('#fi-filenames');
@@ -78,7 +86,7 @@ $('#fi-photoupload').fileupload({
     previewCrop: true,      // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
     submit: function (e, data) { // 서버에 전송하기 직전에 호출된다.
       data.formData = {
-        "no": mno
+        "no": muno
     };
     }, 
     processalways: function(e, data) {

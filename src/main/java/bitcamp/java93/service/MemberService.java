@@ -9,6 +9,7 @@ public interface MemberService {
   Member getProfile2(Member member) throws Exception;
   void updatePwd(Member member) throws Exception;
   void updatePhoto(int no, String photoPath) throws Exception;
+  void remove(int no) throws Exception;
 }
 
 

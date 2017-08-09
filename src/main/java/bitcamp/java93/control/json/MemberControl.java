@@ -169,7 +169,7 @@ public class MemberControl {
     }
     return new JsonResult(JsonResult.SUCCESS, fileList);
   }
-
+  
   int count = 0;
   synchronized private String getNewFilename() {
     if (count > 100) {
@@ -182,6 +182,12 @@ public class MemberControl {
     Member loginMember = (Member) session.getAttribute("loginMember");
     return loginMember;
   }
+  
+  @RequestMapping("delete")
+  public JsonResult delete(int no) throws Exception {
+    memberService.remove(no);
+    return new JsonResult(JsonResult.SUCCESS, "ok");
+  }  
 }
 
 
