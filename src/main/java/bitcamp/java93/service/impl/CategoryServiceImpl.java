@@ -45,6 +45,17 @@ public class CategoryServiceImpl implements CategoryService {
     this.MusicianCategory(musician.getNo(), musician.getThemeList(), musician.getMajorList(), musician.getGenreList(), musician.getLocationList());
   }
   
+  public void changeMusiCategory(int no, Musician musician) throws Exception {   
+    this.MusicianCategory(no, musician.getThemeList(), musician.getMajorList(), musician.getGenreList(), musician.getLocationList());
+  }
+  
+  public void deleteMusiCategory(int no) throws Exception {   
+    categoryDao.deleteMusiTheme(no);
+    categoryDao.deleteMusiMajor(no);
+    categoryDao.deleteMusiGenre(no);
+    categoryDao.deleteMusilocation(no);
+  }
+  
   private void MusicianCategory(int musiNo, List<String> themeList, List<String> majorList, List<String> genreList, List<String> locationList) {
     HashMap<String,Object> themeMap = new HashMap<>();
     HashMap<String,Object> majorMap = new HashMap<>();
@@ -76,6 +87,8 @@ public class CategoryServiceImpl implements CategoryService {
       categoryDao.locationMusi(locationMap);
     }
   }
+  
+
   
   
 }

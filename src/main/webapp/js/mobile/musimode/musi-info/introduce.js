@@ -28,7 +28,6 @@ displayMusiInfoIntroduce()
 getCategory()
 getLocation()
 
-
 themeSelectButton.on('click', function () {
   themeSelectBox.toggle()
   backScreen.toggle()
@@ -54,14 +53,93 @@ locationSelectButton.on('click', function() {
 
 $("#introduce-edit-btn").on('click', function() {
   
+  if(themeSelectText.text() == "") {
+    swal({
+      title: "테마를 선택 하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
+  return
+} 
+
+  if(majorSelectText.text() == "") {
+    swal({
+      title: "전공을 선택 하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
+    return
+  } 
   
+  if(genreSelectText.text() == "") {
+    swal({
+      title: "장르를 선택 하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
+    return
+  }
+  
+  if(locationTextBox.text().length == 6) {
+    swal({
+      title: "지역을 선택하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
+  return
+  }
+  
+  if($("#intro-text").val().length == 0) {
+    swal({
+      title: "자기소개를 입력하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
+  return
+  }
+  
+  $.post('/musician/updateInfo.json', {
+    "musicianTheme" : categoryThemeNo,
+    "musicianMajor" : categoryMajorNo,
+    "musicianGenre" : categoryGenreNo,
+    "musicianLocation" : locationNo,
+    "homepage" : $("#intro-homepage").val(),
+    "intro" : $("#intro-text").val()
+  }, function(result) {
+    if(result.data == "ok")  {
+      swal({
+        title: "변경에 성공하셨습니다!",
+        type: "success",
+        showCancelButton: false,
+        confirmButtonColor: "#8069ef",
+        confirmButtonText: "확인",
+        customClass: "checkSwal"
+      },function() {
+        location.reload()
+      });
+    }
+  }, 'json')
   
 })
 
 function displayMusiInfoIntroduce() {
   $.getJSON('/musician/musiInfoMyIntroduce.json', function(result) {
     var data = result.data.getIntroduce
-    console.log(data)
     for(var theme of data.themeList) {
       themeSelectText.append("<span class='selectSpan'>#" + theme + "</span>")
     }
