@@ -348,6 +348,45 @@ public class MusicianControl {
     musicianService.remove(no);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }  
+  @RequestMapping("updateInfo")
+  public JsonResult updateInfo(Musician musician, String musicianTheme, String musicianMajor, String musicianGenre, String musicianLocation, HttpSession session) throws Exception {
+    String[] themeList = musicianTheme.split(",");
+    String[] majorList = musicianMajor.split(",");
+    String[] genreList = musicianGenre.split(",");
+    String[] locationList = musicianLocation.split(",");
+    
+    ArrayList<String> changeThemeList = new ArrayList<>();
+    ArrayList<String> changeMajorList = new ArrayList<>();
+    ArrayList<String> changeGenreList = new ArrayList<>();
+    ArrayList<String> changeLocationList = new ArrayList<>();
+    
+    for (String theme : themeList) {
+      changeThemeList.add(theme);
+    } 
+    
+    for (String major : majorList) {
+      changeMajorList.add(major);
+    } 
+    
+    for (String genre : genreList) {
+      changeGenreList.add(genre);
+    } 
+    
+    for (String location : locationList) {
+      changeLocationList.add(location);
+    } 
+    
+    musician.setThemeList(changeThemeList);
+    musician.setMajorList(changeMajorList);
+    musician.setGenreList(changeGenreList);
+    musician.setLocationList(changeLocationList);
+    
+    categoryService.deleteMusiCategory(getLoginMember(session).getNo()); 
+    categoryService.changeMusiCategory(getLoginMember(session).getNo(), musician);
+    musicianService.changeMusiInfo(getLoginMember(session).getNo(), musician);
+    
+    return new JsonResult(JsonResult.SUCCESS, "ok");
+  }
 
 }
 

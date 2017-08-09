@@ -16,4 +16,8 @@ public interface CategoryDao {
   void majorMusi(HashMap<String, Object> majorMap);
   void genreMusi(HashMap<String, Object> genreMap);
   void locationMusi(HashMap<String, Object> locationMap);
+  void deleteMusiTheme(int no);
+  void deleteMusiMajor(int no);
+  void deleteMusiGenre(int no);
+  void deleteMusilocation(int no);
 }

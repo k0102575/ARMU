@@ -13,4 +13,6 @@ public interface CategoryService {
   List<Category> listLocation(int no) throws Exception;
   List<Category> listTop10() throws Exception;//공통 > 추천탭 > 인기분야 탑 10 리스트
   void addMusiCategory(Musician musician) throws Exception;
+  void deleteMusiCategory(int no) throws Exception;
+  void changeMusiCategory(int no, Musician musician) throws Exception;
 }

@@ -116,6 +116,15 @@ public class MusicianServiceImpl implements MusicianService {
     musicianDao.updateNick(member);
   }
   
+  public void changeMusiInfo(int no, Musician musician) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("no", no);
+    valueMap.put("homepage", musician.getHomepage());
+    valueMap.put("intro", musician.getIntro());
+    
+    musicianDao.updateInfo(valueMap);
+  }
+  
   public Musician getByMuno(int no) throws Exception {
     return musicianDao.selectMusiNo(no);
   }

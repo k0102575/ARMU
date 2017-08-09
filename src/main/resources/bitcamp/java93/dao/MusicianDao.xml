@@ -514,10 +514,16 @@
     values(#{no},#{isTeam},#{age},#{homepage},#{intro},#{gender},#{nickName})
   </insert>
    
-     <update id="updateNick" parameterType="musician">
+  <update id="updateNick" parameterType="musician">
     update musi set 
       nick=#{nickName}
     where muno=#{no}
+  </update>
+  
+  <update id="updateInfo" parameterType="map">
+    update musi set 
+      hpg = #{homepage}, intro = #{intro}
+    where muno= #{no}
   </update>
   
   <select id="selectMusiNo" parameterType="int" resultMap="musicianInfoMap">

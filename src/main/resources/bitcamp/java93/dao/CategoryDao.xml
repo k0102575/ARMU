@@ -129,6 +129,22 @@ limit 10
   values(#{musiNo}, #{musiLocation})
 </insert><!-- 승민 -->
 
+<delete id="deleteMusiTheme" parameterType="int">
+delete from thm_musi where muno = #{musiNo}
+</delete><!-- 승민 -->
+
+<delete id="deleteMusiMajor" parameterType="int">
+delete from mjr_musi where muno = #{musiNo}
+</delete><!-- 승민 -->
+
+<delete id="deleteMusiGenre" parameterType="int">
+delete from gnr_musi where muno = #{musiNo}
+</delete><!-- 승민 -->
+
+<delete id="deleteMusilocation" parameterType="int">
+delete from loc_musi where muno = #{musiNo}
+</delete><!-- 승민 -->
+
 </mapper>
 
 
