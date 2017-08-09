@@ -337,8 +337,9 @@ public class MusicianControl {
   }
   
   @RequestMapping("updateNick")
-  public JsonResult updateNick(Member member) throws Exception {
+  public JsonResult updateNick(Musician member) throws Exception {
     musicianService.updateNick(member);
+    System.out.println(member);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
 

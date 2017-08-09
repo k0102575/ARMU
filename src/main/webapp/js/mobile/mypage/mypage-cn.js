@@ -6,7 +6,7 @@ var mno;
 displayProfile()
 function displayProfile() {
   $.getJSON('/member/getMusiProfile.json', function(result) {
-
+    console.log(result)
     if(result.status != 'success') {
       console.error("getJSON() 실패: ", result.status)
       return;

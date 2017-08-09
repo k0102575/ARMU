@@ -22,6 +22,6 @@ public interface MusicianDao {
   Musician selectMusiPortfolio(int no);
   List<Musician> musicianSearch(HashMap<String,Object> valueMap);
   int insert(Musician musician);
-  void updateNick(Member member);
+  void updateNick(Musician member);
   Musician selectMusiNo(int no);
 }

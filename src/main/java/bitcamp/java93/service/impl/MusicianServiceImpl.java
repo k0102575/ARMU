@@ -112,7 +112,7 @@ public class MusicianServiceImpl implements MusicianService {
     musicianDao.insert(musician);
   }
   
-  public void updateNick(Member member) throws Exception {
+  public void updateNick(Musician member) throws Exception {
     musicianDao.updateNick(member);
   }
   
