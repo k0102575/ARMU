@@ -18,6 +18,7 @@
   <script src="/node_modules/animsition/dist/js/animsition.min.js"></script>
   <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
 <script src="/node_modules/handlebars-intl/dist/handlebars-intl.min.js"></script>
+<script src="/node_modules/handlebars-intl/dist/locale-data/ko.js"></script>
 
 </head>
 
@@ -42,28 +43,25 @@
 <script id="list-template" type="text/x-handlebars-template">
 {{#each list}}
 <li>
-{{#musician}}
-<a href="javascript:void(0)" 
+<a href="javascript:void(0)"
 data-href="http://192.168.0.22:8888/mobile/chat/chat-msg.html?
-receiverNo={{no}}&nickname={{nickName}}
-{{/musician}}
-{{#writer}}
-&senderNo={{no}}"
-{{/writer}}
-{{#musician}}
- class='chat-list'>
+receiverNo={{receiverNo}}&nickname={{nickName}}&senderNo={{senderNo}}&mode={{mode}}"
+class='chat-list'>
   <img src="{{photo}}" class="chat-list-img"></img>
   <span class='chat-list-name'>{{nickName}}
-{{/musician}}
   {{#if unread}}
     <span class='chat-list-unread-badge'>{{unread}}</span>
   {{/if}}
+{{#intl locales="ko-KO"}}
     <span class='chat-list-lastchat-date'>{{formatRelative date units="day"}}</span>
+{{/intl}}
   </span>
   <span class='chat-list-msg'>{{message}}</span>
-  <span class='chat-list-match-status'>{{status}}</span>
+  <span class='chat-list-match-status'>{{eventStatus}}</span>
   &middot;
-  <span class='chat-list-event-date'>{{formatDate eventDate}}</span>
+{{#intl locales="ko-KO"}}
+  <span class='chat-list-event-date'>{{formatDate eventDate day="numeric" month="long" year="numeric"}}</span>
+{{/intl}}
   </a>
 </li>
 {{/each}}

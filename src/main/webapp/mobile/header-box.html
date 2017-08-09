@@ -1,14 +1,16 @@
 
 <i class="fa fa-search header-menu" id='header-menu-search' aria-hidden="true"></i>
-<a href='/mobile/chat/index.html' id='header-menu-email' class='animsition-link'>
+<a href='javascript:void(0)' id='header-menu-email' class='animsition-link'>
 <i class="fa fa-envelope-o header-menu" aria-hidden="true"></i>
 </a>
 <span class="header-menu" id='header-menu-logo'><img
 	id='logo-img' src='/image/logo/ARMU_01.png' height='70px'></span>
 <i class="fa fa-bars header-menu" id="header-menu-menu" aria-hidden="true"></i>
 
-<!-- <script type="text/javascript">
-	$('#header-menu-email').on('click', function() {
-		location.href = 'chat/chat.html'
-	})
-</script> -->
+<script type="text/javascript">
+  var param = location.href.split('/')[4]
+  $('#header-menu-email').on('click', function(e) {
+    e.preventDefault()
+    location.href='/mobile/chat/index.html?mode=' + param
+  })
+</script>

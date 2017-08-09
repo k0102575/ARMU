@@ -12,6 +12,7 @@ module.exports = {
     }, error)
   },//list()
 
+
   insert(chat, success, error) {
     this.chatDao.insert(chat, success, error)
   }//insert()

@@ -329,81 +329,44 @@ where mjt.mjrtno=1
 
 
 
+-- 특정 뮤지션의 채팅 리스트 가져오기
+select gm.mno as gmno, c.muno as musino, gm.name as gmname, gm.path as gmphoto,
+cast(c.date as date) as date, cast(c.date as time) as time, c.msg, e.date as edate, e.status, c.unread
+from memb gm inner join (
+  select mno, muno,
+  substring_index(group_concat(date order by date desc), ',', 1) as date,
+  substring_index(group_concat(msg order by date desc), ',', 1) as msg,
+  sum(if(isread='N', 1, 0)) as unread
+  from chat
+  group by mno, muno
+  having muno=11
+) c on gm.mno=c.mno
+inner join (
+  select mno, max(date) as date, if(max(date) < curdate(), '완료', '진행중') as status
+  from (
+    select e.mno, e.eno, e.date as date
+    from mtc mt inner join evn e on (mt.eno=e.eno and mt.muno=11)
+    inner join memb m on e.mno=m.mno
+  ) e
+  group by e.mno
+) e on gm.mno=e.mno
+order by e.date desc
+
+
+-- 특정 뮤지션 채팅내역 가져오기
+select chatno, isread, date, msg, c.muno, c.mno, who,
+mu.mno as musino, mu.name as musiname, musi.nick as musinick, mu.path as musiphoto,
+m.mno as gmno, m.name as gmname, m.path as gmphoto
+from chat c
+inner join memb mu on c.muno=mu.mno inner join musi on mu.mno=musi.muno
+inner join memb m on c.mno=m.mno
+where c.mno=11 and c.muno=3
+order by date asc
 
 
 
-
-
-
- select m.mno, m.name as memb_name, mu.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, m.path, mu.gender,
-  mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, if(fm.fav is not null, 1, 0) as fav,
-  lm.muno, l.name as location, lt.name as sido , mjrt.name as mjrt_name, gnrt.name as gnrt_n
-  from musi mu inner join memb m on mu.muno=m.mno
-  left outer join mjr_musi mjm on mu.muno=mjm.muno
-  left outer join mjr mj on mj.mjrno=mjm.mjrno
-  left outer join gnr_musi gm on mu.muno=gm.muno left outer join gnr g on gm.gnrno=g.gnrno
-  left outer join thm_musi tm on mu.muno=tm.muno left outer join thm t on tm.thmno=t.thmno
-  left outer join mtc on mtc.muno=mu.muno
-  left outer join (
-  select count(if(mno is not null, 1, 0)) as fav, mno, muno
-  from fav_musi
-  where mno = 1
-  group by muno) fm on fm.muno=mu.muno
-  left outer join loc_musi lm on lm.muno=m.mno
-  left outer join loc l on lm.locno= l.locno
-  left outer join loc_type lt on l.loctno = lt.loctno
-  left outer join mjr_type mjrt on mj.mjrtno=mjrt.mjrtno
-  left outer join gnr_type gnrt on g.gnrtno=gnrt.gnrtno
-  where g.name= '발라드'
-  <choose>
-		<when test='location == "선택안됨"'>
-			<choose>
-			 <when test="major == '선택안됨'">
-  		  where g.name= #{genre}
-			 </when>
-			 <when test="genre == '선택안됨'">
-        where mj.name= #{major}
-       </when>
-       <otherwise>
-        where g.name= #{genre} AND
-        mj.name= #{major}
-       </otherwise>
-			</choose>
-		</when>
-
-		<when test='major == "선택안됨"'>
-      <choose>
-       <when test="location == '선택안됨'">
-        where g.name= #{genre}
-       </when>
-       <when test="genre == '선택안됨'">
-        where l.name= #{location}
-       </when>
-       <otherwise>
-        where l.name= #{location} AND
-        g.name= #{genre}
-       </otherwise>
-      </choose>
-    </when>
-
-    <when test='genre == "선택안됨"'>
-      <choose>
-       <when test="location == '선택안됨'">
-        where mj.name= #{major}
-       </when>
-       <when test="major == '선택안됨'">
-        where l.name= #{location}
-       </when>
-       <otherwise>
-        where l.name= #{location} AND
-        mj.name= #{major}
-       </otherwise>
-      </choose>
-    </when>
-
-    <otherwise>
-    where l.name=#{location} AND
-    mj.name = #{major} AND
-    g.name = #{genre}
-    </otherwise>
-  </choose>
+-- 채팅 테스트용
+insert into chat (muno, mno, isread, msg, date, who) values (11, 3, 'N','빨간건현악이 뮤지션임~', '2017-06-19 17:12:03', 11);
+insert into chat (muno, mno, isread, msg, date, who) values (11, 3, 'N','빨간건현악이 뮤지션임~', '2017-06-19 17:12:03', 3);
+insert into chat (muno, mno, isread, msg, date, who) values (3, 11, 'N','오호라가 뮤지션임~', '2017-06-19 17:12:03', 11);
+insert into chat (muno, mno, isread, msg, date, who) values (3, 11, 'N','오호라가 뮤지션임~', '2017-06-19 17:12:03', 3);

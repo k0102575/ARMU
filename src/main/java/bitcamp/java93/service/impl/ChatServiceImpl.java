@@ -20,16 +20,20 @@ public class ChatServiceImpl implements ChatService {
     return chatDao.selectList(no);
   }
   
-  public List<Chat> listChat(Map<String, Object> info) throws Exception {
-    return chatDao.selectChatList(info);
+  public List<Chat> listMusi(int no) throws Exception {
+    return chatDao.selectMusiList(no);
   }
-  
-  public List<Chat> listMusiChat(int no) throws Exception {
-    return chatDao.selectMusiChatList(no);
-  }
-
-  public int addChat(Chat chat) throws Exception {
-    return chatDao.insertChat(chat);
-  }
+//  
+//  public List<Chat> listChat(Map<String, Object> info) throws Exception {
+//    return chatDao.selectChatList(info);
+//  }
+//  
+//  public List<Chat> listMusiChat(Map<String, Object> info) throws Exception {
+//    return chatDao.selectMusiChatList(info);
+//  }
+//
+//  public int addChat(Chat chat) throws Exception {
+//    return chatDao.insertChat(chat);
+//  }
 }
 

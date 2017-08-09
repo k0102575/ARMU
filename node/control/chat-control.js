@@ -6,7 +6,6 @@ const datasource = require('../util/datasource')
 const chatDao = require('../dao/chat-dao')
 const chatService = require('../service/chat-service')
 
-
 const connection = datasource.getConnection()
 chatDao.setConnection(connection)
 chatService.setChatDao(chatDao)
@@ -14,6 +13,8 @@ chatService.setChatDao(chatDao)
 const router = express.Router()
 
 var clients = []
+
+var userInfos = []
 
 router.ws('/send.json', function(ws, req) {
   var myMap = new Map;
@@ -107,4 +108,50 @@ router.post('/list.json', (req, res) => {
   })
 })
 
+router.post('/listMusi.json', (req, res) => {
+  chatService.list(req.body.receiverNo, req.body.senderNo, function(results) {
+    res.json({
+      'list': results
+    })
+  }, function(error) {
+    res.status(200)
+      .set('Content-Type', 'text/plain;charset=UTF-8')
+      .end('error')
+    console.log(error)
+  })
+})
+
+
 module.exports = router
+
+
+//
+// router.post('/change.json', (req, res) => {
+//   console.log(req.body.senderNo)
+//   console.log(req.body.receiverNo)
+//   // var map = setUser(req.body.senderNo, req.body.receiverNo, '잠시만')
+//   // userInfos.push(map)
+//
+//   // res.json({
+//   //   'location': 'http://192.168.0.22:8888/mobile/chat/chat-msg.html'
+//   // })
+//
+//   res.redirect('http://192.168.0.22:8888/mobile/chat/chat-msg.html')
+//   next
+// })
+//
+//
+// function setUser(senderNo, receiverNo, nickName) {
+//   for(var userMap in userInfos) {
+//     if(userMap.get('senderNo') == senderNo && userMap.get('receiverNo') == receiverNo){
+//       return userMap
+//     }
+//     else {
+//       var newMap = new Map()
+//       newMap.set('senderNo', senderNo)
+//       newMap.set('receiverNo', receiverNo)
+//       newMap.set('nickName', nickName)
+//       return newMap
+//     }
+//   }
+// }

@@ -42,19 +42,17 @@ public class ChatControl {
     return result;
   }
   
-  @RequestMapping("listChat")
-  public JsonResult listChat(int musicianNo, HttpSession session) {
+  @RequestMapping("listMusi")
+  public JsonResult listMusi(HttpSession session) {
     JsonResult result = new JsonResult();
     try {
-      int writerNo = getLoginMember(session).getNo();
-      HashMap<String, Object> paramMap = new HashMap<>();
-      paramMap.put("mno", writerNo);
-      paramMap.put("muno", musicianNo);
-      List<Chat> chatList = chatService.listChat(paramMap);
+      int no = getLoginMember(session).getNo();
+      List<Chat> list = chatService.listMusi(no);
+      System.out.println(list);
       result.setStatus(JsonResult.SUCCESS);
 
       HashMap<String,Object> dataMap = new HashMap<>();
-      dataMap.put("listChat", chatList);
+      dataMap.put("list", list);
       result.setData(dataMap);
 
     } catch (Exception e) {
@@ -65,58 +63,83 @@ public class ChatControl {
     return result;
   }
   
-  
-  @RequestMapping("add")
-  public JsonResult add(Chat chat, HttpSession session) {
-    JsonResult result = new JsonResult();
-    
-    if (chat != null) { 
-      try {
-        chat.setSenderNo(getLoginMember(session).getNo());
-        int rs = chatService.addChat(chat);
-        
-        result.setStatus(JsonResult.SUCCESS);
-        result.setData(rs);
-      } catch (Exception e) {
-        e.printStackTrace();
-        result.setStatus(JsonResult.ERROR);
-      }
-      
-    } else {
-      result.setStatus(JsonResult.FAIL);
-      result.setData("no chat data");
-    }
-
-    return result;
-  }
-  
-
-  @RequestMapping("listMusiChat")
-  public JsonResult listMusiChat(HttpSession session) throws Exception {
-    JsonResult result = new JsonResult();
-
-    try {
-      List<Chat> chatList = chatService.listMusiChat(getLoginMember(session).getNo());
-
-      result.setStatus(JsonResult.SUCCESS);
-
-      HashMap<String,Object> dataMap = new HashMap<>();
-      dataMap.put("listChat", chatList);
-      result.setData(dataMap);
-
-    } catch (Exception e) {
-      e.printStackTrace();
-      result.setStatus(JsonResult.ERROR);
-    }
-
-    return result;
-
-  }
 
   private Member getLoginMember(HttpSession session) {
     Member loginMember = (Member) session.getAttribute("loginMember");
     return loginMember;
   }
+  
+//  
+//  @RequestMapping("listChat")
+//  public JsonResult listChat(int receiverNo, HttpSession session) {
+//    JsonResult result = new JsonResult();
+//    try {
+//      int senderNo = getLoginMember(session).getNo();
+//      HashMap<String, Object> paramMap = new HashMap<>();
+//      paramMap.put("mno", senderNo);
+//      paramMap.put("muno", receiverNo);
+//      List<Chat> chatList = chatService.listChat(paramMap);
+//      result.setStatus(JsonResult.SUCCESS);
+//
+//      HashMap<String,Object> dataMap = new HashMap<>();
+//      dataMap.put("listChat", chatList);
+//      result.setData(dataMap);
+//
+//    } catch (Exception e) {
+//      e.printStackTrace();
+//      result.setStatus(JsonResult.ERROR);
+//    }
+//
+//    return result;
+//  }
+//  
+//  @RequestMapping("listMsiChat")
+//  public JsonResult listMusiChat(int receiverNo, HttpSession session) {
+//    JsonResult result = new JsonResult();
+//    try {
+//      int senderNo = getLoginMember(session).getNo();
+//      HashMap<String, Object> paramMap = new HashMap<>();
+//      paramMap.put("mno", receiverNo);
+//      paramMap.put("muno", senderNo);
+//      List<Chat> chatList = chatService.listMusiChat(paramMap);
+//      result.setStatus(JsonResult.SUCCESS);
+//
+//      HashMap<String,Object> dataMap = new HashMap<>();
+//      dataMap.put("listChat", chatList);
+//      result.setData(dataMap);
+//
+//    } catch (Exception e) {
+//      e.printStackTrace();
+//      result.setStatus(JsonResult.ERROR);
+//    }
+//
+//    return result;
+//  }
+//  
+//  @RequestMapping("add")
+//  public JsonResult add(Chat chat, HttpSession session) {
+//    JsonResult result = new JsonResult();
+//    
+//    if (chat != null) { 
+//      try {
+//        chat.setSenderNo(getLoginMember(session).getNo());
+//        int rs = chatService.addChat(chat);
+//        
+//        result.setStatus(JsonResult.SUCCESS);
+//        result.setData(rs);
+//      } catch (Exception e) {
+//        e.printStackTrace();
+//        result.setStatus(JsonResult.ERROR);
+//      }
+//      
+//    } else {
+//      result.setStatus(JsonResult.FAIL);
+//      result.setData("no chat data");
+//    }
+//
+//    return result;
+//  }
+//  
 
 }
 

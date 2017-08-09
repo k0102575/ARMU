@@ -37,21 +37,22 @@ displayList()
 
 });
 
-
+var mode = location.href.split('?')[1].split('=')[1]
 
 function displayList() {
-
-  $.getJSON('/chat/list.json', function(result) {
+  var url;
+  if(mode == 'musimode') url = '/chat/listMusi.json'
+  else url = '/chat/list.json'
+    
+  $.getJSON(url, function(result) {
     if(result.status != 'success') {
       console.error("getJSON() 실패: ", result.status)
       return;
     }
-    
-    
-    
     var totalUnread = 0;
     $.each(result.data.list, function(i, item) {
       totalUnread += item.unread
+      item.mode = mode
     });
     $('#total-unread').text(totalUnread + '개')
     var templateFn = Handlebars.compile($('#list-template').text())
@@ -61,17 +62,9 @@ function displayList() {
     container.html(html + generatedHTML)
     container.listview("refresh")
    
-    var chatList = $('.chat-list')
-    
-    $.each(chatList, function(i, item) {
-      $(item).on('click', function() {
-        location.href = $(item).attr('data-href')
-      })
+    $('.chat-list').on('click', function() {
+      location.href = $(this).attr('data-href')
     })
     
-    
-  }, function(err) {
-    console.log(err)
   })
-
-}
+}//displayList()

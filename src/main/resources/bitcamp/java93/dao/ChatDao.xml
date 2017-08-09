@@ -10,27 +10,22 @@
     <result column="date" property="date"/>
     <result column="time" property="time"/>
     <result column="msg" property="message"/>
-    <result column="who" property="senderNo"/>
+    <result column="who" property="whose"/>
     <result column="edate" property="eventDate"/>
-    <result column="status" property="status"/>
+    <result column="status" property="eventStatus"/>
     <result column="unread" property="unread"/>
-    <association property="musician" javaType='Musician'>
-      <id property="no" column="musino"/>
-    <result property="name" column="musiname"/>
-    <result property="nickName" column="musinick"/>
-    <result property="photo" column="musiphoto"/>
-    </association>
-    <association property="writer" javaType='Member'>
-      <id property="no" column="gmno"/>
-    <result property="name" column="gmname"/>
-    <result property="photo" column="gmphoto"/>
-    </association>
+    <result column="nick" property="nickName"/>
+    <result column="path" property="photo"/>
+    <result column="receiver" property="receiverNo"/>
+    <result column="sender" property="senderNo"/>
+    <result column="unread" property="unread"/>
+    <result column="ismusi" property="isMusician"/>
   </resultMap>
 
 
 
  <select id="selectList" resultMap="chatMap" parameterType="int">
-  select c.mno as gmno, mu.mno as musino, musi.nick as musinick, mu.path as musiphoto,
+  select c.mno as sender, mu.mno as receiver, musi.nick as nick, mu.path,
 cast(c.date as date) as date, cast(c.date as time) as time, c.msg, e.date as edate, e.status, c.unread
 from memb mu inner join (
   select mno, muno,
@@ -54,12 +49,37 @@ inner join (
 order by e.date desc
  </select>
  
+ <select id="selectMusiList" resultMap="chatMap" parameterType="int">
+  select gm.mno as receiver, c.muno as sender, gm.name as nick, gm.path,
+cast(c.date as date) as date, cast(c.date as time) as time, c.msg, e.date as edate,
+e.status, c.unread, 1 as ismusi
+from memb gm inner join (
+  select mno, muno,
+  substring_index(group_concat(date order by date desc), ',', 1) as date,
+  substring_index(group_concat(msg order by date desc), ',', 1) as msg,
+  sum(if(isread='N', 1, 0)) as unread
+  from chat
+  group by mno, muno
+  having muno=#{no}
+) c on gm.mno=c.mno
+inner join (
+  select mno, max(date) as date, if(max(date) &lt; curdate(), '완료', '진행중') as status
+  from (
+    select e.mno, e.eno, e.date as date
+    from mtc mt inner join evn e on (mt.eno=e.eno and mt.muno=#{no})
+    inner join memb m on e.mno=m.mno
+  ) e
+  group by e.mno
+) e on gm.mno=e.mno
+order by e.date desc
+
+ </select>
  
  
+ <!-- 
  <select id="selectChatList" resultMap="chatMap" parameterType="map">
-  select chatno, isread, cast(date as date) as date, cast(date as time) as time, msg, c.muno, c.mno, who,
-mu.mno as musino, mu.name as musiname, musi.nick as musinick, mu.path as musiphoto,
-m.mno as gmno, m.name as gmname, m.path as gmphoto
+  select chatno, isread, cast(date as date) as date, cast(date as time) as time, msg, 
+  c.muno as receiver, c.mno as sender, who, musi.nick as nick, mu.path
 from chat c
 inner join memb mu on c.muno=mu.mno inner join musi on mu.mno=musi.muno
 inner join memb m on c.mno=m.mno
@@ -70,9 +90,8 @@ order by date asc
   
   
   <select id="selectMusiChatList" resultMap="chatMap" parameterType="map">
-  select chatno, isread, date, msg, c.muno, c.mno, who,
-mu.mno as musino, mu.name as musiname, musi.nick as musinick, mu.path as musiphoto,
-m.mno as gmno, m.name as gmname, m.path as gmphoto
+  select chatno, isread, date, msg, c.muno as senderNo, c.mno as ReceiverNo, who,
+ m.name as nickName, m.path
 from chat c
 inner join memb mu on c.muno=mu.mno inner join musi on mu.mno=musi.muno
 inner join memb m on c.mno=m.mno
@@ -86,7 +105,7 @@ order by date asc
     insert into chat(muno, mno, isread, msg, date, who) 
     values(#{no}, #{senderNo}, 'N', #{message}, 
     concat(#{date}, " ", #{time}), #{senderNo})
-  </insert>
+  </insert> -->
   
 </mapper>
 
