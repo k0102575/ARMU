@@ -15,4 +15,5 @@ public interface MemberDao {
   Member selectOne(Member member);
   Member selectMusi(Member member);
   void updatePwd(Member member);
+  int delete(int no) throws Exception;
 }

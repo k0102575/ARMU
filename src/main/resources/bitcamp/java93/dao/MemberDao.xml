@@ -71,6 +71,11 @@
     path=concat('/image/profile/',#{photoPath},'_140.png')
     where mno=#{memberNo}
   </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from memb 
+    where mno=#{no}
+  </delete>
 </mapper>
 
 

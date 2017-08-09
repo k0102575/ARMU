@@ -25,6 +25,7 @@ public interface MusicianService {
 //  void updatePhoto(int no, String photoPath) throws Exception;
   void updateNick(Musician member) throws Exception;
   Musician getByMuno(int no) throws Exception;
+  void remove(int no) throws Exception;
 }
 
 

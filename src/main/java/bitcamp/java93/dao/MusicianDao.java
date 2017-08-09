@@ -24,4 +24,5 @@ public interface MusicianDao {
   int insert(Musician musician);
   void updateNick(Musician member);
   Musician selectMusiNo(int no);
+  int delete(int no);
 }

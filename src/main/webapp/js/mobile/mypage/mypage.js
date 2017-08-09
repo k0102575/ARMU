@@ -46,10 +46,22 @@ $.getJSON('/member/getProfile.json', function(result) {
   })
 }
 
-$(document.body).on('click', '#logout-link', function(event) {
+$(document.body).on('click', '#logout-link', function (event) {
+  logout()
+  location.href = '/mobile/index.html'
+})
+
+function logout() {
   $.getJSON('/auth/logout.json', function(result) {
-    location.href = '/mobile/index.html'
+    
   })
+}
+
+$('.exit').on('click', function() {
+  $.post('/musician/delete.json', {'no':mno}, function(result) {
+    logout()
+    location.href='/mobile/gmode/index.html'
+  }, 'json')
 })
 
 var fiFilenames = $('#fi-filenames');

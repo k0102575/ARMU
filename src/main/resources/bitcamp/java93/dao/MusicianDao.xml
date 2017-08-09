@@ -525,6 +525,11 @@
     WHERE muno = #{no}
   </select>
   
+  <delete id="delete" parameterType="int">
+    delete from musi 
+    where muno=#{no}
+  </delete>
+  
 </mapper>
 
 

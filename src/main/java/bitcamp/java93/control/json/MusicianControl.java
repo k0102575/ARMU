@@ -342,6 +342,12 @@ public class MusicianControl {
     System.out.println(member);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
+  
+  @RequestMapping("delete")
+  public JsonResult delete(int no) throws Exception {
+    musicianService.remove(no);
+    return new JsonResult(JsonResult.SUCCESS, "ok");
+  }  
 
 }
 

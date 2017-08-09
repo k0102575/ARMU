@@ -120,6 +120,16 @@ public class MusicianServiceImpl implements MusicianService {
     return musicianDao.selectMusiNo(no);
   }
 
+  public void remove(int no) throws Exception {
+    int count = musicianDao.delete(no);
+    if (count < 1) {
+      throw new Exception("회원 정보가 없습니다.");
+    }
+    
+    try {
+      count = memberDao.delete(no);
+    } catch (Exception e) {}
+  }
 }
 
 
