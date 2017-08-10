@@ -90,7 +90,7 @@ order by date asc
   
   
   <select id="selectMusiChatList" resultMap="chatMap" parameterType="map">
-  select chatno, isread, date, msg, c.muno as senderNo, c.mno as ReceiverNo, who,
+  select chatno, isread, date, msg, c.muno as senderNo, c.mno as receiverNo, who,
  m.name as nickName, m.path
 from chat c
 inner join memb mu on c.muno=mu.mno inner join musi on mu.mno=musi.muno
@@ -107,6 +107,13 @@ order by date asc
     concat(#{date}, " ", #{time}), #{senderNo})
   </insert> -->
   
+  
+  <select id='selectPhoto' resultType='String' parameterType='int'>
+  <!-- select mno as receiverNo, name as nickName, path -->
+  select path
+  from memb
+  where mno=#{no}
+  </select>
 </mapper>
 
 

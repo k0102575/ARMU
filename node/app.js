@@ -13,6 +13,8 @@ app.all('/', function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
  });
+
+
 // 웹브라우저가 요청하는 파일이 어떤 폴더에 있는지 지정한다.
 app.use(express.static('public'))
 

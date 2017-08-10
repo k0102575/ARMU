@@ -1,6 +1,9 @@
 package bitcamp.java93.control.json;
 
+import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -113,7 +116,7 @@ public class MemberControl {
   }
   
   @RequestMapping("updatePhoto")
-  public JsonResult updatePhoto(@RequestParam int no,MultipartFile[] files) throws Exception {
+  public JsonResult updatePhoto(@RequestParam int no, MultipartFile[] files) throws Exception {
 
     ArrayList<Object> fileList = new ArrayList<>();
     for (int i = 0; i < files.length; i++) {
@@ -188,7 +191,8 @@ public class MemberControl {
   public JsonResult delete(int no) throws Exception {
     memberService.remove(no);
     return new JsonResult(JsonResult.SUCCESS, "ok");
-  }  
+  } 
+  
 }
 
 

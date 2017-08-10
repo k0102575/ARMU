@@ -6,6 +6,9 @@ const datasource = require('../util/datasource')
 const chatDao = require('../dao/chat-dao')
 const chatService = require('../service/chat-service')
 
+var fs = require('fs');
+var http = require('http');
+
 const connection = datasource.getConnection()
 chatDao.setConnection(connection)
 chatService.setChatDao(chatDao)
@@ -27,14 +30,19 @@ router.ws('/send.json', function(ws, req) {
 
     if (!myMap.has('user')) {
       var receiver = obj.receiver,
-        sender = obj.sender;
+        sender = obj.sender,
+        isMusician = obj.isMusician,
+        photo = obj.photo;
+
       myMap.set('user', sender)
       myMap.set('ws', ws)
       myMap.set('opponent', receiver)
+      myMap.set('isMusician', (isMusician == 'Y' ? true : false))
       console.log('새로운 유저!\n유저 넘버: ' + myMap.get('user') +
         ', wsID: ' + myMap.get('ws')._socket._handle.fd +
         ', 상대방 넘버: ' + myMap.get('opponent'));
       setCommunicator(myMap)
+      getFile(photo)
       return;
     }
 
@@ -46,9 +54,8 @@ router.ws('/send.json', function(ws, req) {
       broadcast(myMap, data)
     }
 
-
-    addChat(myMap, msg)
-
+    if(myMap.get('isMusician')) addMusiChat(myMap, msg)
+    else addChat(myMap, msg)
 
   }) //ws.on()
 }) //router.ws()
@@ -59,6 +66,25 @@ function addChat(myMap, msg) {
   chatService.insert({
     'muno' : myMap.get('opponent'),
     'mno' : myMap.get('user'),
+    'msg' : msg,
+    'date' : now,
+    'who' : myMap.get('user')
+  }, function(result) {
+    var data = {
+      'message': msg,
+      'sender': 'me'
+    }
+    myMap.get('ws').send(JSON.stringify(data));
+  }, function(error) {
+    console.log(error)
+  })//chatService.insert()
+} //addChat()
+
+function addMusiChat(myMap, msg) {
+  var now = moment().format("YYYY-MM-DD HH:mm:ss")
+  chatService.insert({
+    'mno' : myMap.get('opponent'),
+    'muno' : myMap.get('user'),
     'msg' : msg,
     'date' : now,
     'who' : myMap.get('user')
@@ -96,6 +122,7 @@ function broadcast(myMap, data) {
 
 
 router.post('/list.json', (req, res) => {
+  getFile(req.body.photo)
   chatService.list(req.body.senderNo, req.body.receiverNo, function(results) {
     res.json({
       'list': results
@@ -109,7 +136,8 @@ router.post('/list.json', (req, res) => {
 })
 
 router.post('/listMusi.json', (req, res) => {
-  chatService.list(req.body.receiverNo, req.body.senderNo, function(results) {
+  getFile(req.body.photo)
+  chatService.listMusi(req.body.receiverNo, req.body.senderNo, function(results) {
     res.json({
       'list': results
     })
@@ -121,6 +149,27 @@ router.post('/listMusi.json', (req, res) => {
   })
 })
 
+router.post('/getPhotoPath.json', (req, res) => {
+  getFile(req.body.photo)
+  chatService.getPhotoPath(req.body.no, function(result) {
+    res.json({
+      'photo': results
+    })
+  }, function(error) {
+    res.status(200)
+      .set('Content-Type', 'text/plain;charset=UTF-8')
+      .end('error')
+    console.log(error)
+  })
+})
+
+
+function getFile(photo) {
+  var file = fs.createWriteStream("/image/profile/" + photo + "_140.png");
+  var request = http.get("http://192.168.0.22:8080/image/profile/" + photo, function(response) {
+    response.pipe(file);
+  });
+}
 
 module.exports = router
 

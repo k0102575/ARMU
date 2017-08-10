@@ -43,12 +43,27 @@ $(window).on('load', function() {
     msgInput = $('#msg-input'),
     msgInputBox = $('.message-input-box');
 
+	var photo;
+
+	getPhotoPath()
+
+	function getPhotoPath() {
+		$.post('/chat/getPhotoPath.json',
+		{'no' : receiverNo},
+      function(result) {
+        photo = result.photo
+				//displayChatBubbles()
+      }).done(function() {}).fail(function() {
+      console.log('post요청 실패')
+    }).always(function() {});
+	}
+
   messageBox.scrollTop(messageBox.prop('scrollHeight'));
   $('.chat-msg-header').text(nickName)
 
 
-  displayChatBubbles()
 
+// displayChatBubbles()
 
   function displayChatBubbles() {
 		var url;
@@ -57,10 +72,12 @@ $(window).on('load', function() {
 
     $.post(url, {
         "senderNo": senderNo,
-        "receiverNo": receiverNo
+        "receiverNo": receiverNo,
+				"photo": photo
       },
       function(result) {
         $.each(result.list, function(i, item) {
+					photo = item.path;
           appendChatBubble(item.msg, item.who == senderNo, false)
         });
       }).done(function() {}).fail(function() {
@@ -76,16 +93,20 @@ $(window).on('load', function() {
     text = text.replace(/\s/g, "");
     if (!text) return;
 
-    value = value.replace(/\r?\n/g, '<br />');
+		var sendValue = value;
+
+		value = value.replace(/\r?\n/g, '<br />');
     $('<div>').addClass('chat-balloon')
       .addClass(isMyAlias ? "me" : "him")
       .html(value)
       .appendTo(messageBox)
-      .append($('<img>').attr('src', isMyAlias ? '' : '/image/musician/photo/m1.jpg').addClass(isMyAlias ? '' : 'sender-img'))
+      .append($('<img>').attr('src', isMyAlias ? '' : photo + '_80.png').addClass(isMyAlias ? '' : 'sender-img'))
       .append($('<div>').addClass('tail').addClass(isMyAlias ? "me-tail" : "him-tail"))
       .append($('<div>').addClass('tail-white').addClass(isMyAlias ? "me-tail-white" : "him-tail-white"))
 
-    if (isSendData) sendChat(value)
+		console.log(sendValue)
+		console.log(value)
+    if (isSendData) sendChat(sendValue)
 
     msgInput.val('')
 
@@ -98,21 +119,25 @@ $(window).on('load', function() {
   }
 
 
-  var ws = new WebSocket('ws://192.168.0.22:8888/chat/send.json');
+function readyChat() {
+	var ws = new WebSocket('ws://192.168.0.22:8888/chat/send.json');
 
-  ws.onopen = function(event) {
-    var obj = {
-      'receiver': receiverNo,
-      'sender': senderNo
-    }
-    ws.send(JSON.stringify(obj))
-  }
+	ws.onopen = function(event) {
+		var obj = {
+			'receiver': receiverNo,
+			'sender': senderNo,
+			'isMusician': (mode == 'musimode' ? 'Y' : 'N'),
+			'photo': photo
+		}
+		ws.send(JSON.stringify(obj))
+	}
 
-  ws.onmessage = function(event) {
-    var data = JSON.parse(event.data)
-    console.log(data)
-    if (data.sender == 'him') appendChatBubble(data.message, false, false)
-  };
+	ws.onmessage = function(event) {
+		var data = JSON.parse(event.data)
+		console.log(data)
+		if (data.sender == 'him') appendChatBubble(data.message, false, false)
+	};
+}
 
 
   function sendChat(value) {
@@ -121,6 +146,8 @@ $(window).on('load', function() {
     }
     ws.send(JSON.stringify(obj))
   }
+
+
 
 
   function resizeMessageBoxPadding() {

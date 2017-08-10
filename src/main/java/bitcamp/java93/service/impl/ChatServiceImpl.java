@@ -35,5 +35,13 @@ public class ChatServiceImpl implements ChatService {
 //  public int addChat(Chat chat) throws Exception {
 //    return chatDao.insertChat(chat);
 //  }
+
+  public String getPhoto(int no) throws Exception {
+    return chatDao.selectPhoto(no);
+  }
+
+  public String getMusiPhoto(int no) throws Exception {
+    return chatDao.selectMusiPhoto(no);
+  }
 }
 
