@@ -39,8 +39,8 @@ function displayMusiInfo() {
       var data = result.data.musician
       console.log(data)
       musicianInfoNickName.text(data.nickName)
-      musicianHeaderInfoImg.attr("src", data.photo)
-      musicianBasicInfoImg.attr("src", data.photo)
+      musicianHeaderInfoImg.attr("src", data.photo + '_80.png')
+      musicianBasicInfoImg.attr("src", data.photo + '_300.png')
       if(data.isTeam == "Y") {
         musicianBasicInfoName.text(data.nickName + "  (팀)")
       } else {
