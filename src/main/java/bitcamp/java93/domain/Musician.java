@@ -17,6 +17,7 @@ public class Musician extends Member  {
   int count;
   String eventTitle;
   String eventDate;
+  int spno;
   String specDate;
   String specDscp;
   int minAge;
@@ -40,16 +41,19 @@ public class Musician extends Member  {
   ArrayList<Integer> themeNoList;
   ArrayList<Integer> locationNoList;
   List<String> photoList;
+  List<String> movieList;
   @Override
   public String toString() {
     return "Musician [age=" + age + ", isTeam=" + isTeam + ", homepage=" + homepage + ", intro=" + intro + ", gender="
         + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite + ", popularity="
-        + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", specDate="
-        + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge + ", location=" + location
-        + ", sido=" + sido + ", fav=" + fav + ", indexL=" + indexL + ", indexM=" + indexM + ", indexG=" + indexG
-        + ", nickName=" + nickName + ", fileMap=" + fileMap + ", list=" + list + ", reviewList=" + reviewList
-        + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList=" + themeList + ", locationList="
-        + locationList + ", photoList=" + photoList + "]";
+        + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", spno=" + spno
+        + ", specDate=" + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge
+        + ", location=" + location + ", sido=" + sido + ", fav=" + fav + ", indexL=" + indexL + ", indexM=" + indexM
+        + ", indexG=" + indexG + ", nickName=" + nickName + ", fileMap=" + fileMap + ", list=" + list + ", reviewList="
+        + reviewList + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList=" + themeList
+        + ", locationList=" + locationList + ", majorNoList=" + majorNoList + ", genreNoList=" + genreNoList
+        + ", themeNoList=" + themeNoList + ", locationNoList=" + locationNoList + ", photoList=" + photoList
+        + ", movieList=" + movieList + "]";
   }
   public int getAge() {
     return age;
@@ -123,6 +127,12 @@ public class Musician extends Member  {
   public void setEventDate(String eventDate) {
     this.eventDate = eventDate;
   }
+  public int getSpno() {
+    return spno;
+  }
+  public void setSpno(int spno) {
+    this.spno = spno;
+  }
   public String getSpecDate() {
     return specDate;
   }
@@ -164,6 +174,24 @@ public class Musician extends Member  {
   }
   public void setFav(int fav) {
     this.fav = fav;
+  }
+  public int getIndexL() {
+    return indexL;
+  }
+  public void setIndexL(int indexL) {
+    this.indexL = indexL;
+  }
+  public int getIndexM() {
+    return indexM;
+  }
+  public void setIndexM(int indexM) {
+    this.indexM = indexM;
+  }
+  public int getIndexG() {
+    return indexG;
+  }
+  public void setIndexG(int indexG) {
+    this.indexG = indexG;
   }
   public String getNickName() {
     return nickName;
@@ -213,30 +241,46 @@ public class Musician extends Member  {
   public void setLocationList(ArrayList<String> locationList) {
     this.locationList = locationList;
   }
+  public ArrayList<Integer> getMajorNoList() {
+    return majorNoList;
+  }
+  public void setMajorNoList(ArrayList<Integer> majorNoList) {
+    this.majorNoList = majorNoList;
+  }
+  public ArrayList<Integer> getGenreNoList() {
+    return genreNoList;
+  }
+  public void setGenreNoList(ArrayList<Integer> genreNoList) {
+    this.genreNoList = genreNoList;
+  }
+  public ArrayList<Integer> getThemeNoList() {
+    return themeNoList;
+  }
+  public void setThemeNoList(ArrayList<Integer> themeNoList) {
+    this.themeNoList = themeNoList;
+  }
+  public ArrayList<Integer> getLocationNoList() {
+    return locationNoList;
+  }
+  public void setLocationNoList(ArrayList<Integer> locationNoList) {
+    this.locationNoList = locationNoList;
+  }
   public List<String> getPhotoList() {
     return photoList;
   }
   public void setPhotoList(List<String> photoList) {
     this.photoList = photoList;
   }
-  public int getIndexL() {
-    return indexL;
+  public List<String> getMovieList() {
+    return movieList;
   }
-  public void setIndexL(int indexL) {
-    this.indexL = indexL;
+  public void setMovieList(List<String> movieList) {
+    this.movieList = movieList;
   }
-  public int getIndexM() {
-    return indexM;
-  }
-  public void setIndexM(int indexM) {
-    this.indexM = indexM;
-  }
-  public int getIndexG() {
-    return indexG;
-  }
-  public void setIndexG(int indexG) {
-    this.indexG = indexG;
-  }
+  
+  
+  
+  
   
   
   

@@ -1,12 +1,6 @@
 <div class="portfolio-container">
-<!-- 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ED-FSXIGyng?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-
- -->
 
 </div>
-
-<button type="button" id="musician-portfolio-edit-btn">편집 하기</button>
 
 <script id="musician-info-portfolio-template" type="text/x-handlebars-template">
 {{#each getPortfolio}}
@@ -30,8 +24,8 @@
     {{/isIndex}}
     {{/fileMap}}
     {{/each}}
-
   </div>
+
   <div id="timeline-container">
   <div id="timeline-line-container">
   <div class="timeline-line"></div>
@@ -44,12 +38,13 @@
   {{#fileMap}} {{#isIndex key}}
   <img src="{{value}}" id="timeline-picture">
   {{else}}
-  <span id="timeline-movie">
+  <div class="timeline-movie">
   {{value}}
-  </span>
+  </div>
   {{/isIndex}}
   {{/fileMap}}
   {{/each}}
+  <button type="button" id="musician-portfolio-edit-btn" data-spno='{{spno}}'>편집</button>
   </div>
   </div>
 {{/each}}

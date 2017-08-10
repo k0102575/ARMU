@@ -20,6 +20,10 @@ public interface MusicianDao {
   List<Musician> selectMusiReview(int no);
   Musician selectMusiIntroduce(int no);
   List<Musician> selectMusiPortfolio(int no);
+  Musician selectSpec(int spno);
+  void updateSpecInfo(Musician musician);
+  void deleteSpecPath(int spNo);
+  void insertSpecPath(HashMap<String, Object> pathMap);
   List<Musician> musicianSearch(HashMap<String,Object> valueMap);
   int insert(Musician musician);
   void updateNick(Musician musician);

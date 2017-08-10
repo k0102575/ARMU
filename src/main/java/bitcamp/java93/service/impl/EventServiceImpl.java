@@ -20,7 +20,7 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectOngoingList();
   }
   
-  public  void add(Event event) throws Exception {   
+  public void add(Event event) throws Exception {   
     eventDao.insert(event);
   }
   

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import bitcamp.java93.dao.MemberDao;
 import bitcamp.java93.dao.MusicianDao;
-import bitcamp.java93.domain.Member;
 import bitcamp.java93.domain.Musician;
 import bitcamp.java93.service.MusicianService;
 
@@ -84,6 +83,38 @@ public class MusicianServiceImpl implements MusicianService {
   @Override
   public List<Musician> getPortfolio(int no) throws Exception {
     return musicianDao.selectMusiPortfolio(no);
+  }
+  
+  @Override
+  public Musician getSpec(int spno) throws Exception {
+    return musicianDao.selectSpec(spno);
+  }
+  
+  @Override
+  public void updateSpec(Musician musician) throws Exception {
+    musicianDao.updateSpecInfo(musician);
+    
+    HashMap<String,Object> photoMap = new HashMap<>();
+    HashMap<String,Object> movieMap = new HashMap<>();
+    
+    photoMap.put("spno", musician.getSpno());
+    photoMap.put("isimg", "Y");
+    
+    movieMap.put("spno", musician.getSpno());
+    movieMap.put("isimg", "N");
+    
+    musicianDao.deleteSpecPath(musician.getSpno());
+    
+    for (String photoList : musician.getPhotoList()) {
+      photoMap.put("specPath", photoList);
+      musicianDao.insertSpecPath(photoMap);
+    }
+    
+    for (String movieList : musician.getMovieList()) {
+      movieMap.put("specPath", movieList);
+      musicianDao.insertSpecPath(movieMap);
+    }
+    
   }
   
   @Override

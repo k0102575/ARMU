@@ -25,7 +25,37 @@
 <body>
 
 <div class="container">
-  <div class="spec-backscreen"></div>
+
+<script id="musician-info-portfolio-template" type="text/x-handlebars-template">
+{{#getSpec}}
+  <input id="spec-date" type="date" value="{{specDate}}"/>
+  <textarea rows="5" cols="50" id="spec-desc">
+  {{specDscp}}
+  </textarea>
+    
+  <div id="spec-picture">
+  사진<br>
+  <input id="fi-filenames" type="hidden" name="filenames"/>
+  <label for="fi-photoupload">+</label> 
+  <input id="fi-photoupload" type="file" class="form-control upload"  name="files"/> 
+  </div>
+    
+  <div class="img-container">
+    {{#each list}}
+    {{#fileMap}}{{#isIndex key}}
+    <img src="{{value}}" class='profile-image proimg' data-path={{value}}>
+    {{/isIndex}}
+    {{/fileMap}}
+    {{/each}}
+  </div>
+
+  <div class="movie-container">
+  동영상<br>
+  <input type="text"/ id="movie-text"><button type="button" id="movie-text-btn">추가</button>
+  </div>
+
+{{/getSpec}}
+</script>
 
   <div class="career-info-header">
     <i class="fa fa-angle-left" class="musician-info-prev" aria-hclassden="true"></i>
@@ -34,72 +64,14 @@
   <!-- musician-info-header -->
   
   <div class="portfolio-container">
-    <div id="spec-detail">
-    <div id="spec-close">닫기</div>
-    <input id="spec-date" type="date"></input>
-    <textarea rows="5" cols="50" id="spec-desc">
-    </textarea>
-    
-    <div id="spec-picture">
-    사진<br>
-    <input id="fi-filenames" type="hidden" name="filenames">
-    <label for="fi-photoupload">+</label> 
-    <input id="fi-photoupload" type="file" class="form-control upload"  name="files"> 
-    <div id="profile-img"></div>
-    </div>
+  </div>
+  <!-- portfolio-container -->
     
     
-    </div>
-    <!-- spec-detail -->
-    
-    </div>
-    <!-- portfolio-container -->
-    
+    <button type='button' id='introduce-edit-btn'>적용하기</button>
   </div>
   <!-- container -->
-<script id="musician-info-portfolio-template" type="text/x-handlebars-template">
-{{#each getPortfolio}}
-  <div class="timeline-container">
-  <div class="timeline-line-container">
-  <div class="timeline-line"></div>
-  <img src="/image/logo/login_01_b.png" class="timeline-mark">
-  </div>
-  <div class="timeline-content">
-  <div class="timeline-date">{{specDate}}</div>
-  <div class="timeline-desc">{{specDscp}}</div>
-  {{#each list}}
-  {{#fileMap}} {{#isIndex key}}
-  <img src="{{value}}" class="timeline-picture">
-  {{else}}
-  <span class="timeline-movie">
-  {{value}}
-  </span>
-  {{/isIndex}}
-  {{/fileMap}}
-  {{/each}}
-  </div>
-  </div>
-{{/each}}
-</script>
-<!-- 
-  <div class="spec-detail">
-    <div class="spec-close">닫기</div>
-  </div> -->
-<script id="musician-info0-portfolio-template" type="text/x-handlebars-template">
-
-  <div class="timeline-container">
-  <div class="timeline-line-container">
-  <div class="timeline-line"></div>
-  <img src="/image/logo/login_01_b.png" class="timeline-mark">
-  </div>
-  <div class="timeline-content">
-  <div class="timeline-date"></div>
-  <div class="timeline-desc"></div>
-  </div>
-  </div>
-</script>
   
-
 <script src="/js/mobile/musimode/musi-info/career.js"></script>
 </body>
 </html>

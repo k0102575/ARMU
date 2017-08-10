@@ -279,6 +279,41 @@ public class MusicianControl {
     return result;
   }
   
+  @RequestMapping("getSpec")
+  public JsonResult getSpec(int spno) throws Exception {
+    JsonResult result = new JsonResult();
+    HashMap<String,Object> dataMap = new HashMap<>();
+    Musician getSpec = musicianService.getSpec(spno);
+    result.setStatus(JsonResult.SUCCESS);
+    dataMap.put("getSpec", getSpec);
+    result.setData(dataMap);
+    return result;
+  }
+  
+  @RequestMapping("updateSpec")
+  public JsonResult updateSpec(Musician musician, String fiFilenames, String fiMovienames) throws Exception {
+    String[] photoPathList = fiFilenames.split(",");
+    String[] moviePathList = fiMovienames.split(",");
+    
+    ArrayList<String> addPhotoList = new ArrayList<>();
+    ArrayList<String> addMovieList = new ArrayList<>();
+    
+    for (String photo : photoPathList) {
+      addPhotoList.add(photo);
+    } 
+    
+    for (String movie : moviePathList) {
+      addMovieList.add(movie);
+    } 
+    
+    musician.setPhotoList(addPhotoList);
+    musician.setMovieList(addMovieList);
+    
+    musicianService.updateSpec(musician);
+    return new JsonResult(JsonResult.SUCCESS, "ok");
+      
+ }
+  
   @RequestMapping("searchMusician")
   public JsonResult searchMusician(HttpSession session, String location, String major, String genre, int indexL,int indexM,int indexG,String gender, int minAge, int maxAge) throws Exception {
     HashMap<String,Object> dataMap = new HashMap<>();

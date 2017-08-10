@@ -196,12 +196,12 @@
 #musician-portfolio-edit-btn {
   background-color: white;
   border: 1px solid black;
-  width: 50%;
-  height: 100px;
+  width: 100px;
+  height: 75px;
   border-radius: 10px;
   font-size: 250%;
   color: black;
-  margin-left: 25%;
   float: left;
+  margin-left: 50%;
   margin-top: 10%;
 }

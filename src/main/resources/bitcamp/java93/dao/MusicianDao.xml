@@ -142,6 +142,7 @@
   </resultMap>
   
   <resultMap type="musician" id="musicianInfoPortfolioMap">
+    <id column="spno" property="spno" />
     <result column="specDate" property="specDate" />
     <result column="specDscp" property="specDscp" />
      <collection property="list" ofType="java.util.Map">
@@ -220,12 +221,34 @@
   </select> <!-- 승민 -->
   
   <select id="selectMusiPortfolio" resultMap="musicianInfoPortfolioMap" parameterType="int">
-  select sp.spdt as specDate, sp.dscp as specDscp, spp.isimg as fileType, spp.path as filePath 
+  select sp.spno, sp.spdt as specDate, sp.dscp as specDscp, spp.isimg as fileType, spp.path as filePath 
   from musi mu left outer join spec sp on mu.muno = sp.muno
   inner join spec_path spp on sp.spno = spp.spno
   where mu.muno = #{no}
   </select> <!-- 승민 -->
-
+  
+    <select id="selectSpec" resultMap="musicianInfoPortfolioMap" parameterType="int">
+  select sp.spno, sp.spdt as specDate, sp.dscp as specDscp, spp.isimg as fileType, spp.path as filePath
+  from spec sp left outer join spec_path spp on sp.spno = spp.spno
+  where sp.spno = #{spno}
+  </select>
+  
+  <update id="updateSpecInfo" parameterType="musician">
+   update spec set 
+   spdt = #{specDate}, dscp = #{specDscp}
+   where spno= #{spno}
+  </update>
+  
+  <delete id="deleteSpecPath" parameterType="int">
+    delete from spec_path 
+    where spno=#{spno}
+  </delete>
+  
+  <insert id="insertSpecPath" parameterType="map">
+	  insert into spec_path(spno, path, isimg) 
+	  values(#{spno}, #{specPath}, #{isimg})
+</insert><!-- 승민 -->
+  
   <select id="selectRecommandList" resultMap="musicianMap" parameterType="int">
   select mum.mno, mum.name, mu.nick, mu.team, mum.path, fm.fav, if(mtc.score is not null, mtc.score, 0) as score,
   tag.mjrno, tag.thmno, tag.gnrno, tag.major, tag.theme, tag.genre, null as location
