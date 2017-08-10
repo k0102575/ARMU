@@ -389,18 +389,18 @@
           <if test="genre =='전체'">
             AND g.gnrtno=#{indexG}
           </if>
-        </when>
-        <when test="major != '전체' and major !='선택안됨'">
-          AND mj.name=#{major}
+          <if test="genre != '전체' and genre !='선택안됨'">
+            AND g.name=#{genre}
+          </if>
         </when>
         <when test="genre== '전체'">
           AND g.gnrtno=#{indexG}
           <if test="major=='전체'">
             AND mj.mjrtno=#{indexM}
           </if>
-        </when>
-        <when test="genre != '전체' and genre !='선택안됨'">
-          AND g.name=#{genre}
+          <if test="major != '전체' and major !='선택안됨'">
+            AND mj.name=#{major}
+          </if>
         </when>
       </choose>
     </when>
@@ -416,14 +416,17 @@
           <if test="genre =='전체'">
             AND g.gnrtno=#{indexG}
           </if>
-        </when>
-        <when test="location != '전체' and location !='선택안됨'">
-          AND l.name=#{location}
+          <if test="genre != '전체' and genre !='선택안됨'">
+            AND g.name = #{genre}
+          </if>
         </when>
         <when test="genre== '전체'">
           AND g.gnrtno=#{indexG}
           <if test="location == '전체'">
             AND lt.loctno=#{indexL}
+          </if>
+          <if test="location != '전체' and location !='선택안됨'">
+          AND l.name=#{location}
           </if>
         </when>
         <when test="genre != '전체' and genre !='선택안됨'">
@@ -441,18 +444,18 @@
           <if test="location == '전체'">
             AND lt.loctno=#{indexL}
           </if>
-        </when>
-        <when test="major != '전체' and major !='선택안됨'">
-          AND mj.name=#{major}
+          <if test="location != '전체' and location !='선택안됨'">
+            AND l.name=#{location}
+          </if>
         </when>
         <when test="location== '전체'">
           AND lt.loctno=#{indexL}
           <if test="major=='전체'">
             AND mj.mjrtno=#{indexM}
           </if>
-        </when>
-        <when test="location != '전체' and location !='선택안됨'">
-          AND l.name=#{location}
+          <if test="major != '전체' and major !='선택안됨'">
+            AND mj.name=#{major}
+          </if>
         </when>
       </choose>
     </when>
