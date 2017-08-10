@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bitcamp.java93.dao.ChatDao">
-  
+
   <resultMap type="chat" id="chatMap">
     <id column="chatno" property="no"/>
     <result column="isread" property="isRead"/>
@@ -48,37 +48,37 @@ inner join (
 ) e on mu.mno=e.muno
 order by e.date desc
  </select>
- 
+
  <select id="selectMusiList" resultMap="chatMap" parameterType="int">
-  select gm.mno as receiver, c.muno as sender, gm.name as nick, gm.path,
-cast(c.date as date) as date, cast(c.date as time) as time, c.msg, e.date as edate,
-e.status, c.unread, 1 as ismusi
-from memb gm inner join (
-  select mno, muno,
-  substring_index(group_concat(date order by date desc), ',', 1) as date,
-  substring_index(group_concat(msg order by date desc), ',', 1) as msg,
-  sum(if(isread='N', 1, 0)) as unread
-  from chat
-  group by mno, muno
-  having muno=#{no}
-) c on gm.mno=c.mno
-inner join (
-  select mno, max(date) as date, if(max(date) &lt; curdate(), '완료', '진행중') as status
-  from (
-    select e.mno, e.eno, e.date as date
-    from mtc mt inner join evn e on (mt.eno=e.eno and mt.muno=#{no})
-    inner join memb m on e.mno=m.mno
-  ) e
-  group by e.mno
-) e on gm.mno=e.mno
-order by e.date desc
+   select c.mno as receiver, c.muno as sender, gm.name as nick, gm.path,
+   cast(c.date as date) as date, cast(c.date as time) as time, c.msg, e.date as edate,
+   e.status, c.unread, 1 as ismusi
+   from memb gm inner join (
+     select mno, muno,
+     substring_index(group_concat(date order by date desc), ',', 1) as date,
+     substring_index(group_concat(msg order by date desc), ',', 1) as msg,
+     sum(if(isread='N', 1, 0)) as unread
+     from chat
+     group by mno, muno
+     having muno=#{no}
+   ) c on gm.mno=c.mno
+   inner join (
+     select mno, max(date) as date, if(max(date) &lt; curdate(), '완료', '진행중') as status
+     from (
+       select e.mno, e.eno, e.date as date
+       from mtc mt inner join evn e on (mt.eno=e.eno and mt.muno=#{no})
+       inner join memb m on e.mno=m.mno
+     ) e
+     group by e.mno
+   ) e on gm.mno=e.mno
+   order by e.date desc
 
  </select>
- 
- 
- <!-- 
+
+
+ <!--
  <select id="selectChatList" resultMap="chatMap" parameterType="map">
-  select chatno, isread, cast(date as date) as date, cast(date as time) as time, msg, 
+  select chatno, isread, cast(date as date) as date, cast(date as time) as time, msg,
   c.muno as receiver, c.mno as sender, who, musi.nick as nick, mu.path
 from chat c
 inner join memb mu on c.muno=mu.mno inner join musi on mu.mno=musi.muno
@@ -86,9 +86,9 @@ inner join memb m on c.mno=m.mno
 where c.mno=#{mno} and c.muno=#{muno}
 order by date asc
   </select>
-  
-  
-  
+
+
+
   <select id="selectMusiChatList" resultMap="chatMap" parameterType="map">
   select chatno, isread, date, msg, c.muno as senderNo, c.mno as receiverNo, who,
  m.name as nickName, m.path
@@ -98,30 +98,20 @@ inner join memb m on c.mno=m.mno
 where c.mno=#{mno} and c.muno=#{muno}
 order by date asc
   </select>
-  
-  
-  <insert id="insertChat" parameterType="chat" 
+
+
+  <insert id="insertChat" parameterType="chat"
           useGeneratedKeys="true" keyColumn="chatno" keyProperty="no">
-    insert into chat(muno, mno, isread, msg, date, who) 
-    values(#{no}, #{senderNo}, 'N', #{message}, 
+    insert into chat(muno, mno, isread, msg, date, who)
+    values(#{no}, #{senderNo}, 'N', #{message},
     concat(#{date}, " ", #{time}), #{senderNo})
   </insert> -->
-  
-  
-  <select id='selectPhoto' resultType='String' parameterType='int'>
-  <!-- select mno as receiverNo, name as nickName, path -->
+
+
+ <!--  <select id='selectPhoto' resultType='String' parameterType='int'>
+  select mno as receiverNo, name as nickName, path
   select path
   from memb
   where mno=#{no}
-  </select>
+  </select> -->
 </mapper>
-
-
-
-
-
-
-
-
-
-

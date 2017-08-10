@@ -1,6 +1,5 @@
 package bitcamp.java93.control.json;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
@@ -8,7 +7,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -65,26 +63,26 @@ public class ChatControl {
     return result;
   }
   
-  @CrossOrigin  
-  @RequestMapping("getInfo")
-  public JsonResult getInfo(int no, HttpSession session) {
-    JsonResult result = new JsonResult();
-    try {
-//      int no = getLoginMember(session).getNo();
-      String photo = chatService.getPhoto(no);
-
-      
-      result.setStatus(JsonResult.SUCCESS);
-      result.setData(photo);
-
-    } catch (Exception e) {
-      e.printStackTrace();
-      result.setStatus(JsonResult.ERROR);
-    }
-
-    return result;
-  }
-  
+//  @CrossOrigin  
+//  @RequestMapping("getInfo")
+//  public JsonResult getInfo(int no, HttpSession session) {
+//    JsonResult result = new JsonResult();
+//    try {
+////      int no = getLoginMember(session).getNo();
+//      String photo = chatService.getPhoto(no);
+//
+//      
+//      result.setStatus(JsonResult.SUCCESS);
+//      result.setData(photo);
+//
+//    } catch (Exception e) {
+//      e.printStackTrace();
+//      result.setStatus(JsonResult.ERROR);
+//    }
+//
+//    return result;
+//  }
+//  
 
   private Member getLoginMember(HttpSession session) {
     Member loginMember = (Member) session.getAttribute("loginMember");

@@ -330,8 +330,9 @@ where mjt.mjrtno=1
 
 
 -- 특정 뮤지션의 채팅 리스트 가져오기
-select gm.mno as gmno, c.muno as musino, gm.name as gmname, gm.path as gmphoto,
-cast(c.date as date) as date, cast(c.date as time) as time, c.msg, e.date as edate, e.status, c.unread
+select c.mno as receiver, c.muno as sender, gm.name as nick, gm.path,
+cast(c.date as date) as date, cast(c.date as time) as time, c.msg, e.date as edate,
+e.status, c.unread, 1 as ismusi
 from memb gm inner join (
   select mno, muno,
   substring_index(group_concat(date order by date desc), ',', 1) as date,
@@ -353,7 +354,6 @@ inner join (
 order by e.date desc
 
 
-
 -- 특정 뮤지션 채팅내역 가져오기
 select chatno, isread, date, msg, c.muno, c.mno, who,
 mu.mno as musino, mu.name as musiname, musi.nick as musinick, mu.path as musiphoto,
@@ -361,7 +361,8 @@ m.mno as gmno, m.name as gmname, m.path as gmphoto
 from chat c
 inner join memb mu on c.muno=mu.mno inner join musi on mu.mno=musi.muno
 inner join memb m on c.mno=m.mno
-where c.mno=3 and c.muno=11
+where c.mno=5 and c.muno=11
+ -- and isread='N'
 order by date asc
 
 
@@ -373,25 +374,8 @@ insert into chat (muno, mno, isread, msg, date, who) values (3, 11, 'N','오호�
 insert into chat (muno, mno, isread, msg, date, who) values (3, 11, 'N','오호라가 뮤지션임~', '2017-06-19 17:12:03', 3);
 
 
-  select c.mno as sender, mu.mno as receiver, musi.nick as nick, mu.path as path,
-  cast(c.date as date) as date, cast(c.date as time) as time, c.msg, e.date as edate, e.status, c.unread
-  from memb mu inner join (
-    select mno, muno,
-    substring_index(group_concat(date order by date desc), ',', 1) as date,
-    substring_index(group_concat(msg order by date desc), ',', 1) as msg,
-    sum(if(isread='N', 1, 0)) as unread
-    from chat
-    group by mno, muno
-    having mno=11
-  ) c on mu.mno=c.muno
-  inner join musi on mu.mno=musi.muno
-  inner join (
-    select muno, max(date) as date, if(max(date) < curdate(), '완료', '진행중') as status
-    from (
-      select mt.muno, e.eno, e.date as date
-      from mtc mt inner join evn e on (mt.eno=e.eno and e.mno=11)
-      inner join memb m on e.mno=m.mno
-    ) e
-    group by e.muno
-  ) e on mu.mno=e.muno
-  order by e.date desc
+
+
+-- 채팅 읽음/안읽음 상태 업데이트하기
+update chat set isread='Y'
+where mno=5 and muno=11 and isread='N'
