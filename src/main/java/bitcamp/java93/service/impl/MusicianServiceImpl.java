@@ -87,7 +87,7 @@ public class MusicianServiceImpl implements MusicianService {
   }
   
   @Override
-  public List<Musician> searchMusician(int no, String location, String major, String genre, int indexL,int indexM,int indexG) throws Exception {
+  public List<Musician> searchMusician(int no, String location, String major, String genre, int indexL,int indexM,int indexG,String gender, int minAge, int maxAge) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("no", no);
     valueMap.put("location", location);
@@ -96,6 +96,9 @@ public class MusicianServiceImpl implements MusicianService {
     valueMap.put("indexL", indexL);
     valueMap.put("indexM", indexM);
     valueMap.put("indexG", indexG);
+    valueMap.put("gender", gender);
+    valueMap.put("minAge", minAge);
+    valueMap.put("maxAge", maxAge);
     return musicianDao.musicianSearch(valueMap);
   }
 
@@ -112,8 +115,8 @@ public class MusicianServiceImpl implements MusicianService {
     musicianDao.insert(musician);
   }
   
-  public void updateNick(Musician member) throws Exception {
-    musicianDao.updateNick(member);
+  public void updateNick(Musician musician) throws Exception {
+    musicianDao.updateNick(musician);
   }
   
   public void changeMusiInfo(int no, Musician musician) throws Exception {

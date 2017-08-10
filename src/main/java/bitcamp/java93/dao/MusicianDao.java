@@ -22,7 +22,7 @@ public interface MusicianDao {
   List<Musician> selectMusiPortfolio(int no);
   List<Musician> musicianSearch(HashMap<String,Object> valueMap);
   int insert(Musician musician);
-  void updateNick(Musician member);
+  void updateNick(Musician musician);
   void updateInfo(HashMap<String, Object> valueMap);
   Musician selectMusiNo(int no);
   int delete(int no);

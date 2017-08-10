@@ -2,33 +2,33 @@ $(document).ready(function() {
   displaySurfMusiList()
 })
 
-$("#filter-update").on('click', function() {
-  var checkVal = $(":input:radio[name=gender]:checked").val()
-  
-  if(minAge == 0 && maxAge == 0) {
-		  $.getJSON('/musician/listSurfFilter.json', 
-			{
-		    "gender" : checkVal,
-			  "minAge" : "10",
-			  "maxAge" : "60"
-			},
-			function(result) {
-				handleList(result)
-				filterContainer.toggle();
-		  })
-		  return
-	  } 
-		  $.getJSON('/musician/listSurfFilter.json', 
-			{
-		    "gender" : checkVal,
-			  "minAge" : minAge,
-			  "maxAge" : maxAge
-			},
-			function(result) {
-				handleList(result)
-				filterContainer.toggle();
-		  })
-	  })
+//$("#filter-update").on('click', function() {
+//  var checkVal = $(":input:radio[name=gender]:checked").val()
+//  
+//  if(minAge == 0 && maxAge == 0) {
+//		  $.getJSON('/musician/listSurfFilter.json', 
+//			{
+//		    "gender" : checkVal,
+//			  "minAge" : "10",
+//			  "maxAge" : "60"
+//			},
+//			function(result) {
+//				handleList(result)
+//				filterContainer.toggle();
+//		  })
+//		  return
+//	  } 
+//		  $.getJSON('/musician/listSurfFilter.json', 
+//			{
+//		    "gender" : checkVal,
+//			  "minAge" : minAge,
+//			  "maxAge" : maxAge
+//			},
+//			function(result) {
+//				handleList(result)
+//				filterContainer.toggle();
+//		  })
+//	  })
 
 function handleList(result) {
 	var templateFn = Handlebars.compile($('#musician-list-template').text())
@@ -77,6 +77,7 @@ var surfBackscreen = $("#surf-backscreen"),
     ageGroup = $("#age-group")
 
 $(".filterBtn").on('click', function() {
+//  console.log(loc,mjr,gen, checkVal,minAge,maxAge,indexL,indexM,indexG)
   surfBackscreen.css('display', 'block');
   ageGroup.val("20대 이하" + " - " + "50대 이상");
   filterContainer.toggle();
@@ -204,8 +205,8 @@ $("#filter-gen-backscreen").click(function() {
 })
 
 
-var minAge = 0,
-	maxAge = 0;
+var minAge = 10,
+	maxAge = 60;
 
 $( function() {
     $( "#slider-range" ).slider({
@@ -238,6 +239,37 @@ $( function() {
       " - " + $( "#slider-range" ).slider( "values", 1 )  + "대");
   });
 
+var checkVal = 'G'
+$("#filter-update").on('click', function() {
+//  console.log(loc,mjr,gen, checkVal,minAge,maxAge,indexL,indexM,indexG)
+  checkVal = $(":input:radio[name=gender]:checked").val()
+  
+  if(minAge == 0 && maxAge == 0) {
+      $.post('/musician/searchMusician.json', 
+      {
+        'location':loc, 'major':mjr, 'genre':gen, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,
+        "gender" : checkVal,
+        "minAge" : "10",
+        "maxAge" : "60"
+      },
+      function(result) {
+        handleList(result)
+        filterContainer.toggle();
+      },'json')
+      return
+    }
+      $.post('/musician/searchMusician.json', 
+      {
+        'location':loc, 'major':mjr, 'genre':gen, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,
+        "gender" : checkVal,
+        "minAge" : minAge,
+        "maxAge" : maxAge
+      },
+      function(result) {
+        handleList(result)
+        filterContainer.toggle();
+      },'json')
+    })
 
 
 
@@ -251,18 +283,22 @@ filterLocTab.click(function () {
 var seoul = $('.loc')
 var major = $('.mjr')
 var genre = $('.gen')
-var loc,mjr,gen;
+var loc='필터먼저',mjr='필터먼저',gen='필터먼저';
 var indexL=1, 
 indexM=1, indexG =1;
 seoul.click(function () {
-  if(mjr==undefined)
+  if(!checkVal)
+    checkVal='G'
+  if(mjr =='필터먼저')
     mjr='선택안됨'
-  if(gen==undefined)
+  if(gen =='필터먼저')
     gen='선택안됨'
   loc = $(this).text()
-//  console.log(loc,mjr,gen)
+//  console.log('seoul',loc,mjr,gen, checkVal,minAge,maxAge,indexL,indexM,indexG)
     $.post('/musician/searchMusician.json',
-      {'location':loc, 'major':mjr, 'genre':gen, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG}, function(result) {
+      {'location':loc, 'major':mjr, 'genre':gen, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,"gender" : checkVal,
+      "minAge" : minAge,
+      "maxAge" : maxAge}, function(result) {
         handleList(result)
         
         var surfLike = $(".surfLike")
@@ -282,14 +318,16 @@ seoul.click(function () {
 })
 
 major.click(function () {
-  if(loc==undefined)
+  if(loc =='필터먼저')
     loc='선택안됨'
-  if(gen==undefined)
+  if(gen =='필터먼저')
     gen='선택안됨'
   mjr = $(this).text()
-//  console.log(loc,mjr,gen)
+//  console.log('major',loc,mjr,gen, checkVal,minAge,maxAge,indexL,indexM,indexG)
     $.post('/musician/searchMusician.json',
-      {'location':loc, 'major':mjr, 'genre':gen,'indexL':indexL,'indexM':indexM,'indexG':indexG}, function(result) {
+      {'location':loc, 'major':mjr, 'genre':gen,'indexL':indexL,'indexM':indexM,'indexG':indexG,"gender" : checkVal,
+      "minAge" : minAge,
+      "maxAge" : maxAge}, function(result) {
         handleList(result)
         
         var surfLike = $(".surfLike")
@@ -309,14 +347,16 @@ major.click(function () {
 })
 
 genre.click(function () {
-  if(loc==undefined)
+  if(loc =='필터먼저')
     loc='선택안됨'
-  if(mjr==undefined)
+  if(mjr =='필터먼저')
     mjr='선택안됨'
   gen = $(this).text()
-//  console.log(loc,mjr,gen)
+//  console.log('genre',loc,mjr,gen, checkVal,minAge,maxAge,indexL,indexM,indexG)
     $.post('/musician/searchMusician.json',
-      {'location':loc, 'major':mjr, 'genre':gen,'indexL':indexL,'indexM':indexM,'indexG':indexG}, function(result) {
+      {'location':loc, 'major':mjr, 'genre':gen,'indexL':indexL,'indexM':indexM,'indexG':indexG,"gender" : checkVal,
+      "minAge" : minAge,
+      "maxAge" : maxAge}, function(result) {
         handleList(result)
         
         var surfLike = $(".surfLike")

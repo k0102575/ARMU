@@ -1,7 +1,7 @@
 
 'use strict'
 
-var mno, muno;
+var pno, mno, muno;
 $( document ).ready(function() {
     $.getJSON('/member/getMusiProfile.json', function(result) {
     if(result.status != 'success') {
@@ -16,8 +16,8 @@ $( document ).ready(function() {
     var container = $('#profile-container')
     var html = container.html()
     container.html(html + generatedHTML)
-    if(muno!=undefined)
-    return muno=result.data.profile.no
+    if(result.data.profile)
+    pno=result.data.profile.no
   }, function(err) {
     console.log(err)
   })
@@ -28,8 +28,6 @@ $( document ).ready(function() {
 
 function displayProfile() {
 $.getJSON('/member/getProfile.json', function(result) {
-  console.log(result)
-    
     if(result.status != 'success') {
       console.error("getJSON() 실패: ", result.status)
       return;
@@ -41,7 +39,8 @@ $.getJSON('/member/getProfile.json', function(result) {
     container.html(html + generatedHTML)
     $('.pen').css('display','none')
     $('#atag').removeAttr('href')
-    return mno=result.data.profile.no
+    pno=result.data.profile.no
+    mno=result.data.profile.no
   }, function(err) {
     console.log(err)
   })
@@ -59,13 +58,13 @@ function logout() {
 }
 
 $('.exit').on('click', function() {
-  if (mno!= undefined){
+  if (mno){
     $.post('/member/delete.json', {'no':mno}, function(result) {
     logout()
     location.href='/mobile/gmode/index.html'
   }, 'json')
   } else {
-    $.post('/musician/delete.json', {'no':muno}, function(result) {
+    $.post('/musician/delete.json', {'no':pno}, function(result) {
     logout()
     location.href='/mobile/gmode/index.html'
     }, 'json')
@@ -86,7 +85,7 @@ $('#fi-photoupload').fileupload({
     previewCrop: true,      // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
     submit: function (e, data) { // 서버에 전송하기 직전에 호출된다.
       data.formData = {
-        "no": muno
+        "no": pno
     };
     }, 
     processalways: function(e, data) {

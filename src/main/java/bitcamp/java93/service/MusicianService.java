@@ -19,11 +19,11 @@ public interface MusicianService {
   List<Musician> listReview(int no) throws Exception;
   Musician getIntroduce(int no) throws Exception;
   List<Musician> getPortfolio(int no) throws Exception;
-  List<Musician> searchMusician(int no, String location,String major, String genre,int indexL,int indexM,int indexG) throws Exception;
+  List<Musician> searchMusician(int no, String location,String major, String genre,int indexL,int indexM,int indexG, String gender, int minAge, int maxAge) throws Exception;
   void add(Musician musician) throws Exception;
   /*  void musicianAddHope(Musician musician) throws Exception;*/
 //  void updatePhoto(int no, String photoPath) throws Exception;
-  void updateNick(Musician member) throws Exception;
+  void updateNick(Musician musician) throws Exception;
   void changeMusiInfo(int no, Musician musician) throws Exception;
   Musician getByMuno(int no) throws Exception;
   void remove(int no) throws Exception;

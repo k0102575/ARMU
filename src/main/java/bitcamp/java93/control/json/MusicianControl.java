@@ -280,9 +280,9 @@ public class MusicianControl {
   }
   
   @RequestMapping("searchMusician")
-  public JsonResult searchMusician(HttpSession session, String location, String major, String genre, int indexL,int indexM,int indexG) throws Exception {
+  public JsonResult searchMusician(HttpSession session, String location, String major, String genre, int indexL,int indexM,int indexG,String gender, int minAge, int maxAge) throws Exception {
     HashMap<String,Object> dataMap = new HashMap<>();
-    List<Musician> search= (List<Musician>)musicianService.searchMusician(getLoginMember(session).getNo() ,location,major,genre,indexL,indexM,indexG);
+    List<Musician> search= (List<Musician>)musicianService.searchMusician(getLoginMember(session).getNo() ,location,major,genre,indexL,indexM,indexG,gender, minAge, maxAge);
     dataMap.put("listSurf", search);
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
@@ -340,9 +340,9 @@ public class MusicianControl {
   }
   
   @RequestMapping("updateNick")
-  public JsonResult updateNick(Musician member) throws Exception {
-    musicianService.updateNick(member);
-    System.out.println(member);
+  public JsonResult updateNick(Musician musician) throws Exception {
+    musicianService.updateNick(musician);
+    System.out.println(musician);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
@@ -351,6 +351,7 @@ public class MusicianControl {
     musicianService.remove(no);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }  
+  
   @RequestMapping("updateInfo")
   public JsonResult updateInfo(Musician musician, String musicianTheme, String musicianMajor, String musicianGenre, String musicianLocation, HttpSession session) throws Exception {
     String[] themeList = musicianTheme.split(",");

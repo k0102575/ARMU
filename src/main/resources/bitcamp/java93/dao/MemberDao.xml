@@ -68,7 +68,7 @@
 
   <update id="updatePhoto" parameterType="map">
     update memb set
-    path=concat('/image/profile/',#{photoPath},'_140.png')
+    path=concat('/image/profile/',#{photoPath})
     where mno=#{memberNo}
   </update>
   
