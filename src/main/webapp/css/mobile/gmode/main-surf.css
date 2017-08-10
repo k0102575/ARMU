@@ -425,7 +425,8 @@ input:checked + label {
     background-color: white;
     width: 46%;
     height: 80px;
-    padding-left: 2%;
+    /* padding-left: 2%; */
+    max-height: 100%;
     display: none;
 }
 
@@ -445,6 +446,10 @@ input:checked + label {
   padding-right: 5%;
   border-left: 1px solid grey;
   border-right: 1px solid grey;
+}
+
+#filter-loc {
+	padding-left : 6%;
 }
 
 #filter-loc-toggle {
