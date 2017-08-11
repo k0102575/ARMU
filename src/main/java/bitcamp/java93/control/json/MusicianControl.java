@@ -319,7 +319,6 @@ public class MusicianControl {
     HashMap<String,Object> dataMap = new HashMap<>();
     List<Musician> search= (List<Musician>)musicianService.searchMusician(getLoginMember(session).getNo() ,location,major,genre,indexL,indexM,indexG,gender, minAge, maxAge);
     dataMap.put("listSurf", search);
-    System.out.println(genre);
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
   
