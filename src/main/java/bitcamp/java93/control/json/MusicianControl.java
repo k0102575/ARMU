@@ -315,9 +315,9 @@ public class MusicianControl {
  }
   
   @RequestMapping("searchMusician")
-  public JsonResult searchMusician(HttpSession session, String location, String major, String genre, int indexL,int indexM,int indexG,String gender, int minAge, int maxAge) throws Exception {
+  public JsonResult searchMusician(HttpSession session, int locno, int mjrno, int gnrno, int indexL,int indexM,int indexG,String gender, int minAge, int maxAge) throws Exception {
     HashMap<String,Object> dataMap = new HashMap<>();
-    List<Musician> search= (List<Musician>)musicianService.searchMusician(getLoginMember(session).getNo() ,location,major,genre,indexL,indexM,indexG,gender, minAge, maxAge);
+    List<Musician> search= (List<Musician>)musicianService.searchMusician(getLoginMember(session).getNo() ,locno,mjrno,gnrno,indexL,indexM,indexG,gender, minAge, maxAge);
     dataMap.put("listSurf", search);
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }

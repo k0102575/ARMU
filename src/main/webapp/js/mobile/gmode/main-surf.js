@@ -247,7 +247,7 @@ $("#filter-update").on('click', function() {
   if(minAge == 0 && maxAge == 0) {
       $.post('/musician/searchMusician.json', 
       {
-        'location':loc, 'major':mjr, 'genre':gen, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,
+        'locno':locno, 'mjrno':mjrno, 'gnrno':gnrno, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,
         "gender" : checkVal,
         "minAge" : "10",
         "maxAge" : "60"
@@ -260,7 +260,7 @@ $("#filter-update").on('click', function() {
     }
       $.post('/musician/searchMusician.json', 
       {
-        'location':loc, 'major':mjr, 'genre':gen, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,
+        'locno':locno, 'mjrno':mjrno, 'gnrno':gnrno, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,
         "gender" : checkVal,
         "minAge" : minAge,
         "maxAge" : maxAge
@@ -283,22 +283,20 @@ filterLocTab.click(function () {
 var seoul = $('.loc')
 var major = $('.mjr')
 var genre = $('.gen')
-var loc='필터먼저',mjr='필터먼저',gen='필터먼저';
+var locno=3000,mjrno=3000,gnrno=3000
 var indexL=1, 
 indexM=1, indexG =1;
 seoul.click(function () {
   if(!checkVal)
     checkVal='G'
-  if(mjr =='필터먼저')
-    mjr='선택안됨'
-  if(gen =='필터먼저')
-    gen='선택안됨'
-  loc = $(this).text()
-//  console.log('seoul',loc,mjr,gen, checkVal,minAge,maxAge,indexL,indexM,indexG)
+  if(mjrno ==3000)
+    mjrno=2000
+  if(gnrno ==3000)
+    gnrno=2000
+  locno=$(this).attr('data-no')
+  console.log('seoul',locno,mjrno,gnrno, checkVal,minAge,maxAge,indexL,indexM,indexG)
     $.post('/musician/searchMusician.json',
-      {'location':loc, 'major':mjr, 'genre':gen, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,"gender" : checkVal,
-      "minAge" : minAge,
-      "maxAge" : maxAge}, function(result) {
+      {'locno':locno, 'mjrno':mjrno, 'gnrno':gnrno, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,"gender" : checkVal, "minAge" : minAge, "maxAge" : maxAge}, function(result) {
         handleList(result)
         
         var surfLike = $(".surfLike")
@@ -314,20 +312,18 @@ seoul.click(function () {
   seoul.removeClass('on2')
   $(this).html('<i class="fa fa-check check1" aria-hidden="true"></i>'+ $(this).text())
   $(this).addClass('on2')
-  return loc;
+  return locno;
 })
 
 major.click(function () {
-  if(loc =='필터먼저')
-    loc='선택안됨'
-  if(gen =='필터먼저')
-    gen='선택안됨'
-  mjr = $(this).text()
+  if(locno ==3000)
+    loc=2000
+  if(gnrno ==3000)
+    gen=2000
+  mjrno = $(this).attr('data-no')
 //  console.log('major',loc,mjr,gen, checkVal,minAge,maxAge,indexL,indexM,indexG)
     $.post('/musician/searchMusician.json',
-      {'location':loc, 'major':mjr, 'genre':gen,'indexL':indexL,'indexM':indexM,'indexG':indexG,"gender" : checkVal,
-      "minAge" : minAge,
-      "maxAge" : maxAge}, function(result) {
+        {'locno':locno, 'mjrno':mjrno, 'gnrno':gnrno, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,"gender" : checkVal, "minAge" : minAge, "maxAge" : maxAge}, function(result) {
         handleList(result)
         
         var surfLike = $(".surfLike")
@@ -343,20 +339,18 @@ major.click(function () {
   major.removeClass('on2')
   $(this).html('<i class="fa fa-check check2" aria-hidden="true"></i>'+ $(this).text())
   $(this).addClass('on2')
-  return mjr;
+  return mjrno;
 })
 
 genre.click(function () {
-  if(loc =='필터먼저')
-    loc='선택안됨'
-  if(mjr =='필터먼저')
-    mjr='선택안됨'
-  gen = $(this).text()
+  if(locno ==3000)
+    locno=2000
+  if(mjrno ==3000)
+    mjrno=2000
+  gnrno = $(this).attr('data-no')
 //  console.log('genre',loc,mjr,gen, checkVal,minAge,maxAge,indexL,indexM,indexG)
     $.post('/musician/searchMusician.json',
-      {'location':loc, 'major':mjr, 'genre':gen,'indexL':indexL,'indexM':indexM,'indexG':indexG,"gender" : checkVal,
-      "minAge" : minAge,
-      "maxAge" : maxAge}, function(result) {
+        {'locno':locno, 'mjrno':mjrno, 'gnrno':gnrno, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,"gender" : checkVal, "minAge" : minAge, "maxAge" : maxAge}, function(result) {
         handleList(result)
         
         var surfLike = $(".surfLike")
@@ -372,7 +366,7 @@ genre.click(function () {
   genre.removeClass('on2')
   $(this).html('<i class="fa fa-check check3" aria-hidden="true"></i>'+ $(this).text())
   $(this).addClass('on2')
-  return gen;
+  return gnrno;
 })
 
 $(function ($) {

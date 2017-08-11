@@ -118,12 +118,12 @@ public class MusicianServiceImpl implements MusicianService {
   }
   
   @Override
-  public List<Musician> searchMusician(int no, String location, String major, String genre, int indexL,int indexM,int indexG,String gender, int minAge, int maxAge) throws Exception {
+  public List<Musician> searchMusician(int no,int locno, int mjrno, int gnrno, int indexL,int indexM,int indexG,String gender, int minAge, int maxAge) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("no", no);
-    valueMap.put("location", location);
-    valueMap.put("major", major);
-    valueMap.put("genre", genre);
+    valueMap.put("locno", locno);
+    valueMap.put("mjrno", mjrno);
+    valueMap.put("gnrno", gnrno);
     valueMap.put("indexL", indexL);
     valueMap.put("indexM", indexM);
     valueMap.put("indexG", indexG);
