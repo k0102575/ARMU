@@ -16,7 +16,6 @@ displayMusiInfoPortfolio()
    
 function displayMusiInfoPortfolio() {
   $.getJSON('/musician/musiInfoMyPortfolio.json', function(result) {
-      console.log(result)
     if(result.data.getPortfolio.length == 0) {
       var templateFn = Handlebars.compile($('#musician-info0-portfolio-template').text())
       var generatedHTML = templateFn(result.data)
@@ -42,8 +41,8 @@ function displayMusiInfoPortfolio() {
     }
     
     for(sourceMovie of source) {
-      $("#timeline-content").append("<img id='timeline-picture' src='https://img.youtube.com/vi/" + sourceMovie + "/0.jpg'>")
-      $("#spec-desc").append("<iframe width='791' height='876' src='https://www.youtube.com/embed/" + sourceMovie + "?rel=0&amp;showinfo=0' frameborder='0' allowfullscreen></iframe>")
+      $("#timeline-movie").append("<img id='timeline-picture' src='https://img.youtube.com/vi/" + sourceMovie + "/0.jpg'>")
+      $("#spec-movie").append("<iframe width='791' height='876' src='https://www.youtube.com/embed/" + sourceMovie + "?rel=0&amp;showinfo=0' frameborder='0' allowfullscreen></iframe>")
     }
     
     
@@ -62,15 +61,19 @@ function displayMusiInfoPortfolio() {
   }
     
   $(".timeline-content").on('click', function(){
-    $(".spec-detail").toggle(0)
+    var no = $(this).attr("data-no")
+    $(".spec-detail[data-no=" + no + "]").toggle(0)
     $("#spec-backscreen").css('display', 'block')
     $("#musician-header-info-img").css('display','block')
+    $("#container").css('position', 'fixed')
   })
   
-  $("#spec-close").on('click', function() {
-    $(".spec-detail").toggle(0)
+  $(".spec-close").on('click', function() {
+    var no = $(this).attr("data-no")
+    $(".spec-detail[data-no=" + no + "]").toggle(0)
     $("#spec-backscreen").css('display', 'none')
     $("#musician-header-info-img").css('display','none')
+    $("#container").css('position', 'relative')
   })
   
         

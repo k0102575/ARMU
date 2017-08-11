@@ -13,17 +13,6 @@ try {
 if (spno == 0) {
   $('.portfolio-container').append(Handlebars.compile($('#musician-add-portfolio-template').text()))
   
-  $("#introduce-edit-btn").on('click', function() {
-    $.post('/musician/addSpec.json', {
-      'specDate': $("#spec-date").val(),
-      'specDscp': $("#spec-desc").val(),
-      'fiFilenames': fiFilenames,
-      "fiMovienames" : fiMovienames
-    }, function(result) {
-      console.log(result)
-    }, 'json')
-  })
-  
     $('#fi-photoupload').fileupload({
     url: '/musician/career.json',
     dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
@@ -62,18 +51,6 @@ if (spno == 0) {
   
 } else {
   
-  $("#introduce-edit-btn").on('click', function() {
-    $.post('/musician/updateSpec.json', {
-      'spno': spno,
-      'specDate': $("#spec-date").val(),
-      'specDscp': $("#spec-desc").val(),
-      'fiFilenames': fiFilenames,
-      "fiMovienames" : fiMovienames
-    }, function(result) {
-      console.log(result)
-    }, 'json')
-  })
-  
   Handlebars.registerHelper('isIndex', function(key, options) {
     if (key == "Y") {
       return options.fn(this);
@@ -82,7 +59,6 @@ if (spno == 0) {
   
   $.getJSON('/musician/getSpec.json', 
       {"spno" : spno}, function(result) {
-        console.log(result)
   var templateFn = Handlebars.compile($('#musician-info-portfolio-template').text())
   var generatedHTML = templateFn(result.data)
   var container = $('.portfolio-container')
@@ -104,8 +80,6 @@ if (spno == 0) {
     }
   }
   
-  
-  
   $('#fi-photoupload').fileupload({
     url: '/musician/career.json',
     dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
@@ -121,7 +95,7 @@ if (spno == 0) {
       }, 
       processalways: function(e, data) {
         var imagesDiv = $('.img-container');
-        imagesDiv.append("<div class='profile-image" + count + " proimg'></div>")
+        imagesDiv.prepend("<div class='profile-image" + count + " proimg'></div>")
         $(".profile-image" + count).attr('src', '')
         for (var i = 0; i < data.files.length; i++) {
           try {
@@ -177,5 +151,47 @@ $('body').on('click', "#movie-text-btn", function() {
     });
     return
   }
+})
+
+$('body').on('click', "#introduce-edit-btn", function() {
+  $.post('/musician/updateSpec.json', {
+    'spno': spno,
+    'specDate': $("#spec-date").val(),
+    'specDscp': $("#spec-desc").val(),
+    'fiFilenames': fiFilenames,
+    "fiMovienames" : fiMovienames
+  }, function(result) {
+    if(result.status == "success") {
+      swal({
+        title: "변경에 성공했습니다",
+        type: "success",
+        showCancelButton: false,
+        confirmButtonColor: "#8069ef",
+        confirmButtonText: "확인",
+        customClass: "checkSwal"
+      }, function() {
+        location.href="index.html"
+      });
+    }
+  }, 'json')
+})
+
+$('body').on('click', "#introduce-delete-btn", function() {
+  $.post('/musician/deleteSpec.json', {
+    'spno': spno
+  }, function(result) {
+    if(result.status == "success") {
+      swal({
+        title: "삭제에 성공했습니다",
+        type: "success",
+        showCancelButton: false,
+        confirmButtonColor: "#8069ef",
+        confirmButtonText: "확인",
+        customClass: "checkSwal"
+      }, function() {
+        location.href="index.html"
+      });
+    }
+  }, 'json')
 })
 

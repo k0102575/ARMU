@@ -36,8 +36,6 @@
   <div id="spec-picture">
   사진<br>
   <input id="fi-filenames" type="hidden" name="filenames"/>
-  <label for="fi-photoupload">+</label> 
-  <input id="fi-photoupload" type="file" class="form-control upload"  name="files"/> 
   </div>
     
   <div class="img-container">
@@ -47,6 +45,8 @@
     {{/isIndex}}
     {{/fileMap}}
     {{/each}}
+  <label for="fi-photoupload">+</label> 
+  <input id="fi-photoupload" type="file" class="form-control upload"  name="files"/> 
   </div>
 
   <div class="movie-container">
@@ -89,7 +89,8 @@
   <!-- portfolio-container -->
     
     
-    <button type='button' id='introduce-edit-btn'>적용하기</button>
+  <button type='button' id='introduce-edit-btn'>적용하기</button>
+  <button type='button' id='introduce-delete-btn'>삭제하기</button>
   </div>
   <!-- container -->
   

@@ -24,6 +24,7 @@ public interface MusicianDao {
   void updateSpecInfo(Musician musician);
   int insertSpecInfo(HashMap<String, Object> valueMap);
   void deleteSpecPath(int spNo);
+  void deleteSpec(int spno);
   void insertSpecPath(HashMap<String, Object> pathMap);
   List<Musician> musicianSearch(HashMap<String,Object> valueMap);
   int insert(Musician musician);

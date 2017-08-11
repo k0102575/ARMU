@@ -43,11 +43,13 @@
 }
 
 .timeline-content{
-  float: right;
-  height: 60%;
-  width: 80%;
-  margin-right: 7%;
-  margin-top: 21.5%;
+float: right;
+    height: 60%;
+    width: 80%;
+    margin-right: 7%;
+    margin-top: 21.5%;
+    max-height: 60%;
+    overflow: hidden;
 }
 
 #timeline-date {
@@ -110,7 +112,7 @@
   min-height: 700px;
 }
 
-#spec-close {
+.spec-close {
     text-align: right;
     height: 3%;
     width: 82%;

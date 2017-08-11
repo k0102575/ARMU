@@ -104,22 +104,23 @@
   margin-top: 5%;
 }
 
-#spec-picture label { 
-  height: 55px;
-  width: 55px;
-  font-size: 300%;
+.img-container label { 
+  height: 400px;
+  width: 400px;
+  font-size: 10rem;
   font-weight: 400;
   text-align: center;
-  border-radius: 50px;
-  line-height: 43px;
+  border-radius: 25px;
+  line-height: 350px;
   box-sizing: border-box;
   display: inline-block;
   color: black;
   border: 1.5px solid black;
+  margin-top: 4%;
   background: rgba(0, 0, 0, 0);
 } 
   
-#spec-picture input[type="file"] { 
+.img-container input[type="file"] { 
   position: absolute; 
   width: 1px; 
   height: 1px; 
@@ -144,12 +145,27 @@
     float: left;
     height: 400px;
     width: 400px;
-    margin-top: 5%;
+    margin-top: 3%;
     margin-right: 5%;
 }
 
 #introduce-edit-btn {
     font-size: 35px;
+    font-weight: 400;
+    height: 65px;
+    width: 400px;
+    border-radius: 50px;
+    border: 1px solid white;
+    line-height: 60px;
+    color: white;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, .85);
+    margin-left: 30%;
+    margin-bottom: 2%;
+}
+
+#introduce-delete-btn {
+	    font-size: 35px;
     font-weight: 400;
     height: 65px;
     width: 400px;

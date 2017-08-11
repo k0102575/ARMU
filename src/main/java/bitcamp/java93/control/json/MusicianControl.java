@@ -336,6 +336,12 @@ public class MusicianControl {
     return new JsonResult(JsonResult.SUCCESS, "ok");
  }
   
+  @RequestMapping("deleteSpec")
+  public JsonResult deleteSpec(int spno) throws Exception {
+    musicianService.deleteSpec(spno);
+    return new JsonResult(JsonResult.SUCCESS, "ok");
+ }
+  
   @RequestMapping("searchMusician")
   public JsonResult searchMusician(HttpSession session, int locno, int mjrno, int gnrno, int indexL,int indexM,int indexG,String gender, int minAge, int maxAge) throws Exception {
     HashMap<String,Object> dataMap = new HashMap<>();

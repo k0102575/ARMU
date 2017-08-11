@@ -236,7 +236,7 @@
    update spec set 
    spdt = #{specDate}, dscp = #{specDscp}
    where spno= #{spno}
-  </update>
+  </update><!-- 승민 -->
   
   <insert id="insertSpecInfo" parameterType="map"
             useGeneratedKeys="true" keyColumn="spno" keyProperty="spno">
@@ -247,7 +247,12 @@
   <delete id="deleteSpecPath" parameterType="int">
     delete from spec_path 
     where spno=#{spno}
-  </delete>
+  </delete><!-- 승민 -->
+  
+  <delete id="deleteSpec" parameterType="int">
+    delete from spec
+    where spno=#{spno}
+  </delete><!-- 승민 -->
   
   <insert id="insertSpecPath" parameterType="map">
 	  insert into spec_path(spno, path, isimg) 

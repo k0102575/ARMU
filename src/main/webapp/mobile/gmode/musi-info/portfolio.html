@@ -6,8 +6,8 @@
 <script id="musician-info-portfolio-template" type="text/x-handlebars-template">
 {{#each getPortfolio}}
   <div id="spec-backscreen"></div>
-  <div id="spec-detail">
-    <div id="spec-close">닫기</div>
+  <div class="spec-detail" data-no='{{spno}}'>
+    <div class="spec-close" data-no='{{spno}}'>닫기</div>
     <div id="spec-date">
     {{specDate}}
     </div>
@@ -31,7 +31,7 @@
   <div class="timeline-line"></div>
   <img src="/image/logo/login_01_b.png" id="timeline-mark">
   </div>
-  <div id="timeline-content">
+  <div class="timeline-content" data-no='{{spno}}'>
   <div id="timeline-date">{{specDate}}</div>
   <div id="timeline-desc">{{specDscp}}</div>
   {{#each list}}

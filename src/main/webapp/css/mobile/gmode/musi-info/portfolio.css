@@ -42,7 +42,7 @@
   border-radius: 100px;
 }
 
-#timeline-content{
+.timeline-content{
   float: right;
   height: 60%;
   width: 80%;
@@ -93,7 +93,7 @@
   z-index: 13;
 }
 
-#spec-detail {
+.spec-detail {
   width: 90%;
   max-height: 1380px;
   display: none;
@@ -110,7 +110,7 @@
   min-height: 700px;
 }
 
-#spec-close {
+.spec-close {
     text-align: right;
     height: 3%;
     width: 82%;

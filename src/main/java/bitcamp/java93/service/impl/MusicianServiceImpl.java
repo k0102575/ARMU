@@ -117,7 +117,6 @@ public class MusicianServiceImpl implements MusicianService {
         musicianDao.insertSpecPath(movieMap);
       }
     }
-
   }
   
   @Override
@@ -149,6 +148,12 @@ public class MusicianServiceImpl implements MusicianService {
         musicianDao.insertSpecPath(movieMap);
       }
     }
+  }
+  
+  @Override
+  public void deleteSpec(int spno) throws Exception {
+    musicianDao.deleteSpecPath(spno);
+    musicianDao.deleteSpec(spno);
   }
   
   @Override

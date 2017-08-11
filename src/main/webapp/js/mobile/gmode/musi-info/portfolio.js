@@ -45,15 +45,22 @@ function displayMusiInfoPortfolio() {
 	    timeLine[0].style.background = "linear-gradient(to top, black 60%, white)"
 	    timeLine[length - 1].style.background = "linear-gradient(to bottom, black 60%, white)"
 	}
-        $("#timeline-content").on('click', function(){
-          $("#spec-detail").toggle(0)
-          $("#spec-backscreen").css('display', 'block')
-        })
-        
-        $("#spec-close").on('click', function() {
-          $("#spec-detail").toggle(0)
-          $("#spec-backscreen").css('display', 'none')
-        })
+		  
+		  $(".timeline-content").on('click', function(){
+		    var no = $(this).attr("data-no")
+		    $(".spec-detail[data-no=" + no + "]").toggle(0)
+		    $("#spec-backscreen").css('display', 'block')
+		    $("#musician-header-info-img").css('display','block')
+		    $("#container").css('position', 'fixed')
+		  })
+		  
+		  $(".spec-close").on('click', function() {
+		    var no = $(this).attr("data-no")
+		    $(".spec-detail[data-no=" + no + "]").toggle(0)
+		    $("#spec-backscreen").css('display', 'none')
+		    $("#musician-header-info-img").css('display','none')
+		    $("#container").css('position', 'relative')
+		  })
         
         /*var source = $("#timeline-movie").text().substring(20, 31)
         $("#timeline-movie").html("")

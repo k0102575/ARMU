@@ -22,6 +22,7 @@ public interface MusicianService {
   Musician getSpec(int spno) throws Exception;
   void updateSpec(Musician musician) throws Exception;
   void addSpec(int muno, Musician musician) throws Exception;
+  void deleteSpec(int spno) throws Exception;
   List<Musician> searchMusician(int no, int locno, int mjrno, int gnrno,int indexL,int indexM,int indexG, String gender, int minAge, int maxAge) throws Exception;
   void add(Musician musician) throws Exception;
   /*  void musicianAddHope(Musician musician) throws Exception;*/
