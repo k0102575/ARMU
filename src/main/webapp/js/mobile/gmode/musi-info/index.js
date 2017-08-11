@@ -37,7 +37,6 @@ function displayMusiInfo() {
         "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {
       var data = result.data.musician
-      console.log(data)
       musicianInfoNickName.text(data.nickName)
       musicianHeaderInfoImg.attr("src", data.photo + '_80.png')
       musicianBasicInfoImg.attr("src", data.photo + '_300.png')

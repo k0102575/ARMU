@@ -104,6 +104,8 @@ if (spno == 0) {
     }
   }
   
+  
+  
   $('#fi-photoupload').fileupload({
     url: '/musician/career.json',
     dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기

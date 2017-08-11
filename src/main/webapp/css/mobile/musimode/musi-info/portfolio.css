@@ -42,7 +42,7 @@
   border-radius: 100px;
 }
 
-#timeline-content{
+.timeline-content{
   float: right;
   height: 60%;
   width: 80%;
@@ -93,7 +93,7 @@
   z-index: 13;
 }
 
-#spec-detail {
+.spec-detail {
   width: 90%;
   max-height: 1380px;
   display: none;
@@ -201,9 +201,8 @@
   border-radius: 10px;
   font-size: 250%;
   color: black;
-  float: left;
-  margin-left: 50%;
-  margin-top: 10%;
+  float: right;
+  z-index: 30;
 }
 
 #portfolio-add-btn {

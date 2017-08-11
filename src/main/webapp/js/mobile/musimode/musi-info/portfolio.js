@@ -61,14 +61,14 @@ function displayMusiInfoPortfolio() {
       timeLine[length - 1].style.background = "linear-gradient(to bottom, black 60%, white)"
   }
     
-  $("#timeline-content").on('click', function(){
-    $("#spec-detail").toggle(0)
+  $(".timeline-content").on('click', function(){
+    $(".spec-detail").toggle(0)
     $("#spec-backscreen").css('display', 'block')
     $("#musician-header-info-img").css('display','block')
   })
   
   $("#spec-close").on('click', function() {
-    $("#spec-detail").toggle(0)
+    $(".spec-detail").toggle(0)
     $("#spec-backscreen").css('display', 'none')
     $("#musician-header-info-img").css('display','none')
   })

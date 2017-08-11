@@ -109,7 +109,6 @@ public class MusicianServiceImpl implements MusicianService {
         photoMap.put("specPath", photoList);
         musicianDao.insertSpecPath(photoMap);
       }
-      return;
     }
     
     if(musician.getMovieList().get(0) != "") {
@@ -117,7 +116,6 @@ public class MusicianServiceImpl implements MusicianService {
         movieMap.put("specPath", movieList);
         musicianDao.insertSpecPath(movieMap);
       }
-      return;
     }
 
   }

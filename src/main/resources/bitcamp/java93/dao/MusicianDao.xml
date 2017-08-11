@@ -226,11 +226,11 @@
   where sp.muno = #{no}
   </select> <!-- 승민 -->
   
-    <select id="selectSpec" resultMap="musicianInfoPortfolioMap" parameterType="int">
+  <select id="selectSpec" resultMap="musicianInfoPortfolioMap" parameterType="int">
   select sp.spno, sp.spdt as specDate, sp.dscp as specDscp, spp.isimg as fileType, spp.path as filePath
   from spec sp left outer join spec_path spp on sp.spno = spp.spno
   where sp.spno = #{spno}
-  </select>
+  </select> <!-- 승민 -->
   
   <update id="updateSpecInfo" parameterType="musician">
    update spec set 
