@@ -57,6 +57,27 @@
 {{/getSpec}}
 </script>
 
+<script id="musician-add-portfolio-template" type="text/x-handlebars-template">
+  <input id="spec-date" type="date" value="{{specDate}}"/>
+  <textarea rows="5" cols="50" id="spec-desc">
+  </textarea>
+    
+  <div id="spec-picture">
+  사진<br>
+  <input id="fi-filenames" type="hidden" name="filenames"/>
+  <label for="fi-photoupload">+</label> 
+  <input id="fi-photoupload" type="file" class="form-control upload"  name="files"/> 
+  </div>
+    
+  <div class="img-container">
+  </div>
+
+  <div class="movie-container">
+  동영상<br>
+  <input type="text"/ id="movie-text"><button type="button" id="movie-text-btn">추가</button>
+  </div>
+</script>
+
   <div class="career-info-header">
     <i class="fa fa-angle-left" class="musician-info-prev" aria-hclassden="true"></i>
     <span class='musician-info-nickname'>포트폴리오 편집</span>

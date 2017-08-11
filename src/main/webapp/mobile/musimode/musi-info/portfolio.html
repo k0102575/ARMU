@@ -2,6 +2,8 @@
 
 </div>
 
+<div id="portfolio-add-btn">+</div>
+
 <script id="musician-info-portfolio-template" type="text/x-handlebars-template">
 {{#each getPortfolio}}
   <div id="spec-backscreen"></div>
@@ -18,8 +20,7 @@
     {{#fileMap}} {{#isIndex key}}
     <img src="{{value}}" id="spec-picture">
     {{else}}
-    <span id="spec-movie">
-    {{value}}
+    <span class="spec-movie">
     </span>
     {{/isIndex}}
     {{/fileMap}}
@@ -39,12 +40,11 @@
   <img src="{{value}}" id="timeline-picture">
   {{else}}
   <div class="timeline-movie">
-  {{value}}
   </div>
   {{/isIndex}}
   {{/fileMap}}
   {{/each}}
-  <button type="button" id="musician-portfolio-edit-btn" data-spno='{{spno}}'>편집</button>
+  <button type="button" class="musician-portfolio-edit-btn" data-spno='{{spno}}'>편집</button>
   </div>
   </div>
 {{/each}}
@@ -54,7 +54,7 @@
     <div class="rec-no-portfolio">
       <br> 아직 작성하신 포트폴리오가 없어요<br><br>
       <i class="fa fa-frown-o" aria-hidden="true" id='rec-no-event-cry'></i><br><br>
-      <a href="/mobile/musimode/musi-info/career.html" class='rec-event-add-btn'>포트폴리오 등록하기</a><br><br>
+      <a href="career.html?no=0" class='rec-event-add-btn'>포트폴리오 등록하기</a><br><br>
     </div>
     <!-- rec-no-event -->
 </script>

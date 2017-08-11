@@ -222,9 +222,8 @@
   
   <select id="selectMusiPortfolio" resultMap="musicianInfoPortfolioMap" parameterType="int">
   select sp.spno, sp.spdt as specDate, sp.dscp as specDscp, spp.isimg as fileType, spp.path as filePath 
-  from musi mu left outer join spec sp on mu.muno = sp.muno
-  inner join spec_path spp on sp.spno = spp.spno
-  where mu.muno = #{no}
+  from spec sp left outer join spec_path spp on sp.spno = spp.spno
+  where sp.muno = #{no}
   </select> <!-- 승민 -->
   
     <select id="selectSpec" resultMap="musicianInfoPortfolioMap" parameterType="int">
@@ -239,6 +238,12 @@
    where spno= #{spno}
   </update>
   
+  <insert id="insertSpecInfo" parameterType="map"
+            useGeneratedKeys="true" keyColumn="spno" keyProperty="spno">
+    insert into spec(muno, spdt, dscp) 
+    values(#{muno}, #{spdt}, #{dscp})
+  </insert><!-- 승민 -->
+  
   <delete id="deleteSpecPath" parameterType="int">
     delete from spec_path 
     where spno=#{spno}
@@ -247,7 +252,7 @@
   <insert id="insertSpecPath" parameterType="map">
 	  insert into spec_path(spno, path, isimg) 
 	  values(#{spno}, #{specPath}, #{isimg})
-</insert><!-- 승민 -->
+  </insert><!-- 승민 -->
   
   <select id="selectRecommandList" resultMap="musicianMap" parameterType="int">
   select mum.mno, mum.name, mu.nick, mu.team, mum.path, fm.fav, if(mtc.score is not null, mtc.score, 0) as score,

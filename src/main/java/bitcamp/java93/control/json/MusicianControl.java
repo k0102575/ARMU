@@ -311,7 +311,29 @@ public class MusicianControl {
     
     musicianService.updateSpec(musician);
     return new JsonResult(JsonResult.SUCCESS, "ok");
-      
+ }
+  
+  @RequestMapping("addSpec")
+  public JsonResult addSpec(HttpSession session, Musician musician, String fiFilenames, String fiMovienames) throws Exception {
+    String[] photoPathList = fiFilenames.split(",");
+    String[] moviePathList = fiMovienames.split(",");
+    
+    ArrayList<String> addPhotoList = new ArrayList<>();
+    ArrayList<String> addMovieList = new ArrayList<>();
+    
+    for (String photo : photoPathList) {
+      addPhotoList.add(photo);
+    } 
+    
+    for (String movie : moviePathList) {
+      addMovieList.add(movie);
+    } 
+    
+    musician.setPhotoList(addPhotoList);
+    musician.setMovieList(addMovieList);
+    
+    musicianService.addSpec(getLoginMember(session).getNo(), musician);
+    return new JsonResult(JsonResult.SUCCESS, "ok");
  }
   
   @RequestMapping("searchMusician")

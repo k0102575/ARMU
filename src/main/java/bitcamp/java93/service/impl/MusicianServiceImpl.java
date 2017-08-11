@@ -104,17 +104,53 @@ public class MusicianServiceImpl implements MusicianService {
     movieMap.put("isimg", "N");
     
     musicianDao.deleteSpecPath(musician.getSpno());
-    
-    for (String photoList : musician.getPhotoList()) {
-      photoMap.put("specPath", photoList);
-      musicianDao.insertSpecPath(photoMap);
+    if(musician.getPhotoList().get(0) != "") {
+      for (String photoList : musician.getPhotoList()) {
+        photoMap.put("specPath", photoList);
+        musicianDao.insertSpecPath(photoMap);
+      }
+      return;
     }
     
-    for (String movieList : musician.getMovieList()) {
-      movieMap.put("specPath", movieList);
-      musicianDao.insertSpecPath(movieMap);
+    if(musician.getMovieList().get(0) != "") {
+      for (String movieList : musician.getMovieList()) {
+        movieMap.put("specPath", movieList);
+        musicianDao.insertSpecPath(movieMap);
+      }
+      return;
+    }
+
+  }
+  
+  @Override
+  public void addSpec(int muno, Musician musician) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("muno", muno);
+    valueMap.put("spdt", musician.getSpecDate());
+    valueMap.put("dscp", musician.getSpecDscp());
+    musicianDao.insertSpecInfo(valueMap);
+    
+    HashMap<String,Object> photoMap = new HashMap<>();
+    HashMap<String,Object> movieMap = new HashMap<>();
+    
+    photoMap.put("spno", valueMap.get("spno"));
+    movieMap.put("spno", valueMap.get("spno"));
+    photoMap.put("isimg", "Y");
+    movieMap.put("isimg", "N");
+    
+    if(musician.getPhotoList().get(0) != "") {
+      for (String photoList : musician.getPhotoList()) {
+        photoMap.put("specPath", photoList);
+        musicianDao.insertSpecPath(photoMap);
+      }
     }
     
+    if(musician.getMovieList().get(0) != "") {
+      for (String movieList : musician.getMovieList()) {
+        movieMap.put("specPath", movieList);
+        musicianDao.insertSpecPath(movieMap);
+      }
+    }
   }
   
   @Override
