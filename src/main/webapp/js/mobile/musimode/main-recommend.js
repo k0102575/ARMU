@@ -114,7 +114,7 @@ function heartAdd(item) {
 	if (item.isFavorite == 1) {
 		item.isFavorite = '<i class="fa fa-heart" aria-hidden="true"></i>'
 	} else {
-		item.isFavorite = '<i class="fa fa-heart-o" aria-hidden="true"></i>'
+		item.isFavorite = '<i class="fa fa-heart" aria-hidden="true"></i>'
 	}
 }
 

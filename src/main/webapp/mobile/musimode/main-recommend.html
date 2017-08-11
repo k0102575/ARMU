@@ -50,7 +50,9 @@
             <div class='rec-event-favor'>{{{isFavorite}}}</div>
             
             </div>
-            <div class="rec-event-date"><span>{{date}}</span></div><br>
+{{#intl locales="ko-KO"}}
+            <div class="rec-event-date"><span>{{formatDate date day="numeric" month="long" year="numeric"}}</span></div><br>
+{{/intl}}
             <div class='rec-event-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{location}}&nbsp;{{address}}</span></div><br>
             <div class="rec-event-price">{{formatNumber pay style="currency" currency="KRW"}}</div>
             <div class='rec-event-hashtagbox'>
@@ -61,7 +63,6 @@
           </div><!-- rec-event -->
   {{/each}}
 </script>
-
 <script id="rec-most-popular-category-template" type="text/x-handlebars-template">
 {{#each listTop10}}
 <a href="#" class='rec-hashtag'>#{{name}}</a>
