@@ -28,6 +28,9 @@ public class Musician extends Member  {
   int indexL;
   int indexM;
   int indexG;
+  int locno;
+  int mjrno;
+  int gnrno;
   String nickName;
   Map<String , String> fileMap;
   List<Map<Integer , String>> list;
