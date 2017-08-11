@@ -1,5 +1,9 @@
 
 'use strict'
+$(document).ready(function() {
+ $(".animsition").animsition();
+});
+
 
 var pno, mno, muno;
 $( document ).ready(function() {

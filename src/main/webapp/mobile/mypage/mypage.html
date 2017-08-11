@@ -4,13 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <title>mypage</title>
-<link rel='shortcut icon' type='image/x-icon'
-	href='/image/favicon/favicon.ico' />
-<link rel="stylesheet"
-	href="/node_modules/animsition/dist/css/animsition.min.css">
+<link rel='shortcut icon' type='image/x-icon'	href='/image/favicon/favicon.ico' />
+<link rel="stylesheet"	href="/node_modules/animsition/dist/css/animsition.min.css">
 <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
-<link href="/css/mobile/common.css" rel="stylesheet" type="text/css"
-	media="all">
+<link href="/css/mobile/common.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="/css/mobile/mypage/mypage.css">
 <script src="/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
@@ -19,7 +16,12 @@
 
 <body>
 
-	<div id="mypage-container" class="animsition">
+	<div id="mypage-container" class="animsition"
+  data-animsition-in-class="fade-in-left"
+  data-animsition-in-duration="700"
+  data-animsition-out-class="fade-out-left"
+  data-animsition-out-duration="700">
+	
 		<div id="header">
 			<div id="header-title">프로필 관리</div>
 			<a href="/mobile/gmode/index.html"><i id="close" class="fa fa-angle-left" aria-hidden="true"></i></a>
@@ -94,35 +96,13 @@
 <script
 	src="/node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
 
-<script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
-<script type="text/javascript" src="/js/mobile/mypage/mypage.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
-  $(".animsition").animsition({
-    inClass: 'fade-in-right',
-    outClass: 'fade-out-down',
-    inDuration: 500,
-    outDuration: 700,
-    linkElement: '.animsition-link',
-    // e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
-    loading: true,
-    loadingParentElement: 'body', //animsition wrapper element
-    loadingClass: 'animsition-loading',
-    loadingInner: '', // e.g '<img src="loading.svg" />'
-    timeout: false,
-    timeoutCountdown: 5000,
-    onLoadEvent: true,
-    browser: [ 'animation-duration', '-webkit-animation-duration'],
-    // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
-    // The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
-    overlay : false,
-    overlayClass : 'animsition-overlay-slide',
-    overlayParentElement : 'body',
-    transition: function(url){ window.location.href = url; }
-  });
-});
 
 </script>
+
+<script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
+<script type="text/javascript" src="/js/mobile/mypage/mypage.js"></script>
+
 
 
 </html>
