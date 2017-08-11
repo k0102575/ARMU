@@ -294,7 +294,7 @@ seoul.click(function () {
   if(gnrno ==3000)
     gnrno=2000
   locno=$(this).attr('data-no')
-  console.log('seoul',locno,mjrno,gnrno, checkVal,minAge,maxAge,indexL,indexM,indexG)
+//  console.log('seoul',locno,mjrno,gnrno, checkVal,minAge,maxAge,indexL,indexM,indexG)
     $.post('/musician/searchMusician.json',
       {'locno':locno, 'mjrno':mjrno, 'gnrno':gnrno, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,"gender" : checkVal, "minAge" : minAge, "maxAge" : maxAge}, function(result) {
         handleList(result)
