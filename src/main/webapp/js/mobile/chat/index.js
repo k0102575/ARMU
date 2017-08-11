@@ -35,9 +35,16 @@ $(document).ready(function() {
 
 displayList()
 
+
 });
 
-var mode = location.href.split('?')[1].split('=')[1]
+var mode = location.href.split('?')[1].split('=')[1];
+
+$('.chat-header-close-btn').on('click', function() {
+  if(mode == "musimode") location.href = '/mobile/musimode/index.html' 
+  else location.href = '/mobile/gmode/index.html'
+})
+
 
 function displayList() {
   var url;

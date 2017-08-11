@@ -48,7 +48,6 @@ public class ChatControl {
     try {
       int no = getLoginMember(session).getNo();
       List<Chat> list = chatService.listMusi(no);
-      System.out.println(list);
       result.setStatus(JsonResult.SUCCESS);
 
       HashMap<String,Object> dataMap = new HashMap<>();

@@ -31,7 +31,7 @@ from memb mu inner join (
   select mno, muno,
   substring_index(group_concat(date order by date desc), ',', 1) as date,
   substring_index(group_concat(msg order by date desc), ',', 1) as msg,
-  sum(if(isread='N', 1, 0)) as unread
+  sum(if(isread='N',if(who=muno, 1, 0), 0)) as unread
   from chat
   group by mno, muno
   having mno=#{no}
@@ -57,7 +57,7 @@ order by e.date desc
      select mno, muno,
      substring_index(group_concat(date order by date desc), ',', 1) as date,
      substring_index(group_concat(msg order by date desc), ',', 1) as msg,
-     sum(if(isread='N', 1, 0)) as unread
+     sum(if(isread='N',if(who=mno, 1, 0), 0)) as unread
      from chat
      group by mno, muno
      having muno=#{no}

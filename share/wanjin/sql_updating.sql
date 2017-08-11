@@ -282,13 +282,13 @@ order by date asc
 
 
 -- 특정 회원의 전체 뮤지션과의 채팅 목록 가져오기
-select mu.mno as musino, musi.nick as musinick, mu.path as musiphoto, c.mno,
+select c.mno as sender, mu.mno as receiver, musi.nick as nick, mu.path,
 cast(c.date as date) as date, cast(c.date as time) as time, c.msg, e.date as edate, e.status, c.unread
 from memb mu inner join (
   select mno, muno,
   substring_index(group_concat(date order by date desc), ',', 1) as date,
   substring_index(group_concat(msg order by date desc), ',', 1) as msg,
-  sum(if(isread='N', 1, 0)) as unread
+  sum(if(isread='N',if(who=muno, 1, 0), 0)) as unread
   from chat
   group by mno, muno
   having mno=5
@@ -377,5 +377,5 @@ insert into chat (muno, mno, isread, msg, date, who) values (3, 11, 'N','오호�
 
 
 -- 채팅 읽음/안읽음 상태 업데이트하기
-update chat set isread='Y'
-where mno=5 and muno=11 and isread='N'
+update chat set isread='N'
+where mno=5 and muno=11 and isread='Y'

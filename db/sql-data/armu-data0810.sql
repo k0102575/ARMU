@@ -301,10 +301,10 @@ insert into loc (name, loctno) values ('서귀포시', 17);
 
 
 -- 일반회원
-insert into memb (name, phone, pwd, email, path) values ('엄진영', '010-1111-2222',  password('1111'), 'jinyoungeom@gmail.com', '/image/musician/default.png');
-insert into memb (name, phone, pwd, email, path) values ('노완진', '010-1313-7375',  password('1111'), 'wanzargen@gmail.com', '/image/musician/default.png');
-insert into memb (name, phone, pwd, email, path) values ('김승민', '010-3333-8091',  password('1111'), 'seungmin@gmail.com', '/image/musician/default.png');
-insert into memb (name, phone, pwd, email, path) values ('박규호', '010-1423-4523',  password('1111'), 'gggyuu@gmail.com', '/image/musician/default.png');
+insert into memb (name, phone, pwd, email, path) values ('엄진영', '010-1111-2222',  password('1111'), 'jinyoungeom@gmail.com', '/image/profile/eom');
+insert into memb (name, phone, pwd, email, path) values ('노완진', '010-1313-7375',  password('1111'), 'wanzargen@gmail.com', '/image/profile/no');
+insert into memb (name, phone, pwd, email, path) values ('김승민', '010-3333-8091',  password('1111'), 'seungmin@gmail.com', '/image/profile/kim');
+insert into memb (name, phone, pwd, email, path) values ('박규호', '010-1423-4523',  password('1111'), 'gggyuu@gmail.com', '/image/profile/park');
 
 -- 이벤트
 insert into evn (title, mno, locno, pay, addr, date, cont)
