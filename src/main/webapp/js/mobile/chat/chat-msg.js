@@ -1,5 +1,7 @@
 "use strict"
 moment().format();
+var host = '192.168.0.10',
+	  port = 8888;
 
 $(document).ready(function() {
   $(".animsition").animsition({
@@ -91,7 +93,7 @@ $(window).on('load', function() {
   }
 
 
-  var ws = new WebSocket('ws://192.168.0.22:8888/chat/send.json');
+  var ws = new WebSocket('ws://' + host + ':' + port + '/chat/send.json');
 
   ws.onopen = function (event) {
     var obj = {
