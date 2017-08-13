@@ -11,7 +11,6 @@ public interface PortfolioService {
   List<Musician> listReview(int no) throws Exception;
   Musician myInfo(int myNo) throws Exception;
   void changeMusiInfo(int no, Musician musician) throws Exception;
-  
   void addSpec(int muno, Musician musician) throws Exception;
   Musician getSpec(int spno) throws Exception;
   void updateSpec(Musician musician) throws Exception;

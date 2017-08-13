@@ -41,6 +41,7 @@
   <div class="img-container">
     {{#each list}}
     {{#fileMap}}{{#isIndex key}}
+    <button type='button' class='photo-delete-btn' value="{{value}}">삭제</button>
     <img src="{{value}}" class='profile-image proimg' data-path={{value}}>
     {{/isIndex}}
     {{/fileMap}}
@@ -58,28 +59,29 @@
 </script>
 
 <script id="musician-add-portfolio-template" type="text/x-handlebars-template">
-  <input id="spec-date" type="date" value="{{specDate}}"/>
+  <input id="spec-date" type="date" value=""/>
   <textarea rows="5" cols="50" id="spec-desc">
   </textarea>
     
   <div id="spec-picture">
   사진<br>
   <input id="fi-filenames" type="hidden" name="filenames"/>
-  <label for="fi-photoupload">+</label> 
-  <input id="fi-photoupload" type="file" class="form-control upload"  name="files"/> 
   </div>
     
   <div class="img-container">
+  <label for="fi-photoupload">+</label> 
+  <input id="fi-photoupload" type="file" class="form-control upload"  name="files"/> 
   </div>
 
   <div class="movie-container">
   동영상<br>
   <input type="text"/ id="movie-text"><button type="button" id="movie-text-btn">추가</button>
   </div>
+
 </script>
 
   <div class="career-info-header">
-    <i class="fa fa-angle-left" class="musician-info-prev" aria-hclassden="true"></i>
+    <i class="fa fa-angle-left" id="musician-info-prev" aria-hclassden="true"></i>
     <span class='musician-info-nickname'>포트폴리오 편집</span>
   </div>
   <!-- musician-info-header -->
@@ -88,8 +90,8 @@
   </div>
   <!-- portfolio-container -->
     
-    
   <button type='button' id='introduce-edit-btn'>적용하기</button>
+  <button type='button' id='introduce-add-btn'>추가하기</button>
   <button type='button' id='introduce-delete-btn'>삭제하기</button>
   </div>
   <!-- container -->

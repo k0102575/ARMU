@@ -19,13 +19,13 @@
     {{#fileMap}} {{#isIndex key}}
     <img src="{{value}}" id="spec-picture">
     {{else}}
-    <span id="spec-movie">
+    <span class="spec-movie" data-spno="{{spno}}">
     </span>
     {{/isIndex}}
     {{/fileMap}}
     {{/each}}
-
   </div>
+
   <div id="timeline-container">
   <div id="timeline-line-container">
   <div class="timeline-line"></div>
@@ -38,7 +38,7 @@
   {{#fileMap}} {{#isIndex key}}
   <img src="{{value}}" id="timeline-picture">
   {{else}}
-  <span id="timeline-movie">
+  <span class="timeline-movie" data-spno="{{spno}}">
   </span>
   {{/isIndex}}
   {{/fileMap}}

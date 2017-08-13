@@ -21,7 +21,8 @@
     <result column="specDscp" property="specDscp" />
      <collection property="list" ofType="java.util.Map">
        <association property="fileMap" javaType="java.util.Map"> 
-      <result property="key" column="fileType"/> 
+       <result column="spno" property="spno" />
+       <result property="key" column="fileType"/> 
        <result property="value" column="filePath"></result>
       </association>
     </collection>

@@ -9,11 +9,13 @@ try {
   spno = location.href.split('?')[1].split('=')[1]
 } catch (err) {}
 
-
 if (spno == 0) {
+  
   $('.portfolio-container').append(Handlebars.compile($('#musician-add-portfolio-template').text()))
   
-    $('#fi-photoupload').fileupload({
+   $("#introduce-add-btn").css('display', 'block');
+  
+  $('#fi-photoupload').fileupload({
     url: '/portfolio/career.json',
     dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
     sequentialUploads: true,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
@@ -28,11 +30,13 @@ if (spno == 0) {
       }, 
       processalways: function(e, data) {
         var imagesDiv = $('.img-container');
-        imagesDiv.append("<div class='profile-image" + count + " proimg'></div>")
+        imagesDiv.prepend("<div class='profile-image" + count + " proimg'></div>")
         $(".profile-image" + count).attr('src', '')
         for (var i = 0; i < data.files.length; i++) {
           try {
             if (data.files[i].preview.toDataURL) {
+              $(".profile-image" + count).append("<button type='button' class='photo-delete-btn' value="+ data.files[i].preview.toDataURL() +"><i class='fa fa-minus' aria-hidden='true'></i></button>")
+              $(".profile-image" + count).attr('data-path', data.files[i].preview.toDataURL())
               $(".profile-image" + count).css("background-image", 'url(' + data.files[i].preview.toDataURL() +')')
             }
           } catch (err) {}
@@ -41,15 +45,16 @@ if (spno == 0) {
       done: function (e, d) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
         var imlibsData = d.result;
         var file = imlibsData.data[0];
-        $(".profile-image" + count).attr("data-path", file.filename)
         count++
         fiFilenames += "/image/profile/" + file.filename + ","
         
       }
     });  // file-upload
   
-  
 } else {
+  
+  $("#introduce-edit-btn").css('display', 'block');
+  $("#introduce-delete-btn").css('display', 'block');
   
   Handlebars.registerHelper('isIndex', function(key, options) {
     if (key == "Y") {
@@ -100,6 +105,8 @@ if (spno == 0) {
         for (var i = 0; i < data.files.length; i++) {
           try {
             if (data.files[i].preview.toDataURL) {
+              imagesDiv.prepend("<button type='button' class='photo-delete-btn' value="+ data.files[i].preview.toDataURL() +"><i class='fa fa-minus' aria-hidden='true'></i></button>")
+              $(".profile-image" + count).attr('data-path', data.files[i].preview.toDataURL())
               $(".profile-image" + count).css("background-image", 'url(' + data.files[i].preview.toDataURL() +')')
             }
           } catch (err) {}
@@ -108,7 +115,6 @@ if (spno == 0) {
       done: function (e, d) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
         var imlibsData = d.result;
         var file = imlibsData.data[0];
-        $(".profile-image" + count).attr("data-path", file.filename)
         count++
         fiFilenames += "/image/profile/" + file.filename + ","
         
@@ -126,11 +132,18 @@ $('body').on('click', ".movie-delete-btn", function() {
   $(this).remove()
 })
 
+$('body').on('click', ".photo-delete-btn", function() {
+  $(".proimg[data-path='"+ $(this).val() +"']").remove()
+  var str = $(this).val() + ","
+  fiFilenames = fiFilenames.replace(str, '')
+  $(this).remove()
+})
+/*
 $('body').on('click', ".proimg", function() {
   $(this).remove();
   var str = $(this).attr('data-path') + ","
   fiFilenames = fiFilenames.replace(str, '')
-})
+})*/
 
 $('body').on('click', "#movie-text-btn", function() {
   var findStr = "https://youtu.be/"
@@ -151,6 +164,28 @@ $('body').on('click', "#movie-text-btn", function() {
     });
     return
   }
+})
+
+$('body').on('click', "#introduce-add-btn", function() {
+  $.post('/portfolio/addSpec.json', {
+    'specDate': $("#spec-date").val(),
+    'specDscp': $("#spec-desc").val(),
+    'fiFilenames': fiFilenames,
+    "fiMovienames" : fiMovienames
+  }, function(result) {
+    if(result.status == "success") {
+      swal({
+        title: "등록에 성공했습니다",
+        type: "success",
+        showCancelButton: false,
+        confirmButtonColor: "#8069ef",
+        confirmButtonText: "확인",
+        customClass: "checkSwal"
+      }, function() {
+        location.href="index.html"
+      });
+    }
+  }, 'json')
 })
 
 $('body').on('click', "#introduce-edit-btn", function() {
@@ -193,5 +228,9 @@ $('body').on('click', "#introduce-delete-btn", function() {
       });
     }
   }, 'json')
+})
+
+$('body').on('click', "#musician-info-prev", function() {
+  location.href = "index.html"
 })
 

@@ -19,7 +19,7 @@
   z-index: 14;
 }
 
-.musician-info-prev {
+#musician-info-prev {
   position: absolute;
   left: 3%;
   top: 12%;
@@ -95,9 +95,10 @@
   width: 95%;
   height: 100%;
   font-size: 2rem;
+  margin-bottom: 5%;
 }
 
-#spec-movie {
+.spec-movie {
   float: left;
   width: 95%;
   height: 100%;
@@ -116,8 +117,8 @@
   display: inline-block;
   color: black;
   border: 1.5px solid black;
-  margin-top: 4%;
   background: rgba(0, 0, 0, 0);
+  float: left;
 } 
   
 .img-container input[type="file"] { 
@@ -132,51 +133,67 @@
 }
 
 .portfolio-container {
-  padding-left: 5%;
 }
 
 .img-container {
-  float:left;
+  float: left;
   height: auto;
   width: 100%;
 }
 
 .proimg {
-    float: left;
-    height: 400px;
-    width: 400px;
-    margin-top: 3%;
-    margin-right: 5%;
+  float: left;
+  height: 400px;
+  width: 400px;
+  border-radius: 15px;
+}
+
+#introduce-add-btn {
+	font-size: 35px;
+  font-weight: 400;
+  height: 65px;
+  width: 400px;
+  border-radius: 50px;
+  border: 1px solid white;
+  line-height: 60px;
+  color: white;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, .85);
+  margin-left: 30%;
+  margin-bottom: 2%;
+  display: none;
 }
 
 #introduce-edit-btn {
-    font-size: 35px;
-    font-weight: 400;
-    height: 65px;
-    width: 400px;
-    border-radius: 50px;
-    border: 1px solid white;
-    line-height: 60px;
-    color: white;
-    box-sizing: border-box;
-    background-color: rgba(0, 0, 0, .85);
-    margin-left: 30%;
-    margin-bottom: 2%;
+  font-size: 35px;
+  font-weight: 400;
+  height: 65px;
+  width: 400px;
+  border-radius: 50px;
+  border: 1px solid white;
+  line-height: 60px;
+  color: white;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, .85);
+  margin-left: 30%;
+  margin-bottom: 2%;
+  display: none;
 }
 
 #introduce-delete-btn {
-	    font-size: 35px;
-    font-weight: 400;
-    height: 65px;
-    width: 400px;
-    border-radius: 50px;
-    border: 1px solid white;
-    line-height: 60px;
-    color: white;
-    box-sizing: border-box;
-    background-color: rgba(0, 0, 0, .85);
-    margin-left: 30%;
-    margin-bottom: 10%;
+  font-size: 35px;
+  font-weight: 400;
+  height: 65px;
+  width: 400px;
+  border-radius: 50px;
+  border: 1px solid white;
+  line-height: 60px;
+  color: white;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, .85);
+  margin-left: 30%;
+  margin-bottom: 10%;
+  display: none;
 }
 
 .movie-container {
@@ -185,4 +202,16 @@
   width: 100%;
 }
 
+.photo-delete-btn {
+  float: right;
+  background: white;
+  border: 3px solid #8069ef;
+  border-radius: 25px;
+  font-size: 2rem;
+  box-sizing: border-box;
+  width: 50px;
+  margin-right: 2%;
+  margin-top: 2%;
+  color: #8069ef;
+}
 

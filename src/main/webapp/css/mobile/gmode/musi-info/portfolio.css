@@ -1,27 +1,27 @@
 @CHARSET "UTF-8";
 
 .portfolio-container {
-	width: 100%;
-	min-height: auto;
-	position: relative;
+  width: 100%;
+  min-height: auto;
+  position: relative;
 }
 
 #timeline-container {
   position: relative;
-	height: auto;
-	width: 100%;
-	top: 100px;
-	height: 650px;
+  height: auto;
+  width: 100%;
+  top: 100px;
+  height: 650px;
 }
 
 #timeline-container:last-of-type {
-	margin-bottom: 200px;
+  margin-bottom: 200px;
 }
 
 #timeline-line-container {
-	position: absolute;
-	width: 10%;
-	height: 650px;
+  position: absolute;
+  width: 10%;
+  height: 650px;
 }
 
 .timeline-line {
@@ -43,16 +43,18 @@
 }
 
 .timeline-content{
-  float: right;
-  height: 60%;
-  width: 80%;
-  margin-right: 7%;
-  margin-top: 21.5%;
+float: right;
+    height: 60%;
+    width: 80%;
+    margin-right: 7%;
+    margin-top: 21.5%;
+    max-height: 60%;
+    overflow: hidden;
 }
 
 #timeline-date {
-	font-size: 3em;
-	font-weight: normal;
+  font-size: 3em;
+  font-weight: normal;
 }
 
 #timeline-desc {
@@ -153,4 +155,69 @@
   margin-top: 5%;
 }
 
+.rec-no-event-container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 
+.rec-no-portfolio {
+  position: relative;
+  hegiht: 900px;
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+  color: darkgray;
+  overflow: visible;
+  margin-top: 50%;
+}
+
+#rec-no-event-cry {
+  font-size: 80px;
+}
+
+.rec-event-add-btn {
+  position: absolute;
+  font-size: 35px;
+  font-weight: 400;
+  height: 65px;
+  width: 400px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50px;
+  border: 1px solid white;
+  line-height: 60px;
+  color: white;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, .85);
+}
+
+.rec-no-event-separator {
+  margin-top: 0;
+}
+
+.musician-portfolio-edit-btn {
+  background-color: white;
+  border: 1px solid black;
+  width: 100px;
+  height: 75px;
+  border-radius: 10px;
+  font-size: 250%;
+  color: black;
+  float: right;
+  z-index: 30;
+}
+
+#portfolio-add-btn {
+  position: fixed;
+    border: 2px solid black;
+    border-radius: 25px;
+    width: 50px;
+    height: 50px;
+    bottom: 5%;
+    right: 5%;
+    background: white;
+    font-size: 4rem;
+    line-height: 40px;
+    padding-left: 6px;
+    box-sizing: border-box;
+}
