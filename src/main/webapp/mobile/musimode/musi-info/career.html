@@ -41,8 +41,7 @@
   <div class="img-container">
     {{#each list}}
     {{#fileMap}}{{#isIndex key}}
-    <button type='button' class='photo-delete-btn' value="{{value}}">삭제</button>
-    <img src="{{value}}" class='profile-image proimg' data-path={{value}}>
+    <div style="background-image:url('{{value}}')" class='profile-image proimg' data-path="{{value}}"><button type='button' class='photo-delete-btn delbtn' value="{{value}}"><i class='fa fa-minus' aria-hidden='true'></i></button></div>
     {{/isIndex}}
     {{/fileMap}}
     {{/each}}
@@ -50,9 +49,13 @@
   <input id="fi-photoupload" type="file" class="form-control upload"  name="files"/> 
   </div>
 
+  <div class="movie-text">
+  동영상
+  </div>
   <div class="movie-container">
-  동영상<br>
-  <input type="text"/ id="movie-text"><button type="button" id="movie-text-btn">추가</button>
+  <input type="text"/ id="movie-text">
+  <button type="button" id="movie-text-btn">추가</button>
+  <button type="button" id="movie-help-btn">?</button>
   </div>
 
 {{/getSpec}}
@@ -73,9 +76,13 @@
   <input id="fi-photoupload" type="file" class="form-control upload"  name="files"/> 
   </div>
 
+  <div class="movie-text">
+  동영상
+  </div>
   <div class="movie-container">
-  동영상<br>
-  <input type="text"/ id="movie-text"><button type="button" id="movie-text-btn">추가</button>
+  <input type="text"/ id="movie-text">
+  <button type="button" id="movie-text-btn">추가</button>
+  <button type="button" id="movie-help-btn">?</button>
   </div>
 
 </script>

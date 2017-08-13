@@ -44,7 +44,7 @@ function displayMusiInfoPortfolio() {
     
     var timeLine = $('.timeline-line')
     
-    $(".musician-portfolio-edit-btn").on('click', function() {
+    $(".musician-portfolio-edit-btn").on('click', function(e) {
       location.href = 'career.html?no=' + $(this).attr('data-spno')
     })
       
