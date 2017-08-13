@@ -58,105 +58,6 @@ public class MusicianServiceImpl implements MusicianService {
   }
   
   @Override
-  public Musician get(int myNo, int muNo) throws Exception {
-    HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("myNo", myNo);
-    valueMap.put("muNo", muNo);
-    return musicianDao.selectMusi(valueMap);
-  }
-  
-  @Override
-  public Musician getMyPortfolio(int myNo) throws Exception {
-    return musicianDao.myMusiInfo(myNo);
-  }
-  
-  @Override
-  public List<Musician> listReview(int no) throws Exception {
-    return musicianDao.selectMusiReview(no);
-  }
-  
-  @Override
-  public Musician getIntroduce(int no) throws Exception {
-    return musicianDao.selectMusiIntroduce(no);
-  }
-  
-  @Override
-  public List<Musician> getPortfolio(int no) throws Exception {
-    return musicianDao.selectMusiPortfolio(no);
-  }
-  
-  @Override
-  public Musician getSpec(int spno) throws Exception {
-    return musicianDao.selectSpec(spno);
-  }
-  
-  @Override
-  public void updateSpec(Musician musician) throws Exception {
-    musicianDao.updateSpecInfo(musician);
-    
-    HashMap<String,Object> photoMap = new HashMap<>();
-    HashMap<String,Object> movieMap = new HashMap<>();
-    
-    photoMap.put("spno", musician.getSpno());
-    photoMap.put("isimg", "Y");
-    
-    movieMap.put("spno", musician.getSpno());
-    movieMap.put("isimg", "N");
-    
-    musicianDao.deleteSpecPath(musician.getSpno());
-    if(musician.getPhotoList().get(0) != "") {
-      for (String photoList : musician.getPhotoList()) {
-        photoMap.put("specPath", photoList);
-        musicianDao.insertSpecPath(photoMap);
-      }
-    }
-    
-    if(musician.getMovieList().get(0) != "") {
-      for (String movieList : musician.getMovieList()) {
-        movieMap.put("specPath", movieList);
-        musicianDao.insertSpecPath(movieMap);
-      }
-    }
-  }
-  
-  @Override
-  public void addSpec(int muno, Musician musician) throws Exception {
-    HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("muno", muno);
-    valueMap.put("spdt", musician.getSpecDate());
-    valueMap.put("dscp", musician.getSpecDscp());
-    musicianDao.insertSpecInfo(valueMap);
-    
-    HashMap<String,Object> photoMap = new HashMap<>();
-    HashMap<String,Object> movieMap = new HashMap<>();
-    
-    photoMap.put("spno", valueMap.get("spno"));
-    movieMap.put("spno", valueMap.get("spno"));
-    photoMap.put("isimg", "Y");
-    movieMap.put("isimg", "N");
-    
-    if(musician.getPhotoList().get(0) != "") {
-      for (String photoList : musician.getPhotoList()) {
-        photoMap.put("specPath", photoList);
-        musicianDao.insertSpecPath(photoMap);
-      }
-    }
-    
-    if(musician.getMovieList().get(0) != "") {
-      for (String movieList : musician.getMovieList()) {
-        movieMap.put("specPath", movieList);
-        musicianDao.insertSpecPath(movieMap);
-      }
-    }
-  }
-  
-  @Override
-  public void deleteSpec(int spno) throws Exception {
-    musicianDao.deleteSpecPath(spno);
-    musicianDao.deleteSpec(spno);
-  }
-  
-  @Override
   public List<Musician> searchMusician(int no,int locno, int mjrno, int gnrno, int indexL,int indexM,int indexG,String gender, int minAge, int maxAge) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("no", no);
@@ -187,15 +88,6 @@ public class MusicianServiceImpl implements MusicianService {
   
   public void updateNick(Musician musician) throws Exception {
     musicianDao.updateNick(musician);
-  }
-  
-  public void changeMusiInfo(int no, Musician musician) throws Exception {
-    HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("no", no);
-    valueMap.put("homepage", musician.getHomepage());
-    valueMap.put("intro", musician.getIntro());
-    
-    musicianDao.updateInfo(valueMap);
   }
   
   public Musician getByMuno(int no) throws Exception {

@@ -7,7 +7,7 @@ var reviewContent = $(".review-content"),
 displayMusiInfoReview()
 
 function displayMusiInfoReview() {
-  $.getJSON('/musician/musiInfoReview.json',
+  $.getJSON('/portfolio/musiInfoReview.json',
       { 
         "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {

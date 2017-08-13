@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.java93.dao.PortfolioDao">
+  
+  <resultMap type="musician" id="musicianInfoMap">
+    <id column="mno" property="no" />
+    <result column="name" property="name" />
+    <result column="nick" property="nickName" />
+    <result column="age" property="age" />
+    <result column="path" property="photo" />
+    <result column="gender" property="gender" />
+    <result column="fav" property="fav" />
+    <result column="team" property="isTeam" />
+  </resultMap>
+    
+  <resultMap type="musician" id="musicianInfoPortfolioMap">
+    <id column="spno" property="spno" />
+    <result column="specDate" property="specDate" />
+    <result column="specDscp" property="specDscp" />
+     <collection property="list" ofType="java.util.Map">
+       <association property="fileMap" javaType="java.util.Map"> 
+      <result property="key" column="fileType"/> 
+       <result property="value" column="filePath"></result>
+      </association>
+    </collection>
+  </resultMap>
+  
+  <resultMap type="musician" id="musicianInfoIntroduceMap">
+    <result column="team" property="isTeam" />
+    <result column="hpg" property="homepage" />
+    <result column="intro" property="intro" />
+    <result column="sido" property="sido"/>
+    <collection property="majorList" ofType="string"> 
+        <result column="major"/> 
+    </collection>
+    <collection property="genreList" ofType="string"> 
+        <result column="genre"/> 
+    </collection> 
+    <collection property="themeList" ofType="string"> 
+       <result column="theme"/> 
+    </collection>
+    <collection property="locationList" ofType="string"> 
+        <result column="location"/> 
+    </collection>
+        <collection property="majorNoList" ofType="Integer"> 
+        <result column="majorNo"/> 
+    </collection>
+    <collection property="genreNoList" ofType="Integer"> 
+        <result column="genreNo"/> 
+    </collection> 
+    <collection property="themeNoList" ofType="Integer"> 
+       <result column="themeNo"/> 
+    </collection>
+    <collection property="locationNoList" ofType="Integer"> 
+        <result column="locationNo"/> 
+    </collection>
+  </resultMap>
+  
+  <resultMap type="musician" id="musicianInfoReviewMap">
+    <id column="count" property="count" />
+    <result column="score" property="score" />
+    <result column="rev" property="review" />
+    <result column="name" property="name" />
+    <result column="path" property="photo" />
+    <result column="eventTitle" property="eventTitle" />
+    <result column="eventDate" property="eventDate" />
+  </resultMap>
+  
+  <select id="selectMusi" resultMap="musicianInfoMap" parameterType="map">
+  select m.mno, m.name, mu.nick, mu.age, m.path, mu.team, mu.gender, if(fm.fav is not null, 1, 0) as fav
+  from musi mu inner join memb m on mu.muno=m.mno
+  left outer join (select count(if(mno is not null, 1, 0)) as fav, mno, muno
+  from fav_musi
+  where mno=#{myNo}
+  group by muno) fm on fm.muno=mu.muno
+  where mu.muno=#{muNo}
+  </select> <!-- 승민 -->
+  
+  <select id="selectMusiPortfolio" resultMap="musicianInfoPortfolioMap" parameterType="int">
+  select sp.spno, sp.spdt as specDate, sp.dscp as specDscp, spp.isimg as fileType, spp.path as filePath 
+  from spec sp left outer join spec_path spp on sp.spno = spp.spno
+  where sp.muno = #{no}
+  </select> <!-- 승민 -->
+  
+  <select id="selectMusiIntroduce" resultMap="musicianInfoIntroduceMap" parameterType="int">
+  select if(mu.hpg is not null, mu.hpg, 0) as hpg, mu.intro, mj.mjrno as majorNo, mj.name as major,
+  g.gnrno as genreNo, g.name as genre, l.locno as locationNo, l.name as location, lt.name as sido, t.thmno as themeNo, t.name as theme
+  from musi mu left outer join mjr_musi mjm on mu.muno=mjm.muno 
+  left outer join mjr mj on mjm.mjrno=mj.mjrno
+  left outer join gnr_musi gm on mu.muno=gm.muno 
+  left outer join gnr g on gm.gnrno=g.gnrno
+  left outer join thm_musi tm on mu.muno=tm.muno 
+  left outer join thm t on tm.thmno=t.thmno
+  left outer join loc_musi lm on mu.muno=lm.muno 
+  left outer join loc l on lm.locno=l.locno
+  left outer join loc_type lt on l.loctno = lt.loctno
+  where mu.muno = #{no}
+  </select> <!-- 승민 -->
+  
+  <select id="selectMusiReview" resultMap="musicianInfoReviewMap" parameterType="int">
+  select ctr.count, mtc.rev, mtc.score, even.title as eventTitle, DATE_FORMAT(even.date, '%Y-%m-%d') as eventDate, m.name , m.path
+  from musi as mu left outer join mtc on mtc.muno=mu.muno
+  left outer join (select muno, count(*) as count 
+  from mtc 
+  group by muno) ctr on ctr.muno=mtc.muno
+  left outer join evn even on mtc.eno = even.eno
+  left outer join memb m on even.mno = m.mno
+  where mtc.muno = #{no}
+  </select> <!-- 승민 -->
+  
+  <select id="myMusiInfo" resultMap="musicianInfoMap" parameterType="map">
+  select m.mno, m.name, mu.nick, mu.age, m.path, mu.team, mu.gender
+  from musi mu inner join memb m on mu.muno=m.mno
+  where mu.muno= #{myNo}
+  </select> <!-- 승민 -->
+  
+  <update id="updateInfo" parameterType="map">
+    update musi set 
+    hpg = #{homepage}, intro = #{intro}
+    where muno= #{no}
+  </update>
+  
+  <insert id="insertSpecInfo" parameterType="map"
+          useGeneratedKeys="true" keyColumn="spno" keyProperty="spno">
+    insert into spec(muno, spdt, dscp) 
+    values(#{muno}, #{spdt}, #{dscp})
+  </insert><!-- 승민 -->
+  
+  <insert id="insertSpecPath" parameterType="map">
+    insert into spec_path(spno, path, isimg) 
+    values(#{spno}, #{specPath}, #{isimg})
+  </insert><!-- 승민 -->
+  
+  <select id="selectSpec" resultMap="musicianInfoPortfolioMap" parameterType="int">
+  select sp.spno, sp.spdt as specDate, sp.dscp as specDscp, spp.isimg as fileType, spp.path as filePath
+  from spec sp left outer join spec_path spp on sp.spno = spp.spno
+  where sp.spno = #{spno}
+  </select> <!-- 승민 -->
+  
+  <update id="updateSpecInfo" parameterType="musician">
+   update spec set 
+   spdt = #{specDate}, dscp = #{specDscp}
+   where spno= #{spno}
+  </update><!-- 승민 -->
+  
+  <delete id="deleteSpecPath" parameterType="int">
+    delete from spec_path 
+    where spno=#{spno}
+  </delete><!-- 승민 -->
+  
+  <delete id="deleteSpec" parameterType="int">
+    delete from spec
+    where spno=#{spno}
+  </delete><!-- 승민 -->
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

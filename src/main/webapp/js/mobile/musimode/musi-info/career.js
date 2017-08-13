@@ -14,7 +14,7 @@ if (spno == 0) {
   $('.portfolio-container').append(Handlebars.compile($('#musician-add-portfolio-template').text()))
   
     $('#fi-photoupload').fileupload({
-    url: '/musician/career.json',
+    url: '/portfolio/career.json',
     dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
     sequentialUploads: true,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
     singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기.
@@ -57,7 +57,7 @@ if (spno == 0) {
     }
   }); // handelbars.helper
   
-  $.getJSON('/musician/getSpec.json', 
+  $.getJSON('/portfolio/getSpec.json', 
       {"spno" : spno}, function(result) {
   var templateFn = Handlebars.compile($('#musician-info-portfolio-template').text())
   var generatedHTML = templateFn(result.data)
@@ -81,7 +81,7 @@ if (spno == 0) {
   }
   
   $('#fi-photoupload').fileupload({
-    url: '/musician/career.json',
+    url: '/portfolio/career.json',
     dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
     sequentialUploads: true,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
     singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기.
@@ -154,7 +154,7 @@ $('body').on('click', "#movie-text-btn", function() {
 })
 
 $('body').on('click', "#introduce-edit-btn", function() {
-  $.post('/musician/updateSpec.json', {
+  $.post('/portfolio/updateSpec.json', {
     'spno': spno,
     'specDate': $("#spec-date").val(),
     'specDscp': $("#spec-desc").val(),
@@ -177,7 +177,7 @@ $('body').on('click', "#introduce-edit-btn", function() {
 })
 
 $('body').on('click', "#introduce-delete-btn", function() {
-  $.post('/musician/deleteSpec.json', {
+  $.post('/portfolio/deleteSpec.json', {
     'spno': spno
   }, function(result) {
     if(result.status == "success") {

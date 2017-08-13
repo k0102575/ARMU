@@ -15,7 +15,7 @@ $("#portfolio-add-btn").on('click', function() {
 displayMusiInfoPortfolio()
    
 function displayMusiInfoPortfolio() {
-  $.getJSON('/musician/musiInfoMyPortfolio.json', function(result) {
+  $.getJSON('/portfolio/myPortfolio.json', function(result) {
     if(result.data.getPortfolio.length == 0) {
       var templateFn = Handlebars.compile($('#musician-info0-portfolio-template').text())
       var generatedHTML = templateFn(result.data)

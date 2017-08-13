@@ -32,7 +32,7 @@ displayMusiInfo()
 matchRequest()
     
 function displayMusiInfo() {
-  $.getJSON('/musician/musiInfo.json',
+  $.getJSON('/portfolio/musiInfo.json',
       { 
         "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {
@@ -95,9 +95,6 @@ function displayMusiInfo() {
       
   })
 }
-    
-
-    
 
 $(window).scroll(function(event){
   
@@ -227,8 +224,6 @@ function matchRequest() {
     
   }
 )}
-
-
 
 requestBtn.on('click', function() {
   requestToggle.toggle()

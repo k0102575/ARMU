@@ -113,7 +113,7 @@ $("#introduce-edit-btn").on('click', function() {
   return
   }
   
-  $.post('/musician/updateInfo.json', {
+  $.post('/portfolio/updateInfo.json', {
     "musicianTheme" : categoryThemeNo,
     "musicianMajor" : categoryMajorNo,
     "musicianGenre" : categoryGenreNo,
@@ -138,7 +138,7 @@ $("#introduce-edit-btn").on('click', function() {
 })
 
 function displayMusiInfoIntroduce() {
-  $.getJSON('/musician/musiInfoMyIntroduce.json', function(result) {
+  $.getJSON('/portfolio/myIntroduce.json', function(result) {
     var data = result.data.getIntroduce
     for(var theme of data.themeList) {
       themeSelectText.append("<span class='selectSpan'>#" + theme + "</span>")

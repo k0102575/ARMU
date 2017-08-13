@@ -8,7 +8,7 @@ displayMusiInfoReview()
 
 
 function displayMusiInfoReview() {
-  $.getJSON('/musician/musiInfoMyReview.json', function(result) {
+  $.getJSON('/portfolio/myReview.json', function(result) {
         
         if(result.data.musicianReview.length == 0) {
           $(".review-header").text("진행/완료된 이벤트 0개 ")

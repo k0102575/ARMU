@@ -31,7 +31,7 @@ var lastScroll = 0,
 displayMusiInfo()
     
 function displayMusiInfo() {
-  $.getJSON('/musician/musiPortfolio.json', function(result) {
+  $.getJSON('/portfolio/myInfo.json', function(result) {
       var data = result.data.musician
       musicianInfoNickName.text(data.nickName)
       musicianHeaderInfoImg.attr("src", data.photo)
