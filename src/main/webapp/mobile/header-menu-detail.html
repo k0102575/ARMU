@@ -47,128 +47,148 @@
 	   <i class="fa fa-times-circle" id="search-text-delete" aria-hidden="true"></i>
    </div> 
    </form>
-   
-   
   <!-- search-header -->
   </div>
+  
   <!-- search-contents -->
 </div>
+  <div id="search-result-container">
+  </div>
 <!-- search-toggle -->
 
-<script>
-/*메뉴 관련*/
-	var container = $("#container"),
-	    menuBtn = $('#header-menu-menu'),
-	    menuBackscreen = $("#menu-backscreen"),
-	    menuToggle = $("#menu-toggle"),
-	    musicianFavor = $("#menu-category-musician-favor"),
-	    eventRegist = $("#menu-category-event-regist"),
-	    headerMenuSearch = $("#header-menu-search"),
-	    searchToggle = $("#search-toggle"),
-	    searchCancel = $('#search-cancel'),
-	    searchText = $('#search-text'),
-	    searchTextDelete = $('#search-text-delete'),
-	    searchBackScreen = $("#search-backscreen")
-	    
-	menuBtn.on('click', function() {
-		menuBackscreen.css('display', 'block');
-		menuToggle.toggle("slide", 300);
-		container.css('position', 'fixed').css('overflow', 'hidden');
-	});
 
-	menuBackscreen.on('click', function() {
-		menuToggle.toggle("slide", 300);
-		menuBackscreen.css('display', 'none');
-		container.css('position', '').css('overflow', '');
-	})
-	
-	headerMenuSearch.on('click', function() {
-	  searchToggle.toggle("slide", {direction: 'right'}, 300);
-	  searchBackScreen.css('display', 'block')
-	  $('#search-text').focus()
+<script id="search-result-template" type="text/x-handlebars-template">
+{{#each listSearchResult}}
+  <div class="search-list">
+    <div class="search-list-img" style='background-image: url("{{photo}}_80.png")'></div>
+    <div class="search-list-musi">
+      <span>{{nickName}}</span>
+      <div class="search-list-score">{{{score}}}</div>
+    </div>
+    <div class="search-list-hashtagbox">
+      {{#each majorList}} <span>#{{this}}</span> {{/each}}
+      {{#each genreList}} <span>#{{this}}</span> {{/each}}
+      {{#each themeList}} <span>#{{this}}</span> {{/each}}
+    </div>
+  </div>
+{{/each}}
+</script>
+<script>
+/*검색시작*/
+  
+  var searchText =$('#search-text')
+  searchText.keyup(function() {
+    console.log(searchText.val())
+	  $.post('/musician/listSearchResult.json', {'search':searchText.val()}, function(result) {
+	    console.log(result)
+	  }, function(err) {
+	    console.log(err)
+	  },'json')
+  })
+/* 검색끝 */
+
+  /*메뉴 관련*/
+  var container = $("#container"), menuBtn = $('#header-menu-menu'), menuBackscreen = $("#menu-backscreen"), menuToggle = $("#menu-toggle"), musicianFavor = $("#menu-category-musician-favor"), eventRegist = $("#menu-category-event-regist"), headerMenuSearch = $("#header-menu-search"), searchToggle = $("#search-toggle"), searchCancel = $('#search-cancel'), searchText = $('#search-text'), searchTextDelete = $('#search-text-delete'), searchBackScreen = $("#search-backscreen")
+
+  menuBtn.on('click', function() {
+    menuBackscreen.css('display', 'block');
+    menuToggle.toggle("slide", 300);
     container.css('position', 'fixed').css('overflow', 'hidden');
-	})
-	
-	searchBackScreen.on('click', function() {
-	  searchToggle.toggle("slide", {direction: 'right'}, 300);
-	  searchBackScreen.css('display', 'none')
-	  $('#search-text').focus()
+  });
+
+  menuBackscreen.on('click', function() {
+    menuToggle.toggle("slide", 300);
+    menuBackscreen.css('display', 'none');
     container.css('position', '').css('overflow', '');
-	})
-	
-	searchCancel.on('click', function() {
-    searchToggle.toggle("slide", {direction: 'right'}, 300);
+  })
+
+  headerMenuSearch.on('click', function() {
+    searchToggle.toggle("slide", {
+      direction : 'right'
+    }, 300);
+    searchBackScreen.css('display', 'block')
+    $('#search-text').focus()
+    container.css('position', 'fixed').css('overflow', 'hidden');
+  })
+
+  searchBackScreen.on('click', function() {
+    searchToggle.toggle("slide", {
+      direction : 'right'
+    }, 300);
     searchBackScreen.css('display', 'none')
     container.css('position', '').css('overflow', '');
   })
-	
-  searchTextDelete.on('click', function(){
+
+  searchCancel.on('click', function() {
+    searchToggle.toggle("slide", {
+      direction : 'right'
+    }, 300);
+    searchBackScreen.css('display', 'none')
+    container.css('position', '').css('overflow', '');
+  })
+
+  searchTextDelete.on('click', function() {
     searchText.val('')
   })
-  
-	eventRegist.on('click', function(){
-	 location.href = '/mobile/gmode/event/regist.html'
-	})
-	
-	musicianFavor.on('click', function() {
-	  location.href = '/mobile/gmode/favor/index.html'
-	})
 
-	$('#login-btn').on('click', function() {
-		location.href = '/mobile/join.html'
-	})
-	
-	$('#myevent-btn').on('click', function() {
-		location.href = '/mobile/gmode/event/list.html'
-	})
-	
-	$('#go-musimode-btn').on('click', function() {
-	  
-	  $.getJSON('/auth/checkMusi.json', function(result) {
-	    if(result.data == "musician") {
-	      location.href ='/mobile/musimode/index.html'
-	    }
-	    
-	    if(result.data == 'member') {
-	      swal({
-	        title: "뮤지션회원이 아닙니다 \n\n" +
-	            "뮤지션으로 가입하시겠어요?",
-	        type: "warning",
-	        showCancelButton: true,
-	        confirmButtonColor: "#8069ef",
-	        confirmButtonText: "네",
-	        closeOnConfirm: false,
-	        cancelButtonText: "아니요"
-	      },
-	      function(){
-	        location.href = "/mobile/musi_signup.html"
-	      });
-	    }
-	    
-	  }, function(err) {
-	    console.log(err)
-	  })
-	  
-	})
-	
-	 $.getJSON('/auth/userinfo.json', function(result) {
-	   if(result.status == "success") {
-	      $('#mypage-btn').css('display', 'inline-block')
-	                      .on('click', function() {
-	                        location.href = '/mobile/mypage/mypage.html'
-	                      })
-	      $('#user-photo').attr('src', result.data.photo + '_140.png')
-	      $('#login-btn').css('display', 'none')
-	    } else {
-	      $('#mypage-btn').css('display', 'none')
-	        $('#login-btn').css('display', 'inline-block')
-	    }
+  eventRegist.on('click', function() {
+    location.href = '/mobile/gmode/event/regist.html'
+  })
+
+  musicianFavor.on('click', function() {
+    location.href = '/mobile/gmode/favor/index.html'
+  })
+
+  $('#login-btn').on('click', function() {
+    location.href = '/mobile/join.html'
+  })
+
+  $('#myevent-btn').on('click', function() {
+    location.href = '/mobile/gmode/event/list.html'
+  })
+
+  $('#go-musimode-btn').on('click', function() {
+
+    $.getJSON('/auth/checkMusi.json', function(result) {
+      if (result.data == "musician") {
+        location.href = '/mobile/musimode/index.html'
+      }
+
+      if (result.data == 'member') {
+        swal({
+          title : "뮤지션회원이 아닙니다 \n\n" + "뮤지션으로 가입하시겠어요?",
+          type : "warning",
+          showCancelButton : true,
+          confirmButtonColor : "#8069ef",
+          confirmButtonText : "네",
+          closeOnConfirm : false,
+          cancelButtonText : "아니요"
+        }, function() {
+          location.href = "/mobile/musi_signup.html"
+        });
+      }
+
+    }, function(err) {
+      console.log(err)
+    })
+
+  })
+
+  $.getJSON('/auth/userinfo.json', function(result) {
+    if (result.status == "success") {
+      $('#mypage-btn').css('display', 'inline-block').on('click', function() {
+        location.href = '/mobile/mypage/mypage.html'
+      })
+      $('#user-photo').attr('src', result.data.photo + '_140.png')
+      $('#login-btn').css('display', 'none')
+    } else {
+      $('#mypage-btn').css('display', 'none')
+      $('#login-btn').css('display', 'inline-block')
+    }
   }, function(err) {
     console.log(err)
   })
-	
-	/* 로그인 관련*/
-    
 
-
+  /* 로그인 관련*/
 </script>
+<script src="/node_modules/handlebars/dist/handlebars.min.js"></script>

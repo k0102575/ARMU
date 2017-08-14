@@ -104,6 +104,11 @@ public class MusicianServiceImpl implements MusicianService {
       count = memberDao.delete(no);
     } catch (Exception e) {}
   }
+  
+  public List<Musician> listSearchResult(String search) throws Exception {
+    System.out.println(search);
+    return musicianDao.selectSearchResultList(search);
+  }
 }
 
 

@@ -15,6 +15,7 @@ public interface MusicianDao {
   List<Musician> musicianSearch(HashMap<String,Object> valueMap);
   List<Musician> selectBestReviewList();
   List<Musician> selectPopularList();
+  List<Musician> selectSearchResultList(String search);
   int insert(Musician musician);
   void updateNick(Musician musician);
   Musician selectMusiNo(int no);

@@ -257,3 +257,68 @@
 
 /*검색 토글 끝*/
 
+/*검색 div*/
+.search-list{
+	display: block;
+    position: fixed;
+    top: 12.5%;
+    z-index: 100;
+    background-color: red;
+    height: 10%;
+    /* margin: 3%; */
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.search-list-img {
+	position: absolute;
+  /* display: inline-block; */
+  top: 5%;
+  left: 4%;
+  transform: translate(-4%, -5%);
+  height: 140px;
+  width: 140px;
+  border-radius: 100%;
+  /* overflow: hidden; */
+  /* background-image: url(musician/photo/0choi2.jpg); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top:1.5%;
+}
+
+.search-list-musi{
+	position: absolute;
+    display: inline-block;
+    top: 3%;
+    left: 20%;
+    transform: translate(20%, 3%);
+    font-size: 30px;
+    font-weight: 500;
+    color: black;
+}
+
+.search-list-score {
+	position: absolute;
+    display: inline-block;
+    top: 3%;
+    left: 20%;
+    transform: translate(20%, 3%);
+    font-size: 30px;
+    font-weight: 500;
+    color: black;
+}
+
+.search-list-hashtagbox {
+	position: absolute;
+    display: inline-block;
+    top: 12%;
+    left: 15%;
+    transform: translate(15%, 12%);
+    font-size: 30px;
+    font-weight: 500;
+    color: black;
+    width: 70%;
+    /* overflow: hidden; */
+    height: 90px;
+margin-top:3%;
+}

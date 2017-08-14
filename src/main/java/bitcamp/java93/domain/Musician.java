@@ -32,6 +32,7 @@ public class Musician extends Member  {
   int mjrno;
   int gnrno;
   String nickName;
+  String search;
   Map<String , String> fileMap;
   List<Map<Integer , String>> list;
   ArrayList<Musician> reviewList;
@@ -52,11 +53,12 @@ public class Musician extends Member  {
         + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", spno=" + spno
         + ", specDate=" + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge
         + ", location=" + location + ", sido=" + sido + ", fav=" + fav + ", indexL=" + indexL + ", indexM=" + indexM
-        + ", indexG=" + indexG + ", nickName=" + nickName + ", fileMap=" + fileMap + ", list=" + list + ", reviewList="
-        + reviewList + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList=" + themeList
-        + ", locationList=" + locationList + ", majorNoList=" + majorNoList + ", genreNoList=" + genreNoList
-        + ", themeNoList=" + themeNoList + ", locationNoList=" + locationNoList + ", photoList=" + photoList
-        + ", movieList=" + movieList + "]";
+        + ", indexG=" + indexG + ", locno=" + locno + ", mjrno=" + mjrno + ", gnrno=" + gnrno + ", nickName=" + nickName
+        + ", search=" + search + ", fileMap=" + fileMap + ", list=" + list + ", reviewList=" + reviewList
+        + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList=" + themeList + ", locationList="
+        + locationList + ", majorNoList=" + majorNoList + ", genreNoList=" + genreNoList + ", themeNoList="
+        + themeNoList + ", locationNoList=" + locationNoList + ", photoList=" + photoList + ", movieList=" + movieList
+        + "]";
   }
   public int getAge() {
     return age;
@@ -279,6 +281,12 @@ public class Musician extends Member  {
   }
   public void setMovieList(List<String> movieList) {
     this.movieList = movieList;
+  }
+  public String getSearch() {
+    return search;
+  }
+  public void setSearch(String search) {
+    this.search = search;
   }
   
   

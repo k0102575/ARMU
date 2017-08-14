@@ -234,6 +234,27 @@ public class MusicianControl {
     return loginMember;
   }
   
+  @RequestMapping("listSearchResult")
+  public JsonResult listSearchResult(HttpSession session, String search) {
+    JsonResult result = new JsonResult();
+
+    try {
+      System.out.println(search);
+      List<Musician> musicianList = musicianService.listSearchResult(search);
+
+      result.setStatus(JsonResult.SUCCESS);
+
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listSearchResult", musicianList);
+      result.setData(dataMap);
+
+    } catch (Exception e) {
+      e.printStackTrace();
+      result.setStatus(JsonResult.ERROR);
+    }
+    return result;
+  }
+  
 }
 
 
