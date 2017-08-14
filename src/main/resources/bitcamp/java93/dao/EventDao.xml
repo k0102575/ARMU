@@ -229,6 +229,20 @@ group by eno
   insert into fav_evn (muno, eno) values (#{muNo}, #{eNo})
   </select> <!-- 승민 -->
 	
+  <select id="selectSurfList" resultMap="eventMapBasic" parameterType="int">
+    select e.eno, e.locno, e.pay, e.addr, e.date, e.title, fe.fav,
+    m.mno, m.path, mj.name as major, g.name as genre, t.name as theme
+    from evn e left outer join memb m on e.mno = m.mno
+    left outer join (
+    select count(if(muno is not null, 1, 0)) as fav, muno, eno
+    from fav_evn where muno=#{no} group by eno
+    ) fe on fe.eno=e.eno
+    left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on me.mjrno=mj.mjrno
+    left outer join gnr_evn ge on e.eno=ge.eno inner join gnr g on ge.gnrno=g.gnrno
+    left outer join thm_evn te on e.eno=te.eno inner join thm t on te.thmno=t.thmno
+  </select> 
+	
+	
 </mapper>
 
 

@@ -1,27 +1,34 @@
-<div id="surf-filter-container">
-  <div class="rec-event swiper-slide">
-          <div class='rec-event-writerbox'>
-            <div class="rec-event-writer-img" style='background-image: url("")'></div>
-            <div class="rec-event-writer-name"><span></span></div>
-            <div class="rec-event-title"><span></span></div>
-            <div class='rec-event-favor'></div>
+<div id="event-surf-container">
+
+</div>
+<!-- event-surf-container -->
+
+<script id="event-surf-template" type="text/x-handlebars-template">
+{{#each listSurf}}
+  <div class="event-surf">
+          {{#writeMember}}
+          <div class='event-surf-writerbox'>
+            <div class="event-surf-writer-img" style='background-image: url("{{photo}}")'></div>
+            <div class="event-surf-writer-name"><span>{{name}}</span></div>
+          {{/writeMember}}
+            <div class="event-surf-title"><span>{{title}}</span></div>
+            <div class='event-surf-favor'></div>
             
             </div>
-            <div class="rec-event-date"><span></span></div><br>
-            <div class='rec-event-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{location}}&nbsp;{{address}}</span></div><br>
-            <div class="rec-event-price"></div>
-            <div class='rec-event-hashtagbox'>
+{{#intl locales="ko-KO"}}
+            <div class="event-surf-date"><span></span></div><br>
+{{/intl}}
+            <div class='event-surf-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{location}}&nbsp;{{address}}</span></div><br>
+            <div class="event-surf-price">{{formatNumber pay style="currency" currency="KRW"}}</div>
+            <div class='event-surf-hashtagbox'>
             {{#majorList}}<span>#{{this}}</span>{{/majorList}}
             {{#themeList}}<span>#{{this}}</span>{{/themeList}}
             {{#genreList}}<span>#{{this}}</span>{{/genreList}}
             </div>
-          </div><!-- rec-event -->
-
-
-
-</div>
-
-
+          </div>
+{{/each}}
+</script>
+  
 
 <script src="/js/mobile/musimode/main-surf.js"></script>
-<script src="/js/mobile/gmode/jquery.ui.touch-punch.min.js"></script>
+<script src="/js/mobile/musimode/jquery.ui.touch-punch.min.js"></script>

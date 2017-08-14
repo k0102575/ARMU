@@ -121,5 +121,10 @@ public class EventServiceImpl implements EventService {
     eventDao.favorEventAdd(valueMap);
   }
   
+  @Override
+  public List<Event> listSurf(int no) throws Exception {
+    return eventDao.selectSurfList(no);
+  }
+  
 }
 

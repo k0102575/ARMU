@@ -1,0 +1,133 @@
+/* 이벤트 리스트 시작 */
+
+#event-surf-container {
+	position: absolute;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+  display: inline-block;
+  padding-bottom: 20%;
+}
+
+.event-surf {
+  position: relative;
+  background-color: white;
+  height: 550px;
+  width: 95%;
+  margin-left: 2.5%;
+  margin-top: 10%;
+  margin-bottom: 3%;
+  text-align: justify;
+  color: black;
+  z-index: 1;
+  border-radius: 10px;
+  box-shadow: 1px 1px 11px 1px rgba(51, 51, 51, 0.27);
+  background-size: cover;
+}
+
+.event-surf-writerbox {
+  position: relative;
+  height: 170px;
+  width: 100%;
+  z-index: 2;
+  border-bottom: 4px solid rgba(128, 105, 239, 0.25);
+  background-color:
+}
+
+.event-surf-writer-img {
+  position: absolute;
+  display: inline-block;
+  top: 12%;
+left: 3%;
+height: 130px;
+width: 130px;
+  border-radius: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.event-surf-title {
+  display: inline-block;
+  position: absolute;
+  font-size: 45px;
+  font-weight: 400;
+  color: black;
+  width: 77%;
+  top: 12%;
+  left: 185px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.event-surf-writer-name {
+  position: absolute;
+  display: inline-block;
+  bottom: 13%;
+  left: 185px;
+  font-size: 30px;
+  font-weight: 300;
+  color: #252525;
+}
+
+.event-surf-favor {
+  position: absolute;
+  display: inline-block;
+  font-size: 3em;
+  color: #8079ef;/*crimson*/
+  right: 3.5%;
+  bottom: 9%;
+}
+
+.event-surf-date {
+  display: inline-block;
+  color: black;
+  font-size: 35px;
+  font-weight: 500;
+  margin-top: 1%;
+  margin-left: 4%;
+  width: auto;
+  white-space: nowrap;
+}
+
+.event-surf-area {
+  display: inline-block;
+  color: black;
+  font-size: 35px;
+  font-weight: 500;
+  margin-top: 1%;
+  margin-left: 4%;
+  max-width: 95%;
+  text-overflow: ellipsis;
+  overflow:hidden;
+  white-space: nowrap;
+}
+
+.event-surf-price {
+  display: inline-block;
+  margin-top: 1%;
+  margin-left: 4%;
+  font-size: 34px;
+  font-weight: 500;
+  color: black;
+  white-space: nowrap;
+}
+
+.event-surf-hashtagbox {
+  height: 145px;
+color: #777;
+font-weight: 400;
+margin-left: 2.5%;
+margin-top: 2%;
+width: 95%;
+overflow: hidden;
+}
+
+.event-surf-hashtagbox > span {
+  float: left;
+  margin: 0 2%;
+  font-size: 33px;
+}

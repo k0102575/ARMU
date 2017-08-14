@@ -16,4 +16,5 @@ public interface EventService {
   List<Event> listFavor(int no) throws Exception;
   void favorRemove(int myNo, int eNo) throws Exception;
   void favorAdd(int myNo, int eNo) throws Exception;
+  List<Event> listSurf(int no) throws Exception;
 }

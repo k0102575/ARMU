@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import bitcamp.java93.domain.Event;
 import bitcamp.java93.domain.Member;
+import bitcamp.java93.domain.Musician;
 import bitcamp.java93.service.EventService;
 
 @RestController
@@ -203,6 +204,25 @@ public class EventControl {
   public JsonResult favorAdd(HttpSession session, int no) throws Exception {
     eventService.favorAdd(getLoginMember(session).getNo(), no);
     return new JsonResult(JsonResult.SUCCESS, "ok");
+  }
+  
+  @RequestMapping("listSurf")
+  public JsonResult listSurf(HttpSession session) throws Exception {
+    JsonResult result = new JsonResult();
+
+      try {
+        List<Event> listSurf = (List<Event>) eventService.listSurf(getLoginMember(session).getNo());
+
+        result.setStatus(JsonResult.SUCCESS);
+
+        HashMap<String,Object> dataMap = new HashMap<>();
+        dataMap.put("listSurf", listSurf);
+        result.setData(dataMap);
+
+      } catch (Exception e) {
+        result.setStatus(JsonResult.ERROR);
+      }
+    return result;
   }
   
   private Member getLoginMember(HttpSession session) {

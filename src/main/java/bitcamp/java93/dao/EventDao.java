@@ -20,4 +20,5 @@ public interface EventDao {
   List<Event> selectFavorList(int no);
   void favorEventRemove(HashMap<String,Object> valueMap);
   void favorEventAdd(HashMap<String,Object> valueMap);
+  List<Event> selectSurfList(int no);
 }
