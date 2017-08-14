@@ -67,17 +67,17 @@ background-color: rgba(255, 255, 255, 0.78);
 }
 
 .rec-event {
- position: relative;
+  position: relative;
   background-color: white;
   height: 550px;
-  width:90%;
-  margin-top: 3%;
+  width: 95%;
+  margin-top: 0%;
   margin-bottom: 3%;
   text-align: justify;
   color: black;
   z-index: 1;
   border-radius: 10px;
-  box-shadow: 0px 0px 5px 0px #6955c7;
+  box-shadow: 1px 1px 11px 1px rgba(51, 51, 51, 0.27);
   background-size: cover;
 }
 
@@ -111,11 +111,11 @@ width: 130px;
   font-size: 45px;
   font-weight: 400;
   color: black;
-  width: 70%;
+  width: 77%;
   top: 12%;
   left: 185px;
   text-overflow: ellipsis;
-  overflow:hidden;
+  overflow: hidden;
   white-space: nowrap;
 }
 
@@ -219,7 +219,11 @@ overflow: hidden;
 
 /*최근 이벤트 시작*/
 .rec-recent-event {
-  display: inline-block;
+  display: inline-block;  
+}
+
+.rec-recent-container {
+  background-color: #f5f5f5;
 }
 /*최근 이벤트 끝*/
 

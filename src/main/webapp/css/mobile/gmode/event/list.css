@@ -43,8 +43,8 @@ body {
   border-bottom: 1px solid black;
   height: 120px;
   width: 100%;
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
   text-align: center;
   line-height: 120px;
 }
@@ -58,6 +58,7 @@ body {
 .back-btn {
   position: absolute;
   left: 3%;
+  color: white;
   line-height: 110px;
   font-size: 400%;
 }
@@ -79,7 +80,7 @@ body {
   float: left;
   width: 33.3333%;
   height: 100%;
-  font-size: 200%;
+  font-size: 2.3rem;
   text-align: center;
   line-height: 100px;
   border-collapse: collapse;
@@ -88,7 +89,7 @@ body {
 #event-type-recruiting-btn {
   /* background-color: #252525 !important;
   color: white; */
-  border-bottom: 2px solid #252525;
+  border-bottom: 4px solid #8069ef;
 }
 /*카테고리 바 끝*/
 
@@ -254,8 +255,9 @@ body {
 .recruiting {
   position: relative;
   background-color: white;
-  border-top: 1px solid lightgray;
-  border-bottom: 1px solid lightgray;
+  box-shadow: 1px 1px 20px 1px rgba(0, 0, 0, 0.21);
+  border-top: 1px solid white;
+  border-bottom: 1px solid white; 
   height: auto;
   width:100%;
   margin-bottom: 7%;
@@ -263,6 +265,7 @@ body {
   text-align: justify;
   color: white;
   z-index: 1;
+  padding-bottom: 6%;
 }
  
   
@@ -279,7 +282,7 @@ body {
   font-weight: 400;
   width: auto;
   padding-left: 2%; padding-right: 2%;
-  background-color: black;
+  background-color: #8069ef;
   border-radius: 2%;
   top: 1%;
   right: 3%;
@@ -289,7 +292,7 @@ body {
 .recruiting-title {
   margin-top: 3%;
   margin-left: 3%;
-  font-size: 34px;
+  font-size: 37px;
   font-weight: 400;
   color: black;
   width: 90%;
@@ -299,20 +302,19 @@ body {
 }
 
 .recruiting-edit-btn {
-	position: absolute; 
+  position: absolute;
   display: inline-block;
-  color: black;
+  color: #444;
   font-weight: 400;
-  font-size: 3em;
-  width: auto;
-  top: 13px;
-  right: 3%;
+  font-size: 4em;
+  top: 7px;
+  right: 2%;
   transform: translateX(3%);
 }
 
 .recruiting-date {
   color: black;
-  font-size: 30px;
+  font-size: 35px;
   font-weight: 300;
   margin-top: 1%;
   margin-left: 4%;
@@ -322,7 +324,7 @@ body {
 
 .recruiting-area {
   color: black;
-  font-size: 30px;
+  font-size: 35px;
   font-weight: 300;
   margin-top: 1%;
   margin-left: 4%;
@@ -333,7 +335,7 @@ body {
 .recruiting-price {
   margin-top: 1%;
   margin-left: 4%;
-  font-size: 34px;
+  font-size: 35px;
   font-weight: 500;
   color: black;
   white-space: nowrap;
@@ -342,7 +344,7 @@ body {
 .recruiting-hashtagbox {
   margin-top: 1%;
   margin-left: 4%;
-  font-size: 28px;
+  font-size: 34px;
   font-weight: 300;
   color: black;
   width: 95%;
@@ -355,12 +357,130 @@ body {
 }
 
 .recruiting-separator {
-  width: 95%;
-  margin: 2% 0;
-  margin-left: auto; margin-right: auto;
+  width: 98%;
+  margin: 5% 0;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1.5px solid lightgray;
 }
 
-/*모집 중인 이벤트 뮤지션 공통내용 시작*/
+/*모집 중인 이벤트 뮤지션 시작*/
+
+.recruiting-applicant-block {
+  width: 100%;
+  text-align: left;
+}
+
+.recruiting-applicant {
+  position: relative;
+  display: inline-block;
+  box-shadow: 3px 3px 20px 0px rgba(128, 128, 128, 0.56);
+  height: 670px;
+  width: 47%;
+  margin: 1%;
+  margin-bottom: 3%;
+  text-align: justify;
+  border-radius: 10px;
+}
+
+.recruiting-applicant-img {
+  display: table;
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.recruiting-applicant-name {
+  display: inline-block;
+  width: auto;
+  margin-top: 5%;
+  margin-left:5%;
+  color: black;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.recruiting-applicant-score {
+  display: inline-block;
+  margin-left: 20px;
+  color: black;
+  font-size: 28px;
+}
+
+.recruiting-applicant-fav {
+  position: absolute;
+  display: inline-block;
+  right: 7%;
+  left: auto;
+  top: 62%;
+  transform: translate(7%, -62%);
+  color: white;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.recruiting-applicant-hashtagbax {
+  margin-top: 2%;
+  margin-left: 2%;
+  height: 90px;
+  overflow: hidden;
+  font-size: 30px;
+  color: black;
+
+}
+
+.recruiting-applicant-hashtagbax > span {
+  float: left;
+  margin: 0 2%;
+}
+
+.recruiting-applicant-btnbox {
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+}
+
+.recruiting-applicant-btn {
+  /* border: 1px solid #8069ef; */
+  display: table;
+  width:50%;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  font-size: 2rem;
+}
+
+.reject-btn {
+  border: 1px solid black;
+  border-bottom-left-radius: 10px;
+}
+
+.decide-btn {
+  border: 1px solid black;
+  background-color: black;
+  color: white;
+  font-weight: 400;
+  border-bottom-right-radius: 10px;
+}
+/*모집 중인 이벤트 뮤지션 끝*/
+
+/*내가 요청한 뮤지션 시작*/
+.recruiting-callee-btn {
+  
+}
+/*내가 요청한 뮤지션 */
+
+
+
+
+/* 모집 중인 이벤트 뮤지션 공통내용 시작*/
 #recruiting-applicant-box {
 	display: none;
 }
@@ -369,7 +489,7 @@ body {
   margin-top: 1%;
   margin-left: auto; margin-right: auto;
   color: black;
-  width: 95%;
+  width: 100%;
   overflow: auto;
   text-align: center;
 }
@@ -379,12 +499,13 @@ body {
   font-size: 36px;
   font-weight: 600;
   white-space: nowrap;
+  color: #444;
 }
 
 
 .recruiting-musibox-subtitle {
   margin-top: 5%; margin-bottom: 5%;
-  margin-left: 1%;
+  margin-left: 3%;
   width: auto;
   font-size: 32px;
   font-weight: 400;
@@ -393,7 +514,7 @@ body {
 }
 /*모집 중인 이벤트 뮤지션 공통내용 끝*/
 
-/*모집 중인 이벤트 - 지원자 시작*/
+/*모집 중인 이벤트 - 지원자 시작
 
 .recruiting-applicant {
   position: relative;
@@ -418,7 +539,7 @@ body {
   width: 140px;
   border-radius: 100%;
   overflow: hidden;
-  /* background-image: url('musician/photo/0choi2.jpg'); */
+  background-image: url('musician/photo/0choi2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -506,8 +627,8 @@ body {
 .recruiting-applicant-btnbox > .with-line {
   border-right: 2px solid white;
 }
-/*모집 중인 이벤트 - 지원자 끝*/
-
+모집 중인 이벤트 - 지원자 끝
+ */
 /* 모집 중인 이벤트 - 내가 요청한 뮤지션 시작*/
 #recruiting-callee-box {
   display: none;
