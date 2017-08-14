@@ -23,21 +23,21 @@ public class EventControl {
   @Autowired ServletContext servletContext;
   @Autowired EventService eventService;
   
-  @RequestMapping("listOngoing")
-  public JsonResult listOngoing() {
-    JsonResult result = new JsonResult();
-    try {
-      HashMap<String,Object> dataMap = new HashMap<>();
-      dataMap.put("listOngoing",eventService.listOngoing());
-
-      result.setData(dataMap);
-      result.setStatus(JsonResult.SUCCESS);
-    } catch (Exception e) {
-      result.setStatus(JsonResult.ERROR);
-      e.printStackTrace();
-    }
-    return result;
-  }
+//  @RequestMapping("listOngoing")
+//  public JsonResult listOngoing() {
+//    JsonResult result = new JsonResult();
+//    try {
+//      HashMap<String,Object> dataMap = new HashMap<>();
+//      dataMap.put("listOngoing",eventService.listOngoing());
+//
+//      result.setData(dataMap);
+//      result.setStatus(JsonResult.SUCCESS);
+//    } catch (Exception e) {
+//      result.setStatus(JsonResult.ERROR);
+//      e.printStackTrace();
+//    }
+//    return result;
+//  }
   
   @RequestMapping("addReherse")
   public JsonResult addReherse(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre, HttpSession session) throws Exception {

@@ -3,6 +3,15 @@ body {
 	background-color: #f5f5f5;
 }
 
+.event-list-container {
+	position: absolute;
+	top: 220px;
+	text-align: center;
+	width: 100%;
+	background-color: #f5f5f5;
+	padding-top: 10%;
+}
+
 /*event 없는 경우 시작*/
 .no-event {
   position: relative;
@@ -93,163 +102,7 @@ body {
 }
 /*카테고리 바 끝*/
 
-/*진행중 이벤트 리스트 시작*/
-.event-list-container {
-	position: absolute;
-	top: 220px;
-	text-align: center;
-	width: 100%;
-	background-color: #f5f5f5;
-	padding-top: 10%;
-}
 
-.ongoing-event {
-  position: relative;
-  background-color: white;
-  border-top: 1px solid lightgray;
-  border-bottom: 1px solid lightgray;
-  height: auto;
-  width:100%;
-  margin-top: 3%;
-  margin-bottom: 3%;
-  text-align: justify;
-  color: white;
-  z-index: 1;
-/*
-  overflow: hidden;
-  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-  url("../ARMU-Image/Mobile/1_main/main2_2.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;*/
-}
-
-.ongoing-event-title {
-  margin-top: 3%;
-  margin-left: 3%;
-  font-size: 34px;
-  font-weight: 400;
-  color: black;
-  width: 85%;
-  text-overflow: ellipsis;
-  overflow:hidden;
-  white-space: nowrap;
-}
-
-.ongoing-edit-btn {
-  position: absolute; 
-  display: inline-block;
-  color: black;
-  font-weight: 400;
-  font-size: 3em;
-  width: auto;
-  top: 13px;
-  right: 3%;
-  transform: translateX(3%);
-}
-
-.ongoing-event-date {
-  display: inline-block;
-  color: black;
-  font-size: 30px;
-  font-weight: 300;
-  margin-top: 1%;
-  margin-left: 4%;
-  width: auto;
-  white-space: nowrap;
-}
-
-.ongoing-event-area {
-  display: inline-block;
-  color: black;
-  font-size: 30px;
-  font-weight: 300;
-  margin-top: 1%;
-  margin-left: 4%;
-  width: auto;
-  white-space: nowrap;
-}
-
-.ongoing-event-price {
-  display: inline-block;
-  margin-top: 1%;
-  margin-left: 4%;
-  font-size: 34px;
-  font-weight: 500;
-  color: black;
-  white-space: nowrap;
-}
-
-/*함께한 뮤지션 시작*/
-.ongoing-event-musibox {
-  margin-top: 2%; margin-bottom: 1%;
-  color: black;
-  width: 95%;
-}
-
-.ongoing-event-musibox-title {
-  font-size: 33px;
-  font-weight: 500;
-  margin-left: 4%;
-  white-space: nowrap;
-}
-
-.ongoing-event-musi {
-  position: relative;
-  display: inline-block;
-  margin-top: 2%;
-  height: 140px;
-  width: 95%;
-  font-size: 28px;
-  font-weight: 300;
-  margin-bottom: 5%;
-}
-
-.ongoing-event-musi-img {
-  position: absolute;
-  display: inline-block;
-  top: 5%; left: 4%;
-  height: 140px;
-  width: 140px;
-  border-radius: 100%;
-  overflow: hidden;
-  /* background-image: url('musician/photo/0choi2.jpg'); */
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.ongoing-event-musi-name {
-  position: absolute;
-  display: inline-block;
-  top: 3%; left: 24%;
-  height: auto;
-  font-size: 30px;
-  font-weight: 500;
-  color: black;
-}
-
-.ongoing-event-musi-score {
-  display: inline-block;
-  margin-left: 20px;
-}
-
-.ongoing-event-musi-hashtagbox {
-  position: absolute;
-  display: inline-block;
-  top: 35%; left: 24%;
-  font-size: 30px;
-  font-weight: 500;
-  color: black;
-  width: 70%;
-  overflow: auto;
-}
-
-.ongoing-event-musi-hashtagbox > span {
-  float: left;
-  margin-right: 4%;
-}
-/*함께한 뮤지션 끝*/
-/*진행중 이벤트 리스트 끝*/
 
 /*모집중 이벤트 리스트 시작*/
 .recruiting {
@@ -364,7 +217,7 @@ body {
   border: 1.5px solid lightgray;
 }
 
-/*모집 중인 이벤트 뮤지션 시작*/
+/*모집 중인 이벤트 - 뮤지션 시작*/
 #recruiting-applicant-box {
   display: none;
 }
@@ -483,7 +336,6 @@ body {
 }
 
 .recruiting-applicant-btn {
-  /* border: 1px solid #8069ef; */
   display: table;
   width:49.7%;
   height: 80px;
@@ -518,122 +370,137 @@ body {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-/*모집 중인 이벤트 뮤지션 끝*/
+/*모집 중인 이벤트 - 뮤지션 끝*/
+/*모집 중인 이벤트 끝*/
 
 
-
-/* 
-.recruiting-callee {
-  position: relative;
-  display: inline-block;
-  height: 330px;
-  width: 95%;
-  font-size: 28px;
-  font-weight: 300;
-  border: 1px solid gray;
-  margin-bottom: 5%;
-  text-align: left;
-  vertical-align: middle;
+/*진행중 이벤트 리스트 시작*/
+/*함께하는 뮤지션 시작*/
+#ongoing-applicant-box {
+  display: none; 
 }
 
-.recruiting-callee-info {
-  position: relative;
-  display: inline-block;
+.ongoing-musibox {
+  margin-top: 1%;
+  margin-left: auto; margin-right: auto;
+  color: black;
   width: 100%;
-  height: 150px;
+  overflow: auto;
+  text-align: center;
 }
 
-.recruiting-callee-img {
-  position: absolute;
+.ongoing-musibox-title {
+  display: block;
+  font-size: 36px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #444;
+}
+
+.ongoing-applicant-block {
+  width: 100%;
+  text-align: center;
+}
+
+.ongoing-applicant {
+  position: relative;
   display: inline-block;
-  top: 5%; left: 4%;
-  height: 140px;
-  width: 140px;
-  border-radius: 100%;
+  height: 400px;
+  width: 95%;
+  margin: 1%;
+  margin-bottom: 3%;
+  text-align: justify;
+  border-radius: 10px;
+}
+
+.ongoing-applicant-img {
+  display: table;
+  height: 400px;
+  width: 48%;
   overflow: hidden;
-  background-image: url('musician/photo/0choi2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
 }
 
-.recruiting-callee-name {
+.ongoing-applicant-name {
   position: absolute;
   display: inline-block;
-  top: 3%; left: 24%;
-  height: auto;
-  font-size: 30px;
-  font-weight: 500;
+  width: auto;
   color: black;
+  font-size: 32px;
+  font-weight: 500;
+  top: 9%;
+  width: 36%;
+  right: 12%;
 }
 
-.recruiting-callee-score {
-  display: inline-block;
+.ongoing-applicant-score {
+  position: absolute;
+  top: 24%;
+  right: 18%;
   margin-left: 20px;
+  color: black;
+  font-size: 28px;
+  width: 30%;
 }
 
-.recruiting-callee-hashtagbox {
+.ongoing-applicant-fav {
   position: absolute;
   display: inline-block;
-  top: 35%; left: 24%;
-  font-size: 30px;
+  top: 4%;
+  right: 1%;
+  color: #8069ef;
+  font-size: 40px;
+  width: 10%;
   font-weight: 500;
-  color: black;
-  width: 70%;
-  overflow: auto;
+  text-align: right;
 }
 
-.recruiting-callee-hashtagbox > span {
+.ongoing-applicant-hashtagbax {
+  position: absolute;
+  height: 139px;
+  overflow: hidden;
+  font-size: 30px;
+  color: black;
+  width: 48%;
+  top: 41%;
+  right: 1%;
+}
+
+.ongoing-applicant-hashtagbax > span {
   float: left;
-  margin-right: 4%;
+  margin: 0 2%;
 }
 
-.recruiting-callee-separator {
-  width: 90%;
-  margin-left: auto; margin-right: auto;
-}
-
-.recruiting-callee-contents {
-  height: auto;
-  width: 90%;
-  margin-left: auto; margin-right: auto;
-  margin-top: 3%;
-  text-align: center;
-  font-size: 27px;
-  font-weight: 500;
-}
-
-.recruiting-callee-btnbox {
+.ongoing-applicant-btn {
   position: absolute;
-  display: flex;
-  height: auto;
-  width: 100%;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, -100%);
-  margin: 0;
-  padding: 0;
-}
-
-.recruiting-callee-btn {
   display: inline-block;
-  padding: 1% 0;
-  margin: 0;
-  height: auto;
-  width: calc(100% / 2);
-  background-color: lightgray;
-  font-size: 30px;
-  font-weight: 400;
+  bottom: 0;
+  right: 0;
+  width: 48.5%;
+  height: 80px;
   text-align: center;
-  color: black;
+  line-height: 80px;
+  font-size: 2rem;
+  color: white;
+  background: black;
+}
+/*함께하는 뮤지션 끝*/
+/*진행중 이벤트 리스트 끝*/
+
+/*종료 이벤트 리스트 시작*/
+/*함께한 뮤지션 시작*/
+.end-applicant-box {
+  display: none;  
 }
 
-.recruiting-callee-btnbox > .with-line {
-  border-right: 2px solid white;
+.end-dday {
+  background: gray;
 }
-모집 중인 이벤트 - 내가 요청한 뮤지션 끝
-모집중 이벤트 리스트 끝
-*/
-.add-review-btn {
+
+/*.add-review-btn {
 	position: absolute;
 	display: inline-block;
 	right: 3%;
@@ -643,4 +510,6 @@ body {
 	padding: 0.2% 1%;
 	border: 1px solid #252525;
 	border-radius: 5px;
-} 
+} */
+/*함께한 뮤지션 끝*/
+/*종료 이벤트 리스트 끝*/
