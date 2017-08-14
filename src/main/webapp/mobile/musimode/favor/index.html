@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ARMU MOBILE</title>
+<link rel='shortcut icon' type='image/x-icon' href='/image/favicon/favicon.ico'/>
+<link rel="stylesheet" href="/node_modules/jquery-ui-dist/jquery-ui.css">
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/node_modules/sweetalert/dist/sweetalert.css">
+<link href="/css/mobile/common.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/mobile/header.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/mobile/musimode/favor/index.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/alert.css" rel="stylesheet" type="text/css" media="all">
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+<script src="/node_modules/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript" src="/node_modules/handlebars/dist/handlebars.js"></script>
+
+</head>
+<body>
+
+<div id="container">
+
+  <div id="event-favor-header">
+    <i class="fa fa-angle-left" id="event-favor-prev" aria-hidden="true"></i>
+    <span id='event-favor-nickname'>관심 이벤트</span>
+  </div>
+  
+	<div id="event-favor-countbox">
+  <span id="event-favor-count"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+  <span id="event-favor-count-text"></span>
+  </div>
+  <!-- event-favor-countbox -->
+
+<div id="event-favor-list">
+  
+</div>
+<!-- event-favor-list -->
+
+<script id="event-favor-template" type="text/x-handlebars-template">
+
+{{#each listFavor}}
+<div id='event-favor'>
+  <img id='event-favor-picture' src='{{photo}}_300.png'>
+  
+  <div id="event-favor-preview">
+  <div id="event-favor-name">{{name}}</div>
+  <div id="event-favor-intro">
+     {{#each majorList}}
+     #{{this}}
+     {{/each}}
+     {{#each genreList}}
+     #{{this}}
+     {{/each}}
+  </div>
+  <div id="event-favor-location">{{locationList}}</div>
+</div>
+  <span><button type="button" class="event-favor-delbtn">삭제</button>
+<input type="hidden" id="hidden-no" value="{{no}}"><span>
+</div>
+{{/each}}
+
+</script>
+
+</div> <!-- container -->
+
+<i class="fa fa-arrow-circle-o-up" id="move_top_btn" aria-hidden="true"></i>
+
+<script src="/js/mobile/musimode/favor/index.js"></script>
+
+</body>
+</html>

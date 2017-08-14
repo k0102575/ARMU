@@ -333,16 +333,43 @@
 }
 
 .request-button {
-    position: absolute;
-    right: 3%;
-    top: 35%;
-    width: 75px;
-    height: 75px;
-    border: 1px solid #8069ef;
-    border-radius: 50px;
-    background-color: white;
-    font-size: 2rem;
-    color: #8069ef;
+  position: absolute;
+  right: 3%;
+  top: 35%;
+  width: 75px;
+  height: 75px;
+  border: 1px solid #8069ef;
+  border-radius: 50px;
+  background-color: #8069ef;
+  font-size: 2rem;
+  color: white;
+}
+
+.prIng {
+  position: absolute;
+  right: 3%;
+  top: 35%;
+  width: 75px;
+  height: 75px;
+  border: 1px solid #444;
+  border-radius: 50px;
+  background-color: #444;
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 300;
+}
+
+ .mtc{
+  position: absolute;
+  right: 3%;
+  top: 35%;
+  width: 75px;
+  height: 75px;
+  border: 1px solid black;
+  border-radius: 50px;
+  background-color: white;
+  font-size: 2rem;
+  color: black;
 }
 
 /* 매칭요청하기 끝 */

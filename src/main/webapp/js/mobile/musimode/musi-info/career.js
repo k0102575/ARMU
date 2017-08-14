@@ -15,6 +15,9 @@ if (spno == 0) {
   
    $("#introduce-add-btn").css('display', 'block');
   
+  var today = moment().format('YYYY-MM-DD');
+  $("#spec-date").val(today)
+  
   $('#fi-photoupload').fileupload({
 	    url: '/portfolio/career.json',
 	    dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
@@ -52,7 +55,6 @@ if (spno == 0) {
 	    });  // file-upload
   
 } else {
-  
   $("#introduce-edit-btn").css('display', 'block');
   $("#introduce-delete-btn").css('display', 'block');
   
@@ -81,7 +83,7 @@ if (spno == 0) {
       fiMovienames += result.data.getSpec.list[i].fileMap.value + ","
       sourceMovie = result.data.getSpec.list[i].fileMap.value.substring(17,28)
       $(".movie-container").append("<iframe class='profile-movie' width='800' height='800' data-value='"+ result.data.getSpec.list[i].fileMap.value + "' src='https://www.youtube.com/embed/" + sourceMovie + "?rel=0&amp;showinfo=0' frameborder='0' allowfullscreen></iframe>")
-      $(".movie-container").append("<button type='button' class='movie-delete-btn' value='"+ result.data.getSpec.list[i].fileMap.value + "'><i class='fa fa-times' aria-hidden='true'></i></button>")
+      $(".movie-container").append("<button type='button' class='movie-delete-btn' value='"+ result.data.getSpec.list[i].fileMap.value + "'><i class='fa fa-minus' aria-hidden='true'></i></button>")
     }
   }
   
@@ -145,7 +147,7 @@ $('body').on('click', "#movie-text-btn", function() {
     if ($("#movie-text").val().indexOf(findStr) != -1) {
       fiMovienames += $("#movie-text").val() + ","
       $(".movie-container").append("<iframe class='profile-movie' width='800' height='800' data-value='"+ $("#movie-text").val() + "' src='https://www.youtube.com/embed/" + $("#movie-text").val().substring(17,28) + "?rel=0&amp;showinfo=0' frameborder='0' allowfullscreen></iframe>")
-      $(".movie-container").append("<button type='button' class='movie-delete-btn' value='"+ $("#movie-text").val() + "'><i class='fa fa-times' aria-hidden='true'></i></button>")
+      $(".movie-container").append("<button type='button' class='movie-delete-btn' value='"+ $("#movie-text").val() + "'><i class='fa fa-minus' aria-hidden='true'></i></button>")
       $("#movie-text").val('')
     } else {
     swal({

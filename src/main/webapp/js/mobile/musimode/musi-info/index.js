@@ -81,25 +81,25 @@ moveTopBtn.on('click', function() {
 
 musicianInfoPortfolioBtn.on('click', function() {
   musicianInfoPortfolioBtn.css('border-bottom', '2.5px solid #8069ef')
-  musicianInfoIntroduceBtn.css('border-bottom', '1px solid black')
-  musicianInfoReviewBtn.css('border-bottom', '1px solid black')
+  musicianInfoIntroduceBtn.css('border-bottom', '1px solid lightgray')
+  musicianInfoReviewBtn.css('border-bottom', '1px solid lightgray')
   infoPortfolio.css('display', 'block')
   infoIntroduce.css('display', 'none')
   infoReview.css('display', 'none')
 })
 
 musicianInfoIntroduceBtn.on('click', function() {
-  musicianInfoPortfolioBtn.css('border-bottom', '1px solid black')
+  musicianInfoPortfolioBtn.css('border-bottom', '1px solid lightgray')
   musicianInfoIntroduceBtn.css('border-bottom', '2.5px solid #8069ef')
-  musicianInfoReviewBtn.css('border-bottom', '1px solid black')
+  musicianInfoReviewBtn.css('border-bottom', '1px solid lightgray')
   infoPortfolio.css('display', 'none')
   infoIntroduce.css('display', 'block')
   infoReview.css('display', 'none')
 })
 
 musicianInfoReviewBtn.on('click', function() {
-  musicianInfoPortfolioBtn.css('border-bottom', '1px solid black')
-  musicianInfoIntroduceBtn.css('border-bottom', '1px solid black')
+  musicianInfoPortfolioBtn.css('border-bottom', '1px solid lightgray')
+  musicianInfoIntroduceBtn.css('border-bottom', '1px solid lightgray')
   musicianInfoReviewBtn.css('border-bottom', '2.5px solid #8069ef')
   infoPortfolio.css('display', 'none')
   infoIntroduce.css('display', 'none')

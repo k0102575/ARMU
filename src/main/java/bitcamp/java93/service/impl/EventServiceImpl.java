@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bitcamp.java93.dao.EventDao;
+import bitcamp.java93.dao.NotificationDao;
 import bitcamp.java93.domain.Event;
 import bitcamp.java93.service.EventService;
 
@@ -15,6 +16,9 @@ public class EventServiceImpl implements EventService {
  
   @Autowired
   EventDao eventDao;
+  
+  @Autowired
+  NotificationDao notificationDao;
   
   public List<Event> listOngoing() throws Exception {   
     return eventDao.selectOngoingList();
@@ -80,8 +84,11 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectRecentList(no);
   }
   
-  public List<Event> checkEvent(int no) throws Exception {
-    return eventDao.selectEventList(no);
+  public List<Event> checkEvent(int myNo, int muNo) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("myNo", myNo);
+    valueMap.put("muNo", muNo);
+    return eventDao.selectEventList(valueMap);
   }
   
   public void prEvent(int muNo, int eNo) throws Exception {
@@ -89,6 +96,29 @@ public class EventServiceImpl implements EventService {
     valueMap.put("muNo", muNo);
     valueMap.put("eNo", eNo);
     eventDao.eventRequest(valueMap);
+    valueMap.put("prNo", valueMap.get("prno"));
+    notificationDao.insertEventPrNoti(valueMap);
+  }
+  
+  public List<Event> listFavor(int no) throws Exception {   
+    return eventDao.selectFavorList(no);
+  }
+  
+  @Override
+  public void favorRemove(int myNo, int eNo) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("myNo", myNo);
+    valueMap.put("eNo", eNo);
+    eventDao.favorEventRemove(valueMap);
+  }
+  
+  @Override
+  public void favorAdd(int myNo, int eNo) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("myNo", myNo);
+    valueMap.put("eNo", eNo);
+    System.out.println(valueMap);
+    eventDao.favorEventAdd(valueMap);
   }
   
 }

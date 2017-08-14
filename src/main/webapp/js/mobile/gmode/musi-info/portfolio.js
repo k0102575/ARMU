@@ -15,7 +15,6 @@ function displayMusiInfoPortfolio() {
       { 
         "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {
-        console.log(result)
   		  var templateFn = Handlebars.compile($('#musician-info-portfolio-template').text())
         var generatedHTML = templateFn(result.data)
 		  var container = $('.portfolio-container')

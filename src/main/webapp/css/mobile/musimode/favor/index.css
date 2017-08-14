@@ -1,0 +1,145 @@
+@CHARSET "UTF-8";
+
+#container {
+  position: relative;
+}
+
+
+#event-favor-header {
+  border-bottom: 1px solid black;
+  position: fixed;
+  height: 120px;
+  width: 100%;
+  background-color: black;
+  z-index: 16;
+}
+
+#event-favor-nickname {
+    position: absolute;
+    right: 15%;
+    top: 13%;
+    transform: translate(-15%, 15%);
+    font-size: 250%;
+    font-weight: normal;
+    color: white;
+    width: 50%;
+    text-align: center;
+ }
+
+#event-favor-prev {
+  position: absolute;
+  left: 3%;
+  top: 12%;
+  transform: translate(-3%, 12%);
+  font-size: 400%;
+  color:white;
+}
+#event-favor-countbox {
+    position: relative;
+    width: 50%;
+    left: 33%;
+    top: 140px;
+    font-size: 250%;
+    margin-left: 3%;
+}
+
+.fa-heart-o {
+  color: #ba3d3d;
+  margin-left: 5%;
+}
+
+#event-favor-count {
+  font-weight: normal;
+  margin-left: -8%;
+}
+
+/* 뮤지션 관심 리스트 시작 */
+#event-favor-list {
+  position: absolute;
+  top: 250px;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+#event-favor {
+  border-bottom: 1px solid black;
+  height: 400px;
+  width: 100%;
+  float: left;
+  margin-top: 6%;
+  display: inline-block;
+  padding-bottom: 3%;
+}
+
+#event-favor-picture {
+  border-radius: 15px;
+  margin-left: 2%;
+  margin-top: 2%;
+  width: 45%;
+  height: 90%;
+  object-fit: cover;
+  display: inline-block;
+}
+
+#event-favor-preview {
+  float: right;
+  width: 50%;
+  height: 75%;
+  display: inline-block;
+}
+
+#event-favor-name {
+  width: 100%;
+  font-size: 200%;
+  margin-top: 30px;
+}
+
+#event-favor-intro {
+  width: 85%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 2em;
+  margin-top: 4%;
+  white-space: normal;
+  line-height: 1.2;
+  max-height: 100px;
+  text-align: left;
+  word-break: keep-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 80px;
+}
+
+
+#event-favor-location {
+  width: 100%;
+  font-size: 200%;
+  font-weight: 500;
+  margin-top: 25px;
+}
+
+.event-favor-delbtn { 
+width: 20%;
+    height: 15%;
+    background-color: white;
+    border: 1px solid black;
+    font-size: 200%;
+    z-index: 15;
+    position: relative;
+    bottom: 18%;
+    left: 50%;
+}
+
+.fa-arrow-circle-o-up {
+  font-size: 400%;
+  position: fixed;
+  bottom: 3%;
+  right: 3%;
+  border: 0px;
+  display: none;
+}
+
+/* 뮤지션 관심 리스트 끝 */

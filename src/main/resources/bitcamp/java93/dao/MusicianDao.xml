@@ -153,23 +153,23 @@
     order by mum.name asc
   </select> <!-- 완진 -->
   
-    <select id="selectFavorList" resultMap="musicianFavorMap" parameterType="int">
-    select ctr.count, m.mno, m.name, m.path, gnr.name as genre, mjr.name as major, loct.name as location
-    from fav_musi fmu
-    left outer join memb gm on fmu.mno=gm.mno
-    left outer join musi mu on fmu.muno = mu.muno
-    left outer join (select mno, count(*) as count 
-    from fav_musi 
-    group by mno) ctr on ctr.mno=fmu.mno
-    left outer join memb m on m.mno = mu.muno
-    left outer join gnr_musi gnmu on mu.muno = gnmu.muno
-    left outer join gnr gnr on gnmu.gnrno = gnr.gnrno
-    left outer join mjr_musi mjmu on mu.muno = mjmu.muno
-    left outer join mjr mjr on mjmu.mjrno = mjr.mjrno
-    left outer join loc_musi lomu on mu.muno = lomu.muno
-    left outer join loc loc on lomu.locno = loc.locno
-    left outer join loc_type loct on loc.loctno = loct.loctno
-    where gm.mno = #{no}
+   <select id="selectFavorList" resultMap="musicianFavorMap" parameterType="int">
+   select ctr.count, m.mno, m.name, m.path, gnr.name as genre, mjr.name as major, loct.name as location
+   from fav_musi fmu
+   left outer join memb gm on fmu.mno=gm.mno
+   left outer join musi mu on fmu.muno = mu.muno
+   left outer join (select mno, count(*) as count 
+   from fav_musi 
+   group by mno) ctr on ctr.mno=fmu.mno
+   left outer join memb m on m.mno = mu.muno
+   left outer join gnr_musi gnmu on mu.muno = gnmu.muno
+   left outer join gnr gnr on gnmu.gnrno = gnr.gnrno
+   left outer join mjr_musi mjmu on mu.muno = mjmu.muno
+   left outer join mjr mjr on mjmu.mjrno = mjr.mjrno
+   left outer join loc_musi lomu on mu.muno = lomu.muno
+   left outer join loc loc on lomu.locno = loc.locno
+   left outer join loc_type loct on loc.loctno = loct.loctno
+   where gm.mno = #{no}
   </select> <!-- 승민 -->
   
     <select id="favorMusiRemove" parameterType="map">

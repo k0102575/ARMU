@@ -25,8 +25,6 @@
     </association>
   </resultMap>
 
-
-
  <select id="selectNotiList" resultMap="notificationMap" parameterType="int">
   select  notino, n.type, n.date, n.cont, n.eno, e.title, 
   gm.mno as gmno, gm.name as gmname, gm.path as gmphoto, 
@@ -48,6 +46,11 @@ inner join evn e on n.eno=e.eno inner join memb gm on e.mno=gm.mno
 where n.muno=#{no}
 order by date desc
   </select>
+  
+  <insert id="insertEventPrNoti" parameterType="map">
+    insert into noti(muno, eno, type, date, cont, prno) 
+    values(#{muNo}, #{eNo}, '참여요청', CURDATE(), '이벤트 홍보', #{prNo})
+  </insert><!-- 승민 -->
   
 </mapper>
 

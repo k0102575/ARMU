@@ -24,6 +24,8 @@ public class Event {
   Date date;
   int rhspay;
   int rhsnum;
+  int pr_count;
+  int mtc_info;
   String rhsinfo;
   boolean isFavorite;
   List<String> EventRegistTheme;
@@ -37,9 +39,10 @@ public class Event {
         + ", themeList=" + themeList + ", majorList=" + majorList + ", genreList=" + genreList + ", city=" + city
         + ", location=" + location + ", address=" + address + ", pay=" + pay + ", locno=" + locno + ", requirement="
         + requirement + ", contents=" + contents + ", downPay=" + downPay + ", tmnno=" + tmnno + ", date=" + date
-        + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", rhsinfo=" + rhsinfo + ", isFavorite=" + isFavorite
-        + ", EventRegistTheme=" + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre="
-        + EventRegistGenre + ", applicantList=" + applicantList + ", pickedList=" + pickedList + "]";
+        + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", pr_count=" + pr_count + ", mtc_info=" + mtc_info
+        + ", rhsinfo=" + rhsinfo + ", isFavorite=" + isFavorite + ", EventRegistTheme=" + EventRegistTheme
+        + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre + ", applicantList="
+        + applicantList + ", pickedList=" + pickedList + "]";
   }
   public int getNo() {
     return no;
@@ -155,6 +158,18 @@ public class Event {
   public void setRhsnum(int rhsnum) {
     this.rhsnum = rhsnum;
   }
+  public int getPr_count() {
+    return pr_count;
+  }
+  public void setPr_count(int pr_count) {
+    this.pr_count = pr_count;
+  }
+  public int getMtc_info() {
+    return mtc_info;
+  }
+  public void setMtc_info(int mtc_info) {
+    this.mtc_info = mtc_info;
+  }
   public String getRhsinfo() {
     return rhsinfo;
   }
@@ -197,6 +212,8 @@ public class Event {
   public void setPickedList(ArrayList<Musician> pickedList) {
     this.pickedList = pickedList;
   }
+  
+  
   
   
   

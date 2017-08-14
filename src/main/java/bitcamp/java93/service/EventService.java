@@ -11,6 +11,9 @@ public interface EventService {
   void RegistEventReherse(Event event) throws Exception;
   List<Event> listRecommand(int no) throws Exception;//뮤지션모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트
   List<Event> listRecent(int no) throws Exception;//뮤지션모드 > 추천탭 > 최근 이벤트 리스트
-  List<Event> checkEvent(int no) throws Exception;
+  List<Event> checkEvent(int myNo, int muNo) throws Exception;
   void prEvent(int muNo, int eNo) throws Exception;
+  List<Event> listFavor(int no) throws Exception;
+  void favorRemove(int myNo, int eNo) throws Exception;
+  void favorAdd(int myNo, int eNo) throws Exception;
 }

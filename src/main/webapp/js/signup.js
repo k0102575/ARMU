@@ -75,7 +75,7 @@ var memberToggle = $("#member-toggle" ),
         'phone': phoneInput.val(),
         'password': passwordInput1.val(),
         'email': emailInput.val(),
-        'photo' : '/image/profile/'+ fiFilenames.val() + '_140.png'
+        'photo' : '/image/profile/'+ fiFilenames.val()
       }, function(result) {
         memberToggle.toggle()
       }, 'json')

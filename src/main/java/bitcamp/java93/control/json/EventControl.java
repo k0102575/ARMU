@@ -140,11 +140,10 @@ public class EventControl {
   }
   
   @RequestMapping("checkEvent")
-  public JsonResult checkEvent(HttpSession session){
-
+  public JsonResult checkEvent(HttpSession session, int no){
     JsonResult result = new JsonResult();
       try {
-        List<Event> eventList = eventService.checkEvent(getLoginMember(session).getNo());
+        List<Event> eventList = eventService.checkEvent(getLoginMember(session).getNo(), no);
         
         if (eventList != null) {
           result.setStatus(JsonResult.SUCCESS);
@@ -160,7 +159,6 @@ public class EventControl {
       } catch (Exception e) {
         result.setStatus(JsonResult.ERROR);
       }
-      
     return result;
   }
 
@@ -176,11 +174,36 @@ public class EventControl {
       } catch (Exception e) {
         result.setStatus(JsonResult.ERROR);
       }
-      
     return result;
   }
   
-  
+  @RequestMapping("listFavor")
+  public JsonResult listFavor(HttpSession session) throws Exception {
+    JsonResult result = new JsonResult();
+
+    try {
+      List<Event> listFavor = (List<Event>) eventService.listFavor(getLoginMember(session).getNo());
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listFavor", listFavor);
+      result.setData(dataMap);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      result.setData(e.getMessage());
+    }
+    return result;
+  }
+
+  @RequestMapping("favorRemove")
+  public JsonResult favorRemove(HttpSession session, int no) throws Exception {
+    eventService.favorRemove(getLoginMember(session).getNo(), no);
+    return new JsonResult(JsonResult.SUCCESS, "ok");
+  }
+
+  @RequestMapping("favorAdd")
+  public JsonResult favorAdd(HttpSession session, int no) throws Exception {
+    eventService.favorAdd(getLoginMember(session).getNo(), no);
+    return new JsonResult(JsonResult.SUCCESS, "ok");
+  }
   
   private Member getLoginMember(HttpSession session) {
     Member loginMember = (Member) session.getAttribute("loginMember");

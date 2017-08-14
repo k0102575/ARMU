@@ -21,6 +21,7 @@
 <script src="/node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
 <script src="/node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
 <script src="/node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+<script src="/node_modules/moment/min/moment.min.js"></script>
 </head>
 <body>
 
@@ -29,12 +30,11 @@
 <script id="musician-info-portfolio-template" type="text/x-handlebars-template">
 {{#getSpec}}
   <input id="spec-date" type="date" value="{{specDate}}"/>
-  <textarea rows="5" cols="50" id="spec-desc">
-  {{specDscp}}
-  </textarea>
+  <textarea rows="5" cols="50" id="spec-desc">{{specDscp}}</textarea>
     
   <div id="spec-picture">
-  사진<br>
+  <i class="fa fa-caret-right" aria-hidden="true"></i>
+  경력을 드러낼 수 있는 사진을 추가하세요!<br>
   <input id="fi-filenames" type="hidden" name="filenames"/>
   </div>
     
@@ -50,12 +50,13 @@
   </div>
 
   <div class="movie-text">
-  동영상
+  <i class="fa fa-caret-right" aria-hidden="true"></i>
+  공연, 연주 등의 영상 URL을 입력하세요!&nbsp;&nbsp;<i id="question-btn" class="fa fa-question-circle" aria-hidden="true"></i>
   </div>
   <div class="movie-container">
-  <input type="text"/ id="movie-text">
-  <button type="button" id="movie-text-btn">추가</button>
-  <button type="button" id="movie-help-btn">?</button>
+  <input type="text"/ id="movie-text" placeholder="URL 입력">
+  <hr class='separator'>
+  <button type="button" id="movie-text-btn">+</button>
   </div>
 
 {{/getSpec}}
@@ -63,11 +64,11 @@
 
 <script id="musician-add-portfolio-template" type="text/x-handlebars-template">
   <input id="spec-date" type="date" value=""/>
-  <textarea rows="5" cols="50" id="spec-desc">
-  </textarea>
+  <textarea rows="5" cols="50" id="spec-desc" placeholder="경력에 관한 설명을 입력해주세요"></textarea>
     
   <div id="spec-picture">
-  사진<br>
+  <i class="fa fa-caret-right" aria-hidden="true"></i>
+  경력을 드러낼 수 있는 사진을 추가하세요!<br>
   <input id="fi-filenames" type="hidden" name="filenames"/>
   </div>
     
@@ -77,12 +78,13 @@
   </div>
 
   <div class="movie-text">
-  동영상
+  <i class="fa fa-caret-right" aria-hidden="true"></i>
+  공연, 연주 등의 영상 URL을 입력하세요!&nbsp;&nbsp;<i id="question-btn" class="fa fa-question-circle" aria-hidden="true"></i>
   </div>
   <div class="movie-container">
-  <input type="text"/ id="movie-text">
-  <button type="button" id="movie-text-btn">추가</button>
-  <button type="button" id="movie-help-btn">?</button>
+  <input type="text"/ id="movie-text" placeholder="URL 입력">
+  <hr class='separator'>
+  <button type="button" id="movie-text-btn">+</button>
   </div>
 
 </script>

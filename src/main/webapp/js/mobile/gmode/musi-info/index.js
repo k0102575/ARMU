@@ -83,8 +83,6 @@ function displayMusiInfo() {
           }, 'json')
           
         }
-        
-
       })
       
       if(data.fav == 1) {
@@ -97,8 +95,6 @@ function displayMusiInfo() {
 }
 
 $(window).scroll(function(event){
-  
-
  if($(document).scrollTop() > 327) {
   musicianInfoBtnContainer.css("position", "fixed")
   musicianHeaderInfoImg.css("display", "block")
@@ -153,9 +149,12 @@ musicianInfoReviewBtn.on('click', function() {
 })
 
 function matchRequest() {
-  $.getJSON('/event/checkEvent.json',
+  $.getJSON('/event/checkEvent.json', {
+    "no" : location.href.split('?')[1].split('=')[1]
+  },
   function(result) {
-    if(result.data.eventList.length == 0 ) {
+    console.log(result)
+    if(result.data.eventList.length == 0) {
       var templateFn = Handlebars.compile($('#select-no-event-template').text())
       var generatedHTML = templateFn(result.data)
       var container = $('#musician-info-toggle')
@@ -169,13 +168,50 @@ function matchRequest() {
     var html = container.html()
     container.html(html + generatedHTML)
     
+    for(var i = 0; i < result.data.eventList.length; i++) {
+      
+      if(result.data.eventList[i].pr_count == 1) {
+        $(".request-button[value='"+ result.data.eventList[i].no +"']").text("진행중")
+        $(".request-button[value='"+ result.data.eventList[i].no +"']").attr("pr_count", "1")
+        $(".request-button[value='"+ result.data.eventList[i].no +"']").addClass("prIng")
+      }
+      
+      if(result.data.eventList[i].mtc_info == 1) {
+        $(".request-button[value='"+ result.data.eventList[i].no +"']").text("완료")
+        $(".request-button[value='"+ result.data.eventList[i].no +"']").attr("mtc_into", "1")
+        $(".request-button[value='"+ result.data.eventList[i].no +"']").addClass("mtc")
+      }
+      
+    } // for
+    
     $("#signup-cancel-btn").on('click', function() {
       requestToggle.toggle()
       requestBackScreen.css("display", "none")
     })
     
-    $(".request-button").on('click', function() {
+    $(".request-button").on('click', function(e) {
+      var prCount = $(this).attr('pr_count')
+      var mtcInfo = $(this).attr('mtc_into')
       var no = $(this).val()
+      
+      if(mtcInfo == 1) {
+        return false;
+      }
+      
+      if(prCount == 1) {
+        swal({
+          title: "이미 매칭이 진행중인 \n\n" +
+          		"   뮤지션 입니다.",
+          type: "warning",
+          showCancelButton: false,
+          confirmButtonColor: "#8069ef",
+          confirmButtonText: "확인",
+          customClass: "checkSwal"
+        });
+        return
+      }
+      
+      
       swal({
         title: "이 이벤트에 대해 \n\n" +
         		"매칭 요청을 하시겠어요?" ,
@@ -191,20 +227,7 @@ function matchRequest() {
           'muNo': location.href.split('?')[1].split('=')[1],
           'eNo': no
         }, function(result) {
-          if(result.status == "error"){
-            swal({
-              title: "이미 매칭 진행중인 뮤지션입니다!",
-              type: "warning",
-              showCancelButton: false,
-              confirmButtonColor: "#8069ef",
-              confirmButtonText: "확인",
-              customClass: "checkSwal"
-            },function(){
-             location.reload() 
-            })
-          }
-          
-          if(result.data == "success") {
+         if(result.data == "success") {
             swal({
               title: "매칭요청이 성공했습니다!",
               type: "success",
@@ -216,7 +239,6 @@ function matchRequest() {
              location.reload() 
             })
           }
-          
         }, 'json')
         
     });

@@ -97,6 +97,7 @@ public class MusicianControl {
 
     return result;
   }
+  
   @RequestMapping("listFavor")
   public JsonResult listFavor(HttpSession session) throws Exception {
     JsonResult result = new JsonResult();
