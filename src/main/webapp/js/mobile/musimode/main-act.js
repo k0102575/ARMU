@@ -14,7 +14,6 @@ function displayNotiList() {
     var container = $('#noti-container')
     var html = container.html()
     container.html(html + generatedHTML)
-    console.log(generatedHTML)
   }, function(err) {
     console.log(err)
   })

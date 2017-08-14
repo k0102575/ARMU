@@ -33,9 +33,7 @@ function displayProfile() {
 }
 
 function updatePwd() {
-  console.log(mno)
   var pwd= $('#pwd3')  
-  console.log(pwd.val())
   $.post('/member/updatePwd.json',
       {'password':pwd.val(),
         'no': mno

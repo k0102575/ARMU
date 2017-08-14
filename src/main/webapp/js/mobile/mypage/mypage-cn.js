@@ -6,7 +6,6 @@ var mno;
 displayProfile()
 function displayProfile() {
   $.getJSON('/member/getMusiProfile.json', function(result) {
-    console.log(result)
     if(result.status != 'success') {
       console.error("getJSON() 실패: ", result.status)
       return;
@@ -39,9 +38,7 @@ function displayProfile() {
 }
 
 function updateNick() {
-  console.log(mno)
   var nick= $('#nick')  
-  console.log(nick.val())
   $.post('/musician/updateNick.json',
       {'nickName':nick.val(),
         'no': mno
