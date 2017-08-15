@@ -34,33 +34,31 @@ function displayRecruitingEventList() {
 
 
 function controlBtns() {
-	var applicantBtn = $('#recruiting-applicant-btn'),
-		applicantBox = $( "#recruiting-applicant-box" ),
-		calleeBtn = $('#recruiting-callee-btn'),
-		calleeBox = $('#recruiting-callee-box'),
+	var applicantBtn = $('.recruiting-applicant-open-btn'),
+		calleeBtn = $('.recruiting-callee-btn'),
 		eventBox = $('.event-box');
 	
 applicantBtn.on('click', function(e) {
-	if(applicantBtn.attr('data-open') == "true") {
-		applicantBtn.html('지원자 <i class="fa fa-angle-down" aria-hidden="true"></i>')
+	if($(this).attr('data-open') == "true") {
+		$(this).html('지원자 <i class="fa fa-angle-down" aria-hidden="true"></i>')
 					.attr('data-open', false)
 	} else {
-		applicantBtn.html('지원자 <i class="fa fa-angle-up" aria-hidden="true"></i>')
+		$(this).html('지원자 <i class="fa fa-angle-up" aria-hidden="true"></i>')
 					.attr('data-open', true)
 	}
-	applicantBox.toggle( "fold", 500 );
+	$(this).siblings('.recruiting-applicant-box').toggle( "fold", 500 );
 	e.preventDefault()
 })
 
 calleeBtn.on('click', function(e) {
-	if(calleeBtn.attr('data-open') == "true") {
-		calleeBtn.html('내가 요청한 뮤지션 <i class="fa fa-angle-down" aria-hidden="true"></i>')
+	if($(this).attr('data-open') == "true") {
+		$(this).html('내가 요청한 뮤지션 <i class="fa fa-angle-down" aria-hidden="true"></i>')
 					.attr('data-open', false)
 	} else {
-		calleeBtn.html('내가 요청한 뮤지션 <i class="fa fa-angle-up" aria-hidden="true"></i>')
+		$(this).html('내가 요청한 뮤지션 <i class="fa fa-angle-up" aria-hidden="true"></i>')
 					.attr('data-open', true)
 	}
-	calleeBox.toggle( "fold", 500 );
+	$(this).siblings('.recruiting-callee-box').toggle( "fold", 500 );
 	e.preventDefault()
 })
 

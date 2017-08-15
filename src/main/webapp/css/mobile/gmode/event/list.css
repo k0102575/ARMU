@@ -218,7 +218,7 @@ body {
 }
 
 /*모집 중인 이벤트 - 뮤지션 시작*/
-#recruiting-applicant-box {
+.recruiting-applicant-box {
   display: none;
 }
 
@@ -255,7 +255,7 @@ body {
   text-align: left;
 }
 
-#recruiting-candidate {
+.recruiting-candidate {
   border: 1px solid #8069ef;
 }
 
@@ -357,7 +357,7 @@ body {
   border-bottom-right-radius: 10px;
 }
 
-#recruiting-callee-box {
+.recruiting-callee-box {
   display: none;
 }
 
@@ -376,7 +376,7 @@ body {
 
 /*진행중 이벤트 리스트 시작*/
 /*함께하는 뮤지션 시작*/
-#ongoing-applicant-box {
+.ongoing-applicant-box {
   display: none; 
 }
 
