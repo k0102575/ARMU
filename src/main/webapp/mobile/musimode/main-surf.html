@@ -1,22 +1,20 @@
-<div id="event-surf-container">
-
-</div>
+<div id="event-surf-container"></div>
 <!-- event-surf-container -->
 
 <script id="event-surf-template" type="text/x-handlebars-template">
 {{#each listSurf}}
-  <div class="event-surf">
+  <div class="event-surf" data-no="{{no}}">
           {{#writeMember}}
           <div class='event-surf-writerbox'>
             <div class="event-surf-writer-img" style='background-image: url("{{photo}}")'></div>
             <div class="event-surf-writer-name"><span>{{name}}</span></div>
           {{/writeMember}}
             <div class="event-surf-title"><span>{{title}}</span></div>
-            <div class='event-surf-favor'></div>
+            <div class='event-surf-favor'>{{{isFavorite}}}</div>
             
             </div>
 {{#intl locales="ko-KO"}}
-            <div class="event-surf-date"><span></span></div><br>
+            <div class="event-surf-date"><span>{{date}}</span></div><br>
 {{/intl}}
             <div class='event-surf-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{location}}&nbsp;{{address}}</span></div><br>
             <div class="event-surf-price">{{formatNumber pay style="currency" currency="KRW"}}</div>
@@ -28,7 +26,7 @@
           </div>
 {{/each}}
 </script>
-  
+
 
 <script src="/js/mobile/musimode/main-surf.js"></script>
 <script src="/js/mobile/musimode/jquery.ui.touch-punch.min.js"></script>

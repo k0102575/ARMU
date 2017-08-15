@@ -4,7 +4,6 @@
   position: relative;
 }
 
-
 #event-favor-header {
   border-bottom: 1px solid black;
   position: fixed;
@@ -34,6 +33,7 @@
   font-size: 400%;
   color:white;
 }
+
 #event-favor-countbox {
     position: relative;
     width: 50%;
@@ -53,93 +53,128 @@
   margin-left: -8%;
 }
 
-/* 뮤지션 관심 리스트 시작 */
+/* 관심 이벤트 시작 */
+
 #event-favor-list {
+  position: relative;
+  top: 150px;
+}
+
+.event-favor {
+  position: relative;
+  background-color: white;
+  height: 550px;
+  width: 100%;
+  margin-top: 7%;
+  margin-bottom: 3%;
+  text-align: justify;
+  color: black;
+  z-index: 1;
+  background-size: cover;
+  border-bottom: 1px solid gray;
+}
+
+.event-favor-writerbox {
   position: absolute;
-  top: 250px;
-  width: 100%;
-  height: auto;
-  box-sizing: border-box;
+  height: 350px;
+  width: 30%;
+  z-index: 2;
+}
+
+.event-favor-writer-img {
+  position: absolute;
   display: inline-block;
-}
-
-#event-favor {
-  border-bottom: 1px solid black;
-  height: 400px;
-  width: 100%;
-  float: left;
-  margin-top: 6%;
-  display: inline-block;
-  padding-bottom: 3%;
-}
-
-#event-favor-picture {
-  border-radius: 15px;
-  margin-left: 2%;
-  margin-top: 2%;
-  width: 45%;
-  height: 90%;
-  object-fit: cover;
-  display: inline-block;
-}
-
-#event-favor-preview {
-  float: right;
-  width: 50%;
-  height: 75%;
-  display: inline-block;
-}
-
-#event-favor-name {
-  width: 100%;
-  font-size: 200%;
-  margin-top: 30px;
-}
-
-#event-favor-intro {
-  width: 85%;
+  top: 12%;
+  left: 15%;
+  height: 150px;
+  width: 150px;
+  border-radius: 100%;
   overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 2em;
-  margin-top: 4%;
-  white-space: normal;
-  line-height: 1.2;
-  max-height: 100px;
-  text-align: left;
-  word-break: keep-all;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  height: 80px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-
-#event-favor-location {
+.event-favor-title {
+  display: inline-block;
+  font-size: 45px;
+  font-weight: 400;
+  color: black;
   width: 100%;
-  font-size: 200%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.event-favor-writer-name {
+  position: absolute;
+  top: 55%;
+  left: 26%;
+  font-size: 30px;
+  font-weight: 300;
+  color: #252525;
+}
+
+.event-favor-favor {
+  position: absolute;
+  display: inline-block;
+  font-size: 3em;
+  color: #8079ef; /*crimson*/
+  right: 3.5%;
+  bottom: 9%;
+}
+
+.event-favor-date {
+  color: black;
+  font-size: 35px;
+  position: absolute;
+  width: auto;
+  white-space: nowrap;
+  left: 10%;
+  top: 82%;
+}
+
+.event-favor-area {
+  display: inline-block;
+  color: black;
+  font-size: 35px;
   font-weight: 500;
-  margin-top: 25px;
+  max-width: 95%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.event-favor-delbtn { 
-width: 20%;
-    height: 15%;
-    background-color: white;
-    border: 1px solid black;
-    font-size: 200%;
-    z-index: 15;
-    position: relative;
-    bottom: 18%;
-    left: 50%;
+.event-favor-price {
+  font-size: 34px;
+  font-weight: 500;
+  color: black;
+  white-space: nowrap;
+  position: absolute;
+  left: 15%;
+  top: 68%;
 }
 
-.fa-arrow-circle-o-up {
-  font-size: 400%;
-  position: fixed;
-  bottom: 3%;
-  right: 3%;
-  border: 0px;
-  display: none;
+.event-favor-dscpbox {
+  width: 68%;
+  height: 350px;
+  position: absolute;
+  right: 0;
 }
 
-/* 뮤지션 관심 리스트 끝 */
+.event-favor-hashtagbox {
+  height: 145px;
+  color: #777;
+  font-weight: 400;
+  width: 95%;
+  overflow: hidden;
+}
+
+.event-favor-hashtagbox>span {
+  float: left;
+  margin-right: 2%;
+  font-size: 33px;
+}
+
+/* 관심 이벤트 끝 */
+

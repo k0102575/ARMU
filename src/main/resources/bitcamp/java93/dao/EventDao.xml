@@ -4,34 +4,34 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bitcamp.java93.dao.EventDao">
 
-	<resultMap type="event" id="eventMap">
-		<id column="eno" property="no" />
-		<result column="title" property="title" />
-		<result column="mno" property="writer" />
-		<result column="location" property="location" />
-		<result column="addr" property="address" />
-		<result column="pay" property="pay" />
-		<result column="req" property="requirement" />
-		<result column="cont" property="contents" />
-		<result column="dpay" property="downPay" />
-		<result column="date" property="date" />
-		<result column="pay" property="rhspay" />
+  <resultMap type="event" id="eventMap">
+    <id column="eno" property="no" />
+    <result column="title" property="title" />
+    <result column="mno" property="writer" />
+    <result column="location" property="location" />
+    <result column="addr" property="address" />
+    <result column="pay" property="pay" />
+    <result column="req" property="requirement" />
+    <result column="cont" property="contents" />
+    <result column="dpay" property="downPay" />
+    <result column="date" property="date" />
+    <result column="pay" property="rhspay" />
     <result column="info" property="rhsinfo" />
     <result column="num" property="rhsnum" />
-		<association property="musician" resultMap="musicianMap2">
-		</association>
-		<collection property="genreList" ofType="string"> 
-        <result column="genre"/> 
-    </collection> 
-    <collection property="themeList" ofType="string"> 
-        <result column="theme"/> 
-    </collection> 
-    <collection property="majorList" ofType="string"> 
-        <result column="major"/> 
-    </collection> 
-	</resultMap>
-	
-	 <resultMap type="event" id="eventSelectMap">
+    <association property="musician" resultMap="musicianMap2">
+    </association>
+    <collection property="genreList" ofType="string">
+      <result column="genre" />
+    </collection>
+    <collection property="themeList" ofType="string">
+      <result column="theme" />
+    </collection>
+    <collection property="majorList" ofType="string">
+      <result column="major" />
+    </collection>
+  </resultMap>
+
+  <resultMap type="event" id="eventSelectMap">
     <id column="eno" property="no" />
     <result column="title" property="title" />
     <result column="loctname" property="city" />
@@ -42,8 +42,8 @@
     <result column="pr_count" property="pr_count" />
     <result column="mtc_info" property="mtc_info" />
   </resultMap>
-	
-	<resultMap type="event" id="eventMapBasic">
+
+  <resultMap type="event" id="eventMapBasic">
     <id column="eno" property="no" />
     <result column="title" property="title" />
     <result column="mno" property="writer" />
@@ -58,114 +58,130 @@
     <result column="info" property="rhsinfo" />
     <result column="num" property="rhsnum" />
     <result column="fav" property="isFavorite" />
-     <association property="writeMember" javaType="Member">
-    <id property="no" column="muno"/>
-    <result property="name" column="name"/>
-    <result property="photo" column="path"/>
-  </association>
-    <collection property="genreList" ofType="string"> 
-        <result column="genre"/> 
-    </collection> 
-    <collection property="themeList" ofType="string"> 
-        <result column="theme"/> 
-    </collection> 
-    <collection property="majorList" ofType="string"> 
-        <result column="major"/> 
-    </collection> 
+    <association property="writeMember" javaType="Member">
+      <id property="no" column="muno" />
+      <result property="name" column="name" />
+      <result property="photo" column="path" />
+    </association>
+    <collection property="genreList" ofType="string">
+      <result column="genre" />
+    </collection>
+    <collection property="themeList" ofType="string">
+      <result column="theme" />
+    </collection>
+    <collection property="majorList" ofType="string">
+      <result column="major" />
+    </collection>
   </resultMap>
-	
+
   <resultMap type="musician" id="musicianMap2">
     <id column="mno" property="no" />
     <result column="name" property="name" />
     <result column="path" property="photo" />
-    <collection property="majorList" ofType="string"> 
-        <result column="major2"/> 
+    <collection property="majorList" ofType="string">
+      <result column="major2" />
     </collection>
-    <collection property="genreList" ofType="string"> 
-        <result column="genre2"/> 
-    </collection> 
-    <collection property="themeList" ofType="string"> 
-       <result column="theme2"/> 
+    <collection property="genreList" ofType="string">
+      <result column="genre2" />
+    </collection>
+    <collection property="themeList" ofType="string">
+      <result column="theme2" />
     </collection>
   </resultMap>
-  
+
   <resultMap type="notification" id="notoficationMap">
   </resultMap>
 
 
-<select id="selectOngoingList" resultMap="eventMap, musicianMap2">
- 
-</select><!-- 완진 -->
+  <select id="selectOngoingList" resultMap="eventMap, musicianMap2">
 
-<select id="selectRecommandList" resultMap="eventMapBasic" parameterType="int">
-  select e.title, e.eno, e.date,  concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
-  mj.name as major, g.name as genre, t.name as theme,
-  fe.fav, m.mno, m.name, m.path
-  from (select * from evn where date >= curdate() and eno not in (select eno from mtc) order by date asc) e
-  left outer join (
+  </select><!-- 완진 -->
+
+  <select id="selectRecommandList" resultMap="eventMapBasic"
+    parameterType="int">
+    select e.title, e.eno, e.date, concat(lt.name, ' ', l.name) as location,
+    e.addr, e.pay,
+    mj.name as major, g.name as genre, t.name as theme,
+    fe.fav, m.mno, m.name, m.path
+    from (select * from evn where date >= curdate() and eno not in (select eno
+    from mtc) order by date asc) e
+    left outer join (
     select count(if(muno is not null, 1, 0)) as fav, muno, eno
     from fav_evn where muno=#{no} group by eno
-  ) fe on fe.eno=e.eno
-  inner join memb m on e.mno=m.mno
-  inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
-  left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on me.mjrno=mj.mjrno
-  left outer join gnr_evn ge on e.eno=ge.eno inner join gnr g on ge.gnrno=g.gnrno
-  left outer join thm_evn te on e.eno=te.eno inner join thm t on te.thmno=t.thmno
-  left outer join mjr_musi mjm on mj.mjrno=mjm.mjrno
-  left outer join gnr_musi gm on g.gnrno=gm.gnrno
-  left outer join thm_musi tm on t.thmno=tm.thmno
-  where (mjm.muno=#{no} or gm.muno=#{no} or tm.muno=#{no})
-</select><!-- 완진 -->
+    ) fe on fe.eno=e.eno
+    inner join memb m on e.mno=m.mno
+    inner join loc l on e.locno=l.locno inner join loc_type lt on
+    l.loctno=lt.loctno
+    left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on
+    me.mjrno=mj.mjrno
+    left outer join gnr_evn ge on e.eno=ge.eno inner join gnr g on
+    ge.gnrno=g.gnrno
+    left outer join thm_evn te on e.eno=te.eno inner join thm t on
+    te.thmno=t.thmno
+    left outer join mjr_musi mjm on mj.mjrno=mjm.mjrno
+    left outer join gnr_musi gm on g.gnrno=gm.gnrno
+    left outer join thm_musi tm on t.thmno=tm.thmno
+    where (mjm.muno=#{no} or gm.muno=#{no} or tm.muno=#{no})
+  </select><!-- 완진 -->
 
-<select id="selectRecentList" resultMap="eventMapBasic" parameterType="int">
-select e.title, e.eno, e.date,  concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
- mj.name as major, g.name as genre, t.name as theme,
- fe.fav, m.mno, m.name, m.path
- from (select * from evn where date >= curdate() and eno not in (select eno from mtc) order by date desc limit 3) e
- inner join memb m on e.mno=m.mno
- inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
- left outer join mjr_evn me on e.eno=me.eno
- left outer join gnr_evn ge on e.eno=ge.eno
- left outer join thm_evn te on e.eno=te.eno
- inner join mjr mj on me.mjrno=mj.mjrno
- inner join gnr g on ge.gnrno=g.gnrno
- inner join thm t on te.thmno=t.thmno
-left outer join (
-select count(if(muno is not null, 1, 0)) as fav, muno, eno
-from fav_evn
-where muno=#{no}
-group by eno
-) fe on fe.eno=e.eno
-</select><!-- 완진 -->
+  <select id="selectRecentList" resultMap="eventMapBasic"
+    parameterType="int">
+    select e.title, e.eno, e.date, concat(lt.name, ' ', l.name) as location,
+    e.addr, e.pay,
+    mj.name as major, g.name as genre, t.name as theme,
+    fe.fav, m.mno, m.name, m.path
+    from (select * from evn where date >= curdate() and eno not in (select eno
+    from mtc) order by date desc limit 3) e
+    inner join memb m on e.mno=m.mno
+    inner join loc l on e.locno=l.locno inner join loc_type lt on
+    l.loctno=lt.loctno
+    left outer join mjr_evn me on e.eno=me.eno
+    left outer join gnr_evn ge on e.eno=ge.eno
+    left outer join thm_evn te on e.eno=te.eno
+    inner join mjr mj on me.mjrno=mj.mjrno
+    inner join gnr g on ge.gnrno=g.gnrno
+    inner join thm t on te.thmno=t.thmno
+    left outer join (
+    select count(if(muno is not null, 1, 0)) as fav, muno, eno
+    from fav_evn
+    where muno=#{no}
+    group by eno
+    ) fe on fe.eno=e.eno
+  </select><!-- 완진 -->
 
-<insert id="insert" parameterType="event" 
-        useGeneratedKeys="true" keyColumn="eno" keyProperty="no">
-  insert into evn(eno, mno, locno, pay, req, cont, addr, date, title) 
-  values(#{no}, #{writer}, #{locno}, #{pay}, #{requirement}, #{contents}, #{address}, #{date}, #{title})
-</insert><!-- 승민 -->
+  <insert id="insert" parameterType="event" useGeneratedKeys="true"
+    keyColumn="eno" keyProperty="no">
+    insert into evn(eno, mno, locno, pay, req, cont, addr, date, title)
+    values(#{no}, #{writer}, #{locno}, #{pay}, #{requirement},
+    #{contents}, #{address}, #{date}, #{title})
+  </insert><!-- 승민 -->
 
-<insert id="insertTheme" parameterType="map">
-  insert into thm_evn(eno, thmno) 
-  values(#{eventNo}, #{eventTheme})
-</insert><!-- 승민 -->
+  <insert id="insertTheme" parameterType="map">
+    insert into thm_evn(eno, thmno)
+    values(#{eventNo}, #{eventTheme})
+  </insert><!-- 승민 -->
 
-<insert id="insertMajor" parameterType="map">
-  insert into mjr_evn(eno, mjrno) 
-  values(#{eventNo}, #{eventMajor})
-</insert><!-- 승민 -->
+  <insert id="insertMajor" parameterType="map">
+    insert into mjr_evn(eno, mjrno)
+    values(#{eventNo}, #{eventMajor})
+  </insert><!-- 승민 -->
 
-<insert id="insertGenre" parameterType="map">
-  insert into gnr_evn(eno, gnrno) 
-  values(#{eventNo}, #{eventGenre})
-</insert><!-- 승민 -->
+  <insert id="insertGenre" parameterType="map">
+    insert into gnr_evn(eno, gnrno)
+    values(#{eventNo}, #{eventGenre})
+  </insert><!-- 승민 -->
 
-<insert id="insertReherse" parameterType="event">
-  insert into rhs(eno, pay, info, num) 
-  values(#{no}, #{rhspay}, #{rhsinfo}, #{rhsnum})
-</insert><!-- 승민 -->
+  <insert id="insertReherse" parameterType="event">
+    insert into rhs(eno, pay, info, num)
+    values(#{no}, #{rhspay}, #{rhsinfo}, #{rhsnum})
+  </insert><!-- 승민 -->
 
-	<select id="selectEventList" resultMap="eventSelectMap" parameterType="map">
-		select even.eno, even.pay, even.date, even.title, loct.name as loctname, loc.name as locname, even.addr, if(prc.prno is not null, 1, 0) as pr_count, if(mtc.mtcno is not null, 1, 0) as mtc_info
+  <select id="selectEventList" resultMap="eventSelectMap"
+    parameterType="map">
+    select even.eno, even.pay, even.date, even.title,
+    loct.name as loctname, loc.name as locname, even.addr, if(prc.prno is
+    not null, 1, 0) as pr_count, if(mtc.mtcno is not null, 1, 0) as
+    mtc_info
     from evn even
     left outer join loc loc on even.locno = loc.locno
     left outer join loc_type loct on loc.loctno = loct.loctno
@@ -177,55 +193,63 @@ group by eno
     ) prc on even.eno = prc.eno
     left outer join mtc mtc on even.eno = mtc.eno
     where even.mno = #{myNo}
-	</select><!-- 승민 -->
+  </select><!-- 승민 -->
 
-<insert id="eventRequest" parameterType="map"
-  useGeneratedKeys="true" keyColumn="prno" keyProperty="prno">
-  insert into pr(muno, eno)
-  values(#{muNo}, #{eNo});
-</insert>
+  <insert id="eventRequest" parameterType="map" useGeneratedKeys="true"
+    keyColumn="prno" keyProperty="prno">
+    insert into pr(muno, eno)
+    values(#{muNo}, #{eNo});
+  </insert>
 
-   <select id="selectFavorList"  parameterType="int">
-   select ctr.count, m.mno, m.name, m.path, gnr.name as genre, mjr.name as major, loct.name as location
-   from fav_musi fmu
-   left outer join memb gm on fmu.mno=gm.mno
-   left outer join musi mu on fmu.muno = mu.muno
-   left outer join (select mno, count(*) as count 
-   from fav_musi 
-   group by mno) ctr on ctr.mno=fmu.mno
-   left outer join memb m on m.mno = mu.muno
-   left outer join gnr_musi gnmu on mu.muno = gnmu.muno
-   left outer join gnr gnr on gnmu.gnrno = gnr.gnrno
-   left outer join mjr_musi mjmu on mu.muno = mjmu.muno
-   left outer join mjr mjr on mjmu.mjrno = mjr.mjrno
-   left outer join loc_musi lomu on mu.muno = lomu.muno
-   left outer join loc loc on lomu.locno = loc.locno
-   left outer join loc_type loct on loc.loctno = loct.loctno
-   where gm.mno = #{no}
-  </select> 
-  
+  <select id="selectFavorList" resultMap="eventMapBasic" parameterType="int">
+    select e.eno, e.pay, e.addr, e.date, e.title, concat(lt.name, ' ', l.name) as location,
+    m.mno, m.name, m.path, mj.name as major, g.name as genre, t.name as theme
+    from fav_evn fe
+    left outer join evn e on fe.eno = e.eno
+    left outer join memb m on e.mno = m.mno
+    inner join loc l on e.locno=l.locno inner join loc_type lt on
+    l.loctno=lt.loctno
+    left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on
+    me.mjrno=mj.mjrno
+    left outer join gnr_evn ge on e.eno=ge.eno inner join gnr g on
+    ge.gnrno=g.gnrno
+    left outer join thm_evn te on e.eno=te.eno inner join thm t on
+    te.thmno=t.thmno
+    where muno = #{no}
+  </select>
+
   <select id="favorEventRemove" parameterType="map">
-  delete from fav_evn where muno = #{muNo} and eno = #{eNo};
+    delete from fav_evn where muno = #{muNo} and eno = #{eNo};
   </select> <!-- 승민 -->
-  
+
   <select id="favorEventAdd" parameterType="map">
-  insert into fav_evn (muno, eno) values (#{muNo}, #{eNo})
+    insert into fav_evn (muno, eno) values (#{muNo}, #{eNo})
   </select> <!-- 승민 -->
-	
-  <select id="selectSurfList" resultMap="eventMapBasic" parameterType="int">
+
+  <select id="selectSurfList" resultMap="eventMapBasic"
+    parameterType="int">
     select e.eno, e.locno, e.pay, e.addr, e.date, e.title, fe.fav,
-    m.mno, m.path, mj.name as major, g.name as genre, t.name as theme
-    from evn e left outer join memb m on e.mno = m.mno
+    concat(lt.name, ' ', l.name) as location,
+    m.mno, m.name, m.path, mj.name as major, g.name as genre, t.name as theme
+    from (select * from evn where date >= curdate() and eno not in (select
+    eno from mtc)) e
+    left outer join memb m on e.mno = m.mno
     left outer join (
     select count(if(muno is not null, 1, 0)) as fav, muno, eno
     from fav_evn where muno=#{no} group by eno
     ) fe on fe.eno=e.eno
-    left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on me.mjrno=mj.mjrno
-    left outer join gnr_evn ge on e.eno=ge.eno inner join gnr g on ge.gnrno=g.gnrno
-    left outer join thm_evn te on e.eno=te.eno inner join thm t on te.thmno=t.thmno
-  </select> 
-	
-	
+    inner join loc l on e.locno=l.locno inner join loc_type lt on
+    l.loctno=lt.loctno
+    left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on
+    me.mjrno=mj.mjrno
+    left outer join gnr_evn ge on e.eno=ge.eno inner join gnr g on
+    ge.gnrno=g.gnrno
+    left outer join thm_evn te on e.eno=te.eno inner join thm t on
+    te.thmno=t.thmno
+    order by eno
+  </select>
+
+
 </mapper>
 
 

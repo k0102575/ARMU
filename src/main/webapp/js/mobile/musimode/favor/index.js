@@ -1,7 +1,14 @@
 var moveTopBtn = $("#move_top_btn"),
     eventFavorPrev = $("#event-favor-prev")
-
+    
+    
+    
+displayFavorEventList()
+HandlebarsIntl.registerWith(Handlebars);
+    
+function  displayFavorEventList(){
 $.getJSON('/event/listFavor.json', function(result) {
+  console.log(result)
   var templateFn = Handlebars.compile($('#event-favor-template').text())
   var generatedHTML = templateFn(result.data)
   var container = $('#event-favor-list')
@@ -10,39 +17,12 @@ $.getJSON('/event/listFavor.json', function(result) {
   if(result.data.listFavor.length == 0) {
     $("#event-favor-count-text").text("관심 이벤트 :  0  명")
   } else {
-    $("#event-favor-count-text").text("관심 이벤트 : " + result.data.listFavor[0].count + "명")
+    $("#event-favor-count-text").text("관심 이벤트 : " + result.data.listFavor.length + "명")
   }
   
-  var eventFavorDelbtn = $(".event-favor-delbtn")
-  eventFavorDelbtn.on('click', function (event) {
-    var no = $(this).parent().children()[1].value
-$.post('/event/favorRemove.json', {
-  'no': no
-}, function(result) {
-  swal({
-    title: "관심이벤트 리스트에서 \n\n뮤지션이 삭제되었습니다!",
-    type: "success",
-    showCancelButton: false,
-    confirmButtonColor: "#8069ef",
-    confirmButtonText: "확인",
-    customClass: "checkSwal"
-  },function() {
-    location.reload()
-  });
-}, 'json')
-  
-})
-  
 })
 
-
-$(document.body).on('click', '#event-favor-preview', function(event) {
-  location.href = '/mobile/gmode/musi-info/index.html?no=' + $("#hidden-no").val() 
-})
-
-$(document.body).on('click', '#event-favor-picture', function(event) {
-  location.href = '/mobile/gmode/musi-info/index.html?no=' + $("#hidden-no").val() 
-})
+}
   
 var lastScroll = 0;
 $(window).scroll(function(event){

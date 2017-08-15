@@ -1,7 +1,6 @@
 /* 이벤트 리스트 시작 */
-
 #event-surf-container {
-	position: absolute;
+  position: absolute;
   width: 100%;
   min-height: 100vh;
   box-sizing: border-box;
@@ -16,7 +15,7 @@
   height: 550px;
   width: 95%;
   margin-left: 2.5%;
-  margin-top: 10%;
+  margin-top: 7%;
   margin-bottom: 3%;
   text-align: justify;
   color: black;
@@ -39,9 +38,9 @@
   position: absolute;
   display: inline-block;
   top: 12%;
-left: 3%;
-height: 130px;
-width: 130px;
+  left: 3%;
+  height: 130px;
+  width: 130px;
   border-radius: 100%;
   overflow: hidden;
   background-size: cover;
@@ -77,7 +76,7 @@ width: 130px;
   position: absolute;
   display: inline-block;
   font-size: 3em;
-  color: #8079ef;/*crimson*/
+  color: #8079ef; /*crimson*/
   right: 3.5%;
   bottom: 9%;
 }
@@ -102,7 +101,7 @@ width: 130px;
   margin-left: 4%;
   max-width: 95%;
   text-overflow: ellipsis;
-  overflow:hidden;
+  overflow: hidden;
   white-space: nowrap;
 }
 
@@ -118,15 +117,15 @@ width: 130px;
 
 .event-surf-hashtagbox {
   height: 145px;
-color: #777;
-font-weight: 400;
-margin-left: 2.5%;
-margin-top: 2%;
-width: 95%;
-overflow: hidden;
+  color: #777;
+  font-weight: 400;
+  margin-left: 2.5%;
+  margin-top: 2%;
+  width: 95%;
+  overflow: hidden;
 }
 
-.event-surf-hashtagbox > span {
+.event-surf-hashtagbox>span {
   float: left;
   margin: 0 2%;
   font-size: 33px;
