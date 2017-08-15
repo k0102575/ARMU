@@ -59,7 +59,7 @@
 
 <script id="search-result-template" type="text/x-handlebars-template">
 {{#each listSearchResult}}
-  <div class="search-list">
+  <div class="search-list" data-no="{{no}}">
     <div class="search-list-img" style='background-image: url("{{photo}}_80.png")'></div>
     <div class="search-list-musi">
       <span>{{nickName}}</span>
@@ -74,18 +74,7 @@
 {{/each}}
 </script>
 <script>
-/*검색시작*/
-  
-  var searchText =$('#search-text')
-  searchText.keyup(function() {
-    console.log(searchText.val())
-	  $.post('/musician/listSearchResult.json', {'search':searchText.val()}, function(result) {
-	    console.log(result)
-	  }, function(err) {
-	    console.log(err)
-	  },'json')
-  })
-/* 검색끝 */
+
 
   /*메뉴 관련*/
   var container = $("#container"), menuBtn = $('#header-menu-menu'), menuBackscreen = $("#menu-backscreen"), menuToggle = $("#menu-toggle"), musicianFavor = $("#menu-category-musician-favor"), eventRegist = $("#menu-category-event-regist"), headerMenuSearch = $("#header-menu-search"), searchToggle = $("#search-toggle"), searchCancel = $('#search-cancel'), searchText = $('#search-text'), searchTextDelete = $('#search-text-delete'), searchBackScreen = $("#search-backscreen")
@@ -107,6 +96,7 @@
       direction : 'right'
     }, 300);
     searchBackScreen.css('display', 'block')
+    $('#search-text').val('')
     $('#search-text').focus()
     container.css('position', 'fixed').css('overflow', 'hidden');
   })
@@ -115,6 +105,7 @@
     searchToggle.toggle("slide", {
       direction : 'right'
     }, 300);
+    $('.search-list').remove()
     searchBackScreen.css('display', 'none')
     container.css('position', '').css('overflow', '');
   })
@@ -123,6 +114,7 @@
     searchToggle.toggle("slide", {
       direction : 'right'
     }, 300);
+    $('.search-list').remove()
     searchBackScreen.css('display', 'none')
     container.css('position', '').css('overflow', '');
   })
@@ -190,5 +182,75 @@
   })
 
   /* 로그인 관련*/
+  
+  /*검색시작*/
+  var searchText =$('#search-text')
+  searchText.keyup(function() {
+    console.log(searchText.val())
+    $.getJSON('/musician/listSearchResult.json', {'search':searchText.val()}, function(result) {
+      console.log(result)
+      $('.search-list').remove()
+      if(result.status != 'success') {
+        console.error("getJSON() 실패: ", result.status)
+        return;
+      }
+      
+      
+      $.each(result.data.listSearchResult, function(i, item) {
+        var starInteger = parseInt(item.score),
+        starRealNumber = item.score - starInteger;
+        starAdd(starInteger, starRealNumber, item)
+      });
+      
+      var templateFn = Handlebars.compile($('#search-result-template').text())
+      var generatedHTML = templateFn(result.data)
+      var container = $('#search-result-container')
+      var html = container.html()
+      container.html(html + generatedHTML)
+      
+      if(searchText.val() == ''){
+        $('.search-list').remove()
+      }
+      
+      $('.search-list').click(function(event) {
+        event.preventDefault()
+        location.href = '/mobile/gmode/musi-info/index.html?no=' + $(this).attr('data-no') 
+      })
+      
+    }, function(err) {
+      console.log(err)
+    })
+  })
+  
+  function starAdd(starInteger, starRealNumber, item) {
+  item.score = "";
+
+  for (var i = 1; i <= starInteger; i++) {
+    item.score += "<i class='fa fa-star' aria-hidden='true'></i>"
+  }
+
+  if(starInteger >= 5) {
+    return;
+  }
+
+  if(starRealNumber >= 0.8) {
+    item.score += "<i class='fa fa-star' aria-hidden='true'></i>"
+  } else if(starRealNumber <= 0.3) {
+    item.score += "<i class='fa fa-star-o' aria-hidden='true'></i>"
+  } else {
+    item.score += "<i class='fa fa-star-half-o' aria-hidden='true'></i>"
+  }
+
+  if(starInteger < 4) {
+    for (var i = 1; i <= 4 - starInteger; i++) {
+      item.score += "<i class='fa fa-star-o' aria-hidden='true'></i>"
+    }
+  }
+
+  return item;
+}
+  
+  
+/* 검색끝 */
 </script>
 <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
