@@ -30,10 +30,16 @@ from fav_evn
 where muno=3
 group by eno
 
+-- 특정 일반인의 관심 뮤지션 구하기
+select count(if(mno is not null, 1, 0)) as fav, mno, muno
+from fav_musi
+where mno = 4
+group by muno
+
 -- 관심 뮤지션 데이터를 통해 인기 있는 뮤지션 구하기
 select count(if(muno is not null, 1, 0)) as popu, muno
-  from fav_musi
-  group by muno
+from fav_musi
+group by muno
 
 
 -- 인기 테마
@@ -379,3 +385,109 @@ insert into chat (muno, mno, isread, msg, date, who) values (3, 11, 'N','오호�
 -- 채팅 읽음/안읽음 상태 업데이트하기
 update chat set isread='N'
 where mno=5 and muno=11 and isread='Y'
+
+
+
+-- 특정 일반회원의 이벤트 기본정보 가져오기
+select e.eno, e.title, e.date,  concat(lt.name, ' ', l.name) as location, e.addr, e.pay
+from (select * from evn where date >= curdate() and eno not in (select eno from mtc) order by date asc) e
+inner join memb m on e.mno=m.mno
+inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
+where m.mno=5
+
+
+-- 나의 모집 중인 이벤트 리스트 가져오기
+select e.eno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
+mj.name as major, g.name as genre, t.name as theme
+from (select * from evn where date >= curdate() and eno not in (select eno from mtc) order by date asc) e
+inner join memb m on e.mno=m.mno
+inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
+left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on me.mjrno=mj.mjrno
+left outer join gnr_evn ge on e.eno=ge.eno inner join gnr g on ge.gnrno=g.gnrno
+left outer join thm_evn te on e.eno=te.eno inner join thm t on te.thmno=t.thmno
+where m.mno=5
+
+
+
+-- 모든 모집 중인 이벤트 리스트 뷰 생성하기
+create view recruiting_eventlist as
+select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
+mj.name as major, g.name as genre, t.name as theme
+from (select * from evn where date >= curdate() and eno not in (select eno from mtc) order by date asc) e
+inner join memb m on e.mno=m.mno
+inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
+left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on me.mjrno=mj.mjrno
+left outer join gnr_evn ge on e.eno=ge.eno inner join gnr g on ge.gnrno=g.gnrno
+left outer join thm_evn te on e.eno=te.eno inner join thm t on te.thmno=t.thmno
+
+-- 모든 뮤지션의 모든 정보를 담은 뷰 생성하기
+create view musicians as
+select mu.muno, m.name, m.path, mu.nick, mu.age, mu.team, mu.hpg, mu.intro, mu.gender, score.score,
+mj.name as major, g.name as genre, t.name as theme
+from memb m inner join musi mu on m.mno=mu.muno
+left outer join mjr_musi mjm on mu.muno=mjm.muno inner join mjr mj on mjm.mjrno=mj.mjrno
+left outer join gnr_musi gm on mu.muno=gm.muno inner join gnr g on gm.gnrno=g.gnrno
+left outer join thm_musi tm on mu.muno=tm.muno inner join thm t on tm.thmno=t.thmno
+left outer join (
+  select avg(score) as score, muno
+  from mtc
+  group by muno
+) score on score.muno=mu.muno
+
+
+
+-- 이벤트 목록과 연결된 PR 뮤지션 리스트 뷰 생성하기
+create view eventlist_pr_musicians as
+select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme,
+pr.prno, mu.muno, mu.name, mu.path, mu.score,
+mu.major as mu_major, mu.genre as mu_genre, mu.theme as mu_theme
+from recruiting_eventlist e
+left outer join pr on e.eno=pr.eno
+left outer join musicians mu on pr.muno=mu.muno
+
+
+
+-- 이벤트 목록과 연결된 APPY 뮤지션 리스트 뷰 생성하기
+create view eventlist_appy_musicians as
+select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme,
+appy.appyno, mu.muno, mu.name, mu.path, mu.score,
+mu.major as mu_major, mu.genre as mu_genre, mu.theme as mu_theme
+from recruiting_eventlist e
+left outer join appy on e.eno=appy.eno
+left outer join musicians mu on appy.muno=mu.muno
+
+
+
+-- 나의 이벤트(모집 중인 이벤트)에 대하여 내가 지원을 요청한(PR) 뮤지션 리스트 가져오기
+select p.eno, p.title, p.date, p.location, p.addr, p.pay, p.major, p.genre, p.theme,
+p.prno, p.muno, p.name, p.path, p.score, p.mu_major, p.mu_genre, p.mu_theme, fav.fav
+from eventlist_pr_musicians p
+left outer join (
+  select count(if(mno is not null, 1, 0)) as fav, mno, muno
+  from fav_musi
+  where mno = 5
+  group by muno
+) fav on fav.muno=p.muno
+where p.mno=5
+
+
+-- 나의 특정 이벤트(모집 중인 이벤트)에 지원한(APPY) 뮤지션 리스트 가져오기
+select ap.eno, ap.title, ap.date, ap.location, ap.addr, ap.pay, ap.major, ap.genre, ap.theme,
+ap.appyno, ap.muno, ap.name, ap.path, ap.score, ap.mu_major, ap.mu_genre, ap.mu_theme, fav.fav
+from eventlist_appy_musicians ap
+left outer join (
+  select count(if(mno is not null, 1, 0)) as fav, mno, muno
+  from fav_musi
+  where mno = 5
+  group by muno
+) fav on fav.muno=ap.muno
+where ap.mno=5
+
+
+-- 나의 모집 중인 이벤트 리스트 & 각 이벤트의 지원자 리스트 & 각 이벤트의 요청자 리스트 모두 가져오기
+select p.eno, p.title, p.date, p.location, p.addr, p.pay, p.major, p.genre, p.theme,
+p.prno, p.muno, p.name, p.path, p.score, p.mu_major, p.mu_genre, p.mu_theme,
+ap.appyno, ap.muno, ap.name, ap.path, ap.score, ap.mu_major, ap.mu_genre, ap.mu_theme
+from eventlist_pr_musicians p left outer join eventlist_appy_musicians ap on p.eno=ap.eno
+where p.mno=5
+-- => 안됨

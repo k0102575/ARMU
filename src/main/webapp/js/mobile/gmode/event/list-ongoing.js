@@ -36,19 +36,18 @@ function displayOngoingEventList() {
 
 
 function controlBtns() {
-	var applicantBtn = $('#ongoing-applicant-btn'),
-		applicantBox = $( "#ongoing-applicant-box" ),
+	var applicantBtn = $('.ongoing-applicant-open-btn'),
 		eventBox = $('.event-box');
 	
 applicantBtn.on('click', function(e) {
-	if(applicantBtn.attr('data-open') == "true") {
-		applicantBtn.html('함께하는 뮤지션 <i class="fa fa-angle-down" aria-hidden="true"></i>')
+	if($(this).attr('data-open') == "true") {
+		$(this).html('함께하는 뮤지션 <i class="fa fa-angle-down" aria-hidden="true"></i>')
 					.attr('data-open', false)
 	} else {
-		applicantBtn.html('함께하는 뮤지션 <i class="fa fa-angle-up" aria-hidden="true"></i>')
+		$(this).html('함께하는 뮤지션 <i class="fa fa-angle-up" aria-hidden="true"></i>')
 					.attr('data-open', true)
 	}
-	applicantBox.toggle( "fold", 500 );
+	$(this).siblings(".ongoing-applicant-box" ).toggle( "fold", 500 );
 	e.preventDefault()
 })
 

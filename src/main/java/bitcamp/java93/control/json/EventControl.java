@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import bitcamp.java93.domain.Event;
 import bitcamp.java93.domain.Member;
-import bitcamp.java93.domain.Musician;
 import bitcamp.java93.service.EventService;
 
 @RestController
