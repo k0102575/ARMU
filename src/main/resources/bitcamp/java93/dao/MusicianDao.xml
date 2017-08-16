@@ -436,10 +436,11 @@
   left outer join loc_type lt on l.loctno = lt.loctno
   left outer join mjr_type mjrt on mj.mjrtno=mjrt.mjrtno
   left outer join gnr_type gnrt on g.gnrtno=gnrt.gnrtno
-  where m.name like '%${value}%' or
+  where mu.nick like '%${value}%' or
   l.name like '%${value}%' or
   g.name like '%${value}%' or
-  mj.name like '%${value}%'
+  mj.name like '%${value}%'or
+  t.name like '%${value}%'
   </select>
   
   
