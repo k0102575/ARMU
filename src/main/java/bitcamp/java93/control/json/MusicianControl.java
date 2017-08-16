@@ -97,7 +97,6 @@ public class MusicianControl {
 
     return result;
   }
-  
   @RequestMapping("listFavor")
   public JsonResult listFavor(HttpSession session) throws Exception {
     JsonResult result = new JsonResult();
@@ -150,6 +149,7 @@ public class MusicianControl {
     }
 
     return result;
+
   }
 
   @RequestMapping("listSurfFilter")
@@ -238,7 +238,6 @@ public class MusicianControl {
     JsonResult result = new JsonResult();
 
     try {
-      System.out.println(search);
       List<Musician> musicianList = musicianService.listSearchResult(search);
 
       result.setStatus(JsonResult.SUCCESS);

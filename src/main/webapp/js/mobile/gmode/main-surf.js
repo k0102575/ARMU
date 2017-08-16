@@ -317,11 +317,11 @@ seoul.click(function () {
 
 major.click(function () {
   if(locno ==3000)
-    loc=2000
+    locno=2000
   if(gnrno ==3000)
-    gen=2000
+    gnrno=2000
   mjrno = $(this).attr('data-no')
-//  console.log('major',loc,mjr,gen, checkVal,minAge,maxAge,indexL,indexM,indexG)
+//  console.log('major',locno,mjrno,gnrno, checkVal,minAge,maxAge,indexL,indexM,indexG)
     $.post('/musician/searchMusician.json',
         {'locno':locno, 'mjrno':mjrno, 'gnrno':gnrno, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,"gender" : checkVal, "minAge" : minAge, "maxAge" : maxAge}, function(result) {
         handleList(result)
