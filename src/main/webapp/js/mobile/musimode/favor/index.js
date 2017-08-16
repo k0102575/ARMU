@@ -1,8 +1,6 @@
 var moveTopBtn = $("#move_top_btn"),
     eventFavorPrev = $("#event-favor-prev")
     
-    
-    
 displayFavorEventList()
 HandlebarsIntl.registerWith(Handlebars);
     

@@ -1,6 +1,5 @@
 package bitcamp.java93.domain;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class Event {
   String contents;
   int downPay;
   int tmnno;
-  Date date;
+  String date;
   int rhspay;
   int rhsnum;
   int pr_count;
@@ -140,10 +139,10 @@ public class Event {
   public void setTmnno(int tmnno) {
     this.tmnno = tmnno;
   }
-  public Date getDate() {
+  public String getDate() {
     return date;
   }
-  public void setDate(Date date) {
+  public void setDate(String date) {
     this.date = date;
   }
   public int getRhspay() {
@@ -212,6 +211,8 @@ public class Event {
   public void setPickedList(ArrayList<Musician> pickedList) {
     this.pickedList = pickedList;
   }
+  
+  
   
   
   

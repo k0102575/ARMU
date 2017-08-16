@@ -19,7 +19,6 @@
 <script src="/node_modules/handlebars-intl/dist/handlebars-intl.min.js"></script>
 <script src="/node_modules/handlebars-intl/dist/locale-data/ko.js"></script>
 <script type="text/javascript" src="/node_modules/handlebars/dist/handlebars.js"></script>
-
 </head>
 <body>
 
@@ -46,21 +45,22 @@
 <script id="event-favor-template" type="text/x-handlebars-template">
 {{#each listFavor}}
 <div class="event-favor">
+  <div class="event-favor-dday">D-11</div>
+  <div class="event-favor-title"><span>{{title}}</span></div>
   {{#writeMember}}
   <div class='event-favor-writerbox'>
     <div class="event-favor-writer-img" style='background-image: url("{{photo}}")'></div>
     <div class="event-favor-writer-name"><span>{{name}}</span></div>
   {{/writeMember}}
-    <div class="event-favor-price">{{formatNumber pay style="currency" currency="KRW"}}</div>
-  {{#intl locales="ko-KO"}}
-    <div class="event-favor-date"><span>{{date}}</span></div><br>
-  {{/intl}}
   </div>
   
   <div class='event-favor-dscpbox'>
-    <div class="event-favor-title"><span>{{title}}</span></div>
+  {{#intl locales="ko-KO"}}
+    <div class="event-favor-date"><span>{{formatDate date day="numeric" month="long" year="numeric"}}</span></div><br>
+  {{/intl}}
     <div class='event-favor-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{location}}&nbsp;{{address}}</span></div><br>
-    <div class='event-favor-hashtagbox'>
+    <div class="event-favor-price">{{formatNumber pay style="currency" currency="KRW"}}</div>
+  <div class='event-favor-hashtagbox'>
     {{#majorList}}<span>#{{this}}</span>{{/majorList}}
     {{#themeList}}<span>#{{this}}</span>{{/themeList}}
     {{#genreList}}<span>#{{this}}</span>{{/genreList}}

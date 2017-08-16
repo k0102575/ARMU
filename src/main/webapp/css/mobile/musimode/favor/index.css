@@ -63,7 +63,7 @@
 .event-favor {
   position: relative;
   background-color: white;
-  height: 550px;
+  height: 450px;
   width: 100%;
   margin-top: 7%;
   margin-bottom: 3%;
@@ -78,6 +78,7 @@
   position: absolute;
   height: 350px;
   width: 30%;
+  top: 12%;
   z-index: 2;
 }
 
@@ -100,10 +101,27 @@
   font-size: 45px;
   font-weight: 400;
   color: black;
-  width: 100%;
+  width: 82%;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  position: absolute;
+  left: 18%;
+}
+
+.event-favor-dday {
+  display: inline-block;
+  position: absolute;
+  color: white;
+  font-size: 28px;
+  font-weight: 400;
+  width: auto;
+  padding-left: 2%;
+  padding-right: 2%;
+  background-color: #8069ef;
+  border-radius: 2%;
+  top: 3%;
+  left: 5%;
 }
 
 .event-favor-writer-name {
@@ -127,11 +145,8 @@
 .event-favor-date {
   color: black;
   font-size: 35px;
-  position: absolute;
   width: auto;
   white-space: nowrap;
-  left: 10%;
-  top: 82%;
 }
 
 .event-favor-area {
@@ -150,9 +165,6 @@
   font-weight: 500;
   color: black;
   white-space: nowrap;
-  position: absolute;
-  left: 15%;
-  top: 68%;
 }
 
 .event-favor-dscpbox {
@@ -160,6 +172,7 @@
   height: 350px;
   position: absolute;
   right: 0;
+  top: 20%;
 }
 
 .event-favor-hashtagbox {

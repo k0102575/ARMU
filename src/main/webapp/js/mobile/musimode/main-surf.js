@@ -8,7 +8,6 @@ function displaySurfEventList() {
 		  heartAdd(item)//관심정보 처리
 	  });
 	  
-    console.log(result)
     var templateFn = Handlebars.compile($('#event-surf-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#event-surf-container')
