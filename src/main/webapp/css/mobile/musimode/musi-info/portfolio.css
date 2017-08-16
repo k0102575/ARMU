@@ -96,23 +96,27 @@
   overflow: scroll;
   padding-bottom: 5%;
   box-sizing: border-box;
-  height: 100%;
+  height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-  url('/image/background/portfolio2.png'); 
+  url(/image/background/portfolio2.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 200vw 100vh;
   background-position: center center;
 }
 
 .spec-close {
-  height: 3%;
-  width: 5%;
+  height: 10%;
+  width: 100%;
   font-size: 2.5em;
   font-weight: 300;
-  margin-top: 3%;
   z-index: 15;
-  background-color: black;
+  background-color: none;
   color: white;
+  position: fixed;
+  bottom: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/image/background/portfolio2.png);
+  background-size: 200vw 100vh;
+  background-position: center 100%;
 }
 
 .spec-portfolio-container {
@@ -123,23 +127,30 @@
 
 #spec-date {
   width: 100%;
-  float: left;
-  font-size: 3em;
+  float: right;
   font-weight: normal;
   margin-top: 5%;
-  text-align: center;
+  text-align: right;
+  padding-right: 5%;
   color: white;
-  padding-left: 3%;
 }
 
 #spec-desc {
   width: 90%;
   float: left;
-  margin-left: 8%;
   font-size: 2.5em;
+  margin-left: 8%;
   font-weight: 400;
-  margin-top: 5%;
+margin-top: 10vh;
   margin-bottom: 5%;
+  color: white;
+}
+
+#portfolio-prev {
+  position: absolute;
+  left: 4%;
+  top: 22%;
+  font-size: 1.8em;
   color: white;
 }
 

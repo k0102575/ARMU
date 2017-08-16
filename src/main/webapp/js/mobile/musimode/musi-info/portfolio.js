@@ -58,23 +58,18 @@ function displayMusiInfoPortfolio() {
     
   $(".timeline-content").on('click', function(){
     var no = $(this).attr("data-no")
-    $(".spec-detail[data-no=" + no + "]").toggle(0)
+    $(".spec-detail[data-no=" + no + "]").toggle('slide', {direction:'down'}, 400)
     $("#spec-backscreen").css('display', 'block')
-    $("#musician-header-info-img").css('display','block')
     $("#container").css('position', 'fixed')
   })
   
   $(".spec-close").on('click', function() {
     var no = $(this).attr("data-no")
-    $(".spec-detail[data-no=" + no + "]").toggle(0)
+    $(".spec-detail[data-no=" + no + "]").toggle('slide', {direction:'down'}, 400)
     $("#spec-backscreen").css('display', 'none')
-    $("#musician-header-info-img").css('display','none')
     $("#container").css('position', 'relative')
   })
   
-        
-        
-
         
         
         

@@ -7,11 +7,12 @@
 <script id="musician-info-portfolio-template" type="text/x-handlebars-template">
 {{#each getPortfolio}}
   <div class="spec-detail" data-no='{{spno}}'>
-    <div>
-    <div class="spec-close" data-no='{{spno}}'><i class="fa fa-angle-left" id="musician-info-prev" aria-hclassden="true"></i></div>
+    <div class="spec-close" data-no='{{spno}}'><i class="fa fa-angle-left" id="portfolio-prev" aria-hclassden="true"></i>
     <div id="spec-date">
     {{specDate}}
     </div>
+    </div>
+
     <div id="spec-desc">
     {{specDscp}}
     </div>

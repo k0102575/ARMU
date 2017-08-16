@@ -5,16 +5,18 @@
 
 <script id="musician-info-portfolio-template" type="text/x-handlebars-template">
 {{#each getPortfolio}}
-  <div id="spec-backscreen"></div>
   <div class="spec-detail" data-no='{{spno}}'>
-    <div class="spec-close" data-no='{{spno}}'>닫기</div>
+    <div class="spec-close" data-no='{{spno}}'><i class="fa fa-angle-left" id="portfolio-prev" aria-hclassden="true"></i>
     <div id="spec-date">
     {{specDate}}
     </div>
+    </div>
+
     <div id="spec-desc">
     {{specDscp}}
     </div>
-
+    
+    <div class='spec-portfolio-container'>
     {{#each list}}
     {{#fileMap}} {{#isIndex key}}
     <img src="{{value}}" id="spec-picture">
@@ -24,6 +26,7 @@
     {{/isIndex}}
     {{/fileMap}}
     {{/each}}
+    </div>
   </div>
 
   <div id="timeline-container">
@@ -50,5 +53,3 @@
 
   
 <script src="/js/mobile/gmode/musi-info/portfolio.js"></script>
-  
-  
