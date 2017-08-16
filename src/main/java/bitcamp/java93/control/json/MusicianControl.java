@@ -218,7 +218,6 @@ public class MusicianControl {
   @RequestMapping("updateNick")
   public JsonResult updateNick(Musician musician) throws Exception {
     musicianService.updateNick(musician);
-    System.out.println(musician);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   

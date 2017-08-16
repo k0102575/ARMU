@@ -106,7 +106,6 @@ public class MusicianServiceImpl implements MusicianService {
   }
   
   public List<Musician> listSearchResult(String search) throws Exception {
-    System.out.println(search);
     return musicianDao.selectSearchResultList(search);
   }
 }

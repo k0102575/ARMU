@@ -45,6 +45,7 @@
 	   <i class="fa fa-search" id="search-icon" aria-hidden="true"></i>
 	   <input type="search" id="search-text" placeholder="뮤지션 검색" autofocus="autofocus">
 	   <i class="fa fa-times-circle" id="search-text-delete" aria-hidden="true"></i>
+	   <hr id="hrhrhr">
    </div> 
    </form>
   <!-- search-header -->
@@ -178,10 +179,23 @@
   
   /*검색시작*/
   var searchText =$('#search-text')
+    
+    
   searchText.keyup(function() {
-    console.log(searchText.val())
+    if(searchText.val().length != 0) {
+      $('#search-text-delete').css('display','block')
+    }
+    if(searchText.val().length == 0) {
+      $('#search-text-delete').css('display','none')
+    }
+    $('#search-text-delete').on('click', function(){
+      $('.search-list').remove()
+      searchText.val('')
+      $('#search-text-delete').css('display','none')
+    })
+    
     $.getJSON('/musician/listSearchResult.json', {'search':searchText.val()}, function(result) {
-      console.log(result)
+      //console.log(result)
       $('.search-list').remove()
       if(result.status != 'success') {
         console.error("getJSON() 실패: ", result.status)
