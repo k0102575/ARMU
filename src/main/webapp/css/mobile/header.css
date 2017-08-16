@@ -266,9 +266,9 @@
 
 /*검색 div*/
 #search-result-container {
-	background-color: #f5f5f5;
+	background-color: rgba(245, 245, 245, 0);
 	position: relative;
-	margin-top: 10%;
+	margin-top: 30%;
 }
 
 .search-list {

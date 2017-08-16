@@ -49,11 +49,11 @@
    </form>
   <!-- search-header -->
   </div>
+  <div id="search-result-container">
+  </div>
   
   <!-- search-contents -->
 </div>
-  <div id="search-result-container">
-  </div>
 <!-- search-toggle -->
 
 
@@ -101,21 +101,8 @@
     searchBackScreen.css('display', 'block')
     $('#search-text').val('')
     $('#search-text').focus()
-    mainRecommand.css('position', 'fixed').css('overflow', 'hidden')
-    mainSurf.css('position', 'fixed').css('overflow', 'hidden')
-    mainAct.css('position', 'fixed').css('overflow', 'hidden')
   })
 
-  searchBackScreen.on('click', function() {
-    searchToggle.toggle("slide", {
-      direction : 'right'
-    }, 300);
-    $('.search-list').remove()
-    searchBackScreen.css('display', 'none')
-    mainRecommand.css('position', '').css('overflow', '');
-    mainSurf.css('position', '').css('overflow', '');
-    mainAct.css('position', '').css('overflow', '');
-  })
 
   searchCancel.on('click', function() {
     searchToggle.toggle("slide", {
@@ -123,7 +110,6 @@
     }, 300);
     $('.search-list').remove()
     searchBackScreen.css('display', 'none')
-    container.css('position', '').css('overflow', '');
   })
 
   searchTextDelete.on('click', function() {
