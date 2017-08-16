@@ -44,7 +44,7 @@
   <form action="">
    <div id="search-container">
      <i class="fa fa-search" id="search-icon" aria-hidden="true"></i>
-     <input type="search" id="search-text" placeholder="뮤지션 검색" autofocus="autofocus">
+     <input type="search" id="search-text" placeholder="이벤트 검색" autofocus="autofocus">
      <i class="fa fa-times-circle" id="search-text-delete" aria-hidden="true"></i>
      <hr id="hrhrhr">
    </div> 
@@ -60,13 +60,14 @@
 
 <script id="search-result-template" type="text/x-handlebars-template">
 {{#each listSearchResult}}
-  <div class="search-list" data-no="{{no}}">
-    <div class="search-list-img" style='background-image: url("{{photo}}_80.png")'></div>
-    <div class="search-list-musi">
-      <span>{{nickName}}</span>
-      <div class="search-list-score">{{{score}}}</div>
+  <div class="search-event-list" data-no="{{no}}">
+    <div class="search-event-list-img" style='background-image: url("{{#writeMember}}{{photo}}{{/writeMember}}_80.png")'></div>
+    <div class="member-name" style="color: white;">{{#writeMember}}{{name}}{{/writeMember}}</div>
+    <div class="search-event-list-musi">
+      <span>{{title}}</span>
+      <div><span>{{formatNumber pay style="currency" currency="KRW"}}</span> &nbsp;&nbsp;<span><i class="fa fa-map-marker" aria-hidden="true"></i>{{location}}</span></div>
     </div>
-    <div class="search-list-hashtagbox">
+    <div class="search-event-list-hashtagbox">
       {{#each majorList}} <span>#{{this}}</span> {{/each}}
       {{#each genreList}} <span>#{{this}}</span> {{/each}}
       {{#each themeList}} <span>#{{this}}</span> {{/each}}
@@ -74,6 +75,7 @@
   </div>
 {{/each}}
 </script>
+
 <script>
 /*메뉴 관련*/
 	var container = $("#container"),
@@ -112,7 +114,7 @@
     searchToggle.toggle("slide", {
       direction : 'right'
     }, 300);
-    $('.search-list').remove()
+    $('.search-event-list').remove()
   })
 
   searchTextDelete.on('click', function() {
@@ -173,14 +175,14 @@
       $('#search-text-delete').css('display','none')
     }
     $('#search-text-delete').on('click', function(){
-      $('.search-list').remove()
+      $('.search-event-list').remove()
       searchText.val('')
       $('#search-text-delete').css('display','none')
     })
     
-    $.getJSON('/musician/listSearchResult.json', {'search':searchText.val()}, function(result) {
+    $.getJSON('/event/listSearchResult.json', {'search':searchText.val()}, function(result) {
       //console.log(result)
-      $('.search-list').remove()
+      $('.search-event-list').remove()
       if(result.status != 'success') {
         console.error("getJSON() 실패: ", result.status)
         return;
@@ -200,10 +202,10 @@
       container.html(html + generatedHTML)
       
       if(searchText.val() == ''){
-        $('.search-list').remove()
+        $('.search-event-list').remove()
       }
       
-      $('.search-list').click(function(event) {
+      $('.search-event-list').click(function(event) {
         event.preventDefault()
         location.href = '/mobile/gmode/musi-info/index.html?no=' + $(this).attr('data-no') 
       })

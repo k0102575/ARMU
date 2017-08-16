@@ -249,6 +249,30 @@
     order by eno
   </select>
 
+  <select id="selectSearchResultList" resultMap="eventMapBasic" parameterType="string">
+    select e.title, e.eno, e.date, concat(lt.name, ' ', l.name) as location,
+    e.addr, e.pay,
+    mj.name as major, g.name as genre, t.name as theme,
+    m.mno, m.name, m.path
+    from (select * from evn where date >= curdate() and eno not in (select eno
+    from mtc) order by date asc) e
+    inner join memb m on e.mno=m.mno
+    inner join loc l on e.locno=l.locno inner join loc_type lt on
+    l.loctno=lt.loctno
+    left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on
+    me.mjrno=mj.mjrno
+    left outer join gnr_evn ge on e.eno=ge.eno inner join gnr g on
+    ge.gnrno=g.gnrno
+    left outer join thm_evn te on e.eno=te.eno inner join thm t on
+    te.thmno=t.thmno
+    left outer join mjr_musi mjm on mj.mjrno=mjm.mjrno
+    left outer join gnr_musi gm on g.gnrno=gm.gnrno
+    left outer join thm_musi tm on t.thmno=tm.thmno
+    where l.name like '%${value}%' or
+    g.name like '%${value}%' or
+    mj.name like '%${value}%'or
+    t.name like '%${value}%'
+  </select>
 
 </mapper>
 

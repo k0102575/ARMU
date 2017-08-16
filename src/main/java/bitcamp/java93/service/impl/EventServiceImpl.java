@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import bitcamp.java93.dao.EventDao;
 import bitcamp.java93.dao.NotificationDao;
 import bitcamp.java93.domain.Event;
+import bitcamp.java93.domain.Musician;
 import bitcamp.java93.service.EventService;
 
 @Service
@@ -124,6 +125,10 @@ public class EventServiceImpl implements EventService {
   @Override
   public List<Event> listSurf(int no) throws Exception {
     return eventDao.selectSurfList(no);
+  }
+  
+  public List<Event> listSearchResult(String search) throws Exception {
+    return eventDao.selectSearchResultList(search);
   }
   
 }

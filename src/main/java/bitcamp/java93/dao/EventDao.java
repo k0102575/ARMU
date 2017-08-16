@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import bitcamp.java93.domain.Event;
+import bitcamp.java93.domain.Musician;
 
 public interface EventDao {
   List<Event> selectOngoingList();
@@ -21,4 +22,5 @@ public interface EventDao {
   void favorEventRemove(HashMap<String,Object> valueMap);
   void favorEventAdd(HashMap<String,Object> valueMap);
   List<Event> selectSurfList(int no);
+  List<Event> selectSearchResultList(String search);
 }

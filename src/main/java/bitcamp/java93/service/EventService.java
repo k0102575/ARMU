@@ -3,6 +3,7 @@ package bitcamp.java93.service;
 import java.util.List;
 
 import bitcamp.java93.domain.Event;
+import bitcamp.java93.domain.Musician;
 
 public interface EventService {
   List<Event> listOngoing() throws Exception;//일반모드 > 나의이벤트 > 진행중 이벤트 리스트
@@ -17,4 +18,5 @@ public interface EventService {
   void favorRemove(int myNo, int eNo) throws Exception;
   void favorAdd(int myNo, int eNo) throws Exception;
   List<Event> listSurf(int no) throws Exception;
+  List<Event> listSearchResult(String search) throws Exception;
 }
