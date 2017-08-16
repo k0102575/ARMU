@@ -1,5 +1,6 @@
 package bitcamp.java93.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import bitcamp.java93.domain.Musician;
@@ -19,6 +20,7 @@ public interface MusicianService {
   void updateNick(Musician musician) throws Exception;
   Musician getByMuno(int no) throws Exception;
   void remove(int no) throws Exception;
+  List<Musician> listPr(HashMap<String, Object> map) throws Exception;
 }
 
 

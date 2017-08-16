@@ -1094,18 +1094,17 @@ left outer join (
 -- 이벤트 목록과 연결된 PR 뮤지션 리스트 뷰 생성하기
 create view eventlist_pr_musicians as
 select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme,
-pr.prno, mu.muno, mu.name, mu.path, mu.score,
-mu.major as mu_major, mu.genre as mu_genre, mu.theme as mu_theme
+pr.prno, mu.muno, mu.nick, m.path
 from recruiting_eventlist e
 left outer join pr on e.eno=pr.eno
-left outer join musicians mu on pr.muno=mu.muno;
+left outer join musi mu on pr.muno=mu.muno inner join memb m on mu.muno=m.mno;
+
 
 
 -- 이벤트 목록과 연결된 APPY 뮤지션 리스트 뷰 생성하기
 create view eventlist_appy_musicians as
 select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme,
-appy.appyno, mu.muno, mu.name, mu.path, mu.score,
-mu.major as mu_major, mu.genre as mu_genre, mu.theme as mu_theme
+appy.appyno, mu.muno, mu.nick, m.path
 from recruiting_eventlist e
 left outer join appy on e.eno=appy.eno
-left outer join musicians mu on appy.muno=mu.muno;
+left outer join musi mu on appy.muno=mu.muno inner join memb m on mu.muno=m.mno;

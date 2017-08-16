@@ -153,6 +153,20 @@
     order by mum.name asc
   </select> <!-- 완진 -->
   
+  
+  <select id="selectPrList" resultMap="musicianMap" parameterType="map">
+  select p.eno, p.muno as mno, p.nick, p.path, p.score,
+p.mu_major as major, p.mu_genre as genre, p.mu_theme as theme, fav.fav, null as location
+from eventlist_pr_musicians p
+left outer join (
+  select count(if(mno is not null, 1, 0)) as fav, mno, muno
+  from fav_musi
+  where mno = #{memberNo}
+  group by muno
+) fav on fav.muno=p.muno
+where p.mno=#{memberNo} and p.eno=#{eventNo}
+  </select><!-- 완진 -->
+  
    <select id="selectFavorList" resultMap="musicianFavorMap" parameterType="int">
    select ctr.count, m.mno, m.name, m.path, gnr.name as genre, mjr.name as major, loct.name as location
    from fav_musi fmu

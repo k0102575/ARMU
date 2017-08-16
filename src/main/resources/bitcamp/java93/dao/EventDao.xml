@@ -15,11 +15,9 @@
     <result column="cont" property="contents" />
     <result column="dpay" property="downPay" />
     <result column="date" property="date" />
-    <result column="pay" property="rhspay" />
+    <result column="rpay" property="rhspay" />
     <result column="info" property="rhsinfo" />
     <result column="num" property="rhsnum" />
-    <association property="musician" resultMap="musicianMap2">
-    </association>
     <collection property="genreList" ofType="string">
       <result column="genre" />
     </collection>
@@ -74,28 +72,47 @@
     </collection>
   </resultMap>
 
-  <resultMap type="musician" id="musicianMap2">
-    <id column="mno" property="no" />
-    <result column="name" property="name" />
-    <result column="path" property="photo" />
-    <collection property="majorList" ofType="string">
-      <result column="major2" />
+
+  <resultMap type="event" id="eventMapRecruit">
+    <id column="eno" property="no" />
+    <result column="mno" property="writer" />
+    <result column="title" property="title" />
+    <result column="date" property="date" />
+    <result column="location" property="location" />
+    <result column="addr" property="address" />
+    <result column="pay" property="pay" />
+    <collection property="appyList" ofType="Musician">
+      <id column="ap_muno" property="no"/>
+      <result column="ap_nick" property="nickName"/>
+      <result column="ap_path" property="photo"/>
+    </collection>
+    <collection property="prList" ofType="Musician">
+      <id column="p_muno" property="no"/>
+      <result column="p_nick" property="nickName"/>
+      <result column="p_path" property="photo"/>
     </collection>
     <collection property="genreList" ofType="string">
-      <result column="genre2" />
+      <result column="genre" />
     </collection>
     <collection property="themeList" ofType="string">
-      <result column="theme2" />
+      <result column="theme" />
+    </collection>
+    <collection property="majorList" ofType="string">
+      <result column="major" />
     </collection>
   </resultMap>
+  
 
-  <resultMap type="notification" id="notoficationMap">
-  </resultMap>
-
-
-  <select id="selectOngoingList" resultMap="eventMap, musicianMap2">
-
+  <select id="selectRecruitingList" resultMap="eventMapRecruit" parameterType="int">
+  select ap.eno, ap.mno, ap.title, ap.date, ap.location, ap.addr, ap.pay, 
+  ap.major, ap.genre, ap.theme,
+ap.appyno, ap.muno as ap_muno, ap.nick as ap_nick, ap.path as ap_path,
+ p.prno, p.muno as p_muno, p.nick as p_nick, p.path as p_path
+from eventlist_appy_musicians ap
+left outer join eventlist_pr_musicians p on ap.eno = p.eno
+where ap.mno=#{no}
   </select><!-- 완진 -->
+
 
   <select id="selectRecommandList" resultMap="eventMapBasic"
     parameterType="int">
@@ -148,6 +165,8 @@
     group by eno
     ) fe on fe.eno=e.eno
   </select><!-- 완진 -->
+  
+  
 
   <insert id="insert" parameterType="event" useGeneratedKeys="true"
     keyColumn="eno" keyProperty="no">

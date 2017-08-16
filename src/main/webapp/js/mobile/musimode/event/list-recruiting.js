@@ -19,7 +19,13 @@ if(isRecommandEvent) {
 }
 
 function displayRecruitingEventList() {
-  $.getJSON('/musician/listRecommand.json', function(result) {
+  $.getJSON('/event/listRecruiting.json', function(result) {
+    if(result.status != 'success') {
+      console.error("getJSON() 실패: ", result.status)
+      return;
+    }
+    
+    console.log(result.data)
     var templateFn = Handlebars.compile($('#recruiting-event-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#recruiting-event-container')

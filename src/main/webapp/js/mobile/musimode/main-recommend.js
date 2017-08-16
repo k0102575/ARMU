@@ -10,8 +10,7 @@ function displayRecommandEventList() {
 			console.error("getJSON() 실패: ", result.status)
 			return;
 		}
-		
-			$.each(result.data.listRecommand, function(i, item) {
+			$.each(result.data.listRecruiting, function(i, item) {
 				var starInteger = parseInt(item.score),
 				starRealNumber = item.score - starInteger;
 				starAdd(starInteger, starRealNumber, item)//별점 처리

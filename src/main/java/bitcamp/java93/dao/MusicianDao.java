@@ -20,4 +20,5 @@ public interface MusicianDao {
   void updateNick(Musician musician);
   Musician selectMusiNo(int no);
   int delete(int no);
+  List<Musician> selectPrList(HashMap<String,Object> valueMap);
 }

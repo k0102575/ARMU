@@ -439,28 +439,26 @@ left outer join (
 -- 이벤트 목록과 연결된 PR 뮤지션 리스트 뷰 생성하기
 create view eventlist_pr_musicians as
 select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme,
-pr.prno, mu.muno, mu.name, mu.path, mu.score,
-mu.major as mu_major, mu.genre as mu_genre, mu.theme as mu_theme
+pr.prno, mu.muno, mu.nick, m.path
 from recruiting_eventlist e
 left outer join pr on e.eno=pr.eno
-left outer join musicians mu on pr.muno=mu.muno
+left outer join musi mu on pr.muno=mu.muno inner join memb m on mu.muno=m.mno
 
 
 
 -- 이벤트 목록과 연결된 APPY 뮤지션 리스트 뷰 생성하기
 create view eventlist_appy_musicians as
 select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme,
-appy.appyno, mu.muno, mu.name, mu.path, mu.score,
-mu.major as mu_major, mu.genre as mu_genre, mu.theme as mu_theme
+appy.appyno, mu.muno, mu.nick, m.path
 from recruiting_eventlist e
 left outer join appy on e.eno=appy.eno
-left outer join musicians mu on appy.muno=mu.muno
+left outer join musi mu on appy.muno=mu.muno inner join memb m on mu.muno=m.mno
 
 
 
--- 나의 이벤트(모집 중인 이벤트)에 대하여 내가 지원을 요청한(PR) 뮤지션 리스트 가져오기
-select p.eno, p.title, p.date, p.location, p.addr, p.pay, p.major, p.genre, p.theme,
-p.prno, p.muno, p.name, p.path, p.score, p.mu_major, p.mu_genre, p.mu_theme, fav.fav
+-- 나의 이벤트(모집 중인 이벤트)에 대하여 내가 지원을 요청한(PR) 뮤지션(상세) 리스트 가져오기
+select p.eno, p.prno, p.muno, p.name, p.path, p.score,
+p.mu_major, p.mu_genre, p.mu_theme, fav.fav
 from eventlist_pr_musicians p
 left outer join (
   select count(if(mno is not null, 1, 0)) as fav, mno, muno
@@ -471,7 +469,7 @@ left outer join (
 where p.mno=5
 
 
--- 나의 특정 이벤트(모집 중인 이벤트)에 지원한(APPY) 뮤지션 리스트 가져오기
+-- 나의 특정 이벤트(모집 중인 이벤트)에 지원한(APPY) 뮤지션(상세) 리스트 가져오기
 select ap.eno, ap.title, ap.date, ap.location, ap.addr, ap.pay, ap.major, ap.genre, ap.theme,
 ap.appyno, ap.muno, ap.name, ap.path, ap.score, ap.mu_major, ap.mu_genre, ap.mu_theme, fav.fav
 from eventlist_appy_musicians ap
@@ -484,10 +482,9 @@ left outer join (
 where ap.mno=5
 
 
--- 나의 모집 중인 이벤트 리스트 & 각 이벤트의 지원자 리스트 & 각 이벤트의 요청자 리스트 모두 가져오기
-select p.eno, p.title, p.date, p.location, p.addr, p.pay, p.major, p.genre, p.theme,
-p.prno, p.muno, p.name, p.path, p.score, p.mu_major, p.mu_genre, p.mu_theme,
-ap.appyno, ap.muno, ap.name, ap.path, ap.score, ap.mu_major, ap.mu_genre, ap.mu_theme
-from eventlist_pr_musicians p left outer join eventlist_appy_musicians ap on p.eno=ap.eno
-where p.mno=5
--- => 안됨
+-- 나의 이벤트(모집 중인 이벤트)에 대하여 내가 지원을 요청한(PR)뮤지션 & 뮤지션이 지원한(APPY) 뮤지션 리스트 가져오기
+select ap.eno, ap.title, ap.date, ap.location, ap.addr, ap.pay, ap.major, ap.genre, ap.theme,
+ap.appyno, ap.muno, ap.nick, ap.path, p.prno, p.muno, p.nick, p.path
+from eventlist_appy_musicians ap
+left outer join eventlist_pr_musicians p on ap.eno = p.eno
+where ap.mno=5

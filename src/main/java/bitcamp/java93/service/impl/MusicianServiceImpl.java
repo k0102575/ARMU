@@ -108,6 +108,11 @@ public class MusicianServiceImpl implements MusicianService {
   public List<Musician> listSearchResult(String search) throws Exception {
     return musicianDao.selectSearchResultList(search);
   }
+
+  public List<Musician> listPr(HashMap<String, Object> map) throws Exception {
+    return musicianDao.selectPrList(map);
+  }
+
 }
 
 

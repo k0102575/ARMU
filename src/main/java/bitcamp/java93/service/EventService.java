@@ -18,5 +18,9 @@ public interface EventService {
   void favorRemove(int myNo, int eNo) throws Exception;
   void favorAdd(int myNo, int eNo) throws Exception;
   List<Event> listSurf(int no) throws Exception;
+<<<<<<< Updated upstream
   List<Event> listSearchResult(String search) throws Exception;
+=======
+  List<Event> listRecruiting(int no) throws Exception;//나의이벤트 > 모집중 이벤트 리스트
+>>>>>>> Stashed changes
 }

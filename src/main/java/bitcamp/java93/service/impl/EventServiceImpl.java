@@ -126,6 +126,11 @@ public class EventServiceImpl implements EventService {
   public List<Event> listSurf(int no) throws Exception {
     return eventDao.selectSurfList(no);
   }
+
+  /*나의이벤트 > 모집중 이벤트 리스트*/
+  public List<Event> listRecruiting(int no) throws Exception {
+    return eventDao.selectRecruitingList(no);
+  }
   
   public List<Event> listSearchResult(String search) throws Exception {
     return eventDao.selectSearchResultList(search);

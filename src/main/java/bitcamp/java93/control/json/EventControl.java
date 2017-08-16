@@ -23,21 +23,6 @@ public class EventControl {
   @Autowired ServletContext servletContext;
   @Autowired EventService eventService;
   
-//  @RequestMapping("listOngoing")
-//  public JsonResult listOngoing() {
-//    JsonResult result = new JsonResult();
-//    try {
-//      HashMap<String,Object> dataMap = new HashMap<>();
-//      dataMap.put("listOngoing",eventService.listOngoing());
-//
-//      result.setData(dataMap);
-//      result.setStatus(JsonResult.SUCCESS);
-//    } catch (Exception e) {
-//      result.setStatus(JsonResult.ERROR);
-//      e.printStackTrace();
-//    }
-//    return result;
-//  }
   
   @RequestMapping("addReherse")
   public JsonResult addReherse(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre, HttpSession session) throws Exception {
@@ -225,6 +210,7 @@ public class EventControl {
     return result;
   }
   
+<<<<<<< Updated upstream
   @RequestMapping("listSearchResult")
   public JsonResult listSearchResult(HttpSession session, String search) {
     JsonResult result = new JsonResult();
@@ -241,10 +227,29 @@ public class EventControl {
     } catch (Exception e) {
       e.printStackTrace();
       result.setStatus(JsonResult.ERROR);
+=======
+  /*나의이벤트 > 모집중 이벤트 리스트*/
+  @RequestMapping("listRecruiting")
+  public JsonResult listRecruiting(HttpSession session) {
+    JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listRecruiting",eventService.listRecruiting(getLoginMember(session).getNo()));
+
+      result.setData(dataMap);
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+>>>>>>> Stashed changes
     }
     return result;
   }
   
+<<<<<<< Updated upstream
+=======
+  
+>>>>>>> Stashed changes
   private Member getLoginMember(HttpSession session) {
     Member loginMember = (Member) session.getAttribute("loginMember");
       return loginMember;
