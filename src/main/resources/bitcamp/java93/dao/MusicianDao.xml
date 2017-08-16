@@ -155,8 +155,8 @@
   
   
   <select id="selectPrList" resultMap="musicianMap" parameterType="map">
-  select p.eno, p.muno as mno, p.nick, p.path, p.score,
-p.mu_major as major, p.mu_genre as genre, p.mu_theme as theme, fav.fav, null as location
+  select p.eno, p.muno as mno, p.nick, p.path,
+p.major as major, p.genre as genre, p.theme as theme, fav.fav, '' as location
 from eventlist_pr_musicians p
 left outer join (
   select count(if(mno is not null, 1, 0)) as fav, mno, muno

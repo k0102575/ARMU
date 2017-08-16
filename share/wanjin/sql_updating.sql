@@ -30,16 +30,10 @@ from fav_evn
 where muno=3
 group by eno
 
--- 특정 일반인의 관심 뮤지션 구하기
-select count(if(mno is not null, 1, 0)) as fav, mno, muno
-from fav_musi
-where mno = 4
-group by muno
-
 -- 관심 뮤지션 데이터를 통해 인기 있는 뮤지션 구하기
 select count(if(muno is not null, 1, 0)) as popu, muno
-from fav_musi
-group by muno
+  from fav_musi
+  group by muno
 
 
 -- 인기 테마
@@ -387,7 +381,6 @@ update chat set isread='N'
 where mno=5 and muno=11 and isread='Y'
 
 
-
 -- 특정 일반회원의 이벤트 기본정보 가져오기
 select e.eno, e.title, e.date,  concat(lt.name, ' ', l.name) as location, e.addr, e.pay
 from (select * from evn where date >= curdate() and eno not in (select eno from mtc) order by date asc) e
@@ -488,3 +481,15 @@ ap.appyno, ap.muno, ap.nick, ap.path, p.prno, p.muno, p.nick, p.path
 from eventlist_appy_musicians ap
 left outer join eventlist_pr_musicians p on ap.eno = p.eno
 where ap.mno=5
+
+
+select p.eno, p.muno as mno, p.nick, p.path,
+p.major as major, p.genre as genre, p.theme as theme, fav.fav, '' as location
+from eventlist_pr_musicians p
+left outer join (
+  select count(if(mno is not null, 1, 0)) as fav, mno, muno
+  from fav_musi
+  where mno = 5
+  group by muno
+) fav on fav.muno=p.muno
+where p.mno=5 and p.eno=4

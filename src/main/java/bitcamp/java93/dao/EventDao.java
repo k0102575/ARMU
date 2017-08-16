@@ -22,9 +22,6 @@ public interface EventDao {
   void favorEventRemove(HashMap<String,Object> valueMap);
   void favorEventAdd(HashMap<String,Object> valueMap);
   List<Event> selectSurfList(int no);
-<<<<<<< Updated upstream
   List<Event> selectSearchResultList(String search);
-=======
   List<Event> selectRecruitingList(int no);//나의이벤트 > 모집중 이벤트 리스트
->>>>>>> Stashed changes
 }

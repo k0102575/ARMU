@@ -210,7 +210,7 @@ public class EventControl {
     return result;
   }
   
-<<<<<<< Updated upstream
+
   @RequestMapping("listSearchResult")
   public JsonResult listSearchResult(HttpSession session, String search) {
     JsonResult result = new JsonResult();
@@ -227,7 +227,10 @@ public class EventControl {
     } catch (Exception e) {
       e.printStackTrace();
       result.setStatus(JsonResult.ERROR);
-=======
+    }
+  return result;
+}
+
   /*나의이벤트 > 모집중 이벤트 리스트*/
   @RequestMapping("listRecruiting")
   public JsonResult listRecruiting(HttpSession session) {
@@ -241,15 +244,10 @@ public class EventControl {
     } catch (Exception e) {
       result.setStatus(JsonResult.ERROR);
       e.printStackTrace();
->>>>>>> Stashed changes
     }
     return result;
   }
   
-<<<<<<< Updated upstream
-=======
-  
->>>>>>> Stashed changes
   private Member getLoginMember(HttpSession session) {
     Member loginMember = (Member) session.getAttribute("loginMember");
       return loginMember;
