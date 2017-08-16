@@ -219,11 +219,11 @@
   </select>
 
   <select id="favorEventRemove" parameterType="map">
-    delete from fav_evn where muno = #{muNo} and eno = #{eNo};
+    delete from fav_evn where muno = #{myNo} and eno = #{eNo};
   </select> <!-- 승민 -->
 
   <select id="favorEventAdd" parameterType="map">
-    insert into fav_evn (muno, eno) values (#{muNo}, #{eNo})
+    insert into fav_evn (muno, eno) values (#{myNo}, #{eNo})
   </select> <!-- 승민 -->
 
   <select id="selectSurfList" resultMap="eventMapBasic"

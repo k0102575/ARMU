@@ -76,7 +76,7 @@
 
 .event-favor-writerbox {
   position: absolute;
-  height: 350px;
+  height: 250px;
   width: 30%;
   top: 12%;
   z-index: 2;
@@ -86,7 +86,7 @@
   position: absolute;
   display: inline-block;
   top: 12%;
-  left: 15%;
+  left: 20%;
   height: 150px;
   width: 150px;
   border-radius: 100%;
@@ -126,8 +126,8 @@
 
 .event-favor-writer-name {
   position: absolute;
-  top: 55%;
-  left: 26%;
+  top: 75%;
+  left: 31%;
   font-size: 30px;
   font-weight: 300;
   color: #252525;
@@ -187,6 +187,20 @@
   float: left;
   margin-right: 2%;
   font-size: 33px;
+}
+
+.event-favor-delete-button {
+  width: 20%;
+  height: 15%;
+  background-color: white;
+  border: 1px solid black;
+  font-size: 200%;
+  z-index: 15;
+  position: absolute;
+  bottom: 10%;
+  left: 4%;
+  line-height: 65px;
+  text-align: center;
 }
 
 /* 관심 이벤트 끝 */

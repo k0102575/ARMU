@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="/node_modules/animsition/dist/css/animsition.min.css">
 <link rel="stylesheet" href="/node_modules/swiper/dist/css/swiper.min.css">
 <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/node_modules/sweetalert/dist/sweetalert.css">
 <link href="/css/mobile/common.css" rel="stylesheet" type="text/css" media="all">
 <link href="/css/mobile/header.css" rel="stylesheet" type="text/css" media="all">
 <link href="/css/mobile/musimode/favor/index.css" rel="stylesheet" type="text/css" media="all">
@@ -44,7 +45,7 @@
 
 <script id="event-favor-template" type="text/x-handlebars-template">
 {{#each listFavor}}
-<div class="event-favor">
+<div class="event-favor" data-no='{{no}}'>
   <div class="event-favor-dday">D-11</div>
   <div class="event-favor-title"><span>{{title}}</span></div>
   {{#writeMember}}
@@ -53,8 +54,9 @@
     <div class="event-favor-writer-name"><span>{{name}}</span></div>
   {{/writeMember}}
   </div>
+  <button type='button' class='event-favor-delete-button' value='{{no}}'>삭제</button>
   
-  <div class='event-favor-dscpbox'>
+  <div class='event-favor-dscpbox' data-no='{{no}}'>
   {{#intl locales="ko-KO"}}
     <div class="event-favor-date"><span>{{formatDate date day="numeric" month="long" year="numeric"}}</span></div><br>
   {{/intl}}

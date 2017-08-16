@@ -15,13 +15,13 @@
   height: 550px;
   width: 95%;
   margin-left: 2.5%;
-  margin-top: 7%;
+  margin-top: 4%;
   margin-bottom: 3%;
   text-align: justify;
   color: black;
   z-index: 1;
   border-radius: 10px;
-  box-shadow: 1px 1px 11px 1px rgba(51, 51, 51, 0.27);
+  box-shadow: 2px 2px 3px 1px rgba(51, 51, 51, 0.27);
   background-size: cover;
 }
 

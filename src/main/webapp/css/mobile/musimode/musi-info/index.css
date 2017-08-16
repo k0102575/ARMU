@@ -28,12 +28,12 @@
  }
 
 #musician-info-prev {
-  position: absolute;
-  left: 3%;
-  top: 12%;
-  transform: translate(-3%, 12%);
-  font-size: 400%;
-  color:white;
+    position: absolute;
+    left: 3%;
+    top: 7%;
+    transform: translate(-3%, 12%);
+    font-size: 3.5rem;
+    color: white;
 }
 
 /* 헤더부분 끗 */
