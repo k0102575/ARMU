@@ -78,7 +78,7 @@
 
 
   /*메뉴 관련*/
-  var container = $("#container"), menuBtn = $('#header-menu-menu'), menuBackscreen = $("#menu-backscreen"), menuToggle = $("#menu-toggle"), musicianFavor = $("#menu-category-musician-favor"), eventRegist = $("#menu-category-event-regist"), headerMenuSearch = $("#header-menu-search"), searchToggle = $("#search-toggle"), searchCancel = $('#search-cancel'), searchText = $('#search-text'), searchTextDelete = $('#search-text-delete'), searchBackScreen = $("#search-backscreen")
+  var container = $("#container"), menuBtn = $('#header-menu-menu'), menuBackscreen = $("#menu-backscreen"), menuToggle = $("#menu-toggle"), musicianFavor = $("#menu-category-musician-favor"), eventRegist = $("#menu-category-event-regist"), headerMenuSearch = $("#header-menu-search"), searchToggle = $("#search-toggle"), searchCancel = $('#search-cancel'), searchText = $('#search-text'), searchTextDelete = $('#search-text-delete')
   var mainRecommand = $('#main-recommend'),
   mainSurf = $('#main-surf'),
   mainAct = $('#main-act')
@@ -99,7 +99,6 @@
     searchToggle.toggle("slide", {
       direction : 'right'
     }, 300);
-    searchBackScreen.css('display', 'block')
     $('#search-text').val('')
     $('#search-text').focus()
   })
@@ -110,7 +109,6 @@
       direction : 'right'
     }, 300);
     $('.search-list').remove()
-    searchBackScreen.css('display', 'none')
   })
 
   searchTextDelete.on('click', function() {
@@ -260,4 +258,3 @@
   
 /* 검색끝 */
 </script>
-<script src="/node_modules/handlebars/dist/handlebars.min.js"></script>

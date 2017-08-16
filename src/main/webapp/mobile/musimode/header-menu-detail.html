@@ -36,25 +36,44 @@
 <!-- menu-toggle -->
 <!-- menu slider ended -->
 
+
 <div id="search-backscreen"></div>
 <div id="search-toggle">
   <div id='search-contents'>
-   <i class="fa fa-times" id="search-cancel" aria-hidden="true"></i> 
-   
+  <i class="fa fa-angle-left" id="search-cancel" aria-hidden="true"></i>
+  <form action="">
    <div id="search-container">
-   <i class="fa fa-search" id="search-icon" aria-hidden="true"></i>
-   <input type="text" id="search-text">
-   <i class="fa fa-times-circle-o" id="search-text-delete" aria-hidden="true"></i>
-   </div>
-   
+     <i class="fa fa-search" id="search-icon" aria-hidden="true"></i>
+     <input type="search" id="search-text" placeholder="뮤지션 검색" autofocus="autofocus">
+     <i class="fa fa-times-circle" id="search-text-delete" aria-hidden="true"></i>
+     <hr id="hrhrhr">
+   </div> 
+   </form>
   <!-- search-header -->
-  
   </div>
+  <div id="search-result-container">
+  </div>
+  
   <!-- search-contents -->
 </div>
 <!-- search-toggle -->
 
-
+<script id="search-result-template" type="text/x-handlebars-template">
+{{#each listSearchResult}}
+  <div class="search-list" data-no="{{no}}">
+    <div class="search-list-img" style='background-image: url("{{photo}}_80.png")'></div>
+    <div class="search-list-musi">
+      <span>{{nickName}}</span>
+      <div class="search-list-score">{{{score}}}</div>
+    </div>
+    <div class="search-list-hashtagbox">
+      {{#each majorList}} <span>#{{this}}</span> {{/each}}
+      {{#each genreList}} <span>#{{this}}</span> {{/each}}
+      {{#each themeList}} <span>#{{this}}</span> {{/each}}
+    </div>
+  </div>
+{{/each}}
+</script>
 <script>
 /*메뉴 관련*/
 	var container = $("#container"),
@@ -64,8 +83,10 @@
 	    eventFavor = $("#menu-category-event-favor"),
 	    myEvent = $("#menu-category-myevent"),
 	    headerMenuSearch = $("#header-menu-search"),
-	    searchToggle = $("#search-toggle"),
-	    searchBackScreen = $("#search-backscreen")
+	    searchToggle = $("#search-toggle"), 
+	    searchCancel = $('#search-cancel'), 
+	    searchText = $('#search-text'), 
+	    searchTextDelete = $('#search-text-delete')
 	    
 	menuBtn.on('click', function() {
 		menuBackscreen.css('display', 'block');
@@ -79,17 +100,25 @@
 		container.css('position', '').css('overflow', '');
 	})
 	
-	headerMenuSearch.on('click', function() {
-	  searchToggle.toggle("slide", {direction: 'right'}, 300);
-	  searchBackScreen.css('display', 'block')
-    container.css('position', 'fixed').css('overflow', 'hidden');
-	})
-	
-	searchBackScreen.on('click', function() {
-	  searchToggle.toggle("slide", {direction: 'right'}, 300);
-	  searchBackScreen.css('display', 'none')
-    container.css('position', '').css('overflow', '');
-	})
+  headerMenuSearch.on('click', function() {
+    searchToggle.toggle("slide", {
+      direction : 'right'
+    }, 300);
+    $('#search-text').val('')
+    $('#search-text').focus()
+  })
+
+  searchCancel.on('click', function() {
+    searchToggle.toggle("slide", {
+      direction : 'right'
+    }, 300);
+    $('.search-list').remove()
+  })
+
+  searchTextDelete.on('click', function() {
+    searchText.val('')
+  })
+
 	
 	myEvent.on('click', function(){
 	 location.href = '/mobile/musimode/event/list.html'
@@ -112,7 +141,7 @@
   })
   
   $.getJSON('/auth/userinfo.json', function(result) {
-    console.log(result)
+    /* console.log(result) */
     if(result.status == "success") {
        $('#mypage-btn').css('display', 'inline-block')
                        .on('click', function() {
@@ -132,5 +161,84 @@
 	
 	/* 로그인 관련*/
     
+	  /*검색시작*/
+  var searchText =$('#search-text')
+    
+    
+  searchText.keyup(function() {
+    if(searchText.val().length != 0) {
+      $('#search-text-delete').css('display','block')
+    }
+    if(searchText.val().length == 0) {
+      $('#search-text-delete').css('display','none')
+    }
+    $('#search-text-delete').on('click', function(){
+      $('.search-list').remove()
+      searchText.val('')
+      $('#search-text-delete').css('display','none')
+    })
+    
+    $.getJSON('/musician/listSearchResult.json', {'search':searchText.val()}, function(result) {
+      //console.log(result)
+      $('.search-list').remove()
+      if(result.status != 'success') {
+        console.error("getJSON() 실패: ", result.status)
+        return;
+      }
+      
+      
+      $.each(result.data.listSearchResult, function(i, item) {
+        var starInteger = parseInt(item.score),
+        starRealNumber = item.score - starInteger;
+        starAdd(starInteger, starRealNumber, item)
+      });
+      
+      var templateFn = Handlebars.compile($('#search-result-template').text())
+      var generatedHTML = templateFn(result.data)
+      var container = $('#search-result-container')
+      var html = container.html()
+      container.html(html + generatedHTML)
+      
+      if(searchText.val() == ''){
+        $('.search-list').remove()
+      }
+      
+      $('.search-list').click(function(event) {
+        event.preventDefault()
+        location.href = '/mobile/gmode/musi-info/index.html?no=' + $(this).attr('data-no') 
+      })
+      
+    }, function(err) {
+      console.log(err)
+    })
+  })
+  
+  function starAdd(starInteger, starRealNumber, item) {
+  item.score = "";
+
+  for (var i = 1; i <= starInteger; i++) {
+    item.score += "<i class='fa fa-star' aria-hidden='true'></i>"
+  }
+
+  if(starInteger >= 5) {
+    return;
+  }
+
+  if(starRealNumber >= 0.8) {
+    item.score += "<i class='fa fa-star' aria-hidden='true'></i>"
+  } else if(starRealNumber <= 0.3) {
+    item.score += "<i class='fa fa-star-o' aria-hidden='true'></i>"
+  } else {
+    item.score += "<i class='fa fa-star-half-o' aria-hidden='true'></i>"
+  }
+
+  if(starInteger < 4) {
+    for (var i = 1; i <= 4 - starInteger; i++) {
+      item.score += "<i class='fa fa-star-o' aria-hidden='true'></i>"
+    }
+  }
+
+  return item;
+}
 
 </script>
