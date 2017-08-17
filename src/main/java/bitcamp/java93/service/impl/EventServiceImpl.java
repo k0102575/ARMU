@@ -139,6 +139,11 @@ public class EventServiceImpl implements EventService {
   public List<Event> listOngoing(int no) throws Exception {
     return eventDao.selectOngoingList(no);
   }
+
+  /*나의이벤트 > 종료 이벤트 리스트*/
+  public List<Event> listEnd(int no) throws Exception {
+    return eventDao.selectEndList(no);
+  }
   
 }
 

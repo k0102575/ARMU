@@ -516,3 +516,25 @@ left outer join (
   where mno = 5
   group by muno
 ) fav on fav.muno=mu.muno
+
+
+
+-- 종료한 이벤트 리스트 가져오기
+select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
+mj.name as major, g.name as genre, t.name as theme
+from evn e
+inner join memb m on e.mno=m.mno
+inner join mtc on e.eno=mtc.eno and e.mno=5
+inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
+inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
+left outer join mjr_musi mjm on mu.muno=mjm.muno inner join mjr mj on mjm.mjrno=mj.mjrno
+left outer join gnr_musi gm on mu.muno=gm.muno inner join gnr g on gm.gnrno=g.gnrno
+left outer join thm_musi tm on mu.muno=tm.muno inner join thm t on tm.thmno=t.thmno
+left outer join (
+  select count(if(mno is not null, 1, 0)) as fav, mno, muno
+  from fav_musi
+  where mno = 5
+  group by muno
+) fav on fav.muno=mu.muno
+
+where date < curdate() order by date asc
