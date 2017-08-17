@@ -1,7 +1,7 @@
 
 -- 뮤지션
-insert into memb (name, phone, pwd, email, path) values ('조승우', '010-1234-1234',  password('1111'), 'seungwoojo@daum.net', '/image/profile/1502328657291_19');
-insert into memb (name, phone, pwd, email, path) values ('차지연', '010-2424-3234',  password('1111'), 'jiyeon@daum.net', '/image/profile/1502328657353_20');
+insert into memb (name, phone, pwd, email, path) values ('조승우', '010-1234-1234',  password('1111'), 'seungwoojo@gmail.com', '/image/profile/1502328657291_19');
+insert into memb (name, phone, pwd, email, path) values ('차지연', '010-2424-3234',  password('1111'), 'jiyeon@gmail.com', '/image/profile/1502328657353_20');
 insert into memb (name, phone, pwd, email, path) values ('오호라', '010-5555-5050',  password('1111'), 'ohora@gmail.com', '/image/profile/1502328657197_18');
 
 insert into musi (muno, nick, age, team, gender, hpg, intro) values (1, '황시목', 35, 'N', 'M','http://tistory.seungwoo.com', '저는 짱짱맨 조승우입니다. 조각같은 외모와 매력적인 목소리로 당신의 이벤트를 아름답게 만들어드리겠습니다!');

@@ -338,7 +338,12 @@ div[style^='background-image'] {
 
 #question-btn {
 	color: #8069ef;
+  width: 100px;
+  height: 100px;
+  margin-left: 2%;
+  z-index: 20;
 }
+
 
 .ytp-cued-thumbnail-overlay-image {
     background-size: cover;
@@ -350,5 +355,58 @@ div[style^='background-image'] {
     height: 100%;
     position: absolute;
     border-radius: 10px;
+}
+
+#surf-backscreen {
+  position: fixed;
+  display: none;
+  top: 120px;
+  width: 100%;
+  height: 95%;
+  background: rgba(0, 0, 0, .3);
+  z-index: 11;
+}
+
+#filter-container {
+  display: none;
+  position: fixed;
+  top: 10%;
+  width: 90%;
+  height: 50%;
+  left:5%;
+  background-color: white;
+  border-radius: 25px;
+  z-index: 12;
+}
+
+#signup-cancel-btn {
+  position: absolute;
+  right: 5%;
+  top: 5.5%;
+  font-size: 4em;
+  color: #444;
+  font-weight: 100;
+}
+
+#career-info-img {
+  background-image: url(/image/info/info_03.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 15%;
+  width: 100%;
+  height: 100%;
+}
+
+#career-info-help-img {
+  background-image: url(/image/info/info_01.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 31%;
+  right: 16%;
+  width: 50%;
+  height: 23%;
+  z-index: 1;
 }
 

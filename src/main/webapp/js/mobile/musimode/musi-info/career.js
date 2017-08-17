@@ -11,7 +11,15 @@ try {
 
 if (spno == 0) {
   
+  
+  
   $('.portfolio-container').append(Handlebars.compile($('#musician-add-portfolio-template').text()))
+  
+  $("#question-btn").on('click', function() {
+    $("#filter-container").toggle(0)
+    $("#surf-backscreen").css('display', 'block')
+    $(".container").css('position', 'fixed')
+  })
   
    $("#introduce-add-btn").css('display', 'block');
   
@@ -71,6 +79,12 @@ if (spno == 0) {
   var container = $('.portfolio-container')
   var html = container.html()
   container.html(html + generatedHTML)
+  
+  $("#question-btn").on('click', function() {
+    $("#filter-container").toggle(0)
+    $("#surf-backscreen").css('display', 'block')
+    $(".container").css('position', 'fixed')
+  })
 
   for(var i = 0; i < result.data.getSpec.list.length; i++) {
     if(result.data.getSpec.list[i].fileMap.key == "Y") {
@@ -229,5 +243,11 @@ $('body').on('click', "#introduce-delete-btn", function() {
 
 $('body').on('click', "#musician-info-prev", function() {
   location.href = "index.html"
+})
+
+$('body').on('click', "#signup-cancel-btn", function() {
+  $("#filter-container").toggle(0)
+  $("#surf-backscreen").css('display', 'none')
+  $(".container").css('position', 'relative')
 })
 
