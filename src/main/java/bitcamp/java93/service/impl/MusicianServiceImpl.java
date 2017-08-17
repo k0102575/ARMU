@@ -113,6 +113,10 @@ public class MusicianServiceImpl implements MusicianService {
     return musicianDao.selectPrList(map);
   }
 
+  public List<Musician> listAppy(HashMap<String, Object> map) throws Exception {
+    return musicianDao.selectAppyList(map);
+  }
+
 }
 
 

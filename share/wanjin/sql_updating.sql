@@ -30,10 +30,16 @@ from fav_evn
 where muno=3
 group by eno
 
+-- 특정 일반인의 관심 뮤지션 구하기
+select count(if(mno is not null, 1, 0)) as fav, mno, muno
+from fav_musi
+where mno = 4
+group by muno
+
 -- 관심 뮤지션 데이터를 통해 인기 있는 뮤지션 구하기
 select count(if(muno is not null, 1, 0)) as popu, muno
-  from fav_musi
-  group by muno
+from fav_musi
+group by muno
 
 
 -- 인기 테마
@@ -255,10 +261,6 @@ order by mu.muno desc
 
 
 
--- 매칭정보 확인하기
-select mtcno, e.mno, e.eno,title, muno, mtcdt from mtc inner join evn e on mtc.eno=e.eno order by mtcdt asc;
-
-
 -- 특정 회원과 뮤지션의 채팅내역 가져오기
 select chatno, isread, date, msg, c.muno, c.mno, who,
 mu.mno as musino, mu.name as musiname, musi.nick as musinick, mu.path as musiphoto,
@@ -381,6 +383,7 @@ update chat set isread='N'
 where mno=5 and muno=11 and isread='Y'
 
 
+
 -- 특정 일반회원의 이벤트 기본정보 가져오기
 select e.eno, e.title, e.date,  concat(lt.name, ' ', l.name) as location, e.addr, e.pay
 from (select * from evn where date >= curdate() and eno not in (select eno from mtc) order by date asc) e
@@ -432,26 +435,36 @@ left outer join (
 -- 이벤트 목록과 연결된 PR 뮤지션 리스트 뷰 생성하기
 create view eventlist_pr_musicians as
 select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme,
-pr.prno, mu.muno, mu.nick, m.path
+pr.prno, mu.muno, mu.nick, m.path, score.score
 from recruiting_eventlist e
 left outer join pr on e.eno=pr.eno
 left outer join musi mu on pr.muno=mu.muno inner join memb m on mu.muno=m.mno
+left outer join (
+  select avg(score) as score, muno
+  from mtc
+  group by muno
+) score on score.muno=mu.muno
 
 
 
 -- 이벤트 목록과 연결된 APPY 뮤지션 리스트 뷰 생성하기
 create view eventlist_appy_musicians as
 select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme,
-appy.appyno, mu.muno, mu.nick, m.path
+appy.appyno, mu.muno, mu.nick, m.path, score.score
 from recruiting_eventlist e
 left outer join appy on e.eno=appy.eno
 left outer join musi mu on appy.muno=mu.muno inner join memb m on mu.muno=m.mno
+left outer join (
+  select avg(score) as score, muno
+  from mtc
+  group by muno
+) score on score.muno=mu.muno
 
 
 
--- 나의 이벤트(모집 중인 이벤트)에 대하여 내가 지원을 요청한(PR) 뮤지션(상세) 리스트 가져오기
-select p.eno, p.prno, p.muno, p.name, p.path, p.score,
-p.mu_major, p.mu_genre, p.mu_theme, fav.fav
+-- 나의 이벤트(모집 중인 이벤트)에 대하여 내가 지원을 요청한(PR) 뮤지션 리스트 가져오기
+select p.eno, p.prno, p.muno, p.nick, p.path, p.score,
+p.major, p.genre, p.theme, fav.fav
 from eventlist_pr_musicians p
 left outer join (
   select count(if(mno is not null, 1, 0)) as fav, mno, muno
@@ -462,9 +475,9 @@ left outer join (
 where p.mno=5
 
 
--- 나의 특정 이벤트(모집 중인 이벤트)에 지원한(APPY) 뮤지션(상세) 리스트 가져오기
-select ap.eno, ap.title, ap.date, ap.location, ap.addr, ap.pay, ap.major, ap.genre, ap.theme,
-ap.appyno, ap.muno, ap.name, ap.path, ap.score, ap.mu_major, ap.mu_genre, ap.mu_theme, fav.fav
+-- 나의 특정 이벤트(모집 중인 이벤트)에 지원한(APPY) 뮤지션 리스트 가져오기
+select ap.eno, ap.appyno, ap.muno, ap.nick, ap.path, ap.score,
+ap.major, ap.genre, ap.theme, fav.fav
 from eventlist_appy_musicians ap
 left outer join (
   select count(if(mno is not null, 1, 0)) as fav, mno, muno
@@ -475,7 +488,7 @@ left outer join (
 where ap.mno=5
 
 
--- 나의 이벤트(모집 중인 이벤트)에 대하여 내가 지원을 요청한(PR)뮤지션 & 뮤지션이 지원한(APPY) 뮤지션 리스트 가져오기
+-- 나의 이벤트(모집 중인 이벤트)에 지원한(APPY) 뮤지션 리스트 가져오기
 select ap.eno, ap.title, ap.date, ap.location, ap.addr, ap.pay, ap.major, ap.genre, ap.theme,
 ap.appyno, ap.muno, ap.nick, ap.path, p.prno, p.muno, p.nick, p.path
 from eventlist_appy_musicians ap
@@ -483,13 +496,23 @@ left outer join eventlist_pr_musicians p on ap.eno = p.eno
 where ap.mno=5
 
 
-select p.eno, p.muno as mno, p.nick, p.path,
-p.major as major, p.genre as genre, p.theme as theme, fav.fav, '' as location
-from eventlist_pr_musicians p
+-- 매칭정보 확인하기
+select mtcno, e.mno, e.eno,title, muno, mtcdt from mtc inner join evn e on mtc.eno=e.eno order by mtcdt asc;
+
+
+-- 진행중인 이벤트 리스트 가져오기
+select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
+mu.muno, mu.nick, mm.path, fav.fav,
+mj.name as major, g.name as genre, t.name as theme
+from evn e inner join mtc on e.eno=mtc.eno and e.date >= curdate() and e.mno=5
+inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
+inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
+left outer join mjr_musi mjm on mu.muno=mjm.muno inner join mjr mj on mjm.mjrno=mj.mjrno
+left outer join gnr_musi gm on mu.muno=gm.muno inner join gnr g on gm.gnrno=g.gnrno
+left outer join thm_musi tm on mu.muno=tm.muno inner join thm t on tm.thmno=t.thmno
 left outer join (
   select count(if(mno is not null, 1, 0)) as fav, mno, muno
   from fav_musi
   where mno = 5
   group by muno
-) fav on fav.muno=p.muno
-where p.mno=5 and p.eno=4
+) fav on fav.muno=mu.muno

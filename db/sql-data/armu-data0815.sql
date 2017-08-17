@@ -419,7 +419,7 @@ values ("대학교 축제에 모실 밴드 연주자를 모집합니다!", 5, 14
 ');
 
 insert into evn (title, mno, locno, pay, addr, date, cont)
-values ("클래식 대잔치에 모실 연주자분들을 모십니다!", 5, 8, 100000, '거꾸로 94 잔디밭', '2017-07-27',
+values ("클래식 대잔치에 모실 연주자분들을 모십니다!", 5, 8, 100000, '거꾸로 94 잔디밭', '2017-09-03',
 '클래식 대잔치에 모실 분들을 구합니다.
 
 피아노, 악기, 성악 모두 필요하니 누구든 언제든 연락주세요~!
@@ -1094,17 +1094,27 @@ left outer join (
 -- 이벤트 목록과 연결된 PR 뮤지션 리스트 뷰 생성하기
 create view eventlist_pr_musicians as
 select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme,
-pr.prno, mu.muno, mu.nick, m.path
+pr.prno, mu.muno, mu.nick, m.path, score.score
 from recruiting_eventlist e
 left outer join pr on e.eno=pr.eno
-left outer join musi mu on pr.muno=mu.muno inner join memb m on mu.muno=m.mno;
+left outer join musi mu on pr.muno=mu.muno inner join memb m on mu.muno=m.mno
+left outer join (
+  select avg(score) as score, muno
+  from mtc
+  group by muno
+) score on score.muno=mu.muno;
 
 
 
 -- 이벤트 목록과 연결된 APPY 뮤지션 리스트 뷰 생성하기
 create view eventlist_appy_musicians as
 select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme,
-appy.appyno, mu.muno, mu.nick, m.path
+appy.appyno, mu.muno, mu.nick, m.path, score.score
 from recruiting_eventlist e
 left outer join appy on e.eno=appy.eno
-left outer join musi mu on appy.muno=mu.muno inner join memb m on mu.muno=m.mno;
+left outer join musi mu on appy.muno=mu.muno inner join memb m on mu.muno=m.mno
+left outer join (
+  select avg(score) as score, muno
+  from mtc
+  group by muno
+) score on score.muno=mu.muno;

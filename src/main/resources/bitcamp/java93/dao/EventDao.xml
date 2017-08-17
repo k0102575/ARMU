@@ -102,6 +102,57 @@
     </collection>
   </resultMap>
   
+  
+  <resultMap type="event" id="matchEventMap">
+    <id column="eno" property="no" />
+    <result column="title" property="title" />
+    <result column="mno" property="writer" />
+    <result column="location" property="location" />
+    <result column="addr" property="address" />
+    <result column="pay" property="pay" />
+    <result column="req" property="requirement" />
+    <result column="cont" property="contents" />
+    <result column="dpay" property="downPay" />
+    <result column="date" property="date" />
+    <result column="rpay" property="rhspay" />
+    <result column="info" property="rhsinfo" />
+    <result column="num" property="rhsnum" />
+     <association property="matchMusician" javaType="Musician">
+      <id property="no" column="muno" />
+      <result property="nickName" column="nick" />
+      <result property="photo" column="path" />
+      <result property="isFavorite" column="fav" />
+    <collection property="genreList" ofType="string">
+      <result column="genre" />
+    </collection>
+    <collection property="themeList" ofType="string">
+      <result column="theme" />
+    </collection>
+    <collection property="majorList" ofType="string">
+      <result column="major" />
+    </collection>
+    </association>
+  </resultMap>
+  
+  
+  <select id="selectOngoingList" resultMap="matchEventMap"
+    parameterType="int">
+    select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
+mu.muno, mu.nick, mm.path, fav.fav,
+mj.name as major, g.name as genre, t.name as theme
+from evn e inner join mtc on e.eno=mtc.eno and e.date >= curdate() and e.mno=#{no}
+inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
+inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
+left outer join mjr_musi mjm on mu.muno=mjm.muno inner join mjr mj on mjm.mjrno=mj.mjrno
+left outer join gnr_musi gm on mu.muno=gm.muno inner join gnr g on gm.gnrno=g.gnrno
+left outer join thm_musi tm on mu.muno=tm.muno inner join thm t on tm.thmno=t.thmno
+left outer join (
+  select count(if(mno is not null, 1, 0)) as fav, mno, muno
+  from fav_musi
+  where mno = #{no}
+  group by muno
+) fav on fav.muno=mu.muno
+  </select><!-- 완진 -->
 
   <select id="selectRecruitingList" resultMap="eventMapRecruit" parameterType="int">
   select ap.eno, ap.mno, ap.title, ap.date, ap.location, ap.addr, ap.pay, 

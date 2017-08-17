@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import bitcamp.java93.dao.EventDao;
 import bitcamp.java93.dao.NotificationDao;
 import bitcamp.java93.domain.Event;
-import bitcamp.java93.domain.Musician;
 import bitcamp.java93.service.EventService;
 
 @Service
@@ -134,6 +133,11 @@ public class EventServiceImpl implements EventService {
   
   public List<Event> listSearchResult(String search) throws Exception {
     return eventDao.selectSearchResultList(search);
+  }
+
+  /*나의이벤트 > 진행중 이벤트 리스트*/
+  public List<Event> listOngoing(int no) throws Exception {
+    return eventDao.selectOngoingList(no);
   }
   
 }

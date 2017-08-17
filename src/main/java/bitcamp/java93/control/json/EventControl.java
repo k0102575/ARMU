@@ -248,6 +248,23 @@ public class EventControl {
     return result;
   }
   
+  /*나의이벤트 > 진행중 이벤트 리스트*/
+  @RequestMapping("listOngoing")
+  public JsonResult listOngoing(HttpSession session) {
+    JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listOngoing",eventService.listOngoing(getLoginMember(session).getNo()));
+
+      result.setData(dataMap);
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
+    return result;
+  }
+  
   private Member getLoginMember(HttpSession session) {
     Member loginMember = (Member) session.getAttribute("loginMember");
       return loginMember;

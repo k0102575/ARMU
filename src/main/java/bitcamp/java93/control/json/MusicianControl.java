@@ -283,6 +283,38 @@ public class MusicianControl {
     return result;
   }
   
+  
+  @RequestMapping("listAppy")
+  public JsonResult listAppy(int eventNo, HttpSession session) {
+
+    JsonResult result = new JsonResult();
+    Member loginMember = (Member)session.getAttribute("loginMember");
+
+    if(loginMember != null) {
+      try {
+        HashMap<String,Object> param = new HashMap<>();
+        param.put("memberNo", loginMember.getNo());
+        param.put("eventNo", eventNo);
+        List<Musician> musicianList = musicianService.listAppy(param);
+
+        result.setStatus(JsonResult.SUCCESS);
+
+        HashMap<String,Object> dataMap = new HashMap<>();
+        dataMap.put("listAppy", musicianList);
+        result.setData(dataMap);
+
+      } catch (Exception e) {
+        e.printStackTrace();
+        result.setStatus(JsonResult.ERROR);
+      }
+    } else {//loginMember가 없으면
+      result.setStatus(JsonResult.SUCCESS);
+      result.setData("browse");
+    }
+
+    return result;
+  }
+  
 }
 
 

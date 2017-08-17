@@ -155,8 +155,8 @@
   
   
   <select id="selectPrList" resultMap="musicianMap" parameterType="map">
-  select p.eno, p.muno as mno, p.nick, p.path,
-p.major as major, p.genre as genre, p.theme as theme, fav.fav, '' as location
+  select p.eno, p.muno as mno, p.nick, p.path, p.score,
+p.major as major, p.genre as genre, p.theme as theme, fav.fav, null as location
 from eventlist_pr_musicians p
 left outer join (
   select count(if(mno is not null, 1, 0)) as fav, mno, muno
@@ -165,6 +165,19 @@ left outer join (
   group by muno
 ) fav on fav.muno=p.muno
 where p.mno=#{memberNo} and p.eno=#{eventNo}
+  </select><!-- 완진 -->
+  
+  <select id="selectAppyList" resultMap="musicianMap" parameterType="map">
+  select ap.eno, ap.muno as mno, ap.nick, ap.path, ap.score,
+ap.major, ap.genre, ap.theme, fav.fav, null as location
+from eventlist_appy_musicians ap
+left outer join (
+  select count(if(mno is not null, 1, 0)) as fav, mno, muno
+  from fav_musi
+  where mno = #{memberNo}
+  group by muno
+) fav on fav.muno=ap.muno
+where ap.mno=#{memberNo} and ap.eno=#{eventNo}
   </select><!-- 완진 -->
   
    <select id="selectFavorList" resultMap="musicianFavorMap" parameterType="int">

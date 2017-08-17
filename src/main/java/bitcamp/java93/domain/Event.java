@@ -8,6 +8,7 @@ public class Event {
   String title;
   int writer;
   Member writeMember;
+  Musician matchMusician;
   ArrayList<String> themeList;
   ArrayList<String> majorList;
   ArrayList<String> genreList;
@@ -55,6 +56,12 @@ public class Event {
   }
   public void setWriteMember(Member writeMember) {
     this.writeMember = writeMember;
+  }
+  public Musician getMatchMusician() {
+    return matchMusician;
+  }
+  public void setMatchMusician(Musician matchMusician) {
+    this.matchMusician = matchMusician;
   }
   public ArrayList<String> getThemeList() {
     return themeList;
@@ -203,15 +210,14 @@ public class Event {
   @Override
   public String toString() {
     return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", writeMember=" + writeMember
-        + ", themeList=" + themeList + ", majorList=" + majorList + ", genreList=" + genreList + ", city=" + city
-        + ", location=" + location + ", address=" + address + ", pay=" + pay + ", locno=" + locno + ", requirement="
-        + requirement + ", contents=" + contents + ", downPay=" + downPay + ", tmnno=" + tmnno + ", date=" + date
-        + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", pr_count=" + pr_count + ", mtc_info=" + mtc_info
-        + ", rhsinfo=" + rhsinfo + ", isFavorite=" + isFavorite + ", EventRegistTheme=" + EventRegistTheme
-        + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre + ", appyList=" + appyList
-        + ", prList=" + prList + "]";
+        + ", matchMusician=" + matchMusician + ", themeList=" + themeList + ", majorList=" + majorList + ", genreList="
+        + genreList + ", city=" + city + ", location=" + location + ", address=" + address + ", pay=" + pay + ", locno="
+        + locno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay + ", tmnno="
+        + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", pr_count=" + pr_count
+        + ", mtc_info=" + mtc_info + ", rhsinfo=" + rhsinfo + ", isFavorite=" + isFavorite + ", EventRegistTheme="
+        + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre
+        + ", appyList=" + appyList + ", prList=" + prList + "]";
   }
-  
   
   
   

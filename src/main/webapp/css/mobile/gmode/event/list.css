@@ -153,6 +153,10 @@ body {
   white-space: nowrap;
 }
 
+.recruiting-title > span {
+  font-size: 37px;
+}
+
 .recruiting-edit-btn {
   position: absolute;
   display: inline-block;
@@ -217,9 +221,6 @@ body {
 }
 
 /*모집 중인 이벤트 - 뮤지션 시작*/
-.recruiting-applicant-box {
-  display: none;
-}
 
 .recruiting-musibox {
   margin-top: 1%;
@@ -263,17 +264,25 @@ body {
   font-size: 2rem;
 }
 
-.recruiting-musibox-subtitle {
-  margin-top: 5%; margin-bottom: 5%;
-  margin-left: 3%;
-  width: auto;
-  font-size: 32px;
-  font-weight: 400;
-  text-align: left;
-  white-space: nowrap;
+.recruiting-musibox-open-container {
+  display: none;
 }
 
-.recruiting-applicant-block {
+.recruiting-musibox-subtitle {
+  margin-top: 5%;
+  margin-bottom: 4%;
+  padding-left: 3%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  width: auto;
+  font-size: 32px;
+  font-weight: 300;
+  text-align: left;
+  white-space: nowrap;
+  color: grey;
+}
+
+.recruiting-musician-block {
   width: 100%;
   text-align: left;
 }
@@ -287,9 +296,10 @@ body {
   display: inline-block;
   box-shadow: 3px 3px 20px 0px rgba(128, 128, 128, 0.56);
   height: 670px;
-  width: 47%;
+  width: 44%;
   margin: 1%;
-  margin-bottom: 3%;
+  margin-left: 3.5%;
+  margin-bottom: 5%;
   text-align: justify;
   border-radius: 10px;
 }
@@ -315,22 +325,21 @@ body {
   font-size: 32px;
   font-weight: 500;
 }
-
+/* 
 .recruiting-applicant-score {
   display: inline-block;
   margin-left: 20px;
-  color: black;
+  color: #ffec86;
   font-size: 28px;
-}
+} */
 
 .recruiting-applicant-fav {
   position: absolute;
   display: inline-block;
-  right: 7%;
+  right: 4%;
   left: auto;
-  top: 62%;
-  transform: translate(7%, -62%);
-  color: white;
+  top: 61%;
+  color: #8069ef;
   font-size: 40px;
   font-weight: 500;
 }
@@ -355,15 +364,15 @@ body {
   display: flex;
   bottom: 0;
   width: 100%;
-  height: 80px;
+  height: 70px;
 }
 
 .recruiting-applicant-btn {
   display: table;
   width:49.7%;
-  height: 80px;
+  height: 70px;
   text-align: center;
-  line-height: 80px;
+  line-height: 70px;
   font-size: 2rem;
 }
 
@@ -378,10 +387,6 @@ body {
   color: white;
   font-weight: 400;
   border-bottom-right-radius: 10px;
-}
-
-.recruiting-callee-box {
-  display: none;
 }
 
 .cancel-btn {
@@ -399,25 +404,22 @@ body {
 
 /*진행중 이벤트 리스트 시작*/
 /*함께하는 뮤지션 시작*/
-.ongoing-applicant-box {
-  display: none; 
-}
-
 .ongoing-musibox {
   margin-top: 1%;
   margin-left: auto; margin-right: auto;
   color: black;
   width: 100%;
   overflow: auto;
-  text-align: center;
+  text-align: left;
 }
 
 .ongoing-musibox-title {
   display: block;
   font-size: 36px;
-  font-weight: 600;
+  font-weight: 500;
   white-space: nowrap;
   color: #444;
+  padding-left: 3%;
 }
 
 .ongoing-applicant-block {
@@ -428,35 +430,33 @@ body {
 .ongoing-applicant {
   position: relative;
   display: inline-block;
-  height: 400px;
+  height: 250px;
   width: 95%;
-  margin: 1%;
-  margin-bottom: 3%;
+  margin: 0%;
   text-align: justify;
   border-radius: 10px;
 }
 
 .ongoing-applicant-img {
   display: table;
-  height: 400px;
-  width: 48%;
+  height: 250px;
+  width: 250px;
   overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 10px;
+  border-radius: 100%;
 }
 
 .ongoing-applicant-name {
   position: absolute;
   display: inline-block;
-  width: auto;
   color: black;
   font-size: 32px;
   font-weight: 500;
-  top: 9%;
-  width: 36%;
-  right: 12%;
+  top: -2px;
+  width: 52%;
+  left: 300px;
 }
 
 .ongoing-applicant-score {
@@ -472,7 +472,7 @@ body {
 .ongoing-applicant-fav {
   position: absolute;
   display: inline-block;
-  top: 4%;
+  top: -3%;
   right: 1%;
   color: #8069ef;
   font-size: 40px;
@@ -483,13 +483,13 @@ body {
 
 .ongoing-applicant-hashtagbax {
   position: absolute;
-  height: 139px;
+  height: 99px;
   overflow: hidden;
   font-size: 30px;
   color: black;
-  width: 48%;
-  top: 41%;
-  right: 1%;
+  width: 68%;
+  top: 56px;
+  left: 292px;
 }
 
 .ongoing-applicant-hashtagbax > span {
@@ -500,15 +500,16 @@ body {
 .ongoing-applicant-btn {
   position: absolute;
   display: inline-block;
-  bottom: 0;
-  right: 0;
-  width: 48.5%;
-  height: 80px;
+  bottom: 3%;
+  left: 301px;
+  width: 30%;
+  height: 70px;
   text-align: center;
-  line-height: 80px;
+  line-height: 70px;
   font-size: 2rem;
   color: white;
   background: black;
+  border-radius: 10px;
 }
 /*함께하는 뮤지션 끝*/
 /*진행중 이벤트 리스트 끝*/

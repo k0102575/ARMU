@@ -21,6 +21,7 @@ public interface MusicianService {
   Musician getByMuno(int no) throws Exception;
   void remove(int no) throws Exception;
   List<Musician> listPr(HashMap<String, Object> map) throws Exception;
+  List<Musician> listAppy(HashMap<String, Object> map) throws Exception;
 }
 
 
