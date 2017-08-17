@@ -1,29 +1,22 @@
 @CHARSET "UTF-8";
 
+#container {
+	width: 100%;
+	position: relative;
+	min-height: 100vh
+}
+
 /*헤더 시작*/
 
- #musician-info-header {
+#event-detail-header-container {
   border-bottom: 1px solid black;
-  position: fixed;
+  position: relative;
   height: 120px;
   width: 100%;
   background-color: black;
-  z-index: 15;
 }
 
-#musician-info-nickname {
-    position: absolute;
-    right: 15%;
-    top: 13%;
-    transform: translate(-15%, 15%);
-    font-size: 250%;
-    font-weight: normal;
-    color: white;
-    width: 50%;
-    text-align: center;
- }
-
-#musician-info-prev {
+#event-detail-header-prev {
   position: absolute;
   left: 3%;
   top: 12%;
@@ -32,5 +25,111 @@
   color:white;
 }
 
-/*헤더 끝*/
+#event-detail-header-title {
+  position: absolute;
+  right: 0%;
+  top: 23%;
+  font-size: 250%;
+  font-weight: normal;
+  color: white;
+  width: 94%;
+  text-align: center;
+}
 
+/* 헤더 끝*/
+
+/* 푸터 시작 */
+#event-detail-footer-container {
+	position: fixed;
+  border-top: 1px solid gray;
+  position: fixed;
+  height: 80px;
+  width: 100%;
+  background-color: #f5f5f5;
+  bottom: 0px;
+}
+
+#event-detail-footer-fav {
+  position: absolute;
+  top: 17%;
+  right: 4%;
+  color: #8069ef;
+  font-size: 3rem;
+}
+
+.event-detail-footer-dday {
+  display: inline-block;
+  position: absolute;
+  color: white;
+  font-size: 28px;
+  font-weight: 400;
+  width: auto;
+  padding-left: 2%;
+  padding-right: 2%;
+  background-color: #8069ef;
+  border-radius: 2%;
+  top: 25%;
+  left: 3%;
+}
+
+#event-detail-footer-writer-img {
+  position: absolute;
+  top: 8%;
+  left: 20%;
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+#event-detail-footer-writer-name {
+  position: absolute;
+  left: 30%;
+  top: 13%;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: black;
+  width: 30%;
+}
+
+#event-detail-footer-request-btn {
+  position: absolute;
+  background-color: #f5f5f5;
+  width: 20%;
+  right: 15%;
+  height: 100%;
+  font-size: 250%;
+  color: #8069ef;
+  border: 0px;
+  border-top: 1px solid gray;
+  box-sizing: border-box;
+  padding-bottom: 10px;
+}
+
+
+/* 푸터 끝 */
+
+/* 이벤트 시작 */
+
+#event-detail-basic-info {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+.event-detail-date {
+  position: absolute;
+  font-size: 2.3em;
+  font-weight: 400;
+  top: 10%;
+  left: 10%;
+}
+
+.event-detail-pay {
+  position: absolute;
+  font-size: 2.3em;
+  font-weight: 400;
+  top: 15%;
+  left: 10%;
+}

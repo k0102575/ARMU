@@ -24,12 +24,29 @@
 <script src="/node_modules/handlebars-intl/dist/locale-data/ko.js"></script>
 </head>
 <body>
-  <div id="musician-info-header">
-    <i class="fa fa-angle-left" id="musician-info-prev" aria-hidden="true"></i>
-    <span id='musician-info-nickname'></span>
+<div id="container">
+  <div id="event-detail-header-container">
+    <i class="fa fa-angle-left" id="event-detail-header-prev" aria-hidden="true"></i>
+    <div id="event-detail-header-title">결혼식 이벤트 반주자 구합니다</div>
   </div>
   <!-- musician-info-header -->
   
+  <div id='event-detail-basic-info'>
+	  <div class='event-detail-date'><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;2017-03-03</div>
+	  <div class='event-detail-pay'><i class="fa fa-krw" aria-hidden="true"></i>&nbsp;100000</div>
+	  <div class='event-detail-city'><i class="fa fa-map-marker" aria-hidden="true"></i>서울시 동대문구 <br></div>
+	  <div class='event-detail-location'>장안동 677번지 어디어디빌딩 몇층 이지롱</div>
+  </div>
+  
+  <div id="event-detail-footer-container">
+    <div class='event-detail-footer-dday'>3일후</div>
+    <img id="event-detail-footer-writer-img" src="/image/profile/1502328669682_24_80.png">
+    <span id='event-detail-footer-writer-name'>김승민 님의 이벤트</span>
+    <button type="button" id="event-detail-footer-request-btn">지원하기</button>
+    <i class="fa fa-heart-o" id="event-detail-footer-fav" aria-hidden="true"></i>
+  </div>
+  
+</div>
 <script src="/js/mobile/musimode/event/detail.js"></script>
 </body>
 </html>
