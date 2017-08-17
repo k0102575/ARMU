@@ -17,7 +17,9 @@
 <div class="recruiting">
 <div class="event-box">
   <div class="recruiting-title">
-  <div class="recruiting-dday">D-{{formatRelative date day="numeric"}}</div>
+{{#intl locales="ko-KO"}}
+  <div class="recruiting-dday">{{formatRelative date units="day"}}</div>
+{{/intl}}
   <span>&nbsp;{{title}}</span></div><!-- recruiting-title -->
   <div class='recruiting-edit-btn'><i class="fa fa-angle-right" aria-hidden="true"></i></div>
 {{#intl locales="ko-KO"}}
@@ -38,7 +40,7 @@
 <div class="ongoing-applicant">
     <div class="ongoing-applicant-img" style='background-image: url("{{photo}}_300.png")'></div>
     <div class="ongoing-applicant-name"><span>{{nickName}}</span></div>
-      <div class="ongoing-applicant-score"></div>
+      <div class="ongoing-applicant-score">{{{score}}}</div>
     <!-- ongoing-applicant-name -->
 
     <div class="ongoing-applicant-fav">{{{isFavorite}}}</i></div>

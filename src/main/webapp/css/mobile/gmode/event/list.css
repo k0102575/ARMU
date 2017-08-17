@@ -130,7 +130,7 @@ body {
   /* position: absolute; */
   display: inline-block;
   color: white;
-  font-size: 28px;
+  font-size: 34px;
   font-weight: 400;
   width: auto;
   padding-left: 2%; padding-right: 2%;
@@ -461,11 +461,11 @@ body {
 
 .ongoing-applicant-score {
   position: absolute;
-  top: 24%;
+  top: -1%;
   right: 18%;
   margin-left: 20px;
-  color: black;
-  font-size: 28px;
+  color: #ffd700;
+  font-size: 33px;
   width: 30%;
 }
 

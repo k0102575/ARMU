@@ -26,6 +26,9 @@ function displayOngoingEventList() {
 
     console.log(result.data)
     $.each(result.data.listOngoing, function(i, item) {
+      var starInteger = parseInt(item.matchMusician.score),
+      starRealNumber = item.matchMusician.score - starInteger;
+      starAdd(starInteger, starRealNumber, item.matchMusician)
       heartAdd(item.matchMusician)
     });
 
@@ -34,38 +37,38 @@ function displayOngoingEventList() {
     var container = $('#ongoing-event-container')
     var html = container.html()
     container.html(html + generatedHTML)
-
-    controlBtns()
   }, function(err) {
     console.log(err)
   })
 }
 
 
+function starAdd(starInteger, starRealNumber, item) {
+  item.score = "";
 
+  for (var i = 1; i <= starInteger; i++) {
+    item.score += "<i class='fa fa-star' aria-hidden='true'></i>"
+  }
 
+  if(starInteger >= 5) {
+    return;
+  }
 
-function controlBtns() {
-  var applicantBtn = $('.ongoing-applicant-open-btn'),
-  eventBox = $('.event-box');
+  if(starRealNumber >= 0.8) {
+    item.score += "<i class='fa fa-star' aria-hidden='true'></i>"
+  } else if(starRealNumber <= 0.3) {
+    item.score += "<i class='fa fa-star-o' aria-hidden='true'></i>"
+  } else {
+    item.score += "<i class='fa fa-star-half-o' aria-hidden='true'></i>"
+  }
 
-  applicantBtn.on('click', function(e) {
-    if($(this).attr('data-open') == "true") {
-      $(this).html('함께하는 뮤지션 <i class="fa fa-angle-down" aria-hidden="true"></i>')
-      .attr('data-open', false)
-    } else {
-      $(this).html('함께하는 뮤지션 <i class="fa fa-angle-up" aria-hidden="true"></i>')
-      .attr('data-open', true)
+  if(starInteger < 4) {
+    for (var i = 1; i <= 4 - starInteger; i++) {
+      item.score += "<i class='fa fa-star-o' aria-hidden='true'></i>"
     }
-    $(this).siblings(".ongoing-applicant-box" ).toggle( "fold", 500 );
-    e.preventDefault()
-  })
+  }
 
-
-  eventBox.on('click', function(e) {
-    location.href = 'detail.html'
-  })
-
+  return item;
 }
 
 
