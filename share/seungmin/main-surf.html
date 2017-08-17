@@ -27,31 +27,47 @@
 {{/each}}
 </script>
 
- <div id="musician-surf-sort">
-    <div class="filterBtn">지역&nbsp;</div><span><i class="fa fa-map-marker" id="filter-btn-icon"  aria-hidden="true"></i></span>
-    <div id="filter-select-text"></div>
-  </div>
+<div id="musician-surf-sort">
+  <div class="filterBtn">필터&nbsp;</div><span><i class="fa fa-map-marker" id="filter-btn-icon" aria-hidden="true"></i></span>
+</div>
 
-  <div id="surf-backscreen"></div>
-  <div id="filter-container">
-  <div id="filter-category">
-    <span id="filter-text">지역</span>
-  </div> <!-- filter-category -->
+<div id="surf-backscreen"></div>
+<div id="filter-container">
+<div id="filter-category">
+  <span id="filter-text">필터</span>
+</div> <!-- filter-category -->
+
+<div id="filter-select-box">
+
+</div>
+
+<div id="filter-backscreen"></div>
+  <div id="location-type-container">
+  </div>
+  
+  <div id="location-button-box">
+  </div>
   
   <div id="location-check-btn">
     <button type="button" id="location-check-cancel">취소</button>
     <button type="button" id="location-check-check">확인</button>
   </div>
 
-  </div>
+</div>
 <!-- filter-container -->
 
   <script id="location-type-template" type="text/x-handlebars-template">
   {{#each listLocationType}}
-    <input type="checkbox" name="location" id="location-button-{{loctno}}" value="{{loctno}}">
-    <label for="location-button-{{loctno}}">{{loctname}}</label>
+    <button type="button" class="location-type-button" value="{{loctno}}">{{loctname}}</button>
   {{/each}}
   </script>
   
+  <script id="location-button-template" type="text/x-handlebars-template">
+  {{#each listLocation}}
+    <input type="checkbox" name="location" id="{{locno}}" value="{{locno}}">
+    <label for="{{locno}}">{{locname}}</label>
+  {{/each}}
+  </script>
+
 <script src="/js/mobile/musimode/main-surf.js"></script>
 <script src="/js/mobile/musimode/jquery.ui.touch-punch.min.js"></script>

@@ -22,7 +22,6 @@
   top: 23%;
 }
 
-
 #surf-backscreen {
   position: fixed;
   display: none;
@@ -34,7 +33,7 @@
 }
 
 #filter-container {
-	display: none;
+  display: none;
   position: fixed;
   top: 10%;
   width: 90%;
@@ -47,8 +46,8 @@
 
 #filter-category {
   position: relative;
-	height: 100px;
-	width: 100%;
+  height: 100px;
+  width: 100%;
 }
 
 
@@ -64,8 +63,8 @@
 }
 
 #filter-btn {
-	position: absolute;
-	bottom: 0%;
+  position: absolute;
+  bottom: 0%;
   height: 100px;
   width: 100%;
   display: inline-block;
@@ -101,10 +100,10 @@
 }
 
 .hr-sero {
-	position: absolute;
-	left: 50%;
-	height: 95px;
-	width: 0px;
+  position: absolute;
+  left: 50%;
+  height: 95px;
+  width: 0px;
 }
 
 input {
@@ -130,9 +129,9 @@ label::before {
 }
 
 input:checked + label {
-	border: 2px solid #8069ef;
-	z-index: 100;
-	font-weight: 600;
+  border: 2px solid #8069ef;
+  z-index: 100;
+  font-weight: 600;
 }
 
 #gender-text {
@@ -150,23 +149,23 @@ input:checked + label {
 }
 
 #gender-male {
-	position: absolute;
-	top: 30%;
-	left: 35%;
+  position: absolute;
+  top: 30%;
+  left: 35%;
 }
 
 #gender-female {
-	position: absolute;
-	top: 30%;
-	left: 64%;
+  position: absolute;
+  top: 30%;
+  left: 64%;
 }
 
 #age-text {
-	position: absolute;
-	top: 55%;
-	left: 5%;
-	font-size: 2.5em;
-	font-weight: 500;
+  position: absolute;
+  top: 55%;
+  left: 5%;
+  font-size: 2.5em;
+  font-weight: 500;
 }
 
  #age-10s, #age-20s, #age-30s,
@@ -198,7 +197,7 @@ input:checked + label {
 
 
 #age-group {
-	position: absolute;
+  position: absolute;
   top: 50%;
   left: 55%;
   font-size: 2.5em;
@@ -209,18 +208,18 @@ input:checked + label {
 }
 
 #slider-range {
-	position: absolute;
-	top: 65%;
-	left: 8%;
+  position: absolute;
+  top: 65%;
+  left: 8%;
   width: 80%;
-	height: 10%;
-	border: 0px;
-	background-color: white;
+  height: 10%;
+  border: 0px;
+  background-color: white;
 }
 
 .slider-max-range {
-	position: absolute;
-	left: 6%;
+  position: absolute;
+  left: 6%;
   bottom: 31.5%;
   background-color: white;
   border: 3px solid white;
@@ -229,19 +228,19 @@ input:checked + label {
 }
 
 .ui-slider .ui-slider-range {
-	height: 11%;
-	margin-top: 3%;
-	background-color: #8069ef;
-	z-index: 2;
+  height: 11%;
+  margin-top: 3%;
+  background-color: #8069ef;
+  z-index: 2;
 }
 
 .ui-slider .ui-slider-handle {
-	height: 60%;
-	width: 6%;
-	border-radius: 50px;
-	background-color: white;
-	border: 3px solid #BEAED4;
-	z-index: 2;
+  height: 60%;
+  width: 6%;
+  border-radius: 50px;
+  background-color: white;
+  border: 3px solid #BEAED4;
+  z-index: 2;
 }
 
 /* 필터 부분 끝 */
@@ -292,14 +291,14 @@ input:checked + label {
 
 /* 뮤지션 정렬 시작 */
 #musician-surf-sort {
-	position: relative;
-	width: 100%;
-	height: 70px;
-	background-color: #f5f5f5;
+  position: relative;
+  width: 100%;
+  height: 70px;
+  background-color: #f5f5f5;
 }
 
 #musician-list-filter {
-	position: absolute;
+  position: absolute;
   width: 150px;
   height: 50px;
   left: 5%;
@@ -308,12 +307,12 @@ input:checked + label {
 }
 
 #musician-list-sort {
-	position: absolute;
-	width: 150px;
-	height: 50px;
-	right: 5%;
-	bottom: 0%;
-	margin-left: 10%;
+  position: absolute;
+  width: 150px;
+  height: 50px;
+  right: 5%;
+  bottom: 0%;
+  margin-left: 10%;
 }
 
 /* 뮤지션 정렬 끝 */
@@ -350,41 +349,41 @@ input:checked + label {
 }
 
 #musician-surf-preview {
-	position: relative;
-	width: 100%;
-	height: 30%;
+  position: relative;
+  width: 100%;
+  height: 30%;
 }
 
 #musician-surf-intro {
-	position: absolute;
-	width: 90%;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	font-size: 2em;
-	left: 5%;
-	top: 10px;
-	font-weight: 400;
-	white-space: normal;
-	line-height: 1.2;
-	max-height: 100px;
-	text-align: left;
-	word-break: break-word;
-	/* word-wrap: break-all; */
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
+  position: absolute;
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 2em;
+  left: 5%;
+  top: 10px;
+  font-weight: 400;
+  white-space: normal;
+  line-height: 1.2;
+  max-height: 100px;
+  text-align: left;
+  word-break: break-word;
+  /* word-wrap: break-all; */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 #musician-surf-name {
-	position: absolute;
-	left: 5%;
-	bottom: 30%;
+  position: absolute;
+  left: 5%;
+  bottom: 30%;
   width: auto;
   font-size: 1.8em;
 }
 
 #musician-surf-location {
-	 position: absolute;
+   position: absolute;
   left: 5%;
   bottom: 10%;
   width: 80%;
@@ -396,10 +395,10 @@ input:checked + label {
 }
 
 .surfLike {
-	position: absolute;
-	right: 5%;
-	bottom: 15%;
-	font-size: 2rem;
+  position: absolute;
+  right: 5%;
+  bottom: 15%;
+  font-size: 2rem;
 }
 
 #musician-surf-like-favor {
@@ -449,7 +448,7 @@ input:checked + label {
 }
 
 #filter-loc {
-	padding-left : 6%;
+  padding-left : 6%;
 }
 
 #filter-loc-toggle {
@@ -494,7 +493,7 @@ input:checked + label {
 }
 
 #filter-mjr-toggle {
-	width:100%;
+  width:100%;
   height: 500px;
   bottom: 0;
   display: none;
