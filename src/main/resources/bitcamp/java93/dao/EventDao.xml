@@ -122,6 +122,7 @@
       <result property="nickName" column="nick" />
       <result property="photo" column="path" />
       <result property="isFavorite" column="fav" />
+      <result property="score" column="score" />
     <collection property="genreList" ofType="string">
       <result column="genre" />
     </collection>
@@ -138,7 +139,7 @@
   <select id="selectOngoingList" resultMap="matchEventMap"
     parameterType="int">
     select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
-mu.muno, mu.nick, mm.path, fav.fav,
+mu.muno, mu.nick, mm.path, fav.fav, score.score,
 mj.name as major, g.name as genre, t.name as theme
 from evn e inner join mtc on e.eno=mtc.eno and e.date >= curdate() and e.mno=#{no}
 inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
@@ -152,6 +153,11 @@ left outer join (
   where mno = #{no}
   group by muno
 ) fav on fav.muno=mu.muno
+left outer join (
+  select avg(score) as score, muno
+  from mtc
+  group by muno
+) score on score.muno=mu.muno
   </select><!-- 완진 -->
 
   <select id="selectRecruitingList" resultMap="eventMapRecruit" parameterType="int">

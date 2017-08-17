@@ -127,14 +127,14 @@ body {
 
 
 .recruiting-dday {
-  /* position: absolute; */
   display: inline-block;
   color: white;
-  font-size: 34px;
+  font-size: 33px;
   font-weight: 400;
   width: auto;
-  padding-left: 2%; padding-right: 2%;
-  background-color: #8069ef;
+  padding-left: 2%;
+  padding-right: 2%;
+  background-color: #000000;
   border-radius: 2%;
   top: 1%;
   right: 3%;
@@ -507,8 +507,9 @@ body {
   text-align: center;
   line-height: 70px;
   font-size: 2rem;
-  color: white;
-  background: black;
+  color: black;
+  background: white;
+  border: 1px solid black;
   border-radius: 10px;
 }
 /*함께하는 뮤지션 끝*/
