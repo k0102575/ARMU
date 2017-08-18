@@ -1027,11 +1027,11 @@ insert into pr (eno, muno) values (4, 13);
 insert into pr (eno, muno) values (7, 3);
 insert into pr (eno, muno) values (7, 14);
 
-insert noti (muno, eno, type, date, cont, prno) values (3, 4, "참여요청", '2017-08-02', "이벤트 홍보", 5);
-insert noti (muno, eno, type, date, cont, prno) values (13, 4, "참여요청", '2017-08-02', "이벤트 홍보", 6);
+insert noti (muno, eno, type, date, cont, prno) values (3, 4, "참여요청", '2017-08-02', "이벤트 홍보", 4);
+insert noti (muno, eno, type, date, cont, prno) values (13, 4, "참여요청", '2017-08-02', "이벤트 홍보", 5);
 
-insert noti (muno, eno, type, date, cont, prno) values (3, 7, "참여요청", '2017-08-02', "이벤트 홍보", 7);
-insert noti (muno, eno, type, date, cont, prno) values (14, 7, "참여요청", '2017-08-02', "이벤트 홍보", 8);
+insert noti (muno, eno, type, date, cont, prno) values (3, 7, "참여요청", '2017-08-02', "이벤트 홍보", 6);
+insert noti (muno, eno, type, date, cont, prno) values (14, 7, "참여요청", '2017-08-02', "이벤트 홍보", 7);
 
 
 -- appy(뮤지션이 이벤트에 지원) 추가

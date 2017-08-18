@@ -1,3 +1,17 @@
+-- 뷰 삭제
+-- 모집 중인 이벤트
+DROP VIEW IF EXISTS recruiting_eventlist RESTRICT;
+
+-- 뮤지션 정보
+DROP VIEW IF EXISTS musicians RESTRICT;
+
+-- 이벤트 PR 뮤지션 정보
+DROP VIEW IF EXISTS eventlist_pr_musicians RESTRICT;
+
+-- 이벤트 APPY 뮤지션 정보
+DROP VIEW IF EXISTS eventlist_appy_musicians RESTRICT;
+
+
 -- 회원
 DROP TABLE IF EXISTS memb RESTRICT;
 
