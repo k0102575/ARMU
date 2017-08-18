@@ -165,8 +165,8 @@ function filter() {
                   var templateFn = Handlebars.compile($('#event-surf-template').text())
                   var generatedHTML = templateFn(result.data)
                   var container = $('#event-surf-container')
-    var html = container.html()
-      container.html(html + generatedHTML)
+                  var html = container.html()
+                  container.html(generatedHTML)
 //                handleList(result)
 //                var surfLike = $(".surfLike")
 //                for(var i = 0; i <= result.data.listSurf.length -1; i++){

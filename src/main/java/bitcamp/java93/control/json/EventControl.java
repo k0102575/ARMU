@@ -276,10 +276,20 @@ public class EventControl {
   
   @RequestMapping("searchEvent")
   public JsonResult searchEvent(HttpSession session, int thmno, int mjrno, int gnrno, int indexT,int indexM,int indexG) throws Exception {
-    HashMap<String,Object> dataMap = new HashMap<>();
-    List<Event> search= (List<Event>)eventService.searchEvent(getLoginMember(session).getNo() ,thmno,mjrno,gnrno,indexT,indexM,indexG);
-    dataMap.put("listSurf", search);
-    return new JsonResult(JsonResult.SUCCESS, dataMap);
+    JsonResult result = new JsonResult();
+    try {
+      List<Event> search= (List<Event>) eventService.searchEvent(getLoginMember(session).getNo() ,thmno,mjrno,gnrno,indexT,indexM,indexG);
+
+      result.setStatus(JsonResult.SUCCESS);
+
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listSurf", search);
+      result.setData(dataMap);
+
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+    }
+  return result;
   }
   
 }
