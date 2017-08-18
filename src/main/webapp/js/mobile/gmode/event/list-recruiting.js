@@ -26,25 +26,10 @@ $(document).ready(function() {
 
 });
 
-var isRecommandEvent = true;
 
-var noEventView = $('.recruiting-no-event'),
-yesEventView = $('.recruiting-yes-event');
-
-if(isRecommandEvent) {
-	noEventView.css('display', 'none')
-	yesEventView.css('display', '')
-
-
-	displayRecruitingEventList()
+displayRecruitingEventList()
 
 	
-	
-} else {
-	yesEventView.css('display', 'none')
-	noEventView.css('display', '')
-}
-
 function displayRecruitingEventList() {
   $.getJSON('/event/listRecruiting.json', function(result) {
     if(result.status != 'success') {
@@ -52,7 +37,6 @@ function displayRecruitingEventList() {
       return;
     }
     
-    console.log(result.data)
     $('.loader-box').hide();
     var templateFn = Handlebars.compile($('#recruiting-event-template').text())
     var generatedHTML = templateFn(result.data)
@@ -96,7 +80,7 @@ function postAppy(pressedBtn) {
         console.error("getJSON() 실패: ", result.status)
         return;
       }
-      console.log(result.data)
+
       $.each(result.data.listAppy, function(i, item) {
         var starInteger = parseInt(item.score),
         starRealNumber = item.score - starInteger;

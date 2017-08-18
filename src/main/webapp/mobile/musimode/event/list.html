@@ -12,8 +12,14 @@
 <script src="/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
 <script src="/node_modules/animsition/dist/js/animsition.min.js"></script>
+<script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
+<script src="/node_modules/handlebars-intl/dist/handlebars-intl.min.js"></script>
+<script src="/node_modules/moment/min/moment.min.js"></script>
+<script src="/node_modules/handlebars-intl/dist/locale-data/ko.js"></script>
 </head>
 <body>
+<div class='loader-box'><div class='loader'></div></div>
+
 <div class="event-list-headerbox">
       <a href="javascript:history.go(-1)" class='back-btn'><i class="fa fa-angle-left" aria-hidden="true"></i></a>
       <div class="event-list-header">나의 이벤트</div>
@@ -26,7 +32,7 @@
   <div id="event-type-end-btn">종료</div>
   </div>
   
-  <div class='category-main' id='recruiting-list'><!-- include --></div>
+  <div class='category-main animsition' id='recruiting-list'><!-- include --></div>
   <div class='category-main' id='ongoing-list'><!-- include --></div>
   <div class='category-main' id='end-list'><!-- include --></div>
 	
@@ -34,6 +40,9 @@
 	<i class="fa fa-angle-double-up" id="move_top_btn" aria-hidden="true"></i>
 
 <script>
+HandlebarsIntl.registerWith(Handlebars);
+//HandlebarsMoment(moment().format(), moment).registerHelpers(Handlebars);
+
 var lastScroll = 0,
 moveTopBtn = $("#move_top_btn"),
 eventTypeBtnContainer = $("#event-type-btn-container"),
@@ -84,27 +93,27 @@ RecruitingBtn.on('click', function() {
 RecruitingBtn.css('border-bottom', '4px solid #8069ef')
 OngoingBtn.css('border-bottom', '1px solid lightgray')
 endBtn.css('border-bottom', '1px solid lightgray')
-recruitingList.css('display', 'block')
-ongoingList.css('display', 'none')
-endList.css('display', 'none')
+recruitingList.fadeIn(700)
+ongoingList.hide()
+endList.hide()
 })
 
 OngoingBtn.on('click', function() {
 RecruitingBtn.css('border-bottom', '1px solid lightgray')
 OngoingBtn.css('border-bottom', '4px solid #8069ef')
 endBtn.css('border-bottom', '1px solid lightgray')
-recruitingList.css('display', 'none')
-ongoingList.css('display', 'block')
-endList.css('display', 'none')
+recruitingList.hide()
+ongoingList.fadeIn(700)
+endList.hide()
 })
 
 endBtn.on('click', function() {
 RecruitingBtn.css('border-bottom', '1px solid lightgray')
 OngoingBtn.css('border-bottom', '1px solid lightgray')
 endBtn.css('border-bottom', '4px solid #8069ef')
-recruitingList.css('display', 'none')
-ongoingList.css('display', 'none')
-endList.css('display', 'block')
+recruitingList.hide()
+ongoingList.hide()
+endList.fadeIn(700)
 })
 
 

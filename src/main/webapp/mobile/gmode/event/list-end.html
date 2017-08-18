@@ -1,14 +1,4 @@
-<div class="event-list-container" id='event-list-container'>
-<div class="no-event end-no-event">
-  아직 작성하신 이벤트가 없어요<br><br>
-  <i class="fa fa-frown-o" aria-hidden="true" id='no-event-cry'></i><br><br><br>
-  <a href="/mobile/gmode/event-regist/inex.html" class='event-add-btn'>이벤트 등록하기</a>
-</div>
-
-
-<div class="yes-event end-yes-event" id="end-event-container">
-
-</div><!-- yes-event-container-->
+<div class="event-list-container" id="end-event-container">
   
 </div><!-- event-list-container -->
 
@@ -17,9 +7,7 @@
 <div class="end" data-no={{no}}>
 <div class="event-box">
   <div class="recruiting-title">
-  <div class="recruiting-dday end-dday">종료</div>
   <span>&nbsp;{{title}}</span></div><!-- recruiting-title -->
-  <div class='recruiting-edit-btn'><i class="fa fa-angle-right" aria-hidden="true"></i></div>
 {{#intl locales="ko-KO"}}
   <div class="end-date"><span>{{formatDate date day="numeric" month="long" year="numeric"}}</span></div>
 {{/intl}}
@@ -33,16 +21,20 @@
     <!-- end-applicant-name -->
 
     <div class='end-applicant-btn review-btn'>리뷰달기</div>
-  
-
-
 
   </div><!-- end-musibox -->
   <!--뮤지션 끝-->
 {{/matchMusician}}
 
-
-    </div><!-- end -->
+</div><!-- end -->
 {{/each}}
+
+{{#unless listEnd}}
+<div class="no-event">
+  종료 이벤트가 없어요<br><br>
+  <i class="fa fa-frown-o" aria-hidden="true" id='no-event-cry'></i><br><br><br>
+  <a href="/mobile/gmode/event-regist/inex.html" class='event-add-btn'>이벤트 등록하기</a>
+</div>
+{{/unless}}
 </script>
 <script src="/js/mobile/gmode/event/list-end.js"></script>

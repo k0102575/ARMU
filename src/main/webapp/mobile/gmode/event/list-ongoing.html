@@ -1,18 +1,8 @@
-<div class="event-list-container" id='event-list-container'>
-<div class="no-event ongoing-no-event">
-  아직 작성하신 이벤트가 없어요<br><br>
-  <i class="fa fa-frown-o" aria-hidden="true" id='no-event-cry'></i><br><br><br>
-  <a href="/mobile/gmode/event-regist/inex.html" class='event-add-btn'>이벤트 등록하기</a>
-</div>
+<div class="event-list-container" id="ongoing-event-container">
 
-<div class="yes-event ongoing-yes-event" id="ongoing-event-container">
-
-  </div><!-- yes-event-container-->
-  
 </div><!-- event-list-container -->
   
 <script id="ongoing-event-template" type="text/x-handlebars-template">
-
 {{#each listOngoing}}
 <div class="recruiting">
 <div class="event-box">
@@ -63,6 +53,14 @@
 
     </div><!-- recruiting -->
 {{/each}}
+
+{{#unless listOngoing}}
+<div class="no-event">
+  현재 진행중인 이벤트가 없어요<br><br>
+  <i class="fa fa-frown-o" aria-hidden="true" id='no-event-cry'></i><br><br><br>
+  <a href="/mobile/gmode/event-regist/inex.html" class='event-add-btn'>이벤트 등록하기</a>
+</div>
+{{/unless}}
 
 </script>
 <script src="/js/mobile/gmode/event/list-ongoing.js"></script>

@@ -1,14 +1,7 @@
-<div class="event-list-container" id='event-list-container'>
-<div class="no-event recruiting-no-event">
-  아직 작성하신 이벤트가 없어요<br><br>
-  <i class="fa fa-frown-o" aria-hidden="true" id='no-event-cry'></i><br><br><br>
-  <a href="/mobile/gmode/event-regist/inex.html" class='event-add-btn'>이벤트 등록하기</a>
-</div>
+<div class="event-list-container" id="recruiting-event-container">
 
-<div class="yes-event recruiting-yes-event" id="recruiting-event-container">
-</div><!-- recruiting-yes-event-container-->
- 
 </div><!-- event-list-container -->
+
 <script id="recruiting-event-template" type="text/x-handlebars-template">
 {{#each listRecruiting}}
 <div class="recruiting">
@@ -89,6 +82,15 @@ data-fill='false' data-open='false'>펼치기
 
     </div><!-- recruiting -->
 {{/each}}
+
+{{#unless listRecruiting}}
+<div class="no-event">
+  현재 모집 가능한 이벤트가 없어요<br><br>
+  <i class="fa fa-frown-o" aria-hidden="true" id='no-event-cry'></i><br><br><br>
+  <a href="/mobile/gmode/event-regist/inex.html" class='event-add-btn'>이벤트 등록하기</a>
+</div>
+{{/unless}}
+
 </script>
 <script id="recruiting-pr-open-template" type="text/x-handlebars-template">
 {{#each listPr}}

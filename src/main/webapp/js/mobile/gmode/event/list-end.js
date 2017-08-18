@@ -1,19 +1,7 @@
 "use strict"
 
-var isEndEvent = true;
+displayEndEventList()
 
-var noEventView = $('.end-no-event'),
-yesEventView = $('.end-yes-event');
-
-if(isEndEvent) {
-	noEventView.css('display', 'none')
-	yesEventView.css('display', '')
-
-	displayEndEventList()
-} else {
-	yesEventView.css('display', 'none')
-	noEventView.css('display', '')
-}
 
 function displayEndEventList() {
 	$.getJSON('/event/listEnd.json', function(result) {
@@ -21,8 +9,6 @@ function displayEndEventList() {
 			console.error("getJSON() 실패: ", result.status)
 			return;
 		}
-	
-	console.log(result.data)	
 	
 		var templateFn = Handlebars.compile($('#end-event-template').text())
 		var generatedHTML = templateFn(result.data)

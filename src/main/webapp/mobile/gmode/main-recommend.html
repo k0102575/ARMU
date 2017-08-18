@@ -9,18 +9,8 @@
     </div>
     <!-- rec-no-event -->
 
-    <div class="rec-yes-event">
-      <div class="swiper-container">
-        <div class="swiper-wrapper" id='rec-by-event-musi-container'>
-
-        </div>
-        <br><br>
-        <div class="swiper-pagination"></div>
-        <!-- Add Arrows -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div>
-      <!-- swiper-container -->
+    <div class="rec-yes-event" id='rec-by-event-musi-container'>
+      <!-- include handlebars -->
     </div>
     <!-- rec-yes-event -->
 
@@ -57,6 +47,11 @@
 
 
 <script id="rec-by-event-musi-template" type="text/x-handlebars-template">
+{{#if listRecommand}}
+<div class="swiper-container">
+        <div class="swiper-wrapper">
+            <!-- include list here -->
+        
   {{#each listRecommand}}
   <div class="rec-by-event-musi swiper-slide">
     <div class="rec-by-event-musi-img" style='background-image: url("{{photo}}_300.png")'></div>
@@ -74,6 +69,21 @@
   </div>
   <!-- rec-by-event-musi -->
   {{/each}}
+
+</div>
+  <br><br>
+  <div class="swiper-pagination"></div><!-- Add Arrows -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+  </div><!-- swiper-container -->
+{{/if}}
+{{#unless listRecommand}}
+  <div class="rec-no-event">
+      <br> 아쉽지만, 조건에 맞는 이벤트가 없네요<br><br>
+      <i class="fa fa-frown-o" aria-hidden="true" id='rec-no-event-cry'></i><br><br>
+      <a href="/mobile/gmode/event/regist.html" class='rec-event-add-btn'>이벤트 직접 검색하기</a><br><br>
+    </div>
+{{/unless}}
 </script>
 
 

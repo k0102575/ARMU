@@ -1,20 +1,6 @@
 "use strict"
 
-var isEvent = true;
-
-var noEventView = $('.ongoing-no-event'),
-yesEventView = $('.ongoing-yes-event');
-
-if(isEvent) {
-  noEventView.css('display', 'none')
-  yesEventView.css('display', '')
-
-  displayOngoingEventList()
-} else {
-  yesEventView.css('display', 'none')
-  noEventView.css('display', '')
-}
-
+displayOngoingEventList()
 
 
 function displayOngoingEventList() {
@@ -24,7 +10,6 @@ function displayOngoingEventList() {
       return;
     }
 
-    console.log(result.data)
     $.each(result.data.listOngoing, function(i, item) {
       var starInteger = parseInt(item.matchMusician.score),
       starRealNumber = item.matchMusician.score - starInteger;
