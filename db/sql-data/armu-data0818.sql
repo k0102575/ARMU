@@ -307,15 +307,15 @@ insert into memb (name, phone, pwd, email, path) values ('김승민', '010-3333-
 insert into memb (name, phone, pwd, email, path) values ('박규호', '010-1423-4523',  password('1111'), 'gggyuu@gmail.com', '/image/profile/park');
 
 -- 이벤트
-insert into evn (title, mno, locno, pay, addr, date, cont)
+insert into evn (title, mno, locno, pay, addr, date, cont, req)
 values ("결혼식 축가 구해요~!", 4, 22, 200000, '딩댕동 553-5', '2017-08-20',
 '의정부역 근처 예식장 4월 28일 오후 2시 예식에
 축가 구합니다.
 성악전공하신분이였으면 좋겠습니다.
 학생도 가능하니 연락주세요^^
-페이는 20만원입니다^^');
+페이는 20만원입니다^^', '늦지 않게 와주실분 약속 잘지켜 주시는분 원합니다');
 
-insert into evn (title, mno, locno, pay, addr, date, cont)
+insert into evn (title, mno, locno, pay, addr, date, cont, req)
 values ("결혼식 피아노 반주자를 구합니다!", 4, 14, 150000, '링딩동 113-1 샤이니웨딩홀', '2017-08-20',
 '결혼식 피아노 반주자 구합니다.
 
@@ -330,13 +330,12 @@ Palisades Park/Fort Lee 출발시 20분 소요
 
 총 반주시간: 1 hour 정도.
 
-용모 단정하신분이셨음 좋겟습니다.
-오실때 정장 구두 하셔야 합니다.
-
 쪽지, 이멜로 연락해주세요.
 angie8102@gmail.com
 
-연락처 꼭 남겨주세요~~~');
+연락처 꼭 남겨주세요~~~',
+'용모 단정하신분이셨음 좋겟습니다.
+오실때 정장 구두 하셔야 합니다.');
 
 insert into evn (title, mno, locno, pay, addr, date, cont)
 values ("창립기념행사에 모실 초청공연 연주자를 구합니다!", 4, 6, 300000, '용두동 222 (주)휴스턴', '2017-07-31',
@@ -359,7 +358,7 @@ values ("가든파티 연주자를 구합니다~~", 5, 8, 300000, '몰라동 131
 알뮤 메시지로 연락 부탁드려요!!
 ');
 
-insert into evn (title, mno, locno, pay, addr, date, cont)
+insert into evn (title, mno, locno, pay, addr, date, cont, req)
 values ("졸업연주를 하는데, 악기연주자가 필요합니다.", 6, 8, 80000, '정릉로 77 국민대학교 경영대 1층 콘서트홀', '2017-11-21',
 '저는 국민대학교 작곡과에 다니고 있는, 곧 졸업을 앞둔 학생입니다.
 다름이 아니고, 졸업연주를 위해 오케스트라 연주자가 필요해요.
@@ -368,15 +367,15 @@ values ("졸업연주를 하는데, 악기연주자가 필요합니다.", 6, 8, 
 경력이 많이 필요하지는 않으니 전공자시라면 언제든 연락주세요.
 학생도 대환영입니다.
 
-아 그리고, 연주 전에 약 5번 정도 함께 맞춰보는 시간이 필요합니다.
+',
+'아 그리고, 연주 전에 약 5번 정도 함께 맞춰보는 시간이 필요합니다.
 당연히 5번의 연습에 대한 보수는 각각 5만원이 있구요,
 사정이 있으시면 3번으로 연습 횟수를 줄이는 것도 조정 가능합니다.
 날짜와 시간은 정해지면 협의하는 것으로 하겠습니다.
 연주날짜는 11월이지만 적어도 10월 초까지는 정해져야 연습을 할 수 있으니 빠른 매칭을 위해
-알뮤로 연락 부탁드립니다~!
-');
+알뮤로 연락 부탁드립니다~!');
 
-insert into evn (title, mno, locno, pay, addr, date, cont)
+insert into evn (title, mno, locno, pay, addr, date, cont, req)
 values ("성악과 졸업연주 피아노 반주자 급구!", 7, 13, 70000, '연세로 50 연세대학교 예술관 A홀', '2017-11-07',
 '안녕하세요.
 연세대 성악과 곧 졸업을 앞둔 학생입니다.
@@ -389,14 +388,13 @@ values ("성악과 졸업연주 피아노 반주자 급구!", 7, 13, 70000, '연
 리허설은 따로 필요없을 것 같고, 제가 악보 메일로 보내드리면 연습해주시고,
 템포나 그런것도 전화나 녹음을 통해서 알려드릴게요.
 
-당일날 2시간 정도 일찍 오시면 학교 연습실에서 맞춰보는 것으로 하면 될 것 같아요.
-11월 7일 시간은 오후 5시이니, 오후 3시까지 와주시면 되고
-끝나는 시간은 넉넉잡아 7시가 될 것 같아요~!
-
 지원 부탁드려요~!
-');
+',
+'당일날 2시간 정도 일찍 오시면 학교 연습실에서 맞춰보는 것으로 하면 될 것 같아요.
+11월 7일 시간은 오후 5시이니, 오후 3시까지 와주시면 되고
+끝나는 시간은 넉넉잡아 7시가 될 것 같아요~!');
 
-insert into evn (title, mno, locno, pay, addr, date, cont)
+insert into evn (title, mno, locno, pay, addr, date, cont, req)
 values ("대학교 축제에 모실 밴드 연주자를 모집합니다!", 5, 14, 500000, '와우산로 94 홍익대학교 학생회관 202호', '2017-09-27',
 '2017년 홍익대 가을 축제의 노래자랑에서 연주를 해주실 밴드를 모십니다!
 
@@ -411,12 +409,11 @@ values ("대학교 축제에 모실 밴드 연주자를 모집합니다!", 5, 14
 함께 재밌게 축제를 즐길 수 있는 분들이면 좋겠습니다~!
 신청곡 외에 혹시 밴드만의 연주가 가능하면 더 감사하겠습니다!!
 그러면 보수는 협의 후 재조정 될 것이니 참고해주세요 ^0^
-
-당일날 3시간 정도 일찍 오셔서, 당일 리허설이 필요할 것 같아요.
+',
+'당일날 3시간 정도 일찍 오셔서, 당일 리허설이 필요할 것 같아요.
 (보수 포함입니다)
 
-끝나는 시간은 넉넉잡아 10시가 될 것이니 참고해주세요~!!
-');
+끝나는 시간은 넉넉잡아 10시가 될 것이니 참고해주세요~!!');
 
 insert into evn (title, mno, locno, pay, addr, date, cont)
 values ("클래식 대잔치에 모실 연주자분들을 모십니다!", 5, 8, 100000, '거꾸로 94 잔디밭', '2017-09-03',
@@ -623,13 +620,6 @@ insert into spec_path (spno, path, isimg) values(1, '/image/event/spec/sam6.jpg'
 insert into spec_path (spno, path, isimg) values(1, '/image/event/spec/sam7.jpg', 'Y');
 insert into spec_path (spno, path, isimg) values(1, 'https://youtu.be/oLLwRUWRAUE', 'N');
 insert into spec_path (spno, path, isimg) values(2, 'https://youtu.be/9F56WWIPGg0', 'N');
-
-
--- 뮤지션 관심이벤트(fav_evn)
-insert into fav_evn (muno, eno) values (3, 3);
-insert into fav_evn (muno, eno) values (3, 4);
-insert into fav_evn (muno, eno) values (2, 4);
-insert into fav_evn (muno, eno) values (1, 4);
 
 -- 뮤지션 추가
 insert into memb (name, phone, pwd, email, path) values ('김랑랑', '010-1234-1234',  password('1111'), 'lang@gmail.com', '/image/profile/1502328657463_21');
