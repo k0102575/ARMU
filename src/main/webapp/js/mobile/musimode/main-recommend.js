@@ -14,7 +14,6 @@ function displayRecommandEventList() {
 				var starInteger = parseInt(item.score),
 				starRealNumber = item.score - starInteger;
 				starAdd(starInteger, starRealNumber, item)//별점 처리
-				heartAdd(item)//관심정보 처리
 			});
 
 		var templateFn = Handlebars.compile($('#rec-event-template').text())
@@ -70,7 +69,6 @@ function displayRecentEventList() {
       var starInteger = parseInt(item.score),
       starRealNumber = item.score - starInteger;
       starAdd(starInteger, starRealNumber, item)//별점 처리
-      heartAdd(item)//관심정보 처리
     });
     var templateFn = Handlebars.compile($('#rec-recent-event-template').text())
     var generatedHTML = templateFn(result.data)
@@ -109,11 +107,5 @@ function starAdd(starInteger, starRealNumber, item) {
 	return item;
 }
 
-function heartAdd(item) {
-	if (item.isFavorite == 1) {
-		item.isFavorite = '<i class="fa fa-heart" aria-hidden="true"></i>'
-	} else {
-		item.isFavorite = '<i class="fa fa-heart" aria-hidden="true"></i>'
-	}
-}
+
 
