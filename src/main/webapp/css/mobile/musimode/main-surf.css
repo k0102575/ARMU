@@ -315,6 +315,8 @@ input[type="checkbox"]:checked + label:before {
 }
 /* 이벤트 필터 끝 */
 
+
+
 /* musimode filter */
 #filter-body {
 	box-shadow: 3px 3px 20px 2px rgba(167, 167, 167, 0.8);
@@ -398,6 +400,103 @@ input[type="checkbox"]:checked + label:before {
 	z-index: 2;
 }
 
+#filter-thm-content>:FIRST-CHILD {
+	display: block;
+}
+
+#filter-mjr-tab {
+  font-size: 100%;
+  border-bottom: 1px solid grey;
+  height: 99px;
+}
+
+#filter-mjr-backscreen {
+  top: 0;
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, .6);
+  z-index: 1
+}
+
+.filter-mjr-sub-tab {
+  display: inline-block;
+  width: 19.7%; /*탭 개수에 따라서 비율을 맞춰야 함*/
+  height: 65%;
+  color: white;
+  padding-top: 2%;
+  padding-bottom: 1.5%;
+  text-align: center;
+  font-size: 250%;
+}
+
+.filter-mjr-sub-con {
+  height: 400px;
+  display: none;
+}
+
+#filter-mjr-toggle {
+  width: 100%;
+  height: 500px;
+  bottom: 0;
+  display: none;
+  position: fixed;
+  background-color: rgb(40, 40, 40);
+  z-index: 2;
+}
+
+#filter-mjr-content>:FIRST-CHILD {
+  display: block;
+}
+
+
+#filter-gen-tab {
+  font-size: 100%;
+  border-bottom: 1px solid grey;
+  height: 99px;
+}
+
+#filter-gen-backscreen {
+  top: 0;
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, .6);
+  z-index: 1
+}
+
+.filter-gen-sub-tab {
+  display: inline-block;
+  width: 16.3%; /*탭 개수에 따라서 비율을 맞춰야 함*/
+  height: 65%;
+  color: white;
+  padding-top: 2%;
+  padding-bottom: 1.5%;
+  text-align: center;
+  font-size: 250%;
+}
+
+.filter-gen-sub-con {
+  height: 400px;
+  display: none;
+}
+
+#filter-gen-toggle {
+  width: 100%;
+  height: 500px;
+  bottom: 0;
+  display: none;
+  position: fixed;
+  background-color: rgb(40, 40, 40);
+  z-index: 2;
+}
+
+#filter-gen-content>:FIRST-CHILD {
+  display: block;
+}
+
 .thm, .mjr, .gen {
 	padding: 2% 1%;
 	color: white;
@@ -408,17 +507,8 @@ input[type="checkbox"]:checked + label:before {
 	border-right: 0.5px solid grey;
 	border-bottom: 0.5px solid grey;
 }
-
-#filter-thm-content>:FIRST-CHILD {
-	display: block;
-}
-
-#filter-thm-tab>:FIRST-CHILD {
-
-}
-
 .on {
-	border-bottom: 5px solid white;
+	border-bottom: 4px solid white;
 	font-weight: 900;
 }
 

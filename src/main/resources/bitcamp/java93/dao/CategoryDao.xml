@@ -64,7 +64,7 @@
   </resultMap>
   <resultMap type="category" id="genreMap2">
      <result column="gnrtno" property="gnrtno"/>
-     <result column="name" property="gnrtname"/>
+     <result column="gnrtname" property="gnrtname"/>
      <collection property="list" ofType="java.util.Map">
        <association property="genreMap" javaType="java.util.Map">
       <result property="key" column="gnrno"/>
@@ -74,7 +74,7 @@
   </resultMap>
   <resultMap type="category" id="majorMap2">
      <result column="mjrtno" property="mjrtno"/>
-     <result column="name" property="mjrtname"/>
+     <result column="mjrtname" property="mjrtname"/>
      <collection property="list" ofType="java.util.Map">
        <association property="majorMap" javaType="java.util.Map">
       <result property="key" column="mjrno"/>
@@ -179,16 +179,19 @@ delete from loc_musi where muno = #{musiNo}
 <select id="selectListEventTheme" resultMap="themeMap2">
   select thmt.thmtno, thmt.name as thmtname, thme.thmno, thme.name as thmname
   from thm thme inner join thm_type thmt on thmt.thmtno= thme.thmtno
+  order by thmt.thmtno asc
 </select>
 
 <select id="selectListEventMajor" resultMap="majorMap2">
   select mjrt.mjrtno, mjrt.name as mjrtname, mjr.mjrno, mjr.name as mjrname
   from mjr mjr inner join mjr_type mjrt on mjrt.mjrtno= mjr.mjrtno
+  order by mjrt.mjrtno asc
 </select>
 
 <select id="selectListEventGenre" resultMap="genreMap2">
   select gnrt.gnrtno, gnrt.name as gnrtname, gnr.gnrno, gnr.name as gnrname
   from gnr gnr inner join gnr_type gnrt on gnrt.gnrtno=gnr.gnrtno
+  order by gnrt.gnrtno asc
 </select>
 
 </mapper>

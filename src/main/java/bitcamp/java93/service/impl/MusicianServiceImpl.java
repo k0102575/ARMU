@@ -70,6 +70,7 @@ public class MusicianServiceImpl implements MusicianService {
     valueMap.put("gender", gender);
     valueMap.put("minAge", minAge);
     valueMap.put("maxAge", maxAge);
+    System.out.println(valueMap);
     return musicianDao.musicianSearch(valueMap);
   }
 

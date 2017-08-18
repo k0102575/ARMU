@@ -145,5 +145,18 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectEndList(no);
   }
   
+  @Override
+  public List<Event> searchEvent(int no,int thmno, int mjrno, int gnrno, int indexT,int indexM,int indexG) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("no", no);
+    valueMap.put("thmno", thmno);
+    valueMap.put("mjrno", mjrno);
+    valueMap.put("gnrno", gnrno);
+    valueMap.put("indexL", indexT);
+    valueMap.put("indexM", indexM);
+    valueMap.put("indexG", indexG);
+    return eventDao.eventSearch(valueMap);
+  }
+  
 }
 

@@ -315,6 +315,8 @@ seoul.click(function () {
   return locno;
 })
 
+
+
 major.click(function () {
   if(locno ==3000)
     locno=2000
@@ -341,6 +343,8 @@ major.click(function () {
   $(this).addClass('on2')
   return mjrno;
 })
+
+
 
 genre.click(function () {
   if(locno ==3000)

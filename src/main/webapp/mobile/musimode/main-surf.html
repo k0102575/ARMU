@@ -10,12 +10,13 @@
   </div>
   <div class="filter" id="filter-theme">
     테마&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i>
-  </div>
+	</div>
 </div>
 
 <div id="filter-mjr-backscreen"></div>
 <div id="filter-mjr-toggle">
 	<div id="filter-mjr-tab">
+	
 	</div>
 	<div id="filter-mjr-content">
 	</div>
@@ -55,6 +56,45 @@
   </div>
 {{/listEventTheme}}
 </script>
+
+<script id="major-template" type="text/x-handlebars-template">
+{{#listEventMajor}}
+    <div class="filter-mjr-sub-tab" data-no="{{mjrtno}}">{{mjrtname}}</div>
+{{/listEventMajor}}
+</script>
+
+<script id="major-sub-template" type="text/x-handlebars-template">
+{{#listEventMajor}}
+  <div class="filter-mjr-sub-con" data-no="{{mjrtno}}">
+    <div class="mjr" data-no=1000>전체</div>
+{{#list}}
+{{#majorMap}}
+    <div class="mjr" data-no={{key}}>{{value}}</div>
+{{/majorMap}}
+{{/list}}
+  </div>
+{{/listEventMajor}}
+</script>
+
+<script id="genre-template" type="text/x-handlebars-template">
+{{#listEventGenre}}
+    <div class="filter-gen-sub-tab" data-no="{{gnrtno}}">{{gnrtname}}</div>
+{{/listEventGenre}}
+</script>
+
+<script id="genre-sub-template" type="text/x-handlebars-template">
+{{#listEventGenre}}
+  <div class="filter-gen-sub-con" data-no="{{gnrtno}}">
+    <div class="gen" data-no=1000>전체</div>
+{{#list}}
+{{#genreMap}}
+    <div class="gen" data-no={{key}}>{{value}}</div>
+{{/genreMap}}
+{{/list}}
+  </div>
+{{/listEventGenre}}
+</script>
+
 
 <script id="event-surf-template" type="text/x-handlebars-template">
 {{#each listSurf}}
