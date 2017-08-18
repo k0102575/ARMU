@@ -5,10 +5,10 @@ var surfBackscreen = $("#surf-backscreen"),
 
 displaySurfEventList()
 HandlebarsIntl.registerWith(Handlebars);
-getLocation()
+/*getLocation()
 filter()
 filterMajor()
-filterGenre()
+filterGenre()*/
 
 function displaySurfEventList() {
   $.getJSON('/event/listSurf.json', function(result) {

@@ -279,8 +279,7 @@ where ap.mno=#{no}
     values(#{muNo}, #{eNo});
   </insert> <!-- 승민 -->
 
-  <select id="selectSurfList" resultMap="eventMapBasic"
-    parameterType="int">
+  <select id="selectSurfList" resultMap="eventMapBasic">
     select e.eno, e.locno, e.pay, e.addr, e.date, e.title,
     concat(lt.name, ' ', l.name) as location,
     m.mno, m.name, m.path, mj.name as major, g.name as genre, t.name as theme
