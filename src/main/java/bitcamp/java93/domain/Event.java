@@ -28,11 +28,23 @@ public class Event {
   int mtc_info;
   String rhsinfo;
   boolean isFavorite;
+  boolean haveRehearsal;
   List<String> EventRegistTheme;
   List<String> EventRegistMajor;
   List<String> EventRegistGenre;
   ArrayList<Musician> appyList;
   ArrayList<Musician> prList;
+  @Override
+  public String toString() {
+    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", writeMember=" + writeMember
+        + ", matchMusician=" + matchMusician + ", themeList=" + themeList + ", majorList=" + majorList + ", genreList="
+        + genreList + ", city=" + city + ", location=" + location + ", address=" + address + ", pay=" + pay + ", locno="
+        + locno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay + ", tmnno="
+        + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", pr_count=" + pr_count
+        + ", mtc_info=" + mtc_info + ", rhsinfo=" + rhsinfo + ", isFavorite=" + isFavorite + ", haveRehearsal="
+        + haveRehearsal + ", EventRegistTheme=" + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor
+        + ", EventRegistGenre=" + EventRegistGenre + ", appyList=" + appyList + ", prList=" + prList + "]";
+  }
   public int getNo() {
     return no;
   }
@@ -177,6 +189,12 @@ public class Event {
   public void setFavorite(boolean isFavorite) {
     this.isFavorite = isFavorite;
   }
+  public boolean isHaveRehearsal() {
+    return haveRehearsal;
+  }
+  public void setHaveRehearsal(boolean haveRehearsal) {
+    this.haveRehearsal = haveRehearsal;
+  }
   public List<String> getEventRegistTheme() {
     return EventRegistTheme;
   }
@@ -206,17 +224,6 @@ public class Event {
   }
   public void setPrList(ArrayList<Musician> prList) {
     this.prList = prList;
-  }
-  @Override
-  public String toString() {
-    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", writeMember=" + writeMember
-        + ", matchMusician=" + matchMusician + ", themeList=" + themeList + ", majorList=" + majorList + ", genreList="
-        + genreList + ", city=" + city + ", location=" + location + ", address=" + address + ", pay=" + pay + ", locno="
-        + locno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay + ", tmnno="
-        + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", pr_count=" + pr_count
-        + ", mtc_info=" + mtc_info + ", rhsinfo=" + rhsinfo + ", isFavorite=" + isFavorite + ", EventRegistTheme="
-        + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre
-        + ", appyList=" + appyList + ", prList=" + prList + "]";
   }
   
   

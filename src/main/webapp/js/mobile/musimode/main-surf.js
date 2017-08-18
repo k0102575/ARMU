@@ -33,8 +33,7 @@ function heartAdd(item) {
 }
 
 $('body').on('click', ".event-surf", function() {
-  /*location.href = '/mobile/musimode/event-info/index.html?no=' + */
-  console.log($(this).attr('data-no') )
+  location.href = '/mobile/musimode/event/detail.html?no=' + $(this).attr('data-no')
 })
 
 $('body').on('click', ".filterBtn", function() {

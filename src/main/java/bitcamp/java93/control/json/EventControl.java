@@ -281,6 +281,22 @@ public class EventControl {
     return result;
   }
   
+  @RequestMapping("detail")
+  public JsonResult detail(int no, HttpSession session) {
+    JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("detail", eventService.detail(no, getLoginMember(session).getNo()));
+
+      result.setData(dataMap);
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
+    return result;
+  }
+  
   private Member getLoginMember(HttpSession session) {
     Member loginMember = (Member) session.getAttribute("loginMember");
       return loginMember;

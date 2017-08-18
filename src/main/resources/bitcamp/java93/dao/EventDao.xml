@@ -52,10 +52,11 @@
     <result column="cont" property="contents" />
     <result column="dpay" property="downPay" />
     <result column="date" property="date" />
-    <result column="pay" property="rhspay" />
-    <result column="info" property="rhsinfo" />
-    <result column="num" property="rhsnum" />
+    <result column="rhspay" property="rhspay" />
+    <result column="rhsinfo" property="rhsinfo" />
+    <result column="rhsnum" property="rhsnum" />
     <result column="fav" property="isFavorite" />
+    <result column="rhs" property="haveRehearsal" />
     <association property="writeMember" javaType="Member">
       <id property="no" column="muno" />
       <result property="name" column="name" />
@@ -245,8 +246,6 @@ where ap.mno=#{no}
     group by eno
     ) fe on fe.eno=e.eno
   </select><!-- 완진 -->
-  
-  
 
   <insert id="insert" parameterType="event" useGeneratedKeys="true"
     keyColumn="eno" keyProperty="no">
@@ -298,7 +297,7 @@ where ap.mno=#{no}
     keyColumn="prno" keyProperty="prno">
     insert into pr(muno, eno)
     values(#{muNo}, #{eNo});
-  </insert>
+  </insert> <!-- 승민 -->
 
   <select id="selectFavorList" resultMap="eventMapBasic" parameterType="int">
     select e.eno, e.pay, e.addr, e.date, e.title, concat(lt.name, ' ', l.name) as location,
@@ -315,7 +314,7 @@ where ap.mno=#{no}
     left outer join thm_evn te on e.eno=te.eno inner join thm t on
     te.thmno=t.thmno
     where muno = #{no}
-  </select>
+  </select> <!-- 승민 -->
 
   <select id="favorEventRemove" parameterType="map">
     delete from fav_evn where muno = #{myNo} and eno = #{eNo};
@@ -372,6 +371,31 @@ where ap.mno=#{no}
     mj.name like '%${value}%'or
     t.name like '%${value}%'
   </select>
+  
+  <select id="selectEvent" resultMap="eventMapBasic" parameterType="map">
+    select e.eno, e.title, e.mno,  e.addr, e.pay, e.req, e.cont, e.dpay, e.date,
+           concat(lt.name, ' ', l.name) as location, if(fav.eno is not null, 1, 0) as fav,
+           if(rhs.eno is not null, 1, 0) as rhs, rhs.pay as rhspay, rhs.info as rhsinfo, rhs.num as rhsnum,
+           memb.mno as muno, memb.name, memb.path, 
+           t.name as theme, m.name as major, g.name as genre
+    from evn e
+    left outer join 
+    (select eno, muno 
+    from fav_evn
+    where muno = #{muNo}
+    ) fav on fav.eno = e.eno
+    left outer join loc l on e.locno = l.locno
+    left outer join loc_type lt on l.loctno = lt.loctno
+    left outer join rhs rhs on e.eno = rhs.eno
+    left outer join thm_evn te on e.eno = te.eno
+    left outer join thm t on te.thmno = t.thmno
+    left outer join mjr_evn me on e.eno = me.eno
+    left outer join mjr m on me.mjrno = m.mjrno
+    left outer join gnr_evn ge on e.eno = ge.eno
+    left outer join gnr g on ge.gnrno = g.gnrno
+    left outer join memb memb on e.mno = memb.mno
+    where e.eno = #{eNo};
+  </select> <!-- 승민 -->
 
 </mapper>
 

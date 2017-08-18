@@ -117,7 +117,6 @@ public class EventServiceImpl implements EventService {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("myNo", myNo);
     valueMap.put("eNo", eNo);
-    System.out.println(valueMap);
     eventDao.favorEventAdd(valueMap);
   }
   
@@ -143,6 +142,13 @@ public class EventServiceImpl implements EventService {
   /*나의이벤트 > 종료 이벤트 리스트*/
   public List<Event> listEnd(int no) throws Exception {
     return eventDao.selectEndList(no);
+  }
+  
+  public Event detail(int eNo, int muNo) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("eNo", eNo);
+    valueMap.put("muNo", muNo);
+    return eventDao.selectEvent(valueMap);
   }
   
 }
