@@ -130,7 +130,7 @@ public class EventServiceImpl implements EventService {
     valueMap.put("thmno", thmno);
     valueMap.put("mjrno", mjrno);
     valueMap.put("gnrno", gnrno);
-    valueMap.put("indexL", indexT);
+    valueMap.put("indexT", indexT);
     valueMap.put("indexM", indexM);
     valueMap.put("indexG", indexG);
     return eventDao.eventSearch(valueMap);

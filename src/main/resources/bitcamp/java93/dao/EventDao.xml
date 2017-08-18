@@ -342,17 +342,13 @@ where ap.mno=#{no}
     where e.eno = #{eNo};
   </select> <!-- 승민 -->
 
-  <select id="eventSearch" resultMap="eventMap" parameterType="map">
-    select e.eno, e.locno, e.pay, e.addr, e.date, e.title, fe.fav,
+  <select id="eventSearch" resultMap="eventMapBasic" parameterType="map">
+   select e.eno, e.locno, e.pay, e.addr, e.date, e.title,
     concat(lt.name, ' ', l.name) as location,
     m.mno, m.name, m.path, mj.name as major, g.name as genre, t.name as theme
     from (select * from evn where date >= curdate() and eno not in (select
     eno from mtc)) e
     left outer join memb m on e.mno = m.mno
-    left outer join (
-    select count(if(muno is not null, 1, 0)) as fav, muno, eno
-    from fav_evn where muno=#{no} group by eno
-    ) fe on fe.eno=e.eno
     inner join loc l on e.locno=l.locno inner join loc_type lt on
     l.loctno=lt.loctno
     left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on
@@ -361,9 +357,9 @@ where ap.mno=#{no}
     ge.gnrno=g.gnrno
     left outer join thm_evn te on e.eno=te.eno inner join thm t on
     te.thmno=t.thmno
-    left outer join gnr_type gnrt on g.gnrtno=gnrt.gnrtno
-    left outer join mjr_type mjrt on mj.mjrtno=mjrt.mjrtno
-    left outer join thm_type thmt on t.thmtno=thmt.thmtno
+left outer join gnr_type gnrt on g.gnrtno=gnrt.gnrtno
+left outer join mjr_type mjrt on mj.mjrtno=mjrt.mjrtno
+left outer join thm_type thmt on t.thmtno=thmt.thmtno
     <choose>
       <when test="mjrno == 1000">
         where mj.mjrtno=#{indexM}
@@ -468,6 +464,7 @@ where ap.mno=#{no}
   
       <otherwise></otherwise>
     </choose>
+    order by eno    
   </select>
 
 </mapper>

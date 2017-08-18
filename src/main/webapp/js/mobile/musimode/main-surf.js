@@ -133,8 +133,8 @@ function filter() {
         var container = $('#filter-thm-content')
         var html = container.html()
         container.html(html + generatedHTML)
-        
         $('.thm').first().addClass('on2').html('<i class="fa fa-check check3" aria-hidden="true"></i>'+ $('.thm').first().text())
+        
         $('.filter-thm-sub-tab').click(function() {
           $('.filter-thm-sub-tab').removeClass('on')
           $(this).addClass('on')
@@ -142,6 +142,7 @@ function filter() {
           find = $(this).attr('data-no')
           $(".filter-thm-sub-con").css('display','none')
           $(".filter-thm-sub-con[data-no="+find+"]").css('display','block')
+          indexT= find
         })
         
         $('.thm').click(function() {
@@ -152,33 +153,25 @@ function filter() {
           thmno = $(this).attr('data-no')
           console.log('thmno=',thmno,'mjrno=',mjrno,'gnrno=',gnrno,indexT,indexM,indexG)
           $.post('/event/searchEvent.json',
-              {'thmno':thmno, 
+              {'thmno':thmno,
                 'mjrno':mjrno, 
                 'gnrno':gnrno, 
                 'indexT':indexT, 
                 'indexM':indexM, 
                 'indexG':indexG}, function(result) {
-                  $.each(result.data.listSurf, function(i, item) {
-                    heartAdd(item)//관심정보 처리
-                  });
                   console.log(result.data)
                   var templateFn = Handlebars.compile($('#event-surf-template').text())
                   var generatedHTML = templateFn(result.data)
                   var container = $('#event-surf-container')
                   var html = container.html()
                   container.html(generatedHTML)
-//                handleList(result)
-//                var surfLike = $(".surfLike")
-//                for(var i = 0; i <= result.data.listSurf.length -1; i++){
-//                  if(result.data.listSurf[i].isFavorite == true){
-//                    surfLike[i].style.color = "#ba3d3d"
-                  console.log('abc')
               },'json')
 
           $('.check3').remove()
           $('.thm').removeClass('on2')
           $(this).html('<i class="fa fa-check check3" aria-hidden="true"></i>'+ $(this).text())
           $(this).addClass('on2')
+          return thmno;
         })
       })
     }
@@ -211,9 +204,30 @@ function filterMajor() {
           find = $(this).attr('data-no')
           $(".filter-mjr-sub-con").css('display','none')
           $(".filter-mjr-sub-con[data-no="+find+"]").css('display','block')
+          indexM= find
         })
         $('.mjr').click(function() {
+          console.log('thmno=',thmno,'mjrno=',mjrno,'gnrno=',gnrno,indexT,indexM,indexG)
+          if(thmno ==3000)
+            thmno=2000
+          if(gnrno ==3000)
+            gnrno=2000
           mjrno = $(this).attr('data-no')
+          $.post('/event/searchEvent.json',
+              {'thmno':thmno,
+                'mjrno':mjrno, 
+                'gnrno':gnrno, 
+                'indexT':indexT, 
+                'indexM':indexM, 
+                'indexG':indexG}, function(result) {
+                  console.log(result.data)
+                  var templateFn = Handlebars.compile($('#event-surf-template').text())
+                  var generatedHTML = templateFn(result.data)
+                  var container = $('#event-surf-container')
+                  var html = container.html()
+                  container.html(generatedHTML)
+              },'json')
+              
           $('.check1').remove()
           $('.mjr').removeClass('on2')
           $(this).html('<i class="fa fa-check check1" aria-hidden="true"></i>'+ $(this).text())
@@ -251,9 +265,30 @@ function filterGenre() {
           find = $(this).attr('data-no')
           $(".filter-gen-sub-con").css('display','none')
           $(".filter-gen-sub-con[data-no="+find+"]").css('display','block')
+          indexG = find
         })
         
         $('.gen').click(function() {
+          console.log('thmno=',thmno,'mjrno=',mjrno,'gnrno=',gnrno,indexT,indexM,indexG)
+          if(thmno ==3000)
+            thmno=2000
+          if(mjrno ==3000)
+            mjrno=2000
+          gnrno = $(this).attr('data-no')
+          $.post('/event/searchEvent.json',
+              {'thmno':thmno,
+                'mjrno':mjrno, 
+                'gnrno':gnrno, 
+                'indexT':indexT, 
+                'indexM':indexM, 
+                'indexG':indexG}, function(result) {
+//                  console.log(result.data)
+                  var templateFn = Handlebars.compile($('#event-surf-template').text())
+                  var generatedHTML = templateFn(result.data)
+                  var container = $('#event-surf-container')
+                  var html = container.html()
+                  container.html(generatedHTML)
+              },'json')
           gnrno = $(this).attr('data-no')
           $('.check2').remove()
           $('.gen').removeClass('on2')
