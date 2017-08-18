@@ -14,49 +14,35 @@
 
 <script id="end-event-template" type="text/x-handlebars-template">
 {{#each listEnd}}
-<div class="recruiting" data-no={{no}}>
+<div class="end" data-no={{no}}>
 <div class="event-box">
   <div class="recruiting-title">
   <div class="recruiting-dday end-dday">종료</div>
   <span>&nbsp;{{title}}</span></div><!-- recruiting-title -->
   <div class='recruiting-edit-btn'><i class="fa fa-angle-right" aria-hidden="true"></i></div>
 {{#intl locales="ko-KO"}}
-  <div class="recruiting-date"><span>{{formatDate date day="numeric" month="long" year="numeric"}}</span></div>
+  <div class="end-date"><span>{{formatDate date day="numeric" month="long" year="numeric"}}</span></div>
 {{/intl}}
-  <div class="recruiting-price">{{formatNumber pay style="currency" currency="KRW"}}</div>
 
 </div>
 
 {{#matchMusician}}
-  <div class="ongoing-musibox">
-    <span class='ongoing-musibox-title ongoing-applicant-open-btn' data-open='true'>함께한 뮤지션</span>
-	<div class='ongoing-applicant-box'>
-    <div class='ongoing-applicant-block'>
-        <br><br>
-<div class="ongoing-applicant">
-    <div class="ongoing-applicant-img" style='background-image: url("{{photo}}_300.png")'></div>
-    <div class="ongoing-applicant-name"><span>{{nickName}}</span></div>
-    <!-- ongoing-applicant-name -->
+  <div class="end-musibox">
+    <div class="end-applicant-img" style='background-image: url("{{photo}}_300.png")'></div>
+    <div class="end-applicant-name"><span>{{nickName}}</span></div>
+    <!-- end-applicant-name -->
 
-    <div class='ongoing-applicant-btn review-btn'>리뷰달기</div>
+    <div class='end-applicant-btn review-btn'>리뷰달기</div>
   
-  </div><!-- ongoing-applicant -->
 
 
 
-  </div> <!-- recruiting-applicant-block -->
-	</div> <!-- ongoing-applicant-box -->
-  </div><!-- recruiting-musibox -->
+  </div><!-- end-musibox -->
   <!--뮤지션 끝-->
 {{/matchMusician}}
 
 
-  </div> <!-- recruiting-applicant-block -->
-	</div> <!-- ongoing-applicant-box -->
-  </div><!-- recruiting-musibox -->
-  <!--지원자 끝-->
-
-    </div><!-- recruiting -->
+    </div><!-- end -->
 {{/each}}
 </script>
 <script src="/js/mobile/gmode/event/list-end.js"></script>

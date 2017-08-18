@@ -9,7 +9,6 @@ body {
 	text-align: center;
 	width: 100%;
 	background-color: #f5f5f5;
-	padding-top: 10%;
 }
 
 /*event 없는 경우 시작*/
@@ -100,6 +99,10 @@ body {
   color: white; */
   border-bottom: 4px solid #8069ef;
 }
+
+.category-main {
+  position: relative;
+}
 /*카테고리 바 끝*/
 
 
@@ -110,17 +113,17 @@ body {
   background-color: white;
   box-shadow: 1px 1px 20px 1px rgba(0, 0, 0, 0.21);
   border-top: 1px solid white;
-  border-bottom: 1px solid white; 
+  border-bottom: 1px solid white;
   height: auto;
   width:100%;
   margin-bottom: 20%;
   text-align: justify;
   color: white;
   z-index: 1;
-  padding-bottom: 6%;
+  /* padding-bottom: 6%; */
 }
- 
-  
+
+
   .event-box:focus, .event-box:hover, .event-box:active {
     background-color: rgba(0, 0, 0, 0.1);
   }
@@ -136,6 +139,8 @@ body {
   padding-right: 2%;
   background-color: #000000;
   border-radius: 2%;
+  height: 55px;
+  line-height: 49px;
   top: 1%;
   right: 3%;
   transform: translate(3%, -1%);
@@ -191,6 +196,7 @@ body {
 .recruiting-price {
   margin-top: 1%;
   margin-left: 4%;
+  margin-bottom: 2%;
   font-size: 35px;
   font-weight: 500;
   color: black;
@@ -199,6 +205,7 @@ body {
 
 .recruiting-hashtagbox {
   margin-top: 1%;
+  margin-bottom: 5%;
   margin-left: 4%;
   font-size: 34px;
   font-weight: 300;
@@ -214,7 +221,6 @@ body {
 
 .recruiting-separator {
   width: 98%;
-  margin: 5% 0;
   margin-left: auto;
   margin-right: auto;
   border: 1.5px solid lightgray;
@@ -223,33 +229,38 @@ body {
 /*모집 중인 이벤트 - 뮤지션 시작*/
 
 .recruiting-musibox {
-  margin-top: 1%;
-  margin-left: auto; margin-right: auto;
+  position: relative;
+  padding-top: 1%;
+  padding-bottom: 3%;
   color: black;
   width: 100%;
   overflow: auto;
-  text-align: left;
+  text-align: center;
 }
 
 .recruiting-musibox-title {
   display: block;
-  font-size: 36px;
+  font-size: 33px;
   font-weight: 500;
   white-space: nowrap;
   color: #444;
-  padding-left: 3%;
+  text-align: center;
+  margin-top: 2%;
+  margin-bottom: 1%;
 }
 
 .recruiting-musibox-summarybox {
   display: inline-block;
-    height: 130px;
-    overflow: hidden;
-    margin-top: 2%;
-    width: 85%;
+  overflow: hidden;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 100%;
+  height: 140px;
+  text-align: center;
 }
 
 .recruiting-musibox-summary-musi {
-  float: left;
+  /* float: left; */
   display: inline-block;
   height: 120px;
   width: 120px;
@@ -258,10 +269,14 @@ body {
   border-radius: 100%;
   overflow: hidden;
   margin: 1% 2%;
+  border: 1px solid rgba(0, 0, 0, 0.21);
 }
 
 .recruiting-musibox-open {
-  font-size: 2rem;
+  font-size: 1.9rem;
+  display: block;
+  text-align: center;
+  padding-left: 2%;
 }
 
 .recruiting-musibox-open-container {
@@ -269,22 +284,21 @@ body {
 }
 
 .recruiting-musibox-subtitle {
-  margin-top: 5%;
+  margin-top: 1%;
   margin-bottom: 4%;
   padding-left: 3%;
-  padding-top: 3%;
-  padding-bottom: 3%;
   width: auto;
   font-size: 32px;
   font-weight: 300;
   text-align: left;
   white-space: nowrap;
   color: grey;
+  border-top: 1px solid #9f9f9f;
 }
 
 .recruiting-musician-block {
   width: 100%;
-  text-align: left;
+  text-align: center;
 }
 
 .recruiting-candidate {
@@ -294,64 +308,68 @@ body {
 .recruiting-applicant {
   position: relative;
   display: inline-block;
-  box-shadow: 3px 3px 20px 0px rgba(128, 128, 128, 0.56);
-  height: 670px;
-  width: 44%;
-  margin: 1%;
-  margin-left: 3.5%;
-  margin-bottom: 5%;
+  height: 250px;
+  width: 95%;
+  margin: 0%;
   text-align: justify;
-  border-radius: 10px;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  
 }
 
 .recruiting-applicant-img {
   display: table;
-  height: 400px;
-  width: 100%;
+  height: 250px;
+  width: 250px;
   overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-radius: 100%;
 }
 
 .recruiting-applicant-name {
+  position: absolute;
   display: inline-block;
-  width: auto;
-  margin-top: 5%;
-  margin-left:5%;
   color: black;
   font-size: 32px;
   font-weight: 500;
+  top: -2px;
+  width: 52%;
+  left: 300px;
+  overflow: hidden;
+  height: 41px;
 }
-/* 
+
 .recruiting-applicant-score {
-  display: inline-block;
+  display: inline;
   margin-left: 20px;
-  color: #ffec86;
-  font-size: 28px;
-} */
+  color: #ffd700;
+  font-size: 33px;
+  width: 140px;
+}
 
 .recruiting-applicant-fav {
   position: absolute;
   display: inline-block;
-  right: 4%;
-  left: auto;
-  top: 61%;
+  top: -3%;
+  right: 1%;
   color: #8069ef;
   font-size: 40px;
+  width: 10%;
   font-weight: 500;
+  text-align: right;
 }
 
 .recruiting-applicant-hashtagbax {
-  margin-top: 2%;
-  margin-left: 2%;
-  height: 90px;
+  position: absolute;
+  height: 99px;
   overflow: hidden;
   font-size: 30px;
   color: black;
-
+  width: 68%;
+  top: 56px;
+  left: 292px;
 }
 
 .recruiting-applicant-hashtagbax > span {
@@ -361,42 +379,38 @@ body {
 
 .recruiting-applicant-btnbox {
   position: absolute;
-  display: flex;
-  bottom: 0;
-  width: 100%;
-  height: 70px;
+  display: inline-block;
+  width: 67%;
+  left: 301px;
+  bottom: 3%;
 }
 
 .recruiting-applicant-btn {
-  display: table;
-  width:49.7%;
+  display: inline-table;
+  width: 48%;
   height: 70px;
   text-align: center;
   line-height: 70px;
   font-size: 2rem;
+  color: black;
+  border-radius: 10px;
 }
 
 .reject-btn {
+  background: white;
   border: 1px solid black;
-  border-bottom-left-radius: 10px;
+  margin-right: 2%;
 }
 
 .decide-btn {
-  border: 1px solid black;
-  background-color: black;
+  background: black;
   color: white;
-  font-weight: 400;
-  border-bottom-right-radius: 10px;
+  border: 1px solid black;
 }
 
 .cancel-btn {
-  width:100%;
-  border: 0px;
-  background-color: gray;
-  color: white;
-  font-weight: 400;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  width:47%;
+  border: 1px solid black;
 }
 /*모집 중인 이벤트 - 뮤지션 끝*/
 /*모집 중인 이벤트 끝*/
@@ -405,7 +419,8 @@ body {
 /*진행중 이벤트 리스트 시작*/
 /*함께하는 뮤지션 시작*/
 .ongoing-musibox {
-  margin-top: 1%;
+  margin-top: 2%;
+  margin-bottom: 3%;
   margin-left: auto; margin-right: auto;
   color: black;
   width: 100%;
@@ -516,15 +531,114 @@ body {
 /*진행중 이벤트 리스트 끝*/
 
 /*종료 이벤트 리스트 시작*/
+.end {
+  position: relative;
+  background-color: white;
+  box-shadow: 1px 1px 20px 1px rgba(0, 0, 0, 0.21);
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  height: auto;
+  min-height: 154px;
+  width: 100%;
+  margin-bottom: 10%;
+  text-align: justify;
+  color: white;
+  padding-bottom: 2%;
+  z-index: 1;
+}
+
+.end-date {
+  position: absolute;
+  display: inline-block;
+  color: black;
+  font-size: 35px;
+  font-weight: 300;
+  margin-top: 1%;
+  margin-left: 4%;
+  width: auto;
+  white-space: nowrap;
+}
+
+
 /*함께한 뮤지션 시작*/
-.end-applicant-box {
-  display: none;  
-}
-
 .end-dday {
-  background: gray;
+	background: gray;
 }
 
+.end-musibox {
+  position: relative;
+  margin-top: 2%;
+  color: black;
+  width: 100%;
+  height: 240px;
+  z-index: 2;
+}
+
+.end-musibox-title {
+  position: absolute;
+  left: 12%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+  font-size: 32px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: #444;
+}
+
+.end-applicant-block {
+  width: 100%;
+  text-align: center;
+}
+
+.end-applicant {
+  
+  
+}
+
+.end-applicant-img {
+  position: absolute;
+  display: table;
+  height: 120px;
+  width: 120px;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.end-applicant-name {
+  position: absolute;
+  display: inline-block;
+  color: black;
+  font-size: 32px;
+  font-weight: 500;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+.end-applicant-btn {
+  position: absolute;
+  display: inline-block;
+  width: 143px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 1.7rem;
+  color: black;
+  background: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  bottom: 3%;
+  transform: translateX(-50%);
+  left: 50%;
+}
 /*.add-review-btn {
 	position: absolute;
 	display: inline-block;

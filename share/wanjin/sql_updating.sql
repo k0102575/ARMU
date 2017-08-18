@@ -463,32 +463,34 @@ left outer join (
 
 
 -- 나의 이벤트(모집 중인 이벤트)에 대하여 내가 지원을 요청한(PR) 뮤지션 리스트 가져오기
-select p.eno, p.prno, p.muno, p.nick, p.path, p.score,
-p.major, p.genre, p.theme, fav.fav
-from eventlist_pr_musicians p
+select pr.eno, pr.prno, mu.muno, mu.nick, mu.path, mu.score,
+mu.major, mu.genre, mu.theme, fav.fav
+from (select distinct eno from recruiting_eventlist where eno=4 and mno=5) de
+inner join pr on de.eno=pr.eno
+inner join musicians mu on pr.muno=mu.muno
 left outer join (
   select count(if(mno is not null, 1, 0)) as fav, mno, muno
   from fav_musi
   where mno = 5
   group by muno
-) fav on fav.muno=p.muno
-where p.mno=5
+) fav on fav.muno=mu.muno
 
 
 -- 나의 특정 이벤트(모집 중인 이벤트)에 지원한(APPY) 뮤지션 리스트 가져오기
-select ap.eno, ap.appyno, ap.muno, ap.nick, ap.path, ap.score,
-ap.major, ap.genre, ap.theme, fav.fav
-from eventlist_appy_musicians ap
+select appy.eno, appy.appyno, mu.muno, mu.nick, mu.path, mu.score,
+mu.major, mu.genre, mu.theme, fav.fav
+from (select distinct eno from recruiting_eventlist where eno=4 and mno=5) de
+inner join appy on de.eno=appy.eno
+inner join musicians mu on appy.muno=mu.muno
 left outer join (
   select count(if(mno is not null, 1, 0)) as fav, mno, muno
   from fav_musi
   where mno = 5
   group by muno
-) fav on fav.muno=ap.muno
-where ap.mno=5
+) fav on fav.muno=mu.muno
 
 
--- 나의 이벤트(모집 중인 이벤트)에 지원한(APPY) 뮤지션 리스트 가져오기
+-- 나의 이벤트(모집 중인 이벤트) 뮤지션 리스트 가져오기
 select ap.eno, ap.title, ap.date, ap.location, ap.addr, ap.pay, ap.major, ap.genre, ap.theme,
 ap.appyno, ap.muno, ap.nick, ap.path, p.prno, p.muno, p.nick, p.path
 from eventlist_appy_musicians ap
@@ -523,10 +525,10 @@ left outer join (
 select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
 mj.name as major, g.name as genre, t.name as theme
 from evn e
-inner join memb m on e.mno=m.mno
-inner join mtc on e.eno=mtc.eno and e.mno=5
+left outer join memb m on e.mno=m.mno
+left outer join mtc on e.eno=mtc.eno and e.mno=5
 inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
-inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
+left outer join musi mu on mtc.muno=mu.muno left outer join memb mm on mu.muno=mm.mno
 left outer join mjr_musi mjm on mu.muno=mjm.muno inner join mjr mj on mjm.mjrno=mj.mjrno
 left outer join gnr_musi gm on mu.muno=gm.muno inner join gnr g on gm.gnrno=g.gnrno
 left outer join thm_musi tm on mu.muno=tm.muno inner join thm t on tm.thmno=t.thmno
@@ -536,5 +538,13 @@ left outer join (
   where mno = 5
   group by muno
 ) fav on fav.muno=mu.muno
-
 where date < curdate() order by date asc
+
+
+select e.eno, title, e.date, mu.muno, mu.nick, mm.path
+from evn e
+left outer join memb m on e.mno=m.mno
+left outer join mtc on e.eno=mtc.eno and e.mno=5
+inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
+left outer join musi mu on mtc.muno=mu.muno left outer join memb mm on mu.muno=mm.mno
+where m.mno=5 and date < curdate()

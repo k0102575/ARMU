@@ -96,8 +96,11 @@ function postAppy(pressedBtn) {
         console.error("getJSON() 실패: ", result.status)
         return;
       }
-      
+      console.log(result.data)
       $.each(result.data.listAppy, function(i, item) {
+        var starInteger = parseInt(item.score),
+        starRealNumber = item.score - starInteger;
+        starAdd(starInteger, starRealNumber, item)
         heartAdd(item)
       });
       
@@ -130,6 +133,9 @@ function postPr(pressedBtn) {
       }
       
       $.each(result.data.listPr, function(i, item) {
+        var starInteger = parseInt(item.score),
+        starRealNumber = item.score - starInteger;
+        starAdd(starInteger, starRealNumber, item)
         heartAdd(item)
       });
       
@@ -160,6 +166,37 @@ function setFoldBtns(pressedBtn) {
   }
   pressedBtn.siblings('.recruiting-musibox-open-container').toggle( "fold", 500 );
 }
+
+
+
+function starAdd(starInteger, starRealNumber, item) {
+  item.score = "";
+
+  for (var i = 1; i <= starInteger; i++) {
+    item.score += "<i class='fa fa-star' aria-hidden='true'></i>"
+  }
+
+  if(starInteger >= 5) {
+    return;
+  }
+
+  if(starRealNumber >= 0.8) {
+    item.score += "<i class='fa fa-star' aria-hidden='true'></i>"
+  } else if(starRealNumber <= 0.3) {
+    item.score += "<i class='fa fa-star-o' aria-hidden='true'></i>"
+  } else {
+    item.score += "<i class='fa fa-star-half-o' aria-hidden='true'></i>"
+  }
+
+  if(starInteger < 4) {
+    for (var i = 1; i <= 4 - starInteger; i++) {
+      item.score += "<i class='fa fa-star-o' aria-hidden='true'></i>"
+    }
+  }
+
+  return item;
+}
+
 
 
 function heartAdd(item) {

@@ -48,7 +48,7 @@ data-fill='false' data-open='false'>
 
 <div class='recruiting-musibox-open-container'>
     <br>
-    <p class='recruiting-musibox-subtitle'>뮤지션 <i class="fa fa-long-arrow-right" aria-hidden="true"></i> 내 이벤트 선택</p>
+    <p class='recruiting-musibox-subtitle'></p>
 
     <div class='recruiting-musician-block recruiting-appy-open-container'>
         <!--include handlebars-->
@@ -76,7 +76,7 @@ data-fill='false' data-open='false'>펼치기
 
     <div class='recruiting-musibox-open-container'>
     <br>
-    <p class='recruiting-musibox-subtitle'>나 <i class="fa fa-long-arrow-right" aria-hidden="true"></i> 뮤지션 선택</p>
+    <p class='recruiting-musibox-subtitle'></p>
 
     <div class='recruiting-musician-block recruiting-pr-open-container' >
     <!-- include handlebars -->
@@ -95,6 +95,7 @@ data-fill='false' data-open='false'>펼치기
 <div class="recruiting-applicant" data-no={{no}}>
     <div class="recruiting-applicant-img" style='background-image: url("{{photo}}_300.png")'></div>
     <div class="recruiting-applicant-name"><span>{{nickName}}</span>
+    <div class="recruiting-applicant-score">{{{score}}}</div>
     </div>
     <!-- recruiting-applicant-name -->
     <div class="recruiting-applicant-fav">{{{isFavorite}}}</i>
@@ -115,20 +116,22 @@ data-fill='false' data-open='false'>펼치기
 <div class="recruiting-applicant" data-no={{no}}>
     <div class="recruiting-applicant-img" style='background-image: url("{{photo}}_300.png")'></div>
     <div class="recruiting-applicant-name"><span>{{nickName}}</span>
-      <div class="recruiting-applicant-score"></div>
-    </div>
-    <!-- recruiting-applicant-name -->
-    <div class="recruiting-applicant-fav">{{{isFavorite}}}</i>
-    </div>
-    <div class="recruiting-applicant-hashtagbax">
-        {{#majorList}}<span>#{{this}}</span>{{/majorList}}
-        {{#themeList}}<span>#{{this}}</span>{{/themeList}}
-        {{#genreList}}<span>#{{this}}</span>{{/genreList}}
-    </div>
-<div class='recruiting-applicant-btnbox'>
-<div class='recruiting-applicant-btn reject-btn'>거절하기</div>
-  <div class='recruiting-applicant-btn decide-btn'>확정하기</div>
+    <div class="recruiting-applicant-score">{{{score}}}</div>
 </div>
+      
+    <!-- recruiting-applicant-name -->
+
+    <div class="recruiting-applicant-fav">{{{isFavorite}}}</i></div>
+    <div class="recruiting-applicant-hashtagbax">
+      {{#majorList}}<span>#{{this}}</span>{{/majorList}}
+      {{#themeList}}<span>#{{this}}</span>{{/themeList}}
+      {{#genreList}}<span>#{{this}}</span>{{/genreList}}
+    </div>
+  <div class='recruiting-applicant-btnbox'>
+    <div class='recruiting-applicant-btn reject-btn'>거절하기</div>
+    <div class='recruiting-applicant-btn decide-btn'>확정하기</div>
+  </div>
+  
   </div><!-- recruiting-applicant -->
 {{/each}}
 </script>
