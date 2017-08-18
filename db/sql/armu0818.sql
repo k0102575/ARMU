@@ -11,7 +11,6 @@ DROP VIEW IF EXISTS eventlist_pr_musicians RESTRICT;
 -- 이벤트 APPY 뮤지션 정보
 DROP VIEW IF EXISTS eventlist_appy_musicians RESTRICT;
 
-
 -- 회원
 DROP TABLE IF EXISTS memb RESTRICT;
 
@@ -154,8 +153,8 @@ CREATE TABLE evn (
   req   VARCHAR(255) NULL     COMMENT '요구사항', -- 요구사항
   cont  TEXT         NOT NULL COMMENT '내용', -- 내용
   addr  VARCHAR(255) NOT NULL COMMENT '상세주소', -- 상세주소
-  date  DATETIME     NOT NULL COMMENT '일정', -- 일정
   dpay  INTEGER      NULL     COMMENT '계약금', -- 계약금
+  date  DATE         NOT NULL COMMENT '일정', -- 일정
   title VARCHAR(50)  NOT NULL COMMENT '이벤트명' -- 이벤트명
 )
 COMMENT '이벤트';

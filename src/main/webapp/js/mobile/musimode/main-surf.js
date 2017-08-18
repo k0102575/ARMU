@@ -14,6 +14,7 @@ function displaySurfEventList() {
   $.getJSON('/event/listSurf.json', function(result) {
     var templateFn = Handlebars.compile($('#event-surf-template').text())
     var generatedHTML = templateFn(result.data)
+    console.log(generatedHTML)
     var container = $('#event-surf-container')
     var html = container.html()
     container.html(html + generatedHTML)
