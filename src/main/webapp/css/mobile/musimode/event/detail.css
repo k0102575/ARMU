@@ -10,13 +10,13 @@
 #portfolio-add-btn {
   position: fixed;
   border-radius: 100%;
-  width: 130px;
-  height: 130px;
+  width: 150px;
+  height: 150px;
   bottom: 5%;
   right: 5%;
-  background: #8069ef;
-  font-size: 2rem;
-  line-height: 40px;
+  font-weight: 500;
+  background: #444;
+  font-size: 2.2rem;
   padding-top: 25px;
   box-sizing: border-box;
   text-align: center;
@@ -31,7 +31,7 @@
   position: fixed;
   height: 120px;
   width: 100%;
-  background-color: #444;
+  background-color: black;
   top: 0%;
   z-index: 10;
 }
@@ -183,7 +183,7 @@
   width: auto;
   padding-left: 1%;
   padding-right: 1%;
-  background-color: black;
+  background-color: #8069ef;
   border-radius: 2%;
   top: 24%;
   left: 38%;
@@ -465,7 +465,7 @@
   font-size: 2rem;
   margin-top: 5%;
   margin-left: 5%;
-  margin-bottom: 10%;
+      margin-bottom: 300px;
   color: #252525;
 }
 
