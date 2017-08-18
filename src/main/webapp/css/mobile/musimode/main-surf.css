@@ -73,15 +73,6 @@
   color: #252525;
 }
 
-.event-surf-favor {
-  position: absolute;
-  display: inline-block;
-  font-size: 3em;
-  color: #8079ef; /*crimson*/
-  right: 3.5%;
-  bottom: 9%;
-}
-
 .event-surf-date {
   display: inline-block;
   color: black;

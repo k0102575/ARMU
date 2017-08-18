@@ -15,7 +15,6 @@ function displayEventDetail() {
     var container = $('#container')
     container.html(generatedHTML)
     
-    favCheck(result.data.detail.isFavorite)
     rhsCheck(result.data.detail.haveRehearsal)
     
     $("#event-detail-header-prev").on('click', function() {
@@ -23,18 +22,6 @@ function displayEventDetail() {
     })
     
   })
-}
-
-
-function favCheck(favorite) {
-  if(favorite == true) {
-    $("#event-detail-header-container").append("<i class='fa fa-heart' id='event-detail-fav-true' aria-hidden='true'></i>")
-    return
-  }
-  if(favorite == false) {
-    $("#event-detail-header-container").append("<i class='fa fa-heart-o' id='event-detail-fav-false' aria-hidden='true'></i>")
-    return
-  }
 }
 
 function rhsCheck(rhs) {

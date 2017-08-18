@@ -27,7 +27,6 @@ public class Event {
   int pr_count;
   int mtc_info;
   String rhsinfo;
-  boolean isFavorite;
   boolean haveRehearsal;
   List<String> EventRegistTheme;
   List<String> EventRegistMajor;
@@ -41,9 +40,10 @@ public class Event {
         + genreList + ", city=" + city + ", location=" + location + ", address=" + address + ", pay=" + pay + ", locno="
         + locno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay + ", tmnno="
         + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", pr_count=" + pr_count
-        + ", mtc_info=" + mtc_info + ", rhsinfo=" + rhsinfo + ", isFavorite=" + isFavorite + ", haveRehearsal="
-        + haveRehearsal + ", EventRegistTheme=" + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor
-        + ", EventRegistGenre=" + EventRegistGenre + ", appyList=" + appyList + ", prList=" + prList + "]";
+        + ", mtc_info=" + mtc_info + ", rhsinfo=" + rhsinfo + ", haveRehearsal=" + haveRehearsal + ", EventRegistTheme="
+        + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre
+        + ", appyList=" + appyList + ", prList=" + prList + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+        + ", toString()=" + super.toString() + "]";
   }
   public int getNo() {
     return no;
@@ -183,12 +183,6 @@ public class Event {
   public void setRhsinfo(String rhsinfo) {
     this.rhsinfo = rhsinfo;
   }
-  public boolean isFavorite() {
-    return isFavorite;
-  }
-  public void setFavorite(boolean isFavorite) {
-    this.isFavorite = isFavorite;
-  }
   public boolean isHaveRehearsal() {
     return haveRehearsal;
   }
@@ -225,7 +219,6 @@ public class Event {
   public void setPrList(ArrayList<Musician> prList) {
     this.prList = prList;
   }
-  
   
   
   }

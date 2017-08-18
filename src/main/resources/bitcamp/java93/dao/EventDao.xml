@@ -55,7 +55,6 @@
     <result column="rhspay" property="rhspay" />
     <result column="rhsinfo" property="rhsinfo" />
     <result column="rhsnum" property="rhsnum" />
-    <result column="fav" property="isFavorite" />
     <result column="rhs" property="haveRehearsal" />
     <association property="writeMember" javaType="Member">
       <id property="no" column="muno" />
@@ -280,43 +279,14 @@ where ap.mno=#{no}
     values(#{muNo}, #{eNo});
   </insert> <!-- 승민 -->
 
-  <select id="selectFavorList" resultMap="eventMapBasic" parameterType="int">
-    select e.eno, e.pay, e.addr, e.date, e.title, concat(lt.name, ' ', l.name) as location,
-    m.mno, m.name, m.path, mj.name as major, g.name as genre, t.name as theme
-    from fav_evn fe
-    left outer join evn e on fe.eno = e.eno
-    left outer join memb m on e.mno = m.mno
-    inner join loc l on e.locno=l.locno inner join loc_type lt on
-    l.loctno=lt.loctno
-    left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on
-    me.mjrno=mj.mjrno
-    left outer join gnr_evn ge on e.eno=ge.eno inner join gnr g on
-    ge.gnrno=g.gnrno
-    left outer join thm_evn te on e.eno=te.eno inner join thm t on
-    te.thmno=t.thmno
-    where muno = #{no}
-  </select> <!-- 승민 -->
-
-  <select id="favorEventRemove" parameterType="map">
-    delete from fav_evn where muno = #{myNo} and eno = #{eNo};
-  </select> <!-- 승민 -->
-
-  <select id="favorEventAdd" parameterType="map">
-    insert into fav_evn (muno, eno) values (#{myNo}, #{eNo})
-  </select> <!-- 승민 -->
-
   <select id="selectSurfList" resultMap="eventMapBasic"
     parameterType="int">
-    select e.eno, e.locno, e.pay, e.addr, e.date, e.title, fe.fav,
+    select e.eno, e.locno, e.pay, e.addr, e.date, e.title,
     concat(lt.name, ' ', l.name) as location,
     m.mno, m.name, m.path, mj.name as major, g.name as genre, t.name as theme
     from (select * from evn where date >= curdate() and eno not in (select
     eno from mtc)) e
     left outer join memb m on e.mno = m.mno
-    left outer join (
-    select count(if(muno is not null, 1, 0)) as fav, muno, eno
-    from fav_evn where muno=#{no} group by eno
-    ) fe on fe.eno=e.eno
     inner join loc l on e.locno=l.locno inner join loc_type lt on
     l.loctno=lt.loctno
     left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on
@@ -353,18 +323,13 @@ where ap.mno=#{no}
     t.name like '%${value}%'
   </select>
   
-  <select id="selectEvent" resultMap="eventMapBasic" parameterType="map">
+  <select id="selectEvent" resultMap="eventMapBasic" parameterType="int">
     select e.eno, e.title, e.mno,  e.addr, e.pay, e.req, e.cont, e.dpay, e.date,
-           concat(lt.name, ' ', l.name) as location, if(fav.eno is not null, 1, 0) as fav,
+           concat(lt.name, ' ', l.name) as location,
            if(rhs.eno is not null, 1, 0) as rhs, rhs.pay as rhspay, rhs.info as rhsinfo, rhs.num as rhsnum,
            memb.mno as muno, memb.name, memb.path, 
            t.name as theme, m.name as major, g.name as genre
     from evn e
-    left outer join 
-    (select eno, muno 
-    from fav_evn
-    where muno = #{muNo}
-    ) fav on fav.eno = e.eno
     left outer join loc l on e.locno = l.locno
     left outer join loc_type lt on l.loctno = lt.loctno
     left outer join rhs rhs on e.eno = rhs.eno

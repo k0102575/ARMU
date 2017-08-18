@@ -100,29 +100,9 @@ public class EventServiceImpl implements EventService {
     notificationDao.insertEventPrNoti(valueMap);
   }
   
-  public List<Event> listFavor(int no) throws Exception {   
-    return eventDao.selectFavorList(no);
-  }
-  
   @Override
-  public void favorRemove(int myNo, int eNo) throws Exception {
-    HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("myNo", myNo);
-    valueMap.put("eNo", eNo);
-    eventDao.favorEventRemove(valueMap);
-  }
-  
-  @Override
-  public void favorAdd(int myNo, int eNo) throws Exception {
-    HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("myNo", myNo);
-    valueMap.put("eNo", eNo);
-    eventDao.favorEventAdd(valueMap);
-  }
-  
-  @Override
-  public List<Event> listSurf(int no) throws Exception {
-    return eventDao.selectSurfList(no);
+  public List<Event> listSurf() throws Exception {
+    return eventDao.selectSurfList();
   }
 
   /*나의이벤트 > 모집중 이벤트 리스트*/
@@ -156,12 +136,10 @@ public class EventServiceImpl implements EventService {
     return eventDao.eventSearch(valueMap);
   }
   
-  public Event detail(int eNo, int muNo) throws Exception {
-    HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("eNo", eNo);
-    valueMap.put("muNo", muNo);
-    return eventDao.selectEvent(valueMap);
+  public Event detail(int eNo) throws Exception {
+    return eventDao.selectEvent(eNo);
   }
+
   
 }
 

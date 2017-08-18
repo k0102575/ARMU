@@ -13,14 +13,11 @@ public interface EventService {
   List<Event> listRecent(int no) throws Exception;//뮤지션모드 > 추천탭 > 최근 이벤트 리스트
   List<Event> checkEvent(int myNo, int muNo) throws Exception;
   void prEvent(int muNo, int eNo) throws Exception;
-  List<Event> listFavor(int no) throws Exception;
-  void favorRemove(int myNo, int eNo) throws Exception;
-  void favorAdd(int myNo, int eNo) throws Exception;
-  List<Event> listSurf(int no) throws Exception;
+  List<Event> listSurf() throws Exception;
   List<Event> listSearchResult(String search) throws Exception;
   List<Event> listRecruiting(int no) throws Exception;//나의이벤트 > 모집중 이벤트 리스트
   List<Event> listOngoing(int no) throws Exception;//나의이벤트 > 진행중 이벤트 리스트
   List<Event> listEnd(int no) throws Exception;//나의이벤트 > 종료 이벤트 리스트
   List<Event> searchEvent(int no, int thmno, int mjrno, int gnrno,int indexT,int indexM,int indexG) throws Exception;
-  Event detail(int eNo, int muNo) throws Exception;
+  Event detail(int eNo) throws Exception;
 }

@@ -17,14 +17,11 @@ public interface EventDao {
   List<Event> selectRecentList(int no);//뮤지션모드 > 추천탭 > 최근 이벤트 리스트 (파라미터 받는 이유는 관심 이벤트 정보 가져오려고)
   List<Event> selectEventList(Map<String,Object> valueMap);
   void eventRequest(Map<String,Object> valueMap);
-  List<Event> selectFavorList(int no);
-  void favorEventRemove(HashMap<String,Object> valueMap);
-  void favorEventAdd(HashMap<String,Object> valueMap);
-  List<Event> selectSurfList(int no);
+  List<Event> selectSurfList();
   List<Event> selectSearchResultList(String search);
   List<Event> selectRecruitingList(int no);//나의이벤트 > 모집중 이벤트 리스트
   List<Event> selectOngoingList(int no);//나의이벤트 > 진행중 이벤트 리스트
   List<Event> selectEndList(int no);//나의이벤트 > 종료 이벤트 리스트
   List<Event> eventSearch(HashMap<String,Object> valueMap);
-  Event selectEvent(HashMap<String, Object> valueMap);
+  Event selectEvent(int eNo);
 }

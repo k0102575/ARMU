@@ -162,40 +162,12 @@ public class EventControl {
     return result;
   }
   
-  @RequestMapping("listFavor")
-  public JsonResult listFavor(HttpSession session) throws Exception {
-    JsonResult result = new JsonResult();
-
-    try {
-      List<Event> listFavor = (List<Event>) eventService.listFavor(getLoginMember(session).getNo());
-      HashMap<String,Object> dataMap = new HashMap<>();
-      dataMap.put("listFavor", listFavor);
-      result.setData(dataMap);
-    } catch (Exception e) {
-      result.setStatus(JsonResult.ERROR);
-      result.setData(e.getMessage());
-    }
-    return result;
-  }
-
-  @RequestMapping("favorRemove")
-  public JsonResult favorRemove(HttpSession session, int no) throws Exception {
-    eventService.favorRemove(getLoginMember(session).getNo(), no);
-    return new JsonResult(JsonResult.SUCCESS, "ok");
-  }
-
-  @RequestMapping("favorAdd")
-  public JsonResult favorAdd(HttpSession session, int no) throws Exception {
-    eventService.favorAdd(getLoginMember(session).getNo(), no);
-    return new JsonResult(JsonResult.SUCCESS, "ok");
-  }
-  
   @RequestMapping("listSurf")
-  public JsonResult listSurf(HttpSession session) throws Exception {
+  public JsonResult listSurf() throws Exception {
     JsonResult result = new JsonResult();
 
       try {
-        List<Event> listSurf = (List<Event>) eventService.listSurf(getLoginMember(session).getNo());
+        List<Event> listSurf = (List<Event>) eventService.listSurf();
 
         result.setStatus(JsonResult.SUCCESS);
 
@@ -286,7 +258,7 @@ public class EventControl {
     JsonResult result = new JsonResult();
     try {
       HashMap<String,Object> dataMap = new HashMap<>();
-      dataMap.put("detail", eventService.detail(no, getLoginMember(session).getNo()));
+      dataMap.put("detail", eventService.detail(no));
 
       result.setData(dataMap);
       result.setStatus(JsonResult.SUCCESS);
