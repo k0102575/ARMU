@@ -12,6 +12,9 @@ public interface CategoryDao {
   List<Category> selectListLocationType();
   List<Category> selectListLocation(int no);
   List<Category> selectTop10CategoryList();
+  List<Category> selectListEventMajor();
+  List<Category> selectListEventGenre();
+  List<Category> selectListEventTheme();
   void themeMusi(HashMap<String, Object> themeMap);
   void majorMusi(HashMap<String, Object> majorMap);
   void genreMusi(HashMap<String, Object> genreMap);

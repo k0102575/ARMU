@@ -1,6 +1,61 @@
 <div id="event-surf-container"></div>
 <!-- event-surf-container -->
 
+<div id="filter-body">
+  <div class="filter" id="filter-major">
+    전공&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
+  <div class="filter" id="filter-genre">
+    장르&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
+  <div class="filter" id="filter-theme">
+    테마&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
+</div>
+
+<div id="filter-mjr-backscreen"></div>
+<div id="filter-mjr-toggle">
+	<div id="filter-mjr-tab">
+	</div>
+	<div id="filter-mjr-content">
+	</div>
+</div>
+
+<div id="filter-gen-backscreen"></div>
+<div id="filter-gen-toggle">
+  <div id="filter-gen-tab">
+  </div>
+  <div id="filter-gen-content">
+  </div>
+</div>
+
+<div id="filter-thm-backscreen"></div>
+<div id="filter-thm-toggle">
+  <div id="filter-thm-tab">
+  </div>
+  <div id="filter-thm-content">
+  </div>
+</div>
+
+<script id="theme-template" type="text/x-handlebars-template">
+{{#listEventTheme}}
+    <div class="filter-thm-sub-tab" data-no="{{thmtno}}">{{thmtname}}</div>
+{{/listEventTheme}}
+</script>
+
+<script id="theme-sub-template" type="text/x-handlebars-template">
+{{#listEventTheme}}
+  <div class="filter-thm-sub-con" data-no="{{thmtno}}">
+    <div class="thm" data-no=1000>전체</div>
+{{#list}}
+{{#themeMap}}
+    <div class="thm" data-no={{key}}>{{value}}</div>
+{{/themeMap}}
+{{/list}}
+  </div>
+{{/listEventTheme}}
+</script>
+
 <script id="event-surf-template" type="text/x-handlebars-template">
 {{#each listSurf}}
   <div class="event-surf" data-no="{{no}}">
@@ -11,7 +66,7 @@
           {{/writeMember}}
             <div class="event-surf-title"><span>{{title}}</span></div>
             <div class='event-surf-favor'>{{{isFavorite}}}</div>
-            
+
             </div>
 {{#intl locales="ko-KO"}}
             <div class="event-surf-date"><span>{{date}}</span></div><br>
@@ -37,7 +92,7 @@
   <div id="filter-category">
     <span id="filter-text">지역</span>
   </div> <!-- filter-category -->
-  
+
   <div id="location-check-btn">
     <button type="button" id="location-check-cancel">취소</button>
     <button type="button" id="location-check-check">확인</button>
@@ -52,6 +107,6 @@
     <label for="location-button-{{loctno}}">{{loctname}}</label>
   {{/each}}
   </script>
-  
+
 <script src="/js/mobile/musimode/main-surf.js"></script>
 <script src="/js/mobile/musimode/jquery.ui.touch-punch.min.js"></script>

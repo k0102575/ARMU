@@ -5,12 +5,15 @@ import java.util.Map;
 
 public class Category {
   int thmno;
+  int thmtno;
   String thmtname;
   String thmname;
   int mjrno;
+  int mjrtno;
   String mjrtname;
   String mjrname;
   int gnrno;
+  int gnrtno;
   String gnrtname;
   String gnrname;
   int loctno;
@@ -151,16 +154,36 @@ public class Category {
   public void setList(List<Map<Integer, String>> list) {
     this.list = list;
   }
-  @Override
-  public String toString() {
-    return "Category [thmno=" + thmno + ", thmtname=" + thmtname + ", thmname=" + thmname + ", mjrno=" + mjrno
-        + ", mjrtname=" + mjrtname + ", mjrname=" + mjrname + ", gnrno=" + gnrno + ", gnrtname=" + gnrtname
-        + ", gnrname=" + gnrname + ", loctno=" + loctno + ", loctname=" + loctname + ", locno=" + locno + ", locname="
-        + locname + ", type=" + type + ", no=" + no + ", name=" + name + ", count=" + count + ", themeMap=" + themeMap
-        + ", majorMap=" + majorMap + ", genreMap=" + genreMap + ", list=" + list + "]";
+  public int getThmtno() {
+    return thmtno;
+  }
+  public void setThmtno(int thmtno) {
+    this.thmtno = thmtno;
   }
 
-  
-  
-  
+  public int getMjrtno() {
+    return mjrtno;
+  }
+  public void setMjrtno(int mjrtno) {
+    this.mjrtno = mjrtno;
+  }
+  public int getGnrtno() {
+    return gnrtno;
+  }
+  public void setGnrtno(int gnrtno) {
+    this.gnrtno = gnrtno;
+  }
+  @Override
+  public String toString() {
+    return "Category [thmno=" + thmno + ", thmtno=" + thmtno + ", thmtname=" + thmtname + ", thmname=" + thmname
+        + ", mjrno=" + mjrno + ", mjrtno=" + mjrtno + ", mjrtname=" + mjrtname + ", mjrname=" + mjrname + ", gnrno="
+        + gnrno + ", gnrtno=" + gnrtno + ", gnrtname=" + gnrtname + ", gnrname=" + gnrname + ", loctno=" + loctno
+        + ", loctname=" + loctname + ", locno=" + locno + ", locname=" + locname + ", type=" + type + ", no=" + no
+        + ", name=" + name + ", count=" + count + ", themeMap=" + themeMap + ", majorMap=" + majorMap + ", genreMap="
+        + genreMap + ", list=" + list + "]";
+  }
+
+
+
+
 }

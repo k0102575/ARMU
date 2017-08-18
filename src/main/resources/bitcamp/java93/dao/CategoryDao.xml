@@ -7,78 +7,109 @@
   <resultMap type="category" id="themeMap">
      <result column="name" property="thmtname" />
      <collection property="list" ofType="java.util.Map">
-       <association property="themeMap" javaType="java.util.Map"> 
-      <result property="key" column="thmno"/> 
+       <association property="themeMap" javaType="java.util.Map">
+      <result property="key" column="thmno"/>
        <result property="value" column="thmename"></result>
       </association>
     </collection>
   </resultMap>
-  
+
     <resultMap type="category" id="majorMap">
      <result column="name" property="mjrtname" />
      <collection property="list" ofType="java.util.Map">
-       <association property="majorMap" javaType="java.util.Map"> 
-      <result property="key" column="mjrno"/> 
+       <association property="majorMap" javaType="java.util.Map">
+      <result property="key" column="mjrno"/>
        <result property="value" column="majrname"></result>
       </association>
     </collection>
   </resultMap>
-  
+
   <resultMap type="category" id="genreMap">
      <result column="name" property="gnrtname" />
      <collection property="list" ofType="java.util.Map">
-       <association property="genreMap" javaType="java.util.Map"> 
-      <result property="key" column="gnrno"/> 
+       <association property="genreMap" javaType="java.util.Map">
+      <result property="key" column="gnrno"/>
        <result property="value" column="gnrename"></result>
       </association>
     </collection>
   </resultMap>
-  
+
   <resultMap type="category" id="locationTypeMap">
 		<id column="loctno" property="loctno" />
 		<result column="loctname" property="loctname" />
 		<result column="locname" property="locname" />
 	</resultMap>
-	
+
 	<resultMap type="category" id="categoryMap">
     <id column="no" property="no" />
     <result column="tag" property="name" />
     <result column="count" property="count" />
     <result column="type" property="type" />
   </resultMap>
-  
+
     <resultMap type="hashMap" id="hashMap">
     <result javaType="java.lang.String" column="thmename"></result>
-    <result javaType="int" column="thmno"/> 
+    <result javaType="int" column="thmno"/>
+  </resultMap>
+
+  <resultMap type="category" id="themeMap2">
+     <result column="thmtno" property="thmtno"/>
+     <result column="thmtname" property="thmtname"/>
+     <collection property="list" ofType="java.util.Map">
+       <association property="themeMap" javaType="java.util.Map">
+      <result property="key" column="thmno"/>
+       <result property="value" column="thmname"></result>
+      </association>
+    </collection>
+  </resultMap>
+  <resultMap type="category" id="genreMap2">
+     <result column="gnrtno" property="gnrtno"/>
+     <result column="name" property="gnrtname"/>
+     <collection property="list" ofType="java.util.Map">
+       <association property="genreMap" javaType="java.util.Map">
+      <result property="key" column="gnrno"/>
+       <result property="value" column="gnrname"></result>
+      </association>
+    </collection>
+  </resultMap>
+  <resultMap type="category" id="majorMap2">
+     <result column="mjrtno" property="mjrtno"/>
+     <result column="name" property="mjrtname"/>
+     <collection property="list" ofType="java.util.Map">
+       <association property="majorMap" javaType="java.util.Map">
+      <result property="key" column="mjrno"/>
+       <result property="value" column="mjrname"></result>
+      </association>
+    </collection>
   </resultMap>
 
   <select id="selectListTheme" resultMap="themeMap">
   select thmt.name, thme.name as thmename, thme.thmno
   from thm as thme left outer join thm_type as thmt on thmt.thmtno = thme.thmtno
   </select><!-- 승민 -->
-  
+
   <select id="selectListMajor" resultMap="majorMap">
   select mjrt.name, majr.name as majrname, majr.mjrno
   from mjr as majr left outer join mjr_type as mjrt on mjrt.mjrtno = majr.mjrtno
   </select><!-- 승민 -->
-  
+
   <select id="selectListGenre" resultMap="genreMap">
   select gnrt.name, gnre.name as gnrename, gnre.gnrno
   from gnr as gnre left outer join gnr_type as gnrt on gnrt.gnrtno = gnre.gnrtno
   </select><!-- 승민 -->
-  
+
   <select id="selectListLocationType" resultMap="locationTypeMap">
-  select loctno, name as loctname 
+  select loctno, name as loctname
   from loc_type
   order by loctno
   </select><!-- 승민 -->
-  
+
   <select id="selectListLocation" resultMap="locationTypeMap" parameterType="int">
-  select locno, name as locname 
+  select locno, name as locname
   from loc where loctno = #{loctno}
   order by locname
   </select><!-- 승민 -->
-  
+
   <select id="selectTop10CategoryList" resultMap="categoryMap">
  select pt.no as no, t.name as tag, count(pt.no) as count, if(pt.no is not null, "theme", "") as type
 from (
@@ -110,22 +141,22 @@ limit 10
 </select><!-- 완진 -->
 
 <insert id="themeMusi" parameterType="map">
-  insert into thm_musi(muno, thmno) 
+  insert into thm_musi(muno, thmno)
   values(#{musiNo}, #{musiTheme})
 </insert><!-- 승민 -->
 
 <insert id="majorMusi" parameterType="map">
-  insert into mjr_musi(muno, mjrno) 
+  insert into mjr_musi(muno, mjrno)
   values(#{musiNo}, #{musiMajor})
 </insert><!-- 승민 -->
 
 <insert id="genreMusi" parameterType="map">
-  insert into gnr_musi(muno, gnrno) 
+  insert into gnr_musi(muno, gnrno)
   values(#{musiNo}, #{musiGenre})
 </insert><!-- 승민 -->
 
 <insert id="locationMusi" parameterType="map">
-  insert into loc_musi(muno, locno) 
+  insert into loc_musi(muno, locno)
   values(#{musiNo}, #{musiLocation})
 </insert><!-- 승민 -->
 
@@ -145,16 +176,19 @@ delete from gnr_musi where muno = #{musiNo}
 delete from loc_musi where muno = #{musiNo}
 </delete><!-- 승민 -->
 
+<select id="selectListEventTheme" resultMap="themeMap2">
+  select thmt.thmtno, thmt.name as thmtname, thme.thmno, thme.name as thmname
+  from thm thme inner join thm_type thmt on thmt.thmtno= thme.thmtno
+</select>
+
+<select id="selectListEventMajor" resultMap="majorMap2">
+  select mjrt.mjrtno, mjrt.name as mjrtname, mjr.mjrno, mjr.name as mjrname
+  from mjr mjr inner join mjr_type mjrt on mjrt.mjrtno= mjr.mjrtno
+</select>
+
+<select id="selectListEventGenre" resultMap="genreMap2">
+  select gnrt.gnrtno, gnrt.name as gnrtname, gnr.gnrno, gnr.name as gnrname
+  from gnr gnr inner join gnr_type gnrt on gnrt.gnrtno=gnr.gnrtno
+</select>
+
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-

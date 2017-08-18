@@ -314,3 +314,114 @@ input[type="checkbox"]:checked + label:before {
   transform: rotate(45deg);
 }
 /* 이벤트 필터 끝 */
+
+/* musimode filter */
+#filter-body {
+	box-shadow: 3px 3px 20px 2px rgba(167, 167, 167, 0.8);
+	border-radius: 40px;
+	font-size: 2.3em;
+	font-weight: 440;
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 90%;
+	z-index: 1;
+	background-color: white;
+	width: 46%;
+	height: 80px;
+	/* padding-left: 2%; */
+	max-height: 100%;
+	display: none;
+}
+
+.filter {
+	padding: 3% 4%;
+	display: inline-block;
+	color: black;
+	font-weight: 500;
+}
+
+.fa-caret-down:before {
+	color: #8069ef;
+}
+
+#filter-major {
+	padding-left: 6%;
+}
+
+#filter-genre {
+	padding-left: 6%;
+	padding-right: 5%;
+	border-left: 1px solid grey;
+	border-right: 1px solid grey;
+}
+
+#filter-thm-tab {
+	font-size: 100%;
+	border-bottom: 1px solid grey;
+	height: 99px;
+}
+
+#filter-thm-backscreen {
+	top: 0;
+	position: fixed;
+	display: none;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, .6);
+	z-index: 1
+}
+
+.filter-thm-sub-tab {
+	display: inline-block;
+	width: 24.7%; /*탭 개수에 따라서 비율을 맞춰야 함*/
+	height: 65%;
+	color: white;
+	padding-top: 2%;
+	padding-bottom: 1.5%;
+	text-align: center;
+	font-size: 250%;
+}
+
+.filter-thm-sub-con {
+	height: 400px;
+	display: none;
+}
+
+#filter-thm-toggle {
+	width: 100%;
+	height: 500px;
+	bottom: 0;
+	display: none;
+	position: fixed;
+	background-color: rgb(40, 40, 40);
+	z-index: 2;
+}
+
+.thm, .mjr, .gen {
+	padding: 2% 1%;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	font-size: 230%;
+	width: 30.9%;
+	border-right: 0.5px solid grey;
+	border-bottom: 0.5px solid grey;
+}
+
+#filter-thm-content>:FIRST-CHILD {
+	display: block;
+}
+
+#filter-thm-tab>:FIRST-CHILD {
+
+}
+
+.on {
+	border-bottom: 5px solid white;
+	font-weight: 900;
+}
+
+.on2 {
+	font-weight: 900;
+}
