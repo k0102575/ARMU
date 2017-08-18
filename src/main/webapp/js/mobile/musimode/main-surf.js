@@ -5,10 +5,10 @@ var surfBackscreen = $("#surf-backscreen"),
 
 displaySurfEventList()
 HandlebarsIntl.registerWith(Handlebars);
-/*getLocation()
+getLocation()
 filter()
 filterMajor()
-filterGenre()*/
+filterGenre()
 
 function displaySurfEventList() {
   $.getJSON('/event/listSurf.json', function(result) {
@@ -151,7 +151,7 @@ function filter() {
           if(gnrno ==3000)
             gnrno=2000
           thmno = $(this).attr('data-no')
-          console.log('thmno=',thmno,'mjrno=',mjrno,'gnrno=',gnrno,indexT,indexM,indexG)
+//          console.log('thmno=',thmno,'mjrno=',mjrno,'gnrno=',gnrno,indexT,indexM,indexG)
           $.post('/event/searchEvent.json',
               {'thmno':thmno,
                 'mjrno':mjrno, 
@@ -171,7 +171,6 @@ function filter() {
           $('.thm').removeClass('on2')
           $(this).html('<i class="fa fa-check check3" aria-hidden="true"></i>'+ $(this).text())
           $(this).addClass('on2')
-          return thmno;
         })
       })
     }
@@ -207,12 +206,12 @@ function filterMajor() {
           indexM= find
         })
         $('.mjr').click(function() {
-          console.log('thmno=',thmno,'mjrno=',mjrno,'gnrno=',gnrno,indexT,indexM,indexG)
           if(thmno ==3000)
             thmno=2000
           if(gnrno ==3000)
             gnrno=2000
           mjrno = $(this).attr('data-no')
+//          console.log('thmno=',thmno,'mjrno=',mjrno,'gnrno=',gnrno,indexT,indexM,indexG)
           $.post('/event/searchEvent.json',
               {'thmno':thmno,
                 'mjrno':mjrno, 
@@ -269,12 +268,12 @@ function filterGenre() {
         })
         
         $('.gen').click(function() {
-          console.log('thmno=',thmno,'mjrno=',mjrno,'gnrno=',gnrno,indexT,indexM,indexG)
           if(thmno ==3000)
             thmno=2000
           if(mjrno ==3000)
             mjrno=2000
           gnrno = $(this).attr('data-no')
+//          console.log('thmno=',thmno,'mjrno=',mjrno,'gnrno=',gnrno,indexT,indexM,indexG)
           $.post('/event/searchEvent.json',
               {'thmno':thmno,
                 'mjrno':mjrno, 
