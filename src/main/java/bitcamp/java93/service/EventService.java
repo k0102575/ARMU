@@ -22,4 +22,5 @@ public interface EventService {
   List<Event> listOngoing(int no) throws Exception;//나의이벤트 > 진행중 이벤트 리스트
   List<Event> listEnd(int no) throws Exception;//나의이벤트 > 종료 이벤트 리스트
   List<Event> searchEvent(int no, int thmno, int mjrno, int gnrno,int indexT,int indexM,int indexG) throws Exception;
+  Event detail(int eNo, int muNo) throws Exception;
 }

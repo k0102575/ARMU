@@ -1,42 +1,78 @@
 @CHARSET "UTF-8";
 
 #container {
-	width: 100%;
-	position: relative;
-	min-height: 100vh
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+  padding-top: 20%;
 }
 
-/*헤더 시작*/
+#portfolio-add-btn {
+  position: fixed;
+  border-radius: 100%;
+  width: 130px;
+  height: 130px;
+  bottom: 5%;
+  right: 5%;
+  background: #8069ef;
+  font-size: 2rem;
+  line-height: 40px;
+  padding-top: 25px;
+  box-sizing: border-box;
+  text-align: center;
+  color: white;
+  box-shadow: 3px 3px 8px 2px rgba(0, 0, 0, 0.38);
+}
+
+
+/* 헤더 시작 */
 
 #event-detail-header-container {
-  border-bottom: 1px solid black;
-  position: relative;
+  position: fixed;
   height: 120px;
   width: 100%;
-  background-color: black;
+  background-color: #444;
+  top: 0%;
+  z-index: 10;
 }
 
 #event-detail-header-prev {
   position: absolute;
   left: 3%;
-  top: 12%;
-  transform: translate(-3%, 12%);
+  top: 20%;
   font-size: 400%;
-  color:white;
+  color: white;
 }
 
-#event-detail-header-title {
+
+#event-detail-header-name {
   position: absolute;
-  right: 0%;
-  top: 23%;
+  right: 25%;
+  top: 20%;
   font-size: 250%;
   font-weight: normal;
   color: white;
-  width: 94%;
+  width: 50%;
   text-align: center;
+ }
+
+#event-detail-fav-false {
+  position: absolute;
+  top: 27%;
+  right: 4%;
+  color: white;
+  font-size: 3rem;
 }
 
-/* 헤더 끝*/
+#event-detail-fav-true {
+  position: absolute;
+  top: 27%;
+  right: 4%;
+  color: #8069ef;
+  font-size: 3rem;
+}
+
+/* 헤더 끝 */
 
 /* 푸터 시작 */
 #event-detail-footer-container {
@@ -49,48 +85,20 @@
   bottom: 0px;
 }
 
+#event-detail-footer-prev {
+  position: absolute;
+  left: 3%;
+  top: 9%;
+  font-size: 400%;
+  color: #8069ef;
+}
+
 #event-detail-footer-fav {
   position: absolute;
   top: 17%;
   right: 4%;
   color: #8069ef;
   font-size: 3rem;
-}
-
-.event-detail-footer-dday {
-  display: inline-block;
-  position: absolute;
-  color: white;
-  font-size: 28px;
-  font-weight: 400;
-  width: auto;
-  padding-left: 2%;
-  padding-right: 2%;
-  background-color: #8069ef;
-  border-radius: 2%;
-  top: 25%;
-  left: 3%;
-}
-
-#event-detail-footer-writer-img {
-  position: absolute;
-  top: 8%;
-  left: 20%;
-  height: 70px;
-  width: 70px;
-  border-radius: 100%;
-  overflow: hidden;
-  object-fit: cover;
-}
-
-#event-detail-footer-writer-name {
-  position: absolute;
-  left: 30%;
-  top: 13%;
-  font-size: 2.2rem;
-  font-weight: 400;
-  color: black;
-  width: 30%;
 }
 
 #event-detail-footer-request-btn {
@@ -107,29 +115,358 @@
   padding-bottom: 10px;
 }
 
-
 /* 푸터 끝 */
 
-/* 이벤트 시작 */
+/* 이벤트 타이틀, 사용자 정보 시작 */
+
+#event-detail-info {
+  position: relative;
+  width: 60%;
+  min-height: 300px;
+}
+
+#event-detail-title {
+    position: relative;
+    min-height: 70px;
+    text-align: left;
+    padding-left: 2.5%;
+    width: 95%;
+    font-size: 3rem;
+}
+
+#event-detail-writer-img {
+  position: absolute;
+  left: 3%;
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  overflow: hidden;
+  object-fit: cover;
+  background-size: 100%;
+}
+
+#event-detail-writer-name {
+  position: absolute;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: black;
+  width: 30%;
+  left: 13%;
+  top: 4%;
+}
+
+/* 이벤트 타이틀, 사용자 정보 끝 */
+
+/* 이벤트 기본정보 시작 */
 
 #event-detail-basic-info {
   position: relative;
   width: 100%;
-  height: 300px;
+  min-height: 350px;
+  margin-top: 7%;
 }
 
 .event-detail-date {
   position: absolute;
-  font-size: 2.3em;
+  width: 88%;
+  font-size: 2.2rem;
+  left: 4.5%;
+  top: 22%;
+}
+
+.event-detail-dday {
+  display: inline-block;
+  position: absolute;
+  color: white;
+  font-size: 28px;
   font-weight: 400;
-  top: 10%;
-  left: 10%;
+  width: auto;
+  padding-left: 1%;
+  padding-right: 1%;
+  background-color: black;
+  border-radius: 2%;
+  top: 24%;
+  left: 38%;
 }
 
 .event-detail-pay {
   position: absolute;
-  font-size: 2.3em;
-  font-weight: 400;
-  top: 15%;
-  left: 10%;
+  width: 88%;
+  font-size: 2.2rem;
+  left: 4.5%;
+  top: 40%;
 }
+
+.event-detail-city {
+  position: absolute;
+  width: 88%;
+  font-size: 2.2rem;
+  left: 5%;
+  top: 59%;
+}
+
+.event-detail-location {
+  position: absolute;
+  width: 88%;
+  font-size: 2.2rem;
+  left: 10.5%;
+  top: 75%;
+}
+
+/* 이벤트 기본정보 끝 */
+
+/* 이벤트 카테고리 정보 시작 */
+
+#event-detail-category {
+  float: left;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  background: #F5F5F5;
+  height: 100px;
+  color: #252525;
+  padding-left: 55px;
+  line-height: 120px;
+  box-sizing: border-box;
+  margin-top: 5%;
+}
+
+#event-detail-category-container {
+  float: left;
+  width: 100%;
+  min-height: 100%;
+  font-size: 2.2rem;
+}
+
+.event-detail-theme-container {
+  float: left;
+  width: 100%;
+  min-height: 70px;
+  font-size: 2.2rem;
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+
+.event-detail-theme-text {
+  width: 100px;
+  margin-left: 5%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.event-detail-theme {
+  width: 75%;
+  margin-left: 5%;
+  display: inline-block;
+  min-height: 50px;
+}
+
+.event-detail-major-container {
+  float: left;
+  width: 100%;
+  min-height: 70px;
+  font-size: 2.2rem;
+  margin-bottom: 2%;
+}
+
+.event-detail-major-text {
+  width: 100px;
+  margin-left: 5%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.event-detail-major {
+  width: 75%;
+  margin-left: 5%;
+  display: inline-block;
+  min-height: 50px;
+}
+
+.event-detail-genre-container {
+  float: left;
+  width: 100%;
+  min-height: 70px;
+  font-size: 2.2rem;
+  margin-bottom: 2%;
+}
+
+.event-detail-genre-text {
+  width: 100px;
+  margin-left: 5%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.event-detail-genre {
+  width: 75%;
+  margin-left: 5%;
+  display: inline-block;
+  min-height: 50px;
+}
+
+.event-hashtag {
+  width: auto;
+  height: 52px;
+  line-height: 50px;
+  display: inline-block;
+  padding-left: 3%;
+  padding-right: 3%;
+  border-radius: 30px;
+  background-color: white;
+  color: black;
+  margin-right: 2%;
+  border: 2px solid #8069ef;
+  font-size: 2rem;
+  margin-bottom: 3%;
+}
+
+/* 이벤트 카테고리 정보 끝 */
+
+/* 이벤트 설명 시작 */
+
+#event-detail-dscp {
+  float: left;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  background: #F5F5F5;
+  height: 100px;
+  color: #252525;
+  padding-left: 55px;
+  line-height: 120px;
+  box-sizing: border-box;
+}
+
+#event-detail-dscp-container {
+  float: left;
+  width: 90%;
+  min-height: 150px;
+  font-size: 2rem;
+  margin-top: 5%;
+  margin-left: 5%;
+  color: #252525;
+  margin-bottom: 5%;
+}
+
+/* 이벤트 설명 끝 */
+
+/* 리허설 시작 */
+
+
+#event-detail-rehearsal {
+  float: left;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  background: #F5F5F5;
+  height: 100px;
+  color: #252525;
+  padding-left: 55px;
+  line-height: 120px;
+  box-sizing: border-box;
+  margin-top: 5%;
+  display: block;
+}
+
+#event-rehearsal-container {
+  float: left;
+  width: 100%;
+  min-height: 100%;
+  font-size: 2.2rem;
+  display: block;
+}
+
+.event-rehearsal-count-container {
+  float: left;
+  width: 100%;
+  min-height: 75px;
+  font-size: 2.2rem;
+  margin-top: 5%;
+}
+
+.event-rehearsal-count-text {
+  width: 100px;
+  margin-left: 5%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.event-rehearsal-count {
+  width: 75%;
+  margin-left: 5%;
+  display: inline-block;
+  min-height: 50px;
+}
+
+.event-rehearsal-pay-container {
+  float: left;
+  width: 100%;
+  min-height: 75px;
+  font-size: 2.2rem;
+}
+
+.event-rehearsal-pay-text {
+  width: 100px;
+  margin-left: 5%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.event-rehearsal-pay {
+  width: 75%;
+  margin-left: 5%;
+  display: inline-block;
+  min-height: 50px;
+}
+
+.event-rehearsal-info-container {
+  float: left;
+  width: 100%;
+  min-height: 100px;
+  font-size: 2.2rem;
+}
+
+.event-rehearsal-info-text {
+  width: 100px;
+  margin-left: 5%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.event-rehearsal-info {
+  width: 75%;
+  margin-left: 5%;
+  display: inline-block;
+  min-height: 50px;
+}
+
+/* 리허설 끝 */
+
+/* 이벤트 요구사항 시작 */
+
+#event-detail-req {
+  float: left;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  background: #F5F5F5;
+  height: 100px;
+  color: #252525;
+  padding-left: 55px;
+  line-height: 120px;
+  box-sizing: border-box;
+}
+
+#event-detail-req-container {
+  float: left;
+  width: 90%;
+  min-height: 150px;
+  font-size: 2rem;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-bottom: 10%;
+  color: #252525;
+}
+
+/* 이벤트 요구사항 끝 */

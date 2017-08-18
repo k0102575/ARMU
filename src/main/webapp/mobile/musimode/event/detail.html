@@ -25,26 +25,115 @@
 </head>
 <body>
 <div id="container">
+<script id="select-event-template" type="text/x-handlebars-template">
+  {{#detail}}
   <div id="event-detail-header-container">
     <i class="fa fa-angle-left" id="event-detail-header-prev" aria-hidden="true"></i>
-    <div id="event-detail-header-title">결혼식 이벤트 반주자 구합니다</div>
-  </div>
-  <!-- musician-info-header -->
-  
-  <div id='event-detail-basic-info'>
-	  <div class='event-detail-date'><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;2017-03-03</div>
-	  <div class='event-detail-pay'><i class="fa fa-krw" aria-hidden="true"></i>&nbsp;100000</div>
-	  <div class='event-detail-city'><i class="fa fa-map-marker" aria-hidden="true"></i>서울시 동대문구 <br></div>
-	  <div class='event-detail-location'>장안동 677번지 어디어디빌딩 몇층 이지롱</div>
+    {{#writeMember}}
+    <span id='event-detail-header-name'>{{name}}  님의 이벤트</span>
+    {{/writeMember}}
   </div>
   
-  <div id="event-detail-footer-container">
-    <div class='event-detail-footer-dday'>3일후</div>
-    <img id="event-detail-footer-writer-img" src="/image/profile/1502328669682_24_80.png">
-    <span id='event-detail-footer-writer-name'>김승민 님의 이벤트</span>
-    <button type="button" id="event-detail-footer-request-btn">지원하기</button>
-    <i class="fa fa-heart-o" id="event-detail-footer-fav" aria-hidden="true"></i>
+  <div id="portfolio-add-btn" data-value="{{no}}">지원<br>하기</div>
+  
+  <div id="event-detail-title">{{title}}</div>
+  
+  <div id="event-detail-basic-info">
+    {{#writeMember}}
+    <div id="event-detail-writer-img" style='background-image: url("{{photo}}")'></div>
+    <div id='event-detail-writer-name'>{{name}}</div>
+    {{/writeMember}}
+    {{#intl locales="ko-KO"}}
+    <div class='event-detail-date'><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{formatDate date day="numeric" month="long" year="numeric"}}</div>
+    {{/intl}}
+    {{#intl locales="ko-KO"}}
+    <div class='event-detail-dday'>{{formatRelative date units="day" style="numeric"}}</div>
+    {{/intl}}
+    <div class='event-detail-pay'><i class="fa fa-money" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{formatNumber pay style="currency" currency="KRW"}}</div>
+    <div class='event-detail-city'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{location}}<br></div>
+    <div class='event-detail-location'>{{address}}</div>
   </div>
+  
+  <div id="event-detail-category">
+  <i class="fa fa-caret-right" aria-hidden="true"></i>
+  이벤트 카테고리<br>
+  </div>
+  
+  <div id="event-detail-category-container">
+    <div class="event-detail-theme-container">
+      <div class="event-detail-theme-text">테마</div>
+      <div class="event-detail-theme">
+      {{#each themeList}}
+      <span class="event-hashtag">#{{this}}</span>
+      {{/each}}
+      </div>
+    </div>
+    <div class="event-detail-major-container">
+      <div class="event-detail-major-text">전공</div>
+      <div class="event-detail-major">
+      {{#each majorList}}
+      <span class="event-hashtag">#{{this}}</span>
+      {{/each}}
+      </div>
+    </div>
+    <div class="event-detail-genre-container">
+      <div class="event-detail-genre-text">장르</div>
+      <div class="event-detail-genre">
+      {{#each genreList}}
+      <span class="event-hashtag">#{{this}}</span>
+      {{/each}}
+      </div>
+    </div>
+  </div>
+  
+  <div id="event-detail-dscp">
+  <i class="fa fa-caret-right" aria-hidden="true"></i>
+  이벤트 설명<br>
+  </div>
+  
+  <div id="event-detail-dscp-container">
+  {{contents}}
+  </div>
+  
+  <div id="event-detail-rehearsal">
+  <i class="fa fa-caret-right" aria-hidden="true"></i>
+  리허설 정보<br>
+  </div>
+  
+  <div id="event-rehearsal-container">
+    <div class="event-rehearsal-count-container">
+      <div class="event-rehearsal-count-text">횟수</div>
+      <div class="event-rehearsal-count">{{rhsnum}}</div>
+    </div>
+    <div class="event-rehearsal-pay-container">
+      <div class="event-rehearsal-pay-text">금액</div>
+      <div class="event-rehearsal-pay">{{rhspay}}</div>
+    </div>
+    <div class="event-rehearsal-info-container">
+      <div class="event-rehearsal-info-text">정보</div>
+      <div class="event-rehearsal-info">
+      {{rhsinfo}}
+      </div>
+    </div>
+  </div>
+  
+  {{#if requirement}}
+  <div id="event-detail-req">
+  <i class="fa fa-caret-right" aria-hidden="true"></i>
+  요구 사항<br>
+  </div>
+  
+  <div id="event-detail-req-container">
+  {{requirement}}
+  </div>
+  {{/if}}
+
+  {{#unless requirement}}
+  {{/unless}}
+
+  {{/detail}}
+  </script>  
+  
   
 </div>
 <script src="/js/mobile/musimode/event/detail.js"></script>
