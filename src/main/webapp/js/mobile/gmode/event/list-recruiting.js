@@ -23,7 +23,6 @@ $(document).ready(function() {
     overlayParentElement : 'body',
     transition: function(url){ window.location.href = url; }
   });
-
 });
 
 

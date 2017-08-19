@@ -498,9 +498,6 @@ left outer join eventlist_pr_musicians p on ap.eno = p.eno
 where ap.mno=5
 
 
--- 매칭정보 확인하기
-select mtcno, e.mno, e.eno,title, muno, mtcdt from mtc inner join evn e on mtc.eno=e.eno order by mtcdt asc;
-
 
 -- 진행중인 이벤트 리스트 가져오기
 select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
@@ -520,27 +517,7 @@ left outer join (
 ) fav on fav.muno=mu.muno
 
 
-
 -- 종료한 이벤트 리스트 가져오기
-select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
-mj.name as major, g.name as genre, t.name as theme
-from evn e
-left outer join memb m on e.mno=m.mno
-left outer join mtc on e.eno=mtc.eno and e.mno=5
-inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
-left outer join musi mu on mtc.muno=mu.muno left outer join memb mm on mu.muno=mm.mno
-left outer join mjr_musi mjm on mu.muno=mjm.muno inner join mjr mj on mjm.mjrno=mj.mjrno
-left outer join gnr_musi gm on mu.muno=gm.muno inner join gnr g on gm.gnrno=g.gnrno
-left outer join thm_musi tm on mu.muno=tm.muno inner join thm t on tm.thmno=t.thmno
-left outer join (
-  select count(if(mno is not null, 1, 0)) as fav, mno, muno
-  from fav_musi
-  where mno = 5
-  group by muno
-) fav on fav.muno=mu.muno
-where date < curdate() order by date asc
-
-
 select e.eno, title, e.date, mu.muno, mu.nick, mm.path
 from evn e
 left outer join memb m on e.mno=m.mno
@@ -548,3 +525,50 @@ left outer join mtc on e.eno=mtc.eno and e.mno=5
 inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
 left outer join musi mu on mtc.muno=mu.muno left outer join memb mm on mu.muno=mm.mno
 where m.mno=5 and date < curdate()
+
+
+-- 매칭정보 확인하기
+select mtcno, e.mno, e.eno, title, muno, mtcdt, e.date from mtc inner join evn e on mtc.eno=e.eno order by eno asc;
+
+-- 뮤지션의 진행 중인 이벤트 리스트 가져오기
+select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
+mu.muno, mu.nick, mm.path, mj.name as major, g.name as genre, t.name as theme,
+m.mno, m.name, m.path
+from evn e inner join mtc on e.eno=mtc.eno and e.date >= curdate() and mtc.muno=11
+inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
+inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
+left outer join mjr_evn me on e.eno=me.eno left outer join mjr mj on me.mjrno=mj.mjrno
+left outer join gnr_evn ge on e.eno=ge.eno left outer join gnr g on ge.gnrno=g.gnrno
+left outer join thm_evn te on e.eno=te.eno left outer join thm t on te.thmno=t.thmno
+inner join memb m on m.mno=e.mno
+
+-- 위와 같음(간략버전)
+select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
+mu.muno, mu.nick, mm.path,
+m.mno, m.name, m.path
+from evn e inner join mtc on e.eno=mtc.eno and e.date >= curdate() and mtc.muno=11
+inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
+inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
+inner join memb m on m.mno=e.mno
+
+
+-- 뮤지션의 종료 이벤트 리스트 가져오기
+select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
+mu.muno, mu.nick, mm.path, mj.name as major, g.name as genre, t.name as theme,
+m.mno, m.name, m.path
+from evn e inner join mtc on e.eno=mtc.eno and e.date < curdate() and mtc.muno=11
+inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
+inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
+left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on me.mjrno=mj.mjrno
+left outer join gnr_evn ge on e.eno=ge.eno inner join gnr g on ge.gnrno=g.gnrno
+left outer join thm_evn te on e.eno=te.eno inner join thm t on te.thmno=t.thmno
+inner join memb m on m.mno=e.mno
+
+-- 위와 같음(간략버전)
+select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
+mu.muno, mu.nick, mm.path,
+m.mno, m.name, m.path
+from evn e inner join mtc on e.eno=mtc.eno and e.date < curdate() and mtc.muno=11
+inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
+inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
+inner join memb m on m.mno=e.mno

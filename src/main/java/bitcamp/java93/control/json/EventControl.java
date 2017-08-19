@@ -253,6 +253,41 @@ public class EventControl {
     return result;
   }
   
+  /*뮤지션모드 - 매칭이벤트 > 종료 이벤트 리스트*/
+  @RequestMapping("listMusiEnd")
+  public JsonResult listMusiEnd(HttpSession session) {
+    JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listEnd",eventService.listMusiEnd(getLoginMember(session).getNo()));
+
+      result.setData(dataMap);
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
+    return result;
+  }
+  
+  /*뮤지션모드 - 매칭이벤트 > 진행중 이벤트 리스트*/
+  @RequestMapping("listMusiOngoing")
+  public JsonResult listMusiOngoing(HttpSession session) {
+    JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listOngoing",eventService.listMusiOngoing(getLoginMember(session).getNo()));
+
+      result.setData(dataMap);
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
+    return result;
+  }
+  
+  
   @RequestMapping("detail")
   public JsonResult detail(int no, HttpSession session) {
     JsonResult result = new JsonResult();

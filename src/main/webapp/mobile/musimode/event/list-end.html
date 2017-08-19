@@ -6,26 +6,28 @@
 {{#each listEnd}}
 <div class="end" data-no={{no}}>
 <div class="event-box">
-  <div class="recruiting-title">
-  <span>&nbsp;{{title}}</span></div><!-- recruiting-title -->
+
+{{#writeMember}}
+  <div class="end-writer-img"  style='background-image: url("{{photo}}_80.png")'></div>
+  <div class="end-title">
+  <div class="end-writer-name">{{name}}</div>
+{{/writeMember}}
+  <span>{{title}}</span>
+</div><!-- -title -->
+
+<div class="end-date">
 {{#intl locales="ko-KO"}}
-  <div class="end-date"><span>{{formatDate date day="numeric" month="long" year="numeric"}}</span></div>
+<span>{{formatDate date day="numeric" month="long" year="numeric"}}</span>
 {{/intl}}
-
+  <div class="end-price">{{formatNumber pay style="currency" currency="KRW"}}</div>
 </div>
-
-{{#matchMusician}}
-  <div class="end-musibox">
-    <div class="end-applicant-img" style='background-image: url("{{photo}}_300.png")'></div>
-    <div class="end-applicant-name"><span>{{nickName}}</span></div>
-    <!-- end-applicant-name -->
-
-    <div class='end-applicant-btn review-btn'>리뷰달기</div>
-
-  </div><!-- end-musibox -->
-  <!--뮤지션 끝-->
-{{/matchMusician}}
-
+<div class='end-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{location}}&nbsp;{{address}}</span></div>
+<div class="end-hashtagbox">
+        {{#majorList}}<span>#{{this}}</span>{{/majorList}}
+        {{#themeList}}<span>#{{this}}</span>{{/themeList}}
+        {{#genreList}}<span>#{{this}}</span>{{/genreList}}
+  </div>
+</div>
 </div><!-- end -->
 {{/each}}
 
@@ -37,4 +39,4 @@
 </div>
 {{/unless}}
 </script>
-<script src="/js/mobile/gmode/event/list-end.js"></script>
+<script src="/js/mobile/musimode/event/list-end.js"></script>

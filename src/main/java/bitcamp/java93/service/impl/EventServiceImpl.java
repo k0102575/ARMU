@@ -140,6 +140,16 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectEvent(eNo);
   }
 
+  /*뮤지션모드 - 매칭이벤트 > 진행중 이벤트 리스트*/
+  public List<Event> listMusiOngoing(int no) throws Exception {
+    return eventDao.selectMusiOngoingList(no);
+  }
+
+  /*뮤지션모드 - 매칭이벤트 > 종료 이벤트 리스트*/
+  public List<Event> listMusiEnd(int no) throws Exception {
+    return eventDao.selectMusiEndList(no);
+  }
+
   
 }
 

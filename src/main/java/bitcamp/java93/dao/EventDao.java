@@ -22,6 +22,8 @@ public interface EventDao {
   List<Event> selectRecruitingList(int no);//나의이벤트 > 모집중 이벤트 리스트
   List<Event> selectOngoingList(int no);//나의이벤트 > 진행중 이벤트 리스트
   List<Event> selectEndList(int no);//나의이벤트 > 종료 이벤트 리스트
+  List<Event> selectMusiOngoingList(int no);//뮤지션모드 - 매칭이벤트 > 진행중 이벤트 리스트
+  List<Event> selectMusiEndList(int no);//뮤지션모드 - 매칭이벤트 > 종료 이벤트 리스트
   List<Event> eventSearch(HashMap<String,Object> valueMap);
   Event selectEvent(int eNo);
 }

@@ -136,7 +136,33 @@
   </resultMap>
   
   
-   <select id="selectEndList" resultMap="matchEventMap"
+
+   <select id="selectMusiOngoingList" resultMap="eventMapBasic"
+    parameterType="int">
+    select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
+mu.muno, null as major, null as genre, null as theme, m.mno, m.name, m.path
+from evn e inner join mtc on e.eno=mtc.eno and e.date >= curdate() and mtc.muno=#{no}
+inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
+inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
+inner join memb m on m.mno=e.mno
+  </select><!-- 완진 -->
+  
+     <select id="selectMusiEndList" resultMap="eventMapBasic"
+    parameterType="int">
+    select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
+mu.muno, mj.name as major, g.name as genre, t.name as theme,
+m.mno, m.name, m.path
+from evn e inner join mtc on e.eno=mtc.eno and e.date &lt; curdate() and mtc.muno=#{no}
+inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
+inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
+left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on me.mjrno=mj.mjrno
+left outer join gnr_evn ge on e.eno=ge.eno inner join gnr g on ge.gnrno=g.gnrno
+left outer join thm_evn te on e.eno=te.eno inner join thm t on te.thmno=t.thmno
+inner join memb m on m.mno=e.mno
+  </select><!-- 완진 -->
+  
+  
+  <select id="selectEndList" resultMap="matchEventMap"
     parameterType="int">
     select e.eno, title, e.date, mu.muno, mu.nick, mm.path, 
     null as location, null as major, null as genre, null as theme 
