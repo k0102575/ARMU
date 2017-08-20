@@ -572,3 +572,21 @@ from evn e inner join mtc on e.eno=mtc.eno and e.date < curdate() and mtc.muno=1
 inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
 inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
 inner join memb m on m.mno=e.mno
+
+
+
+-- 특정 뮤지션의 지원한(appy) 이벤트 리스트 가져오기
+
+
+
+
+select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme,
+appy.appyno, mu.muno, mu.nick, m.path, score.score
+from (select * from evn where date >= curdate() and eno not in (select eno from mtc) order by date asc) e
+left outer join appy on e.eno=appy.eno
+left outer join musi mu on appy.muno=mu.muno inner join memb m on mu.muno=m.mno
+left outer join (
+  select avg(score) as score, muno
+  from mtc
+  group by muno
+) score on score.muno=mu.muno
