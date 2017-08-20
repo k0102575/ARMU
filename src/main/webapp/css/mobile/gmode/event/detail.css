@@ -7,23 +7,6 @@
   padding-top: 20%;
 }
 
-#portfolio-add-btn {
-  position: fixed;
-  border-radius: 100%;
-  width: 130px;
-  height: 130px;
-  bottom: 5%;
-  right: 5%;
-  background: #8069ef;
-  font-size: 2rem;
-  line-height: 40px;
-  padding-top: 25px;
-  box-sizing: border-box;
-  text-align: center;
-  color: white;
-  box-shadow: 3px 3px 8px 2px rgba(0, 0, 0, 0.38);
-}
-
 
 /* 헤더 시작 */
 
@@ -31,7 +14,7 @@
   position: fixed;
   height: 120px;
   width: 100%;
-  background-color: #444;
+  background-color: black;
   top: 0%;
   z-index: 10;
 }
@@ -55,22 +38,6 @@
   width: 50%;
   text-align: center;
  }
-
-#event-detail-fav-false {
-  position: absolute;
-  top: 27%;
-  right: 4%;
-  color: white;
-  font-size: 3rem;
-}
-
-#event-detail-fav-true {
-  position: absolute;
-  top: 27%;
-  right: 4%;
-  color: #8069ef;
-  font-size: 3rem;
-}
 
 /* 헤더 끝 */
 
@@ -116,6 +83,163 @@
 }
 
 /* 푸터 끝 */
+
+/* 지원 현황 시작 */
+
+#event-appy-info {
+  border: 1px solid black;
+  position: fixed;
+  width: 90%;
+  left: 5%;
+  height: 80%;
+  top: 15%;
+  display: none;
+  background-color: white;
+  z-index: 20;
+  overflow-y:auto; 
+  border-radius: 25px;
+}
+
+#event-appy-backscreen {
+  position: fixed;
+  display: none;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .6);
+  z-index: 19;
+}
+
+#event-appy-header {
+    width: 100%;
+    height: 5%;
+    text-align: center;
+    margin-top: 7%;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 10%;
+    color: #444;
+}
+
+#event-appy-cancel-btn {
+  position: absolute;
+  right: 5%;
+  top: 5.5%;
+  font-size: 4em;
+  color: #444;
+  font-weight: 100;
+}
+
+.recruiting-applicant {
+  position: relative;
+  display: inline-block;
+  height: 250px;
+  width: 95%;
+  margin: 0%;
+  text-align: justify;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  
+}
+
+.recruiting-applicant-img {
+  display: table;
+  height: 250px;
+  width: 250px;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100%;
+  margin-left: 25px;
+}
+
+.recruiting-applicant-name {
+  position: absolute;
+  display: inline-block;
+  color: black;
+  font-size: 32px;
+  font-weight: 500;
+  top: -2px;
+  width: 52%;
+  left: 300px;
+  overflow: hidden;
+  height: 41px;
+}
+
+.recruiting-applicant-score {
+  display: inline;
+  margin-left: 20px;
+  color: #ffd700;
+  font-size: 33px;
+  width: 140px;
+}
+
+.recruiting-applicant-fav {
+  position: absolute;
+  display: inline-block;
+  top: -3%;
+  right: 1%;
+  color: #8069ef;
+  font-size: 40px;
+  width: 10%;
+  font-weight: 500;
+  text-align: right;
+}
+
+.recruiting-applicant-hashtagbax {
+  position: absolute;
+  height: 99px;
+  overflow: hidden;
+  font-size: 30px;
+  color: black;
+  width: 68%;
+  top: 56px;
+  left: 292px;
+}
+
+.recruiting-applicant-hashtagbax > span {
+  float: left;
+  margin: 0 2%;
+}
+
+.recruiting-applicant-btnbox {
+  position: absolute;
+  display: inline-block;
+  width: 67%;
+  left: 301px;
+  bottom: 3%;
+}
+
+.recruiting-applicant-btn {
+  display: inline-table;
+  width: 48%;
+  height: 70px;
+  text-align: center;
+  line-height: 70px;
+  font-size: 2rem;
+  color: black;
+  border-radius: 10px;
+}
+
+.reject-btn {
+  background: white;
+  border: 1px solid black;
+  margin-right: 2%;
+}
+
+.decide-btn {
+  background: black;
+  color: white;
+  border: 1px solid black;
+}
+
+.cancel-btn {
+  width:47%;
+  border: 1px solid black;
+}
+
+/* 지원 현황 끝*/
 
 /* 이벤트 타이틀, 사용자 정보 시작 */
 
@@ -183,10 +307,10 @@
   width: auto;
   padding-left: 1%;
   padding-right: 1%;
-  background-color: black;
+  background-color: #8069ef;
   border-radius: 2%;
   top: 24%;
-  left: 38%;
+  left: 40%;
 }
 
 .event-detail-pay {
@@ -373,7 +497,7 @@
   float: left;
   width: 100%;
   min-height: 100%;
-  font-size: 2.2rem;
+  font-size: 2rem;
   display: block;
 }
 
@@ -383,6 +507,7 @@
   min-height: 75px;
   font-size: 2.2rem;
   margin-top: 5%;
+  font-size: 2rem;
 }
 
 .event-rehearsal-count-text {
@@ -390,6 +515,7 @@
   margin-left: 5%;
   display: inline-block;
   vertical-align: top;
+  font-size: 2rem;
 }
 
 .event-rehearsal-count {
@@ -397,6 +523,7 @@
   margin-left: 5%;
   display: inline-block;
   min-height: 50px;
+  font-size: 2rem;
 }
 
 .event-rehearsal-pay-container {
@@ -404,6 +531,7 @@
   width: 100%;
   min-height: 75px;
   font-size: 2.2rem;
+  font-size: 2rem;
 }
 
 .event-rehearsal-pay-text {
@@ -411,6 +539,7 @@
   margin-left: 5%;
   display: inline-block;
   vertical-align: top;
+  font-size: 2rem;
 }
 
 .event-rehearsal-pay {
@@ -418,6 +547,7 @@
   margin-left: 5%;
   display: inline-block;
   min-height: 50px;
+  font-size: 2rem;
 }
 
 .event-rehearsal-info-container {
@@ -425,6 +555,7 @@
   width: 100%;
   min-height: 100px;
   font-size: 2.2rem;
+  font-size: 2rem;
 }
 
 .event-rehearsal-info-text {
@@ -432,6 +563,7 @@
   margin-left: 5%;
   display: inline-block;
   vertical-align: top;
+  font-size: 2rem;
 }
 
 .event-rehearsal-info {
@@ -439,6 +571,7 @@
   margin-left: 5%;
   display: inline-block;
   min-height: 50px;
+  font-size: 2rem;
 }
 
 /* 리허설 끝 */
@@ -465,8 +598,61 @@
   font-size: 2rem;
   margin-top: 5%;
   margin-left: 5%;
-  margin-bottom: 10%;
+  margin-bottom: 100px;
   color: #252525;
 }
 
 /* 이벤트 요구사항 끝 */
+
+/* 버튼 시작 */
+
+#event-edit-btn {
+  font-size: 35px;
+  font-weight: 400;
+  height: 80px;
+  width: 400px;
+  border-radius: 50px;
+  border: 1px solid white;
+  line-height: 60px;
+  color: white;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, .85);
+  margin-left: 30%;
+  margin-bottom: 5%;
+  float: left;
+}
+
+#event-delete-btn {
+  font-size: 35px;
+  font-weight: 400;
+  height: 80px;
+  width: 400px;
+  border-radius: 50px;
+  border: 1px solid white;
+  line-height: 60px;
+  color: white;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, .85);
+  margin-left: 30%;
+  margin-bottom: 5%;
+  float: left;
+}
+
+#event-apply-btn {
+  position: fixed;
+  border-radius: 100%;
+  width: 150px;
+  height: 150px;
+  bottom: 5%;
+  right: 5%;
+  font-weight: 500;
+  background: #444;
+  font-size: 2.2rem;
+  padding-top: 25px;
+  box-sizing: border-box;
+  text-align: center;
+  color: white;
+  box-shadow: 3px 3px 8px 2px rgba(0, 0, 0, 0.38);
+}
+
+/* 버튼 끝 */

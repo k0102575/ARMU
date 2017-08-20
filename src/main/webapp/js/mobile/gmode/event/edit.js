@@ -9,7 +9,8 @@ var progressBar = $("#event-progressbar"),
     
 var eventPage1 = $("#event-page1"),
     eventPage1Cancel = $("#event-page1-cancel"),
-    eventPage1Next = $("#event-page1-next")
+    eventPage1Next = $("#event-page1-next"),
+    eventPage1Text = $("#event-page1-text")
     //  이벤트 1페이지
     
 var eventPage2 = $("#event-page2"),
@@ -33,7 +34,6 @@ var eventPage2 = $("#event-page2"),
     categoryThemeNo = "",
     categoryMajorNo = "",
     categoryGenreNo = ""
-
     //  이벤트 2페이지
     
 var eventPage3 = $("#event-page3"),
@@ -55,7 +55,6 @@ var eventPage5 = $("#event-page5"),
     eventPage5Next = $("#event-page5-next"), 
     inputEventName =  $("#event-name"),
     inputEventConent =  $("#event-content")
-
     // 이벤트 5페이지
     
 var eventPage6 = $("#event-page6"),
@@ -71,7 +70,6 @@ var eventPage7 = $("#event-page7"),
     eventPage7Next = $("#event-page7-next"),
     inputEventPay =  $("#event-pay"),
     inputEventRequire =  $("#event-require")
-
     // 이벤트 7 페이지
     
 var eventPage8 = $("#event-page8"),
@@ -91,18 +89,95 @@ var eventPage8 = $("#event-page8"),
     reherseConfirmInfo = $(".reherse-info"),
     reherseConfirmLine = $("#reherse-line"),
     reherseConfirmHeader =$(".reherse-header")
-    
     // 이벤트 8페이지 
     
     var eventPage9 = $("#event-page9"),
     eventPage9Home = $("#event-page9-home")
-    
     // 이벤트 9페이지 
+    
+var eventDate = 0,
+    eventLoctno = 0,
+    eventLocno = 0
     
 $(document).ready(function() {
   eventPage1.toggle();
   progress(0)
+  categoryList()
+  displayEventDetail()
 })
+
+function displayEventDetail() {
+  $.getJSON('/event/detail.json', 
+    { 
+      "no" : location.href.split('?')[1].split('=')[1]
+    },
+    function(result) {
+    var data = result.data.detail 
+    console.log(data)
+    eventDate = data.date
+    
+    eventLoctno = data.loctno
+    eventLocno = data.locno
+    DetailLocation.val(data.address)
+    
+    inputEventName.val(data.title)
+    inputEventConent.val(data.contents)
+    
+    eventHaveRehearsal(data.haveRehearsal)
+    inputRehearseText.val(data.rhsinfo)
+    inputRehearseCount.val(data.rhsnum)
+    inputRehearsePay.val(data.rhspay)
+    
+    inputEventPay.val(data.pay)
+    
+    for(var theme of data.themeList) {
+      themeSelectText.append("<span class='selectSpan'>#" + theme + "</span>")
+      themeConfirmText.append("<span class='selectSpan'>#" + theme + "</span>")
+    }
+    
+    for(var major of data.majorList) {
+        majorSelectText.append("<span class='selectSpan'>#" + major + "</span>")
+        majorConfirmText.append("<span class='selectSpan'>#" + major + "</span>")
+      }
+    
+    for(var genre of data.genreList) {
+        genreSelectText.append("<span class='selectSpan'>#" + genre + "</span>")
+        genreConfirmText.append("<span class='selectSpan'>#" + genre + "</span>")
+  }
+    
+    for(var theme of data.themeNoList) {
+    categoryThemeNo += theme + ","
+    $('input:checkbox[name="theme"]').each(function() {
+    	if(this.value == theme){ 
+    	this.checked = true; 
+    }
+    })
+    }
+    
+    for(var major of data.majorNoList) {
+    categoryMajorNo += major + ","
+    $('input:checkbox[name="major"]').each(function() {
+    	if(this.value == major){ 
+    	this.checked = true; 
+    }
+    })
+    }
+    
+    for(var genre of data.genreNoList) {
+	categoryGenreNo += genre + ","
+	$('input:checkbox[name="genre"]').each(function() {
+    	if(this.value == genre){ 
+    	this.checked = true; 
+    }
+    })
+    }
+    
+    if(data.requirement != null) {
+    inputEventRequire.val(data.requirement)
+    }
+    
+  })
+}
 
 pageCancelBtn.on('click', function() {
   swal({
@@ -122,94 +197,7 @@ pageCancelBtn.on('click', function() {
 })
 
 eventPage1Next.on('click', function() {
-  
-  $.getJSON('/category/listTheme.json', function(result) {
-    var templateFn = Handlebars.compile($('#select-theme-template').text())
-    var generatedHTML = templateFn(result.data)
-    var container = $('#theme-select-box')
-    var html = container.html()
-    container.html(html + generatedHTML)
-    
-    $("#theme-check-cancel").on('click', function() {
-        themeSelectBox.toggle(0)
-        menuBackScreen.toggle(0)
-        $("#theme-check-btn").toggle(0)
-    })
 
-    $("#theme-check-check").on('click', function() {
-      $("input[name=theme]:checked").each(function() {
-        categoryThemeNo += $(this).val() + "," 
-        categoryThemeName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
-        themeSelectText.append("<span class='selectSpan'>" + categoryThemeName + "</span>")
-        themeConfirmText.append("<span class='selectSpan'>" + categoryThemeName + "</span>")
-        });
-      themeSelectBox.toggle(0)
-      menuBackScreen.toggle(0)
-      $("#theme-check-btn").toggle(0)
-    })
-    
-  }, function(err) {
-    console.log(err)
-})
-
-  $.getJSON('/category/listMajor.json', function(result) {
-    var templateFn = Handlebars.compile($('#select-major-template').text())
-    var generatedHTML = templateFn(result.data)
-    var container = $('#major-select-box')
-    var html = container.html()
-    container.html(html + generatedHTML)
-    
-    $("#major-check-cancel").on('click', function() {
-      menuBackScreen.toggle(0)
-      majorSelectBox.toggle(0)
-      $("#major-check-btn").toggle(0)
-    })
-
-    $("#major-check-check").on('click', function() {
-      $("input[name=major]:checked").each(function() {
-        categoryMajorNo += $(this).val() + ","
-        categoryMajorName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
-        majorSelectText.append("<span class='selectSpan'>" + categoryMajorName + "</span>")
-        majorConfirmText.append("<span class='selectSpan'>" + categoryMajorName + "</span>")
-        });
-      menuBackScreen.toggle(0)
-      majorSelectBox.toggle(0)
-      $("#major-check-btn").toggle(0)
-    })
-    
-  }, function(err) {
-    console.log(err)
-  })
-  
-    $.getJSON('/category/listGenre.json', function(result) {
-    var templateFn = Handlebars.compile($('#select-genre-template').text())
-    var generatedHTML = templateFn(result.data)
-    var container = $('#genre-select-box')
-    var html = container.html()
-    container.html(html + generatedHTML)
-    
-    $("#genre-check-cancel").on('click', function() {
-      menuBackScreen.toggle(0)
-      genreSelectBox.toggle(0)
-      $("#genre-check-btn").toggle(0)
-    })
-
-    $("#genre-check-check").on('click', function() {
-      $("input[name=genre]:checked").each(function() {
-        categoryGenreNo += $(this).val() + ","
-        categoryGenreName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
-        genreSelectText.append("<span class='selectSpan'>" + categoryGenreName + "</span>")
-        genreConfirmText.append("<span class='selectSpan'>" + categoryGenreName + "</span>")
-        });
-      menuBackScreen.toggle(0)
-      genreSelectBox.toggle(0)
-      $("#genre-check-btn").toggle(0)
-    })
-    
-  }, function(err) {
-    console.log(err)
-  })
-  
   eventPage1.toggle(0);
   eventPage2.toggle(0 , function() {
     progress(12.5)
@@ -219,34 +207,29 @@ eventPage1Next.on('click', function() {
 themeSelectButton.on('click', function() {
   themeSelectBox.toggle(0)
   menuBackScreen.toggle(0)
-  themeSelectText.text("")
   $("#theme-check-btn").toggle(0)
 })
 
 majorSelectButton.on('click', function() {
   majorSelectBox.toggle(0)
   menuBackScreen.toggle(0)
-  majorSelectText.text("")
   $("#major-check-btn").toggle(0)
 })
 
 genreSelectButton.on('click', function() {
   genreSelectBox.toggle(0)
   menuBackScreen.toggle(0)
-  genreSelectText.text("")
   $("#genre-check-btn").toggle(0)
 })
 
 eventPage2Prev.on('click', function() {
-  location.href="/mobile/gmode/event/regist.html"
+  eventPage2.toggle(0);
+  eventPage1.toggle(0 , function() {
+    progress(0)
+  });
 })
 
 eventPage2Next.on('click', function() {
-  
-  
-  themeSelcetHidden.val(categoryThemeNo)
-  majorSelcetHidden.val(categoryMajorNo)
-  genreSelcetHidden.val(categoryGenreNo)
   
     if(themeSelectText.text() == "") {
       swal({
@@ -283,6 +266,7 @@ eventPage2Next.on('click', function() {
     });
     return
   }
+  var date2 = new Date(eventDate)
   
   eventPage2.toggle(0);
   eventPage3.toggle(0 , function() {
@@ -292,10 +276,10 @@ eventPage2Next.on('click', function() {
       minDate: 0,
       dayNames: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
       dayNamesMin: ["일"," 월"," 수"," 목"," 금"," 토"," 일"]
-    });
+    }).datepicker('setDate', date2)
 });
+  
 })
- 
 
 eventPage3Prev.on('click', function() {
   eventPage3.toggle(0);
@@ -324,34 +308,7 @@ eventPage3Next.on('click', function() {
     return
   } 
   
- $.getJSON('/category/listLocationType.json', function(result) {
-    var templateFn = Handlebars.compile($('#select-sido-template').text())
-    var generatedHTML = templateFn(result.data)
-    var container = sidoSelectMenu
-    container.html(generatedHTML)
-    
-   sidoSelectMenu.change(function(){
-	   var loctno = $(this).val()
-	   var sidoText = $("#sido-select-menu option:selected").text()
-	   citySelectMenu.html("")
-	   optGroup = $('<optgroup>').attr('label', sidoText);
-	   citySelectMenu.append(optGroup);
-
-	   $.getJSON('/category/listLocation.json', {"loctno" : loctno},function(result) {
-	    var templateFn = Handlebars.compile($('#select-city-template').text())
-	    var generatedHTML = templateFn(result.data)
-	    var container = citySelectMenu
-		var html = container.html()
-		container.html(html + generatedHTML)
-	  }, function(err) {
-	    console.log(err)
-	  })
-	   
-    })
-    
-  }, function(err) {
-    console.log(err)
-})
+  LocationList()
   
   eventPage3.toggle(0);
   eventPage4.toggle(0 , function() {
@@ -411,7 +368,6 @@ eventPage4Next.on('click', function() {
     });
     return
   }
-  
   
   eventPage4.toggle(0);
   eventPage5.toggle(0 , function() {
@@ -509,6 +465,8 @@ eventPage6Next.on('click', function() {
       });
       return
     } 
+    
+    
   }
   
   reherseCheck($("input[name=toggle]:checked").val())
@@ -568,9 +526,11 @@ eventPage8Prev.on('click', function() {
 })
 
 eventPage8Next.on('click', function() {
+	
   
   if($("input[name=toggle]:checked").val() =="true") {
-    $.post('/event/addReherse.json', {
+    $.post('/event/updateReherse.json', {
+      'no' : location.href.split('?')[1].split('=')[1],
       'locno': citySelectMenu.val(),
       'pay': inputEventPay.val(),
       'requirement': inputEventRequire.val(),
@@ -578,9 +538,9 @@ eventPage8Next.on('click', function() {
       'address': DetailLocation.val(),
       'date': eventPage3Calendar.val(),
       'title': inputEventName.val(),
-      "eventRegistTheme" : themeSelcetHidden.val(),
-      "eventRegistMajor" : majorSelcetHidden.val(),
-      "eventRegistGenre" : genreSelcetHidden.val(),
+      "eventRegistTheme" : categoryThemeNo,
+      "eventRegistMajor" : categoryMajorNo,
+      "eventRegistGenre" : categoryGenreNo,
       "rhspay" : inputRehearsePay.val(),
       "rhsnum" : inputRehearseCount.val(),
       "rhsinfo" : inputRehearseText.val()
@@ -591,7 +551,8 @@ eventPage8Next.on('click', function() {
       });
     }, 'json')
   } else if($("input[name=toggle]:checked").val() =="false") {
-    $.post('/event/add.json', {
+    $.post('/event/update.json', {
+	  'no' : location.href.split('?')[1].split('=')[1],
       'locno': citySelectMenu.val(),
       'pay': inputEventPay.val(),
       'requirement': inputEventRequire.val(),
@@ -599,9 +560,9 @@ eventPage8Next.on('click', function() {
       'address': DetailLocation.val(),
       'date': eventPage3Calendar.val(),
       'title': inputEventName.val(),
-      "eventRegistTheme" : themeSelcetHidden.val(),
-      "eventRegistMajor" : majorSelcetHidden.val(),
-      "eventRegistGenre" : genreSelcetHidden.val()
+      "eventRegistTheme" : categoryThemeNo,
+      "eventRegistMajor" : categoryMajorNo,
+      "eventRegistGenre" : categoryGenreNo
     }, function(result) {
       eventPage8.toggle(0);
       eventPage9.toggle(0 , function() {
@@ -636,6 +597,16 @@ function eventConfirm() {
   reherseConfirmInfo.text(inputRehearseText.val())
 } // eventConfirm
 
+function eventHaveRehearsal(rehearsal) {
+  if(rehearsal == true) {
+	$(".toggle-left").attr("checked", "checked")
+    inputRehearseText.css("display", "block")
+    inputRehearseCount.css("display", "block")
+    inputRehearsePay.css("display", "block")
+	return
+  }
+}
+
 function reherseCheck(btn) {
   if(btn == "true") {
     reherseConfirmCount.css("display", "block")
@@ -652,3 +623,147 @@ function reherseCheck(btn) {
   }
 } // reherseCheck
 
+function categoryList() {
+$.getJSON('/category/listTheme.json', function(result) {
+  var templateFn = Handlebars.compile($('#select-theme-template').text())
+  var generatedHTML = templateFn(result.data)
+  var container = $('#theme-select-box')
+  var html = container.html()
+  container.html(html + generatedHTML)
+
+  $("#theme-check-cancel").on('click', function() {
+    themeSelectBox.toggle(0)
+    menuBackScreen.toggle(0)
+    $("#theme-check-btn").toggle(0)
+    return
+  })
+
+  $("#theme-check-check").on('click', function() {
+    categoryThemeNo = ""
+    themeSelectText.html("")
+	themeConfirmText.html("")
+    $("input[name=theme]:checked").each(function() {
+    categoryThemeNo += $(this).val() + "," 
+    categoryThemeName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
+    themeSelectText.append("<span class='selectSpan'>" + categoryThemeName + "</span>")
+    themeConfirmText.append("<span class='selectSpan'>" + categoryThemeName + "</span>")
+    });
+  themeSelectBox.toggle(0)
+  menuBackScreen.toggle(0)
+  $("#theme-check-btn").toggle(0)
+})
+    
+  }, function(err) {
+    console.log(err)
+})
+
+$.getJSON('/category/listMajor.json', function(result) {
+var templateFn = Handlebars.compile($('#select-major-template').text())
+var generatedHTML = templateFn(result.data)
+var container = $('#major-select-box')
+var html = container.html()
+container.html(html + generatedHTML)
+
+	$("#major-check-cancel").on('click', function() {
+	  menuBackScreen.toggle(0)
+	  majorSelectBox.toggle(0)
+	  $("#major-check-btn").toggle(0)
+	  return
+	})
+	
+	$("#major-check-check").on('click', function() {
+		categoryMajorNo = ""
+		majorSelectText.html("")
+		majorConfirmText.html("")
+	  $("input[name=major]:checked").each(function() {
+	    categoryMajorNo += $(this).val() + ","
+	    categoryMajorName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
+	    majorSelectText.append("<span class='selectSpan'>" + categoryMajorName + "</span>")
+	    majorConfirmText.append("<span class='selectSpan'>" + categoryMajorName + "</span>")
+	    });
+	  menuBackScreen.toggle(0)
+	  majorSelectBox.toggle(0)
+	  $("#major-check-btn").toggle(0)
+	    })
+    
+}, function(err) {
+  console.log(err)
+})
+  
+$.getJSON('/category/listGenre.json', function(result) {
+var templateFn = Handlebars.compile($('#select-genre-template').text())
+var generatedHTML = templateFn(result.data)
+var container = $('#genre-select-box')
+var html = container.html()
+container.html(html + generatedHTML)
+
+$("#genre-check-cancel").on('click', function() {
+  menuBackScreen.toggle(0)
+  genreSelectBox.toggle(0)
+  $("#genre-check-btn").toggle(0)
+  return
+})
+
+$("#genre-check-check").on('click', function() {
+	categoryGenreNo = ""
+	genreSelectText.html("")
+	genreConfirmText.html("")
+  $("input[name=genre]:checked").each(function() {
+    categoryGenreNo += $(this).val() + ","
+    categoryGenreName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
+    genreSelectText.append("<span class='selectSpan'>" + categoryGenreName + "</span>")
+    genreConfirmText.append("<span class='selectSpan'>" + categoryGenreName + "</span>")
+    });
+  menuBackScreen.toggle(0)
+  genreSelectBox.toggle(0)
+  $("#genre-check-btn").toggle(0)
+})
+}, function(err) {
+    console.log(err)
+  })
+  
+}
+
+function LocationList() {
+$.getJSON('/category/listLocationType.json', function(result) {
+  var templateFn = Handlebars.compile($('#select-sido-template').text())
+  var generatedHTML = templateFn(result.data)
+  var container = sidoSelectMenu
+  container.html(generatedHTML)
+  
+  $("#sido-select-menu").val(eventLoctno)
+  $("#city-select-menu").val(eventLocno)
+  
+  $.getJSON('/category/listLocation.json', {"loctno" : eventLoctno},function(result) {
+	    var templateFn = Handlebars.compile($('#select-city-template').text())
+	    var generatedHTML = templateFn(result.data)
+	    var container = citySelectMenu
+		var html = container.html()
+		container.html(html + generatedHTML)
+  }, function(err) {
+    console.log(err)
+  })
+  
+   sidoSelectMenu.change(function(){
+	   var loctno = $(this).val()
+	   var sidoText = $("#sido-select-menu option:selected").text()
+	   citySelectMenu.html("")
+	   optGroup = $('<optgroup>').attr('label', sidoText);
+	   citySelectMenu.append(optGroup);
+
+	   $.getJSON('/category/listLocation.json', {"loctno" : loctno},function(result) {
+	    var templateFn = Handlebars.compile($('#select-city-template').text())
+	    var generatedHTML = templateFn(result.data)
+	    var container = citySelectMenu
+		var html = container.html()
+		container.html(html + generatedHTML)
+	  }, function(err) {
+	    console.log(err)
+	  })
+	   
+    })
+    
+  }, function(err) {
+    console.log(err)
+})
+}

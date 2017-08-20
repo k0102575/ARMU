@@ -1253,3 +1253,11 @@ insert into thm_evn (eno, thmno) values (16, 11);
 insert into thm_evn (eno, thmno) values (17, 7);
 
 insert into thm_evn (eno, thmno) values (18, 1);
+
+
+-- 리허설 정보 추가
+
+insert into rhs (eno, pay, info, num) values (5, 50000, '보수와 횟수는 협의 가능합니다 연락주세요', 5);
+
+insert into rhs (eno, pay, info, num) values (7, 0, '보수는 매칭되고 메시지로 협의 하겠습니다 당일 리허설 입니다', 1);
+

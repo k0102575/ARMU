@@ -82,7 +82,7 @@
       </association>
     </collection>
   </resultMap>
-
+  
   <select id="selectListTheme" resultMap="themeMap">
   select thmt.name, thme.name as thmename, thme.thmno
   from thm as thme left outer join thm_type as thmt on thmt.thmtno = thme.thmtno
@@ -193,5 +193,33 @@ delete from loc_musi where muno = #{musiNo}
   from gnr gnr inner join gnr_type gnrt on gnrt.gnrtno=gnr.gnrtno
   order by gnrt.gnrtno asc
 </select>
+
+
+  <insert id="insertEventTheme" parameterType="map">
+    insert into thm_evn(eno, thmno)
+    values(#{eventNo}, #{eventTheme})
+  </insert><!-- 승민 -->
+
+  <insert id="insertEventMajor" parameterType="map">
+    insert into mjr_evn(eno, mjrno)
+    values(#{eventNo}, #{eventMajor})
+  </insert><!-- 승민 -->
+
+  <insert id="insertEventGenre" parameterType="map">
+    insert into gnr_evn(eno, gnrno)
+    values(#{eventNo}, #{eventGenre})
+  </insert><!-- 승민 -->
+
+  <delete id="deleteEventTheme" parameterType="int">
+    delete from thm_evn where eno = #{eno}
+  </delete><!-- 승민 -->
+
+  <delete id="deleteEventMajor" parameterType="int">
+    delete from mjr_evn where eno = #{eno}
+  </delete><!-- 승민 -->
+
+  <delete id="deleteEventGenre" parameterType="int">
+    delete from gnr_evn where eno = #{eno}
+  </delete><!-- 승민 -->
 
 </mapper>

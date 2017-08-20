@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import bitcamp.java93.domain.Event;
 import bitcamp.java93.domain.Member;
+import bitcamp.java93.service.CategoryService;
 import bitcamp.java93.service.EventService;
 
 @RestController
@@ -21,7 +22,7 @@ public class EventControl {
   
   @Autowired ServletContext servletContext;
   @Autowired EventService eventService;
-  
+  @Autowired CategoryService categoryService;
   
   @RequestMapping("addReherse")
   public JsonResult addReherse(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre, HttpSession session) throws Exception {
@@ -50,8 +51,8 @@ public class EventControl {
     event.setEventRegistGenre(registGenreList);
     event.setWriter(getLoginMember(session).getNo());
     eventService.add(event);
-    eventService.RegistEventCategory(event);
-    eventService.RegistEventReherse(event);
+    categoryService.registEventCategory(event);
+    eventService.registEventReherse(event);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
@@ -83,11 +84,85 @@ public class EventControl {
     
     event.setWriter(getLoginMember(session).getNo());
     eventService.add(event);
-    
-    eventService.RegistEventCategory(event);
+    categoryService.registEventCategory(event);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
+  @RequestMapping("updateReherse")
+  public JsonResult updateReherse(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre, HttpSession session) throws Exception {
+    String[] themeList = eventRegistTheme.split(",");
+    String[] majorList = eventRegistMajor.split(",");
+    String[] genreList = eventRegistGenre.split(",");
+    
+    ArrayList<String> registThemeList = new ArrayList<>();
+    ArrayList<String> registMajorList = new ArrayList<>();
+    ArrayList<String> registGenreList = new ArrayList<>();
+    
+    for (String theme : themeList) {
+      registThemeList.add(theme);
+    } 
+    
+    for (String major : majorList) {
+      registMajorList.add(major);
+    } 
+    
+    for (String genre : genreList) {
+      registGenreList.add(genre);
+    } 
+    
+    event.setEventRegistTheme(registThemeList);
+    event.setEventRegistMajor(registMajorList);
+    event.setEventRegistGenre(registGenreList);
+    event.setWriter(getLoginMember(session).getNo());
+    eventService.update(event);
+    categoryService.deleteEventCategory(event.getNo());
+    categoryService.registEventCategory(event);
+    eventService.deleteEventReherse(event.getNo());
+    eventService.registEventReherse(event);
+    return new JsonResult(JsonResult.SUCCESS, "ok");
+  }
+  
+  @RequestMapping("update")
+  public JsonResult update(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre, HttpSession session) throws Exception {
+    String[] themeList = eventRegistTheme.split(",");
+    String[] majorList = eventRegistMajor.split(",");
+    String[] genreList = eventRegistGenre.split(",");
+    
+    ArrayList<String> registThemeList = new ArrayList<>();
+    ArrayList<String> registMajorList = new ArrayList<>();
+    ArrayList<String> registGenreList = new ArrayList<>();
+    
+    for (String theme : themeList) {
+      registThemeList.add(theme);
+    } 
+    
+    for (String major : majorList) {
+      registMajorList.add(major);
+    } 
+    
+    for (String genre : genreList) {
+      registGenreList.add(genre);
+    } 
+    
+    event.setEventRegistTheme(registThemeList);
+    event.setEventRegistMajor(registMajorList);
+    event.setEventRegistGenre(registGenreList);
+    
+    event.setWriter(getLoginMember(session).getNo());
+    eventService.update(event);
+    categoryService.deleteEventCategory(event.getNo());
+    categoryService.registEventCategory(event);
+    eventService.deleteEventReherse(event.getNo());
+    return new JsonResult(JsonResult.SUCCESS, "ok");
+  }
+  
+  @RequestMapping("deleteEvent")
+  public JsonResult deleteEvent(int eno) throws Exception {
+    categoryService.deleteEventCategory(eno);
+    eventService.deleteEventReherse(eno);
+    eventService.delete(eno);
+    return new JsonResult(JsonResult.SUCCESS, "ok");
+  }
   
   
   /* musimode 나에게 꼭 맞는 이벤트*/
@@ -124,11 +199,11 @@ public class EventControl {
     return result;
   }
   
-  @RequestMapping("checkEvent")
-  public JsonResult checkEvent(HttpSession session, int no){
+  @RequestMapping("prCheckEvent")
+  public JsonResult prCheckEvent(HttpSession session, int no){
     JsonResult result = new JsonResult();
       try {
-        List<Event> eventList = eventService.checkEvent(getLoginMember(session).getNo(), no);
+        List<Event> eventList = eventService.prCheckEvent(getLoginMember(session).getNo(), no);
         
         if (eventList != null) {
           result.setStatus(JsonResult.SUCCESS);
@@ -156,6 +231,19 @@ public class EventControl {
         
         return new JsonResult(JsonResult.SUCCESS, "success");
         
+      } catch (Exception e) {
+        result.setStatus(JsonResult.ERROR);
+      }
+    return result;
+  }
+  
+  @RequestMapping("requestEvent")
+  public JsonResult requestEvent(HttpSession session, int eNo){
+
+    JsonResult result = new JsonResult();
+      try {
+        eventService.requestEvent(getLoginMember(session).getNo(), eNo);
+        return new JsonResult(JsonResult.SUCCESS, "success");
       } catch (Exception e) {
         result.setStatus(JsonResult.ERROR);
       }

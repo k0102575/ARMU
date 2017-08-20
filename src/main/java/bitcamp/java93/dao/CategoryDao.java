@@ -2,6 +2,7 @@ package bitcamp.java93.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import bitcamp.java93.domain.Category;
 
@@ -23,4 +24,11 @@ public interface CategoryDao {
   void deleteMusiMajor(int no);
   void deleteMusiGenre(int no);
   void deleteMusilocation(int no);
+  Category selectEventCategory(int eno);
+  void insertEventTheme(Map<String,Object> themeMap);
+  void insertEventMajor(Map<String,Object> majorMap);
+  void insertEventGenre(Map<String,Object> genreMap);
+  void deleteEventTheme(int eno);
+  void deleteEventMajor(int eno);
+  void deleteEventGenre(int eno);
 }

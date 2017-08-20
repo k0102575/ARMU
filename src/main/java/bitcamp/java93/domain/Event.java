@@ -12,11 +12,15 @@ public class Event {
   ArrayList<String> themeList;
   ArrayList<String> majorList;
   ArrayList<String> genreList;
+  ArrayList<Integer> themeNoList;
+  ArrayList<Integer> majorNoList;
+  ArrayList<Integer> genreNoList;
   String city;
   String location;
   String address;
   int pay;
   int locno;
+  int loctno;
   String requirement;
   String contents;
   int downPay;
@@ -37,13 +41,13 @@ public class Event {
   public String toString() {
     return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", writeMember=" + writeMember
         + ", matchMusician=" + matchMusician + ", themeList=" + themeList + ", majorList=" + majorList + ", genreList="
-        + genreList + ", city=" + city + ", location=" + location + ", address=" + address + ", pay=" + pay + ", locno="
-        + locno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay + ", tmnno="
-        + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", pr_count=" + pr_count
+        + genreList + ", themeNoList=" + themeNoList + ", majorNoList=" + majorNoList + ", genreNoList=" + genreNoList
+        + ", city=" + city + ", location=" + location + ", address=" + address + ", pay=" + pay + ", locno=" + locno
+        + ", loctno=" + loctno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
+        + ", tmnno=" + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", pr_count=" + pr_count
         + ", mtc_info=" + mtc_info + ", rhsinfo=" + rhsinfo + ", haveRehearsal=" + haveRehearsal + ", EventRegistTheme="
         + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre
-        + ", appyList=" + appyList + ", prList=" + prList + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-        + ", toString()=" + super.toString() + "]";
+        + ", appyList=" + appyList + ", prList=" + prList + "]";
   }
   public int getNo() {
     return no;
@@ -93,6 +97,24 @@ public class Event {
   public void setGenreList(ArrayList<String> genreList) {
     this.genreList = genreList;
   }
+  public ArrayList<Integer> getThemeNoList() {
+    return themeNoList;
+  }
+  public void setThemeNoList(ArrayList<Integer> themeNoList) {
+    this.themeNoList = themeNoList;
+  }
+  public ArrayList<Integer> getMajorNoList() {
+    return majorNoList;
+  }
+  public void setMajorNoList(ArrayList<Integer> majorNoList) {
+    this.majorNoList = majorNoList;
+  }
+  public ArrayList<Integer> getGenreNoList() {
+    return genreNoList;
+  }
+  public void setGenreNoList(ArrayList<Integer> genreNoList) {
+    this.genreNoList = genreNoList;
+  }
   public String getCity() {
     return city;
   }
@@ -122,6 +144,12 @@ public class Event {
   }
   public void setLocno(int locno) {
     this.locno = locno;
+  }
+  public int getLoctno() {
+    return loctno;
+  }
+  public void setLoctno(int loctno) {
+    this.loctno = loctno;
   }
   public String getRequirement() {
     return requirement;
@@ -219,6 +247,5 @@ public class Event {
   public void setPrList(ArrayList<Musician> prList) {
     this.prList = prList;
   }
-  
   
   }

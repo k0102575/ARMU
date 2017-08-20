@@ -3,6 +3,7 @@ package bitcamp.java93.service;
 import java.util.List;
 
 import bitcamp.java93.domain.Category;
+import bitcamp.java93.domain.Event;
 import bitcamp.java93.domain.Musician;
 
 public interface CategoryService {
@@ -18,4 +19,7 @@ public interface CategoryService {
   void addMusiCategory(Musician musician) throws Exception;
   void deleteMusiCategory(int no) throws Exception;
   void changeMusiCategory(int no, Musician musician) throws Exception;
+  Category getEventCategory(int eno) throws Exception;
+  void registEventCategory(Event event) throws Exception;
+  void deleteEventCategory(int eno) throws Exception;
 }

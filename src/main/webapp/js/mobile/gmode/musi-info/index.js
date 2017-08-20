@@ -149,10 +149,11 @@ musicianInfoReviewBtn.on('click', function() {
 })
 
 function matchRequest() {
-  $.getJSON('/event/checkEvent.json', {
+  $.getJSON('/event/prCheckEvent.json', {
     "no" : location.href.split('?')[1].split('=')[1]
   },
   function(result) {
+	  console.log(result)
     if(result.data.eventList.length == 0) {
       var templateFn = Handlebars.compile($('#select-no-event-template').text())
       var generatedHTML = templateFn(result.data)

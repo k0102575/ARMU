@@ -52,6 +52,11 @@ order by date desc
     values(#{muNo}, #{eNo}, '참여요청', CURDATE(), '이벤트 홍보', #{prNo})
   </insert><!-- 승민 -->
   
+  <insert id="insertEventAppyNoti" parameterType="map">
+    insert into noti(muno, eno, type, date, cont, appyno) 
+    values(#{muNo}, #{eNo}, '지원', CURDATE(), '이벤트 지원', #{appyno})
+  </insert><!-- 승민 -->
+  
 </mapper>
 
 

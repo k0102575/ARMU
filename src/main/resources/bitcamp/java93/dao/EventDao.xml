@@ -48,6 +48,8 @@
     <result column="location" property="location" />
     <result column="addr" property="address" />
     <result column="pay" property="pay" />
+    <result column="locno" property="locno" />
+    <result column="loctno" property="loctno" />
     <result column="req" property="requirement" />
     <result column="cont" property="contents" />
     <result column="dpay" property="downPay" />
@@ -55,6 +57,7 @@
     <result column="rhspay" property="rhspay" />
     <result column="rhsinfo" property="rhsinfo" />
     <result column="rhsnum" property="rhsnum" />
+    <result column="rhsno" property="rhsno" />
     <result column="rhs" property="haveRehearsal" />
     <association property="writeMember" javaType="Member">
       <id property="no" column="muno" />
@@ -71,7 +74,51 @@
       <result column="major" />
     </collection>
   </resultMap>
-
+  
+    <resultMap type="event" id="selectDetailMap">
+    <id column="eno" property="no" />
+    <result column="title" property="title" />
+    <result column="mno" property="writer" />
+    <result column="location" property="location" />
+    <result column="addr" property="address" />
+    <result column="pay" property="pay" />
+    <result column="locno" property="locno" />
+    <result column="loctno" property="loctno" />
+    <result column="req" property="requirement" />
+    <result column="cont" property="contents" />
+    <result column="dpay" property="downPay" />
+    <result column="date" property="date" />
+    <result column="rhspay" property="rhspay" />
+    <result column="rhsinfo" property="rhsinfo" />
+    <result column="rhsnum" property="rhsnum" />
+    <result column="rhsno" property="rhsno" />
+    <result column="rhs" property="haveRehearsal" />
+    <result column="pr_count" property="pr_count" />
+    <result column="mtc_info" property="mtc_info" />
+    <association property="writeMember" javaType="Member">
+      <id property="no" column="muno" />
+      <result property="name" column="name" />
+      <result property="photo" column="path" />
+    </association>
+    <collection property="genreList" ofType="string">
+      <result column="genre" />
+    </collection>
+    <collection property="themeList" ofType="string">
+      <result column="theme" />
+    </collection>
+    <collection property="majorList" ofType="string">
+      <result column="major" />
+    </collection>
+    <collection property="genreNoList" ofType="Integer">
+      <result column="genreNo" />
+    </collection>
+    <collection property="themeNoList" ofType="Integer">
+      <result column="themeNo" />
+    </collection>
+    <collection property="majorNoList" ofType="Integer">
+      <result column="majorNo" />
+    </collection>
+  </resultMap>
 
   <resultMap type="event" id="eventMapRecruit">
     <id column="eno" property="no" />
@@ -101,7 +148,6 @@
       <result column="major" />
     </collection>
   </resultMap>
-  
   
   <resultMap type="event" id="matchEventMap">
     <id column="eno" property="no" />
@@ -134,7 +180,6 @@
     </collection>
     </association>
   </resultMap>
-  
   
 
    <select id="selectMusiOngoingList" resultMap="eventMapBasic"
@@ -255,38 +300,39 @@ where ap.mno=#{no}
 
   <insert id="insert" parameterType="event" useGeneratedKeys="true"
     keyColumn="eno" keyProperty="no">
-    insert into evn(eno, mno, locno, pay, req, cont, addr, date, title)
-    values(#{no}, #{writer}, #{locno}, #{pay}, #{requirement},
+    insert into evn(mno, locno, pay, req, cont, addr, date, title)
+    values(#{writer}, #{locno}, #{pay}, #{requirement},
     #{contents}, #{address}, #{date}, #{title})
   </insert><!-- 승민 -->
 
-  <insert id="insertTheme" parameterType="map">
-    insert into thm_evn(eno, thmno)
-    values(#{eventNo}, #{eventTheme})
-  </insert><!-- 승민 -->
-
-  <insert id="insertMajor" parameterType="map">
-    insert into mjr_evn(eno, mjrno)
-    values(#{eventNo}, #{eventMajor})
-  </insert><!-- 승민 -->
-
-  <insert id="insertGenre" parameterType="map">
-    insert into gnr_evn(eno, gnrno)
-    values(#{eventNo}, #{eventGenre})
-  </insert><!-- 승민 -->
-
-  <insert id="insertReherse" parameterType="event">
+  <update id="update" parameterType="event">
+    update evn set 
+      mno = #{writer}, locno = #{locno}, pay = #{pay}, req = #{requirement},
+      cont = #{contents}, addr = #{address}, date = #{date}, title  = #{title}
+    where eno=#{no}
+  </update> <!-- 승민 -->
+  
+  <delete id="deleteReherse" parameterType="int">
+    delete from rhs where eno = #{eno}
+  </delete> <!-- 승민 -->
+  
+    <insert id="insertReherse" parameterType="event">
     insert into rhs(eno, pay, info, num)
     values(#{no}, #{rhspay}, #{rhsinfo}, #{rhsnum})
-  </insert><!-- 승민 -->
-
-  <select id="selectEventList" resultMap="eventSelectMap"
+  </insert> <!-- 승민 -->
+  
+  <delete id="delete" parameterType="int">
+    delete from evn where eno = #{eno}
+  </delete> <!-- 승민 -->
+  
+  <select id="prCheckList" resultMap="eventSelectMap"
     parameterType="map">
     select even.eno, even.pay, even.date, even.title,
     loct.name as loctname, loc.name as locname, even.addr, if(prc.prno is
     not null, 1, 0) as pr_count, if(mtc.mtcno is not null, 1, 0) as
     mtc_info
-    from evn even
+    from (select * from evn where date >= curdate() and eno not in (select
+    eno from mtc)) even
     left outer join loc loc on even.locno = loc.locno
     left outer join loc_type loct on loc.loctno = loct.loctno
     left outer join
@@ -299,9 +345,15 @@ where ap.mno=#{no}
     where even.mno = #{myNo}
   </select><!-- 승민 -->
 
-  <insert id="eventRequest" parameterType="map" useGeneratedKeys="true"
+  <insert id="prEvent" parameterType="map" useGeneratedKeys="true"
     keyColumn="prno" keyProperty="prno">
     insert into pr(muno, eno)
+    values(#{muNo}, #{eNo});
+  </insert> <!-- 승민 -->
+  
+  <insert id="appyEvent" parameterType="map" useGeneratedKeys="true"
+    keyColumn="appyno" keyProperty="appyno">
+    insert into appy(muno, eno)
     values(#{muNo}, #{eNo});
   </insert> <!-- 승민 -->
 
@@ -348,13 +400,21 @@ where ap.mno=#{no}
     t.name like '%${value}%'
   </select>
   
-  <select id="selectEvent" resultMap="eventMapBasic" parameterType="int">
+  <select id="selectEvent" resultMap="selectDetailMap" parameterType="int">
     select e.eno, e.title, e.mno,  e.addr, e.pay, e.req, e.cont, e.dpay, e.date,
-           concat(lt.name, ' ', l.name) as location,
+           concat(lt.name, ' ', l.name) as location, lt.loctno as loctno, l.locno as locno,
            if(rhs.eno is not null, 1, 0) as rhs, rhs.pay as rhspay, rhs.info as rhsinfo, rhs.num as rhsnum,
            memb.mno as muno, memb.name, memb.path, 
-           t.name as theme, m.name as major, g.name as genre
+           t.name as theme, t.thmno as themeNo,
+           m.name as major, m.mjrno as majorNo,
+           g.name as genre, g.gnrno as genreNo,
+           if(prc.prno is not null, 1, 0) as pr_count, 
+           if(mtc.mtcno is not null, 1, 0) as mtc_info
     from evn e
+    left outer join (select prno, muno, eno from pr group by muno, eno having eno = #{eNo}
+    ) prc on e.eno = prc.eno
+    left outer join (select mtcno, muno, eno from mtc group by muno, eno having eno = #{eNo}
+    ) mtc on e.eno = mtc.eno
     left outer join loc l on e.locno = l.locno
     left outer join loc_type lt on l.loctno = lt.loctno
     left outer join rhs rhs on e.eno = rhs.eno
@@ -365,9 +425,9 @@ where ap.mno=#{no}
     left outer join gnr_evn ge on e.eno = ge.eno
     left outer join gnr g on ge.gnrno = g.gnrno
     left outer join memb memb on e.mno = memb.mno
-    where e.eno = #{eNo};
+    where e.eno = #{eNo}
   </select> <!-- 승민 -->
-
+  
   <select id="eventSearch" resultMap="eventMapBasic" parameterType="map">
    select e.eno, e.locno, e.pay, e.addr, e.date, e.title,
     concat(lt.name, ' ', l.name) as location,

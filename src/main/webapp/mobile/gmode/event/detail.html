@@ -12,7 +12,7 @@
 <link href="/css/mobile/common.css" rel="stylesheet" type="text/css" media="all">
 <link href="/css/mobile/header.css" rel="stylesheet" type="text/css" media="all">
 <link href="/css/alert.css" rel="stylesheet" type="text/css" media="all">
-<link href="/css/mobile/musimode/event/detail.css" rel="stylesheet" type="text/css" media="all">
+<link href="/css/mobile/gmode/event/detail.css" rel="stylesheet" type="text/css" media="all">
 <script src="/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
 <script src="/node_modules/animsition/dist/js/animsition.min.js"></script>
@@ -34,7 +34,7 @@
     {{/writeMember}}
   </div>
   
-  <div id="portfolio-add-btn" data-value="{{no}}">지원<br>하기</div>
+  <div id="event-apply-btn" data-value="{{no}}">지원<br>현황</div>
   
   <div id="event-detail-title">{{title}}</div>
   
@@ -131,11 +131,42 @@
   {{#unless requirement}}
   {{/unless}}
 
+  <button type='button' id='event-edit-btn' value="{{no}}">편집하기</button>
+  <button type='button' id='event-delete-btn' value="{{no}}">삭제하기</button>
   {{/detail}}
   </script>  
   
+  <div id="event-appy-backscreen"></div>
+  <div id="event-appy-info">
+  <div id="event-appy-header"><img id="event-appy-cancel-btn" src="/image/icon/access-black.png">지원 현황</div>
+  </div>
+    
+<script id="event-appy-template" type="text/x-handlebars-template">
+{{#each listAppy}}
+<div class="recruiting-applicant" data-no={{no}}>
+    <div class="recruiting-applicant-img" style='background-image: url("{{photo}}_300.png")'></div>
+    <div class="recruiting-applicant-name"><span>{{nickName}}</span>
+    <div class="recruiting-applicant-score">{{{score}}}</div>
+</div>
+      
+    <!-- recruiting-applicant-name -->
+
+    <div class="recruiting-applicant-fav">{{{isFavorite}}}</i></div>
+    <div class="recruiting-applicant-hashtagbax">
+      {{#majorList}}<span>#{{this}}</span>{{/majorList}}
+      {{#themeList}}<span>#{{this}}</span>{{/themeList}}
+      {{#genreList}}<span>#{{this}}</span>{{/genreList}}
+    </div>
+  <div class='recruiting-applicant-btnbox'>
+    <div class='recruiting-applicant-btn reject-btn'>거절하기</div>
+    <div class='recruiting-applicant-btn decide-btn'>확정하기</div>
+  </div>
+  
+  </div><!-- recruiting-applicant -->
+{{/each}}
+</script>
   
 </div>
-<script src="/js/mobile/musimode/event/detail.js"></script>
+<script src="/js/mobile/gmode/event/detail.js"></script>
 </body>
 </html>

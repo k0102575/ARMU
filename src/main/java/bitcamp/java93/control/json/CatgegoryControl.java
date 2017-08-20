@@ -88,4 +88,12 @@ public class CatgegoryControl {
     dataMap.put("listEventGenre", categoryService.listEventGenre());
     return new JsonResult(JsonResult.SUCCESS, dataMap);
   }
+  
+  @RequestMapping("getEventCategory")
+  public JsonResult getEventCategory(int eno) throws Exception {
+    HashMap<String,Object> dataMap = new HashMap<>();
+    dataMap.put("getEventCategory", categoryService.getEventCategory(eno));
+    return new JsonResult(JsonResult.SUCCESS, dataMap);
+  }
+  
 }
