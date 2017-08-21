@@ -102,7 +102,7 @@ $('#filter-gen-backscreen').click(function() {
 
 function getLocation() {
   $.getJSON('/category/listLocationType.json', function(result) {
-    console.log(result)
+//    console.log(result)
     var templateFn = Handlebars.compile($('#location-type-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $("#filter-container")
@@ -158,8 +158,9 @@ function filter() {
                 'gnrno':gnrno, 
                 'indexT':indexT, 
                 'indexM':indexM, 
-                'indexG':indexG}, function(result) {
-                  console.log(result.data)
+                'indexG':indexG,
+                'locFilter':locFilter}, function(result) {
+//                  console.log(result.data)
                   var templateFn = Handlebars.compile($('#event-surf-template').text())
                   var generatedHTML = templateFn(result.data)
                   var container = $('#event-surf-container')
@@ -218,8 +219,9 @@ function filterMajor() {
                 'gnrno':gnrno, 
                 'indexT':indexT, 
                 'indexM':indexM, 
-                'indexG':indexG}, function(result) {
-                  console.log(result.data)
+                'indexG':indexG,
+                'locFilter':locFilter}, function(result) {
+//                  console.log(result.data)
                   var templateFn = Handlebars.compile($('#event-surf-template').text())
                   var generatedHTML = templateFn(result.data)
                   var container = $('#event-surf-container')
@@ -280,7 +282,8 @@ function filterGenre() {
                 'gnrno':gnrno, 
                 'indexT':indexT, 
                 'indexM':indexM, 
-                'indexG':indexG}, function(result) {
+                'indexG':indexG,
+                'locFilter':locFilter}, function(result) {
 //                  console.log(result.data)
                   var templateFn = Handlebars.compile($('#event-surf-template').text())
                   var generatedHTML = templateFn(result.data)
@@ -298,3 +301,34 @@ function filterGenre() {
     }
   })
 }
+
+var locFilter =["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17"];
+$('body').on('click', '#location-check-check', function() {
+//  console.log($('input[name="location"]').val())
+  locFilter= [];
+  $('input:checkbox[name="location"]').each(function() {
+    if(this.checked){ //checked 처리된 항목의 값
+      locFilter.push(this.value)
+    }
+  });
+  if(locFilter==false)
+    locFilter =["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17"];
+//  console.log(locFilter)
+//  console.log('thmno=',thmno,'mjrno=',mjrno,'gnrno=',gnrno,indexT,indexM,indexG)
+  $.post('/event/searchEvent.json',
+      {'thmno':thmno,
+    'mjrno':mjrno, 
+    'gnrno':gnrno, 
+    'indexT':indexT, 
+    'indexM':indexM, 
+    'indexG':indexG,
+    'locFilter':locFilter}, function(result) {
+//            console.log(result.data)
+      var templateFn = Handlebars.compile($('#event-surf-template').text())
+      var generatedHTML = templateFn(result.data)
+      var container = $('#event-surf-container')
+      var html = container.html()
+      container.html(generatedHTML)
+    },'json')
+});
+  

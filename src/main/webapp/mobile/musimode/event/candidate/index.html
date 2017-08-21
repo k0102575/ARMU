@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
 <link href="/css/mobile/common.css" rel="stylesheet" type="text/css"
 	media="all">
-<link href="/css/mobile/musimode/event/list.css" rel="stylesheet"
+<link href="/css/mobile/musimode/event/candidate/list.css" rel="stylesheet"
 	type="text/css" media="all">
 <script src="/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
@@ -29,23 +29,23 @@
 	<div class="event-list-headerbox">
 		<a href="javascript:history.go(-1)" class='back-btn'><i
 			class="fa fa-angle-left" aria-hidden="true"></i></a>
-		<div class="event-list-header">지원한/제안받은 이벤트</div>
+		<div class="event-list-header">지원한 / 제안받은 이벤트</div>
 	</div>
 	<!-- event-list-headerbox -->
 
 
 	<div id="event-type-btn-container">
-		<div id="event-type-ongoing-btn">지원한 이벤트</div>
-		<div id="event-type-end-btn">제안받은 이벤트</div>
+		<div id="event-type-appy-btn">지원한 이벤트</div>
+		<div id="event-type-pr-btn">제안받은 이벤트</div>
 	</div>
 
 	<div class='category-main animsition' id='recruiting-list'>
 		<!-- include -->
 	</div>
-	<div class='category-main' id='ongoing-list'>
+	<div class='category-main' id='appy-list'>
 		<!-- include -->
 	</div>
-	<div class='category-main' id='end-list'>
+	<div class='category-main' id='pr-list'>
 		<!-- include -->
 	</div>
 
@@ -54,20 +54,19 @@
 
 	<script>
 		HandlebarsIntl.registerWith(Handlebars);
-		//HandlebarsMoment(moment().format(), moment).registerHelpers(Handlebars);
 
 		var lastScroll = 0, moveTopBtn = $("#move_top_btn"), 
 		      eventTypeBtnContainer = $("#event-type-btn-container"), 
-		      OngoingBtn = $('#event-type-ongoing-btn'), 
-		      endBtn = $('#event-type-end-btn'), 
-		      ongoingList = $("#ongoing-list"), 
-		      endList = $("#end-list");
+		      appyBtn = $('#event-type-appy-btn'), 
+		      prBtn = $('#event-type-pr-btn'), 
+		      appyList = $("#appy-list"), 
+		      prList = $("#pr-list");
 
-		ongoingList.load('list-ongoing.html')
-		endList.load('list-end.html');
+		appyList.load('list-appy.html')
+		prList.load('list-pr.html');
 
-		ongoingList.css('display', 'block')
-		endList.css('display', 'none')
+		appyList.css('display', 'block')
+		prList.css('display', 'none')
 
 		$(window).scroll(
 				function(event) {
@@ -96,18 +95,18 @@
 			return false;
 		});
 
-		OngoingBtn.on('click', function() {
-			OngoingBtn.css('border-bottom', '4px solid #8069ef')
-			endBtn.css('border-bottom', '1px solid lightgray')
-			ongoingList.fadeIn(700)
-			endList.hide()
+		appyBtn.on('click', function() {
+			appyBtn.css('border-bottom', '4px solid #8069ef')
+			prBtn.css('border-bottom', '1px solid lightgray')
+			appyList.fadeIn(700)
+			prList.hide()
 		})
 
-		endBtn.on('click', function() {
-			OngoingBtn.css('border-bottom', '1px solid lightgray')
-			endBtn.css('border-bottom', '4px solid #8069ef')
-			ongoingList.hide()
-			endList.fadeIn(700)
+		prBtn.on('click', function() {
+			appyBtn.css('border-bottom', '1px solid lightgray')
+			prBtn.css('border-bottom', '4px solid #8069ef')
+			appyList.hide()
+			prList.fadeIn(700)
 		})
 	</script>
 </body>

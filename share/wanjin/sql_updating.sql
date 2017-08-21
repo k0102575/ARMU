@@ -438,7 +438,7 @@ select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genr
 pr.prno, mu.muno, mu.nick, m.path, score.score
 from recruiting_eventlist e
 left outer join pr on e.eno=pr.eno
-left outer join musi mu on pr.muno=mu.muno inner join memb m on mu.muno=m.mno
+left outer join musi mu on pr.muno=mu.muno left outer join memb m on mu.muno=m.mno
 left outer join (
   select avg(score) as score, muno
   from mtc
@@ -453,7 +453,7 @@ select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genr
 appy.appyno, mu.muno, mu.nick, m.path, score.score
 from recruiting_eventlist e
 left outer join appy on e.eno=appy.eno
-left outer join musi mu on appy.muno=mu.muno inner join memb m on mu.muno=m.mno
+left outer join musi mu on appy.muno=mu.muno left outer join memb m on mu.muno=m.mno
 left outer join (
   select avg(score) as score, muno
   from mtc
@@ -576,17 +576,14 @@ inner join memb m on m.mno=e.mno
 
 
 -- 특정 뮤지션의 지원한(appy) 이벤트 리스트 가져오기
+select ap.eno, ap.title, ap.date, ap.location, ap.addr, ap.pay, ap.major, ap.genre, ap.theme,
+ap.appyno, ap.mno, m.name, m.path
+from eventlist_appy_musicians ap inner join memb m on ap.mno=m.mno
+where ap.muno=11
 
 
 
 
-select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme,
-appy.appyno, mu.muno, mu.nick, m.path, score.score
-from (select * from evn where date >= curdate() and eno not in (select eno from mtc) order by date asc) e
-left outer join appy on e.eno=appy.eno
-left outer join musi mu on appy.muno=mu.muno inner join memb m on mu.muno=m.mno
-left outer join (
-  select avg(score) as score, muno
-  from mtc
-  group by muno
-) score on score.muno=mu.muno
+ALTER TABLE appy NOCHECK CONSTRAINT FK_appy_TO_noti
+
+ALTER TABLE appy CHECK CONSTRAINT FK_appy_TO_noti

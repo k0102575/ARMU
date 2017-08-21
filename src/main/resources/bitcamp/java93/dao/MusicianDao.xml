@@ -124,6 +124,7 @@
   left outer join loc_type lt on l.loctno = lt.loctno
   </sql>
   
+  
   <select id="selectRecommandList" resultMap="musicianMap" parameterType="int">
   select mum.mno, mum.name, mu.nick, mu.team, mum.path, fm.fav, if(mtc.score is not null, mtc.score, 0) as score,
   tag.mjrno, tag.thmno, tag.gnrno, tag.major, tag.theme, tag.genre, null as location
@@ -380,8 +381,8 @@ left outer join (
           #{maxAge}
         </if>
       </otherwise>
-  
     </choose>
+    order by mno asc
   </select>
   
   <select id="selectBestReviewList" resultMap="musicianMap">

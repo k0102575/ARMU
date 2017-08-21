@@ -2,7 +2,14 @@
   <p class='rec-title'>내 이벤트에 꼭 맞는 뮤지션</p>
   <div class="rec-container rec-no-event-container">
 
-    <div class="rec-no-event">
+    <div class="rec-no-event rec-no-member">
+      <br> 먼저 로그인을 해주세요<br><br>
+      <i class="fa fa-frown-o" aria-hidden="true" id='rec-no-event-cry'></i><br><br>
+      <a href="/mobile/login.html" class='rec-event-add-btn'>로그인하기</a><br><br>
+    </div>
+    <!-- rec-no-event -->
+    
+    <div class="rec-no-event rec-no-data">
       <br> 아직 작성하신 이벤트가 없어요<br><br>
       <i class="fa fa-frown-o" aria-hidden="true" id='rec-no-event-cry'></i><br><br>
       <a href="/mobile/gmode/event/regist.html" class='rec-event-add-btn'>이벤트 등록하기</a><br><br>
@@ -79,9 +86,9 @@
 {{/if}}
 {{#unless listRecommand}}
   <div class="rec-no-event">
-      <br> 아쉽지만, 조건에 맞는 이벤트가 없네요<br><br>
+      <br> 아쉽지만, 조건에 맞는 뮤지션이 없네요<br><br>
       <i class="fa fa-frown-o" aria-hidden="true" id='rec-no-event-cry'></i><br><br>
-      <a href="/mobile/gmode/event/regist.html" class='rec-event-add-btn'>이벤트 직접 검색하기</a><br><br>
+      <a href="/mobile/gmode/event/regist.html" class='rec-event-add-btn'>뮤지션 직접 검색하기</a><br><br>
     </div>
 {{/unless}}
 </script>

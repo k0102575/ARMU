@@ -51,6 +51,7 @@ public class EventServiceImpl implements EventService {
     eventDao.deleteAppyEventOne();
   }
   
+  
   /*뮤지션모드 > 추천탭 > 나에게 꼭 맞는 이벤트*/
   public List<Event> listRecommand(int no) throws Exception {
     return eventDao.selectRecommandList(no);
@@ -152,7 +153,7 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectEndList(no);
   }
   
-  public List<Event> searchEvent(int no,int thmno, int mjrno, int gnrno, int indexT,int indexM,int indexG) throws Exception {
+  public List<Event> searchEvent(int no,int thmno, int mjrno, int gnrno, int indexT,int indexM,int indexG,List<String> locFilter) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("no", no);
     valueMap.put("thmno", thmno);
@@ -161,7 +162,9 @@ public class EventServiceImpl implements EventService {
     valueMap.put("indexT", indexT);
     valueMap.put("indexM", indexM);
     valueMap.put("indexG", indexG);
+    valueMap.put("locFilter", locFilter);
     return eventDao.eventSearch(valueMap);
+    
   }
   
   public Event detail(int eNo, int muNo) throws Exception {
@@ -185,6 +188,20 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectMusiEndList(no);
   }
 
-  
+  /*뮤지션모드 - 지원한 이벤트*/
+  public List<Event> listMusiAppy(int no) throws Exception {
+    return eventDao.selectMusiAppyList(no);
+  }
+
+  /*뮤지션모드 - 제안받은 이벤트*/
+  public List<Event> listMusiPr(int no) throws Exception {
+    return eventDao.selectMusiPrList(no);
+  }
+
+  /*일반모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트 - 이벤트 유무 확인*/
+  public int getEventCount(int no) throws Exception {
+    return eventDao.selectEventCount(no);
+  }
+
 }
 

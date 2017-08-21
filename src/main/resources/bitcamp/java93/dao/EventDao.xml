@@ -60,7 +60,7 @@
     <result column="rhsno" property="rhsno" />
     <result column="rhs" property="haveRehearsal" />
     <association property="writeMember" javaType="Member">
-      <id property="no" column="muno" />
+      <id property="no" column="mno" />
       <result property="name" column="name" />
       <result property="photo" column="path" />
     </association>
@@ -183,6 +183,30 @@
   </resultMap>
   
 
+   <select id="selectEventCount" resultType="int"
+    parameterType="int">
+    select count(eno)
+    from (select distinct eno from recruiting_eventlist where mno=#{no}) e
+  </select><!-- 완진 -->
+  
+  
+   <select id="selectMusiAppyList" resultMap="eventMapBasic"
+    parameterType="int">
+    select ap.eno, ap.title, ap.date, ap.location, ap.addr, ap.pay, ap.major, ap.genre, ap.theme,
+ap.appyno, ap.mno, m.name, m.path
+from eventlist_appy_musicians ap inner join memb m on ap.mno=m.mno
+where ap.muno=#{no}
+  </select><!-- 완진 -->
+  
+   <select id="selectMusiPrList" resultMap="eventMapBasic"
+    parameterType="int">
+    select p.eno, p.title, p.date, p.location, p.addr, p.pay, p.major, p.genre, p.theme,
+p.prno, p.mno, m.name, m.path
+from eventlist_pr_musicians p inner join memb m on p.mno=m.mno
+where p.muno=#{no}
+  </select><!-- 완진 -->
+  
+  
    <select id="selectMusiOngoingList" resultMap="eventMapBasic"
     parameterType="int">
     select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
@@ -475,7 +499,7 @@ where ap.mno=#{no}
   </select> <!-- 승민 -->
   
   <select id="eventSearch" resultMap="eventMapBasic" parameterType="map">
-   select e.eno, e.locno, e.pay, e.addr, e.date, e.title,
+    select e.eno, e.locno, e.pay, e.addr, e.date, e.title,
     concat(lt.name, ' ', l.name) as location,
     m.mno, m.name, m.path, mj.name as major, g.name as genre, t.name as theme
     from (select * from evn where date >= curdate() and eno not in (select
@@ -489,12 +513,13 @@ where ap.mno=#{no}
     ge.gnrno=g.gnrno
     left outer join thm_evn te on e.eno=te.eno inner join thm t on
     te.thmno=t.thmno
-left outer join gnr_type gnrt on g.gnrtno=gnrt.gnrtno
-left outer join mjr_type mjrt on mj.mjrtno=mjrt.mjrtno
-left outer join thm_type thmt on t.thmtno=thmt.thmtno
+    left outer join gnr_type gnrt on g.gnrtno=gnrt.gnrtno
+    left outer join mjr_type mjrt on mj.mjrtno=mjrt.mjrtno
+    left outer join thm_type thmt on t.thmtno=thmt.thmtno
     <choose>
       <when test="mjrno == 1000">
         where mj.mjrtno=#{indexM}
+        <include refid="filterLocation" />
         <choose>
           <when test="gnrno == 1000">
             AND g.gnrtno=#{indexG}
@@ -531,6 +556,7 @@ left outer join thm_type thmt on t.thmtno=thmt.thmtno
         <choose>
           <when test="gnrno == 1000">
             where g.gnrtno=#{indexG}
+            <include refid="filterLocation" />
             <if test="thmno ==1000">
               AND t.thmtno=#{indexT}
             </if>
@@ -542,14 +568,17 @@ left outer join thm_type thmt on t.thmtno=thmt.thmtno
           <when test="gnrno== 2000">
             <if test="thmno ==1000">
               where t.thmtno=#{indexT}
+              <include refid="filterLocation" />
             </if>
             <if test="thmno != 1000 and thmno!=2000">
               where t.thmno=#{thmno}
+              <include refid="filterLocation" />
             </if>
           </when>
   
           <when test="gnrno != 1000 and gnrno !=2000">
             where g.gnrno=#{gnrno}
+            <include refid="filterLocation" />
             <if test="thmno==1000">
               AND t.thmtno=#{indexT}
             </if>
@@ -562,6 +591,7 @@ left outer join thm_type thmt on t.thmtno=thmt.thmtno
   
       <when test="mjrno != 1000 and mjrno != 2000 and mjrno !=3000">
         where mj.mjrno=#{mjrno}
+        <include refid="filterLocation" />
         <choose>
           <when test="gnrno == 1000">
             AND g.gnrtno=#{indexG}
@@ -594,11 +624,25 @@ left outer join thm_type thmt on t.thmtno=thmt.thmtno
         </choose>
       </when>
   
-      <otherwise></otherwise>
+      <otherwise>
+          where l.loctno in
+          <foreach item="loc" collection="locFilter" open="(" separator="," close=")">
+            #{loc} 
+          </foreach>
+      </otherwise>
     </choose>
-    order by eno    
+    order by eno asc
   </select>
-
+  
+  <sql id="filterLocation">
+      and l.loctno in
+      <foreach item="loc" collection="locFilter"
+        open="(" separator="," close=")">
+        #{loc} 
+      </foreach>
+  </sql>
+  
+  
 </mapper>
 
 

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import bitcamp.java93.domain.Member;
 import bitcamp.java93.domain.Musician;
 import bitcamp.java93.service.CategoryService;
+import bitcamp.java93.service.EventService;
 import bitcamp.java93.service.MusicianService;
 
 @RestController
@@ -25,6 +26,7 @@ public class MusicianControl {
   @Autowired ServletContext servletContext;
   @Autowired MusicianService musicianService;
   @Autowired CategoryService categoryService;
+  @Autowired EventService eventService;
 
   @RequestMapping("listRecommand")
   public JsonResult list(HttpSession session) {
@@ -34,14 +36,18 @@ public class MusicianControl {
 
     if(loginMember != null) {
       try {
-        List<Musician> musicianList = musicianService.listRecommand(loginMember.getNo());
-
-        result.setStatus(JsonResult.SUCCESS);
-
-        HashMap<String,Object> dataMap = new HashMap<>();
-        dataMap.put("listRecommand", musicianList);
-        result.setData(dataMap);
-
+        if(hasEvent(loginMember.getNo())) {
+          List<Musician> musicianList = musicianService.listRecommand(loginMember.getNo());
+          
+          result.setStatus(JsonResult.SUCCESS);
+          
+          HashMap<String,Object> dataMap = new HashMap<>();
+          dataMap.put("listRecommand", musicianList);
+          result.setData(dataMap);
+        } else {//event가 없으면
+          result.setStatus(JsonResult.SUCCESS);
+          result.setData("noEvent");
+        }
       } catch (Exception e) {
         e.printStackTrace();
         result.setStatus(JsonResult.ERROR);
@@ -51,6 +57,18 @@ public class MusicianControl {
       result.setData("browse");
     }
 
+    return result;
+  }
+  
+  /*일반모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트 - 이벤트 유무 확인*/
+  private boolean hasEvent(int no) {
+    boolean result = false;
+    try {
+      if(eventService.getEventCount(no) > 0) result = true;
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    
     return result;
   }
 
