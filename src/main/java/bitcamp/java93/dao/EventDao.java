@@ -18,7 +18,9 @@ public interface EventDao {
   List<Event> prCheckList(Map<String,Object> valueMap);  // 이벤트 매칭요청 리스트
   void prEvent(Map<String,Object> valueMap);
   void deletePrEvent(int eNo);
-  void appyEvent(Map<String,Object> valueMap);
+  void appyEvent(Map<String,Object> valueMap); // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 추가
+  void appyEventCheckUpdate(Map<String,Object> valueMap); // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"Y"변경
+  void appyEventCancelUpdate(Map<String,Object> valueMap); // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"N"변경
   void deleteAppyEventZero();
   void deleteAppyEvent(int eNo);
   void deleteAppyEventOne();
@@ -35,4 +37,5 @@ public interface EventDao {
   Event selectEvent(HashMap<String, Object> valueMap); // 뮤지션 모드 이벤트 상세정보
   Event selectMyEvent(int eNo); // 일반모드 이벤트 상세정보
   int selectEventCount(int no);//일반모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트 - 이벤트 유무 확인
+  int selectAppyCount(HashMap<String, Object> valueMap); /* 뮤지션 모드 > 이벤트 상세페이지 > 지원 활성여부 확인 */
 }

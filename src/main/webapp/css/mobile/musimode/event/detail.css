@@ -7,7 +7,7 @@
   padding-top: 20%;
 }
 
-#portfolio-add-btn {
+.portfolio-add-btn {
   position: fixed;
   border-radius: 100%;
   width: 150px;

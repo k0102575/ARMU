@@ -91,6 +91,23 @@ public class EventServiceImpl implements EventService {
     notificationDao.insertEventAppyNoti(valueMap);
   }
   
+  public void requestEventCheck(int muNo, int eNo, int appyNo) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("muNo", muNo);
+    valueMap.put("eNo", eNo);
+    valueMap.put("appyno", appyNo);
+    eventDao.appyEventCheckUpdate(valueMap);
+    notificationDao.insertEventAppyNoti(valueMap);
+  }
+  
+  public void requestEventCancel(int muNo, int eNo) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("muNo", muNo);
+    valueMap.put("eNo", eNo);
+    eventDao.appyEventCancelUpdate(valueMap);
+    notificationDao.insertEventAppyCancelNoti(valueMap);
+  }
+  
   public void updateRequestEvent(int eNo) throws Exception {
     Musician musician = musicianDao.myEventAppyList(eNo);
     
@@ -201,6 +218,14 @@ public class EventServiceImpl implements EventService {
   /*일반모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트 - 이벤트 유무 확인*/
   public int getEventCount(int no) throws Exception {
     return eventDao.selectEventCount(no);
+  }
+  
+  /* 뮤지션 모드 > 이벤트 상세페이지 > 지원 활성여부 확인 */
+  public int getAppyCount(int muNo, int eNo) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("muNo", muNo);
+    valueMap.put("eNo", eNo);
+    return eventDao.selectAppyCount(valueMap);
   }
 
 }

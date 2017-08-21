@@ -96,6 +96,7 @@
     <result column="pr_count" property="pr_count" />
     <result column="mtc_info" property="mtc_info" />
     <result column="appy_check" property="appy_check" />
+    <result column="appy_activeCheck" property="appy_activeCheck" />
     <association property="writeMember" javaType="Member">
       <id property="no" column="muno" />
       <result property="name" column="name" />
@@ -183,12 +184,17 @@
   </resultMap>
   
 
-   <select id="selectEventCount" resultType="int"
+  <select id="selectEventCount" resultType="int"
     parameterType="int">
     select count(eno)
     from (select distinct eno from recruiting_eventlist where mno=#{no}) e
   </select><!-- 완진 -->
   
+  <select id="selectAppyCount" resultType="int"
+    parameterType="int">
+    select count(eno)
+    from (select eno, muno from appy where muno=#{muNo} and eno=#{eNo}) e
+  </select><!-- 승민 -->
   
    <select id="selectMusiAppyList" resultMap="eventMapBasic"
     parameterType="int">
@@ -380,9 +386,21 @@ where ap.mno=#{no}
   
   <insert id="appyEvent" parameterType="map" useGeneratedKeys="true"
     keyColumn="appyno" keyProperty="appyno">
-    insert into appy(muno, eno)
-    values(#{muNo}, #{eNo});
+    insert into appy(muno, eno, active)
+    values(#{muNo}, #{eNo}, 'Y');
   </insert> <!-- 승민 -->
+  
+  <update id="appyEventCheckUpdate" parameterType="map">
+    update appy set 
+    active = 'Y'
+    where eno = #{eNo} and muno = #{muNo}
+  </update> <!-- 승민 -->
+  
+  <update id="appyEventCancelUpdate" parameterType="map">
+    update appy set 
+    active = 'N'
+    where eno = #{eNo} and muno = #{muNo}
+  </update> <!-- 승민 -->
   
   <delete id="deleteAppyEventZero">
    SET FOREIGN_KEY_CHECKS = 0
@@ -449,13 +467,14 @@ where ap.mno=#{no}
            g.name as genre, g.gnrno as genreNo,
            if(prc.prno is not null, 1, 0) as pr_count, 
            if(mtc.mtcno is not null, 1, 0) as mtc_info,
-           if(appy.appyno is not null, 1, 0) as appy_check
+           if(appy.appyno is not null, appy.appyno, 0) as appy_check,
+           appy.active as appy_activeCheck
     from evn e
     left outer join (select prno, muno, eno from pr group by muno, eno having muno = #{muNo}
     ) prc on e.eno = prc.eno
     left outer join (select mtcno, muno, eno from mtc group by muno, eno having muno = #{muNo}
     ) mtc on e.eno = mtc.eno
-    left outer join (select appyno, muno, eno from appy group by muno, eno having muno = #{muNo}
+    left outer join (select appyno, muno, eno, active from appy group by muno, eno having muno = #{muNo}
     ) appy on e.eno = appy.eno
     left outer join loc l on e.locno = l.locno
     left outer join loc_type lt on l.loctno = lt.loctno

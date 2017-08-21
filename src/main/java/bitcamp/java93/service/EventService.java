@@ -16,7 +16,9 @@ public interface EventService {
   List<Event> prCheckEvent(int myNo, int muNo) throws Exception;
   void prEvent(int muNo, int eNo) throws Exception;
   void deletePrEvent(int eNo) throws Exception;
-  void requestEvent(int muNo, int eNo) throws Exception;
+  void requestEvent(int muNo, int eNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 추가
+  void requestEventCheck(int muNo, int eNo, int appyNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"Y"변경
+  void requestEventCancel(int muNo, int eNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"N"변경
   void updateRequestEvent(int no) throws Exception;
   void deleteRequestEvent(int eno) throws Exception;
   List<Event> listSurf() throws Exception;
@@ -32,4 +34,5 @@ public interface EventService {
   List<Event> listMusiAppy(int no) throws Exception;//뮤지션모드 - 지원한 이벤트
   List<Event> listMusiPr(int no) throws Exception;//뮤지션모드 - 제안받은 이벤트
   int getEventCount(int no) throws Exception;//일반모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트 - 이벤트 유무 확인
+  int getAppyCount(int muNo, int eNo) throws Exception; /* 뮤지션 모드 > 이벤트 상세페이지 > 지원 활성여부 확인 */
 }

@@ -170,7 +170,6 @@ public class EventControl {
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
-  
   /* musimode 나에게 꼭 맞는 이벤트*/
   @RequestMapping("listRecommand")
   public JsonResult listRecommand(HttpSession session) {
@@ -244,14 +243,42 @@ public class EventControl {
   }
   
   @RequestMapping("requestEvent")
-  public JsonResult requestEvent(HttpSession session, int eNo){
-
+  public JsonResult requestEvent(HttpSession session, int eNo, int appyNo){
+    Integer muNo = getLoginMember(session).getNo();
     JsonResult result = new JsonResult();
+    
+    if(hasAppy(muNo, eNo) == true) {
+      
       try {
-        eventService.requestEvent(getLoginMember(session).getNo(), eNo);
+        eventService.requestEventCheck(muNo, eNo, appyNo);
         return new JsonResult(JsonResult.SUCCESS, "success");
       } catch (Exception e) {
         result.setStatus(JsonResult.ERROR);
+      }
+      
+    } else {
+      System.out.println(muNo);
+      System.out.println(eNo);
+      System.out.println(appyNo);
+      try {
+        eventService.requestEvent(muNo, eNo);
+        return new JsonResult(JsonResult.SUCCESS, "success");
+      } catch (Exception e) {
+        System.out.println(e.getMessage());
+      }
+    }
+    return result;
+  }
+  
+  @RequestMapping("requestEventCancel")
+  public JsonResult requestEventCancel(HttpSession session, int eNo) {
+    JsonResult result = new JsonResult();
+      try {
+        eventService.requestEventCancel(getLoginMember(session).getNo(), eNo);
+        return new JsonResult(JsonResult.SUCCESS, "success");
+      } catch (Exception e) {
+        result.setStatus(JsonResult.ERROR);
+        System.out.println(e.getMessage());
       }
     return result;
   }
@@ -449,11 +476,6 @@ public class EventControl {
     return result;
   }
   
-  private Member getLoginMember(HttpSession session) {
-    Member loginMember = (Member) session.getAttribute("loginMember");
-      return loginMember;
-  }
-  
   @RequestMapping("searchEvent")
   public JsonResult searchEvent(HttpSession session, int thmno, int mjrno, int gnrno, int indexT,int indexM,int indexG, @RequestParam(value="locFilter[]") List<String> locFilter) throws Exception {
     JsonResult result = new JsonResult();
@@ -469,6 +491,23 @@ public class EventControl {
       result.setStatus(JsonResult.ERROR);
     }
   return result;
+  }
+  
+  private Member getLoginMember(HttpSession session) {
+    Member loginMember = (Member) session.getAttribute("loginMember");
+      return loginMember;
+  }
+  
+  /* 뮤지션 모드 > 이벤트 상세페이지 > 지원 활성여부 확인 */
+  private boolean hasAppy(int muNo, int eNo) {
+    boolean result = false;
+    try {
+      if(eventService.getAppyCount(muNo, eNo) > 0) result = true;
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    
+    return result;
   }
   
 }

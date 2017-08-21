@@ -31,6 +31,7 @@ public class Event {
   int pr_count;
   int mtc_info;
   int appy_check;
+  String appy_activeCheck;
   String rhsinfo;
   boolean haveRehearsal;
   List<String> EventRegistTheme;
@@ -46,9 +47,10 @@ public class Event {
         + ", city=" + city + ", location=" + location + ", address=" + address + ", pay=" + pay + ", locno=" + locno
         + ", loctno=" + loctno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
         + ", tmnno=" + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", pr_count=" + pr_count
-        + ", mtc_info=" + mtc_info + ", appy_check=" + appy_check + ", rhsinfo=" + rhsinfo + ", haveRehearsal="
-        + haveRehearsal + ", EventRegistTheme=" + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor
-        + ", EventRegistGenre=" + EventRegistGenre + ", appyList=" + appyList + ", prList=" + prList + "]";
+        + ", mtc_info=" + mtc_info + ", appy_check=" + appy_check + ", appy_activeCheck=" + appy_activeCheck
+        + ", rhsinfo=" + rhsinfo + ", haveRehearsal=" + haveRehearsal + ", EventRegistTheme=" + EventRegistTheme
+        + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre + ", appyList=" + appyList
+        + ", prList=" + prList + "]";
   }
   public int getNo() {
     return no;
@@ -211,6 +213,12 @@ public class Event {
   }
   public void setAppy_check(int appy_check) {
     this.appy_check = appy_check;
+  }
+  public String getAppy_activeCheck() {
+    return appy_activeCheck;
+  }
+  public void setAppy_activeCheck(String appy_activeCheck) {
+    this.appy_activeCheck = appy_activeCheck;
   }
   public String getRhsinfo() {
     return rhsinfo;

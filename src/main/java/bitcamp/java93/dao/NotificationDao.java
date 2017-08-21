@@ -11,6 +11,7 @@ public interface NotificationDao {
   List<Notification> selectMusiNotiList(int no);
   int insertEventPrNoti(Map<String,Object> valueMap);
   int insertEventAppyNoti(Map<String,Object> valueMap);
+  void insertEventAppyCancelNoti(HashMap<String, Object> valueMap);
   void insertEventEditNoti(HashMap<String, Object> valueMap);
   void insertEventDeleteNoti(HashMap<String, Object> valueMap);
 }
