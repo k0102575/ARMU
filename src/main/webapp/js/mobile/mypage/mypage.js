@@ -4,7 +4,7 @@ $(document).ready(function() {
  $(".animsition").animsition();
 });
 
-
+var mode = location.href.split('?')[1].split('=')[1];
 var pno, mno, muno;
 $( document ).ready(function() {
     $.getJSON('/member/getMusiProfile.json', function(result) {
@@ -114,5 +114,9 @@ $('#fi-photoupload').fileupload({
       console.log(file)
     }
 });
+
+$('#close').on('click',function() {
+  location.href ='/mobile/'+mode+'/index.html'
+})
 
 

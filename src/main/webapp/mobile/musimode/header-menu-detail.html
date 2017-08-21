@@ -144,10 +144,12 @@
   
   $.getJSON('/auth/userinfo.json', function(result) {
     /* console.log(result) */
+    var param = location.href.split('/')[4]
     if(result.status == "success") {
        $('#mypage-btn').css('display', 'inline-block')
-                       .on('click', function() {
-                         location.href = '/mobile/mypage/mypage.html'
+                       .on('click', function(e) {
+                         e.preventDefault()
+                         location.href='/mobile/mypage/mypage.html?mode=' + param
                        })
        $('#user-photo').attr('src', result.data.photo + '_140.png')
        $('#login-btn').css('display', 'none')

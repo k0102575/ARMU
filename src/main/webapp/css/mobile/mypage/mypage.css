@@ -367,3 +367,7 @@ a {
     margin-left: -2px;
     background-color: #8069ef;
 }
+
+#pwd-enter {
+	color: lightgray;
+}
