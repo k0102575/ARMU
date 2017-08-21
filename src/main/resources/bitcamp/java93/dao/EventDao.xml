@@ -95,6 +95,7 @@
     <result column="rhs" property="haveRehearsal" />
     <result column="pr_count" property="pr_count" />
     <result column="mtc_info" property="mtc_info" />
+    <result column="appy_check" property="appy_check" />
     <association property="writeMember" javaType="Member">
       <id property="no" column="muno" />
       <result property="name" column="name" />
@@ -349,6 +350,10 @@ where ap.mno=#{no}
     values(#{muNo}, #{eNo});
   </insert> <!-- 승민 -->
   
+  <insert id="deletePrEvent" parameterType="int">
+   delete from pr where eno = #{eNo}
+  </insert> <!-- 승민 -->
+  
   <insert id="appyEvent" parameterType="map" useGeneratedKeys="true"
     keyColumn="appyno" keyProperty="appyno">
     insert into appy(muno, eno)
@@ -410,7 +415,38 @@ where ap.mno=#{no}
     t.name like '%${value}%'
   </select>
   
-  <select id="selectEvent" resultMap="selectDetailMap" parameterType="int">
+  <select id="selectEvent" resultMap="selectDetailMap" parameterType="map">
+    select e.eno, e.title, e.mno,  e.addr, e.pay, e.req, e.cont, e.dpay, e.date,
+           concat(lt.name, ' ', l.name) as location, lt.loctno as loctno, l.locno as locno,
+           if(rhs.eno is not null, 1, 0) as rhs, rhs.pay as rhspay, rhs.info as rhsinfo, rhs.num as rhsnum,
+           memb.mno as muno, memb.name, memb.path, 
+           t.name as theme, t.thmno as themeNo,
+           m.name as major, m.mjrno as majorNo,
+           g.name as genre, g.gnrno as genreNo,
+           if(prc.prno is not null, 1, 0) as pr_count, 
+           if(mtc.mtcno is not null, 1, 0) as mtc_info,
+           if(appy.appyno is not null, 1, 0) as appy_check
+    from evn e
+    left outer join (select prno, muno, eno from pr group by muno, eno having muno = #{muNo}
+    ) prc on e.eno = prc.eno
+    left outer join (select mtcno, muno, eno from mtc group by muno, eno having muno = #{muNo}
+    ) mtc on e.eno = mtc.eno
+    left outer join (select appyno, muno, eno from appy group by muno, eno having muno = #{muNo}
+    ) appy on e.eno = appy.eno
+    left outer join loc l on e.locno = l.locno
+    left outer join loc_type lt on l.loctno = lt.loctno
+    left outer join rhs rhs on e.eno = rhs.eno
+    left outer join thm_evn te on e.eno = te.eno
+    left outer join thm t on te.thmno = t.thmno
+    left outer join mjr_evn me on e.eno = me.eno
+    left outer join mjr m on me.mjrno = m.mjrno
+    left outer join gnr_evn ge on e.eno = ge.eno
+    left outer join gnr g on ge.gnrno = g.gnrno
+    left outer join memb memb on e.mno = memb.mno
+    where e.eno = #{eNo}
+  </select> <!-- 승민 -->
+  
+    <select id="selectMyEvent" resultMap="selectDetailMap" parameterType="int">
     select e.eno, e.title, e.mno,  e.addr, e.pay, e.req, e.cont, e.dpay, e.date,
            concat(lt.name, ' ', l.name) as location, lt.loctno as loctno, l.locno as locno,
            if(rhs.eno is not null, 1, 0) as rhs, rhs.pay as rhspay, rhs.info as rhsinfo, rhs.num as rhsnum,

@@ -62,6 +62,11 @@ order by date desc
     values(#{appyNo}, #{eNo}, '이벤트 수정', CURDATE(), '이벤트 수정')
   </insert><!-- 승민 -->
   
+  <insert id="insertEventDeleteNoti" parameterType="map">
+    insert into noti(muno, eno, type, date, cont) 
+    values(#{appyNo}, #{eNo}, '이벤트 삭제', CURDATE(), '이벤트 삭제')
+  </insert><!-- 승민 -->
+  
 </mapper>
 
 

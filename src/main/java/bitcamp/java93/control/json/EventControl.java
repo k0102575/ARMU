@@ -121,7 +121,7 @@ public class EventControl {
     categoryService.registEventCategory(event);
     eventService.deleteEventReherse(event.getNo());
     eventService.registEventReherse(event);
-    eventService.deleteRequestEvent(event.getNo());
+    eventService.updateRequestEvent(event.getNo());
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
@@ -156,7 +156,7 @@ public class EventControl {
     categoryService.deleteEventCategory(event.getNo());
     categoryService.registEventCategory(event);
     eventService.deleteEventReherse(event.getNo());
-    eventService.deleteRequestEvent(event.getNo());
+    eventService.updateRequestEvent(event.getNo());
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
@@ -164,6 +164,7 @@ public class EventControl {
   public JsonResult deleteEvent(int eno) throws Exception {
     categoryService.deleteEventCategory(eno);
     eventService.deleteEventReherse(eno);
+    eventService.deleteRequestEvent(eno);
     eventService.delete(eno);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
@@ -385,7 +386,23 @@ public class EventControl {
     JsonResult result = new JsonResult();
     try {
       HashMap<String,Object> dataMap = new HashMap<>();
-      dataMap.put("detail", eventService.detail(no));
+      dataMap.put("detail", eventService.detail(no, getLoginMember(session).getNo()));
+
+      result.setData(dataMap);
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
+    return result;
+  }
+  
+  @RequestMapping("myEventDetail")
+  public JsonResult myEventDetail(int no) {
+    JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("detail", eventService.myEventDetail(no));
 
       result.setData(dataMap);
       result.setStatus(JsonResult.SUCCESS);

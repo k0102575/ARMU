@@ -4,11 +4,12 @@ displayEventDetail()
 getAppyList()
 
 function displayEventDetail() {
-  $.getJSON('/event/detail.json', 
+  $.getJSON('/event/myEventDetail.json', 
       { 
     "no" : location.href.split('?')[1].split('=')[1]
       },
       function(result) {
+        console.log(result)
         var templateFn = Handlebars.compile($('#select-event-template').text())
         var generatedHTML = templateFn(result.data)
         var container = $('#container')
@@ -24,8 +25,8 @@ function displayEventDetail() {
         $("#event-edit-btn").on('click', function() {
           swal({
             title: "이벤트를 편집하시면 \n" +
-                "해당 이벤트에 대한 \n" + 
-                "뮤지션의 지원이 취소됩니다.",
+            "해당 이벤트에 대한 \n" + 
+            "뮤지션의 지원이 취소됩니다.",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#8069ef",
@@ -35,26 +36,43 @@ function displayEventDetail() {
           },
           function(){
             location.href= "/mobile/gmode/event/edit.html?no=" + location.href.split('?')[1].split('=')[1]
-        });
+          });
         })
 
         $("#event-delete-btn").on('click', function() {
-          $.getJSON('/event/deleteEvent.json', 
-              { 
-            "eno" : location.href.split('?')[1].split('=')[1]
-              },
-              function(result) {
-                if(result.data == "ok") {
-                  swal({
-                    title: "삭제에 성공했습니다!!",
-                    type: "success",
-                    showCancelButton: false,
-                    confirmButtonColor: "#8069ef",
-                    confirmButtonText: "확인",
-                    customClass: "checkSwal"
-                  });
-                }
-              })
+          swal({
+            title: "이벤트를 삭제하시면 \n" +
+            "해당 이벤트에 대한 \n" + 
+            "뮤지션의 지원이 취소됩니다.",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#8069ef",
+            confirmButtonText: "확인",
+            closeOnConfirm: false,
+            cancelButtonText: "취소"
+          },
+          function(){
+            $.getJSON('/event/deleteEvent.json', 
+                { 
+              "eno" : location.href.split('?')[1].split('=')[1]
+                },
+                function(result) {
+                  if(result.data == "ok") {
+                    swal({
+                      title: "삭제에 성공했습니다!!",
+                      type: "success",
+                      showCancelButton: false,
+                      confirmButtonColor: "#8069ef",
+                      confirmButtonText: "확인",
+                      customClass: "checkSwal"
+                    },
+                    function(){
+                      location.href= "/mobile/gmode/index.html"
+                    });
+                  }
+                })
+          });
+
         })
 
         $("#event-detail-appy-container").on('click', function () {
@@ -70,7 +88,6 @@ function getAppyList() {
   $.getJSON('/musician/listAppy.json',
       {'eventNo': location.href.split('?')[1].split('=')[1]},
       function(result) {
-        console.log(result)
         if(result.status != 'success') {
           console.error("getJSON() 실패: ", result.status)
           return;

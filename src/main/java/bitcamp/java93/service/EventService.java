@@ -15,8 +15,10 @@ public interface EventService {
   List<Event> listRecent(int no) throws Exception;//뮤지션모드 > 추천탭 > 최근 이벤트 리스트
   List<Event> prCheckEvent(int myNo, int muNo) throws Exception;
   void prEvent(int muNo, int eNo) throws Exception;
+  void deletePrEvent(int eNo) throws Exception;
   void requestEvent(int muNo, int eNo) throws Exception;
-  void deleteRequestEvent(int no) throws Exception;
+  void updateRequestEvent(int no) throws Exception;
+  void deleteRequestEvent(int eno) throws Exception;
   List<Event> listSurf() throws Exception;
   List<Event> listSearchResult(String search) throws Exception;
   List<Event> listRecruiting(int no) throws Exception;//나의이벤트 > 모집중 이벤트 리스트
@@ -25,5 +27,6 @@ public interface EventService {
   List<Event> listMusiOngoing(int no) throws Exception;//뮤지션모드 - 매칭이벤트 > 진행중 이벤트 리스트
   List<Event> listMusiEnd(int no) throws Exception;//뮤지션모드 - 매칭이벤트 > 종료 이벤트 리스트
   List<Event> searchEvent(int no, int thmno, int mjrno, int gnrno,int indexT,int indexM,int indexG) throws Exception;
-  Event detail(int eNo) throws Exception;
+  Event detail(int eNo, int muNo) throws Exception;
+  Event myEventDetail(int eNo) throws Exception;
 }

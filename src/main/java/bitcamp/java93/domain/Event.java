@@ -30,6 +30,7 @@ public class Event {
   int rhsnum;
   int pr_count;
   int mtc_info;
+  int appy_check;
   String rhsinfo;
   boolean haveRehearsal;
   List<String> EventRegistTheme;
@@ -45,9 +46,9 @@ public class Event {
         + ", city=" + city + ", location=" + location + ", address=" + address + ", pay=" + pay + ", locno=" + locno
         + ", loctno=" + loctno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
         + ", tmnno=" + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", pr_count=" + pr_count
-        + ", mtc_info=" + mtc_info + ", rhsinfo=" + rhsinfo + ", haveRehearsal=" + haveRehearsal + ", EventRegistTheme="
-        + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre
-        + ", appyList=" + appyList + ", prList=" + prList + "]";
+        + ", mtc_info=" + mtc_info + ", appy_check=" + appy_check + ", rhsinfo=" + rhsinfo + ", haveRehearsal="
+        + haveRehearsal + ", EventRegistTheme=" + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor
+        + ", EventRegistGenre=" + EventRegistGenre + ", appyList=" + appyList + ", prList=" + prList + "]";
   }
   public int getNo() {
     return no;
@@ -205,6 +206,12 @@ public class Event {
   public void setMtc_info(int mtc_info) {
     this.mtc_info = mtc_info;
   }
+  public int getAppy_check() {
+    return appy_check;
+  }
+  public void setAppy_check(int appy_check) {
+    this.appy_check = appy_check;
+  }
   public String getRhsinfo() {
     return rhsinfo;
   }
@@ -247,5 +254,7 @@ public class Event {
   public void setPrList(ArrayList<Musician> prList) {
     this.prList = prList;
   }
+  
+  
   
   }

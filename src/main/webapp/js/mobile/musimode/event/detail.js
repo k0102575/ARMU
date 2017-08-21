@@ -8,6 +8,7 @@ function displayEventDetail() {
       "no" : location.href.split('?')[1].split('=')[1]
     },
     function(result) {
+      console.log(result)
     var templateFn = Handlebars.compile($('#select-event-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#container')

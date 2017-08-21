@@ -46,7 +46,9 @@ public class EventServiceImpl implements EventService {
   }
   
   public  void delete(int eno) throws Exception {   
+    eventDao.deleteAppyEventZero();
     eventDao.delete(eno);
+    eventDao.deleteAppyEventOne();
   }
   
   /*뮤지션모드 > 추천탭 > 나에게 꼭 맞는 이벤트*/
@@ -75,6 +77,10 @@ public class EventServiceImpl implements EventService {
     notificationDao.insertEventPrNoti(valueMap);
   }
   
+  public void deletePrEvent(int eNo) throws Exception {
+    eventDao.deletePrEvent(eNo);
+  }
+  
   public void requestEvent(int muNo, int eNo) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("muNo", muNo);
@@ -84,21 +90,42 @@ public class EventServiceImpl implements EventService {
     notificationDao.insertEventAppyNoti(valueMap);
   }
   
-  public void deleteRequestEvent(int eNo) throws Exception {
-    
+  public void updateRequestEvent(int eNo) throws Exception {
     Musician musician = musicianDao.myEventAppyList(eNo);
     
     eventDao.deleteAppyEventZero();
     eventDao.deleteAppyEvent(eNo);
     eventDao.deleteAppyEventOne();
     
-    HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("eNo", eNo);
-    for (String appyNo : musician.getAppyNoList()) {
-      valueMap.put("appyNo", appyNo);
-      notificationDao.insertEventEditNoti(valueMap);
+    if(musician != null) {
+      HashMap<String,Object> valueMap = new HashMap<>();
+      valueMap.put("eNo", eNo);
+      for (String appyNo : musician.getAppyNoList()) {
+        valueMap.put("appyNo", appyNo);
+        notificationDao.insertEventEditNoti(valueMap);
+      }
+      return;
     }
+  }
+  
+  public void deleteRequestEvent(int eNo) throws Exception {
     
+    Musician musician = musicianDao.myEventAppyList(eNo);
+    
+    eventDao.deleteAppyEventZero();
+    eventDao.deleteAppyEvent(eNo);
+    eventDao.deletePrEvent(eNo);
+    eventDao.deleteAppyEventOne();
+    
+    if(musician != null) {
+      HashMap<String,Object> valueMap = new HashMap<>();
+      valueMap.put("eNo", eNo);
+      for (String appyNo : musician.getAppyNoList()) {
+        valueMap.put("appyNo", appyNo);
+        notificationDao.insertEventDeleteNoti(valueMap);
+      }
+      return;
+    }
   }
   
   @Override
@@ -137,8 +164,15 @@ public class EventServiceImpl implements EventService {
     return eventDao.eventSearch(valueMap);
   }
   
-  public Event detail(int eNo) throws Exception {
-    return eventDao.selectEvent(eNo);
+  public Event detail(int eNo, int muNo) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("eNo", eNo);
+    valueMap.put("muNo", muNo);
+    return eventDao.selectEvent(valueMap);
+  }
+  
+  public Event myEventDetail(int eNo) throws Exception {
+    return eventDao.selectMyEvent(eNo);
   }
   
   /*뮤지션모드 - 매칭이벤트 > 진행중 이벤트 리스트*/
