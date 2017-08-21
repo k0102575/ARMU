@@ -26,6 +26,17 @@ function displayNotiList() {
     
    showNotiList()
     
+   console.log(result.data)
+   $.each(result.data.listNoti, function(i, item) {
+     if(item.type == '이벤트 지원') {
+       item.contents = item.musician.nickName + '님이 "' + item.event.title +
+                       '" 이벤트에 지원하셨습니다.'
+     } else if(item.type == '요청 수락') {
+       item.contents = item.musician.nickName + '님이 "' + item.event.title +
+       '"에 대한 참여요청을 수락하셨습니다. 매칭을 원하시면 매칭확정을 진행해주세요!'
+     }
+   })
+   
     var templateFn = Handlebars.compile($('#noti-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#noti-container')

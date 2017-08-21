@@ -1,5 +1,4 @@
 "use strict"
-HandlebarsIntl.registerWith(Handlebars);
 displayRecommandEventList();
 displayTop10CategoryList();
 displayRecentEventList();

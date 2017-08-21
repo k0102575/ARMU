@@ -555,9 +555,9 @@ insert into pr (eno, muno) values (1, 1);
 insert into pr (eno, muno) values (1, 2);
 insert into pr (eno, muno) values (2, 3);
 
-insert noti (muno, eno, type, date, cont, prno) values (1, 1, "참여요청", '2017-07-19', "이벤트 홍보", 1);
-insert noti (muno, eno, type, date, cont, prno) values (2, 1, "참여요청", '2017-07-20', "이벤트 홍보", 2);
-insert noti (muno, eno, type, date, cont, prno) values (3, 2, "참여요청", '2017-07-28', "이벤트 홍보", 3);
+insert into noti (muno, eno, type, date, cont, prno) values (1, 1, "참여요청", '2017-07-19', "이벤트 홍보", 1);
+insert into noti (muno, eno, type, date, cont, prno) values (2, 1, "참여요청", '2017-07-20', "이벤트 홍보", 2);
+insert into noti (muno, eno, type, date, cont, prno) values (3, 2, "참여요청", '2017-07-28', "이벤트 홍보", 3);
 
 -- 이벤트&뮤지션 매칭정보(mtc)
 insert into mtc (muno, eno, mtcdt) values (3, 2, '2017-07-22');
@@ -607,7 +607,7 @@ insert into loc_musi (muno, locno) values (3, 15);
 -- 이벤트 홍보 수락(pr, noti)
 update pr set status='Y' where muno=3 and eno=2;
 
-insert noti (muno, eno, type, date, cont, prno) values (3, 2, "요청 수락", '2017-07-21', "이벤트 홍보 수락", 3);
+insert into noti (muno, eno, type, date, cont, prno) values (3, 2, "요청 수락", '2017-07-21', "이벤트 홍보 수락", 3);
 
 
 -- 뮤지션 경력 파일 (spec, spec_path)
@@ -1049,11 +1049,11 @@ insert into pr (eno, muno) values (4, 13);
 insert into pr (eno, muno) values (7, 3);
 insert into pr (eno, muno) values (7, 14);
 
-insert noti (muno, eno, type, date, cont, prno) values (3, 4, "참여요청", '2017-08-02', "이벤트 홍보", 4);
-insert noti (muno, eno, type, date, cont, prno) values (13, 4, "참여요청", '2017-08-02', "이벤트 홍보", 5);
+insert into noti (muno, eno, type, date, cont, prno) values (3, 4, "참여요청", '2017-08-02', "이벤트 홍보", 4);
+insert into noti (muno, eno, type, date, cont, prno) values (13, 4, "참여요청", '2017-08-02', "이벤트 홍보", 5);
 
-insert noti (muno, eno, type, date, cont, prno) values (3, 7, "참여요청", '2017-08-02', "이벤트 홍보", 6);
-insert noti (muno, eno, type, date, cont, prno) values (14, 7, "참여요청", '2017-08-02', "이벤트 홍보", 7);
+insert into noti (muno, eno, type, date, cont, prno) values (3, 7, "참여요청", '2017-08-02', "이벤트 홍보", 6);
+insert into noti (muno, eno, type, date, cont, prno) values (14, 7, "참여요청", '2017-08-02', "이벤트 홍보", 7);
 
 
 -- appy(뮤지션이 이벤트에 지원) 추가
@@ -1065,13 +1065,13 @@ insert into appy (active, eno, muno) values ("Y", 4, 11);
 insert into appy (active, eno, muno) values ("Y", 7, 8);
 insert into appy (active, eno, muno) values ("Y", 7, 14);
 
-insert noti (muno, eno, type, date, cont, appyno) values (1, 4, "이벤트지원", '2017-08-01', "이벤트 지원", 1);
-insert noti (muno, eno, type, date, cont, appyno) values (2, 4, "이벤트지원", '2017-08-02', "이벤트 지원", 2);
-insert noti (muno, eno, type, date, cont, appyno) values (3, 4, "이벤트지원", '2017-08-03', "이벤트 지원", 3);
-insert noti (muno, eno, type, date, cont, appyno) values (11, 4, "이벤트지원", '2017-08-04', "이벤트 지원", 4);
+insert into noti (muno, eno, type, date, cont, appyno) values (1, 4, "이벤트 지원", '2017-08-01', "이벤트 지원", 1);
+insert into noti (muno, eno, type, date, cont, appyno) values (2, 4, "이벤트 지원", '2017-08-02', "이벤트 지원", 2);
+insert into noti (muno, eno, type, date, cont, appyno) values (3, 4, "이벤트 지원", '2017-08-03', "이벤트 지원", 3);
+insert into noti (muno, eno, type, date, cont, appyno) values (11, 4, "이벤트 지원", '2017-08-04', "이벤트 지원", 4);
 
-insert noti (muno, eno, type, date, cont, appyno) values (8, 7, "이벤트지원", '2017-08-01', "이벤트 지원", 5);
-insert noti (muno, eno, type, date, cont, appyno) values (14, 7, "이벤트지원", '2017-08-03', "이벤트 지원", 6);
+insert into noti (muno, eno, type, date, cont, appyno) values (8, 7, "이벤트 지원", '2017-08-01', "이벤트 지원", 5);
+insert into noti (muno, eno, type, date, cont, appyno) values (14, 7, "이벤트 지원", '2017-08-03', "이벤트 지원", 6);
 
 
 -- 모든 모집 중인 이벤트 리스트 뷰 생성하기
