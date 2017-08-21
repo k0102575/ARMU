@@ -1257,3 +1257,9 @@ insert into thm_evn (eno, thmno) values (18, 1);
 insert into rhs (eno, pay, info, num) values (5, 50000, '보수와 횟수는 협의 가능합니다 연락주세요', 5);
 
 insert into rhs (eno, pay, info, num) values (7, 0, '보수는 매칭되고 메시지로 협의 하겠습니다 당일 리허설 입니다', 1);
+
+-- 뮤지션 관심이벤트(fav_evn)
+insert into fav_evn (muno, eno) values (3, 3);
+insert into fav_evn (muno, eno) values (3, 4);
+insert into fav_evn (muno, eno) values (2, 4);
+insert into fav_evn (muno, eno) values (1, 4);
