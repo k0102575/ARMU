@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bitcamp.java93.dao.EventDao;
+import bitcamp.java93.dao.MusicianDao;
 import bitcamp.java93.dao.NotificationDao;
 import bitcamp.java93.domain.Event;
+import bitcamp.java93.domain.Musician;
 import bitcamp.java93.service.EventService;
 
 @Service
@@ -19,6 +21,9 @@ public class EventServiceImpl implements EventService {
   
   @Autowired
   NotificationDao notificationDao;
+  
+  @Autowired
+  MusicianDao musicianDao;
   
   public List<Event> listOngoing() throws Exception {   
     return eventDao.selectOngoingList();
@@ -43,6 +48,7 @@ public class EventServiceImpl implements EventService {
   public  void delete(int eno) throws Exception {   
     eventDao.delete(eno);
   }
+  
   
   /*뮤지션모드 > 추천탭 > 나에게 꼭 맞는 이벤트*/
   public List<Event> listRecommand(int no) throws Exception {
@@ -77,6 +83,23 @@ public class EventServiceImpl implements EventService {
     eventDao.appyEvent(valueMap);
     valueMap.put("appyno", valueMap.get("appyno"));
     notificationDao.insertEventAppyNoti(valueMap);
+  }
+  
+  public void deleteRequestEvent(int eNo) throws Exception {
+    
+    Musician musician = musicianDao.myEventAppyList(eNo);
+    
+    eventDao.deleteAppyEventZero();
+    eventDao.deleteAppyEvent(eNo);
+    eventDao.deleteAppyEventOne();
+    
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("eNo", eNo);
+    for (String appyNo : musician.getAppyNoList()) {
+      valueMap.put("appyNo", appyNo);
+      notificationDao.insertEventEditNoti(valueMap);
+    }
+    
   }
   
   @Override
@@ -131,6 +154,20 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectMusiEndList(no);
   }
 
-  
+  /*뮤지션모드 - 지원한 이벤트*/
+  public List<Event> listMusiAppy(int no) throws Exception {
+    return eventDao.selectMusiAppyList(no);
+  }
+
+  /*뮤지션모드 - 제안받은 이벤트*/
+  public List<Event> listMusiPr(int no) throws Exception {
+    return eventDao.selectMusiPrList(no);
+  }
+
+  /*일반모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트 - 이벤트 유무 확인*/
+  public int getEventCount(int no) throws Exception {
+    return eventDao.selectEventCount(no);
+  }
+
 }
 

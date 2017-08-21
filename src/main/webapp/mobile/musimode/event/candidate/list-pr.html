@@ -1,0 +1,49 @@
+<div class="event-list-container" id="pr-event-container">
+  
+</div><!-- event-list-container -->
+
+<script id="pr-event-template" type="text/x-handlebars-template">
+{{#each listPr}}
+<div class="pr">
+<div class="event-box" data-no={{no}}>
+
+{{#writeMember}}
+  <div class="pr-writer-img"  style='background-image: url("{{photo}}_80.png")'></div>
+  <div class="pr-title">
+  <div class="pr-writer-name">{{name}}</div>
+{{/writeMember}}
+  <span>{{title}}</span>
+</div><!-- -title -->
+
+<div class="pr-date">
+{{#intl locales="ko-KO"}}
+  <div class="pr-dday">{{formatRelative date units="day"}}</div>
+<span>{{formatDate date day="numeric" month="long" year="numeric"}}</span>
+{{/intl}}
+  <div class="pr-price">{{formatNumber pay style="currency" currency="KRW"}}</div>
+</div>
+<div class='pr-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{location}}&nbsp;{{address}}</span></div>
+<div class="pr-hashtagbox">
+        {{#majorList}}<span>#{{this}}</span>{{/majorList}}
+        {{#themeList}}<span>#{{this}}</span>{{/themeList}}
+        {{#genreList}}<span>#{{this}}</span>{{/genreList}}
+</div>
+</div><!-- event-box -->
+
+<div class='pr-btnbox'>
+  <div class='pr-btn pr-reject-btn'>거절하기</div>
+  <div class='pr-btn pr-accept-btn'>지원하기</div>
+</div>
+
+</div><!-- pr -->
+{{/each}}
+
+{{#unless listPr}}
+<div class="no-event">
+  아직 제안받은 이벤트가 없어요<br><br>
+  <i class="fa fa-frown-o" aria-hidden="true" id='no-event-cry'></i><br><br><br>
+  <a href="/mobile/gmode/event-regist/inex.html" class='event-add-btn'>이벤트 탐색하기</a>
+</div>
+{{/unless}}
+</script>
+<script src="/js/mobile/musimode/event/candidate/list-pr.js"></script>

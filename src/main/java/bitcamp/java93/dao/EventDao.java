@@ -18,6 +18,9 @@ public interface EventDao {
   List<Event> prCheckList(Map<String,Object> valueMap);  // 이벤트 매칭요청 리스트
   void prEvent(Map<String,Object> valueMap);
   void appyEvent(Map<String,Object> valueMap);
+  void deleteAppyEventZero();
+  void deleteAppyEvent(int eNo);
+  void deleteAppyEventOne();
   List<Event> selectSurfList();
   List<Event> selectSearchResultList(String search);
   List<Event> selectRecruitingList(int no);//나의이벤트 > 모집중 이벤트 리스트
@@ -25,6 +28,9 @@ public interface EventDao {
   List<Event> selectEndList(int no);//나의이벤트 > 종료 이벤트 리스트
   List<Event> selectMusiOngoingList(int no);//뮤지션모드 - 매칭이벤트 > 진행중 이벤트 리스트
   List<Event> selectMusiEndList(int no);//뮤지션모드 - 매칭이벤트 > 종료 이벤트 리스트
+  List<Event> selectMusiAppyList(int no);//뮤지션모드 - 지원한 이벤트
+  List<Event> selectMusiPrList(int no);//뮤지션모드 - 제안받은 이벤트
   List<Event> eventSearch(HashMap<String,Object> valueMap);
   Event selectEvent(int eNo); // 이벤트 상세정보
+  int selectEventCount(int no);//일반모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트 - 이벤트 유무 확인
 }

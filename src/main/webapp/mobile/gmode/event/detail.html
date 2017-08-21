@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>이벤트 상세페이지</title>
-<link rel='shortcut icon' type='image/x-icon' href='/image/favicon/favicon.ico'/>
+<link rel='shortcut icon' type='image/x-icon'
+	href='/image/favicon/favicon.ico' />
 <link rel="stylesheet" href="/node_modules/jquery-ui-dist/jquery-ui.css">
 <link rel="stylesheet" href="/node_modules/animsition/dist/css/animsition.min.css">
 <link rel="stylesheet" href="/node_modules/swiper/dist/css/swiper.min.css">
@@ -17,15 +18,16 @@
 <script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
 <script src="/node_modules/animsition/dist/js/animsition.min.js"></script>
 <script type="text/javascript" src="/js/mobile/jindo.desktop.ns.min.js"></script>
-<script type="text/javascript" src="/js/mobile/jindo_mobile_component.js"></script>
+<script type="text/javascript"
+	src="/js/mobile/jindo_mobile_component.js"></script>
 <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
 <script src="/node_modules/sweetalert/dist/sweetalert.min.js"></script>
 <script src="/node_modules/handlebars-intl/dist/handlebars-intl.min.js"></script>
 <script src="/node_modules/handlebars-intl/dist/locale-data/ko.js"></script>
 </head>
 <body>
-<div id="container">
-<script id="select-event-template" type="text/x-handlebars-template">
+	<div id="container">
+		<script id="select-event-template" type="text/x-handlebars-template">
   {{#detail}}
   <div id="event-detail-header-container">
     <i class="fa fa-angle-left" id="event-detail-header-prev" aria-hidden="true"></i>
@@ -33,8 +35,6 @@
     <span id='event-detail-header-name'>{{name}}  님의 이벤트</span>
     {{/writeMember}}
   </div>
-  
-  <div id="event-apply-btn" data-value="{{no}}">지원<br>현황</div>
   
   <div id="event-detail-title">{{title}}</div>
   
@@ -131,15 +131,30 @@
   {{#unless requirement}}
   {{/unless}}
 
+  <div id="event-detail-appy">
+  <i class="fa fa-caret-right" aria-hidden="true"></i>
+  지원 정보<br>
+  </div>
+
+  <div id="event-detail-appy-container">
+  </div>
+
+
   <button type='button' id='event-edit-btn' value="{{no}}">편집하기</button>
   <button type='button' id='event-delete-btn' value="{{no}}">삭제하기</button>
   {{/detail}}
-  </script>  
-  
-  <div id="event-appy-backscreen"></div>
-  <div id="event-appy-info">
-  <div id="event-appy-header"><img id="event-appy-cancel-btn" src="/image/icon/access-black.png">지원 현황</div>
-  </div>
+  </script>
+
+		<div id="event-appy-backscreen"></div>
+		<div id="event-appy-info">
+		<div id="event-appy-header"><img id="event-appy-cancel-btn" src="/image/icon/access-black.png">지원 현황</div>
+		</div>
+
+<script id="recruiting-event-template" type="text/x-handlebars-template">
+{{#each listAppy}}
+  <div class='recruiting-musibox-summary-musi' style='background-image: url("{{photo}}_80.png")'></div>
+{{/each}}
+</script>
     
 <script id="event-appy-template" type="text/x-handlebars-template">
 {{#each listAppy}}
@@ -165,8 +180,8 @@
   </div><!-- recruiting-applicant -->
 {{/each}}
 </script>
-  
-</div>
-<script src="/js/mobile/gmode/event/detail.js"></script>
+
+	</div>
+	<script src="/js/mobile/gmode/event/detail.js"></script>
 </body>
 </html>

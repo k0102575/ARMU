@@ -1110,7 +1110,7 @@ select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genr
 pr.prno, mu.muno, mu.nick, m.path, score.score
 from recruiting_eventlist e
 left outer join pr on e.eno=pr.eno
-left outer join musi mu on pr.muno=mu.muno inner join memb m on mu.muno=m.mno
+left outer join musi mu on pr.muno=mu.muno left outer join memb m on mu.muno=m.mno
 left outer join (
   select avg(score) as score, muno
   from mtc
@@ -1125,7 +1125,7 @@ select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genr
 appy.appyno, mu.muno, mu.nick, m.path, score.score
 from recruiting_eventlist e
 left outer join appy on e.eno=appy.eno
-left outer join musi mu on appy.muno=mu.muno inner join memb m on mu.muno=m.mno
+left outer join musi mu on appy.muno=mu.muno left outer join memb m on mu.muno=m.mno
 left outer join (
   select avg(score) as score, muno
   from mtc
@@ -1260,4 +1260,3 @@ insert into thm_evn (eno, thmno) values (18, 1);
 insert into rhs (eno, pay, info, num) values (5, 50000, '보수와 횟수는 협의 가능합니다 연락주세요', 5);
 
 insert into rhs (eno, pay, info, num) values (7, 0, '보수는 매칭되고 메시지로 협의 하겠습니다 당일 리허설 입니다', 1);
-

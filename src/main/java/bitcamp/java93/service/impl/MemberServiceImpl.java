@@ -44,8 +44,8 @@ public class MemberServiceImpl implements MemberService {
   public void updatePhoto(int no, String photoPath) throws Exception {
 
     HashMap<String,Object> valueMap = new HashMap<>();
-  valueMap.put("memberNo", no);
-  valueMap.put("photoPath", photoPath);
+    valueMap.put("memberNo", no);
+    valueMap.put("photoPath", photoPath);
     System.out.println(photoPath);
     memberDao.updatePhoto(valueMap);
   }

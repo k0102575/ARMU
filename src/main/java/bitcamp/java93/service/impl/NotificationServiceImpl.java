@@ -22,6 +22,6 @@ public class NotificationServiceImpl implements NotificationService {
   public List<Notification> listMusiNoti(int no) throws Exception {
     return notificationDao.selectMusiNotiList(no);
   }
- 
+  
 }
 

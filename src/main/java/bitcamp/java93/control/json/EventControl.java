@@ -16,6 +16,7 @@ import bitcamp.java93.domain.Event;
 import bitcamp.java93.domain.Member;
 import bitcamp.java93.service.CategoryService;
 import bitcamp.java93.service.EventService;
+import bitcamp.java93.service.NotificationService;
 
 @RestController
 @RequestMapping("/event/")
@@ -24,6 +25,7 @@ public class EventControl {
   @Autowired ServletContext servletContext;
   @Autowired EventService eventService;
   @Autowired CategoryService categoryService;
+  @Autowired NotificationService notificationService;
   
   @RequestMapping("addReherse")
   public JsonResult addReherse(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre, HttpSession session) throws Exception {
@@ -120,6 +122,7 @@ public class EventControl {
     categoryService.registEventCategory(event);
     eventService.deleteEventReherse(event.getNo());
     eventService.registEventReherse(event);
+    eventService.deleteRequestEvent(event.getNo());
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
@@ -154,6 +157,7 @@ public class EventControl {
     categoryService.deleteEventCategory(event.getNo());
     categoryService.registEventCategory(event);
     eventService.deleteEventReherse(event.getNo());
+    eventService.deleteRequestEvent(event.getNo());
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
@@ -375,6 +379,41 @@ public class EventControl {
     }
     return result;
   }
+  
+  /*뮤지션모드 - 지원한 이벤트*/
+  @RequestMapping("listMusiAppy")
+  public JsonResult listMusiAppy(HttpSession session) {
+    JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listAppy",eventService.listMusiAppy(getLoginMember(session).getNo()));
+
+      result.setData(dataMap);
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
+    return result;
+  }
+  
+  /*뮤지션모드 - 제안받은 이벤트*/
+  @RequestMapping("listMusiPr")
+  public JsonResult listMusiPr(HttpSession session) {
+    JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listPr",eventService.listMusiPr(getLoginMember(session).getNo()));
+
+      result.setData(dataMap);
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
+    return result;
+  }
+  
   
   
   @RequestMapping("detail")
