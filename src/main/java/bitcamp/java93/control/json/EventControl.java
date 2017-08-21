@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import bitcamp.java93.domain.Event;
@@ -398,13 +399,12 @@ public class EventControl {
   }
   
   @RequestMapping("searchEvent")
-  public JsonResult searchEvent(HttpSession session, int thmno, int mjrno, int gnrno, int indexT,int indexM,int indexG) throws Exception {
+  public JsonResult searchEvent(HttpSession session, int thmno, int mjrno, int gnrno, int indexT,int indexM,int indexG, @RequestParam(value="locFilter[]") List<String> locFilter) throws Exception {
     JsonResult result = new JsonResult();
     try {
-      List<Event> search= (List<Event>) eventService.searchEvent(getLoginMember(session).getNo() ,thmno,mjrno,gnrno,indexT,indexM,indexG);
-
+      List<Event> search= (List<Event>) eventService.searchEvent(getLoginMember(session).getNo() ,thmno,mjrno,gnrno,indexT,indexM,indexG,locFilter);
+      
       result.setStatus(JsonResult.SUCCESS);
-
       HashMap<String,Object> dataMap = new HashMap<>();
       dataMap.put("listSurf", search);
       result.setData(dataMap);

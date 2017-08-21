@@ -103,7 +103,7 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectEndList(no);
   }
   
-  public List<Event> searchEvent(int no,int thmno, int mjrno, int gnrno, int indexT,int indexM,int indexG) throws Exception {
+  public List<Event> searchEvent(int no,int thmno, int mjrno, int gnrno, int indexT,int indexM,int indexG,List<String> locFilter) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("no", no);
     valueMap.put("thmno", thmno);
@@ -112,7 +112,9 @@ public class EventServiceImpl implements EventService {
     valueMap.put("indexT", indexT);
     valueMap.put("indexM", indexM);
     valueMap.put("indexG", indexG);
+    valueMap.put("locFilter", locFilter);
     return eventDao.eventSearch(valueMap);
+    
   }
   
   public Event detail(int eNo) throws Exception {

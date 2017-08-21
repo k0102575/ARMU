@@ -370,8 +370,8 @@ left outer join (
           #{maxAge}
         </if>
       </otherwise>
-  
     </choose>
+    order by mno asc
   </select>
   
   <select id="selectBestReviewList" resultMap="musicianMap">

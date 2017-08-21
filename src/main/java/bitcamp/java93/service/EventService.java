@@ -23,6 +23,6 @@ public interface EventService {
   List<Event> listEnd(int no) throws Exception;//나의이벤트 > 종료 이벤트 리스트
   List<Event> listMusiOngoing(int no) throws Exception;//뮤지션모드 - 매칭이벤트 > 진행중 이벤트 리스트
   List<Event> listMusiEnd(int no) throws Exception;//뮤지션모드 - 매칭이벤트 > 종료 이벤트 리스트
-  List<Event> searchEvent(int no, int thmno, int mjrno, int gnrno,int indexT,int indexM,int indexG) throws Exception;
+  List<Event> searchEvent(int no, int thmno, int mjrno, int gnrno,int indexT,int indexM,int indexG,List<String> locFilter) throws Exception;
   Event detail(int eNo) throws Exception;
 }
