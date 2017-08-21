@@ -8,6 +8,7 @@ function displayNotiList() {
       console.error("getJSON() 실패: ", result.status)
       return;
     }
+    console.log(result.data)
     
     var templateFn = Handlebars.compile($('#noti-template').text())
     var generatedHTML = templateFn(result.data)

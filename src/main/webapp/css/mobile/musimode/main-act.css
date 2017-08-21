@@ -32,9 +32,10 @@
   object-fit: cover;
   background-color: white;
   background-image: url('/image/logo/ARMU_3.png');
-  background-size: 100px;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  overflow: hidden;
   border: 1px solid lightgray;
   border-radius: 50%;
   top: 50%;

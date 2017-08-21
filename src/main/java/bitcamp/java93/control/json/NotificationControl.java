@@ -49,7 +49,7 @@ public class NotificationControl {
     JsonResult result = new JsonResult();
     try {
       HashMap<String,Object> dataMap = new HashMap<>();
-      dataMap.put("listNoti",notificationService.listNoti(getLoginMember(session).getNo()));
+      dataMap.put("listNoti",notificationService.listMusiNoti(getLoginMember(session).getNo()));
 
       result.setData(dataMap);
       result.setStatus(JsonResult.SUCCESS);
