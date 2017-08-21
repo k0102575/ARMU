@@ -409,7 +409,7 @@ where m.mno=5
 create view recruiting_eventlist as
 select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
 mj.name as major, g.name as genre, t.name as theme
-from (select * from evn where date >= curdate() and eno not in (select eno from mtc) order by date asc) e
+from (select * from evn where date >= curdate() and eno not in (select eno from mtc) and active='Y' order by date asc) e
 inner join memb m on e.mno=m.mno
 inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
 left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on me.mjrno=mj.mjrno
@@ -452,7 +452,7 @@ create view eventlist_appy_musicians as
 select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme,
 appy.appyno, mu.muno, mu.nick, m.path, score.score
 from recruiting_eventlist e
-left outer join appy on e.eno=appy.eno
+left outer join appy on e.eno=appy.eno and appy.active = 'Y'
 left outer join musi mu on appy.muno=mu.muno left outer join memb m on mu.muno=m.mno
 left outer join (
   select avg(score) as score, muno
@@ -580,10 +580,3 @@ select ap.eno, ap.title, ap.date, ap.location, ap.addr, ap.pay, ap.major, ap.gen
 ap.appyno, ap.mno, m.name, m.path
 from eventlist_appy_musicians ap inner join memb m on ap.mno=m.mno
 where ap.muno=11
-
-
-
-
-ALTER TABLE appy NOCHECK CONSTRAINT FK_appy_TO_noti
-
-ALTER TABLE appy CHECK CONSTRAINT FK_appy_TO_noti

@@ -5,6 +5,7 @@
 
 
 <script id="noti-template" type="text/x-handlebars-template">
+{{#if listNoti}}
 {{#each listNoti}}
 <div class='noti'>
 {{#writer}}
@@ -17,5 +18,11 @@
   <div class='noti-contents'> 뮤지션이 "결혼 축가 구해요" 이벤트에 지원하셨습니다. </div>
 </div>
 {{/each}}
+{{/if}}
+{{#unless listNoti}}
+<div class="no-noti">
+      <br> 활동 내역이 없습니다.<br><br>
+    </div>
+{{/unless}}
 </script>
 <script src='/js/mobile/musimode/main-act.js'></script>

@@ -137,7 +137,7 @@
     select e.eno, e.title, m.name as writer,
     mjr.mjrno, mjr.name as major, thm.thmno, thm.name as theme, gnr.gnrno, gnr.name as genre
     from (
-      select * from evn where date >= curdate() order by date asc
+      select * from evn where date >= curdate() and active='Y' order by date asc
     ) e inner join memb m on m.mno=e.mno
     left outer join mjr_evn on e.eno=mjr_evn.eno inner join mjr on mjr.mjrno=mjr_evn.mjrno
     left outer join thm_evn on e.eno=thm_evn.eno inner join thm on thm.thmno=thm_evn.thmno
@@ -179,7 +179,7 @@ left outer join (
   select appy.eno, appy.appyno, mu.muno as mno, mu.nick, mu.path, mu.score,
 mu.major, mu.genre, mu.theme, fav.fav, null as location
 from (select distinct eno from recruiting_eventlist where eno=#{eventNo} and mno=#{memberNo}) de
-inner join appy on de.eno=appy.eno
+inner join appy on de.eno=appy.eno and appy.active='Y'
 inner join musicians mu on appy.muno=mu.muno
 left outer join (
   select count(if(mno is not null, 1, 0)) as fav, mno, muno

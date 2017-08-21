@@ -1,19 +1,7 @@
 <div class="rec-background">
-  <p class='rec-title'>나에게 꼭 맞는 이벤트 / 제안 받은 이벤트</p>
-  <div class="rec-container rec-recommand-container">
+  <p class='rec-title'>나에게 꼭 맞는 이벤트</p>
+  <div class="rec-container rec-recommand-container" id='rec-event-container'>
 
-     <div class="swiper-container">
-       <div class="swiper-wrapper" id='rec-event-container'>
-        <!-- ##handlebars include## -->
-        </div><!-- rec-event-container -->
-
-        <br><br>
-        <div class="swiper-pagination"></div>
-        <!-- Add Arrows -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div>
-      <!-- swiper-container -->
 
   </div><!-- rec-container -->
 
@@ -39,29 +27,45 @@
 
 
 <script id="rec-event-template" type="text/x-handlebars-template">
+{{#if listRecommand}}
 {{#each listRecommand}}
-  <div class="rec-event swiper-slide">
-          {{#writeMember}}
-          <div class='rec-event-writerbox'>
-            <div class="rec-event-writer-img" style='background-image: url("{{photo}}")'></div>
-            <div class="rec-event-writer-name"><span>{{name}}</span></div>
-          {{/writeMember}}
-            <div class="rec-event-title"><span>{{title}}</span></div>
-            <div class='rec-event-favor'></div>
-            
+<div class="rec-event rec-recent-event" data-no={{no}}>
+
+  <div class='recent-writerbox'>
+
+   <div class='recent-favor'><i class="fa fa-heart-o" aria-hidden="true"></i></div>
+   {{#intl locales="ko-KO"}}
+   <div class="recent-dday">{{formatRelative date units="day"}}</div>
+   {{/intl}}
+
+   {{#writeMember}}
+   <div class="recent-writer-img" style='background-image: url("{{photo}}")'></div>
+   <div class="recent-writer-name"><span>{{name}}</span></div>
+   {{/writeMember}}
+  </div>
+
+ <div class="recent-title"><span>{{title}}</span></div>
+
+            <div class="recent-date">
+              <i class="fa fa-clock-o" aria-hidden="true"></i> <span>{{formatDate date day="numeric" month="long" year="numeric"}}</span>
+              <div class="recent-price">{{formatNumber pay style="currency" currency="KRW"}}</div>
             </div>
-{{#intl locales="ko-KO"}}
-            <div class="rec-event-date"><span>{{formatDate date day="numeric" month="long" year="numeric"}}</span></div><br>
-{{/intl}}
-            <div class='rec-event-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{location}}&nbsp;{{address}}</span></div><br>
-            <div class="rec-event-price">{{formatNumber pay style="currency" currency="KRW"}}</div>
-            <div class='rec-event-hashtagbox'>
+            <div class='recent-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{location}}&nbsp;{{address}}</span></div>
+            <div class='recent-hashtagbox'>
             {{#majorList}}<span>#{{this}}</span>{{/majorList}}
             {{#themeList}}<span>#{{this}}</span>{{/themeList}}
             {{#genreList}}<span>#{{this}}</span>{{/genreList}}
             </div>
-          </div><!-- rec-event -->
+          </div><!-- recent -->
 {{/each}}
+{{/if}}
+{{#unless listRecommand}}
+  <div class="rec-no-event">
+      <br> 아쉽지만, 조건에 맞는 이벤트가 없네요<br><br>
+      <i class="fa fa-frown-o" aria-hidden="true" id='rec-no-event-cry'></i><br><br>
+      <a href="/mobile/gmode/event/regist.html" class='rec-event-add-btn'>이벤트 직접 검색하기</a><br><br>
+    </div>
+{{/unless}}
 </script>
 <script id="rec-most-popular-category-template" type="text/x-handlebars-template">
 {{#each listTop10}}
@@ -71,31 +75,72 @@
 
 <script id="rec-recent-event-template" type="text/x-handlebars-template">
 {{#each listRecent}}
-  <div class="rec-event rec-recent-event">
-          {{#writeMember}}
-          <div class='rec-event-writerbox'>
-            <div class="rec-event-writer-img" style='background-image: url("{{photo}}")'></div>
-            <div class="rec-event-writer-name"><span>{{name}}</span></div>
-          {{/writeMember}}
-            <div class="rec-event-title"><span>{{title}}</span></div>
-            <div class='rec-event-favor'></div>
-            
+  <div class="rec-event rec-recent-event" data-no={{no}}>
+
+  <div class='recent-writerbox'>
+
+   <div class='recent-favor'><i class="fa fa-heart-o" aria-hidden="true"></i></div>
+   {{#intl locales="ko-KO"}}
+   <div class="recent-dday">{{formatRelative date units="day"}}</div>
+   {{/intl}}
+
+   {{#writeMember}}
+   <div class="recent-writer-img" style='background-image: url("{{photo}}")'></div>
+   <div class="recent-writer-name"><span>{{name}}</span></div>
+   {{/writeMember}}
+  </div>
+
+ <div class='rec-event-writer-separator'></div>
+ <div class="recent-title"><span>{{title}}</span></div>
+
+            <div class="recent-date">
+              <i class="fa fa-clock-o" aria-hidden="true"></i> <span>{{formatDate date day="numeric" month="long" year="numeric"}}</span>
+              <div class="recent-price">{{formatNumber pay style="currency" currency="KRW"}}</div>
             </div>
-            <div class="rec-event-date"><span>{{date}}</span></div><br>
-            <div class='rec-event-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{location}}&nbsp;{{address}}</span></div><br>
-            <div class="rec-event-price">{{formatNumber pay style="currency" currency="KRW"}}</div>
-            <div class='rec-event-hashtagbox'>
+            <div class='recent-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{location}}&nbsp;{{address}}</span></div>
+            <div class='recent-hashtagbox'>
             {{#majorList}}<span>#{{this}}</span>{{/majorList}}
             {{#themeList}}<span>#{{this}}</span>{{/themeList}}
             {{#genreList}}<span>#{{this}}</span>{{/genreList}}
             </div>
-          </div><!-- rec-event -->
+          </div><!-- recent -->
   {{/each}}
 </script>
 
 <script src="/node_modules/swiper/dist/js/swiper.jquery.min.js"></script>
 <script src='/js/mobile/musimode/main-recommend.js'></script>
 
+<!-- <div class="rec-event">
+<div class="rec-event-box" data-no={{no}}>
+{{#intl locales="ko-KO"}}
+  <div class="rec-event-dday">{{formatRelative date units="day"}}</div>
+{{/intl}}
+
+{{#writeMember}}
+<div class="rec-event-writerbox">
+  <div class="rec-event-writer-img"  style='background-image: url("{{photo}}_80.png")'></div>
+  <div class="rec-event-title">
+  <div class="rec-event-writer-name">{{name}}</div>
+<div class='rec-event-favor'></div>
+{{/writeMember}}
+  <span>{{title}}</span>
+</div>rec-event-title
+</div>rec-event-writerbox
+<div class='rec-event-writer-separator'></div>
+<div class="rec-event-date">
+  <div class="rec-event-price">{{formatNumber pay style="currency" currency="KRW"}}</div>
+{{#intl locales="ko-KO"}}
+<span><i class="fa fa-clock-o" aria-hidden="true"></i> {{formatDate date day="numeric" month="long" year="numeric"}}</span>
+{{/intl}}
+</div>
+<div class='rec-event-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{location}}&nbsp;{{address}}</span></div>
+<div class="rec-event-hashtagbox">
+        {{#majorList}}<span>#{{this}}</span>{{/majorList}}
+        {{#themeList}}<span>#{{this}}</span>{{/themeList}}
+        {{#genreList}}<span>#{{this}}</span>{{/genreList}}
+</div>
+</div>rec-event-box
+</div>rec-event -->
 
 
 <!-- -->

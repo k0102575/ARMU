@@ -1,3 +1,17 @@
+/*활동내역 없는 경우 시작*/
+.no-noti {
+  position: relative;
+  height: 80vh;
+  padding-top: 20vh;
+  width: 100%;
+  font-size: 2.5rem;
+  text-align: center;
+  color: darkgray;
+  overflow: visible;
+  background-color: #f5f5f5;
+}
+/*활동내역 없는 경우 끝*/
+
 .noti-container {
   position: relative;
   width: 100%;

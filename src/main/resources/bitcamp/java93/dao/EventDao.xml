@@ -215,7 +215,7 @@ where p.muno=#{no}
     parameterType="int">
     select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
 mu.muno, null as major, null as genre, null as theme, m.mno, m.name, m.path
-from evn e inner join mtc on e.eno=mtc.eno and e.date >= curdate() and mtc.muno=#{no}
+from evn e inner join mtc on e.eno=mtc.eno and e.date >= curdate() and mtc.muno=#{no} and e.active='Y'
 inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
 inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
 inner join memb m on m.mno=e.mno
@@ -226,7 +226,7 @@ inner join memb m on m.mno=e.mno
     select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
 mu.muno, mj.name as major, g.name as genre, t.name as theme,
 m.mno, m.name, m.path
-from evn e inner join mtc on e.eno=mtc.eno and e.date &lt; curdate() and mtc.muno=#{no}
+from evn e inner join mtc on e.eno=mtc.eno and e.date &lt; curdate() and mtc.muno=#{no} and e.active='Y'
 inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
 inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
 left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on me.mjrno=mj.mjrno
@@ -240,7 +240,7 @@ inner join memb m on m.mno=e.mno
     select e.eno, title, e.date, mu.muno, mu.nick, mm.path, 
     null as location, null as major, null as genre, null as theme 
 from evn e
-left outer join memb m on e.mno=m.mno
+left outer join memb m on e.mno=m.mno and e.active='Y'
 left outer join mtc on e.eno=mtc.eno and e.mno=#{no}
 inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
 left outer join musi mu on mtc.muno=mu.muno left outer join memb mm on mu.muno=mm.mno
@@ -254,7 +254,7 @@ order by date asc
     select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
 mu.muno, mu.nick, mm.path, fav.fav, score.score,
 mj.name as major, g.name as genre, t.name as theme
-from evn e inner join mtc on e.eno=mtc.eno and e.date >= curdate() and e.mno=#{no}
+from evn e inner join mtc on e.eno=mtc.eno and e.date >= curdate() and e.mno=#{no} and e.active='Y'
 inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
 inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
 left outer join mjr_musi mjm on mu.muno=mjm.muno inner join mjr mj on mjm.mjrno=mj.mjrno
@@ -290,7 +290,7 @@ where ap.mno=#{no}
     mj.name as major, g.name as genre, t.name as theme,
     m.mno, m.name, m.path
     from (select * from evn where date >= curdate() and eno not in (select eno
-    from mtc) order by date asc) e
+    from mtc) and active='Y' order by date asc) e
     inner join memb m on e.mno=m.mno
     inner join loc l on e.locno=l.locno inner join loc_type lt on
     l.loctno=lt.loctno
@@ -313,7 +313,7 @@ where ap.mno=#{no}
     mj.name as major, g.name as genre, t.name as theme,
     m.mno, m.name, m.path
     from (select * from evn where date >= curdate() and eno not in (select eno
-    from mtc) order by date desc limit 3) e
+    from mtc) and active='Y' order by date desc limit 3) e
     inner join memb m on e.mno=m.mno
     inner join loc l on e.locno=l.locno inner join loc_type lt on
     l.loctno=lt.loctno

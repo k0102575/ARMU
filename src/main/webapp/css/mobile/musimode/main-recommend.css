@@ -10,7 +10,7 @@
   height: auto;
   width: auto;
   text-align: center;
-  background-color: white;
+  background-color: #f5f5f5;
   padding-top: 2%;
   padding-bottom: 2%;
 }
@@ -30,162 +30,182 @@
   border-bottom: 80px solid #f5f5f5;
 }
 
+/*이벤트 없는 경우 시작*/
+.rec-no-event-container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.rec-no-event {
+  position: relative;
+  hegiht: 900px;
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+  color: darkgray;
+  overflow: visible;
+  background-color: #f5f5f5;
+}
+
+#rec-no-event-cry {
+  font-size: 80px;
+}
+
+.rec-event-add-btn {
+  position: absolute;
+  font-size: 35px;
+  font-weight: 400;
+  height: 65px;
+  width: 400px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50px;
+  border: 1px solid white;
+  line-height: 60px;
+  color: white;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, .85);
+}
+/*이벤트 없는 경우 끝*/
+
 /*이벤트 맞춤 추천 뮤지션 시작*/
-.swiper-container {
-    width: 100%;
-    height: auto;
-    margin: 20px auto;
-}
-
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    /* Center slide text vertically */
-   /* display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center; */
-}
-
-.swiper-pagination > span {
-  font-size: 30px;
-  width: 15px;
-  height: 15px;
-}
-/*진행중 이벤트 리스트 시작*/
 .rec-recommand-container {
-background-color: rgba(255, 255, 255, 0.78);
 }
 
 .rec-event {
   position: relative;
   background-color: white;
-  height: 550px;
-  width: 95%;
-  margin-top: 0%;
+  border-top: 1px solid white;
+  border-bottom: 1px solid #bebbbb;
+  min-height: 154px;
+  width: 100%;
   margin-bottom: 3%;
-  text-align: justify;
-  color: black;
+  text-align: left;
+  color: white;
   z-index: 1;
-  border-radius: 10px;
-  box-shadow: 1px 1px 11px 1px rgba(51, 51, 51, 0.27);
-  background-size: cover;
+  text-align: center;
 }
 
 .rec-event-writerbox {
-  position: relative;
-  height: 170px;
-  width: 100%;
-  z-index: 2;
-  border-bottom: 4px solid rgba(128, 105, 239, 0.25);
-  background-color:
+  margin-top: 2%;
 }
 
 .rec-event-writer-img {
-  position: absolute;
   display: inline-block;
-  top: 12%;
-left: 3%;
-height: 130px;
-width: 130px;
+  height: 100px;
+  width: 100px;
+  background-repeat: no-repeat;
+  background-size: cover;
   border-radius: 100%;
   overflow: hidden;
-  /* background-image: url('musician/photo/0choi2.jpg'); */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  margin-left: 3%;
 }
+
 
 .rec-event-title {
   display: inline-block;
-  position: absolute;
-  font-size: 45px;
+  margin-top: 3%;
+  margin-left: 3%;
+  font-size: 32px;
   font-weight: 400;
   color: black;
-  width: 77%;
-  top: 12%;
-  left: 185px;
+  width: 80%;
   text-overflow: ellipsis;
-  overflow: hidden;
+  overflow:hidden;
   white-space: nowrap;
+  text-align: left;
 }
 
 .rec-event-writer-name {
-  position: absolute;
-  display: inline-block;
-  bottom: 13%;
-  left: 185px;
-  font-size: 30px;
+  font-size: 27px;
+  color: gray;
   font-weight: 300;
-  color: #252525;
 }
 
-.rec-event-favor {
-  position: absolute;
+.rec-event-title > span {
   display: inline-block;
-  font-size: 3em;
-  color: #8079ef;/*crimson*/
-  right: 3.5%;
-  bottom: 9%;
+  font-size: 37px;
+}
+
+.rec-event-writer-separator {
+  border: 1px solid #cbcbcb;
+  margin-top: 2%;
 }
 
 .rec-event-date {
-  display: inline-block;
   color: black;
-  font-size: 35px;
-  font-weight: 500;
+  font-size: 34px;
+  font-weight: 400;
   margin-top: 1%;
   margin-left: 4%;
   width: auto;
   white-space: nowrap;
 }
 
-.rec-event-area {
+.rec-event-dday {
+  position: absolute;
   display: inline-block;
-  color: black;
-  font-size: 35px;
-  font-weight: 500;
-  margin-top: 1%;
+  color: #8069ef;
+  border: 1px solid rgb(155, 155, 155);
+  font-size: 30px;
+  font-weight: 400;
+  width: auto;
+  padding-left: 1.5%;
+  padding-right: 1.5%;
+  background-color: white;
+  border-radius: 6px;
+  line-height: 46px;
+  height: 48px;
+  top: 5%;
+  right: 2%;
+}
+
+.rec-event-date > span {
   margin-left: 4%;
-  max-width: 95%;
-  text-overflow: ellipsis;
-  overflow:hidden;
-  white-space: nowrap;
 }
 
 .rec-event-price {
   display: inline-block;
   margin-top: 1%;
-  margin-left: 4%;
-  font-size: 34px;
+  /* margin-left: 4%; */
+  font-size: 35px;
   font-weight: 500;
   color: black;
+  width: auto;
+  white-space: nowrap;
+}
+
+.rec-event-area {
+  color: black;
+  font-size: 35px;
+  font-weight: 300;
+  margin-top: 1%;
+  margin-left: 4%;
+  width: auto;
   white-space: nowrap;
 }
 
 .rec-event-hashtagbox {
-  height: 145px;
-color: #777;//#6955c7
-font-weight: 400;
-margin-left: 2.5%;
-margin-top: 2%;
-width: 95%;
-overflow: hidden;
+  margin-top: 1%;
+  margin-bottom: 5%;
+  font-size: 34px;
+  font-weight: 300;
+  color: #999;
+  width: 95%;
+  overflow: hidden;
+  max-height: 205px;
+  text-align: center;
+  display: inline-block;
 }
 
 .rec-event-hashtagbox > span {
-  float: left;
-  margin: 0 2%;
-  font-size: 33px;
+  display: inline-block;
+  margin-right: 3%;
+  border: 1px solid #8069ef;
+  padding: 0 2%;
+  border-radius: 50px;
+  margin-bottom: 1%;
+  margin-top: 1%;
 }
 /*이벤트 맞춤 추천 뮤지션 끝*/
 
@@ -194,6 +214,7 @@ overflow: hidden;
   padding-left: 5%;
   width: auto;
   overflow: auto;
+  background-color: white;
 }
 
 .rec-hashtag-title {
@@ -218,12 +239,146 @@ overflow: hidden;
 /*분류 탑 텐 해시태그 끝*/
 
 /*최근 이벤트 시작*/
-.rec-recent-event {
-  display: inline-block;  
-}
-
 .rec-recent-container {
   background-color: #f5f5f5;
+}
+
+.rec-recent-event {
+  display: inline-block; 
+}
+
+.recent-writerbox {
+  position: relative;
+  margin-top: 2%;
+}
+
+
+.recent-favor {
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  right: 3%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  color: crimson;
+}
+
+.recent-dday {
+  position: absolute;
+  display: inline-block;
+  color: #8069ef;
+  border: 1px solid #8069ef;
+  font-size: 30px;
+  font-weight: 400;
+  width: auto;
+  padding-left: 1.5%;
+  padding-right: 1.5%;
+  background-color: white;
+  border-radius: 6px;
+  line-height: 46px;
+  height: 48px;
+  top: 50%;
+  left: 4%;
+  transform: translateY(-50%);
+}
+
+.recent-writer-img {
+  display: inline-block;
+  height: 90px;
+  width: 90px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+
+.recent-title {
+  display: inline-block;
+  margin-top: 3%;
+  /* margin-left: 3%; */
+  font-size: 32px;
+  font-weight: 400;
+  color: black;
+  width: 95%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.recent-writer-name {
+  font-size: 27px;
+  color: gray;
+  font-weight: 300;
+}
+
+.recent-title > span {
+  display: inline-block;
+  font-size: 2.5rem;
+}
+
+.recent-writer-separator {
+  border: 1px solid #cbcbcb;
+  margin-top: 2%;
+}
+
+.recent-date {
+  color: black;
+  font-size: 2rem;
+  font-weight: 400;
+  width: auto;
+  white-space: nowrap;
+  margin-top: 1%;
+}
+
+.recent-date > span {
+  font-size: 2rem;
+}
+
+.recent-price {
+  display: inline-block;
+  margin-left: 4%;
+  font-size: 2rem;
+  font-weight: 500;
+  color: black;
+  width: auto;
+  white-space: nowrap;
+}
+
+.recent-area {
+  color: black;
+  font-size: 2rem;
+  font-weight: 300;
+  width: auto;
+  white-space: nowrap;
+}
+
+.recent-area > span {
+}
+
+.recent-hashtagbox {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 300;
+  color: #999;
+  width: 95%;
+  overflow: hidden;
+  min-height: 70px;
+  max-height: 140px;
+  text-align: center;
+  display: inline-block;
+}
+
+.recent-hashtagbox > span {
+  display: inline-block;
+  margin-right: 3%;
+  border: 1px solid #8069ef;
+  padding: 0 2%;
+  border-radius: 50px;
+  margin-bottom: 1%;
+  margin-top: 1%;
 }
 /*최근 이벤트 끝*/
 
