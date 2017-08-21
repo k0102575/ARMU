@@ -105,6 +105,7 @@ public class EventServiceImpl implements EventService {
     notificationDao.insertEventAppyCancelNoti(valueMap);
   }
   
+  //일반모드 > 이벤트 상세페이지 > 지원했던 뮤지션 지원 상태 변경 및 변경 메시지 발송
   public void updateRequestEvent(int eNo) throws Exception {
     Musician musician = musicianDao.myEventAppyList(eNo);
     
@@ -113,6 +114,7 @@ public class EventServiceImpl implements EventService {
       valueMap.put("eNo", eNo);
       for (String appyNo : musician.getAppyNoList()) {
         valueMap.put("appyNo", appyNo);
+        eventDao.appyEventCancelUpdate(valueMap);
         notificationDao.insertEventEditNoti(valueMap);
       }
       return;
