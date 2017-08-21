@@ -95,7 +95,7 @@ body {
   border-collapse: collapse;
 }
 
-#event-type-ongoing-btn {
+#event-type-appy-btn {
   border-bottom: 4px solid #8069ef;
 }
 
@@ -106,8 +106,8 @@ body {
 
 
 
-/*진행중 이벤트 리스트 시작*/
-.ongoing {
+/*지원한 이벤트 리스트 시작*/
+.appy {
   position: relative;
   background-color: white;
   border-top: 1px solid white;
@@ -124,22 +124,32 @@ body {
   .event-box:focus, .event-box:hover, .event-box:active {
     background-color: rgba(0, 0, 0, 0.1);
   }
+  
+.appy-edit-btn {
+  position: absolute;
+  display: inline-block;
+  color: #444;
+  font-weight: 400;
+  font-size: 4em;
+  top: 3px;
+  right: 2%;
+  transform: translateX(3%);
+}
 
-
-.ongoing-title {
+.appy-title {
   margin-top: 3%;
   margin-left: 3%;
   font-size: 32px;
   font-weight: 400;
   color: black;
-  width: 95%;
+  width: 90%;
   text-overflow: ellipsis;
   overflow:hidden;
   white-space: nowrap;
   text-align: left;
 }
 
-.ongoing-dday {
+.appy-dday {
   display: inline-block;
   color: white;
   font-size: 30px;
@@ -147,19 +157,19 @@ body {
   width: auto;
   padding-left: 1.5%;
   padding-right: 1.5%;
-  background-color: #8069ef;
+  background-color: #000000;
   /* border: 1px solid black; */
   border-radius: 6px;
   line-height: 46px;
   height: 48px;
 }
 
-.ongoing-title > span {
+.appy-title > span {
   display: inline-block;
   font-size: 37px;
 }
 
-.ongoing-date {
+.appy-date {
   color: black;
   font-size: 35px;
   font-weight: 300;
@@ -168,7 +178,7 @@ body {
   white-space: nowrap;
 }
 
-.ongoing-area {
+.appy-area {
   color: black;
   font-size: 35px;
   font-weight: 300;
@@ -177,7 +187,7 @@ body {
   white-space: nowrap;
 }
 
-.ongoing-price {
+.appy-price {
   margin-top: 1%;
   margin-bottom: 2%;
   font-size: 35px;
@@ -187,7 +197,7 @@ body {
 }
 
 /*작성자 시작*/
-.ongoing-musibox {
+.appy-musibox {
   position: relative;
   margin-top: 2%;
   color: black;
@@ -196,7 +206,7 @@ body {
   z-index: 2;
 }
 
-.ongoing-musibox-title {
+.appy-musibox-title {
   position: absolute;
   left: 12%;
   top: 50%;
@@ -208,17 +218,17 @@ body {
   color: #444;
 }
 
-.ongoing-applicant-block {
+.appy-writer-block {
   width: 100%;
   text-align: center;
 }
 
-.ongoing-applicant {
+.appy-writer {
   
   
 }
 
-.ongoing-applicant-img {
+.appy-writer-img {
   position: absolute;
   display: table;
   height:  100px;
@@ -233,7 +243,7 @@ body {
   transform: translateX(-50%);
 }
 
-.ongoing-applicant-name {
+.appy-writer-name {
   position: absolute;
   display: inline-block;
   color: black;
@@ -245,7 +255,7 @@ body {
 }
 
 
-.ongoing-applicant-btn {
+.appy-writer-btn {
   position: absolute;
    display: inline-block;
    width: 200px;
@@ -262,27 +272,26 @@ body {
    left: 50%;
 }
 /*작성자 끝*/
-/*진행중 이벤트 리스트 끝*/
+/*지원한 이벤트 리스트 끝*/
 
 
 
-/*종료 이벤트 리스트 시작*/
-.end {
+/*제안받은 이벤트 리스트 시작*/
+.pr {
   position: relative;
   background-color: white;
   border-top: 1px solid white;
-  border-bottom: 1px solid #8d8d8d;
-  height: auto;
+  border-bottom: 1px solid #bebbbb;
   min-height: 154px;
   width: 100%;
   margin-bottom: 3%;
   text-align: left;
   color: white;
-  padding-bottom: 2%;
+  padding-bottom: 4%;
   z-index: 1;
 }
 
-.end-writer-img {
+.pr-writer-img {
   display: inline-block;
   height: 90px;
   width: 90px;
@@ -294,7 +303,7 @@ body {
 }
 
 
-.end-title {
+.pr-title {
 	display: inline-block;
   margin-top: 3%;
   margin-left: 3%;
@@ -308,28 +317,46 @@ body {
   text-align: left;
 }
 
-.end-writer-name {
+.pr-writer-name {
   font-size: 27px;
   color: gray;
 }
 
-.end-title > span {
+.pr-title > span {
   display: inline-block;
   font-size: 37px;
 }
 
 
-.end-date {
+.pr-date {
   color: black;
-  font-size: 35px;
-  font-weight: 300;
+  font-size: 34px;
+  font-weight: 400;
   margin-top: 1%;
   margin-left: 4%;
   width: auto;
   white-space: nowrap;
 }
 
-.end-price {
+.pr-dday {
+  display: inline-block;
+  color: white;
+  font-size: 30px;
+  font-weight: 400;
+  width: auto;
+  padding-left: 1.5%;
+  padding-right: 1.5%;
+  background-color: #8069ef;
+  border-radius: 6px;
+  line-height: 46px;
+  height: 48px;
+}
+
+.pr-date > span {
+  margin-left: 4%;
+}
+
+.pr-price {
 	display: inline-block;
   margin-top: 1%;
   margin-left: 4%;
@@ -340,7 +367,7 @@ body {
   white-space: nowrap;
 }
 
-.end-area {
+.pr-area {
   color: black;
   font-size: 35px;
   font-weight: 300;
@@ -350,7 +377,7 @@ body {
   white-space: nowrap;
 }
 
-.end-hashtagbox {
+.pr-hashtagbox {
   margin-top: 1%;
   margin-bottom: 5%;
   margin-left: 4%;
@@ -362,8 +389,36 @@ body {
   max-height: 155px;
 }
 
-.end-hashtagbox > span {
+.pr-hashtagbox > span {
   float: left;
   margin-right: 4%;
 }
-/*종료 이벤트 리스트 끝*/
+
+.pr-btnbox {
+  text-align: center;
+}
+
+.pr-btn {
+  display: inline-block;
+  width: 35%;
+  height: 60px;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 30px;
+  color: black;
+  border-radius: 10px;
+  line-height: 56px;
+  z-index: 5;
+}
+
+.pr-reject-btn {
+  margin-right: 6%;
+}
+
+.pr-accept-btn {
+  background-color: black;
+  color: white;
+  font-weight: 500;
+}
+
+/*제안받은 이벤트 리스트 끝*/

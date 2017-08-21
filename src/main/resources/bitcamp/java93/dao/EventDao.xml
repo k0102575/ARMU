@@ -60,7 +60,7 @@
     <result column="rhsno" property="rhsno" />
     <result column="rhs" property="haveRehearsal" />
     <association property="writeMember" javaType="Member">
-      <id property="no" column="muno" />
+      <id property="no" column="mno" />
       <result property="name" column="name" />
       <result property="photo" column="path" />
     </association>
@@ -182,6 +182,30 @@
   </resultMap>
   
 
+   <select id="selectEventCount" resultType="int"
+    parameterType="int">
+    select count(eno)
+    from (select distinct eno from recruiting_eventlist where mno=#{no}) e
+  </select><!-- 완진 -->
+  
+  
+   <select id="selectMusiAppyList" resultMap="eventMapBasic"
+    parameterType="int">
+    select ap.eno, ap.title, ap.date, ap.location, ap.addr, ap.pay, ap.major, ap.genre, ap.theme,
+ap.appyno, ap.mno, m.name, m.path
+from eventlist_appy_musicians ap inner join memb m on ap.mno=m.mno
+where ap.muno=#{no}
+  </select><!-- 완진 -->
+  
+   <select id="selectMusiPrList" resultMap="eventMapBasic"
+    parameterType="int">
+    select p.eno, p.title, p.date, p.location, p.addr, p.pay, p.major, p.genre, p.theme,
+p.prno, p.mno, m.name, m.path
+from eventlist_pr_musicians p inner join memb m on p.mno=m.mno
+where p.muno=#{no}
+  </select><!-- 완진 -->
+  
+  
    <select id="selectMusiOngoingList" resultMap="eventMapBasic"
     parameterType="int">
     select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,

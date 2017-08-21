@@ -1,7 +1,9 @@
 "use strict"
 
 var noEventView = $('.rec-no-event'),
-yesEventView = $('.rec-yes-event');
+yesEventView = $('.rec-yes-event'),
+noMemberView = $('.rec-no-member'),
+noDataView = $('.rec-no-data');
 
 var isRecommandEvent = true;
 
@@ -18,8 +20,8 @@ function displayRecommandByEventMusiList() {
       return;
     }
 
-    if(result.data == "browse") {
-      hideRecommandList()
+    if(result.data == "browse" || result.data == "noEvent") {
+      hideRecommandList(result.data)
       return;
     }
     
@@ -59,12 +61,14 @@ function displayRecommandByEventMusiList() {
 
 
 function showRecommandList() {
-  noEventView.css('display', 'none')
-  yesEventView.css('display', '')
+  noEventView.hide()
+  yesEventView.show()
 }
-function hideRecommandList() {
-  yesEventView.css('display', 'none')
-  noEventView.css('display', '')
+function hideRecommandList(state) {
+  yesEventView.hide()
+  
+  if(state == "browse") noMemberView.show()
+  else if(state == "noEvent") noDataView.show()
 }
 
 

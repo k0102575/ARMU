@@ -379,6 +379,41 @@ public class EventControl {
     return result;
   }
   
+  /*뮤지션모드 - 지원한 이벤트*/
+  @RequestMapping("listMusiAppy")
+  public JsonResult listMusiAppy(HttpSession session) {
+    JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listAppy",eventService.listMusiAppy(getLoginMember(session).getNo()));
+
+      result.setData(dataMap);
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
+    return result;
+  }
+  
+  /*뮤지션모드 - 제안받은 이벤트*/
+  @RequestMapping("listMusiPr")
+  public JsonResult listMusiPr(HttpSession session) {
+    JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("listPr",eventService.listMusiPr(getLoginMember(session).getNo()));
+
+      result.setData(dataMap);
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
+    return result;
+  }
+  
+  
   
   @RequestMapping("detail")
   public JsonResult detail(int no, HttpSession session) {

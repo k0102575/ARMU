@@ -24,6 +24,9 @@ public interface EventService {
   List<Event> listEnd(int no) throws Exception;//나의이벤트 > 종료 이벤트 리스트
   List<Event> listMusiOngoing(int no) throws Exception;//뮤지션모드 - 매칭이벤트 > 진행중 이벤트 리스트
   List<Event> listMusiEnd(int no) throws Exception;//뮤지션모드 - 매칭이벤트 > 종료 이벤트 리스트
+  List<Event> listMusiAppy(int no) throws Exception;//뮤지션모드 - 지원한 이벤트
+  List<Event> listMusiPr(int no) throws Exception;//뮤지션모드 - 제안받은 이벤트
   List<Event> searchEvent(int no, int thmno, int mjrno, int gnrno,int indexT,int indexM,int indexG) throws Exception;
   Event detail(int eNo) throws Exception;
+  int getEventCount(int no) throws Exception;//일반모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트 - 이벤트 유무 확인
 }
