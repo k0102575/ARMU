@@ -5,6 +5,7 @@
   position: relative;
   min-height: 100vh;
   padding-top: 20%;
+  padding-bottom: 200px;
 }
 
 .portfolio-add-btn {
@@ -15,13 +16,13 @@
   bottom: 5%;
   right: 5%;
   font-weight: 500;
-  background: #444;
+  background: black;
   font-size: 2.2rem;
   padding-top: 25px;
   box-sizing: border-box;
   text-align: center;
   color: white;
-  box-shadow: 3px 3px 8px 2px rgba(0, 0, 0, 0.38);
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.38);
 }
 
 .evet-detail-appy-cancel-btn {
@@ -31,16 +32,37 @@
   height: 150px;
   bottom: 5%;
   right: 5%;
-  font-weight: 500;
+  font-weight: 400;
   background: #ddd;
   font-size: 2.2rem;
   padding-top: 25px;
   box-sizing: border-box;
   text-align: center;
-  color: #444;
-  box-shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.38);
+  color: black;
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.38);
 }
 
+#event-detail-display {
+  position: relative;
+  width: 90%;
+  height: 30px;
+  margin-top: 5%;
+  padding-left: 3%;
+}
+
+.event-display-hashtag {
+  width: auto;
+  height: 47px;
+  line-height: 45px;
+  display: inline-block;
+  padding-left: 2%;
+  padding-right: 2%;
+  border-radius: 5px;
+  background-color: #eee;
+  color: black;
+  margin-right: 2%;
+  font-size: 1.8rem;
+}
 
 /* 헤더 시작 */
 
@@ -169,7 +191,7 @@
 
 .event-detail-date {
   position: absolute;
-  width: 88%;
+  width: 50%;
   font-size: 2.2rem;
   left: 4.5%;
   top: 22%;
@@ -187,12 +209,12 @@
   background-color: #8069ef;
   border-radius: 2%;
   top: 24%;
-  left: 38%;
+  left: 40%;
 }
 
 .event-detail-pay {
   position: absolute;
-  width: 88%;
+  width: 50%;
   font-size: 2.2rem;
   left: 4.5%;
   top: 40%;
@@ -200,7 +222,7 @@
 
 .event-detail-city {
   position: absolute;
-  width: 88%;
+  width: 50%;
   font-size: 2.2rem;
   left: 5%;
   top: 59%;

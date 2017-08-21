@@ -1,4 +1,7 @@
 "use strict"
+var appy = 0,
+appyActiveCheck = 0
+
 HandlebarsIntl.registerWith(Handlebars);
 displayEventDetail()
 
@@ -15,7 +18,7 @@ function displayEventDetail() {
         container.html(generatedHTML)
 
         rhsCheck(result.data.detail.haveRehearsal)
-        var appy = result.data.detail.appy_check,
+        appy = result.data.detail.appy_check,
         appyActiveCheck = result.data.detail.appy_activeCheck
 
         $("#event-detail-header-prev").on('click', function() {
@@ -88,18 +91,32 @@ function displayEventDetail() {
             return
           }
         }) // portfolio-add-btn.click
-        
-        if(appy == 0) {
+
+        prDisplay(result.data.detail.pr_count)
+        if(result.data.detail.pr_count == 0 && appyActiveCheck == null) {
+          $("#event-detail-display").css("display", "none")
+        } else if (result.data.detail.pr_count == 0 && appyActiveCheck == 'N') {
+          $("#event-detail-display").css("display", "none")
           return
         }
 
-        if(appy != 0 && appyActiveCheck == 'Y') {
+        if (appy != 0 && appyActiveCheck == 'Y')  {
           $(".portfolio-add-btn").html("지원<br>취소")
           $(".portfolio-add-btn").addClass("evet-detail-appy-cancel-btn")
+          $("#event-detail-display").append("<span class='event-display-hashtag'>지원한 이벤트</span>")
           return
         }
+        
 
       })
+}
+
+function prDisplay(prCheck) {
+  if(prCheck == 1) {
+    $("#event-detail-display").append("<span class='event-display-hashtag'>제안받은 이벤트</span>")
+    return
+  }
+  return
 }
 
 function rhsCheck(rhs) {

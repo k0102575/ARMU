@@ -470,7 +470,7 @@ where ap.mno=#{no}
            if(appy.appyno is not null, appy.appyno, 0) as appy_check,
            appy.active as appy_activeCheck
     from evn e
-    left outer join (select prno, muno, eno from pr group by muno, eno having muno = #{muNo}
+    left outer join (select prno, muno, eno from pr group by muno, eno having muno = #{muNo} and eno = #{eNo}
     ) prc on e.eno = prc.eno
     left outer join (select mtcno, muno, eno from mtc group by muno, eno having muno = #{muNo}
     ) mtc on e.eno = mtc.eno
