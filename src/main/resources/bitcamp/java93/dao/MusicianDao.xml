@@ -72,6 +72,12 @@
     </collection>
   </resultMap>
   
+   <resultMap type="musician" id="musicianAppyMap">
+    <collection property="appyNoList" ofType="string"> 
+        <result column="appyList"/> 
+    </collection>
+  </resultMap>
+  
   <resultMap type="musician" id="musicianFavorMap">
     <id column="mno" property="no" />
     <result column="name" property="name" />
@@ -181,6 +187,10 @@ left outer join (
   group by muno
 ) fav on fav.muno=mu.muno
   </select><!-- 완진 -->
+  
+  <select id="myEventAppyList" resultMap="musicianAppyMap" parameterType="int">
+  select muno as appyList from appy where eno = #{eNo};
+  </select><!-- 승민 -->
   
    <select id="selectFavorList" resultMap="musicianFavorMap" parameterType="int">
    select ctr.count, m.mno, m.name, m.path, gnr.name as genre, mjr.name as major, loct.name as location

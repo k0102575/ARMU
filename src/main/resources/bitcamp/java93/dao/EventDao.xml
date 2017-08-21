@@ -206,7 +206,6 @@ left outer join thm_evn te on e.eno=te.eno inner join thm t on te.thmno=t.thmno
 inner join memb m on m.mno=e.mno
   </select><!-- 완진 -->
   
-  
   <select id="selectEndList" resultMap="matchEventMap"
     parameterType="int">
     select e.eno, title, e.date, mu.muno, mu.nick, mm.path, 
@@ -254,8 +253,7 @@ from eventlist_appy_musicians ap
 left outer join eventlist_pr_musicians p on ap.eno = p.eno
 where ap.mno=#{no}
   </select><!-- 완진 -->
-
-
+  
   <select id="selectRecommandList" resultMap="eventMapBasic"
     parameterType="int">
     select e.title, e.eno, e.date, concat(lt.name, ' ', l.name) as location,
@@ -356,7 +354,19 @@ where ap.mno=#{no}
     insert into appy(muno, eno)
     values(#{muNo}, #{eNo});
   </insert> <!-- 승민 -->
-
+  
+  <delete id="deleteAppyEventZero">
+   SET FOREIGN_KEY_CHECKS = 0
+  </delete> <!-- 승민 -->
+  
+  <delete id="deleteAppyEvent" parameterType="int">
+   delete from appy where eno = #{eNo}
+  </delete> <!-- 승민 -->
+  
+   <delete id="deleteAppyEventOne">
+   SET FOREIGN_KEY_CHECKS = 1
+  </delete> <!-- 승민 -->
+  
   <select id="selectSurfList" resultMap="eventMapBasic">
     select e.eno, e.locno, e.pay, e.addr, e.date, e.title,
     concat(lt.name, ' ', l.name) as location,

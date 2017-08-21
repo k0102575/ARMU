@@ -15,6 +15,7 @@ import bitcamp.java93.domain.Event;
 import bitcamp.java93.domain.Member;
 import bitcamp.java93.service.CategoryService;
 import bitcamp.java93.service.EventService;
+import bitcamp.java93.service.NotificationService;
 
 @RestController
 @RequestMapping("/event/")
@@ -23,6 +24,7 @@ public class EventControl {
   @Autowired ServletContext servletContext;
   @Autowired EventService eventService;
   @Autowired CategoryService categoryService;
+  @Autowired NotificationService notificationService;
   
   @RequestMapping("addReherse")
   public JsonResult addReherse(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre, HttpSession session) throws Exception {
@@ -119,6 +121,7 @@ public class EventControl {
     categoryService.registEventCategory(event);
     eventService.deleteEventReherse(event.getNo());
     eventService.registEventReherse(event);
+    eventService.deleteRequestEvent(event.getNo());
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
@@ -153,6 +156,7 @@ public class EventControl {
     categoryService.deleteEventCategory(event.getNo());
     categoryService.registEventCategory(event);
     eventService.deleteEventReherse(event.getNo());
+    eventService.deleteRequestEvent(event.getNo());
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   

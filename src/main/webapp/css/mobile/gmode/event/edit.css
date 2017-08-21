@@ -135,13 +135,13 @@ select::-ms-expand {
 /* 이벤트 페이지 1 시작 */
 
 #event-page1-text {
-    position: absolute;
-    color: black;
-    top: 30%;
-    font-size: 3.6em;
-    font-weight: 500;
-    padding-left: 20%;
-    padding-right: 10%;
+  position: absolute;
+  color: black;
+  top: 30%;
+  font-size: 3.6em;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
 }
 
 /* 이벤트 페이지 1 끝 */

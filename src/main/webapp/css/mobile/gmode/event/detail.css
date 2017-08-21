@@ -7,6 +7,11 @@
   padding-top: 20%;
 }
 
+.sweet-alert h2 {
+    font-size: 3em;
+    top: 2%;
+    line-height: 75px;
+}
 
 /* 헤더 시작 */
 
@@ -83,6 +88,46 @@
 }
 
 /* 푸터 끝 */
+
+/* 지원 정보 시작 */
+
+#event-detail-appy {
+  float: left;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  background: #F5F5F5;
+  height: 100px;
+  color: #252525;
+  padding-left: 55px;
+  line-height: 120px;
+  box-sizing: border-box;
+}
+
+#event-detail-appy-container {
+  float: left;
+  width: 90%;
+  min-height: 150px;
+  font-size: 2rem;
+  margin-top: 5%;
+  margin-left: 5%;
+  color: #252525;
+  margin-bottom: 100px;
+}
+
+.recruiting-musibox-summary-musi {
+  display: inline-block;
+  height: 120px;
+  width: 120px;
+  background-repeat: none;
+  background-size: cover;
+  border-radius: 100%;
+  overflow: hidden;
+  margin: 1% 2%;
+  border: 1px solid rgba(0, 0, 0, 0.21);
+}
+
+/* 지원 정보 끝 */
 
 /* 지원 현황 시작 */
 
@@ -598,7 +643,6 @@
   font-size: 2rem;
   margin-top: 5%;
   margin-left: 5%;
-  margin-bottom: 100px;
   color: #252525;
 }
 
@@ -636,23 +680,6 @@
   margin-left: 30%;
   margin-bottom: 5%;
   float: left;
-}
-
-#event-apply-btn {
-  position: fixed;
-  border-radius: 100%;
-  width: 150px;
-  height: 150px;
-  bottom: 5%;
-  right: 5%;
-  font-weight: 500;
-  background: #444;
-  font-size: 2.2rem;
-  padding-top: 25px;
-  box-sizing: border-box;
-  text-align: center;
-  color: white;
-  box-shadow: 3px 3px 8px 2px rgba(0, 0, 0, 0.38);
 }
 
 /* 버튼 끝 */

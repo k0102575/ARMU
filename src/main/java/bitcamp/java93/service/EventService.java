@@ -16,6 +16,7 @@ public interface EventService {
   List<Event> prCheckEvent(int myNo, int muNo) throws Exception;
   void prEvent(int muNo, int eNo) throws Exception;
   void requestEvent(int muNo, int eNo) throws Exception;
+  void deleteRequestEvent(int no) throws Exception;
   List<Event> listSurf() throws Exception;
   List<Event> listSearchResult(String search) throws Exception;
   List<Event> listRecruiting(int no) throws Exception;//나의이벤트 > 모집중 이벤트 리스트

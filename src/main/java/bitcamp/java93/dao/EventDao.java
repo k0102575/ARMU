@@ -18,6 +18,9 @@ public interface EventDao {
   List<Event> prCheckList(Map<String,Object> valueMap);  // 이벤트 매칭요청 리스트
   void prEvent(Map<String,Object> valueMap);
   void appyEvent(Map<String,Object> valueMap);
+  void deleteAppyEventZero();
+  void deleteAppyEvent(int eNo);
+  void deleteAppyEventOne();
   List<Event> selectSurfList();
   List<Event> selectSearchResultList(String search);
   List<Event> selectRecruitingList(int no);//나의이벤트 > 모집중 이벤트 리스트

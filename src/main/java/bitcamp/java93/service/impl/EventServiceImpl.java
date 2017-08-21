@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bitcamp.java93.dao.EventDao;
+import bitcamp.java93.dao.MusicianDao;
 import bitcamp.java93.dao.NotificationDao;
 import bitcamp.java93.domain.Event;
+import bitcamp.java93.domain.Musician;
 import bitcamp.java93.service.EventService;
 
 @Service
@@ -19,6 +21,9 @@ public class EventServiceImpl implements EventService {
   
   @Autowired
   NotificationDao notificationDao;
+  
+  @Autowired
+  MusicianDao musicianDao;
   
   public List<Event> listOngoing() throws Exception {   
     return eventDao.selectOngoingList();
@@ -77,6 +82,23 @@ public class EventServiceImpl implements EventService {
     eventDao.appyEvent(valueMap);
     valueMap.put("appyno", valueMap.get("appyno"));
     notificationDao.insertEventAppyNoti(valueMap);
+  }
+  
+  public void deleteRequestEvent(int eNo) throws Exception {
+    
+    Musician musician = musicianDao.myEventAppyList(eNo);
+    
+    eventDao.deleteAppyEventZero();
+    eventDao.deleteAppyEvent(eNo);
+    eventDao.deleteAppyEventOne();
+    
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("eNo", eNo);
+    for (String appyNo : musician.getAppyNoList()) {
+      valueMap.put("appyNo", appyNo);
+      notificationDao.insertEventEditNoti(valueMap);
+    }
+    
   }
   
   @Override

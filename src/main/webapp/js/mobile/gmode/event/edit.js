@@ -526,7 +526,6 @@ eventPage8Prev.on('click', function() {
 })
 
 eventPage8Next.on('click', function() {
-	
   
   if($("input[name=toggle]:checked").val() =="true") {
     $.post('/event/updateReherse.json', {

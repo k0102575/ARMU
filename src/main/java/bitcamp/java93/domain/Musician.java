@@ -40,10 +40,11 @@ public class Musician extends Member  {
   ArrayList<String> genreList;
   ArrayList<String> themeList;
   ArrayList<String> locationList;
+  ArrayList<String> locationNoList;
   ArrayList<Integer> majorNoList;
   ArrayList<Integer> genreNoList;
   ArrayList<Integer> themeNoList;
-  ArrayList<Integer> locationNoList;
+  ArrayList<String> appyNoList;
   List<String> photoList;
   List<String> movieList;
   @Override
@@ -56,9 +57,9 @@ public class Musician extends Member  {
         + ", indexG=" + indexG + ", locno=" + locno + ", mjrno=" + mjrno + ", gnrno=" + gnrno + ", nickName=" + nickName
         + ", search=" + search + ", fileMap=" + fileMap + ", list=" + list + ", reviewList=" + reviewList
         + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList=" + themeList + ", locationList="
-        + locationList + ", majorNoList=" + majorNoList + ", genreNoList=" + genreNoList + ", themeNoList="
-        + themeNoList + ", locationNoList=" + locationNoList + ", photoList=" + photoList + ", movieList=" + movieList
-        + "]";
+        + locationList + ", locationNoList=" + locationNoList + ", majorNoList=" + majorNoList + ", genreNoList="
+        + genreNoList + ", themeNoList=" + themeNoList + ", appyNoList=" + appyNoList + ", photoList=" + photoList
+        + ", movieList=" + movieList + "]";
   }
   public int getAge() {
     return age;
@@ -198,11 +199,35 @@ public class Musician extends Member  {
   public void setIndexG(int indexG) {
     this.indexG = indexG;
   }
+  public int getLocno() {
+    return locno;
+  }
+  public void setLocno(int locno) {
+    this.locno = locno;
+  }
+  public int getMjrno() {
+    return mjrno;
+  }
+  public void setMjrno(int mjrno) {
+    this.mjrno = mjrno;
+  }
+  public int getGnrno() {
+    return gnrno;
+  }
+  public void setGnrno(int gnrno) {
+    this.gnrno = gnrno;
+  }
   public String getNickName() {
     return nickName;
   }
   public void setNickName(String nickName) {
     this.nickName = nickName;
+  }
+  public String getSearch() {
+    return search;
+  }
+  public void setSearch(String search) {
+    this.search = search;
   }
   public Map<String, String> getFileMap() {
     return fileMap;
@@ -246,6 +271,12 @@ public class Musician extends Member  {
   public void setLocationList(ArrayList<String> locationList) {
     this.locationList = locationList;
   }
+  public ArrayList<String> getLocationNoList() {
+    return locationNoList;
+  }
+  public void setLocationNoList(ArrayList<String> locationNoList) {
+    this.locationNoList = locationNoList;
+  }
   public ArrayList<Integer> getMajorNoList() {
     return majorNoList;
   }
@@ -264,11 +295,11 @@ public class Musician extends Member  {
   public void setThemeNoList(ArrayList<Integer> themeNoList) {
     this.themeNoList = themeNoList;
   }
-  public ArrayList<Integer> getLocationNoList() {
-    return locationNoList;
+  public ArrayList<String> getAppyNoList() {
+    return appyNoList;
   }
-  public void setLocationNoList(ArrayList<Integer> locationNoList) {
-    this.locationNoList = locationNoList;
+  public void setAppyNoList(ArrayList<String> appyNoList) {
+    this.appyNoList = appyNoList;
   }
   public List<String> getPhotoList() {
     return photoList;
@@ -282,16 +313,6 @@ public class Musician extends Member  {
   public void setMovieList(List<String> movieList) {
     this.movieList = movieList;
   }
-  public String getSearch() {
-    return search;
-  }
-  public void setSearch(String search) {
-    this.search = search;
-  }
-  
-  
-  
-  
   
   
   
