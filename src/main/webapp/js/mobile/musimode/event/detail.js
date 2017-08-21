@@ -15,13 +15,23 @@ function displayEventDetail() {
     container.html(generatedHTML)
     
     rhsCheck(result.data.detail.haveRehearsal)
+    var appy = result.data.detail.appy_check
     
     $("#event-detail-header-prev").on('click', function() {
       location.href = "/mobile/musimode/index.html"
     })
     
+    if(appy == 1) {
+    $("#portfolio-add-btn").html("지원<br>취소")
+    $("#portfolio-add-btn").addClass("evet-detail-appy-cancel-btn")
+    return
+    }
+    
     $("#portfolio-add-btn").on('click', function() {
-    	console.log($(this).attr("data-value"))
+      if(appy == 1) {
+        return false;
+      }
+      
     	$.post('/event/requestEvent.json', {
           'eNo': $(this).attr("data-value")
         }, function(result) {
@@ -39,7 +49,7 @@ function displayEventDetail() {
             })
           }
         }, 'json')
-    })
+    }) // portfolio-add-btn.click
     
   })
 }
@@ -56,6 +66,20 @@ function rhsCheck(rhs) {
     $("#event-rehearsal-container").css('display', 'block')
     return
   }
-  
 }
+
+function appyCheck(appy) {
+  if(appy == 1) {
+    $("#portfolio-add-btn").text("지원중")
+    
+    return
+  }
+  
+  if(appy == 0) {
+    $("#event-detail-rehearsal").css('display', 'block')
+    $("#event-rehearsal-container").css('display', 'block')
+    return
+  }
+}
+
 
