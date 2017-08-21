@@ -92,6 +92,9 @@ DROP TABLE IF EXISTS gnr_evn RESTRICT;
 -- 알림
 DROP TABLE IF EXISTS noti RESTRICT;
 
+-- 선호 이벤트
+DROP TABLE IF EXISTS fav_evn RESTRICT;
+
 -- 회원
 CREATE TABLE memb (
   mno   INTEGER      NOT NULL COMMENT '회원번호', -- 회원번호
@@ -670,6 +673,21 @@ ALTER TABLE noti
 ALTER TABLE noti
   MODIFY COLUMN notino INTEGER NOT NULL AUTO_INCREMENT COMMENT '알림번호';
 
+-- 선호 이벤트
+CREATE TABLE fav_evn (
+  eno  INTEGER NOT NULL COMMENT '이벤트 번호', -- 이벤트 번호
+  muno INTEGER NOT NULL COMMENT '뮤지션회원번호' -- 뮤지션회원번호
+)
+COMMENT '선호 이벤트';
+
+-- 선호 이벤트
+ALTER TABLE fav_evn
+  ADD CONSTRAINT PK_fav_evn -- 선호 이벤트 기본키
+    PRIMARY KEY (
+      eno,  -- 이벤트 번호
+      muno  -- 뮤지션회원번호
+    );
+
 -- 뮤지션회원
 ALTER TABLE musi
   ADD CONSTRAINT FK_memb_TO_musi -- 회원 -> 뮤지션회원
@@ -1058,4 +1076,24 @@ ALTER TABLE noti
     )
     REFERENCES appy ( -- 이벤트 지원
       appyno -- 이벤트지원번호
+    );
+
+-- 선호 이벤트
+ALTER TABLE fav_evn
+  ADD CONSTRAINT FK_evn_TO_fav_evn -- 이벤트 -> 선호 이벤트
+    FOREIGN KEY (
+      eno -- 이벤트 번호
+    )
+    REFERENCES evn ( -- 이벤트
+      eno -- 이벤트 번호
+    );
+
+-- 선호 이벤트
+ALTER TABLE fav_evn
+  ADD CONSTRAINT FK_musi_TO_fav_evn -- 뮤지션회원 -> 선호 이벤트
+    FOREIGN KEY (
+      muno -- 뮤지션회원번호
+    )
+    REFERENCES musi ( -- 뮤지션회원
+      muno -- 뮤지션회원번호
     );

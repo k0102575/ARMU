@@ -46,11 +46,8 @@ public class EventServiceImpl implements EventService {
   }
   
   public  void delete(int eno) throws Exception {   
-    eventDao.deleteAppyEventZero();
     eventDao.delete(eno);
-    eventDao.deleteAppyEventOne();
   }
-  
   
   /*뮤지션모드 > 추천탭 > 나에게 꼭 맞는 이벤트*/
   public List<Event> listRecommand(int no) throws Exception {
@@ -111,36 +108,12 @@ public class EventServiceImpl implements EventService {
   public void updateRequestEvent(int eNo) throws Exception {
     Musician musician = musicianDao.myEventAppyList(eNo);
     
-    eventDao.deleteAppyEventZero();
-    eventDao.deleteAppyEvent(eNo);
-    eventDao.deleteAppyEventOne();
-    
     if(musician != null) {
       HashMap<String,Object> valueMap = new HashMap<>();
       valueMap.put("eNo", eNo);
       for (String appyNo : musician.getAppyNoList()) {
         valueMap.put("appyNo", appyNo);
         notificationDao.insertEventEditNoti(valueMap);
-      }
-      return;
-    }
-  }
-  
-  public void deleteRequestEvent(int eNo) throws Exception {
-    
-    Musician musician = musicianDao.myEventAppyList(eNo);
-    
-    eventDao.deleteAppyEventZero();
-    eventDao.deleteAppyEvent(eNo);
-    eventDao.deletePrEvent(eNo);
-    eventDao.deleteAppyEventOne();
-    
-    if(musician != null) {
-      HashMap<String,Object> valueMap = new HashMap<>();
-      valueMap.put("eNo", eNo);
-      for (String appyNo : musician.getAppyNoList()) {
-        valueMap.put("appyNo", appyNo);
-        notificationDao.insertEventDeleteNoti(valueMap);
       }
       return;
     }

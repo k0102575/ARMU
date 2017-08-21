@@ -6,11 +6,11 @@ import bitcamp.java93.domain.Event;
 
 public interface EventService {
   List<Event> listOngoing() throws Exception;//일반모드 > 나의이벤트 > 진행중 이벤트 리스트
-  void add(Event event) throws Exception;
-  void update(Event event) throws Exception;
-  void deleteEventReherse(int eno) throws Exception;
-  void registEventReherse(Event event) throws Exception;
-  void delete(int eno) throws Exception;
+  void add(Event event) throws Exception; // 일반모드 > 이벤트 등록하기 > 이벤트 등록
+  void update(Event event) throws Exception; // 일반모드 > 이벤트 변경페이지 > 이벤트 변경
+  void deleteEventReherse(int eno) throws Exception; // 일반모드 > 이벤트 변경페이지 > 리허설 삭제
+  void registEventReherse(Event event) throws Exception;// 일반모드 > 이벤트 변경페이지 > 리허설 등록
+  void delete(int eno) throws Exception; // 일반모드 > 이벤트 상세페이지 > 이벤트 삭제
   List<Event> listRecommand(int no) throws Exception;//뮤지션모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트
   List<Event> listRecent(int no) throws Exception;//뮤지션모드 > 추천탭 > 최근 이벤트 리스트
   List<Event> prCheckEvent(int myNo, int muNo) throws Exception;
@@ -19,8 +19,7 @@ public interface EventService {
   void requestEvent(int muNo, int eNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 추가
   void requestEventCheck(int muNo, int eNo, int appyNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"Y"변경
   void requestEventCancel(int muNo, int eNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"N"변경
-  void updateRequestEvent(int no) throws Exception;
-  void deleteRequestEvent(int eno) throws Exception;
+  void updateRequestEvent(int no) throws Exception; // 일반모드 > 이벤트 상세페이지 > 이벤트 변경
   List<Event> listSurf() throws Exception;
   List<Event> listSearchResult(String search) throws Exception;
   List<Event> listRecruiting(int no) throws Exception;//나의이벤트 > 모집중 이벤트 리스트

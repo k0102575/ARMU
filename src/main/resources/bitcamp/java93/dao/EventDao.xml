@@ -182,7 +182,6 @@
     </collection>
     </association>
   </resultMap>
-  
 
   <select id="selectEventCount" resultType="int"
     parameterType="int">
@@ -211,7 +210,6 @@ p.prno, p.mno, m.name, m.path
 from eventlist_pr_musicians p inner join memb m on p.mno=m.mno
 where p.muno=#{no}
   </select><!-- 완진 -->
-  
   
    <select id="selectMusiOngoingList" resultMap="eventMapBasic"
     parameterType="int">
@@ -329,9 +327,9 @@ where ap.mno=#{no}
 
   <insert id="insert" parameterType="event" useGeneratedKeys="true"
     keyColumn="eno" keyProperty="no">
-    insert into evn(mno, locno, pay, req, cont, addr, date, title)
+    insert into evn(mno, locno, pay, req, cont, addr, date, title, active)
     values(#{writer}, #{locno}, #{pay}, #{requirement},
-    #{contents}, #{address}, #{date}, #{title})
+    #{contents}, #{address}, #{date}, #{title}, 'Y')
   </insert><!-- 승민 -->
 
   <update id="update" parameterType="event">
@@ -350,9 +348,11 @@ where ap.mno=#{no}
     values(#{no}, #{rhspay}, #{rhsinfo}, #{rhsnum})
   </insert> <!-- 승민 -->
   
-  <delete id="delete" parameterType="int">
-    delete from evn where eno = #{eno}
-  </delete> <!-- 승민 -->
+  <update id="delete" parameterType="int">
+    update evn set
+    active = 'N'
+    where eno = #{eno}
+  </update> <!-- 승민 -->
   
   <select id="prCheckList" resultMap="eventSelectMap"
     parameterType="map">

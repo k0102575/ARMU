@@ -165,7 +165,6 @@ public class EventControl {
   public JsonResult deleteEvent(int eno) throws Exception {
     categoryService.deleteEventCategory(eno);
     eventService.deleteEventReherse(eno);
-    eventService.deleteRequestEvent(eno);
     eventService.delete(eno);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
