@@ -555,9 +555,9 @@ insert into pr (eno, muno, active) values (1, 1, 'Y');
 insert into pr (eno, muno, active) values (1, 2, 'Y');
 insert into pr (eno, muno, active) values (2, 3, 'Y');
 
-insert into noti (muno, eno, type, date, cont, whom, prno) values (1, 1, "pr", '2017-07-19', "제안받은 이벤트", 'musician', 1);
-insert into noti (muno, eno, type, date, cont, whom, prno) values (2, 1, "pr", '2017-07-20', "제안받은 이벤트", 'musician', 2);
-insert into noti (muno, eno, type, date, cont, whom, prno) values (3, 2, "pr", '2017-07-28', "제안받은 이벤트", 'musician', 3);
+insert into noti (muno, eno, type, date, cont, whom, prno) values (1, 1, "pr", '2017-07-19 15:02:19', "제안받은 이벤트", 'musician', 1);
+insert into noti (muno, eno, type, date, cont, whom, prno) values (2, 1, "pr", '2017-07-20 11:52:14', "제안받은 이벤트", 'musician', 2);
+insert into noti (muno, eno, type, date, cont, whom, prno) values (3, 2, "pr", '2017-07-28 21:02:18', "제안받은 이벤트", 'musician', 3);
 
 -- 이벤트&뮤지션 매칭정보(mtc)
 insert into mtc (muno, eno, mtcdt) values (3, 2, '2017-07-22');
@@ -608,7 +608,7 @@ insert into loc_musi (muno, locno) values (3, 15);
 update pr set status='Y' where muno=3 and eno=2;
 insert into appy (eno, muno, active) values(2, 3, 'Y');
 
-insert into noti (muno, eno, type, date, cont, whom, prno) values (3, 2, "pr_accept", '2017-07-21', "요청 수락", 'gmember', 3);
+insert into noti (muno, eno, type, date, cont, whom, prno) values (3, 2, "pr_accept", '2017-07-21 07:00:15', "요청 수락", 'gmember', 3);
 
 
 -- 뮤지션 경력 파일 (spec, spec_path)
@@ -1050,11 +1050,11 @@ insert into pr (eno, muno, active) values (4, 13, 'Y');
 insert into pr (eno, muno, active) values (7, 3, 'Y');
 insert into pr (eno, muno, active) values (7, 14, 'Y');
 
-insert into noti (muno, eno, type, date, cont, whom, prno) values (3, 4, "pr", '2017-08-02', "제안받은 이벤트", 'musician', 4);
-insert into noti (muno, eno, type, date, cont, whom, prno) values (13, 4, "pr", '2017-08-02', "제안받은 이벤트", 'musician', 5);
+insert into noti (muno, eno, type, date, cont, whom, prno) values (3, 4, "pr", '2017-08-02 09:10:52', "제안받은 이벤트", 'musician', 4);
+insert into noti (muno, eno, type, date, cont, whom, prno) values (13, 4, "pr", '2017-08-02 09:10:54', "제안받은 이벤트", 'musician', 5);
 
-insert into noti (muno, eno, type, date, cont, whom, prno) values (3, 7, "pr", '2017-08-02', "제안받은 이벤트", 'musician', 6);
-insert into noti (muno, eno, type, date, cont, whom, prno) values (14, 7, "pr", '2017-08-02', "제안받은 이벤트", 'musician', 7);
+insert into noti (muno, eno, type, date, cont, whom, prno) values (3, 7, "pr", '2017-08-02 18:18:47', "제안받은 이벤트", 'musician', 6);
+insert into noti (muno, eno, type, date, cont, whom, prno) values (14, 7, "pr", '2017-08-02 18:28:38', "제안받은 이벤트", 'musician', 7);
 
 
 -- appy(뮤지션이 이벤트에 지원) 추가
@@ -1066,13 +1066,13 @@ insert into appy (active, eno, muno) values ("Y", 4, 11);
 insert into appy (active, eno, muno) values ("Y", 7, 8);
 insert into appy (active, eno, muno) values ("Y", 7, 14);
 
-insert into noti (muno, eno, type, date, cont, whom, appyno) values (1, 4, "appy", '2017-08-01', "이벤트 지원", 'gmember', 1);
-insert into noti (muno, eno, type, date, cont, whom, appyno) values (2, 4, "appy", '2017-08-02', "이벤트 지원", 'gmember', 2);
-insert into noti (muno, eno, type, date, cont, whom, appyno) values (3, 4, "appy", '2017-08-03', "이벤트 지원", 'gmember', 3);
-insert into noti (muno, eno, type, date, cont, whom, appyno) values (11, 4, "appy", '2017-08-04', "이벤트 지원", 'gmember', 4);
+insert into noti (muno, eno, type, date, cont, whom, appyno) values (1, 4, "appy", '2017-08-01 23:55:35', "이벤트 지원", 'gmember', 1);
+insert into noti (muno, eno, type, date, cont, whom, appyno) values (2, 4, "appy", '2017-08-02 12:45:15', "이벤트 지원", 'gmember', 2);
+insert into noti (muno, eno, type, date, cont, whom, appyno) values (3, 4, "appy", '2017-08-03 05:55:35', "이벤트 지원", 'gmember', 3);
+insert into noti (muno, eno, type, date, cont, whom, appyno) values (11, 4, "appy", '2017-08-04 11:12:15', "이벤트 지원", 'gmember', 4);
 
-insert into noti (muno, eno, type, date, cont, whom, appyno) values (8, 7, "appy", '2017-08-01', "이벤트 지원", 'gmember', 5);
-insert into noti (muno, eno, type, date, cont, whom, appyno) values (14, 7, "appy", '2017-08-03', "이벤트 지원", 'gmember', 6);
+insert into noti (muno, eno, type, date, cont, whom, appyno) values (8, 7, "appy", '2017-08-01 23:38:15', "이벤트 지원", 'gmember', 5);
+insert into noti (muno, eno, type, date, cont, whom, appyno) values (14, 7, "appy", '2017-08-03 11:55:19', "이벤트 지원", 'gmember', 6);
 
 
 -- 모든 모집 중인 이벤트 리스트 뷰 생성하기
@@ -1275,7 +1275,7 @@ BEGIN
   update appy set status='N' where eno=eno_param and muno=muno_param;
   select appyno INTO appyno_param from appy where eno=eno_param and muno=muno_param and status='N';
   insert into noti (eno, muno, type, date, cont, whom, appyno) values
-    (eno_param, muno_param, 'appy_reject', curdate(), '매칭 거절', 'musician', appyno_param);
+    (eno_param, muno_param, 'appy_reject', now(), '매칭 거절', 'musician', appyno_param);
 END//
 delimiter ;
 
@@ -1290,6 +1290,6 @@ BEGIN
   select LAST_INSERT_ID() INTO mtcno_param;
   insert into chat (muno, mno, isread, msg, date, who) values (muno_param, mno_param, 'N', '매칭되었습니다!', now(), mno_param);
   insert into noti (eno, muno, type, date, cont, whom, mtcno) values
-    (eno_param, muno_param, 'mtc', curdate(), '매칭 확정', 'both', mtcno_param);
+    (eno_param, muno_param, 'mtc', now(), '매칭 확정', 'both', mtcno_param);
 END//
 delimiter ;

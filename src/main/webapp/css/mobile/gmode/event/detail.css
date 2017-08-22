@@ -391,7 +391,7 @@
   position: relative;
   display: inline-block;
   height: 250px;
-  width: 95%;
+  width: 100%;
   margin: 0%;
   text-align: justify;
   border-radius: 10px;
@@ -421,8 +421,8 @@
 
 .ongoing-applicant-score {
   position: absolute;
-  top: -1%;
-  right: 18%;
+  top: -2%;
+  right: 14%;
   margin-left: 20px;
   color: #ffd700;
   font-size: 33px;
@@ -432,8 +432,8 @@
 .ongoing-applicant-fav {
   position: absolute;
   display: inline-block;
-  top: -3%;
-  right: 1%;
+  top: -5%;
+  right: 0%;
   color: #8069ef;
   font-size: 40px;
   width: 10%;

@@ -41,7 +41,7 @@ left outer join thm_musi tm on mu.muno=tm.muno inner join thm t on tm.thmno=t.th
 left outer join (
   select count(if(mno is not null, 1, 0)) as fav, mno, muno
   from fav_musi
-  where mno = #{myNo}
+  where mno = 5
   group by muno
 ) fav on fav.muno=mu.muno
 left outer join (
@@ -49,7 +49,7 @@ left outer join (
   from mtc
   group by muno
 ) score on score.muno=mu.muno
-where mtc.eno = #{eNo}
+where mtc.eno = 13
     
     
     

@@ -8,7 +8,6 @@ function displayEventDetail() {
     "no" : location.href.split('?')[1].split('=')[1]
       }, 
       function(result) {
-        console.log(result)
         var templateFn = Handlebars.compile($('#select-event-template').text())
         var generatedHTML = templateFn(result.data)
         var container = $('#container')
@@ -104,18 +103,17 @@ function displayEventDetail() {
             "eNo" : location.href.split('?')[1].split('=')[1]
               }, 
               function(result) {
+                console.log(result)
+                var starInteger = parseInt(result.data.matchMusician.score),
+                starRealNumber = result.data.matchMusician.score - starInteger;
+                starAdd(starInteger, starRealNumber, result.data.matchMusician)
+                heartAdd(result.data.matchMusician)
                 var templateFn = Handlebars.compile($('#event-match-template').text())
                 var generatedHTML = templateFn(result.data)
                 var container = $("#event-detail-mtc-container")
                 var html = container.html()
                 container.html(html + generatedHTML)
                 
-                $.each(result.data.matchMusician, function(i, item) {
-                  var starInteger = parseInt(item.score),
-                  starRealNumber = item.score - starInteger;
-                  starAdd(starInteger, starRealNumber, item)
-                  heartAdd(item)
-                });
                 
               })
               return
