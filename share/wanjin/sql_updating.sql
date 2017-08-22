@@ -405,6 +405,20 @@ where m.mno=5
 
 
 
+select ap.eno, ap.mno, ap.title, ap.date, ap.location, ap.addr, ap.pay,
+ap.major, ap.genre, ap.theme,
+ap.appyno, ap.muno as ap_muno, ap.nick as ap_nick, ap.path as ap_path,
+p.prno, p.muno as p_muno, p.nick as p_nick, p.path as p_path
+from eventlist_appy_musicians ap
+left outer join eventlist_pr_musicians p on ap.eno = p.eno
+where ap.mno=#{no}
+
+
+select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme
+from recruiting_eventlist e
+where e.mno=#{no}
+
+
 -- 모든 모집 중인 이벤트 리스트 뷰 생성하기
 create view recruiting_eventlist as
 select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
@@ -498,6 +512,7 @@ ap.appyno, ap.muno, ap.nick, ap.path, p.prno, p.muno, p.nick, p.path
 from eventlist_appy_musicians ap
 left outer join eventlist_pr_musicians p on ap.eno = p.eno
 where ap.mno=5
+
 
 
 

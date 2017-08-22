@@ -38,7 +38,15 @@ function displayRecommandByEventMusiList() {
     var html = container.html()
     container.html(html + generatedHTML)
 
-
+    $('.rec-by-event-musi-click').on('click', function() {
+      location.href = 'musi-info/index.html?no=' + $(this).attr('data-no')
+    })
+    
+    $('.rec-by-event-musi-fav').on('click', function() {
+      var isFavorite = heartChange($(this).html())
+      $(this).html(isFavorite)
+    })
+    
     /*initialize swiper when document ready*/
     $(document).ready(function () {
       var mySwiper = new Swiper ('.swiper-container', {
@@ -90,7 +98,10 @@ function displayBestReviewMusiList() {
     var container = $('#rec-best-review-musi-container')
     var html = container.html()
     container.html(html + generatedHTML)
-
+    
+    $('.rec-best-review').on('click', function() {
+      location.href = 'musi-info/index.html?no=' + $(this).attr('data-no')
+    })
   }, function(err) {
     console.log(err)
   })
@@ -108,6 +119,8 @@ function displayMostPopularCategoryList() {
     var container = $('#rec-most-popular-category-container')
     var html = container.html()
     container.html(html + generatedHTML)
+    
+    console.log(result.data)
   }, function(err) {
     console.log(err)
   })
@@ -132,6 +145,11 @@ function displayPopularMusiList() {
     var container = $('#rec-popular-musi-container')
     var html = container.html()
     container.html(html + generatedHTML)
+    
+        
+    $('.rec-popular-musi').on('click', function() {
+      location.href = 'musi-info/index.html?no=' + $(this).attr('data-no')
+    })
   }, function(err) {
     console.log(err)
   })
@@ -172,5 +190,15 @@ function heartAdd(item) {
   } else {
     item.isFavorite = '<i class="fa fa-heart-o" aria-hidden="true"></i>'
   }
+}
+
+
+function heartChange(isFavorite) {
+  if (isFavorite == '<i class="fa fa-heart" aria-hidden="true"></i>') {
+    isFavorite = '<i class="fa fa-heart-o" aria-hidden="true"></i>'
+  } else {
+    isFavorite = '<i class="fa fa-heart" aria-hidden="true"></i>'
+  }
+  return isFavorite;
 }
 

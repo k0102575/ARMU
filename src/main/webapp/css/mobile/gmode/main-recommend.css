@@ -76,6 +76,7 @@
 
 /*이벤트 있는 경우 시작*/
 .swiper-container {
+    padding-top: 5%;
     width: 100%;
     height: auto;
     margin: 20px auto;
@@ -117,6 +118,12 @@
   z-index: 99;
 }
 
+.rec-by-event-musi-click {
+  display: inline-block;
+  height: 700px;
+  width: 500px;
+}
+
 .rec-by-event-musi-img {
   display: table;
   height: 500px;
@@ -141,20 +148,24 @@
 .rec-by-event-musi-score {
   display: inline-block;
   margin-left: 20px;
-  color: black;
+  color: #8069ef;
   font-size: 28px;
 }
 
 .rec-by-event-musi-fav {
   position: absolute;
   display: inline-block;
-  right: 7%;
-  left: auto;
-  top: 62%;
-  transform: translate(7%, -62%);
+  right: 4%;
+  top: 60%;
   color: white;
   font-size: 40px;
   font-weight: 500;
+  border-radius: 100%;
+  width: 65px;
+  height: 65px;
+  text-align: center;
+  line-height: 65px;
+  background-color: rgba(0, 0, 0, 0.18);
 }
 
 .rec-by-event-musi-hashtagbax {
@@ -220,6 +231,7 @@
 .rec-best-review-musi-score {
   display: inline-block;
   margin-left: 20px;
+  color: #8069ef;
 }
 
 .rec-best-review-hashtagbox {
@@ -349,7 +361,7 @@
 .rec-popular-musi-score {
   display: inline-block;
   margin-left: 20px;
-  color: black;
+  color: #8069ef;
   font-size: 28px;
 }
 

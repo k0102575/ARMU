@@ -36,9 +36,8 @@
 #header-menu-email {
 	position: absolute;
 	right: 13%;
-	top: 25%;
-	transform: translate(-13%, 25%);
-	font-size: 40px;
+	top: 19%;
+	font-size: 46px;
 }
 
 /*헤더부분 끗*/

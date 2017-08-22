@@ -36,28 +36,26 @@ function displayRecruitingEventList() {
       return;
     }
 
-//    $('.loader-box').hide();
     var templateFn = Handlebars.compile($('#recruiting-event-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#recruiting-event-container')
     var html = container.html()
-    container.html(html + generatedHTML).hide()
+    container.html(html + generatedHTML)
 
     displayTab()
 
     function displayTab() {
       var param = decodeURIComponent(location.href).split('?')[1]
-      if(!param) return
+      if(!param) return;
 
       var tab = param.split('=')[1]
       if(tab == 'ongoing') {
-        OngoingBtn.trigger("click");
+        $('#event-type-ongoing-btn').trigger("click");
       } else if(tab == 'end') {
-        endBtn.trigger("click");
+        $('#event-type-end-btn').trigger("click");
       }
-
+      
       window.history.replaceState(null, null, window.location.href.split("?")[0]);
-      container.fadeIn(700);
     }//displayTab()
 
     
@@ -103,7 +101,7 @@ function readyBtns() {
               console.error("getJSON() 실패: ", result.status)
               return;
             }
-
+            
             $.each(result.data.listAppy, function(i, item) {
               var starInteger = parseInt(item.score),
               starRealNumber = item.score - starInteger;

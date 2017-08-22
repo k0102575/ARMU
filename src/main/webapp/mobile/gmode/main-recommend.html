@@ -61,25 +61,26 @@
         
   {{#each listRecommand}}
   <div class="rec-by-event-musi swiper-slide">
+   <div class='rec-by-event-musi-click' data-no={{no}}>
     <div class="rec-by-event-musi-img" style='background-image: url("{{photo}}_300.png")'></div>
     <div class="rec-by-event-musi-name"><span>{{nickName}}</span>
       <div class="rec-by-event-musi-score">{{{score}}}</div>
     </div>
     <!-- rec-by-event-musi-name -->
-    <div class="rec-by-event-musi-fav">{{{isFavorite}}}</i>
-    </div>
+   
     <div class="rec-by-event-musi-hashtagbax">
       {{#each majorList}} <span>#{{this}}</span> {{/each}}
       {{#each genreList}} <span>#{{this}}</span> {{/each}}
       {{#each themeList}} <span>#{{this}}</span> {{/each}}
     </div>
-  </div>
-  <!-- rec-by-event-musi -->
+   </div><!-- rec-by-event-musi-click -->
+  <div class="rec-by-event-musi-fav" data-no={{no}}>{{{isFavorite}}}</i></div>
+  </div><!-- rec-by-event-musi -->
   {{/each}}
 
-</div>
+</div><!-- swiper-wrapper -->
   <br><br>
-  <div class="swiper-pagination"></div><!-- Add Arrows -->
+  <!--<div class="swiper-pagination"></div> Add Arrows -->
   <div class="swiper-button-prev"></div>
   <div class="swiper-button-next"></div>
   </div><!-- swiper-container -->
@@ -96,7 +97,7 @@
 
 <script id="rec-best-review-musi-template" type="text/x-handlebars-template">
   {{#each listBestReview}}
-  <div class="rec-best-review">
+  <div class="rec-best-review" data-no={{no}}>
     <div class="rec-best-review-img" style='background-image: url("{{photo}}_80.png")'></div>
     <div class="rec-best-review-musi"><span>{{nickName}}</span>
       <div class="rec-best-review-musi-score">{{{score}}}</div>
@@ -126,7 +127,7 @@
 
 <script id="rec-popular-musi-template" type="text/x-handlebars-template">
   {{#each listPopular}}
-  <div class="rec-popular-musi">
+  <div class="rec-popular-musi" data-no={{no}}>
     <div class="rec-popular-musi-img" style='background-image: url("{{photo}}_300.png")'></div>
     <div class="rec-popular-musi-name"><span>{{nickName}}</span>
       <div class="rec-popular-musi-score">{{{score}}}

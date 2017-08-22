@@ -185,7 +185,7 @@
   select pr.eno, pr.prno, mu.muno as mno, mu.nick, mu.path, mu.score, 
 mu.major, mu.genre, mu.theme, fav.fav, null as location
 from (select distinct eno from recruiting_eventlist where eno=#{eventNo} and mno=#{memberNo}) de
-inner join pr on de.eno=pr.eno and pr.active='Y'
+inner join pr on de.eno=pr.eno and pr.active='Y' and (pr.status='Y' or pr.status is null)
 inner join musicians mu on pr.muno=mu.muno
 left outer join (
   select count(if(mno is not null, 1, 0)) as fav, mno, muno
@@ -199,7 +199,7 @@ left outer join (
   select appy.eno, appy.appyno, mu.muno as mno, mu.nick, mu.path, mu.score,
 mu.major, mu.genre, mu.theme, fav.fav, null as location
 from (select distinct eno from recruiting_eventlist where eno=#{eventNo} and mno=#{memberNo}) de
-inner join appy on de.eno=appy.eno and appy.active='Y'
+inner join appy on de.eno=appy.eno and appy.active='Y' and (appy.status='Y' or appy.status is null)
 inner join musicians mu on appy.muno=mu.muno
 left outer join (
   select count(if(mno is not null, 1, 0)) as fav, mno, muno
