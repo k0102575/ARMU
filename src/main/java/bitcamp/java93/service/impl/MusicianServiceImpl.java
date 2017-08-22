@@ -117,6 +117,15 @@ public class MusicianServiceImpl implements MusicianService {
   public List<Musician> listAppy(HashMap<String, Object> map) throws Exception {
     return musicianDao.selectAppyList(map);
   }
+  
+  //내 이벤트 에 매칭된 뮤지션 정보 가져오기
+  public Musician myEventMatchMusician(int eNo, int myNo) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("eNo", eNo);
+    valueMap.put("myNo", myNo);
+    return musicianDao.selectMatchMusician(valueMap);
+  }
+  
 
 }
 

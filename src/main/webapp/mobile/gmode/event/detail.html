@@ -133,30 +133,51 @@
 
   <div id="event-detail-appy">
   <i class="fa fa-caret-right" aria-hidden="true"></i>
-  지원 정보<br>
+  지원자 정보<br>
   </div>
 
   <div id="event-detail-appy-container">
   </div>
 
+  <div id="event-detail-pr">
+  <i class="fa fa-caret-right" aria-hidden="true"></i>
+  내가 요청한 뮤지션 정보<br>
+  </div>
+
+  <div id="event-detail-pr-container">
+  </div>
+
+  <div id="event-detail-mtc">
+  <i class="fa fa-caret-right" aria-hidden="true"></i>
+  함께 하는 뮤지션<br>
+  </div>
+
+  <div id="event-detail-mtc-container">
+  </div>
 
   <button type='button' id='event-edit-btn' value="{{no}}">편집하기</button>
+  <button type='button' id='event-list-btn' value="{{no}}">목록으로</button>
   <button type='button' id='event-delete-btn' value="{{no}}">삭제하기</button>
   {{/detail}}
   </script>
 
 		<div id="event-appy-backscreen"></div>
 		<div id="event-appy-info">
-		<div id="event-appy-header"><img id="event-appy-cancel-btn" src="/image/icon/access-black.png">지원 현황</div>
+		<div id="event-appy-header"><img id="event-appy-cancel-btn" src="/image/icon/access-black.png">지원자 정보</div>
 		</div>
+		
+		<div id="event-pr-backscreen"></div>
+    <div id="event-pr-info">
+    <div id="event-pr-header"><img id="event-pr-cancel-btn" src="/image/icon/access-black.png">내가 요청한 뮤지션 정보</div>
+    </div>
 
-<script id="recruiting-event-template" type="text/x-handlebars-template">
+<script id="event-appy-template" type="text/x-handlebars-template">
 {{#each listAppy}}
   <div class='recruiting-musibox-summary-musi' style='background-image: url("{{photo}}_80.png")'></div>
 {{/each}}
 </script>
     
-<script id="event-appy-template" type="text/x-handlebars-template">
+<script id="event-appy-toggle-template" type="text/x-handlebars-template">
 {{#each listAppy}}
 <div class="recruiting-applicant" data-no={{no}}>
     <div class="recruiting-applicant-img" style='background-image: url("{{photo}}_300.png")'></div>
@@ -178,7 +199,56 @@
   </div>
   
   </div><!-- recruiting-applicant -->
+  <hr class="appyHr">
 {{/each}}
+</script>
+
+<script id="event-pr-template" type="text/x-handlebars-template">
+{{#each listPr}}
+  <div class='recruiting-musibox-summary-musi' style='background-image: url("{{photo}}_80.png")'></div>
+{{/each}}
+</script>
+    
+<script id="event-pr-toggle-template" type="text/x-handlebars-template">
+{{#each listPr}}
+<div class="recruiting-applicant" data-no={{no}}>
+    <div class="recruiting-applicant-img" style='background-image: url("{{photo}}_300.png")'></div>
+    <div class="recruiting-applicant-name"><span>{{nickName}}</span>
+    <div class="recruiting-applicant-score">{{{score}}}</div>
+    </div>
+    <!-- recruiting-applicant-name -->
+    <div class="recruiting-applicant-fav">{{{isFavorite}}}</i>
+    </div>
+    <div class="recruiting-applicant-hashtagbax">
+      {{#majorList}}<span>#{{this}}</span>{{/majorList}}
+        {{#themeList}}<span>#{{this}}</span>{{/themeList}}
+        {{#genreList}}<span>#{{this}}</span>{{/genreList}}
+    </div>
+<div class='recruiting-applicant-btnbox'>
+<div class='recruiting-applicant-btn cancel-btn'>요청 취소하기</div>
+</div>
+  </div>
+ <hr class="appyHr">
+{{/each}}
+</script>
+
+<script id="event-match-template" type="text/x-handlebars-template">
+{{#matchMusician}}
+<div class="ongoing-applicant">
+    <div class="ongoing-applicant-img" style='background-image: url("{{photo}}_300.png")'></div>
+    <div class="ongoing-applicant-name"><span>{{nickName}}</span></div>
+      <div class="ongoing-applicant-score">{{{score}}}</div>
+    <!-- ongoing-applicant-name -->
+
+    <div class="ongoing-applicant-fav">{{{isFavorite}}}</i></div>
+    <div class="ongoing-applicant-hashtagbax">
+      {{#majorList}}<span>#{{this}}</span>{{/majorList}}
+      {{#themeList}}<span>#{{this}}</span>{{/themeList}}
+      {{#genreList}}<span>#{{this}}</span>{{/genreList}}
+    </div>
+    <div class='ongoing-applicant-btn'>메시지 보내기</div>
+  </div><!-- ongoing-applicant -->
+{{/matchMusician}}
 </script>
 
 	</div>

@@ -106,6 +106,24 @@
     <result column="team" property="isTeam" />
   </resultMap>
   
+  <resultMap type="musician" id="musicianMatchMap">
+    <id column="muno" property="no" />
+    <result column="name" property="name" />
+    <result column="nick" property="nickName" />
+    <result column="score" property="score" />
+    <result column="path" property="photo" />
+    <result column="fav" property="isFavorite" />
+    <collection property="majorList" ofType="string"> 
+        <result column="major"/> 
+    </collection>
+    <collection property="genreList" ofType="string"> 
+        <result column="genre"/> 
+    </collection> 
+    <collection property="themeList" ofType="string"> 
+       <result column="theme"/> 
+    </collection>
+  </resultMap>
+  
   <sql id="selectAll">
   select m.mno, m.name, mu.nick, m.phone, m.email, mu.age, mu.team, mu.hpg, m.path, mu.gender, 
   mj.name as major, g.name as genre, t.name as theme, mtc.score, mtc.rev, if(fm.fav is not null, 1, 0) as fav, 
@@ -195,7 +213,7 @@ left outer join (
   </select><!-- 승민 -->
   
   <select id="myEventPrList" resultMap="musicianAppyMap" parameterType="int">
-  select prno, muno as muNoList from pr where eno = #{eNo}
+  select eno, muno as muNoList from pr where eno = #{eNo} and active = 'Y'
   </select><!-- 승민 -->
   
    <select id="selectFavorList" resultMap="musicianFavorMap" parameterType="int">
@@ -460,6 +478,30 @@ left outer join (
     delete from musi 
     where muno=#{no}
   </delete>
+  
+  <select id="selectMatchMusician" parameterType="map" resultMap="musicianMatchMap">
+    select mu.muno, mu.nick, mm.path, fav.fav, score.score,
+mj.name as major, g.name as genre, t.name as theme
+from mtc mtc
+left outer join musi mu on mtc.muno = mu.muno
+left outer join memb mm on mu.muno = mm.mno
+left outer join evn e on e.eno=mtc.eno 
+left outer join mjr_musi mjm on mu.muno=mjm.muno inner join mjr mj on mjm.mjrno=mj.mjrno
+left outer join gnr_musi gm on mu.muno=gm.muno inner join gnr g on gm.gnrno=g.gnrno
+left outer join thm_musi tm on mu.muno=tm.muno inner join thm t on tm.thmno=t.thmno
+left outer join (
+  select count(if(mno is not null, 1, 0)) as fav, mno, muno
+  from fav_musi
+  where mno = 5
+  group by muno
+) fav on fav.muno=mu.muno
+left outer join (
+  select avg(score) as score, muno
+  from mtc
+  group by muno
+) score on score.muno=mu.muno
+where mtc.eno = 17
+  </select>
   
   <select id="selectSearchResultList" resultMap="musicianMap2" parameterType="string">
    select m.mno, m.name, mu.nick, m.phone, m.email, mu.age, mu.team,

@@ -22,6 +22,7 @@ public interface MusicianService {
   void remove(int no) throws Exception;
   List<Musician> listPr(HashMap<String, Object> map) throws Exception;
   List<Musician> listAppy(HashMap<String, Object> map) throws Exception;
+  Musician myEventMatchMusician(int eNo, int myNo) throws Exception; // 내 이벤트 에 매칭된 뮤지션 정보 가져오기
 }
 
 

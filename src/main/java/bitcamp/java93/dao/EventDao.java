@@ -9,7 +9,7 @@ import bitcamp.java93.domain.Event;
 public interface EventDao {
   List<Event> selectOngoingList();
   int insert(Event event);
-  void update(Event event);
+  void update(Event event); // 이벤트 변경
   void deleteReherse(int no);
   int insertReherse(Event event);
   void delete(int eno);
@@ -21,6 +21,7 @@ public interface EventDao {
   void appyEvent(Map<String,Object> valueMap); // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 추가
   void appyEventCheckUpdate(Map<String,Object> valueMap); // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"Y"변경
   void appyEventCancelUpdate(Map<String,Object> valueMap); // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"N"변경
+  void prEventCancelUpdate(Map<String,Object> valueMap); // 일반 모드 > 뮤지션 상세페이지 > 뮤지션 홍보 활성"N"변경
   List<Event> selectSurfList();
   List<Event> selectSearchResultList(String search);
   List<Event> selectRecruitingList(int no);//나의이벤트 > 모집중 이벤트 리스트

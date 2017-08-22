@@ -1,13 +1,12 @@
 "use strict"
 HandlebarsIntl.registerWith(Handlebars);
 displayEventDetail()
-getAppyList()
 
 function displayEventDetail() {
   $.getJSON('/event/myEventDetail.json', 
       { 
     "no" : location.href.split('?')[1].split('=')[1]
-      },
+      }, 
       function(result) {
         console.log(result)
         var templateFn = Handlebars.compile($('#select-event-template').text())
@@ -19,14 +18,18 @@ function displayEventDetail() {
         rhsCheck(result.data.detail.haveRehearsal)
 
         $("#event-detail-header-prev").on('click', function() {
-          location.href = "/mobile/gmode/index.html"
+          location.href = "/mobile/gmode/event/list.html"
+        })
+
+        $("#event-list-btn").on('click', function() {
+          location.href = "/mobile/gmode/event/list.html"
         })
 
         $("#event-edit-btn").on('click', function() {
           swal({
             title: "이벤트를 편집하시면 \n" +
             "해당 이벤트에 대한 \n" + 
-            "뮤지션의 지원이 취소됩니다.",
+            "뮤지션의 지원 및 홍보가 취소됩니다.",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#8069ef",
@@ -43,7 +46,7 @@ function displayEventDetail() {
           swal({
             title: "이벤트를 삭제하시면 \n" +
             "해당 이벤트에 대한 \n" + 
-            "뮤지션의 지원이 취소됩니다.",
+            "뮤지션의 지원 및 홍보가 취소됩니다.",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#8069ef",
@@ -81,16 +84,62 @@ function displayEventDetail() {
           $("#container").css("position", "fixed")
         })
 
+        $("#event-detail-pr-container").on('click', function () {
+          $("#event-pr-info").toggle()
+          $("#event-pr-backscreen").css("display", "block")
+          $("#container").css("position", "fixed")
+        })
+
+        if(result.data.detail.mtc_info == 1) {
+          $("#event-detail-appy").css("display", "none")
+          $("#event-detail-appy-container").css("display", "none")
+          $("#event-detail-pr").css("display", "none")
+          $("#event-detail-pr-container").css("display", "none")
+          $("#event-edit-btn").css("display", "none")
+          $("#event-list-btn").css("display", "block")
+          $("#event-delete-btn").css("display", "none")
+
+          $.getJSON('/musician/myEventMatchMusician.json', 
+              { 
+            "eNo" : location.href.split('?')[1].split('=')[1]
+              }, 
+              function(result) {
+                var templateFn = Handlebars.compile($('#event-match-template').text())
+                var generatedHTML = templateFn(result.data)
+                var container = $("#event-detail-mtc-container")
+                var html = container.html()
+                container.html(html + generatedHTML)
+                
+                $.each(result.data.matchMusician, function(i, item) {
+                  var starInteger = parseInt(item.score),
+                  starRealNumber = item.score - starInteger;
+                  starAdd(starInteger, starRealNumber, item)
+                  heartAdd(item)
+                });
+                
+              })
+              return
+
+        }
+
+        setMusicianList()
+
       })
 }
 
-function getAppyList() {
+function setMusicianList() {
   $.getJSON('/musician/listAppy.json',
       {'eventNo': location.href.split('?')[1].split('=')[1]},
       function(result) {
         if(result.status != 'success') {
           console.error("getJSON() 실패: ", result.status)
           return;
+        }
+
+        if(result.data.listAppy.length == 0) {
+          $("#event-detail-appy").css("display", "none")
+          $("#event-detail-appy-container").css("display", "none")
+          return
         }
 
         $.each(result.data.listAppy, function(i, item) {
@@ -100,13 +149,13 @@ function getAppyList() {
           heartAdd(item)
         });
 
-        var templateFn = Handlebars.compile($('#event-appy-template').text())
+        var templateFn = Handlebars.compile($('#event-appy-toggle-template').text())
         var generatedHTML = templateFn(result.data)
         var container = $("#event-appy-info")
         var html = container.html()
         container.html(html + generatedHTML)
 
-        var templateFn = Handlebars.compile($('#recruiting-event-template').text())
+        var templateFn = Handlebars.compile($('#event-appy-template').text())
         var generatedHTML = templateFn(result.data)
         var container = $('#event-detail-appy-container')
         var html = container.html()
@@ -121,6 +170,49 @@ function getAppyList() {
       }, function(err) {
         console.log(err)
       })//getJson()
+
+      $.getJSON('/musician/listPr.json',
+          {'eventNo': location.href.split('?')[1].split('=')[1]},
+          function(result) {
+            if(result.status != 'success') {
+              console.error("getJSON() 실패: ", result.status)
+              return;
+            }
+
+            if(result.data.listPr.length == 0) {
+              $("#event-detail-pr").css("display", "none")
+              $("#event-detail-pr-container").css("display", "none")
+              return
+            }
+
+            $.each(result.data.listPr, function(i, item) {
+              var starInteger = parseInt(item.score),
+              starRealNumber = item.score - starInteger;
+              starAdd(starInteger, starRealNumber, item)
+              heartAdd(item)
+            });
+
+            var templateFn = Handlebars.compile($('#event-pr-toggle-template').text())
+            var generatedHTML = templateFn(result.data)
+            var container = $("#event-pr-info")
+            var html = container.html()
+            container.html(html + generatedHTML)
+
+            var templateFn = Handlebars.compile($('#event-pr-template').text())
+            var generatedHTML = templateFn(result.data)
+            var container = $('#event-detail-pr-container')
+            var html = container.html()
+            container.html(html + generatedHTML)
+
+            $("#event-pr-cancel-btn").on('click', function() {
+              $("#event-pr-info").toggle()
+              $("#event-pr-backscreen").css("display", "none")
+              $("#container").css("position", "relative")
+            })
+
+          }, function(err) {
+            console.log(err)
+          })//getJson()
 }
 
 function rhsCheck(rhs) {

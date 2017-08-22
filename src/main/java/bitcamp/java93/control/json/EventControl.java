@@ -54,7 +54,7 @@ public class EventControl {
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
-//리허설 있는 이벤트 변경
+  //리허설 있는 이벤트 변경
   @RequestMapping("updateReherse")
   public JsonResult updateReherse(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre, HttpSession session) throws Exception {
     event.setEventRegistTheme(setArrayList(eventRegistTheme));
@@ -71,7 +71,7 @@ public class EventControl {
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
-  //리허설 없는 이벤트 추가
+  //리허설 없는 이벤트 변경
   @RequestMapping("update")
   public JsonResult update(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre, HttpSession session) throws Exception {
     event.setEventRegistTheme(setArrayList(eventRegistTheme));
@@ -93,6 +93,7 @@ public class EventControl {
     categoryService.deleteEventCategory(eno);
     eventService.deleteEventReherse(eno);
     eventService.delete(eno);
+    eventService.deleteRequestEvent(eno);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
@@ -169,6 +170,7 @@ public class EventControl {
     return result;
   }
   
+  // 뮤지션모드 > 이벤트 상세페이지 > 이벤트 지원
   @RequestMapping("requestEvent")
   public JsonResult requestEvent(HttpSession session, int eNo, int appyNo){
     Integer muNo = getLoginMember(session).getNo();
@@ -184,9 +186,6 @@ public class EventControl {
       }
       
     } else {
-      System.out.println(muNo);
-      System.out.println(eNo);
-      System.out.println(appyNo);
       try {
         eventService.requestEvent(muNo, eNo);
         return new JsonResult(JsonResult.SUCCESS, "success");
@@ -197,6 +196,7 @@ public class EventControl {
     return result;
   }
   
+  //뮤지션모드 > 이벤트 상세페이지 > 이벤트 지원 취소
   @RequestMapping("requestEventCancel")
   public JsonResult requestEventCancel(HttpSession session, int eNo) {
     JsonResult result = new JsonResult();

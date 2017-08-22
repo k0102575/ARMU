@@ -334,6 +334,29 @@ public class MusicianControl {
     return result;
   }
   
+  // 내 이벤트에 매칭된 뮤지션 정보
+  @RequestMapping("myEventMatchMusician")
+  public JsonResult myEventMatchMusician(int eNo, HttpSession session) {
+    JsonResult result = new JsonResult();
+
+      try {
+        Musician musician = musicianService.myEventMatchMusician(eNo, getLoginMember(session).getNo());
+
+        result.setStatus(JsonResult.SUCCESS);
+
+        HashMap<String,Object> dataMap = new HashMap<>();
+        dataMap.put("matchMusician", musician);
+        result.setData(dataMap);
+
+      } catch (Exception e) {
+        e.printStackTrace();
+        result.setStatus(JsonResult.ERROR);
+      }
+    return result;
+  }
+  
+  
+  
 }
 
 

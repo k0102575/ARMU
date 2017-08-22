@@ -24,3 +24,40 @@ select e.eno, e.locno, e.pay, e.addr, e.date, e.title, fe.fav,
       left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on me.mjrno=mj.mjrno
       left outer join gnr_evn ge on e.eno=ge.eno inner join gnr g on ge.gnrno=g.gnrno
       left outer join thm_evn te on e.eno=te.eno inner join thm t on te.thmno=t.thmno
+
+
+      
+  매치된 뮤지션 정보
+  
+select mu.muno, mu.nick, mm.path, fav.fav, score.score,
+mj.name as major, g.name as genre, t.name as theme
+from mtc mtc
+left outer join musi mu on mtc.muno = mu.muno
+left outer join memb mm on mu.muno = mm.mno
+left outer join evn e on e.eno=mtc.eno 
+left outer join mjr_musi mjm on mu.muno=mjm.muno inner join mjr mj on mjm.mjrno=mj.mjrno
+left outer join gnr_musi gm on mu.muno=gm.muno inner join gnr g on gm.gnrno=g.gnrno
+left outer join thm_musi tm on mu.muno=tm.muno inner join thm t on tm.thmno=t.thmno
+left outer join (
+  select count(if(mno is not null, 1, 0)) as fav, mno, muno
+  from fav_musi
+  where mno = #{myNo}
+  group by muno
+) fav on fav.muno=mu.muno
+left outer join (
+  select avg(score) as score, muno
+  from mtc
+  group by muno
+) score on score.muno=mu.muno
+where mtc.eno = #{eNo}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

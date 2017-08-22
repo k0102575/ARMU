@@ -8,9 +8,9 @@
 }
 
 .sweet-alert h2 {
-    font-size: 3em;
-    top: 2%;
-    line-height: 75px;
+  font-size: 2.7rem;
+  top: 2%;
+  line-height: 75px;
 }
 
 /* 헤더 시작 */
@@ -102,6 +102,7 @@
   padding-left: 55px;
   line-height: 120px;
   box-sizing: border-box;
+  margin-top: 5%;
 }
 
 #event-detail-appy-container {
@@ -112,7 +113,6 @@
   margin-top: 5%;
   margin-left: 5%;
   color: #252525;
-  margin-bottom: 100px;
 }
 
 .recruiting-musibox-summary-musi {
@@ -285,6 +285,195 @@
 }
 
 /* 지원 현황 끝*/
+
+/* 요청 뮤지션 정보 시작 */
+
+#event-detail-pr {
+  float: left;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  background: #F5F5F5;
+  height: 100px;
+  color: #252525;
+  padding-left: 55px;
+  line-height: 120px;
+  box-sizing: border-box;
+  margin-top: 5%;
+}
+
+#event-detail-pr-container {
+  float: left;
+  width: 90%;
+  min-height: 150px;
+  font-size: 2rem;
+  margin-top: 5%;
+  margin-left: 5%;
+  color: #252525;
+}
+
+/* 요청 뮤지션 정보 끝 */
+
+/* 요청 뮤지션 현황 시작 */
+
+#event-pr-info {
+  border: 1px solid black;
+  position: fixed;
+  width: 90%;
+  left: 5%;
+  height: 80%;
+  top: 15%;
+  display: none;
+  background-color: white;
+  z-index: 20;
+  overflow-y:auto; 
+  border-radius: 25px;
+}
+
+#event-pr-backscreen {
+  position: fixed;
+  display: none;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .6);
+  z-index: 19;
+}
+
+#event-pr-header {
+    width: 100%;
+    height: 5%;
+    text-align: center;
+    margin-top: 7%;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 10%;
+    color: #444;
+}
+
+#event-pr-cancel-btn {
+  position: absolute;
+  right: 5%;
+  top: 5.5%;
+  font-size: 4em;
+  color: #444;
+  font-weight: 100;
+}
+
+/* 요청 뮤지션 현황 끝 */
+
+/* 매칭 뮤지션 시작 */
+#event-detail-mtc {
+  float: left;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  background: #F5F5F5;
+  height: 100px;
+  color: #252525;
+  padding-left: 55px;
+  line-height: 120px;
+  box-sizing: border-box;
+  margin-top: 5%;
+}
+
+#event-detail-mtc-container {
+  float: left;
+  width: 90%;
+  min-height: 150px;
+  font-size: 2rem;
+  margin-top: 5%;
+  margin-left: 5%;
+  color: #252525;
+}
+
+.ongoing-applicant {
+  position: relative;
+  display: inline-block;
+  height: 250px;
+  width: 95%;
+  margin: 0%;
+  text-align: justify;
+  border-radius: 10px;
+}
+
+.ongoing-applicant-img {
+  display: table;
+  height: 250px;
+  width: 250px;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100%;
+}
+
+.ongoing-applicant-name {
+  position: absolute;
+  display: inline-block;
+  color: black;
+  font-size: 32px;
+  font-weight: 500;
+  top: -2px;
+  width: 52%;
+  left: 300px;
+}
+
+.ongoing-applicant-score {
+  position: absolute;
+  top: -1%;
+  right: 18%;
+  margin-left: 20px;
+  color: #ffd700;
+  font-size: 33px;
+  width: 30%;
+}
+
+.ongoing-applicant-fav {
+  position: absolute;
+  display: inline-block;
+  top: -3%;
+  right: 1%;
+  color: #8069ef;
+  font-size: 40px;
+  width: 10%;
+  font-weight: 500;
+  text-align: right;
+}
+
+.ongoing-applicant-hashtagbax {
+  position: absolute;
+  height: 99px;
+  overflow: hidden;
+  font-size: 30px;
+  color: black;
+  width: 68%;
+  top: 56px;
+  left: 292px;
+}
+
+.ongoing-applicant-hashtagbax > span {
+  float: left;
+  margin: 0 2%;
+}
+
+.ongoing-applicant-btn {
+  position: absolute;
+  display: inline-block;
+  bottom: 3%;
+  left: 301px;
+  width: 30%;
+  height: 70px;
+  text-align: center;
+  line-height: 70px;
+  font-size: 2rem;
+  color: black;
+  background: white;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+/* 매칭 뮤지션 끝 */
 
 /* 이벤트 타이틀, 사용자 정보 시작 */
 
@@ -664,6 +853,25 @@
   margin-left: 30%;
   margin-bottom: 5%;
   float: left;
+  margin-top: 150px;
+}
+
+#event-list-btn {
+  font-size: 35px;
+  font-weight: 400;
+  height: 80px;
+  width: 400px;
+  border-radius: 50px;
+  border: 1px solid white;
+  line-height: 60px;
+  color: white;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, .85);
+  margin-left: 30%;
+  margin-bottom: 5%;
+  float: left;
+  margin-top: 150px;
+  display: none;
 }
 
 #event-delete-btn {
