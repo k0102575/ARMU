@@ -5,7 +5,7 @@
 <script id="ongoing-event-template" type="text/x-handlebars-template">
 {{#each listOngoing}}
 <div class="recruiting">
-<div class="event-box">
+<div class="event-box" data-no={{no}}>
   <div class="recruiting-title">
 {{#intl locales="ko-KO"}}
   <div class="recruiting-dday ongoing-dday">{{formatRelative date units="day"}}</div>

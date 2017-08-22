@@ -27,8 +27,7 @@ function displayEndEventList() {
 
 
 function controlBtns() {
-	var applicantBtn = $('.end-applicant-btn'),
-	eventBox = $('.event-box');
+	var applicantBtn = $('.end-applicant-btn');
 
 	applicantBtn.on('click', function(e) {
 		if($(this).attr('data-open') == "true") {
@@ -43,9 +42,9 @@ function controlBtns() {
 	})
 
 
-	eventBox.on('click', function(e) {
-		location.href = 'detail.html'
-	})
+  $('.event-box').on('click', function(e) {
+    location.href = 'detail.html?no=' + $(this).attr('data-no')
+  })
 
 }
 

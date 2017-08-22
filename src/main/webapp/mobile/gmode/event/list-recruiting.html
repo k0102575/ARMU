@@ -5,7 +5,7 @@
 <script id="recruiting-event-template" type="text/x-handlebars-template">
 {{#each listRecruiting}}
 <div class="recruiting">
-<div class="event-box">
+<div class="event-box" data-no={{no}}>
   <div class="recruiting-title">
 {{#intl locales="ko-KO"}}
   <div class="recruiting-dday">{{formatRelative date units="day" style="numeric"}}</div>

@@ -67,6 +67,10 @@ eventBox.on('click', function(e) {
 	location.href = 'detail.html'
 })
 
+$('.event-box').on('click', function(e) {
+  location.href = 'detail.html?no=' + $(this).attr('data-no')
+})
+
 
 function postAppy(pressedBtn) {
   if(pressedBtn.attr('data-fill') == "false") {

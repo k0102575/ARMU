@@ -22,6 +22,10 @@ function displayOngoingEventList() {
     var container = $('#ongoing-event-container')
     var html = container.html()
     container.html(html + generatedHTML)
+    
+    $('.event-box').on('click', function(e) {
+      location.href = 'detail.html?no=' + $(this).attr('data-no')
+    })
   }, function(err) {
     console.log(err)
   })
