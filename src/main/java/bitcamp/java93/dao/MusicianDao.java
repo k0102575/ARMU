@@ -23,4 +23,5 @@ public interface MusicianDao {
   List<Musician> selectPrList(HashMap<String,Object> valueMap);
   List<Musician> selectAppyList(HashMap<String,Object> valueMap);
   Musician myEventAppyList(int eNo);
+  Musician myEventPrList(int eNo);
 }

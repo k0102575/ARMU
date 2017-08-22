@@ -27,96 +27,41 @@ public class EventControl {
   @Autowired CategoryService categoryService;
   @Autowired NotificationService notificationService;
   
+  // 리허설 있는 이벤트 추가
   @RequestMapping("addReherse")
   public JsonResult addReherse(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre, HttpSession session) throws Exception {
-    String[] themeList = eventRegistTheme.split(",");
-    String[] majorList = eventRegistMajor.split(",");
-    String[] genreList = eventRegistGenre.split(",");
-    
-    ArrayList<String> registThemeList = new ArrayList<>();
-    ArrayList<String> registMajorList = new ArrayList<>();
-    ArrayList<String> registGenreList = new ArrayList<>();
-    
-    for (String theme : themeList) {
-      registThemeList.add(theme);
-    } 
-    
-    for (String major : majorList) {
-      registMajorList.add(major);
-    } 
-    
-    for (String genre : genreList) {
-      registGenreList.add(genre);
-    } 
-    
-    event.setEventRegistTheme(registThemeList);
-    event.setEventRegistMajor(registMajorList);
-    event.setEventRegistGenre(registGenreList);
+    event.setEventRegistTheme(setArrayList(eventRegistTheme));
+    event.setEventRegistMajor(setArrayList(eventRegistMajor));
+    event.setEventRegistGenre(setArrayList(eventRegistGenre));
     event.setWriter(getLoginMember(session).getNo());
+    
     eventService.add(event);
     categoryService.registEventCategory(event);
     eventService.registEventReherse(event);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
+//리허설 없는 이벤트 추가
   @RequestMapping("add")
   public JsonResult add(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre, HttpSession session) throws Exception {
-    String[] themeList = eventRegistTheme.split(",");
-    String[] majorList = eventRegistMajor.split(",");
-    String[] genreList = eventRegistGenre.split(",");
-    
-    ArrayList<String> registThemeList = new ArrayList<>();
-    ArrayList<String> registMajorList = new ArrayList<>();
-    ArrayList<String> registGenreList = new ArrayList<>();
-    
-    for (String theme : themeList) {
-      registThemeList.add(theme);
-    } 
-    
-    for (String major : majorList) {
-      registMajorList.add(major);
-    } 
-    
-    for (String genre : genreList) {
-      registGenreList.add(genre);
-    } 
-    
-    event.setEventRegistTheme(registThemeList);
-    event.setEventRegistMajor(registMajorList);
-    event.setEventRegistGenre(registGenreList);
-    
+    event.setEventRegistTheme(setArrayList(eventRegistTheme));
+    event.setEventRegistMajor(setArrayList(eventRegistMajor));
+    event.setEventRegistGenre(setArrayList(eventRegistGenre));
     event.setWriter(getLoginMember(session).getNo());
+    
     eventService.add(event);
     categoryService.registEventCategory(event);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
+//리허설 있는 이벤트 변경
   @RequestMapping("updateReherse")
   public JsonResult updateReherse(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre, HttpSession session) throws Exception {
-    String[] themeList = eventRegistTheme.split(",");
-    String[] majorList = eventRegistMajor.split(",");
-    String[] genreList = eventRegistGenre.split(",");
-    
-    ArrayList<String> registThemeList = new ArrayList<>();
-    ArrayList<String> registMajorList = new ArrayList<>();
-    ArrayList<String> registGenreList = new ArrayList<>();
-    
-    for (String theme : themeList) {
-      registThemeList.add(theme);
-    } 
-    
-    for (String major : majorList) {
-      registMajorList.add(major);
-    } 
-    
-    for (String genre : genreList) {
-      registGenreList.add(genre);
-    } 
-    
-    event.setEventRegistTheme(registThemeList);
-    event.setEventRegistMajor(registMajorList);
-    event.setEventRegistGenre(registGenreList);
+    event.setEventRegistTheme(setArrayList(eventRegistTheme));
+    event.setEventRegistMajor(setArrayList(eventRegistMajor));
+    event.setEventRegistGenre(setArrayList(eventRegistGenre));
     event.setWriter(getLoginMember(session).getNo());
+    
     eventService.update(event);
     categoryService.deleteEventCategory(event.getNo());
     categoryService.registEventCategory(event);
@@ -126,33 +71,14 @@ public class EventControl {
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
+  //리허설 없는 이벤트 추가
   @RequestMapping("update")
   public JsonResult update(Event event, String eventRegistTheme, String eventRegistMajor, String eventRegistGenre, HttpSession session) throws Exception {
-    String[] themeList = eventRegistTheme.split(",");
-    String[] majorList = eventRegistMajor.split(",");
-    String[] genreList = eventRegistGenre.split(",");
-    
-    ArrayList<String> registThemeList = new ArrayList<>();
-    ArrayList<String> registMajorList = new ArrayList<>();
-    ArrayList<String> registGenreList = new ArrayList<>();
-    
-    for (String theme : themeList) {
-      registThemeList.add(theme);
-    } 
-    
-    for (String major : majorList) {
-      registMajorList.add(major);
-    } 
-    
-    for (String genre : genreList) {
-      registGenreList.add(genre);
-    } 
-    
-    event.setEventRegistTheme(registThemeList);
-    event.setEventRegistMajor(registMajorList);
-    event.setEventRegistGenre(registGenreList);
-    
+    event.setEventRegistTheme(setArrayList(eventRegistTheme));
+    event.setEventRegistMajor(setArrayList(eventRegistMajor));
+    event.setEventRegistGenre(setArrayList(eventRegistGenre));
     event.setWriter(getLoginMember(session).getNo());
+    
     eventService.update(event);
     categoryService.deleteEventCategory(event.getNo());
     categoryService.registEventCategory(event);
@@ -161,6 +87,7 @@ public class EventControl {
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
+  // 이벤트 삭제
   @RequestMapping("deleteEvent")
   public JsonResult deleteEvent(int eno) throws Exception {
     categoryService.deleteEventCategory(eno);
@@ -507,6 +434,19 @@ public class EventControl {
     }
     
     return result;
+  }
+  
+  private ArrayList<String> setArrayList(String list) {
+    
+    String[] resultList = list.split(",");
+    
+    ArrayList<String> returnList = new ArrayList<>();
+    
+    for (String result : resultList) {
+      returnList.add(result);
+    } 
+    
+    return returnList;
   }
   
 }

@@ -29,24 +29,42 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectOngoingList();
   }
   
+  // 이벤트 추가
   public void add(Event event) throws Exception {   
     eventDao.insert(event);
   }
   
+  // 이벤트 변경
   public void update(Event event) throws Exception {   
     eventDao.update(event);
   }
   
+  // 이벤트 리허설 삭제
   public  void deleteEventReherse(int eno) throws Exception {   
     eventDao.deleteReherse(eno);
   }
   
+  // 이벤트 리허설 추가
   public  void registEventReherse(Event event) throws Exception {   
     eventDao.insertReherse(event);
   }
   
-  public  void delete(int eno) throws Exception {   
+  // 이벤트 삭제
+  public  void delete(int eno) throws Exception {
     eventDao.delete(eno);
+    
+    Musician musicianAppyList = musicianDao.myEventAppyList(eno);
+    
+    if(musicianAppyList != null) {
+      HashMap<String,Object> valueMap = new HashMap<>();
+      valueMap.put("eNo", eno);
+      for (String muNo : musicianAppyList.getMuNoList()) {
+        valueMap.put("muNo", muNo);
+        eventDao.appyEventCancelUpdate(valueMap);
+        notificationDao.insertEventDeleteNoti(valueMap);
+      }
+      return;
+    }
   }
   
   /*뮤지션모드 > 추천탭 > 나에게 꼭 맞는 이벤트*/
@@ -105,16 +123,17 @@ public class EventServiceImpl implements EventService {
     notificationDao.insertEventAppyCancelNoti(valueMap);
   }
   
-  //일반모드 > 이벤트 상세페이지 > 지원했던 뮤지션 지원 상태 변경 및 변경 메시지 발송
+  //일반모드 > 이벤트 변경 > 지원했던 뮤지션 지원 상태 변경 및 변경 메시지 발송
   public void updateRequestEvent(int eNo) throws Exception {
-    Musician musician = musicianDao.myEventAppyList(eNo);
+    Musician musicianAppyList = musicianDao.myEventAppyList(eNo);
     
-    if(musician != null) {
+    if(musicianAppyList != null) {
       HashMap<String,Object> valueMap = new HashMap<>();
       valueMap.put("eNo", eNo);
-      for (String appyNo : musician.getAppyNoList()) {
-        valueMap.put("appyNo", appyNo);
+      for (String muNo : musicianAppyList.getMuNoList()) {
+        valueMap.put("muNo", muNo);
         eventDao.appyEventCancelUpdate(valueMap);
+        valueMap.put("appyNo", valueMap.get("appyno"));
         notificationDao.insertEventEditNoti(valueMap);
       }
       return;

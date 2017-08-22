@@ -72,10 +72,11 @@
     </collection>
   </resultMap>
   
-   <resultMap type="musician" id="musicianAppyMap">
-    <collection property="appyNoList" ofType="string"> 
-        <result column="appyList"/> 
-    </collection>
+  <resultMap type="musician" id="musicianAppyMap">
+   <id column="eno" property="eno" />
+   <collection property="muNoList" ofType="string"> 
+     <result column="muNoList"/> 
+   </collection>
   </resultMap>
   
   <resultMap type="musician" id="musicianFavorMap">
@@ -190,7 +191,11 @@ left outer join (
   </select><!-- 완진 -->
   
   <select id="myEventAppyList" resultMap="musicianAppyMap" parameterType="int">
-  select muno as appyList from appy where eno = #{eNo} and active = 'Y'
+  select eno, muno as muNoList from appy where eno = #{eNo} and active = 'Y'
+  </select><!-- 승민 -->
+  
+  <select id="myEventPrList" resultMap="musicianAppyMap" parameterType="int">
+  select prno, muno as muNoList from pr where eno = #{eNo}
   </select><!-- 승민 -->
   
    <select id="selectFavorList" resultMap="musicianFavorMap" parameterType="int">

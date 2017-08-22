@@ -19,7 +19,7 @@ public interface EventService {
   void requestEvent(int muNo, int eNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 추가
   void requestEventCheck(int muNo, int eNo, int appyNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"Y"변경
   void requestEventCancel(int muNo, int eNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"N"변경
-  void updateRequestEvent(int no) throws Exception; // 일반모드 > 이벤트 상세페이지 > 지원했던 뮤지션 지원 상태 변경 및 변경 메시지 발송
+  void updateRequestEvent(int no) throws Exception; // 일반모드 > 이벤트 변경 > 지원했던 뮤지션 지원 상태 변경 및 변경 메시지 발송
   List<Event> listSurf() throws Exception;
   List<Event> listSearchResult(String search) throws Exception;
   List<Event> listRecruiting(int no) throws Exception;//나의이벤트 > 모집중 이벤트 리스트

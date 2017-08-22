@@ -31,6 +31,7 @@ public class Musician extends Member  {
   int locno;
   int mjrno;
   int gnrno;
+  int eno;
   String nickName;
   String search;
   Map<String , String> fileMap;
@@ -44,9 +45,9 @@ public class Musician extends Member  {
   ArrayList<Integer> majorNoList;
   ArrayList<Integer> genreNoList;
   ArrayList<Integer> themeNoList;
-  ArrayList<String> appyNoList;
   List<String> photoList;
   List<String> movieList;
+  List<String> muNoList;
   @Override
   public String toString() {
     return "Musician [age=" + age + ", isTeam=" + isTeam + ", homepage=" + homepage + ", intro=" + intro + ", gender="
@@ -54,12 +55,12 @@ public class Musician extends Member  {
         + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", spno=" + spno
         + ", specDate=" + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge
         + ", location=" + location + ", sido=" + sido + ", fav=" + fav + ", indexL=" + indexL + ", indexM=" + indexM
-        + ", indexG=" + indexG + ", locno=" + locno + ", mjrno=" + mjrno + ", gnrno=" + gnrno + ", nickName=" + nickName
-        + ", search=" + search + ", fileMap=" + fileMap + ", list=" + list + ", reviewList=" + reviewList
-        + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList=" + themeList + ", locationList="
-        + locationList + ", locationNoList=" + locationNoList + ", majorNoList=" + majorNoList + ", genreNoList="
-        + genreNoList + ", themeNoList=" + themeNoList + ", appyNoList=" + appyNoList + ", photoList=" + photoList
-        + ", movieList=" + movieList + "]";
+        + ", indexG=" + indexG + ", locno=" + locno + ", mjrno=" + mjrno + ", gnrno=" + gnrno + ", eno=" + eno
+        + ", nickName=" + nickName + ", search=" + search + ", fileMap=" + fileMap + ", list=" + list + ", reviewList="
+        + reviewList + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList=" + themeList
+        + ", locationList=" + locationList + ", locationNoList=" + locationNoList + ", majorNoList=" + majorNoList
+        + ", genreNoList=" + genreNoList + ", themeNoList=" + themeNoList + ", photoList=" + photoList + ", movieList="
+        + movieList + ", muNoList=" + muNoList + "]";
   }
   public int getAge() {
     return age;
@@ -217,6 +218,12 @@ public class Musician extends Member  {
   public void setGnrno(int gnrno) {
     this.gnrno = gnrno;
   }
+  public int getEno() {
+    return eno;
+  }
+  public void setEno(int eno) {
+    this.eno = eno;
+  }
   public String getNickName() {
     return nickName;
   }
@@ -295,12 +302,6 @@ public class Musician extends Member  {
   public void setThemeNoList(ArrayList<Integer> themeNoList) {
     this.themeNoList = themeNoList;
   }
-  public ArrayList<String> getAppyNoList() {
-    return appyNoList;
-  }
-  public void setAppyNoList(ArrayList<String> appyNoList) {
-    this.appyNoList = appyNoList;
-  }
   public List<String> getPhotoList() {
     return photoList;
   }
@@ -313,10 +314,12 @@ public class Musician extends Member  {
   public void setMovieList(List<String> movieList) {
     this.movieList = movieList;
   }
-  
-  
-  
-  
+  public List<String> getMuNoList() {
+    return muNoList;
+  }
+  public void setMuNoList(List<String> muNoList) {
+    this.muNoList = muNoList;
+  }
   
   
 }

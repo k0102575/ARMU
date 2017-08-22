@@ -52,6 +52,11 @@ order by date desc
     values(#{muNo}, #{eNo}, '참여요청', CURDATE(), '이벤트 홍보', #{prNo})
   </insert><!-- 승민 -->
   
+  
+  <delete id="deletePrNoti" parameterType="int">
+    delete from noti where eno = #{eno}
+  </delete> <!-- 승민 -->
+  
   <insert id="insertEventAppyNoti" parameterType="map">
     insert into noti(muno, eno, type, date, cont, appyno) 
     values(#{muNo}, #{eNo}, '지원', CURDATE(), '이벤트 지원', #{appyno})
@@ -62,15 +67,14 @@ order by date desc
     values(#{muNo}, #{eNo}, '지원 취소', CURDATE(), '이벤트 지원 취소')
   </insert><!-- 승민 -->
   
-  
   <insert id="insertEventEditNoti" parameterType="map">
-    insert into noti(muno, eno, type, date, cont) 
-    values(#{appyNo}, #{eNo}, '이벤트 수정', CURDATE(), '이벤트 수정')
+    insert into noti(muno, eno, type, date, cont, appyno) 
+    values(#{muNo}, #{eNo}, '이벤트 수정', CURDATE(), '이벤트 수정', #{appyNo})
   </insert><!-- 승민 -->
   
   <insert id="insertEventDeleteNoti" parameterType="map">
     insert into noti(muno, eno, type, date, cont) 
-    values(#{appyNo}, #{eNo}, '이벤트 삭제', CURDATE(), '이벤트 삭제')
+    values(#{muNo}, #{eNo}, '이벤트 삭제', CURDATE(), '이벤트 삭제')
   </insert><!-- 승민 -->
   
   

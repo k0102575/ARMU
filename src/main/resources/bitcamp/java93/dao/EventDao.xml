@@ -402,18 +402,6 @@ where ap.mno=#{no}
     where eno = #{eNo} and muno = #{muNo}
   </update> <!-- 승민 -->
   
-  <delete id="deleteAppyEventZero">
-   SET FOREIGN_KEY_CHECKS = 0
-  </delete> <!-- 승민 -->
-  
-  <delete id="deleteAppyEvent" parameterType="int">
-   delete from appy where eno = #{eNo}
-  </delete> <!-- 승민 -->
-  
-   <delete id="deleteAppyEventOne">
-   SET FOREIGN_KEY_CHECKS = 1
-  </delete> <!-- 승민 -->
-  
   <select id="selectSurfList" resultMap="eventMapBasic">
     select e.eno, e.locno, e.pay, e.addr, e.date, e.title,
     concat(lt.name, ' ', l.name) as location,

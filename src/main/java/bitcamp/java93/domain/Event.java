@@ -34,6 +34,7 @@ public class Event {
   String appy_activeCheck;
   String rhsinfo;
   boolean haveRehearsal;
+  int appyno;
   List<String> EventRegistTheme;
   List<String> EventRegistMajor;
   List<String> EventRegistGenre;
@@ -48,9 +49,9 @@ public class Event {
         + ", loctno=" + loctno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
         + ", tmnno=" + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", pr_count=" + pr_count
         + ", mtc_info=" + mtc_info + ", appy_check=" + appy_check + ", appy_activeCheck=" + appy_activeCheck
-        + ", rhsinfo=" + rhsinfo + ", haveRehearsal=" + haveRehearsal + ", EventRegistTheme=" + EventRegistTheme
-        + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre + ", appyList=" + appyList
-        + ", prList=" + prList + "]";
+        + ", rhsinfo=" + rhsinfo + ", haveRehearsal=" + haveRehearsal + ", appyno=" + appyno + ", EventRegistTheme="
+        + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre
+        + ", appyList=" + appyList + ", prList=" + prList + "]";
   }
   public int getNo() {
     return no;
@@ -232,6 +233,12 @@ public class Event {
   public void setHaveRehearsal(boolean haveRehearsal) {
     this.haveRehearsal = haveRehearsal;
   }
+  public int getAppyno() {
+    return appyno;
+  }
+  public void setAppyno(int appyno) {
+    this.appyno = appyno;
+  }
   public List<String> getEventRegistTheme() {
     return EventRegistTheme;
   }
@@ -262,7 +269,6 @@ public class Event {
   public void setPrList(ArrayList<Musician> prList) {
     this.prList = prList;
   }
-  
   
   
   }
