@@ -1122,7 +1122,7 @@ select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genr
 appy.appyno, mu.muno, mu.nick, m.path, score.score
 from recruiting_eventlist e
 left outer join appy on e.eno=appy.eno and appy.active = 'Y'
-left outer join musi mu on appy.muno=mu.muno left outer join memb m on mu.muno=m.mno
+left outer join musi mu on appy.muno=mu.muno and appy.active = 'Y' left outer join memb m on mu.muno=m.mno
 left outer join (
   select avg(score) as score, muno
   from mtc

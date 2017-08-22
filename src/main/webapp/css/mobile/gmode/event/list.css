@@ -594,15 +594,22 @@ body {
   color: #444;
 }
 
+.end-edit-btn {
+  position: absolute;
+  display: inline-block;
+  color: #444;
+  font-weight: 400;
+  font-size: 4em;
+  top: 7px;
+  right: 2%;
+  transform: translateX(3%);
+}
+
 .end-applicant-block {
   width: 100%;
   text-align: center;
 }
 
-.end-applicant {
-  
-  
-}
 
 .end-applicant-img {
   position: absolute;
