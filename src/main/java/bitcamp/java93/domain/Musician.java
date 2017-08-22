@@ -34,6 +34,7 @@ public class Musician extends Member  {
   int eno;
   String nickName;
   String search;
+  String rev;
   Map<String , String> fileMap;
   Map<String , String> appyMap;
   List<Map<Integer , String>> list;
@@ -57,11 +58,11 @@ public class Musician extends Member  {
         + ", specDate=" + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge
         + ", location=" + location + ", sido=" + sido + ", fav=" + fav + ", indexL=" + indexL + ", indexM=" + indexM
         + ", indexG=" + indexG + ", locno=" + locno + ", mjrno=" + mjrno + ", gnrno=" + gnrno + ", eno=" + eno
-        + ", nickName=" + nickName + ", search=" + search + ", fileMap=" + fileMap + ", appyMap=" + appyMap + ", list="
-        + list + ", reviewList=" + reviewList + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList="
-        + themeList + ", locationList=" + locationList + ", locationNoList=" + locationNoList + ", majorNoList="
-        + majorNoList + ", genreNoList=" + genreNoList + ", themeNoList=" + themeNoList + ", photoList=" + photoList
-        + ", movieList=" + movieList + ", muNoList=" + muNoList + "]";
+        + ", nickName=" + nickName + ", search=" + search + ", rev=" + rev + ", fileMap=" + fileMap + ", appyMap="
+        + appyMap + ", list=" + list + ", reviewList=" + reviewList + ", majorList=" + majorList + ", genreList="
+        + genreList + ", themeList=" + themeList + ", locationList=" + locationList + ", locationNoList="
+        + locationNoList + ", majorNoList=" + majorNoList + ", genreNoList=" + genreNoList + ", themeNoList="
+        + themeNoList + ", photoList=" + photoList + ", movieList=" + movieList + ", muNoList=" + muNoList + "]";
   }
   public int getAge() {
     return age;
@@ -237,6 +238,12 @@ public class Musician extends Member  {
   public void setSearch(String search) {
     this.search = search;
   }
+  public String getRev() {
+    return rev;
+  }
+  public void setRev(String rev) {
+    this.rev = rev;
+  }
   public Map<String, String> getFileMap() {
     return fileMap;
   }
@@ -327,5 +334,7 @@ public class Musician extends Member  {
   public void setMuNoList(List<String> muNoList) {
     this.muNoList = muNoList;
   }
+  
+  
   
 }

@@ -31,6 +31,9 @@ public class Event {
   int pr_count;
   int mtc_info;
   int appy_check;
+  int mtcno;
+  int score;
+  String rev;
   String appy_activeCheck;
   String rhsinfo;
   boolean haveRehearsal;
@@ -51,11 +54,11 @@ public class Event {
         + ", city=" + city + ", location=" + location + ", address=" + address + ", pay=" + pay + ", locno=" + locno
         + ", loctno=" + loctno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
         + ", tmnno=" + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", pr_count=" + pr_count
-        + ", mtc_info=" + mtc_info + ", appy_check=" + appy_check + ", appy_activeCheck=" + appy_activeCheck
-        + ", rhsinfo=" + rhsinfo + ", haveRehearsal=" + haveRehearsal + ", appyno=" + appyno + ", eventActive="
-        + eventActive + ", prStatus=" + prStatus + ", appyStatus=" + appyStatus + ", EventRegistTheme="
-        + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre
-        + ", appyList=" + appyList + ", prList=" + prList + "]";
+        + ", mtc_info=" + mtc_info + ", appy_check=" + appy_check + ", mtcno=" + mtcno + ", score=" + score + ", rev="
+        + rev + ", appy_activeCheck=" + appy_activeCheck + ", rhsinfo=" + rhsinfo + ", haveRehearsal=" + haveRehearsal
+        + ", appyno=" + appyno + ", eventActive=" + eventActive + ", prStatus=" + prStatus + ", appyStatus="
+        + appyStatus + ", EventRegistTheme=" + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor
+        + ", EventRegistGenre=" + EventRegistGenre + ", appyList=" + appyList + ", prList=" + prList + "]";
   }
   public int getNo() {
     return no;
@@ -219,6 +222,24 @@ public class Event {
   public void setAppy_check(int appy_check) {
     this.appy_check = appy_check;
   }
+  public int getMtcno() {
+    return mtcno;
+  }
+  public void setMtcno(int mtcno) {
+    this.mtcno = mtcno;
+  }
+  public int getScore() {
+    return score;
+  }
+  public void setScore(int score) {
+    this.score = score;
+  }
+  public String getRev() {
+    return rev;
+  }
+  public void setRev(String rev) {
+    this.rev = rev;
+  }
   public String getAppy_activeCheck() {
     return appy_activeCheck;
   }
@@ -291,7 +312,6 @@ public class Event {
   public void setPrList(ArrayList<Musician> prList) {
     this.prList = prList;
   }
-  
   
   
 }

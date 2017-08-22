@@ -39,4 +39,5 @@ public interface EventDao {
   Event selectMyEvent(int eNo); // 일반모드 이벤트 상세정보
   int selectEventCount(int no);//일반모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트 - 이벤트 유무 확인
   int selectAppyCount(HashMap<String, Object> valueMap); /* 뮤지션 모드 > 이벤트 상세페이지 > 지원 활성여부 확인 */
+  void updateReview(Event event); // 리뷰 추가
 }

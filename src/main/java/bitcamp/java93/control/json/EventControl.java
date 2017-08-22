@@ -475,6 +475,26 @@ public class EventControl {
   return result;
   }
   
+  // 리뷰 추가
+  @RequestMapping("updateReview")
+  public JsonResult updateReview(Event event, int muno) throws Exception {
+    JsonResult result = new JsonResult();
+    try {
+      eventService.updateReview(event, muno);
+      
+      result.setStatus(JsonResult.SUCCESS);
+      result.setData("ok");
+
+    } catch (Exception e) {
+      e.printStackTrace();
+      result.setStatus(JsonResult.ERROR);
+    }
+  return result;
+  }
+  
+  
+  
+  
   
   /*로그인 멤버 객체 가져오기*/
   private Member getLoginMember(HttpSession session) {

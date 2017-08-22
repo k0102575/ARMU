@@ -251,6 +251,17 @@ public class EventServiceImpl implements EventService {
   public void decideMatch(HashMap<String, Object> map) throws Exception {
     eventDao.insertMatch(map);
   }
+  
+  //일반모드 > 이벤트 상세페이지 > 종료 - 리뷰 추가 리뷰 메시지 작성
+  public void updateReview(Event event, int muno) throws Exception {
+    eventDao.updateReview(event);
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("muNo", muno);
+    valueMap.put("eNo", event.getNo());
+    valueMap.put("mtcNo", event.getMtcno());
+    System.out.println(valueMap);
+    notificationDao.insertEventRevNoti(valueMap);
+  }
 
   /*일반모드 > 나의 이벤트 > 모집중 > 내가 요청한 뮤지션 > 요청 취소*/
   public void cancelPr(HashMap<String, Object> map) throws Exception {

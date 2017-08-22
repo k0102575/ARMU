@@ -72,6 +72,12 @@ order by date desc
     values(#{muNo}, #{eNo}, 'evn_delete', NOW(), '이벤트 삭제', 'musician' , (select appyno from appy where eno=#{eNo} and muno=#{muNo}))
   </insert><!-- 승민 -->
   
+  <!-- 뮤지션에게 리뷰 입력 -->
+  <insert id="insertEventRevNoti" parameterType="map">
+    insert into noti(muno, eno, type, date, cont, whom, mtcno) 
+    values(#{muNo}, #{eNo}, 'rev', now(), '새로운 리뷰', 'musician' , #{mtcNo})
+  </insert><!-- 승민 -->
+  
   
 </mapper>
 

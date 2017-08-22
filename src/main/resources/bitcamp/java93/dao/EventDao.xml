@@ -95,6 +95,7 @@
     <result column="rhs" property="haveRehearsal" />
     <result column="pr_count" property="pr_count" />
     <result column="mtc_info" property="mtc_info" />
+    <result column="mtcno" property="mtcno" />
     <result column="appy_check" property="appy_check" />
     <result column="appy_activeCheck" property="appy_activeCheck" />
     <association property="writeMember" javaType="Member">
@@ -513,7 +514,8 @@ where ap.mno=#{no}
            t.name as theme, t.thmno as themeNo,
            m.name as major, m.mjrno as majorNo,
            g.name as genre, g.gnrno as genreNo,
-           if(mtc.mtcno is not null, 1, 0) as mtc_info
+           if(mtc.mtcno is not null, 1, 0) as mtc_info,
+           mtc.mtcno
     from evn e
     left outer join (select mtcno, muno, eno from mtc group by muno, eno having eno = #{eNo}
     ) mtc on e.eno = mtc.eno
@@ -529,6 +531,13 @@ where ap.mno=#{no}
     left outer join memb memb on e.mno = memb.mno
     where e.eno = #{eNo}
   </select> <!-- 승민 -->
+  
+  <!--  이벤트 완료후 리뷰 정보 추가 -->
+  <update id="updateReview" parameterType="event">
+  update mtc set 
+  score = #{score}, rev = #{rev}
+  where mtcno = #{mtcno}
+  </update>
   
   <select id="eventSearch" resultMap="eventMapBasic" parameterType="map">
     select e.eno, e.locno, e.pay, e.addr, e.date, e.title,

@@ -113,6 +113,7 @@
     <result column="score" property="score" />
     <result column="path" property="photo" />
     <result column="fav" property="isFavorite" />
+    <result column="rev" property="rev" />
     <collection property="majorList" ofType="string"> 
         <result column="major"/> 
     </collection>
@@ -480,23 +481,22 @@ left outer join (
   </delete>
   
   <select id="selectMatchMusician" parameterType="map" resultMap="musicianMatchMap">
-    select mu.muno, mu.nick, mm.path, fav.fav, score.score,
-mj.name as major, g.name as genre, t.name as theme
+   select
+   mu.muno, mu.nick, mm.path, fav.fav, score.score, mtc.rev,
+  mj.name as major, g.name as genre, t.name as theme
 from mtc mtc
 left outer join musi mu on mtc.muno = mu.muno
 left outer join memb mm on mu.muno = mm.mno
-left outer join evn e on e.eno=mtc.eno 
+left outer join evn e on e.eno = mtc.eno 
 left outer join mjr_musi mjm on mu.muno=mjm.muno inner join mjr mj on mjm.mjrno=mj.mjrno
 left outer join gnr_musi gm on mu.muno=gm.muno inner join gnr g on gm.gnrno=g.gnrno
 left outer join thm_musi tm on mu.muno=tm.muno inner join thm t on tm.thmno=t.thmno
-left outer join (
-  select count(if(mno is not null, 1, 0)) as fav, mno, muno
+left outer join (  select count(if(mno is not null, 1, 0)) as fav, mno, muno
   from fav_musi
   where mno = #{myNo}
-  group by muno
-) fav on fav.muno=mu.muno
-left outer join (
-  select avg(score) as score, muno
+  group by muno 
+) fav on fav.muno =  mu.muno
+left outer join (  select avg(score) as score, muno
   from mtc
   group by muno
 ) score on score.muno=mu.muno

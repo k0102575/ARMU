@@ -42,8 +42,8 @@ function controlBtns() {
 	})
 
 
-  $('.event-box').on('click', function(e) {
-    location.href = 'detail.html?no=' + $(this).attr('data-no')
+  $('.event-end-box').on('click', function(e) {
+    location.href = 'detail-end.html?no=' + $(this).attr('data-no')
   })
 
 }
