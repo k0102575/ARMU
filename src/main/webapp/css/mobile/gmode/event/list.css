@@ -479,18 +479,18 @@ body {
   font-size: 32px;
   font-weight: 500;
   top: -2px;
-  width: 52%;
+  width: 60%;
   left: 300px;
 }
 
+.ongoing-applicant-name > span {
+}
+
 .ongoing-applicant-score {
-  position: absolute;
-  top: -1%;
-  right: 18%;
+  display: inline-block;
   margin-left: 20px;
   color: #ffd700;
   font-size: 33px;
-  width: 30%;
 }
 
 .ongoing-applicant-fav {
