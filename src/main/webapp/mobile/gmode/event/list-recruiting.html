@@ -70,7 +70,7 @@ data-fill='false' data-open='false'>
 
   <div class='recruiting-musibox-summarybox'>
   {{#each prList}}
-      <div class='recruiting-musibox-summary-musi' style='background-image: url("{{photo}}")'></div>
+      <div class='recruiting-musibox-summary-musi' data-no={{no}} style='background-image: url("{{photo}}")'></div>
   {{/each}}
   </div><!-- recruiting-musibox-summarybox -->
 
@@ -124,7 +124,7 @@ data-fill='false' data-open='false'>펼치기
         {{#genreList}}<span>#{{this}}</span>{{/genreList}}
     </div>
 <div class='recruiting-applicant-btnbox'>
-<div class='recruiting-applicant-btn cancel-btn'>요청 취소하기</div>
+<div class='recruiting-applicant-btn cancel-btn' data-no={{no}}>요청 취소하기</div>
 </div>
   </div>
 {{/each}}

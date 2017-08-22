@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="/node_modules/jquery-ui-dist/jquery-ui.css">
 <link rel="stylesheet" href="/node_modules/animsition/dist/css/animsition.min.css">
 <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/node_modules/sweetalert/dist/sweetalert.css">
+<link href="/css/alert.css" rel="stylesheet" type="text/css" media="all">
 <link href="/css/mobile/common.css" rel="stylesheet" type="text/css" media="all">
 <link href="/css/mobile/gmode/event/list.css" rel="stylesheet" type="text/css" media="all">
 <script src="/node_modules/jquery/dist/jquery.min.js"></script>
@@ -16,6 +18,7 @@
 <script src="/node_modules/handlebars-intl/dist/handlebars-intl.min.js"></script>
 <script src="/node_modules/moment/min/moment.min.js"></script>
 <script src="/node_modules/handlebars-intl/dist/locale-data/ko.js"></script>
+<script src="/node_modules/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <div class='loader-box'><div class='loader'></div></div>
@@ -41,7 +44,6 @@
 
 <script>
 HandlebarsIntl.registerWith(Handlebars);
-//HandlebarsMoment(moment().format(), moment).registerHelpers(Handlebars);
 
 var lastScroll = 0,
 moveTopBtn = $("#move_top_btn"),
@@ -117,7 +119,7 @@ endList.fadeIn(700)
 })
 
 
-
+  
 
 
 </script>	

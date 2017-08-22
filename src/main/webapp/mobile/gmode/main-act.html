@@ -23,7 +23,9 @@
 {{/musician}}
   <div class='noti-header'>
     <span class='noti-type'>{{contents}}&nbsp;</span>
-    <span class='noti-date'>&nbsp;&nbsp;{{formatDate date day="numeric" month="long"}}</span>
+{{#intl locales="ko-KO"}}
+    <span class='noti-date'>&nbsp;&nbsp;{{formatRelative date units="day"}}</span>
+{{/intl}}
   </div>
   <div class='noti-contents'>{{message}}</div>
 </div>

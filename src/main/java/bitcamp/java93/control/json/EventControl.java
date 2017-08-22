@@ -304,6 +304,23 @@ public class EventControl {
     return result;
   }
   
+/*일반모드 > 나의 이벤트 > 모집중 > 내가 요청한 뮤지션 > 요청 취소*/
+  @RequestMapping("cancelPr")
+  public JsonResult cancelPr(int musicianNo, int eventNo, HttpSession session) {
+    JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> param = new HashMap<>();
+      param.put("eventNo", eventNo);
+      param.put("musicianNo", musicianNo);
+      eventService.cancelPr(param);
+
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
+    return result;
+  }
   
   /*일반모드 > 나의이벤트 > 진행중 이벤트 리스트*/
   @RequestMapping("listOngoing")

@@ -252,5 +252,10 @@ public class EventServiceImpl implements EventService {
     eventDao.insertMatch(map);
   }
 
+  /*일반모드 > 나의 이벤트 > 모집중 > 내가 요청한 뮤지션 > 요청 취소*/
+  public void cancelPr(HashMap<String, Object> map) throws Exception {
+    eventDao.deletePr(map);
+  }
+
 }
 

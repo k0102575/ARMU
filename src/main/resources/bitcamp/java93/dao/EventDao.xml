@@ -183,6 +183,11 @@
     </association>
   </resultMap>
 
+  <delete id="deletePr" statementType="CALLABLE" parameterType="HashMap">
+  { 
+    call cancelPrProc (#{eventNo}, #{musicianNo}, #{prno_param})
+  }
+  </delete>
 
   <insert id="insertMatch" statementType="CALLABLE" parameterType="HashMap">
   { 

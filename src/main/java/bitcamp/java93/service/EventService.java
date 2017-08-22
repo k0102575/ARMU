@@ -27,6 +27,7 @@ public interface EventService {
   List<Event> listRecruiting(int no) throws Exception;//나의이벤트 > 모집중 이벤트 리스트
   void rejectAppy(HashMap<String,Object> map) throws Exception;//일반모드 > 나의 이벤트 > 모집중 > 지원자 > 지원 거절
   void decideMatch(HashMap<String,Object> map) throws Exception;//일반모드 > 나의 이벤트 > 모집중 > 지원자 > 매칭 확정
+  void cancelPr(HashMap<String,Object> map) throws Exception;//일반모드 > 나의 이벤트 > 모집중 > 내가 요청한 뮤지션 > 요청 취소
   List<Event> listOngoing(int no) throws Exception;//나의이벤트 > 진행중 이벤트 리스트
   List<Event> listEnd(int no) throws Exception;//나의이벤트 > 종료 이벤트 리스트
   List<Event> listMusiOngoing(int no) throws Exception;//뮤지션모드 - 매칭이벤트 > 진행중 이벤트 리스트

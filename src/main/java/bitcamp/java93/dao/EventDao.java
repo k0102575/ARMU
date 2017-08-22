@@ -27,6 +27,7 @@ public interface EventDao {
   List<Event> selectRecruitingList(int no);//나의이벤트 > 모집중 이벤트 리스트
   void updateAppyReject(HashMap<String,Object> valueMap);//일반모드 > 나의 이벤트 > 모집중 > 지원자 > 지원 거절
   void insertMatch(HashMap<String,Object> valueMap);//일반모드 > 나의 이벤트 > 모집중 > 지원자 > 매칭 확정
+  void deletePr(HashMap<String,Object> valueMap);//일반모드 > 나의 이벤트 > 모집중 > 내가 요청한 뮤지션 > 요청 취소
   List<Event> selectOngoingList(int no);//나의이벤트 > 진행중 이벤트 리스트
   List<Event> selectEndList(int no);//나의이벤트 > 종료 이벤트 리스트
   List<Event> selectMusiOngoingList(int no);//뮤지션모드 - 매칭이벤트 > 진행중 이벤트 리스트

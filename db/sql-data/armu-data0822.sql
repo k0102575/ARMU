@@ -1293,3 +1293,15 @@ BEGIN
     (eno_param, muno_param, 'mtc', now(), '매칭 확정', 'both', mtcno_param);
 END//
 delimiter ;
+
+
+
+-- 일반 회원이 홍보(PR) 취소하기
+delimiter //
+create procedure cancelPrProc (IN eno_param int, IN muno_param int, OUT prno_param int)
+BEGIN
+  update pr set active='N' where eno=eno_param and muno=muno_param;
+  select prno INTO prno_param from pr where eno=eno_param and muno=muno_param;
+  delete from noti where prno=prno_param;
+END//
+delimiter ;
