@@ -73,11 +73,13 @@ $('.event-box').on('click', function(e) {
 
 
 function postAppy(pressedBtn) {
+  var eventNo = pressedBtn.parent('.recruiting-musibox').attr('data-eventno')
+  
   if(pressedBtn.attr('data-fill') == "false") {
     pressedBtn.attr('data-fill', true)
    
     $.getJSON('/musician/listAppy.json',
-      {'eventNo': pressedBtn.parent('.recruiting-musibox').attr('data-eventno')},
+      {'eventNo': eventNo},
     function(result) {
       if(result.status != 'success') {
         console.error("getJSON() 실패: ", result.status)
@@ -97,6 +99,8 @@ function postAppy(pressedBtn) {
       var html = container.html()
       container.html(html + generatedHTML)
       
+      setRejectBtns(eventNo)
+      setMatchBtns(eventNo)
       setFoldBtns(pressedBtn)
     }, function(err) {
       console.log(err)
@@ -142,6 +146,35 @@ function postPr(pressedBtn) {
 }//postPr()
 
 
+function setRejectBtns(eventNo) {
+  $('.reject-btn').on('click', function() {
+    var musicianNo = $(this).attr('data-no')
+    console.log(eventNo)
+    $.post('/event/rejectAppy.json', {
+      'musicianNo' : musicianNo,
+      'eventNo' : eventNo
+    }, function(result) {
+      console.log('reject post succeed')
+      alert('거절했음')
+    }, 'json')
+
+  })
+}
+
+function setMatchBtns(eventNo) {
+  $('.decide-btn').on('click', function() {
+    var musicianNo = $(this).attr('data-no')
+
+    $.post('/event/decideMatch.json', {
+      'musicianNo' : musicianNo,
+      'eventNo' : eventNo
+    }, function(result) {
+      console.log('match post succeed')
+      alert('매칭됐음')
+    }, 'json')
+
+  })
+}
 
 function setFoldBtns(pressedBtn) {
   if(pressedBtn.attr('data-open') == "true") {
@@ -153,6 +186,7 @@ function setFoldBtns(pressedBtn) {
   }
   pressedBtn.siblings('.recruiting-musibox-open-container').toggle( "fold", 500 );
 }
+
 
 
 

@@ -129,6 +129,7 @@ public class EventControl {
     }
     return result;
   }
+
   
   @RequestMapping("prCheckEvent")
   public JsonResult prCheckEvent(HttpSession session, int no){
@@ -249,7 +250,7 @@ public class EventControl {
   return result;
 }
 
-  /*나의이벤트 > 모집중 이벤트 리스트*/
+  /*일반모드 > 나의이벤트 > 모집중 이벤트 리스트*/
   @RequestMapping("listRecruiting")
   public JsonResult listRecruiting(HttpSession session) {
     JsonResult result = new JsonResult();
@@ -266,7 +267,45 @@ public class EventControl {
     return result;
   }
   
-  /*나의이벤트 > 진행중 이벤트 리스트*/
+  
+  /*일반모드 > 나의 이벤트 > 모집중 > 지원자 > 지원 거절*/
+  @RequestMapping("rejectAppy")
+  public JsonResult rejectAppy(int musicianNo, int eventNo, HttpSession session) {
+    JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> param = new HashMap<>();
+      param.put("eventNo", eventNo);
+      param.put("musicianNo", musicianNo);
+      eventService.rejectAppy(param);
+
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
+    return result;
+  }
+  
+  /*일반모드 > 나의 이벤트 > 모집중 > 지원자 > 매칭 확정*/
+  @RequestMapping("decideMatch")
+  public JsonResult decideMatch(int musicianNo, int eventNo, HttpSession session) {
+    JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> param = new HashMap<>();
+      param.put("eventNo", eventNo);
+      param.put("musicianNo", musicianNo);
+      eventService.decideMatch(param);
+
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
+    return result;
+  }
+  
+  
+  /*일반모드 > 나의이벤트 > 진행중 이벤트 리스트*/
   @RequestMapping("listOngoing")
   public JsonResult listOngoing(HttpSession session) {
     JsonResult result = new JsonResult();
@@ -283,7 +322,7 @@ public class EventControl {
     return result;
   }
   
-  /*나의이벤트 > 종료 이벤트 리스트*/
+  /*일반모드 > 나의이벤트 > 종료 이벤트 리스트*/
   @RequestMapping("listEnd")
   public JsonResult listEnd(HttpSession session) {
     JsonResult result = new JsonResult();
@@ -419,6 +458,8 @@ public class EventControl {
   return result;
   }
   
+  
+  /*로그인 멤버 객체 가져오기*/
   private Member getLoginMember(HttpSession session) {
     Member loginMember = (Member) session.getAttribute("loginMember");
       return loginMember;

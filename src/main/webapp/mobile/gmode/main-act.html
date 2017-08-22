@@ -15,9 +15,6 @@
 
 
 
-<script>
-HandlebarsIntl.registerWith(Handlebars);
-</script>
 <script id="noti-template" type="text/x-handlebars-template">
 {{#each listNoti}}
 <div class='noti'>
@@ -25,10 +22,10 @@ HandlebarsIntl.registerWith(Handlebars);
   <div class='noti-img'style='background-image: url("{{photo}}_80.png")'></div>
 {{/musician}}
   <div class='noti-header'>
-    <span class='noti-type'>{{type}}&nbsp;</span>
-    <span class='noti-date'>&nbsp;&nbsp;{{formatDate date day="numeric" month="long" }}</span>
+    <span class='noti-type'>{{contents}}&nbsp;</span>
+    <span class='noti-date'>&nbsp;&nbsp;{{formatDate date day="numeric" month="long"}}</span>
   </div>
-  <div class='noti-contents'>{{contents}}</div>
+  <div class='noti-contents'>{{message}}</div>
 </div>
 {{/each}}
 </script>

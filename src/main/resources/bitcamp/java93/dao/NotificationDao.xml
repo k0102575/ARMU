@@ -9,6 +9,7 @@
     <result column="type" property="type"/>
     <result column="date" property="date"/>
     <result column="cont" property="contents"/>
+    <result column="whom" property="whom"/>
     <association property="musician" javaType='Musician'>
       <id property="no" column="musino"/>
     <result property="nickName" column="nick"/>
@@ -26,24 +27,24 @@
   </resultMap>
 
  <select id="selectNotiList" resultMap="notificationMap" parameterType="int">
-  select  notino, n.type, n.date, n.cont, n.eno, e.title, 
+  select  notino, n.type, n.date, n.cont, n.whom, n.eno, e.title, 
   gm.mno as gmno, gm.name as gmname, gm.path as gmphoto, 
   n.muno as musino, mu.nick, m.path as musiphoto
 from noti n
 inner join memb m on n.muno=m.mno inner join musi mu on m.mno=mu.muno
 inner join evn e on n.eno=e.eno inner join memb gm on e.mno=gm.mno
-where gm.mno=#{no} and (n.type='이벤트 지원' or n.type='요청 수락')
+where gm.mno=#{no} and (n.whom='gmember' or n.whom='both')
 order by date desc
   </select><!-- 완진 -->
   
   <select id="selectMusiNotiList" resultMap="notificationMap" parameterType="int">
-  select  notino, n.type, n.date, n.cont, n.eno, e.title, 
+  select  notino, n.type, n.date, n.cont, n.whom, n.eno, e.title, 
   gm.mno as gmno, gm.name as gmname, gm.path as gmphoto, 
   n.muno as musino, mu.nick, m.path as musiphoto
 from noti n
 inner join memb m on n.muno=m.mno inner join musi mu on m.mno=mu.muno
 inner join evn e on n.eno=e.eno inner join memb gm on e.mno=gm.mno
-where n.muno=#{no}
+where n.muno=#{no} and (n.whom='musician' or n.whom='both')
 order by date desc
   </select><!-- 완진 -->
   

@@ -222,5 +222,15 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectAppyCount(valueMap);
   }
 
+  /*일반모드 > 나의 이벤트 > 모집중 > 지원자 > 지원 거절*/
+  public void rejectAppy(HashMap<String, Object> map) throws Exception {
+    eventDao.updateAppyReject(map);
+  }
+
+  /*일반모드 > 나의 이벤트 > 모집중 > 지원자 > 매칭 확정*/
+  public void decideMatch(HashMap<String, Object> map) throws Exception {
+    eventDao.insertMatch(map);
+  }
+
 }
 

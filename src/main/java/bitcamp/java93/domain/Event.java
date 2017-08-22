@@ -35,6 +35,9 @@ public class Event {
   String rhsinfo;
   boolean haveRehearsal;
   int appyno;
+  char eventActive;
+  char prStatus;
+  char appyStatus;
   List<String> EventRegistTheme;
   List<String> EventRegistMajor;
   List<String> EventRegistGenre;
@@ -49,7 +52,8 @@ public class Event {
         + ", loctno=" + loctno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
         + ", tmnno=" + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", pr_count=" + pr_count
         + ", mtc_info=" + mtc_info + ", appy_check=" + appy_check + ", appy_activeCheck=" + appy_activeCheck
-        + ", rhsinfo=" + rhsinfo + ", haveRehearsal=" + haveRehearsal + ", appyno=" + appyno + ", EventRegistTheme="
+        + ", rhsinfo=" + rhsinfo + ", haveRehearsal=" + haveRehearsal + ", appyno=" + appyno + ", eventActive="
+        + eventActive + ", prStatus=" + prStatus + ", appyStatus=" + appyStatus + ", EventRegistTheme="
         + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre
         + ", appyList=" + appyList + ", prList=" + prList + "]";
   }
@@ -239,6 +243,24 @@ public class Event {
   public void setAppyno(int appyno) {
     this.appyno = appyno;
   }
+  public char getEventActive() {
+    return eventActive;
+  }
+  public void setEventActive(char eventActive) {
+    this.eventActive = eventActive;
+  }
+  public char getPrStatus() {
+    return prStatus;
+  }
+  public void setPrStatus(char prStatus) {
+    this.prStatus = prStatus;
+  }
+  public char getAppyStatus() {
+    return appyStatus;
+  }
+  public void setAppyStatus(char appyStatus) {
+    this.appyStatus = appyStatus;
+  }
   public List<String> getEventRegistTheme() {
     return EventRegistTheme;
   }
@@ -271,4 +293,5 @@ public class Event {
   }
   
   
-  }
+  
+}

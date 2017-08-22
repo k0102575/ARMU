@@ -183,6 +183,19 @@
     </association>
   </resultMap>
 
+
+  <insert id="insertMatch" statementType="CALLABLE" parameterType="HashMap">
+  { 
+    call decideMtcProc (#{eventNo}, #{musicianNo}, #{mno_param}, #{mtcno_param})
+  }
+  </insert>
+  
+  <update id="updateAppyReject" statementType="CALLABLE" parameterType="HashMap">
+	{ 
+	  call rejectAppyProc(#{eventNo}, #{musicianNo}, #{appyno_param})
+	}
+  </update>
+    
   <select id="selectEventCount" resultType="int"
     parameterType="int">
     select count(eno)
