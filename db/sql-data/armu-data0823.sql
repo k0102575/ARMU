@@ -1268,43 +1268,11 @@ insert into fav_evn (muno, eno) values (2, 4);
 insert into fav_evn (muno, eno) values (1, 4);
 
 
--- 일반 회원이 특정 뮤지션의 지원을 거절하기
-delimiter //
-create procedure rejectAppyProc (IN eno_param int, IN muno_param int, INOUT appyno_param int)
-BEGIN
-  update appy set status='N' where eno=eno_param and muno=muno_param;
-  select appyno INTO appyno_param from appy where eno=eno_param and muno=muno_param and status='N';
-  insert into noti (eno, muno, type, date, cont, whom, appyno) values
-    (eno_param, muno_param, 'appy_reject', now(), '매칭 거절', 'musician', appyno_param);
-END//
-delimiter ;
 
 
 
--- 일반 회원이 특정 뮤지션과의 매칭을 확정하기
-delimiter //
-create procedure decideMtcProc (IN eno_param int, IN muno_param int, OUT mno_param int, INOUT mtcno_param int)
-BEGIN
-  select mno INTO mno_param from evn where eno=eno_param;
-  insert into mtc (eno, muno, mtcdt) values (eno_param, muno_param, curdate());
-  select LAST_INSERT_ID() INTO mtcno_param;
-  insert into chat (muno, mno, isread, msg, date, who) values (muno_param, mno_param, 'N', '매칭되었습니다!', now(), mno_param);
-  insert into noti (eno, muno, type, date, cont, whom, mtcno) values
-    (eno_param, muno_param, 'mtc', now(), '매칭 확정', 'both', mtcno_param);
-END//
-delimiter ;
 
 
-
--- 일반 회원이 홍보(PR) 취소하기
-delimiter //
-create procedure cancelPrProc (IN eno_param int, IN muno_param int, OUT prno_param int)
-BEGIN
-  update pr set active='N' where eno=eno_param and muno=muno_param;
-  select prno INTO prno_param from pr where eno=eno_param and muno=muno_param;
-  delete from noti where prno=prno_param;
-END//
-delimiter ;
 
 insert into memb (name, phone, pwd, email) values ('이윤민', '010-4290-0483',  password('1111'), 'ymlee83@gmail.com');
 insert into memb (name, phone, pwd, email) values ('양승열', '010-2872-9656',  password('1111'), 'syyang56@gmail.com');

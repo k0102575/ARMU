@@ -283,6 +283,7 @@ public class EventServiceImpl implements EventService {
   }
   
   
+<<<<<<< Updated upstream
   public List<Event> listMatchingEvent() throws Exception {
     List<Event> matchingList = eventDao.selectMatchingEventList();
     HashMap<String,Object> valueMap = new HashMap<>();
@@ -295,5 +296,17 @@ public class EventServiceImpl implements EventService {
     return matchingList;
   }
  
+=======
+  
+  
+  
+//  private void abc(int eventNo, int musicianNo) throws Exception {
+//    HashMap<String,Object> param = new HashMap<>();
+//    param.put("eventNo", eventNo);
+//    param.put("musicianNo", musicianNo);
+//    matchDao.selectExistPrCount(param);
+//  }
+
+>>>>>>> Stashed changes
 }
 

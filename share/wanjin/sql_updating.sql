@@ -600,6 +600,7 @@ where ap.muno=11
 
 
 
+
 -- 일반 회원이 특정 뮤지션의 지원을 거절하기
 delimiter //
 create procedure rejectAppyProc (IN eno_param int, IN muno_param int, INOUT appyno_param int)
@@ -607,9 +608,10 @@ BEGIN
   update appy set status='N' where eno=eno_param and muno=muno_param;
   select appyno INTO appyno_param from appy where eno=eno_param and muno=muno_param and status='N';
   insert into noti (eno, muno, type, date, cont, whom, appyno) values
-    (eno_param, muno_param, 'appy_reject', curdate(), '매칭 거절', 'musician', appyno_param);
+    (eno_param, muno_param, 'appy_reject', now(), '매칭 거절', 'musician', appyno_param);
 END//
 delimiter ;
+
 
 
 -- 일반 회원이 특정 뮤지션과의 매칭을 확정하기
@@ -621,9 +623,10 @@ BEGIN
   select LAST_INSERT_ID() INTO mtcno_param;
   insert into chat (muno, mno, isread, msg, date, who) values (muno_param, mno_param, 'N', '매칭되었습니다!', now(), mno_param);
   insert into noti (eno, muno, type, date, cont, whom, mtcno) values
-    (eno_param, muno_param, 'mtc', curdate(), '매칭 확정', 'both', mtcno_param);
+    (eno_param, muno_param, 'mtc', now(), '매칭 확정', 'both', mtcno_param);
 END//
 delimiter ;
+
 
 
 -- 일반 회원이 홍보(PR) 취소하기
@@ -632,6 +635,6 @@ create procedure cancelPrProc (IN eno_param int, IN muno_param int, OUT prno_par
 BEGIN
   update pr set active='N' where eno=eno_param and muno=muno_param;
   select prno INTO prno_param from pr where eno=eno_param and muno=muno_param;
-  delete noti where prno=prno_param;
+  delete from noti where prno=prno_param;
 END//
 delimiter ;
