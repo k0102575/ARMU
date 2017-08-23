@@ -10,7 +10,7 @@
   
 <!-- 기존에 지원한 데이터가 있는지 확인 -->
   <select id="selectExistAppyCount" resultType="int" parameterType="HashMap">
-    select appyno from appyno where muno=#{musicianNo} and eno=#{eventNo}
+    select appyno from appy where muno=#{musicianNo} and eno=#{eventNo}
   </select><!-- 공통 -->
   
 <!-- 홍보를 취소했는지 확인 -->

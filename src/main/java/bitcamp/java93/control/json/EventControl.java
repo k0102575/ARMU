@@ -285,14 +285,14 @@ public class EventControl {
   
   /*일반모드 > 나의 이벤트 > 모집중 > 지원자 > 지원 거절*/
   @RequestMapping("rejectAppy")
-  public JsonResult rejectAppy(int musicianNo, int eventNo, HttpSession session) {
+  public JsonResult rejectAppy(int musicianNo, int eventNo) {
     JsonResult result = new JsonResult();
     try {
       HashMap<String,Object> param = new HashMap<>();
       param.put("eventNo", eventNo);
       param.put("musicianNo", musicianNo);
-      eventService.rejectAppy(param);
-
+      
+      result.setData(eventService.rejectAppy(param));
       result.setStatus(JsonResult.SUCCESS);
     } catch (Exception e) {
       result.setStatus(JsonResult.ERROR);
@@ -306,11 +306,13 @@ public class EventControl {
   public JsonResult decideMatch(int musicianNo, int eventNo, HttpSession session) {
     JsonResult result = new JsonResult();
     try {
+      int writerNo = getLoginMember(session).getNo();
       HashMap<String,Object> param = new HashMap<>();
       param.put("eventNo", eventNo);
       param.put("musicianNo", musicianNo);
-      eventService.decideMatch(param);
-
+      param.put("writerNo", writerNo);
+      
+      result.setData(eventService.decideMatch(param));
       result.setStatus(JsonResult.SUCCESS);
     } catch (Exception e) {
       result.setStatus(JsonResult.ERROR);
@@ -321,14 +323,14 @@ public class EventControl {
   
 /*일반모드 > 나의 이벤트 > 모집중 > 내가 요청한 뮤지션 > 요청 취소*/
   @RequestMapping("cancelPr")
-  public JsonResult cancelPr(int musicianNo, int eventNo, HttpSession session) {
+  public JsonResult cancelPr(int musicianNo, int eventNo) {
     JsonResult result = new JsonResult();
     try {
       HashMap<String,Object> param = new HashMap<>();
       param.put("eventNo", eventNo);
       param.put("musicianNo", musicianNo);
-      eventService.cancelPr(param);
-
+      
+      result.setData(eventService.cancelPr(param));
       result.setStatus(JsonResult.SUCCESS);
     } catch (Exception e) {
       result.setStatus(JsonResult.ERROR);
