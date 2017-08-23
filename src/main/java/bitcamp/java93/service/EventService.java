@@ -16,9 +16,9 @@ public interface EventService {
   void deleteRequestEvent(int no) throws Exception; // 일반모드 > 이벤트 변경 > 지원했던 뮤지션 지원 상태 변경 및 삭제 메시지 발송, 홍보 상태 변경
   List<Event> listRecommand(int no) throws Exception;//뮤지션모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트
   List<Event> listRecent(int no) throws Exception;//뮤지션모드 > 추천탭 > 최근 이벤트 리스트
-  List<Event> prCheckEvent(int myNo, int muNo) throws Exception;
+  List<Event> prCheckEvent(int myNo, int muNo) throws Exception; // 일반모드 > 뮤지션 상세페이지 > 매칭 이벤트 목록 가져오기
   void prEvent(int muNo, int eNo) throws Exception; // 일반모드 > 뮤지션 상세페이지 > 매칭 요청하기
-  void deletePrEvent(int eNo) throws Exception;
+  void prUpdate(int muNo, int eNo, int prNo) throws Exception; // 일반모드 > 뮤지션 상세페이지 > 홍보 상태 변경
   void requestEvent(int muNo, int eNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 추가
   void requestEventCheck(int muNo, int eNo, int appyNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"Y"변경
   void requestEventCancel(int muNo, int eNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"N"변경

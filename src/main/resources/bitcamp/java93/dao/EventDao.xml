@@ -39,6 +39,7 @@
     <result column="date" property="date" />
     <result column="pr_count" property="pr_count" />
     <result column="mtc_info" property="mtc_info" />
+    <result column="prStatus" property="prStatus" />
   </resultMap>
 
   <resultMap type="event" id="eventMapBasic">
@@ -373,25 +374,29 @@ where ap.mno=#{no}
     where eno = #{eno}
   </update> <!-- 승민 -->
   
-  <select id="prCheckList" resultMap="eventSelectMap"
-    parameterType="map">
-    select even.eno, even.pay, even.date, even.title,
-    loct.name as loctname, loc.name as locname, even.addr, if(prc.prno is
-    not null, 1, 0) as pr_count, if(mtc.mtcno is not null, 1, 0) as
-    mtc_info
+  <!--  이벤트 매칭요청 리스트 -->
+  <select id="prCheckList" resultMap="eventSelectMap" parameterType="map">
+    select distinct even.eno, even.pay, even.date, even.title,
+    loct.name as loctname, loc.name as locname, even.addr, 
+    if(prc.prno is not null, prc.prno, 0) as pr_count, prc.active as prStatus
     from (select * from evn where date >= curdate() and eno not in (select
     eno from mtc)) even
     left outer join loc loc on even.locno = loc.locno
     left outer join loc_type loct on loc.loctno = loct.loctno
     left outer join
-    (select prno, muno, eno
+    (select prno, muno, eno, active
     from pr
     group by muno, eno
     having muno = #{muNo}
     ) prc on even.eno = prc.eno
-    left outer join mtc mtc on even.eno = mtc.eno
-    where even.mno = #{myNo}
+    where even.mno= #{myNo}
   </select><!-- 승민 -->
+  
+  <!-- 뮤지션 모드 지원할때 pr체크 -->
+  <select id="receivePrCheck" resultMap="eventSelectMap" parameterType="int">
+  
+  </select><!-- 승민 -->
+  
 
   <!-- 일반모드 > 뮤지션 상세페이지 > 매칭 요청하기 -->
   <insert id="prEvent" parameterType="map" useGeneratedKeys="true"
@@ -418,6 +423,13 @@ where ap.mno=#{no}
   <update id="appyEventCancelUpdate" parameterType="map">
     update appy set 
     active = 'N'
+    where eno = #{eNo} and muno = #{muNo}
+  </update> <!-- 승민 -->
+  
+    <!-- 뮤지션 모드 > 뮤지션 상세페이지 > 뮤지션 지원 활성"Y"변경 -->
+  <update id="prEventCheckUpdate" parameterType="map">
+    update pr set 
+    active = 'Y'
     where eno = #{eNo} and muno = #{muNo}
   </update> <!-- 승민 -->
   

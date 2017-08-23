@@ -112,6 +112,7 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectRecentList(no);
   }
   
+  //일반모드 > 뮤지션 상세페이지 > 매칭 이벤트 목록 가져오기
   public List<Event> prCheckEvent(int myNo, int muNo) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("myNo", myNo);
@@ -129,15 +130,24 @@ public class EventServiceImpl implements EventService {
     notificationDao.insertEventPrNoti(valueMap);
   }
   
-  public void deletePrEvent(int eNo) throws Exception {
-    eventDao.deletePrEvent(eNo);
+//일반모드 > 뮤지션 상세페이지 > 홍보 상태"Y"변경
+  public void prUpdate(int muNo, int eNo, int prNo) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("muNo", muNo);
+    valueMap.put("eNo", eNo);
+    valueMap.put("prNo", prNo);
+    eventDao.prEventCheckUpdate(valueMap);
+    notificationDao.insertEventPrNoti(valueMap);
   }
   
-  //뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 추가
+  //뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 추가 - pr을 받았으면 pr status 'Y'변경
   public void requestEvent(int muNo, int eNo) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("muNo", muNo);
     valueMap.put("eNo", eNo);
+    
+/*    Musician musician = eventDao.receivePrCheck(valueMap);
+    */
     eventDao.appyEvent(valueMap);
     valueMap.put("appyno", valueMap.get("appyno"));
     notificationDao.insertEventAppyNoti(valueMap);
@@ -153,12 +163,13 @@ public class EventServiceImpl implements EventService {
     notificationDao.insertEventAppyNoti(valueMap);
   }
   
-  //뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"N"변경
+  //뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"N"변경 있던 Noti 삭제
   public void requestEventCancel(int muNo, int eNo) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("muNo", muNo);
     valueMap.put("eNo", eNo);
     eventDao.appyEventCancelUpdate(valueMap);
+    notificationDao.deleteEventAppyNoti(valueMap);
   }
   
   @Override

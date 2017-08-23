@@ -60,6 +60,11 @@ order by date desc
     values(#{muNo}, #{eNo}, 'appy', NOW(), '이벤트 지원', 'gmember', #{appyno})
   </insert><!-- 승민 -->
   
+  <!-- 뮤지션이 appy 취소시 있던 noti 삭제 -->
+  <delete id="deleteEventAppyNoti" parameterType="map">
+  delete from noti where eno = #{eNo} and muno = #{muNo}
+  </delete><!-- 승민 -->
+  
   <!-- 뮤지션에게 이벤트 편집 -->
   <insert id="insertEventEditNoti" parameterType="map">
     insert into noti(muno, eno, type, date, cont, whom, appyno) 
