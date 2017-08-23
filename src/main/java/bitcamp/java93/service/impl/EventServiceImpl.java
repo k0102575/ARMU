@@ -279,7 +279,13 @@ public class EventServiceImpl implements EventService {
   }
 
   /*일반모드 > 나의 이벤트 > 모집중 > 내가 요청한 뮤지션 > 요청 취소*/
-  public void cancelPr(HashMap<String, Object> map) throws Exception {
+  public void cancelPr(HashMap<String, Object> valueMap) throws Exception {
+    int prno = matchDao.selectExistPrCount(valueMap);
+    matchDao.checkPrStatus(prno);
+    
+//    update pr set active='N' where eno=eno_param and muno=muno_param;
+//    select prno INTO prno_param from pr where eno=eno_param and muno=muno_param;
+//    delete from noti where prno=prno_param;
   }
   
   

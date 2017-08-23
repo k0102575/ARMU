@@ -15,22 +15,22 @@
   
 <!-- 홍보를 취소했는지 확인 -->
   <select id="checkPrActive" resultType="int" parameterType="int">
-    select prno from pr where prno=#{prno} and active='N' 
+    select count(prno) from pr where prno=#{prno} and active='N' 
   </select><!-- 공통 -->
 
 <!-- 지원을 취소했는지 확인 -->
   <select id="checkAppyActive" resultType="int" parameterType="int">
-    select appyno from appy where appyno=#{appyno} and active='N' 
+    select count(appyno) from appy where appyno=#{appyno} and active='N' 
   </select><!-- 공통 -->
   
 <!-- 홍보를 거절했는지 확인 -->
   <select id="checkPrStatus" resultType="int" parameterType="int">
-    select prno from pr where prno=#{prno} and status='N' 
+    select count(prno) from pr where prno=#{prno} and status='N' 
   </select><!-- 공통 -->
   
 <!-- 지원을 거절했는지 확인 -->
   <select id="checkAppyStatus" resultType="int" parameterType="int">
-    select appyno from appy where appyno=#{appyno} and status='N' 
+    select count(appyno) from appy where appyno=#{appyno} and status='N' 
   </select><!-- 공통 -->
   
   <!-- 일반인이 홍보하기(pr) -->
