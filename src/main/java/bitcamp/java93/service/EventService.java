@@ -40,4 +40,5 @@ public interface EventService {
   List<Event> listMatchingEvent() throws Exception;
   String rejectPr(HashMap<String, Object> valueMap) throws Exception;//2. 뮤지션이 홍보(PR) 거절하기
   String acceptPr(HashMap<String, Object> valueMap) throws Exception;//3. 뮤지션이 홍보(PR) 수락하기
+  String appyEvent(HashMap<String, Object> valueMap) throws Exception;//4. 뮤지션이 이벤트에 지원(APPY)하기
 }

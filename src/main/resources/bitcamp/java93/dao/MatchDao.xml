@@ -69,7 +69,7 @@
   </update> <!-- 공통 -->
   
   <!-- 뮤지션이 지원(appy) -->
-  <insert id="appyEvent" parameterType="map" useGeneratedKeys="true"
+  <insert id="insertAppy" parameterType="map" useGeneratedKeys="true"
     keyColumn="appyno" keyProperty="appyno">
     insert into appy(muno, eno, active)
     values(#{musicianNo}, #{eventNo}, 'Y');

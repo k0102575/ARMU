@@ -353,6 +353,37 @@ public class EventServiceImpl implements EventService {
 
     return "success";
   }
+  
+  /*4. 뮤지션이 이벤트에 지원(APPY)하기*/
+  public String appyEvent(HashMap<String, Object> valueMap) throws Exception {
+    int appyno = matchDao.selectExistAppyCount(valueMap);
+    if(appyno == 0) {//처음 지원한 경우
+      matchDao.insertAppy(valueMap);
+    } else {
+      int isCanceled = matchDao.checkAppyActive(appyno);
+      if(isCanceled != 0) {//재지원인 경우
+        matchDao.updateAppyActiveY(appyno);
+      }
+
+      int isRejected = matchDao.checkAppyStatus(appyno);
+      if(isRejected != 0) {//상대가 거절하여 지원을 할 수 없는 경우
+        return "rejected";
+      }
+    }
+    
+    int prno = matchDao.selectExistPrCount(valueMap);
+    if(prno != 0) {//prno가 있는 경우
+      valueMap.put("prno", prno);
+      int isPrCanceled = matchDao.checkPrActive(prno);
+      if(isPrCanceled == 0) {//pr이 유효한 경우, 즉 취소 상태가 아닌 경우
+        matchDao.updatePrStatusY(prno);
+      }
+    }
+
+    notificationDao.insertEventAppyNoti(valueMap);
+
+    return "success";
+  }
 
 }
 
