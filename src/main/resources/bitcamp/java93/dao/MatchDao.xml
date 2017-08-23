@@ -102,7 +102,23 @@
     status = 'N'
     where prno = #{prno}
   </update> <!-- 공통 -->
-
+  
+  
+  <!-- 일반인이 이벤트 수정하면 모든 홍보 취소 (pr.active = "N") -->
+  <update id="updateAllPrActiveN" parameterType="map">
+    update pr set 
+    active = 'N'
+    where eno = #{eventNo} and prno = #{prno}
+  </update> <!-- 승민 -->
+  
+  <!-- 일반인이 이벤트 삭제하면 모든 지원 취소 (appy.active = "N") -->
+  <update id="updateAllAppyActiveN" parameterType="map">
+    update appy set 
+    active = 'N'
+    where eno = #{eventNo} and prno = #{prno}
+  </update> <!-- 승민 -->
+  
+  
   
   <select id="selectAppyCount" resultType="int"
     parameterType="int">

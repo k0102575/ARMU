@@ -38,32 +38,52 @@ public class EventServiceImpl implements EventService {
     eventDao.insert(event);
   }
   
-  // 이벤트 변경
-  public void update(Event event) throws Exception {   
-    eventDao.update(event);
-  }
-  
-  //일반모드 > 이벤트 변경 > 지원했던 뮤지션 지원 상태 변경 및 변경 메시지 발송
-  public void updateRequestEvent(int eNo) throws Exception {
-    Musician musicianAppyList = musicianDao.myEventAppyList(eNo);
-    Musician musicianPrList = musicianDao.myEventPrList(eNo);
+  // 이벤트 변경 > 뮤지션 지원 상태 변경, 홍보 상태 변경 및 변경 메시지 발송
+  public void update(Event event) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("eventNo", eNo);
+    valueMap.put("eventNo", event.getNo());
     
+    eventDao.update(event);
+    
+    Musician musicianPrList = musicianDao.myEventPrList(event.getNo());
     if(musicianPrList != null) {
       for (String muNo : musicianPrList.getMuNoList()) {
         valueMap.put("musicianNo", muNo);
-        matchDao.updatePrActiveN(0);
+        matchDao.updateAllPrActiveN(valueMap);
       }
     }
     
+    Musician musicianAppyList = musicianDao.myEventAppyList(event.getNo());
     if(musicianAppyList != null) {
       for (String muNo : musicianAppyList.getMuNoList()) {
         valueMap.put("musicianNo", muNo);
-        matchDao.updateAppyActiveN(0);
+        matchDao.updateAllAppyActiveN(valueMap);
         notificationDao.insertEventEditNoti(valueMap);
       }
-      return;
+    }
+  }
+  
+  // 이벤트 삭제 > 뮤지션 지원 상태 변경, 홍보 상태 변경 및 삭제 메시지 발송
+  public void delete(int eno) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("eventNo", eno);
+    eventDao.delete(eno);
+    
+    Musician musicianPrList = musicianDao.myEventPrList(eno);
+    if(musicianPrList != null) {
+      for (String muNo : musicianPrList.getMuNoList()) {
+        valueMap.put("musicianNo", muNo);
+        matchDao.updateAllPrActiveN(valueMap);
+      }
+    }
+    
+    Musician musicianAppyList = musicianDao.myEventAppyList(eno);
+    if(musicianAppyList != null) {
+      for (String muNo : musicianAppyList.getMuNoList()) {
+        valueMap.put("musicianNo", muNo);
+        matchDao.updateAllAppyActiveN(valueMap);
+        notificationDao.insertEventDeleteNoti(valueMap);
+      }
     }
   }
   
@@ -75,35 +95,6 @@ public class EventServiceImpl implements EventService {
   // 이벤트 리허설 추가
   public  void registEventReherse(Event event) throws Exception {   
     eventDao.insertReherse(event);
-  }
-  
-  // 이벤트 삭제 - 이벤트 상태 변경
-  public  void delete(int eno) throws Exception {
-    eventDao.delete(eno);
-  }
-  
-//일반모드 > 이벤트 삭제 > 지원했던 뮤지션 지원 상태 변경 및 삭제 메시지 발송
-  public void deleteRequestEvent(int eNo) throws Exception {
-    Musician musicianAppyList = musicianDao.myEventAppyList(eNo);
-    Musician musicianPrList = musicianDao.myEventPrList(eNo);
-    HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("eventNo", eNo);
-    
-    if(musicianPrList != null) {
-      for (String muNo : musicianPrList.getMuNoList()) {
-        valueMap.put("musicianNo", muNo);
-        matchDao.updatePrActiveN(0);
-      }
-    }
-    
-    if(musicianAppyList != null) {
-      for (String muNo : musicianAppyList.getMuNoList()) {
-        valueMap.put("musicianNo", muNo);
-        matchDao.updateAppyActiveN(0);
-        notificationDao.insertEventDeleteNoti(valueMap);
-      }
-      return;
-    }
   }
   
   /*뮤지션모드 > 추천탭 > 나에게 꼭 맞는 이벤트*/
@@ -134,7 +125,7 @@ public class EventServiceImpl implements EventService {
     notificationDao.insertEventPrNoti(valueMap);
   }
   
-//일반모드 > 뮤지션 상세페이지 > 홍보 상태"Y"변경
+// 일반모드 > 뮤지션 상세페이지 > 홍보 상태"Y"변경
   public void prUpdate(int muNo, int eNo, int prNo) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("musicianNo", muNo);
@@ -157,24 +148,22 @@ public class EventServiceImpl implements EventService {
     notificationDao.insertEventAppyNoti(valueMap);
   }
   
-  //뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"Y"변경
+  // 뮤지션이 재지원(appy.active = "Y") && 일반인에게 뮤지션이 appy 알림 추가
   public void requestEventCheck(int muNo, int eNo, int appyNo) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("musicianNo", muNo);
     valueMap.put("eventNo", eNo);
     valueMap.put("appyno", appyNo);
-    matchDao.updateAppyActiveY(0);
+    matchDao.updateAppyActiveY(appyNo);
     notificationDao.insertEventAppyNoti(valueMap);
   }
   
-  //뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"N"변경 있던 Noti 삭제
+  // 12.뮤지션이 지원 취소(appy.active = "N") && 
   public void requestEventCancel(int muNo, int eNo) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("musicianNo", muNo);
     valueMap.put("eventNo", eNo);
-    
-    
-    matchDao.updateAppyActiveN(0);
+/*    matchDao.updateAppyActiveN(valueMap);*/
 /*    notificationDao.deleteEventAppyNoti(valueMap);*/
   }
   

@@ -68,7 +68,6 @@ public class EventControl {
     categoryService.registEventCategory(event);
     eventService.deleteEventReherse(event.getNo());
     eventService.registEventReherse(event);
-    eventService.updateRequestEvent(event.getNo());
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
@@ -84,7 +83,6 @@ public class EventControl {
     categoryService.deleteEventCategory(event.getNo());
     categoryService.registEventCategory(event);
     eventService.deleteEventReherse(event.getNo());
-    eventService.updateRequestEvent(event.getNo());
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
@@ -94,7 +92,6 @@ public class EventControl {
     categoryService.deleteEventCategory(eno);
     eventService.deleteEventReherse(eno);
     eventService.delete(eno);
-    eventService.deleteRequestEvent(eno);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
@@ -132,7 +129,7 @@ public class EventControl {
     return result;
   }
 
-  // 일반모드 > 뮤지션 상세페이지 > 매칭 이벤트 목록 가져오기
+  // 매칭요청하기 > 이벤트 목록 가져오기
   @RequestMapping("prCheckEvent")
   public JsonResult prCheckEvent(HttpSession session, int no){
     JsonResult result = new JsonResult();
