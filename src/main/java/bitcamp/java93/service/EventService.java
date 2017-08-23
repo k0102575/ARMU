@@ -18,7 +18,7 @@ public interface EventService {
   void prEvent(int musicianNo, int eventNo) throws Exception;   // 1. 뮤지션에게 홍보(pr)
   void requestEvent(int muNo, int eNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 추가
   void requestEventCheck(int muNo, int eNo, int appyNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"Y"변경
-  void requestEventCancel(int muNo, int eNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"N"변경
+  String requestEventCancel(HashMap<String, Object> param) throws Exception; // 12. 뮤지션이 Appy 취소
   List<Event> listSurf() throws Exception;
   List<Event> listSearchResult(String search) throws Exception;
   List<Event> listRecruiting(int no) throws Exception;//나의이벤트 > 모집중 이벤트 리스트

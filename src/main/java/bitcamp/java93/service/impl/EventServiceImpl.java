@@ -165,19 +165,17 @@ public class EventServiceImpl implements EventService {
     notificationDao.insertEventAppyNoti(valueMap);
   }
   
-  // 12.뮤지션이 지원 취소(appy.active = "N") && 
+  // 12.뮤지션이 지원 취소(appy.active = "N") && 12.뮤지션이 appy 취소시 있던 noti 삭제
+  public String requestEventCancel(HashMap<String, Object> valueMap) throws Exception {
+    int appyno = matchDao.selectExistAppyCount(valueMap);
+    int isRejected = matchDao.checkPrStatus(appyno);
 
-  //뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"N"변경 있던 Noti 삭제
-  public void requestEventCancel(int muNo, int eNo) throws Exception {
-    HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("musicianNo", muNo);
-    valueMap.put("eventNo", eNo);
-/*    matchDao.updateAppyActiveN(valueMap);*/
-/*    notificationDao.deleteEventAppyNoti(valueMap);*/
-
-
-    matchDao.updateAppyActiveN(0);
-    /*    notificationDao.deleteEventAppyNoti(valueMap);*/
+    if(isRejected != 0) return "rejected";
+    
+    matchDao.updateAppyActiveN(appyno);
+    valueMap.put("appyno", appyno);
+    notificationDao.deleteEventAppyNoti(appyno);
+    return "success";
   }
 
   @Override
@@ -292,10 +290,12 @@ public class EventServiceImpl implements EventService {
   }
 
   //일반모드 > 이벤트 상세페이지 > 종료 - 리뷰 추가 리뷰 메시지 작성
-  public void updateReview(Event event, int muno) throws Exception {
+  public void updateReview(Event event, int musicianNo) throws Exception {
+    System.out.println(event);
+    System.out.println(musicianNo);
     matchDao.updateReview(event);
     HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("musicianNo", muno);
+    valueMap.put("musicianNo", musicianNo);
     valueMap.put("eventNo", event.getNo());
     valueMap.put("mtcno", event.getMtcno());
     notificationDao.insertEventRevNoti(valueMap);
@@ -307,6 +307,9 @@ public class EventServiceImpl implements EventService {
     int isRejected = matchDao.checkPrStatus(prno);
 
     if(isRejected != 0) return "rejected";
+    
+    System.out.println(valueMap);
+    System.out.println(prno);
 
     matchDao.updatePrActiveN(prno);
     valueMap.put("prno", prno);

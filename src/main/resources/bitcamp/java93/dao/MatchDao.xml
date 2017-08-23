@@ -5,12 +5,12 @@
 <mapper namespace="bitcamp.java93.dao.MatchDao">
 <!-- 기존에 홍보한 데이터가 있는지 확인 -->
   <select id="selectExistPrCount" resultType="int" parameterType="HashMap">
-    select if(prno is not null, prno, 0) as prno from pr where muno=#{musicianNo} and eno=#{eventNo}
+    select if(count(prno)=0, 0, prno) as prno from pr where muno=#{musicianNo} and eno=#{eventNo}
   </select><!-- 공통 -->
   
 <!-- 기존에 지원한 데이터가 있는지 확인 -->
   <select id="selectExistAppyCount" resultType="int" parameterType="HashMap">
-    select if(appyno is not null, appyno, 0) as appyno from appy where muno=#{musicianNo} and eno=#{eventNo}
+     select if(count(appyno)=0, 0, appyno) as appyno from appy where muno=#{musicianNo} and eno=#{eventNo}
   </select><!-- 공통 -->
   
 <!-- 홍보를 취소했는지 확인 -->
