@@ -104,6 +104,14 @@
   </update> <!-- 공통 -->
 
   
+  <!-- 뮤지션이 매칭 확정(mtc) -->
+	<insert id="insertMatch" parameterType="map" useGeneratedKeys="true"
+	  keyColumn="mtcno" keyProperty="mtcno">
+	  insert into mtc (eno, muno, mtcdt) 
+	  values (#{eventNo}, #{musicianNo}, curdate())
+	</insert> <!-- 공통 -->
+  
+  
   <select id="selectAppyCount" resultType="int"
     parameterType="int">
     select count(eno)

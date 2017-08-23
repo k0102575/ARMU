@@ -23,6 +23,7 @@ public interface MatchDao {
   void updateAppyActiveN(int appyno); // 뮤지션이 지원 취소(appy.active = "N")
   void updateAppyStatusY(int appyno); // 일반인이 지원 수락(appy.status = "Y")
   void updateAppyStatusN(int appyno); // 일반인이 지원 거절(appy.status = "N")
+  void insertMatch(Map<String,Object> valueMap); // 뮤지션이 매칭 확정(mtc)
   
   int selectAppyCount(HashMap<String, Object> valueMap); /* 뮤지션 모드 > 이벤트 상세페이지 > 지원 활성여부 확인 */
   void updateReview(Event event); // 리뷰 추가

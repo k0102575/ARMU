@@ -76,6 +76,11 @@ order by e.date desc
  </select>
 
 
+<insert id="insertFirstChat" parameterType="map">
+  insert into chat (muno, mno, isread, msg, date, who) 
+  values (#{musicianNo}, #{eventNo}, 'N', '매칭되었습니다!', now(), mno_param);
+</insert>
+
  <!--
  <select id="selectChatList" resultMap="chatMap" parameterType="map">
   select chatno, isread, cast(date as date) as date, cast(date as time) as time, msg,
@@ -100,15 +105,9 @@ order by date asc
   </select>
 
 
-  <insert id="insertChat" parameterType="chat"
-          useGeneratedKeys="true" keyColumn="chatno" keyProperty="no">
-    insert into chat(muno, mno, isread, msg, date, who)
-    values(#{no}, #{senderNo}, 'N', #{message},
-    concat(#{date}, " ", #{time}), #{senderNo})
-  </insert> -->
 
 
- <!--  <select id='selectPhoto' resultType='String' parameterType='int'>
+   <select id='selectPhoto' resultType='String' parameterType='int'>
   select mno as receiverNo, name as nickName, path
   select path
   from memb

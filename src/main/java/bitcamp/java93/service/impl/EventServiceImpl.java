@@ -265,7 +265,20 @@ public class EventServiceImpl implements EventService {
   }
 
   /*일반모드 > 나의 이벤트 > 모집중 > 지원자 > 매칭 확정*/
-  public void decideMatch(HashMap<String, Object> map) throws Exception {
+  public void decideMatch(HashMap<String, Object> valueMap) throws Exception {
+    int appyno = matchDao.selectExistAppyCount(valueMap);
+    int isCanceled = matchDao.checkAppyActive(appyno);
+    if(isCanceled == 0) {
+      matchDao.updateAppyStatusY(appyno);
+      matchDao.insertMatch(valueMap);
+      notificationDao.insertEventMtcNoti(valueMap);
+    }
+    
+//    insert into mtc (eno, muno, mtcdt) values (eno_param, muno_param, curdate());
+//    select LAST_INSERT_ID() INTO mtcno_param;
+//    insert into chat (muno, mno, isread, msg, date, who) values (muno_param, mno_param, 'N', '매칭되었습니다!', now(), mno_param);
+//    insert into noti (eno, muno, type, date, cont, whom, mtcno) values
+//      (eno_param, muno_param, 'mtc', now(), '매칭 확정', 'both', mtcno_param);
   }
   
   //일반모드 > 이벤트 상세페이지 > 종료 - 리뷰 추가 리뷰 메시지 작성
@@ -281,14 +294,11 @@ public class EventServiceImpl implements EventService {
   /*일반모드 > 나의 이벤트 > 모집중 > 내가 요청한 뮤지션 > 요청 취소*/
   public void cancelPr(HashMap<String, Object> valueMap) throws Exception {
     int prno = matchDao.selectExistPrCount(valueMap);
-    int prnoStatus = matchDao.checkPrStatus(prno);
-    if(prnoStatus != 0) {
-      
+    int isRejected = matchDao.checkPrStatus(prno);
+    if(isRejected == 0) {
+     matchDao.updatePrActiveN(prno);
+     notificationDao.deleteEventPrNoti(prno);
     }
-    
-//    update pr set active='N' where eno=eno_param and muno=muno_param;
-//    select prno INTO prno_param from pr where eno=eno_param and muno=muno_param;
-//    delete from noti where prno=prno_param;
   }
   
   
