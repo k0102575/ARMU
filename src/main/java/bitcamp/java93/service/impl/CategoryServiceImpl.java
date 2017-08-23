@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import bitcamp.java93.dao.CategoryDao;
 import bitcamp.java93.domain.Category;
-import bitcamp.java93.domain.Event;
 import bitcamp.java93.domain.Musician;
 import bitcamp.java93.service.CategoryService;
 
@@ -105,40 +104,5 @@ public class CategoryServiceImpl implements CategoryService {
     return categoryDao.selectEventCategory(eno);
   }
   
-  public  void registEventCategory(Event event) throws Exception {   
-    this.registCategory(event.getNo(), event.getEventRegistTheme(), event.getEventRegistMajor(), event.getEventRegistGenre());
-  }
   
-  public  void deleteEventCategory(int eno) throws Exception {  
-    categoryDao.deleteEventTheme(eno);
-    categoryDao.deleteEventMajor(eno);
-    categoryDao.deleteEventGenre(eno);
-  }
-  
-  private void registCategory(int eventNo, List<String> eventRegistTheme, List<String> eventRegistMajor, List<String> eventRegistGenre) {
-    HashMap<String,Object> themeMap = new HashMap<>();
-    HashMap<String,Object> majorMap = new HashMap<>();
-    HashMap<String,Object> genreMap = new HashMap<>();
-    
-    themeMap.put("eventNo", eventNo);
-    majorMap.put("eventNo", eventNo);
-    genreMap.put("eventNo", eventNo);
-    
-    for (String eventTheme : eventRegistTheme) {
-      themeMap.put("eventTheme", eventTheme);
-      categoryDao.insertEventTheme(themeMap);
-    }
-    
-    for (String eventMajor : eventRegistMajor) {
-      majorMap.put("eventMajor", eventMajor);
-      categoryDao.insertEventMajor(majorMap);
-    }
-    
-    for (String eventGenre : eventRegistGenre) {
-      genreMap.put("eventGenre", eventGenre);
-      categoryDao.insertEventGenre(genreMap);
-    }
-  }
-
-
 }

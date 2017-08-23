@@ -570,7 +570,7 @@ eventPage8Prev.on('click', function() {
 eventPage8Next.on('click', function() {
   
   if($("input[name=toggle]:checked").val() =="true") {
-    $.post('/event/addReherse.json', {
+    $.post('/event/add.json', {
       'locno': citySelectMenu.val(),
       'pay': inputEventPay.val(),
       'requirement': inputEventRequire.val(),
@@ -601,8 +601,12 @@ eventPage8Next.on('click', function() {
       'title': inputEventName.val(),
       "eventRegistTheme" : themeSelcetHidden.val(),
       "eventRegistMajor" : majorSelcetHidden.val(),
-      "eventRegistGenre" : genreSelcetHidden.val()
+      "eventRegistGenre" : genreSelcetHidden.val(),
+      "rhspay" : 0,
+      "rhsnum" : 0,
+      "rhsinfo" : null
     }, function(result) {
+    	console.log(result)
       eventPage8.toggle(0);
       eventPage9.toggle(0 , function() {
         progress(100)

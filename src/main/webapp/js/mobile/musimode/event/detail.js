@@ -28,7 +28,7 @@ function displayEventDetail() {
         $(".portfolio-add-btn").on('click', function() {
           
           if(appy != 0 && appyActiveCheck == "Y") {
-            $.post('/event/requestEventCancel.json', {
+            $.post('/event/cancelAppy.json', {
               'eventNo': $(this).attr("data-value")
             }, function(result) {
               if(result.data == "success") {

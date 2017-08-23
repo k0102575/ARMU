@@ -25,10 +25,10 @@ public interface CategoryDao {
   void deleteMusiGenre(int no);
   void deleteMusilocation(int no);
   Category selectEventCategory(int eno);
-  void insertEventTheme(Map<String,Object> themeMap);
-  void insertEventMajor(Map<String,Object> majorMap);
-  void insertEventGenre(Map<String,Object> genreMap);
-  void deleteEventTheme(int eno);
-  void deleteEventMajor(int eno);
-  void deleteEventGenre(int eno);
+  void insertEventTheme(Map<String,Object> themeMap); // 이벤트 테마 카테고리 추가
+  void insertEventMajor(Map<String,Object> majorMap); // 이벤트 전공 카테고리 추가
+  void insertEventGenre(Map<String,Object> genreMap); // 이벤트 장르 카테고리 추가
+  void deleteEventTheme(int eno); // 이벤트 테마 카테고리 삭제
+  void deleteEventMajor(int eno); // 이벤트 전공 카테고리 삭제
+  void deleteEventGenre(int eno); // 이벤트 장르 카테고리 삭제
 }

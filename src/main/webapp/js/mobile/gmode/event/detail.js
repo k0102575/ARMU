@@ -54,7 +54,7 @@ function displayEventDetail() {
             cancelButtonText: "취소"
           },
           function(){
-            $.getJSON('/event/deleteEvent.json', 
+            $.getJSON('/event/delete.json', 
                 { 
               "eno" : location.href.split('?')[1].split('=')[1]
                 },

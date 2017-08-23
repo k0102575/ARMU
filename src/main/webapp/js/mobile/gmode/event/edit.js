@@ -528,7 +528,7 @@ eventPage8Prev.on('click', function() {
 eventPage8Next.on('click', function() {
   
   if($("input[name=toggle]:checked").val() =="true") {
-    $.post('/event/updateReherse.json', {
+    $.post('/event/update.json', {
       'no' : location.href.split('?')[1].split('=')[1],
       'locno': citySelectMenu.val(),
       'pay': inputEventPay.val(),
@@ -561,7 +561,10 @@ eventPage8Next.on('click', function() {
       'title': inputEventName.val(),
       "eventRegistTheme" : categoryThemeNo,
       "eventRegistMajor" : categoryMajorNo,
-      "eventRegistGenre" : categoryGenreNo
+      "eventRegistGenre" : categoryGenreNo,
+      "rhspay" : 0,
+      "rhsnum" : 0,
+      "rhsinfo" : null
     }, function(result) {
       eventPage8.toggle(0);
       eventPage9.toggle(0 , function() {
