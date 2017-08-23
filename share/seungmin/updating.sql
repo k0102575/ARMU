@@ -55,7 +55,22 @@ where mtc.eno = 13
     
     
     
-    
+매칭 이벤트 가져오기
+
+   select distinct even.eno, even.pay, even.date, even.title,
+    loct.name as loctname, loc.name as locname, even.addr, 
+    if(prc.prno is not null, 1, 0) as pr_count, prc.active as prStatus
+    from (select * from evn where date >= curdate() and eno not in (select
+    eno from mtc)) even
+    left outer join loc loc on even.locno = loc.locno
+    left outer join loc_type loct on loc.loctno = loct.loctno
+    left outer join
+    (select prno, muno, eno, active
+    from pr
+    group by muno, eno
+    having muno = 1
+    ) prc on even.eno = prc.eno
+    where even.mno= 5
     
     
     

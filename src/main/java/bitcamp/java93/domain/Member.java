@@ -9,12 +9,8 @@ public class Member {
   String password;
   String email;
   String photo;
+  int isMusician;
   HashMap<String , String> valueMap;
-  @Override
-  public String toString() {
-    return "Member [no=" + no + ", name=" + name + ", phone=" + phone + ", password=" + password + ", email=" + email
-        + ", photo=" + photo + ", valueMap=" + valueMap + "]";
-  }
   public int getNo() {
     return no;
   }
@@ -51,11 +47,24 @@ public class Member {
   public void setPhoto(String photo) {
     this.photo = photo;
   }
+  public int getIsMusician() {
+    return isMusician;
+  }
+  public void setIsMusician(int isMusician) {
+    this.isMusician = isMusician;
+  }
   public HashMap<String, String> getValueMap() {
     return valueMap;
   }
   public void setValueMap(HashMap<String, String> valueMap) {
     this.valueMap = valueMap;
   }
+  @Override
+  public String toString() {
+    return "Member [no=" + no + ", name=" + name + ", phone=" + phone + ", password=" + password + ", email=" + email
+        + ", photo=" + photo + ", isMusician=" + isMusician + ", valueMap=" + valueMap + "]";
+  }
   
-}
+  
+  
+  }

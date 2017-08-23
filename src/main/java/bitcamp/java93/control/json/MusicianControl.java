@@ -131,12 +131,14 @@ public class MusicianControl {
     return result;
   }
 
+  // 관심 뮤지션 삭제
   @RequestMapping("favorRemove")
   public JsonResult favorRemove(HttpSession session, int no) throws Exception {
     musicianService.favorRemove(getLoginMember(session).getNo(), no);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
 
+  // 관심 뮤지션 추가
   @RequestMapping("favorAdd")
   public JsonResult favorAdd(HttpSession session, int no) throws Exception {
     musicianService.favorAdd(getLoginMember(session).getNo(), no);

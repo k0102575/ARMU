@@ -48,35 +48,81 @@ where n.muno=#{no} and (n.whom='musician' or n.whom='both')
 order by date desc
   </select><!-- 완진 -->
   
-   <!-- 뮤지션에게 일반인이 pr -->
+  <!-- 1.뮤지션에게 일반인이 pr -->
   <insert id="insertEventPrNoti" parameterType="map">
     insert into noti(muno, eno, type, date, cont, whom, prno) 
-    values(#{muNo}, #{eNo}, 'pr', NOW(), '제안받은 이벤트', 'musician', #{prNo})
-  </insert><!-- 승민 -->
+    values(#{musicianNo}, #{eventNo}, 'pr', NOW(), '제안받은 이벤트', 'musician', #{prno})
+  </insert><!-- 공통 -->
   
-  <!-- 일반인에게 뮤지션이 appy -->
+  <!-- 2.뮤지션이 pr 거절 -->
+  <insert id="rejectEventPrNoti" parameterType="map">
+    insert into noti(muno, eno, type, date, cont, whom, prno) 
+    values(#{musicianNo}, #{eventNo}, 'pr_reject', NOW(), '요청 거절', 'gmember', #{prno})
+  </insert><!-- 공통 -->
+  
+  <!-- 3. 뮤지션이 pr 수락 -->
+  <insert id="acceptEventPrNoti" parameterType="map">
+    insert into noti(muno, eno, type, date, cont, whom, prno) 
+    values(#{musicianNo}, #{eventNo}, 'pr_accept', NOW(), '요청 수락', 'gmember', #{prno})
+  </insert><!-- 공통 -->
+  
+  <!-- 4.일반인에게 뮤지션이 appy -->
   <insert id="insertEventAppyNoti" parameterType="map">
     insert into noti(muno, eno, type, date, cont, whom, appyno) 
-    values(#{muNo}, #{eNo}, 'appy', NOW(), '이벤트 지원', 'gmember', #{appyno})
-  </insert><!-- 승민 -->
+    values(#{musicianNo}, #{eventNo}, 'appy', NOW(), '이벤트 지원', 'gmember', #{appyno})
+  </insert><!-- 공통 -->
   
-  <!-- 뮤지션에게 이벤트 편집 -->
+  <!-- 5.일반인이 appy 거절 -->
+  <insert id="rejectEventAppyNoti" parameterType="map">
+    insert into noti(muno, eno, type, date, cont, whom, appyno) 
+    values(#{musicianNo}, #{eventNo}, 'appy_reject', NOW(), '매칭 거절', 'musician', #{appyno})
+  </insert><!-- 공통 -->
+    
+  <!-- 6.일반인이 매칭 확정 -->
+  <insert id="insertEventMtcNoti" parameterType="map">
+    insert into noti(muno, eno, type, date, cont, whom, mtcno) 
+    values(#{musicianNo}, #{eventNo}, 'mtc', NOW(), '매칭 확정', 'both', #{mtcno})
+  </insert><!-- 공통 -->
+  
+  <!-- 7.미확정 이벤트 당일 지남 -->
+  <insert id="insertEventExpiredNoti" parameterType="map">
+    insert into noti(eno, type, date, cont, whom) 
+    values(#{eventNo}, 'evn_expired', NOW(), '이벤트 만료', 'gmember')
+  </insert><!-- 공통 -->
+  
+  <!-- 8.확정 이벤트 당일 -->
+  <insert id="insertEventTodayNoti" parameterType="map">
+    insert into noti(muno, eno, type, date, cont, whom, mtcno) 
+    values(#{musicianNo}, #{eventNo}, 'evn_expired', NOW(), '이벤트 만료', 'both', #{mtcno})
+  </insert><!-- 공통 -->
+  
+  <!-- 9.뮤지션에게 이벤트 편집 -->
   <insert id="insertEventEditNoti" parameterType="map">
     insert into noti(muno, eno, type, date, cont, whom, appyno) 
-    values(#{muNo}, #{eNo}, 'evn_edit', NOW(), '이벤트 편집', 'musician', (select appyno from appy where eno=#{eNo} and muno=#{muNo}))
-  </insert><!-- 승민 -->
+    values(#{musicianNo}, #{eventNo}, 'evn_edit', NOW(), '이벤트 편집', 'musician', (select appyno from appy where eno=#{eventNo} and muno=#{musicianNo}))
+  </insert><!-- 공통 -->
   
-  <!-- 뮤지션에게 이벤트 삭제 -->
+  <!-- 10.뮤지션에게 이벤트 삭제 -->
   <insert id="insertEventDeleteNoti" parameterType="map">
     insert into noti(muno, eno, type, date, cont, whom, appyno) 
-    values(#{muNo}, #{eNo}, 'evn_delete', NOW(), '이벤트 삭제', 'musician' , (select appyno from appy where eno=#{eNo} and muno=#{muNo}))
-  </insert><!-- 승민 -->
+    values(#{musicianNo}, #{eventNo}, 'evn_delete', NOW(), '이벤트 삭제', 'musician' , (select appyno from appy where eno=#{eventNo} and muno=#{musicianNo}))
+  </insert><!-- 공통 -->
   
-  <!-- 뮤지션에게 리뷰 입력 -->
+  <!-- 11.일반인이 pr 취소 -->
+  <delete id="deleteEventPrNoti" parameterType="int">
+    delete from noti where prno = #{prno}
+  </delete><!-- 공통 -->
+  
+  <!-- 12.뮤지션이 appy 취소시 있던 noti 삭제 -->
+  <delete id="deleteEventAppyNoti" parameterType="int">
+    delete from noti where appyno = #{appyno}
+  </delete><!-- 공통 -->
+  
+  <!-- 13.뮤지션에게 리뷰 입력 -->
   <insert id="insertEventRevNoti" parameterType="map">
     insert into noti(muno, eno, type, date, cont, whom, mtcno) 
-    values(#{muNo}, #{eNo}, 'rev', now(), '새로운 리뷰', 'musician' , #{mtcNo})
-  </insert><!-- 승민 -->
+    values(#{musicianNo}, #{eventNo}, 'rev', now(), '새로운 리뷰', 'musician' , #{mtcno})
+  </insert><!-- 공통 -->
   
   
 </mapper>

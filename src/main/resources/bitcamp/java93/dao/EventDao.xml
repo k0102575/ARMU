@@ -11,43 +11,6 @@
     <result column="location" property="location" />
     <result column="addr" property="address" />
     <result column="pay" property="pay" />
-    <result column="req" property="requirement" />
-    <result column="cont" property="contents" />
-    <result column="dpay" property="downPay" />
-    <result column="date" property="date" />
-    <result column="rpay" property="rhspay" />
-    <result column="info" property="rhsinfo" />
-    <result column="num" property="rhsnum" />
-    <collection property="genreList" ofType="string">
-      <result column="genre" />
-    </collection>
-    <collection property="themeList" ofType="string">
-      <result column="theme" />
-    </collection>
-    <collection property="majorList" ofType="string">
-      <result column="major" />
-    </collection>
-  </resultMap>
-
-  <resultMap type="event" id="eventSelectMap">
-    <id column="eno" property="no" />
-    <result column="title" property="title" />
-    <result column="loctname" property="city" />
-    <result column="locname" property="location" />
-    <result column="addr" property="address" />
-    <result column="pay" property="pay" />
-    <result column="date" property="date" />
-    <result column="pr_count" property="pr_count" />
-    <result column="mtc_info" property="mtc_info" />
-  </resultMap>
-
-  <resultMap type="event" id="eventMapBasic">
-    <id column="eno" property="no" />
-    <result column="title" property="title" />
-    <result column="mno" property="writer" />
-    <result column="location" property="location" />
-    <result column="addr" property="address" />
-    <result column="pay" property="pay" />
     <result column="locno" property="locno" />
     <result column="loctno" property="loctno" />
     <result column="req" property="requirement" />
@@ -74,6 +37,20 @@
       <result column="major" />
     </collection>
   </resultMap>
+  
+  <resultMap type="event" id="eventSelectMap">
+    <id column="eno" property="no" />
+    <result column="title" property="title" />
+    <result column="loctname" property="city" />
+    <result column="locname" property="location" />
+    <result column="addr" property="address" />
+    <result column="pay" property="pay" />
+    <result column="date" property="date" />
+    <result column="pr_count" property="pr_count" />
+    <result column="mtc_info" property="mtc_info" />
+    <result column="prStatus" property="prStatus" />
+  </resultMap>
+
   
     <resultMap type="event" id="selectDetailMap">
     <id column="eno" property="no" />
@@ -184,7 +161,7 @@
     </association>
   </resultMap>
 
-<resultMap type="event" id="matchEventMap2">
+  <resultMap type="event" id="matchEventMap2">
     <id column="eno" property="no" />
     <result column="title" property="title" />
     <result column="mno" property="writer" />
@@ -217,38 +194,15 @@
     </collection>
     </association>
   </resultMap>
-
-  <delete id="deletePr" statementType="CALLABLE" parameterType="HashMap">
-  { 
-    call cancelPrProc (#{eventNo}, #{musicianNo}, #{prno_param})
-  }
-  </delete>
-
-  <insert id="insertMatch" statementType="CALLABLE" parameterType="HashMap">
-  { 
-    call decideMtcProc (#{eventNo}, #{musicianNo}, #{mno_param}, #{mtcno_param})
-  }
-  </insert>
-  
-  <update id="updateAppyReject" statementType="CALLABLE" parameterType="HashMap">
-	{ 
-	  call rejectAppyProc(#{eventNo}, #{musicianNo}, #{appyno_param})
-	}
-  </update>
     
   <select id="selectEventCount" resultType="int"
     parameterType="int">
     select count(eno)
     from (select distinct eno from recruiting_eventlist where mno=#{no}) e
   </select><!-- 완진 -->
+
   
-  <select id="selectAppyCount" resultType="int"
-    parameterType="int">
-    select count(eno)
-    from (select eno, muno from appy where muno=#{muNo} and eno=#{eNo}) e
-  </select><!-- 승민 -->
-  
-   <select id="selectMusiAppyList" resultMap="eventMapBasic"
+   <select id="selectMusiAppyList" resultMap="eventMap"
     parameterType="int">
     select ap.eno, ap.title, ap.date, ap.location, ap.addr, ap.pay, ap.major, ap.genre, ap.theme,
 ap.appyno, ap.mno, m.name, m.path
@@ -256,7 +210,7 @@ from eventlist_appy_musicians ap inner join memb m on ap.mno=m.mno
 where ap.muno=#{no}
   </select><!-- 완진 -->
   
-   <select id="selectMusiPrList" resultMap="eventMapBasic"
+   <select id="selectMusiPrList" resultMap="eventMap"
     parameterType="int">
     select p.eno, p.title, p.date, p.location, p.addr, p.pay, p.major, p.genre, p.theme,
 p.prno, p.mno, m.name, m.path
@@ -264,7 +218,7 @@ from eventlist_pr_musicians p inner join memb m on p.mno=m.mno
 where p.muno=#{no}
   </select><!-- 완진 -->
   
-   <select id="selectMusiOngoingList" resultMap="eventMapBasic"
+   <select id="selectMusiOngoingList" resultMap="eventMap"
     parameterType="int">
     select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
 mu.muno, null as major, null as genre, null as theme, m.mno, m.name, m.path
@@ -274,7 +228,7 @@ inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
 inner join memb m on m.mno=e.mno
   </select><!-- 완진 -->
   
-     <select id="selectMusiEndList" resultMap="eventMapBasic"
+     <select id="selectMusiEndList" resultMap="eventMap"
     parameterType="int">
     select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
 mu.muno, mj.name as major, g.name as genre, t.name as theme,
@@ -336,7 +290,7 @@ left outer join eventlist_pr_musicians p on ap.eno = p.eno
 where ap.mno=#{no}
   </select><!-- 완진 -->
   
-  <select id="selectRecommandList" resultMap="eventMapBasic"
+  <select id="selectRecommandList" resultMap="eventMap"
     parameterType="int">
     select e.title, e.eno, e.date, concat(lt.name, ' ', l.name) as location,
     e.addr, e.pay,
@@ -359,7 +313,7 @@ where ap.mno=#{no}
     where (mjm.muno=#{no} or gm.muno=#{no} or tm.muno=#{no})
   </select><!-- 완진 -->
 
-  <select id="selectRecentList" resultMap="eventMapBasic"
+  <select id="selectRecentList" resultMap="eventMap"
     parameterType="int">
     select e.title, e.eno, e.date, concat(lt.name, ' ', l.name) as location,
     e.addr, e.pay,
@@ -407,62 +361,25 @@ where ap.mno=#{no}
     where eno = #{eno}
   </update> <!-- 승민 -->
   
-  <select id="prCheckList" resultMap="eventSelectMap"
-    parameterType="map">
-    select even.eno, even.pay, even.date, even.title,
-    loct.name as loctname, loc.name as locname, even.addr, if(prc.prno is
-    not null, 1, 0) as pr_count, if(mtc.mtcno is not null, 1, 0) as
-    mtc_info
+  <!--  이벤트 매칭요청 리스트 -->
+  <select id="prCheckList" resultMap="eventSelectMap" parameterType="map">
+    select distinct even.eno, even.pay, even.date, even.title,
+    loct.name as loctname, loc.name as locname, even.addr, 
+    if(prc.prno is not null, prc.prno, 0) as pr_count, prc.active as prStatus
     from (select * from evn where date >= curdate() and eno not in (select
     eno from mtc)) even
     left outer join loc loc on even.locno = loc.locno
     left outer join loc_type loct on loc.loctno = loct.loctno
     left outer join
-    (select prno, muno, eno
+    (select prno, muno, eno, active
     from pr
     group by muno, eno
     having muno = #{muNo}
     ) prc on even.eno = prc.eno
-    left outer join mtc mtc on even.eno = mtc.eno
-    where even.mno = #{myNo}
+    where even.mno= #{myNo}
   </select><!-- 승민 -->
-
-  <!-- 일반모드 > 뮤지션 상세페이지 > 매칭 요청하기 -->
-  <insert id="prEvent" parameterType="map" useGeneratedKeys="true"
-    keyColumn="prno" keyProperty="prno">
-    insert into pr(muno, eno, active)
-    values(#{muNo}, #{eNo}, 'Y');
-  </insert> <!-- 승민 -->
   
-  <!-- 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 추가 -->
-  <insert id="appyEvent" parameterType="map" useGeneratedKeys="true"
-    keyColumn="appyno" keyProperty="appyno">
-    insert into appy(muno, eno, active)
-    values(#{muNo}, #{eNo}, 'Y');
-  </insert> <!-- 승민 -->
-  
-  <!-- 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"Y"변경 -->
-  <update id="appyEventCheckUpdate" parameterType="map">
-    update appy set 
-    active = 'Y'
-    where eno = #{eNo} and muno = #{muNo}
-  </update> <!-- 승민 -->
-  
-  <!-- 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"N"변경 -->
-  <update id="appyEventCancelUpdate" parameterType="map">
-    update appy set 
-    active = 'N'
-    where eno = #{eNo} and muno = #{muNo}
-  </update> <!-- 승민 -->
-  
-    <!-- 일반 모드 > 뮤지션 상세페이지 > 뮤지션 홍보 활성"N"변경 -->
-  <update id="prEventCancelUpdate" parameterType="map">
-    update pr set 
-    active = 'N'
-    where eno = #{eNo} and muno = #{muNo}
-  </update> <!-- 승민 -->
-  
-  <select id="selectSurfList" resultMap="eventMapBasic">
+  <select id="selectSurfList" resultMap="eventMap">
     select e.eno, e.locno, e.pay, e.addr, e.date, e.title,
     concat(lt.name, ' ', l.name) as location,
     m.mno, m.name, m.path, mj.name as major, g.name as genre, t.name as theme
@@ -480,7 +397,7 @@ where ap.mno=#{no}
     order by eno
   </select>
 
-  <select id="selectSearchResultList" resultMap="eventMapBasic" parameterType="string">
+  <select id="selectSearchResultList" resultMap="eventMap" parameterType="string">
     select e.title, e.eno, e.date, concat(lt.name, ' ', l.name) as location,
     e.addr, e.pay,
     mj.name as major, g.name as genre, t.name as theme,
@@ -562,15 +479,8 @@ where ap.mno=#{no}
     left outer join memb memb on e.mno = memb.mno
     where e.eno = #{eNo}
   </select> <!-- 승민 -->
-  
-  <!--  이벤트 완료후 리뷰 정보 추가 -->
-  <update id="updateReview" parameterType="event">
-  update mtc set 
-  score = #{score}, rev = #{rev}
-  where mtcno = #{mtcno}
-  </update>
-  
-  <select id="eventSearch" resultMap="eventMapBasic" parameterType="map">
+
+  <select id="eventSearch" resultMap="eventMap" parameterType="map">
     select e.eno, e.locno, e.pay, e.addr, e.date, e.title,
     concat(lt.name, ' ', l.name) as location,
     m.mno, m.name, m.path, mj.name as major, g.name as genre, t.name as theme
@@ -714,22 +624,22 @@ where ap.mno=#{no}
       </foreach>
   </sql>
   
-   <select id="selectMatchingEventList" resultMap="matchEventMap2">
-      select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
-mu.muno, mu.nick, mm.path, score.score, mtc.mtcno,
-mj.name as major, g.name as genre, t.name as theme
-from evn e inner join mtc on e.eno=mtc.eno and e.date >= curdate() and e.active='Y'
-inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
-inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
-left outer join mjr_musi mjm on mu.muno=mjm.muno inner join mjr mj on mjm.mjrno=mj.mjrno
-left outer join gnr_musi gm on mu.muno=gm.muno inner join gnr g on gm.gnrno=g.gnrno
-left outer join thm_musi tm on mu.muno=tm.muno inner join thm t on tm.thmno=t.thmno
-left outer join (
-  select avg(score) as score, muno
-  from mtc
-  group by muno
-) score on score.muno=mu.muno
-where date=curdate()
+  <select id="selectMatchingEventList" resultMap="matchEventMap2">
+    select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
+    mu.muno, mu.nick, mm.path, score.score, mtc.mtcno,
+    mj.name as major, g.name as genre, t.name as theme
+    from evn e inner join mtc on e.eno=mtc.eno and e.date >= curdate() and e.active='Y'
+    inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
+    inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
+    left outer join mjr_musi mjm on mu.muno=mjm.muno inner join mjr mj on mjm.mjrno=mj.mjrno
+    left outer join gnr_musi gm on mu.muno=gm.muno inner join gnr g on gm.gnrno=g.gnrno
+    left outer join thm_musi tm on mu.muno=tm.muno inner join thm t on tm.thmno=t.thmno
+    left outer join (
+      select avg(score) as score, muno
+      from mtc
+      group by muno
+    ) score on score.muno=mu.muno
+    where date=curdate()
   </select>
 </mapper>
 

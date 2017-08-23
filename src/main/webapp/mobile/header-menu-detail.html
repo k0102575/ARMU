@@ -4,9 +4,11 @@
 <div id="menu-toggle">
 	<div id='menu-contents'>
 		<div id='menu-upper-btn'>
-			<a href='/mobile/gmode/index.html'><img id='home-btn'
-				src='/image/icon/mobile_icon/home_bt.png'></a> 
-            <span class='change-mode-btn'>일반모드<img src='/image/icon/change.png'></span>
+			<a id='home-btn' href='/mobile/gmode/index.html'><i class="fa fa-home" aria-hidden="true"></i></a> 
+      <div class='change-mode-btn go-musimode-btn'>
+        <span class='change-mode-btn-text'>일반모드</span>
+        <img class='change-mode-btn-img' src='/image/icon/change.png'>
+      </div>
 		</div>
 		<br>
 		<div id='login-btn' class='user-infobox'>
@@ -23,7 +25,7 @@
 		<hr class='menu-category-separator'>
 		<div class='menu-category-btn' id="menu-category-event-regist">이벤트 등록하기</div>
 		<hr class='menu-category-separator'>
-		<div class='menu-category-btn' id='go-musimode-btn'>뮤지션모드로 전환</div>
+		<div class='menu-category-btn go-musimode-btn'>뮤지션모드로 전환</div>
 		<hr class='menu-category-separator'>
 		<div class='menu-copyright'>
 			<span id='menu-copyright-text'>@COPYRIGHT 2017</span> <img
@@ -78,10 +80,20 @@
 
 
   /*메뉴 관련*/
-  var container = $("#container"), menuBtn = $('#header-menu-menu'), menuBackscreen = $("#menu-backscreen"), menuToggle = $("#menu-toggle"), musicianFavor = $("#menu-category-musician-favor"), eventRegist = $("#menu-category-event-regist"), headerMenuSearch = $("#header-menu-search"), searchToggle = $("#search-toggle"), searchCancel = $('#search-cancel'), searchText = $('#search-text'), searchTextDelete = $('#search-text-delete')
-  var mainRecommand = $('#main-recommend'),
+  var container = $("#container"), 
+  menuBtn = $('#header-menu-menu'), 
+  menuBackscreen = $("#menu-backscreen"), 
+  menuToggle = $("#menu-toggle"), 
+  musicianFavor = $("#menu-category-musician-favor"), 
+  eventRegist = $("#menu-category-event-regist"), 
+  headerMenuSearch = $("#header-menu-search"), 
+  searchToggle = $("#search-toggle"), 
+  searchCancel = $('#search-cancel'), 
+  searchText = $('#search-text'), 
+  searchTextDelete = $('#search-text-delete'),
+  mainRecommand = $('#main-recommend'),
   mainSurf = $('#main-surf'),
-  mainAct = $('#main-act')
+  mainAct = $('#main-act');
   
   menuBtn.on('click', function() {
     menuBackscreen.css('display', 'block');
@@ -103,7 +115,7 @@
     $('#search-text').focus()
   })
 
-
+  
   searchCancel.on('click', function() {
     searchToggle.toggle("slide", {
       direction : 'right'
@@ -131,7 +143,7 @@
     location.href = '/mobile/gmode/event/list.html'
   })
 
-  $('#go-musimode-btn').on('click', function() {
+  $('.go-musimode-btn').on('click', function() {
 
     $.getJSON('/auth/checkMusi.json', function(result) {
       if (result.data == "musician") {
@@ -140,7 +152,7 @@
 
       if (result.data == 'member') {
         swal({
-          title : "뮤지션회원이 아닙니다 \n\n" + "뮤지션으로 가입하시겠어요?",
+          title : "뮤지션회원이 아닙니다. \n\n" + "뮤지션으로 가입하시겠어요?",
           type : "warning",
           showCancelButton : true,
           confirmButtonColor : "#8069ef",

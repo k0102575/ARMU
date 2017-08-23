@@ -75,8 +75,7 @@
 .rec-event {
   position: relative;
   background-color: white;
-  border-top: 1px solid white;
-  border-bottom: 1px solid #bebbbb;
+  box-shadow: 1px 1px 12px 1px rgba(128, 128, 128, 0.59);
   min-height: 154px;
   width: 100%;
   margin-bottom: 3%;
@@ -145,14 +144,14 @@
 .rec-event-dday {
   position: absolute;
   display: inline-block;
-  color: #8069ef;
+  color: white;
   border: 1px solid rgb(155, 155, 155);
   font-size: 30px;
   font-weight: 400;
   width: auto;
   padding-left: 1.5%;
   padding-right: 1.5%;
-  background-color: white;
+  background-color: #8069ef;
   border-radius: 6px;
   line-height: 46px;
   height: 48px;
@@ -266,14 +265,14 @@
 .recent-dday {
   position: absolute;
   display: inline-block;
-  color: #8069ef;
+  color: white;
   border: 1px solid #8069ef;
   font-size: 30px;
   font-weight: 400;
   width: auto;
   padding-left: 1.5%;
   padding-right: 1.5%;
-  background-color: white;
+  background-color: #8069ef;
   border-radius: 6px;
   line-height: 46px;
   height: 48px;

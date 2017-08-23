@@ -144,6 +144,22 @@
   left outer join loc_type lt on l.loctno = lt.loctno
   </sql>
   
+  <sql id="filter">
+   <if test='gender =="G"'>
+     and mu.age <![CDATA[ > ]]>
+     #{minAge} and
+     mu.age  <![CDATA[ < ]]>
+     #{maxAge}
+   </if>
+   <if test='gender !="G"'>
+     and mu.gender = #{gender} and
+     mu.age <![CDATA[ > ]]>
+     #{minAge} and
+     mu.age <![CDATA[ < ]]>
+     #{maxAge}
+   </if>
+ </sql>
+ 
   
   <select id="selectRecommandList" resultMap="musicianMap" parameterType="int">
   select mum.mno, mum.name, mu.nick, mu.team, mum.path, fm.fav, if(mtc.score is not null, mtc.score, 0) as score,
@@ -431,7 +447,7 @@ left outer join (
     inner join mjr mj on mjm.mjrno=mj.mjrno
     inner join gnr g on gm.gnrno=g.gnrno
     inner join thm t on tm.thmno=t.thmno
-  </select>
+  </select><!-- 완진 -->
   
   <select id="selectPopularList" resultMap="musicianMap">
   select mum.mno, mu.nick, mum.path, sc.score, mj.name as major, g.name as genre, t.name as theme, null as location
@@ -456,7 +472,7 @@ left outer join (
   inner join gnr g on gm.gnrno=g.gnrno
   inner join thm t on tm.thmno=t.thmno
   order by mu.muno desc
-  </select>
+  </select><!-- 완진 -->
   
   <insert id="insert" parameterType="musician" 
           useGeneratedKeys="true" keyColumn="mno" keyProperty="no">
@@ -529,23 +545,6 @@ where mtc.eno = #{eNo}
   mj.name like '%${value}%'or
   t.name like '%${value}%'
   </select>
-  
-  
-  <sql id="filter">
-    <if test='gender =="G"'>
-      and mu.age <![CDATA[ > ]]>
-      #{minAge} and
-      mu.age  <![CDATA[ < ]]>
-      #{maxAge}
-    </if>
-    <if test='gender !="G"'>
-      and mu.gender = #{gender} and
-      mu.age <![CDATA[ > ]]>
-      #{minAge} and
-      mu.age <![CDATA[ < ]]>
-      #{maxAge}
-    </if>
-  </sql>
   
   
 </mapper>

@@ -11,7 +11,7 @@ showRecommandList();
 displayRecommandByEventMusiList();
 displayBestReviewMusiList();
 displayPopularMusiList();
-displayMostPopularCategoryList();
+//displayMostPopularCategoryList();
 
 function displayRecommandByEventMusiList() {
   $.getJSON('/musician/listRecommand.json', function(result) {
@@ -43,8 +43,9 @@ function displayRecommandByEventMusiList() {
     })
     
     $('.rec-by-event-musi-fav').on('click', function() {
-      var isFavorite = heartChange($(this).html())
-      $(this).html(isFavorite)
+      var pressedBtn = $(this);
+      var isFavorite = heartChange(pressedBtn.html(), pressedBtn)
+      pressedBtn.html(isFavorite)
     })
     
     /*initialize swiper when document ready*/
@@ -193,11 +194,17 @@ function heartAdd(item) {
 }
 
 
-function heartChange(isFavorite) {
+function heartChange(isFavorite, pressedBtn) {
   if (isFavorite == '<i class="fa fa-heart" aria-hidden="true"></i>') {
     isFavorite = '<i class="fa fa-heart-o" aria-hidden="true"></i>'
+      $.post('/musician/favorRemove.json', {
+        'no': pressedBtn.attr('data-no')
+        }, function(result) {}, 'json')
   } else {
     isFavorite = '<i class="fa fa-heart" aria-hidden="true"></i>'
+    $.post('/musician/favorAdd.json', {
+      'no': pressedBtn.attr('data-no')
+      }, function(result) {}, 'json')
   }
   return isFavorite;
 }

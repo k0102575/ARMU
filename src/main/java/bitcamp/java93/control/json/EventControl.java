@@ -132,7 +132,7 @@ public class EventControl {
     return result;
   }
 
-  
+  // 일반모드 > 뮤지션 상세페이지 > 매칭 이벤트 목록 가져오기
   @RequestMapping("prCheckEvent")
   public JsonResult prCheckEvent(HttpSession session, int no){
     JsonResult result = new JsonResult();
@@ -151,6 +151,7 @@ public class EventControl {
         }
         
       } catch (Exception e) {
+        e.printStackTrace();
         result.setStatus(JsonResult.ERROR);
       }
     return result;
@@ -158,17 +159,29 @@ public class EventControl {
 
   // 일반모드 > 뮤지션 상세페이지 > 매칭 요청하기
   @RequestMapping("prEvent")
-  public JsonResult prEvent(int muNo, int eNo){
-
+  public JsonResult prEvent(int muNo, int eNo, int prNo, String prStatus){
     JsonResult result = new JsonResult();
+
+    if(prStatus.length() == 1) {
       try {
-        eventService.prEvent(muNo, eNo);
-        
+        eventService.prUpdate(muNo, eNo, prNo);
         return new JsonResult(JsonResult.SUCCESS, "success");
-        
+
       } catch (Exception e) {
+        e.printStackTrace();
         result.setStatus(JsonResult.ERROR);
       }
+      return result;
+    }
+
+    try {
+      eventService.prEvent(muNo, eNo);
+      return new JsonResult(JsonResult.SUCCESS, "success");
+
+    } catch (Exception e) {
+      e.printStackTrace();
+      result.setStatus(JsonResult.ERROR);
+    }
     return result;
   }
   

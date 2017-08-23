@@ -28,12 +28,12 @@ public class Event {
   String date;
   int rhspay;
   int rhsnum;
+  int score;
+  String rev;
   int pr_count;
   int mtc_info;
   int appy_check;
   int mtcno;
-  int score;
-  String rev;
   String appy_activeCheck;
   String rhsinfo;
   boolean haveRehearsal;
