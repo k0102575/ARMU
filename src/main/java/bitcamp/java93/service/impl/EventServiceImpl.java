@@ -173,7 +173,7 @@ public class EventServiceImpl implements EventService {
     valueMap.put("muNo", muNo);
     valueMap.put("eNo", eNo);
     matchDao.appyEventCancelUpdate(valueMap);
-    notificationDao.deleteEventAppyNoti(valueMap);
+/*    notificationDao.deleteEventAppyNoti(valueMap);*/
   }
   
   @Override
