@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bitcamp.java93.dao.EventDao;
+import bitcamp.java93.dao.MatchDao;
 import bitcamp.java93.dao.MusicianDao;
 import bitcamp.java93.dao.NotificationDao;
 import bitcamp.java93.domain.Event;
@@ -18,6 +19,9 @@ public class EventServiceImpl implements EventService {
  
   @Autowired
   EventDao eventDao;
+  
+  @Autowired
+  MatchDao matchDao;
   
   @Autowired
   NotificationDao notificationDao;
@@ -49,14 +53,14 @@ public class EventServiceImpl implements EventService {
     if(musicianPrList != null) {
       for (String muNo : musicianPrList.getMuNoList()) {
         valueMap.put("muNo", muNo);
-        eventDao.prEventCancelUpdate(valueMap);
+        matchDao.prEventCancelUpdate(valueMap);
       }
     }
     
     if(musicianAppyList != null) {
       for (String muNo : musicianAppyList.getMuNoList()) {
         valueMap.put("muNo", muNo);
-        eventDao.appyEventCancelUpdate(valueMap);
+        matchDao.appyEventCancelUpdate(valueMap);
         notificationDao.insertEventEditNoti(valueMap);
       }
       return;
@@ -88,14 +92,14 @@ public class EventServiceImpl implements EventService {
     if(musicianPrList != null) {
       for (String muNo : musicianPrList.getMuNoList()) {
         valueMap.put("muNo", muNo);
-        eventDao.prEventCancelUpdate(valueMap);
+        matchDao.prEventCancelUpdate(valueMap);
       }
     }
     
     if(musicianAppyList != null) {
       for (String muNo : musicianAppyList.getMuNoList()) {
         valueMap.put("muNo", muNo);
-        eventDao.appyEventCancelUpdate(valueMap);
+        matchDao.appyEventCancelUpdate(valueMap);
         notificationDao.insertEventDeleteNoti(valueMap);
       }
       return;
@@ -125,7 +129,7 @@ public class EventServiceImpl implements EventService {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("muNo", muNo);
     valueMap.put("eNo", eNo);
-    eventDao.prEvent(valueMap);
+    matchDao.prEvent(valueMap);
     valueMap.put("prNo", valueMap.get("prno"));
     notificationDao.insertEventPrNoti(valueMap);
   }
@@ -136,7 +140,7 @@ public class EventServiceImpl implements EventService {
     valueMap.put("muNo", muNo);
     valueMap.put("eNo", eNo);
     valueMap.put("prNo", prNo);
-    eventDao.prEventCheckUpdate(valueMap);
+    matchDao.prEventCheckUpdate(valueMap);
     notificationDao.insertEventPrNoti(valueMap);
   }
   
@@ -146,9 +150,9 @@ public class EventServiceImpl implements EventService {
     valueMap.put("muNo", muNo);
     valueMap.put("eNo", eNo);
     
-/*    Musician musician = eventDao.receivePrCheck(valueMap);
+/*    Musician musician = matchDao.receivePrCheck(valueMap);
     */
-    eventDao.appyEvent(valueMap);
+    matchDao.appyEvent(valueMap);
     valueMap.put("appyno", valueMap.get("appyno"));
     notificationDao.insertEventAppyNoti(valueMap);
   }
@@ -159,7 +163,7 @@ public class EventServiceImpl implements EventService {
     valueMap.put("muNo", muNo);
     valueMap.put("eNo", eNo);
     valueMap.put("appyno", appyNo);
-    eventDao.appyEventCheckUpdate(valueMap);
+    matchDao.appyEventCheckUpdate(valueMap);
     notificationDao.insertEventAppyNoti(valueMap);
   }
   
@@ -168,7 +172,7 @@ public class EventServiceImpl implements EventService {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("muNo", muNo);
     valueMap.put("eNo", eNo);
-    eventDao.appyEventCancelUpdate(valueMap);
+    matchDao.appyEventCancelUpdate(valueMap);
     notificationDao.deleteEventAppyNoti(valueMap);
   }
   
@@ -251,22 +255,22 @@ public class EventServiceImpl implements EventService {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("muNo", muNo);
     valueMap.put("eNo", eNo);
-    return eventDao.selectAppyCount(valueMap);
+    return matchDao.selectAppyCount(valueMap);
   }
 
   /*일반모드 > 나의 이벤트 > 모집중 > 지원자 > 지원 거절*/
   public void rejectAppy(HashMap<String, Object> map) throws Exception {
-    eventDao.updateAppyReject(map);
+    matchDao.updateAppyReject(map);
   }
 
   /*일반모드 > 나의 이벤트 > 모집중 > 지원자 > 매칭 확정*/
   public void decideMatch(HashMap<String, Object> map) throws Exception {
-    eventDao.insertMatch(map);
+    matchDao.insertMatch(map);
   }
   
   //일반모드 > 이벤트 상세페이지 > 종료 - 리뷰 추가 리뷰 메시지 작성
   public void updateReview(Event event, int muno) throws Exception {
-    eventDao.updateReview(event);
+    matchDao.updateReview(event);
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("muNo", muno);
     valueMap.put("eNo", event.getNo());
@@ -277,7 +281,7 @@ public class EventServiceImpl implements EventService {
 
   /*일반모드 > 나의 이벤트 > 모집중 > 내가 요청한 뮤지션 > 요청 취소*/
   public void cancelPr(HashMap<String, Object> map) throws Exception {
-    eventDao.deletePr(map);
+    matchDao.deletePr(map);
   }
 
 }
