@@ -154,25 +154,12 @@ public class EventControl {
     return result;
   }
 
-  // 일반모드 > 뮤지션 상세페이지 > 매칭 요청하기
+  // 1. 뮤지션에게 홍보(pr)
   @RequestMapping("prEvent")
-  public JsonResult prEvent(int muNo, int eNo, int prNo, String prStatus){
+  public JsonResult prEvent(int musicianNo, int eventNo){
     JsonResult result = new JsonResult();
-
-    if(prStatus.length() == 1) {
-      try {
-        eventService.prUpdate(muNo, eNo, prNo);
-        return new JsonResult(JsonResult.SUCCESS, "success");
-
-      } catch (Exception e) {
-        e.printStackTrace();
-        result.setStatus(JsonResult.ERROR);
-      }
-      return result;
-    }
-
     try {
-      eventService.prEvent(muNo, eNo);
+      eventService.prEvent(musicianNo, eventNo);
       return new JsonResult(JsonResult.SUCCESS, "success");
 
     } catch (Exception e) {

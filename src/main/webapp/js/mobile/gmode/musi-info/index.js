@@ -232,10 +232,8 @@ function matchRequest() {
       },
       function(){
         $.post('/event/prEvent.json', {
-          'muNo': location.href.split('?')[1].split('=')[1],
-          'eNo': no,
-          'prNo' : prCount,
-          'prStatus' : prStatus
+          'musicianNo': location.href.split('?')[1].split('=')[1],
+          'eventNo': no
         }, function(result) {
           if(result.data == "success") {
             swal({

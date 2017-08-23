@@ -122,25 +122,25 @@ public class EventServiceImpl implements EventService {
     return eventDao.prCheckList(valueMap);
   }
 
-  //일반모드 > 뮤지션 상세페이지 > 매칭 요청하기
-  public void prEvent(int muNo, int eNo) throws Exception {
+  // // 1. 뮤지션에게 홍보(pr)
+  public void prEvent(int musicianNo, int eventNo) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("musicianNo", muNo);
-    valueMap.put("eventNo", eNo);
+    valueMap.put("musicianNo", musicianNo);
+    valueMap.put("eventNo", eventNo);
+    
+    int prno = matchDao.selectExistPrCount(valueMap);
+    
+    if(prno != 0) {
+      valueMap.put("prno", prno);
+      matchDao.updatePrActiveY(prno);
+      notificationDao.insertEventPrNoti(valueMap);
+      return;
+    }
+    
     matchDao.insertPr(valueMap);
     valueMap.put("prno", valueMap.get("prno"));
     notificationDao.insertEventPrNoti(valueMap);
-  }
-  
-
-  //일반모드 > 뮤지션 상세페이지 > 홍보 상태"Y"변경
-  public void prUpdate(int muNo, int eNo, int prNo) throws Exception {
-    HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("musicianNo", muNo);
-    valueMap.put("eventNo", eNo);
-    valueMap.put("prno", prNo);
-    /*    matchDao.prEventCheckUpdate(valueMap);*/
-    notificationDao.insertEventPrNoti(valueMap);
+    
   }
 
   //뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 추가 - pr을 받았으면 pr status 'Y'변경
