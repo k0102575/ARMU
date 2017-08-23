@@ -5,6 +5,41 @@
 <mapper namespace="bitcamp.java93.dao.MatchDao">
 
 
+
+<!-- 기존에 홍보한 데이터가 있는지 확인 -->
+  <select id="selectExistPrCount" resultType="int" parameterType="HashMap">
+    select prno from pr where muno=#{musicianNo} and eno=#{eventNo}
+  </select><!-- 공통 -->
+  
+<!-- 기존에 지원한 데이터가 있는지 확인 -->
+  <select id="selectExistAppyCount" resultType="int" parameterType="HashMap">
+    select appyno from appyno where muno=#{musicianNo} and eno=#{eventNo}
+  </select><!-- 공통 -->
+  
+<!-- 홍보를 취소했는지 확인 -->
+  <select id="checkPrActive" resultType="int" parameterType="int">
+    select prno from pr where prno=#{prno} and active='N' 
+  </select><!-- 공통 -->
+
+<!-- 지원을 취소했는지 확인 -->
+  <select id="checkAppyActive" resultType="int" parameterType="int">
+    select appyno from appy where appyno=#{appyno} and active='N' 
+  </select><!-- 공통 -->
+  
+<!-- 홍보를 거절했는지 확인 -->
+  <select id="checkPrStatus" resultType="int" parameterType="int">
+    select prno from pr where prno=#{prno} and status='N' 
+  </select><!-- 공통 -->
+  
+<!-- 지원을 거절했는지 확인 -->
+  <select id="checkAppyStatus" resultType="int" parameterType="int">
+    select appyno from appy where appyno=#{appyno} and status='N' 
+  </select><!-- 공통 -->
+  
+  
+  
+  
+
   <delete id="deletePr" statementType="CALLABLE" parameterType="HashMap">
   { 
     call cancelPrProc (#{eventNo}, #{musicianNo}, #{prno_param})
