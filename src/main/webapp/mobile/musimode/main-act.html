@@ -12,10 +12,12 @@
   <div class='noti-img'style='background-image: url("{{photo}}")'></div>
 {{/writer}}
   <div class='noti-header'>
-    <span class='noti-type'>{{type}}&nbsp;</span>
-    <span class='noti-date'>&nbsp;&nbsp;{{date}}</span>
+    <span class='noti-type'>{{contents}}&nbsp;</span>
+{{#intl locales="ko-KO"}}
+    <span class='noti-date'>&nbsp;&nbsp;{{formatRelative date units="day"}}</span>
+{{/intl}}
   </div>
-  <div class='noti-contents'> 뮤지션이 "결혼 축가 구해요" 이벤트에 지원하셨습니다. </div>
+  <div class='noti-contents'> {{message}} </div>
 </div>
 {{/each}}
 {{/if}}
