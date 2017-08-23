@@ -195,6 +195,12 @@
     </association>
   </resultMap>
     
+  <select id="selectEventWriter" resultType="int"
+    parameterType="map">
+    select mno
+    from evn where eno = #{eventNo}
+  </select><!-- 완진 -->
+  
   <select id="selectEventCount" resultType="int"
     parameterType="int">
     select count(eno)

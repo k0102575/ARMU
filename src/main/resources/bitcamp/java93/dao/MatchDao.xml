@@ -10,7 +10,7 @@
   
 <!-- 기존에 지원한 데이터가 있는지 확인 -->
   <select id="selectExistAppyCount" resultType="int" parameterType="HashMap">
-    select appyno from appyno where muno=#{musicianNo} and eno=#{eventNo}
+    select appyno from appy where muno=#{musicianNo} and eno=#{eventNo}
   </select><!-- 공통 -->
   
 <!-- 홍보를 취소했는지 확인 -->
@@ -118,6 +118,14 @@
     where eno = #{eventNo} and prno = #{prno}
   </update> <!-- 승민 -->
   
+  
+  
+  <!-- 뮤지션이 매칭 확정(mtc) -->
+	<insert id="insertMatch" parameterType="map" useGeneratedKeys="true"
+	  keyColumn="mtcno" keyProperty="mtcno">
+	  insert into mtc (eno, muno, mtcdt) 
+	  values (#{eventNo}, #{musicianNo}, curdate())
+	</insert> <!-- 공통 -->
   
   
   <select id="selectAppyCount" resultType="int"

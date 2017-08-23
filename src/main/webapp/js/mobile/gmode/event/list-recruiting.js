@@ -182,6 +182,7 @@ function readyBtns() {
           'musicianNo' : musicianNo,
           'eventNo' : eventNo
         }, function(result) {
+          console.log(result)
           location.reload()
         }, 'json')
       });//swal()
@@ -206,6 +207,7 @@ function readyBtns() {
           'musicianNo' : musicianNo,
           'eventNo' : eventNo
         }, function(result) {
+          console.log(result)
           var newLocation = location.href + '?tab=ongoing'
           location.href = newLocation
         }, 'json')
@@ -231,7 +233,7 @@ function readyBtns() {
           'musicianNo' : musicianNo,
           'eventNo' : eventNo
         }, function(result) {
-          console.log('cancel post succeed')
+          console.log(result)
           location.reload()
         }, 'json')
       });//swal()
