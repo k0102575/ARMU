@@ -283,7 +283,6 @@ public class EventServiceImpl implements EventService {
   }
   
   
-<<<<<<< Updated upstream
   public List<Event> listMatchingEvent() throws Exception {
     List<Event> matchingList = eventDao.selectMatchingEventList();
     HashMap<String,Object> valueMap = new HashMap<>();
@@ -296,7 +295,6 @@ public class EventServiceImpl implements EventService {
     return matchingList;
   }
  
-=======
   
   
   
@@ -307,6 +305,5 @@ public class EventServiceImpl implements EventService {
 //    matchDao.selectExistPrCount(param);
 //  }
 
->>>>>>> Stashed changes
 }
 
