@@ -262,17 +262,16 @@
 }
 
 .recruiting {
-    position: relative;
-    background-color: #f5f5f5;
-    border: 0px;
-    border-bottom: 1px solid lightgray;
-    height: auto;
-    width: 100%;
-    margin-top: 5%;
-    /* margin-left: 2.5%; */
-    padding-bottom: 3%;
-    color: #f5f5f5;
-    z-index: 1;
+  position: relative;
+  background-color: #f5f5f5;
+  border: 0px;
+  border-bottom: 1px solid #444;
+  height: auto;
+  width: 100%;
+  padding-bottom: 3%;
+  color: #f5f5f5;
+  padding-top: 2%;
+  z-index: 1;
 }
 
 .recruiting:LAST-OF-TYPE {
@@ -280,7 +279,6 @@
 }
 
 .recruiting-title {
-    margin-top: 3%;
     margin-left: 3%;
     font-size: 40px;
     font-weight: 400;
@@ -336,8 +334,8 @@
   position: absolute;
   right: 3%;
   top: 35%;
-  width: 75px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
   border: 1px solid #8069ef;
   border-radius: 50px;
   background-color: #8069ef;
@@ -349,8 +347,8 @@
   position: absolute;
   right: 3%;
   top: 35%;
-  width: 75px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
   border: 1px solid #444;
   border-radius: 50px;
   background-color: #444;

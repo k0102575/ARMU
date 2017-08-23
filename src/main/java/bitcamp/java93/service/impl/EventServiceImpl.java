@@ -119,6 +119,7 @@ public class EventServiceImpl implements EventService {
     return eventDao.prCheckList(valueMap);
   }
   
+  //일반모드 > 뮤지션 상세페이지 > 매칭 요청하기
   public void prEvent(int muNo, int eNo) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("muNo", muNo);

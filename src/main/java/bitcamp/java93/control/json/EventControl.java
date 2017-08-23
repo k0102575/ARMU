@@ -155,6 +155,7 @@ public class EventControl {
     return result;
   }
 
+  // 일반모드 > 뮤지션 상세페이지 > 매칭 요청하기
   @RequestMapping("prEvent")
   public JsonResult prEvent(int muNo, int eNo){
 

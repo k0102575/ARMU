@@ -17,7 +17,7 @@ public interface EventService {
   List<Event> listRecommand(int no) throws Exception;//뮤지션모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트
   List<Event> listRecent(int no) throws Exception;//뮤지션모드 > 추천탭 > 최근 이벤트 리스트
   List<Event> prCheckEvent(int myNo, int muNo) throws Exception;
-  void prEvent(int muNo, int eNo) throws Exception;
+  void prEvent(int muNo, int eNo) throws Exception; // 일반모드 > 뮤지션 상세페이지 > 매칭 요청하기
   void deletePrEvent(int eNo) throws Exception;
   void requestEvent(int muNo, int eNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 추가
   void requestEventCheck(int muNo, int eNo, int appyNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"Y"변경

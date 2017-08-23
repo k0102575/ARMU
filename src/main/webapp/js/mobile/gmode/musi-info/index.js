@@ -171,15 +171,9 @@ function matchRequest() {
     for(var i = 0; i < result.data.eventList.length; i++) {
       
       if(result.data.eventList[i].pr_count == 1) {
-        $(".request-button[value='"+ result.data.eventList[i].no +"']").text("진행중")
+        $(".request-button[value='"+ result.data.eventList[i].no +"']").html("요청<br>취소")
         $(".request-button[value='"+ result.data.eventList[i].no +"']").attr("pr_count", "1")
         $(".request-button[value='"+ result.data.eventList[i].no +"']").addClass("prIng")
-      }
-      
-      if(result.data.eventList[i].mtc_info == 1) {
-        $(".request-button[value='"+ result.data.eventList[i].no +"']").text("완료")
-        $(".request-button[value='"+ result.data.eventList[i].no +"']").attr("mtc_into", "1")
-        $(".request-button[value='"+ result.data.eventList[i].no +"']").addClass("mtc")
       }
       
     } // for
@@ -194,23 +188,30 @@ function matchRequest() {
       var mtcInfo = $(this).attr('mtc_into')
       var no = $(this).val()
       
-      if(mtcInfo == 1) {
-        return false;
-      }
+      
       
       if(prCount == 1) {
         swal({
-          title: "이미 매칭이 진행중인 \n\n" +
-          		"   뮤지션 입니다.",
+          title: "매칭 요청 중입니다.\n\n" + 
+          "취소하시겠습니까?",
           type: "warning",
-          showCancelButton: false,
+          showCancelButton: true,
           confirmButtonColor: "#8069ef",
-          confirmButtonText: "확인",
-          customClass: "checkSwal"
-        });
-        return
+          confirmButtonText: "네",
+          closeOnConfirm: true,
+          cancelButtonText: "아니요"
+        },
+        function(){
+          $.post('/event/cancelPr.json', {
+            'musicianNo': location.href.split('?')[1].split('=')[1],
+            'eventNo': no
+          }, function(result) {
+            console.log(result)
+          }, 'json')
+          
+      }) // swal
+      return
       }
-      
       
       swal({
         title: "이 이벤트에 대해 \n\n" +
@@ -241,7 +242,7 @@ function matchRequest() {
           }
         }, 'json')
         
-    });
+    }) // swal
     })
     
   }

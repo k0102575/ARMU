@@ -393,14 +393,11 @@ where ap.mno=#{no}
     where even.mno = #{myNo}
   </select><!-- 승민 -->
 
+  <!-- 일반모드 > 뮤지션 상세페이지 > 매칭 요청하기 -->
   <insert id="prEvent" parameterType="map" useGeneratedKeys="true"
     keyColumn="prno" keyProperty="prno">
-    insert into pr(muno, eno)
-    values(#{muNo}, #{eNo});
-  </insert> <!-- 승민 -->
-  
-  <insert id="deletePrEvent" parameterType="int">
-   delete from pr where eno = #{eNo}
+    insert into pr(muno, eno, active)
+    values(#{muNo}, #{eNo}, 'Y');
   </insert> <!-- 승민 -->
   
   <!-- 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 추가 -->
