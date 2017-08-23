@@ -268,6 +268,19 @@ public class EventServiceImpl implements EventService {
   public void cancelPr(HashMap<String, Object> map) throws Exception {
     eventDao.deletePr(map);
   }
-
+  
+  
+  public List<Event> listMatchingEvent() throws Exception {
+    List<Event> matchingList = eventDao.selectMatchingEventList();
+    HashMap<String,Object> valueMap = new HashMap<>();
+    for (int i = 0; i<matchingList.size(); i++) {
+      valueMap.put("eNo", matchingList.get(i).getNo());
+      valueMap.put("muNo", matchingList.get(i).getMuno());
+      valueMap.put("mtcNo", matchingList.get(i).getMtcno());
+//      notificationDao.insertEventTodayNoti(valueMap);
+    }
+    return matchingList;
+  }
+ 
 }
 

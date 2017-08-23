@@ -8,6 +8,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -526,6 +527,21 @@ public class EventControl {
     } 
     
     return returnList;
+  }
+  
+  @Scheduled(cron="0 0 0 * * ? ")
+  public void matching(){
+    JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> dataMap = new HashMap<>();
+      dataMap.put("matchingList", eventService.listMatchingEvent());
+      result.setData(dataMap);
+      result.setStatus(JsonResult.SUCCESS);
+//      System.out.println(dataMap);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
   }
   
 }

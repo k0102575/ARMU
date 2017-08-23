@@ -40,4 +40,5 @@ public interface EventService {
   int getEventCount(int no) throws Exception;//일반모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트 - 이벤트 유무 확인
   int getAppyCount(int muNo, int eNo) throws Exception; /* 뮤지션 모드 > 이벤트 상세페이지 > 지원 활성여부 확인 */
   void updateReview(Event event, int muno) throws Exception; // 일반모드 > 이벤트 상세페이지 > 종료 - 리뷰 추가
+  List<Event> listMatchingEvent() throws Exception;
 }

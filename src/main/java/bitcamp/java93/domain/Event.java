@@ -41,6 +41,7 @@ public class Event {
   char eventActive;
   char prStatus;
   char appyStatus;
+  int muno;
   List<String> EventRegistTheme;
   List<String> EventRegistMajor;
   List<String> EventRegistGenre;
@@ -57,8 +58,9 @@ public class Event {
         + ", mtc_info=" + mtc_info + ", appy_check=" + appy_check + ", mtcno=" + mtcno + ", score=" + score + ", rev="
         + rev + ", appy_activeCheck=" + appy_activeCheck + ", rhsinfo=" + rhsinfo + ", haveRehearsal=" + haveRehearsal
         + ", appyno=" + appyno + ", eventActive=" + eventActive + ", prStatus=" + prStatus + ", appyStatus="
-        + appyStatus + ", EventRegistTheme=" + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor
-        + ", EventRegistGenre=" + EventRegistGenre + ", appyList=" + appyList + ", prList=" + prList + "]";
+        + appyStatus + ", muno=" + muno + ", EventRegistTheme=" + EventRegistTheme + ", EventRegistMajor="
+        + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre + ", appyList=" + appyList + ", prList=" + prList
+        + "]";
   }
   public int getNo() {
     return no;
@@ -311,6 +313,12 @@ public class Event {
   }
   public void setPrList(ArrayList<Musician> prList) {
     this.prList = prList;
+  }
+  public int getMuno() {
+    return muno;
+  }
+  public void setMuno(int muno) {
+    this.muno = muno;
   }
   
   

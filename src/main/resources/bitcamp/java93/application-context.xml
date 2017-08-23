@@ -4,6 +4,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop" 
 	xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:task="http://www.springframework.org/schema/task"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
       http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -14,7 +15,9 @@
       http://www.springframework.org/schema/mvc
       http://www.springframework.org/schema/mvc/spring-mvc.xsd
       http://www.springframework.org/schema/tx
-      http://www.springframework.org/schema/tx/spring-tx.xsd">
+      http://www.springframework.org/schema/tx/spring-tx.xsd
+      http://www.springframework.org/schema/task
+      http://www.springframework.org/schema/task/spring-task-3.2.xsd">
 
 	<!-- 페이지 컨트롤러를 제외한 웹에서 사용할 공통 객체 준비 -->
 	<!-- Component Scan은 XML에 일일이 빈등록을 하지 않고 각 빈 클래스에 @Component를 통해 자동으로 빈 
@@ -73,12 +76,12 @@
 		</tx:attributes>
 	</tx:advice>
 
+
 	<!-- 트랜잭션을 처리하는 방법2 -->
 	<!-- @Transactional 애노테이션을 처리할 객체 등록 -->
 	<!-- <tx:annotation-driven transaction-manager="txManager"/> -->
 	
-	
-	
+  <task:annotation-driven />
 </beans>
 
 
