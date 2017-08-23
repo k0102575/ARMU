@@ -32,4 +32,5 @@ public interface EventDao {
   int selectAppyCount(HashMap<String, Object> valueMap); /* 뮤지션 모드 > 이벤트 상세페이지 > 지원 활성여부 확인 */
   void updateReview(Event event); // 리뷰 추가
   List<Event> selectMatchingEventList();
+//  List<Event> selectEventExpiredList();
 }

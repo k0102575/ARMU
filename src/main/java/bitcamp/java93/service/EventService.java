@@ -41,4 +41,5 @@ public interface EventService {
   int getAppyCount(int muNo, int eNo) throws Exception; /* 뮤지션 모드 > 이벤트 상세페이지 > 지원 활성여부 확인 */
   void updateReview(Event event, int muno) throws Exception; // 일반모드 > 이벤트 상세페이지 > 종료 - 리뷰 추가
   List<Event> listMatchingEvent() throws Exception;
+//  List<Event> listEventExpired() throws Exception;
 }

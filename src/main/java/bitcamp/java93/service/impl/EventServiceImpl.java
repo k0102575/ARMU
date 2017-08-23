@@ -294,25 +294,33 @@ public class EventServiceImpl implements EventService {
   
   public List<Event> listMatchingEvent() throws Exception {
     List<Event> matchingList = eventDao.selectMatchingEventList();
+    System.out.println("aaaaa"+matchingList);
     HashMap<String,Object> valueMap = new HashMap<>();
-    for (int i = 0; i<matchingList.size(); i++) {
-      valueMap.put("eNo", matchingList.get(i).getNo());
-      valueMap.put("muNo", matchingList.get(i).getMuno());
-      valueMap.put("mtcNo", matchingList.get(i).getMtcno());
-//      notificationDao.insertEventTodayNoti(valueMap);
+    if(matchingList != null) {
+      for (int i = 0; i<matchingList.size(); i++) {
+        valueMap.put("eventNo", matchingList.get(i).getNo());
+        valueMap.put("musicianNo", matchingList.get(i).getMuno());
+        valueMap.put("mtcno", matchingList.get(i).getMtcno());
+        System.out.println(valueMap);
+//        notificationDao.insertEventTodayNoti(valueMap);
+      }
     }
     return matchingList;
   }
- 
   
-  
-  
-//  private void abc(int eventNo, int musicianNo) throws Exception {
-//    HashMap<String,Object> param = new HashMap<>();
-//    param.put("eventNo", eventNo);
-//    param.put("musicianNo", musicianNo);
-//    matchDao.selectExistPrCount(param);
+//  public List<Event> listEventExpired() throws Exception {
+//    List<Event> expiredList = eventDao.selectEventExpiredList();
+//    System.out.println("bbbbb"+expiredList);
+//    HashMap<String,Object> valueMap = new HashMap<>();
+//    for (int i = 0; i<expiredList.size(); i++) {
+//      valueMap.put("eventNo", expiredList.get(i).getNo());
+//      notificationDao.insertEventExpiredNoti(valueMap);
+//      System.out.println(valueMap);
+//    }
+//    return expiredList;
 //  }
+  
+  
 
 }
 

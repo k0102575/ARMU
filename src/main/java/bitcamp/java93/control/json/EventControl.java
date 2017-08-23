@@ -542,14 +542,16 @@ public class EventControl {
     return returnList;
   }
   
-  //@Scheduled(fixedRate=10000) 테스트용
+//  @Scheduled(fixedRate=5000) //테스트용
   @Scheduled(cron="0 0 0 * * ? ")
   public void matching(){
     JsonResult result = new JsonResult();
     try {
       HashMap<String,Object> dataMap = new HashMap<>();
       dataMap.put("matchingList", eventService.listMatchingEvent());
+//      dataMap.put("expiredList", eventService.listEventExpired());
       result.setData(dataMap);
+//      System.out.println("abc"+dataMap);
       result.setStatus(JsonResult.SUCCESS);
 //      System.out.println(dataMap);
     } catch (Exception e) {

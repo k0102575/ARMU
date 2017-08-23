@@ -194,6 +194,14 @@
     </collection>
     </association>
   </resultMap>
+  
+  <resultMap type="event" id="matchEventMap3">
+    <id column="eno" property="no" />
+    <result column="title" property="title" />
+    <result column="mno" property="writer" />
+    <result column="muno" property="muno" />
+    <result column="mtcno" property="mtcno" />
+  </resultMap>
     
   <select id="selectEventCount" resultType="int"
     parameterType="int">
@@ -639,16 +647,18 @@ where ap.mno=#{no}
       from mtc
       group by muno
     ) score on score.muno=mu.muno
-    where date=curdate()
+    <!-- where date=curdate() -->
+  </select>
+  
+  <select id="selectEventExpiredList" resultMap="matchEventMap3">
+  select e.eno,e.title,e.date,e.active from evn e 
+  where e.eno not in(
+    select e.eno
+    from mtc
+    where mtc.eno=e.eno)
+    <!-- DATE_ADD(CURDATE(), INTERVAL -1 DAY) -->
   </select>
 </mapper>
-
-
-
-
-
-
-
 
 
 
