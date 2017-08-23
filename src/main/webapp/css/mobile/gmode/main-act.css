@@ -23,7 +23,7 @@
 	position: relative;
   height: 250px;
   border-top: 3px solid white;
-  border-bottom: 3px solid white;
+  box-shadow: 4px 6px 10px 1px rgba(0, 0, 0, 0.12);
 }
 
 .noti-img {
