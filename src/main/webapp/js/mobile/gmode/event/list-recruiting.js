@@ -177,12 +177,31 @@ function readyBtns() {
         closeOnConfirm: true,
         cancelButtonText: "아니요"
       },
-      function(){
+      function(){//확인 버튼 누르면 실행
         $.post('/event/rejectAppy.json', {
           'musicianNo' : musicianNo,
           'eventNo' : eventNo
         }, function(result) {
-          location.reload()
+          if(result.status != 'success') {
+            console.error("JSON 요청 실패: ", result.status)
+            return;
+          }
+          
+          if(result.data == 'canceled') {//이미 취소된 appy인 경우 실행
+            swal({
+              title: "이미 뮤지션이 \n\n지원을 취소하였습니다.",
+              type: "warning",
+              showCancelButton: false,
+              confirmButtonColor: "#8069ef",
+              confirmButtonText: "확인",
+              customClass: "checkSwal"
+            },
+            function(){
+              location.reload()
+            })//swal()
+          } else {//성공적으로 거절 완료한 경우 실행
+            location.reload()
+          }
         }, 'json')
       });//swal()
     })//click event
@@ -201,13 +220,32 @@ function readyBtns() {
         closeOnConfirm: true,
         cancelButtonText: "아니요"
       },
-      function(){
+      function(){//확인 버튼 누르면 실행
         $.post('/event/decideMatch.json', {
           'musicianNo' : musicianNo,
           'eventNo' : eventNo
         }, function(result) {
-          var newLocation = location.href + '?tab=ongoing'
-          location.href = newLocation
+          if(result.status != 'success') {
+            console.error("JSON 요청 실패: ", result.status)
+            return;
+          }
+          
+          if(result.data == 'canceled') {//이미 취소된 appy인 경우 실행
+            swal({
+              title: "뮤지션이 지원을 취소하여 \n\n 매칭되지 않았습니다.",
+              type: "warning",
+              showCancelButton: false,
+              confirmButtonColor: "#8069ef",
+              confirmButtonText: "확인",
+              customClass: "checkSwal"
+            },
+            function(){
+              location.reload()
+            })//swal()
+          } else {//성공적으로 매칭 완료한 경우 실행
+            var newLocation = location.href + '?tab=ongoing'
+            location.href = newLocation
+          }
         }, 'json')
       });//swal()
     })//click event
@@ -231,7 +269,11 @@ function readyBtns() {
           'musicianNo' : musicianNo,
           'eventNo' : eventNo
         }, function(result) {
-          console.log('cancel post succeed')
+          if(result.status != 'success') {
+            console.error("JSON 요청 실패: ", result.status)
+            return;
+          }
+          
           location.reload()
         }, 'json')
       });//swal()

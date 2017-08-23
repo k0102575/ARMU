@@ -8,26 +8,23 @@ import bitcamp.java93.domain.Event;
 public interface EventService {
   List<Event> listOngoing() throws Exception;//일반모드 > 나의이벤트 > 진행중 이벤트 리스트
   void add(Event event) throws Exception; // 일반모드 > 이벤트 등록하기 > 이벤트 등록
-  void update(Event event) throws Exception; // 일반모드 > 이벤트 변경페이지 > 이벤트 변경
-  void updateRequestEvent(int no) throws Exception; // 일반모드 > 이벤트 변경 > 지원했던 뮤지션 지원 상태 변경 및 변경 메시지 발송, 홍보 상태 변경
-  void deleteEventReherse(int eno) throws Exception; // 일반모드 > 이벤트 변경페이지 > 리허설 삭제
-  void registEventReherse(Event event) throws Exception;// 일반모드 > 이벤트 변경페이지 > 리허설 등록
-  void delete(int eno) throws Exception; // 일반모드 > 이벤트 상세페이지 > 이벤트 삭제
-  void deleteRequestEvent(int no) throws Exception; // 일반모드 > 이벤트 변경 > 지원했던 뮤지션 지원 상태 변경 및 삭제 메시지 발송, 홍보 상태 변경
+  void update(Event event) throws Exception; // 이벤트 변경 뮤지션 지원 상태 변경, 홍보 상태 변경 및 변경 메시지 발송
+  void delete(int eno) throws Exception; // 이벤트 삭제 뮤지션 지원 상태 변경, 홍보 상태 변경 및 삭제 메시지 발송
+  void deleteEventReherse(int eno) throws Exception; // 이벤트 리허설 삭제
+  void registEventReherse(Event event) throws Exception;// 이벤트 리허설 추가
   List<Event> listRecommand(int no) throws Exception;//뮤지션모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트
   List<Event> listRecent(int no) throws Exception;//뮤지션모드 > 추천탭 > 최근 이벤트 리스트
-  List<Event> prCheckEvent(int myNo, int muNo) throws Exception; // 일반모드 > 뮤지션 상세페이지 > 매칭 이벤트 목록 가져오기
-  void prEvent(int muNo, int eNo) throws Exception; // 일반모드 > 뮤지션 상세페이지 > 매칭 요청하기
-  void prUpdate(int muNo, int eNo, int prNo) throws Exception; // 일반모드 > 뮤지션 상세페이지 > 홍보 상태 변경
+  List<Event> prCheckEvent(int myNo, int muNo) throws Exception; // 매칭요청하기 > 이벤트 목록 가져오기
+  void prEvent(int musicianNo, int eventNo) throws Exception;   // 1. 뮤지션에게 홍보(pr)
   void requestEvent(int muNo, int eNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 추가
   void requestEventCheck(int muNo, int eNo, int appyNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"Y"변경
-  void requestEventCancel(int muNo, int eNo) throws Exception; // 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"N"변경
+  String requestEventCancel(HashMap<String, Object> param) throws Exception; // 12. 뮤지션이 Appy 취소
   List<Event> listSurf() throws Exception;
   List<Event> listSearchResult(String search) throws Exception;
   List<Event> listRecruiting(int no) throws Exception;//나의이벤트 > 모집중 이벤트 리스트
-  void rejectAppy(HashMap<String,Object> map) throws Exception;//일반모드 > 나의 이벤트 > 모집중 > 지원자 > 지원 거절
-  void decideMatch(HashMap<String,Object> map) throws Exception;//일반모드 > 나의 이벤트 > 모집중 > 지원자 > 매칭 확정
-  void cancelPr(HashMap<String,Object> map) throws Exception;//일반모드 > 나의 이벤트 > 모집중 > 내가 요청한 뮤지션 > 요청 취소
+  String rejectAppy(HashMap<String,Object> map) throws Exception;//일반인이 지원(APPY) 거절
+  String decideMatch(HashMap<String,Object> map) throws Exception;//일반인이 매칭 확정하기
+  String cancelPr(HashMap<String,Object> map) throws Exception;//일반인이 홍보(PR) 취소
   List<Event> listOngoing(int no) throws Exception;//나의이벤트 > 진행중 이벤트 리스트
   List<Event> listEnd(int no) throws Exception;//나의이벤트 > 종료 이벤트 리스트
   List<Event> listMusiOngoing(int no) throws Exception;//뮤지션모드 - 매칭이벤트 > 진행중 이벤트 리스트
@@ -42,4 +39,7 @@ public interface EventService {
   void updateReview(Event event, int muno) throws Exception; // 일반모드 > 이벤트 상세페이지 > 종료 - 리뷰 추가
   List<Event> listMatchingEvent() throws Exception;
 //  List<Event> listEventExpired() throws Exception;
+  String rejectPr(HashMap<String, Object> valueMap) throws Exception;//2. 뮤지션이 홍보(PR) 거절하기
+  String acceptPr(HashMap<String, Object> valueMap) throws Exception;//3. 뮤지션이 홍보(PR) 수락하기
+  String appyEvent(HashMap<String, Object> valueMap) throws Exception;//4. 뮤지션이 이벤트에 지원(APPY)하기
 }

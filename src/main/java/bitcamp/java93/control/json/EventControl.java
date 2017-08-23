@@ -68,7 +68,6 @@ public class EventControl {
     categoryService.registEventCategory(event);
     eventService.deleteEventReherse(event.getNo());
     eventService.registEventReherse(event);
-    eventService.updateRequestEvent(event.getNo());
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
@@ -84,7 +83,6 @@ public class EventControl {
     categoryService.deleteEventCategory(event.getNo());
     categoryService.registEventCategory(event);
     eventService.deleteEventReherse(event.getNo());
-    eventService.updateRequestEvent(event.getNo());
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
@@ -94,7 +92,6 @@ public class EventControl {
     categoryService.deleteEventCategory(eno);
     eventService.deleteEventReherse(eno);
     eventService.delete(eno);
-    eventService.deleteRequestEvent(eno);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
@@ -132,7 +129,7 @@ public class EventControl {
     return result;
   }
 
-  // 일반모드 > 뮤지션 상세페이지 > 매칭 이벤트 목록 가져오기
+  // 매칭요청하기 > 이벤트 목록 가져오기
   @RequestMapping("prCheckEvent")
   public JsonResult prCheckEvent(HttpSession session, int no){
     JsonResult result = new JsonResult();
@@ -157,25 +154,12 @@ public class EventControl {
     return result;
   }
 
-  // 일반모드 > 뮤지션 상세페이지 > 매칭 요청하기
+  // 1. 뮤지션에게 홍보(pr)
   @RequestMapping("prEvent")
-  public JsonResult prEvent(int muNo, int eNo, int prNo, String prStatus){
+  public JsonResult prEvent(int musicianNo, int eventNo){
     JsonResult result = new JsonResult();
-
-    if(prStatus.length() == 1) {
-      try {
-        eventService.prUpdate(muNo, eNo, prNo);
-        return new JsonResult(JsonResult.SUCCESS, "success");
-
-      } catch (Exception e) {
-        e.printStackTrace();
-        result.setStatus(JsonResult.ERROR);
-      }
-      return result;
-    }
-
     try {
-      eventService.prEvent(muNo, eNo);
+      eventService.prEvent(musicianNo, eventNo);
       return new JsonResult(JsonResult.SUCCESS, "success");
 
     } catch (Exception e) {
@@ -213,15 +197,19 @@ public class EventControl {
   
   //뮤지션모드 > 이벤트 상세페이지 > 이벤트 지원 취소
   @RequestMapping("requestEventCancel")
-  public JsonResult requestEventCancel(HttpSession session, int eNo) {
+  public JsonResult requestEventCancel(HttpSession session, int eventNo) {
     JsonResult result = new JsonResult();
-      try {
-        eventService.requestEventCancel(getLoginMember(session).getNo(), eNo);
-        return new JsonResult(JsonResult.SUCCESS, "success");
-      } catch (Exception e) {
-        result.setStatus(JsonResult.ERROR);
-        System.out.println(e.getMessage());
-      }
+    try {
+      HashMap<String,Object> param = new HashMap<>();
+      param.put("eventNo", eventNo);
+      param.put("musicianNo", getLoginMember(session).getNo());
+      
+      result.setData(eventService.requestEventCancel(param));
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
     return result;
   }
   
@@ -285,14 +273,14 @@ public class EventControl {
   
   /*일반모드 > 나의 이벤트 > 모집중 > 지원자 > 지원 거절*/
   @RequestMapping("rejectAppy")
-  public JsonResult rejectAppy(int musicianNo, int eventNo, HttpSession session) {
+  public JsonResult rejectAppy(int musicianNo, int eventNo) {
     JsonResult result = new JsonResult();
     try {
       HashMap<String,Object> param = new HashMap<>();
       param.put("eventNo", eventNo);
       param.put("musicianNo", musicianNo);
-      eventService.rejectAppy(param);
-
+      
+      result.setData(eventService.rejectAppy(param));
       result.setStatus(JsonResult.SUCCESS);
     } catch (Exception e) {
       result.setStatus(JsonResult.ERROR);
@@ -306,11 +294,13 @@ public class EventControl {
   public JsonResult decideMatch(int musicianNo, int eventNo, HttpSession session) {
     JsonResult result = new JsonResult();
     try {
+      int writerNo = getLoginMember(session).getNo();
       HashMap<String,Object> param = new HashMap<>();
       param.put("eventNo", eventNo);
       param.put("musicianNo", musicianNo);
-      eventService.decideMatch(param);
-
+      param.put("writerNo", writerNo);
+      
+      result.setData(eventService.decideMatch(param));
       result.setStatus(JsonResult.SUCCESS);
     } catch (Exception e) {
       result.setStatus(JsonResult.ERROR);
@@ -321,14 +311,14 @@ public class EventControl {
   
 /*일반모드 > 나의 이벤트 > 모집중 > 내가 요청한 뮤지션 > 요청 취소*/
   @RequestMapping("cancelPr")
-  public JsonResult cancelPr(int musicianNo, int eventNo, HttpSession session) {
+  public JsonResult cancelPr(int musicianNo, int eventNo) {
     JsonResult result = new JsonResult();
     try {
       HashMap<String,Object> param = new HashMap<>();
       param.put("eventNo", eventNo);
       param.put("musicianNo", musicianNo);
-      eventService.cancelPr(param);
-
+      
+      result.setData(eventService.cancelPr(param));
       result.setStatus(JsonResult.SUCCESS);
     } catch (Exception e) {
       result.setStatus(JsonResult.ERROR);
@@ -492,10 +482,10 @@ public class EventControl {
   
   // 리뷰 추가
   @RequestMapping("updateReview")
-  public JsonResult updateReview(Event event, int muno) throws Exception {
+  public JsonResult updateReview(Event event, int musicianNo) throws Exception {
     JsonResult result = new JsonResult();
     try {
-      eventService.updateReview(event, muno);
+      eventService.updateReview(event, musicianNo);
       
       result.setStatus(JsonResult.SUCCESS);
       result.setData("ok");

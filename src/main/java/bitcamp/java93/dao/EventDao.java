@@ -33,4 +33,5 @@ public interface EventDao {
   void updateReview(Event event); // 리뷰 추가
   List<Event> selectMatchingEventList();
 //  List<Event> selectEventExpiredList();
+  int selectEventWriter(Map<String,Object> valueMap);
 }

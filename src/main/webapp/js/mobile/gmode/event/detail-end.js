@@ -96,7 +96,7 @@ function displayEventDetail() {
                     'score' : $("input[name=rating]:checked").val(),
                     'rev': $("#event-rev-text").val(),
                     'mtcno' : mtcno,
-                    'muno' : muno,
+                    'musicianNo' : muno,
                     "no" : location.href.split('?')[1].split('=')[1]
                   }, function(result) {
                     if(result.data == "ok") {

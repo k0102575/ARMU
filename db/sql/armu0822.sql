@@ -1,14 +1,3 @@
--- 프로시저 삭제
--- 일반 회원이 특정 뮤지션의 지원을 거절하기
-DROP PROCEDURE IF EXISTS rejectAppyProc;
-
--- 일반 회원이 특정 뮤지션과의 매칭을 확정하기
-DROP PROCEDURE IF EXISTS decideMtcProc;
-
--- 일반 회원이 홍보(PR) 취소하기
-DROP PROCEDURE IF EXISTS cancelPrProc;
-
-
 -- 뷰 삭제
 -- 모집 중인 이벤트
 DROP VIEW IF EXISTS recruiting_eventlist RESTRICT;

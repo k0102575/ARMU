@@ -72,7 +72,7 @@ function displayEventDetail() {
 
           if(appy != 0 && appyActiveCheck == "Y") {
             $.post('/event/requestEventCancel.json', {
-              'eNo': $(this).attr("data-value")
+              'eventNo': $(this).attr("data-value")
             }, function(result) {
               console.log(result)
               if(result.data == "success") {
