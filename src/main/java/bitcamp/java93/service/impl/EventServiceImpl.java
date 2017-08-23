@@ -326,12 +326,33 @@ public class EventServiceImpl implements EventService {
     return matchingList;
   }
 
-  //  private void abc(int eventNo, int musicianNo) throws Exception {
-  //    HashMap<String,Object> param = new HashMap<>();
-  //    param.put("eventNo", eventNo);
-  //    param.put("musicianNo", musicianNo);
-  //    matchDao.selectExistPrCount(param);
-  //  }
+  /*2. 뮤지션이 홍보(PR) 거절하기*/
+  public String rejectPr(HashMap<String, Object> valueMap) throws Exception {
+    int prno = matchDao.selectExistPrCount(valueMap);
+    int isCanceled = matchDao.checkPrActive(prno);
+
+    if(isCanceled != 0) return "canceled";
+
+    matchDao.updatePrStatusN(prno);
+    valueMap.put("prno", prno);
+    notificationDao.rejectEventPrNoti(valueMap);
+
+    return "success";
+  }
+  
+  /*3. 뮤지션이 홍보(PR) 수락하기*/
+  public String acceptPr(HashMap<String, Object> valueMap) throws Exception {
+    int prno = matchDao.selectExistPrCount(valueMap);
+    int isCanceled = matchDao.checkPrActive(prno);
+
+    if(isCanceled != 0) return "canceled";
+
+    matchDao.updatePrStatusY(prno);
+    valueMap.put("prno", prno);
+    notificationDao.acceptEventPrNoti(valueMap);
+
+    return "success";
+  }
 
 }
 

@@ -353,7 +353,7 @@ body {
 .recruiting-applicant-score {
   display: inline;
   margin-left: 20px;
-  color: #ffd700;
+  color: #8069ef;
   font-size: 33px;
   width: 140px;
 }
@@ -363,7 +363,7 @@ body {
   display: inline-block;
   top: -3%;
   right: 1%;
-  color: #8069ef;
+  color: crimson;
   font-size: 40px;
   width: 10%;
   font-weight: 500;
@@ -489,7 +489,7 @@ body {
 .ongoing-applicant-score {
   display: inline-block;
   margin-left: 20px;
-  color: #ffd700;
+  color: #8069ef;
   font-size: 33px;
 }
 
@@ -498,7 +498,7 @@ body {
   display: inline-block;
   top: -3%;
   right: 1%;
-  color: #8069ef;
+  color: crimson;
   font-size: 40px;
   width: 10%;
   font-weight: 500;
