@@ -43,7 +43,7 @@ function displayRecommandByEventMusiList() {
     })
     
     $('.rec-by-event-musi-fav').on('click', function() {
-      var isFavorite = heartChange($(this).html())
+      var isFavorite = heartChange($(this).html(), $(this))
       $(this).html(isFavorite)
     })
     
@@ -193,11 +193,13 @@ function heartAdd(item) {
 }
 
 
-function heartChange(isFavorite) {
+function heartChange(isFavorite, pressedBtn) {
   if (isFavorite == '<i class="fa fa-heart" aria-hidden="true"></i>') {
     isFavorite = '<i class="fa fa-heart-o" aria-hidden="true"></i>'
+    pressedBtn.css('color', 'white')
   } else {
     isFavorite = '<i class="fa fa-heart" aria-hidden="true"></i>'
+    pressedBtn.css('color', 'white')
   }
   return isFavorite;
 }
