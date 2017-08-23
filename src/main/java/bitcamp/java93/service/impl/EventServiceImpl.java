@@ -48,19 +48,19 @@ public class EventServiceImpl implements EventService {
     Musician musicianAppyList = musicianDao.myEventAppyList(eNo);
     Musician musicianPrList = musicianDao.myEventPrList(eNo);
     HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("eNo", eNo);
+    valueMap.put("eventNo", eNo);
     
     if(musicianPrList != null) {
       for (String muNo : musicianPrList.getMuNoList()) {
-        valueMap.put("muNo", muNo);
-        matchDao.prEventCancelUpdate(valueMap);
+        valueMap.put("musicianNo", muNo);
+        matchDao.updatePrActiveN(0);
       }
     }
     
     if(musicianAppyList != null) {
       for (String muNo : musicianAppyList.getMuNoList()) {
-        valueMap.put("muNo", muNo);
-        matchDao.appyEventCancelUpdate(valueMap);
+        valueMap.put("musicianNo", muNo);
+        matchDao.updateAppyActiveN(0);
         notificationDao.insertEventEditNoti(valueMap);
       }
       return;
@@ -87,19 +87,19 @@ public class EventServiceImpl implements EventService {
     Musician musicianAppyList = musicianDao.myEventAppyList(eNo);
     Musician musicianPrList = musicianDao.myEventPrList(eNo);
     HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("eNo", eNo);
+    valueMap.put("eventNo", eNo);
     
     if(musicianPrList != null) {
       for (String muNo : musicianPrList.getMuNoList()) {
-        valueMap.put("muNo", muNo);
-        matchDao.prEventCancelUpdate(valueMap);
+        valueMap.put("musicianNo", muNo);
+        matchDao.updatePrActiveN(0);
       }
     }
     
     if(musicianAppyList != null) {
       for (String muNo : musicianAppyList.getMuNoList()) {
-        valueMap.put("muNo", muNo);
-        matchDao.appyEventCancelUpdate(valueMap);
+        valueMap.put("musicianNo", muNo);
+        matchDao.updateAppyActiveN(0);
         notificationDao.insertEventDeleteNoti(valueMap);
       }
       return;
@@ -127,32 +127,32 @@ public class EventServiceImpl implements EventService {
   //일반모드 > 뮤지션 상세페이지 > 매칭 요청하기
   public void prEvent(int muNo, int eNo) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("muNo", muNo);
-    valueMap.put("eNo", eNo);
-    matchDao.prEvent(valueMap);
-    valueMap.put("prNo", valueMap.get("prno"));
+    valueMap.put("musicianNo", muNo);
+    valueMap.put("eventNo", eNo);
+    matchDao.insertPr(valueMap);
+    valueMap.put("prno", valueMap.get("prno"));
     notificationDao.insertEventPrNoti(valueMap);
   }
   
 //일반모드 > 뮤지션 상세페이지 > 홍보 상태"Y"변경
   public void prUpdate(int muNo, int eNo, int prNo) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("muNo", muNo);
-    valueMap.put("eNo", eNo);
-    valueMap.put("prNo", prNo);
-    matchDao.prEventCheckUpdate(valueMap);
+    valueMap.put("musicianNo", muNo);
+    valueMap.put("eventNo", eNo);
+    valueMap.put("prno", prNo);
+/*    matchDao.prEventCheckUpdate(valueMap);*/
     notificationDao.insertEventPrNoti(valueMap);
   }
   
   //뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 추가 - pr을 받았으면 pr status 'Y'변경
   public void requestEvent(int muNo, int eNo) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("muNo", muNo);
-    valueMap.put("eNo", eNo);
+    valueMap.put("musicianNo", muNo);
+    valueMap.put("eventNo", eNo);
     
 /*    Musician musician = matchDao.receivePrCheck(valueMap);
     */
-    matchDao.appyEvent(valueMap);
+    matchDao.insertAppy(valueMap);
     valueMap.put("appyno", valueMap.get("appyno"));
     notificationDao.insertEventAppyNoti(valueMap);
   }
@@ -160,19 +160,21 @@ public class EventServiceImpl implements EventService {
   //뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"Y"변경
   public void requestEventCheck(int muNo, int eNo, int appyNo) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("muNo", muNo);
-    valueMap.put("eNo", eNo);
+    valueMap.put("musicianNo", muNo);
+    valueMap.put("eventNo", eNo);
     valueMap.put("appyno", appyNo);
-    matchDao.appyEventCheckUpdate(valueMap);
+    matchDao.updateAppyActiveY(0);
     notificationDao.insertEventAppyNoti(valueMap);
   }
   
   //뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"N"변경 있던 Noti 삭제
   public void requestEventCancel(int muNo, int eNo) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("muNo", muNo);
-    valueMap.put("eNo", eNo);
-    matchDao.appyEventCancelUpdate(valueMap);
+    valueMap.put("musicianNo", muNo);
+    valueMap.put("eventNo", eNo);
+    
+    
+    matchDao.updateAppyActiveN(0);
 /*    notificationDao.deleteEventAppyNoti(valueMap);*/
   }
   
@@ -260,28 +262,24 @@ public class EventServiceImpl implements EventService {
 
   /*일반모드 > 나의 이벤트 > 모집중 > 지원자 > 지원 거절*/
   public void rejectAppy(HashMap<String, Object> map) throws Exception {
-    matchDao.updateAppyReject(map);
   }
 
   /*일반모드 > 나의 이벤트 > 모집중 > 지원자 > 매칭 확정*/
   public void decideMatch(HashMap<String, Object> map) throws Exception {
-    matchDao.insertMatch(map);
   }
   
   //일반모드 > 이벤트 상세페이지 > 종료 - 리뷰 추가 리뷰 메시지 작성
   public void updateReview(Event event, int muno) throws Exception {
     matchDao.updateReview(event);
     HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("muNo", muno);
-    valueMap.put("eNo", event.getNo());
-    valueMap.put("mtcNo", event.getMtcno());
-    System.out.println(valueMap);
+    valueMap.put("musicianNo", muno);
+    valueMap.put("eventNo", event.getNo());
+    valueMap.put("mtcno", event.getMtcno());
     notificationDao.insertEventRevNoti(valueMap);
   }
 
   /*일반모드 > 나의 이벤트 > 모집중 > 내가 요청한 뮤지션 > 요청 취소*/
   public void cancelPr(HashMap<String, Object> map) throws Exception {
-    matchDao.deletePr(map);
   }
   
   

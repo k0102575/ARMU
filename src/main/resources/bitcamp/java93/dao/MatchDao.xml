@@ -3,9 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bitcamp.java93.dao.MatchDao">
-
-
-
 <!-- 기존에 홍보한 데이터가 있는지 확인 -->
   <select id="selectExistPrCount" resultType="int" parameterType="HashMap">
     select prno from pr where muno=#{musicianNo} and eno=#{eventNo}
@@ -38,26 +35,79 @@
   
   
   
-  
-
-  <delete id="deletePr" statementType="CALLABLE" parameterType="HashMap">
-  { 
-    call cancelPrProc (#{eventNo}, #{musicianNo}, #{prno_param})
-  }
-  </delete><!-- 완진 -->
-
-  <insert id="insertMatch" statementType="CALLABLE" parameterType="HashMap">
-  { 
-    call decideMtcProc (#{eventNo}, #{musicianNo}, #{mno_param}, #{mtcno_param})
-  }
-  </insert><!-- 완진 -->
-  
-  <update id="updateAppyReject" statementType="CALLABLE" parameterType="HashMap">
-	{ 
-	  call rejectAppyProc(#{eventNo}, #{musicianNo}, #{appyno_param})
-	}
-  </update><!-- 완진 -->
+  <!-- 일반인이 홍보하기(pr) -->
+  <insert id="insertPr" parameterType="map" useGeneratedKeys="true"
+    keyColumn="prno" keyProperty="prno">
+    insert into pr(muno, eno, active)
+    values(#{muNo}, #{eNo}, 'Y');
+  </insert> <!-- 공통 -->
     
+    <!-- 일반인이 재홍보(pr.active = "Y") -->
+  <update id="updatePrActiveY" parameterType="int">
+    update pr set 
+    active = 'Y'
+    where prno = #{prno}
+  </update> <!-- 공통 -->
+  
+    <!-- 일반인이 홍보 취소(pr.active = "N") -->
+  <update id="updatePrActiveN" parameterType="int">
+    update pr set 
+    active = 'N'
+    where prno = #{prno}
+  </update> <!-- 공통 -->
+  
+  <!-- 뮤지션이 홍보 수락(pr.status = "Y") -->
+  <update id="updatePrStatusY" parameterType="int">
+    update pr set 
+    status = 'Y'
+    where prno = #{prno}
+  </update> <!-- 공통 -->
+  
+  <!-- 뮤지션이 홍보 거절(pr.status = "N") -->
+  <update id="updatePrStatusN" parameterType="int">
+    update pr set 
+    status = 'N'
+    where prno = #{prno}
+  </update> <!-- 공통 -->
+  
+  <!-- 뮤지션이 지원(appy) -->
+  <insert id="appyEvent" parameterType="map" useGeneratedKeys="true"
+    keyColumn="appyno" keyProperty="appyno">
+    insert into appy(muno, eno, active)
+    values(#{musicianNo}, #{eventNo}, 'Y');
+  </insert> <!-- 공통 -->
+  
+  <!-- 뮤지션이 재지원(appy.active = "Y") -->
+  <update id="updateAppyActiveY" parameterType="int">
+    update appy set 
+    active = 'Y'
+    where prno = #{prno}
+  </update> <!-- 공통 -->
+  
+  <!-- 뮤지션이 지원 취소(appy.active = "N") -->
+  <update id="updateAppyActiveN" parameterType="int">
+    update appy set 
+    active = 'N'
+    where prno = #{prno}
+  </update> <!-- 공통 -->
+  
+    <!-- 일반인이 지원 수락(appy.status = "Y") -->
+  <update id="updateAppyStatusY" parameterType="int">
+    update appy set 
+    status = 'Y'
+    where prno = #{prno}
+  </update> <!-- 공통 -->
+  
+  <!-- 일반인이 지원 거절(appy.status = "N") -->
+  <update id="updateAppyStatusN" parameterType="int">
+    update appy set 
+    status = 'N'
+    where prno = #{prno}
+  </update> <!-- 공통 -->
+
+
+
+
   
   <select id="selectAppyCount" resultType="int"
     parameterType="int">
@@ -65,55 +115,13 @@
     from (select eno, muno from appy where muno=#{muNo} and eno=#{eNo}) e
   </select><!-- 승민 -->
 
-
-  <!-- 일반모드 > 뮤지션 상세페이지 > 매칭 요청하기 -->
-  <insert id="prEvent" parameterType="map" useGeneratedKeys="true"
-    keyColumn="prno" keyProperty="prno">
-    insert into pr(muno, eno, active)
-    values(#{muNo}, #{eNo}, 'Y');
-  </insert> <!-- 승민 -->
   
-  <!-- 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 추가 -->
-  <insert id="appyEvent" parameterType="map" useGeneratedKeys="true"
-    keyColumn="appyno" keyProperty="appyno">
-    insert into appy(muno, eno, active)
-    values(#{muNo}, #{eNo}, 'Y');
-  </insert> <!-- 승민 -->
-  
-  <!-- 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"Y"변경 -->
-  <update id="appyEventCheckUpdate" parameterType="map">
-    update appy set 
-    active = 'Y'
-    where eno = #{eNo} and muno = #{muNo}
-  </update> <!-- 승민 -->
-  
-  <!-- 뮤지션 모드 > 이벤트 상세페이지 > 뮤지션 지원 활성"N"변경 -->
-  <update id="appyEventCancelUpdate" parameterType="map">
-    update appy set 
-    active = 'N'
-    where eno = #{eNo} and muno = #{muNo}
-  </update> <!-- 승민 -->
-  
-    <!-- 뮤지션 모드 > 뮤지션 상세페이지 > 뮤지션 지원 활성"Y"변경 -->
-  <update id="prEventCheckUpdate" parameterType="map">
-    update pr set 
-    active = 'Y'
-    where eno = #{eNo} and muno = #{muNo}
-  </update> <!-- 승민 -->
-  
-    <!-- 일반 모드 > 뮤지션 상세페이지 > 뮤지션 홍보 활성"N"변경 -->
-  <update id="prEventCancelUpdate" parameterType="map">
-    update pr set 
-    active = 'N'
-    where eno = #{eNo} and muno = #{muNo}
-  </update> <!-- 승민 -->
-  
-  <!--  이벤트 완료후 리뷰 정보 추가 -->
+  <!-- 이벤트 완료후 리뷰 정보 추가 -->
   <update id="updateReview" parameterType="match">
   update mtc set 
   score = #{score}, rev = #{rev}
   where mtcno = #{mtcno}
-  </update>
+  </update> <!-- 승민 -->
   
   
 </mapper>
