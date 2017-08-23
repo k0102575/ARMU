@@ -33,13 +33,11 @@
     select appyno from appy where appyno=#{appyno} and status='N' 
   </select><!-- 공통 -->
   
-  
-  
   <!-- 일반인이 홍보하기(pr) -->
   <insert id="insertPr" parameterType="map" useGeneratedKeys="true"
     keyColumn="prno" keyProperty="prno">
     insert into pr(muno, eno, active)
-    values(#{muNo}, #{eNo}, 'Y');
+    values(#{musicianNo}, #{eventNo}, 'Y');
   </insert> <!-- 공통 -->
     
     <!-- 일반인이 재홍보(pr.active = "Y") -->
@@ -105,14 +103,11 @@
     where prno = #{prno}
   </update> <!-- 공통 -->
 
-
-
-
   
   <select id="selectAppyCount" resultType="int"
     parameterType="int">
     select count(eno)
-    from (select eno, muno from appy where muno=#{muNo} and eno=#{eNo}) e
+    from (select eno, muno from appy where muno=#{musicianNo} and eno=#{eventNo}) e
   </select><!-- 승민 -->
 
   
