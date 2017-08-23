@@ -170,27 +170,19 @@ public class EventControl {
   }
   
   // 뮤지션모드 > 이벤트 상세페이지 > 이벤트 지원
-  @RequestMapping("requestEvent")
-  public JsonResult requestEvent(HttpSession session, int eNo, int appyNo){
-    Integer muNo = getLoginMember(session).getNo();
+  @RequestMapping("appyEvent")
+  public JsonResult appyEvent(HttpSession session, int eventNo){
     JsonResult result = new JsonResult();
-    
-    if(hasAppy(muNo, eNo) == true) {
+    try {
+      HashMap<String,Object> param = new HashMap<>();
+      param.put("eventNo", eventNo);
+      param.put("musicianNo", getLoginMember(session).getNo());
       
-      try {
-        eventService.requestEventCheck(muNo, eNo, appyNo);
-        return new JsonResult(JsonResult.SUCCESS, "success");
-      } catch (Exception e) {
-        result.setStatus(JsonResult.ERROR);
-      }
-      
-    } else {
-      try {
-        eventService.requestEvent(muNo, eNo);
-        return new JsonResult(JsonResult.SUCCESS, "success");
-      } catch (Exception e) {
-        System.out.println(e.getMessage());
-      }
+      result.setData(eventService.appyEvent(param));
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
     }
     return result;
   }

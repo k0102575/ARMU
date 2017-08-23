@@ -79,7 +79,7 @@
   <update id="updateAppyActiveY" parameterType="int">
     update appy set 
     active = 'Y'
-    where prno = #{prno}
+    where appyno = #{appyno}
   </update> <!-- 공통 -->
   
   <!-- 뮤지션이 지원 취소(appy.active = "N") -->

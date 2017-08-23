@@ -26,55 +26,11 @@ function displayEventDetail() {
         })
 
         $(".portfolio-add-btn").on('click', function() {
-          if(appy == 0) {
-            $.post('/event/requestEvent.json', {
-              'eNo': $(this).attr("data-value"),
-              'appyNo' : appy
-            }, function(result) {
-              console.log(result)
-              if(result.data == "success") {
-                swal({
-                  title: "이벤트 지원이 성공했습니다!",
-                  type: "success",
-                  showCancelButton: false,
-                  confirmButtonColor: "#8069ef",
-                  confirmButtonText: "확인",
-                  customClass: "checkSwal"
-                },function(){
-                  location.reload() 
-                })
-              }
-            }, 'json')
-            return
-          }
-
-          if(appy != 0 && appyActiveCheck == "N") {
-            $.post('/event/requestEvent.json', {
-              'eNo': $(this).attr("data-value"),
-              'appyNo' : appy
-            }, function(result) {
-              console.log(result)
-              if(result.data == "success") {
-                swal({
-                  title: "이벤트 지원이 성공했습니다!",
-                  type: "success",
-                  showCancelButton: false,
-                  confirmButtonColor: "#8069ef",
-                  confirmButtonText: "확인",
-                  customClass: "checkSwal"
-                },function(){
-                  location.reload() 
-                })
-              }
-            }, 'json')
-            return
-          }
-
+          
           if(appy != 0 && appyActiveCheck == "Y") {
             $.post('/event/requestEventCancel.json', {
               'eventNo': $(this).attr("data-value")
             }, function(result) {
-              console.log(result)
               if(result.data == "success") {
                 swal({
                   title: "지원취소가 성공했습니다!",
@@ -84,12 +40,30 @@ function displayEventDetail() {
                   confirmButtonText: "확인",
                   customClass: "checkSwal"
                 },function(){
-                  location.reload() 
+                  location.reload()
                 })
               }
             }, 'json')
             return
           }
+          
+            $.post('/event/appyEvent.json', {
+              'eventNo': $(this).attr("data-value")
+            }, function(result) {
+              if(result.data == "success") {
+                swal({
+                  title: "이벤트 지원이 성공했습니다!",
+                  type: "success",
+                  showCancelButton: false,
+                  confirmButtonColor: "#8069ef",
+                  confirmButtonText: "확인",
+                  customClass: "checkSwal"
+                },function(){
+                  location.reload()
+                })
+              }
+            }, 'json')
+
         }) // portfolio-add-btn.click
 
         prDisplay(result.data.detail.pr_count)
