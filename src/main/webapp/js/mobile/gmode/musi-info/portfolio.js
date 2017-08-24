@@ -9,6 +9,7 @@ var source = []
 
 
 displayMusiInfoPortfolio()
+HandlebarsIntl.registerWith(Handlebars);
     
 function displayMusiInfoPortfolio() {
   $.getJSON('/portfolio/musiInfoPortfolio.json',
@@ -53,14 +54,17 @@ function displayMusiInfoPortfolio() {
 		  $(".timeline-content").on('click', function(){
 		    var no = $(this).attr("data-no")
 		    $(".spec-detail[data-no=" + no + "]").toggle('slide', {direction:'down'}, 400)
-		    $("#spec-backscreen").css('display', 'block')
+		    $(".spec-detail[data-no=" + no + "]").scrollTop(0)
+		    $("#spec-backscreen").toggle('slide', {direction:'down'}, 400)
+        $("#spec-deepscreen").toggle('slide', {direction:'down'}, 400)
 		    $("#container").css('position', 'fixed')
 		  })
 		  
 		  $(".spec-close").on('click', function() {
 		    var no = $(this).attr("data-no")
 		    $(".spec-detail[data-no=" + no + "]").toggle('slide', {direction:'down'}, 400)
-		    $("#spec-backscreen").css('display', 'none')
+		    $("#spec-backscreen").toggle('slide', {direction:'down'}, 400)
+        $("#spec-deepscreen").toggle('slide', {direction:'down'}, 400)
 		    $("#container").css('position', 'relative')
 		  })
         

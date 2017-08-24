@@ -1,19 +1,24 @@
 <div class="portfolio-container">
-
+	<div id="spec-deepscreen"></div>
+	<div id="spec-backscreen"></div>
 
 </div>
 
-<script id="musician-info-portfolio-template" type="text/x-handlebars-template">
+<script id="musician-info-portfolio-template"
+	type="text/x-handlebars-template">
 {{#each getPortfolio}}
   <div class="spec-detail" data-no='{{spno}}'>
     <div class="spec-close" data-no='{{spno}}'><i class="fa fa-angle-left" id="portfolio-prev" aria-hclassden="true"></i>
+    {{#intl locales="ko-KO"}}
     <div id="spec-date">
-    {{specDate}}
+{{formatDate specDate day="numeric" month="long" year="numeric"}}
     </div>
+    {{/intl}}
+
     </div>
 
     <div id="spec-desc">
-    {{specDscp}}
+    <i class="fa fa-quote-left" aria-hidden="true"></i>&nbsp;{{specDscp}}&nbsp;<i class="fa fa-quote-right" aria-hidden="true"></i>
     </div>
     
     <div class='spec-portfolio-container'>
@@ -35,7 +40,9 @@
   <img src="/image/logo/login_01_b.png" id="timeline-mark">
   </div>
   <div class="timeline-content" data-no='{{spno}}'>
-  <div id="timeline-date">{{specDate}}</div>
+    {{#intl locales="ko-KO"}}
+  <div id="timeline-date">{{formatDate specDate day="numeric" month="long" year="numeric"}}</div>
+    {{/intl}}
   <div id="timeline-desc">{{specDscp}}</div>
   {{#each list}}
   {{#fileMap}} {{#isIndex key}}
@@ -51,12 +58,12 @@
 {{/each}}
 </script>
 
-<script id="musician-info-zero-portfolio-template" type="text/x-handlebars-template">
+<script id="musician-info-zero-portfolio-template"
+	type="text/x-handlebars-template">
     <div class="rec-no-portfolio rec-no-data">
       <br> 뮤지션이 작성한 포트폴리오가 없습니다.<br><br>
-      <i class="fa fa-frown-o" aria-hidden="true" id='rec-no-portfolio-cry'></i><br><br>
     </div>
     <!-- rec-no-portfolio -->
 </script>
-  
+
 <script src="/js/mobile/gmode/musi-info/portfolio.js"></script>

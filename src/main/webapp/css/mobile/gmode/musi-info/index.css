@@ -223,39 +223,35 @@
 }
 
 #musician-info-toggle {
-border: 1px solid black;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    display: none;
-    z-index: 20;
-    overflow-y: auto;
-    border-radius: 10px;
-    background: transparent;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	display: none;
+	z-index: 20;
+	overflow-y: auto;
+	background: transparent;
 }
 
 #musician-info-backscreen {
-  position: fixed;
-  display: none;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
-  background-size: cover;
-  background-position: center;
-  -webkit-filter: blur(50px);
-  filter: blur(100px);
-  z-index: 19;bord
+	position: fixed;
+	display: none;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	-webkit-filter: blur(50px);
+	filter: blur(150px);
+	z-index: 19;
+}
 
 #musician-info-deepscreen {
-  position: fixed;
-  display: none;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  z-index: 15;
-  background: white;
+	position: fixed;
+	display: none;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 15;
+	background: white;
 }
 
 #event-header {

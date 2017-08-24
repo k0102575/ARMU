@@ -29,19 +29,24 @@ infoIntroduce.css('display', 'none')
 infoReview.css('display', 'none')
 
 displayMusiInfo()
-matchRequest()
-displayTab()
 
-var heartCount = 0
+var heartCount = 0,
+    musiPhoto = ""
 function displayMusiInfo() {
   $.getJSON('/portfolio/musiInfo.json',
       { 
     "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {
         var data = result.data.musician
+        musiPhoto = data.photo
         musicianInfoNickName.text(data.nickName)
         musicianHeaderInfoImg.attr("src", data.photo + '_80.png')
         musicianBasicInfoImg.attr("src", data.photo + '_300.png')
+        
+        $("#musician-info-backscreen").css("background", "url('"+ musiPhoto +"')")
+        $("#musician-info-backscreen").css("background-size", "cover")
+        $("#musician-info-backscreen").css("background-position", "center")
+        
         if(data.isTeam == "Y") {
           musicianBasicInfoName.text(data.nickName + "  (팀)")
         } else {
@@ -75,18 +80,9 @@ function displayMusiInfo() {
         })
 
       })
+      
+      matchRequest()
 }
-
-function displayTab() {
-  var param = decodeURIComponent(location.href).split('?')[2]
-  if(!param) return;
-
-  if(param == 'reload') {
-    $('#musician-basic-info-request-btn').trigger("click");
-  }
-  window.history.replaceState(null, null, window.location.href.split("?")[0]);
-
-}//displayTab()
 
 function heartChange(fav) {
   if(fav == 1) {
@@ -171,7 +167,7 @@ function matchRequest() {
     var container = $('#musician-info-toggle')
     container.html(generatedHTML)
     container.prepend("<div id='event-header'><img id='signup-cancel-btn' src='/image/icon/access-black.png'>나의 이벤트 목록</div>")
-
+    
     for(var i = 0; i < result.data.eventList.length; i++) {
       if(result.data.eventList[i].pr_count != 0 && result.data.eventList[i].prStatus == "Y") {
         $(".request-button[data-no='"+ result.data.eventList[i].no +"']").html("요청<br>취소")
@@ -240,6 +236,7 @@ function matchRequest() {
     $("#signup-cancel-btn").on('click', function() {
       requestToggle.toggle()
       requestBackScreen.css("display", "none")
+      $("#musician-info-deepscreen").css("display", "none" )
     })
 
   })
@@ -249,7 +246,7 @@ function matchRequest() {
 requestBtn.on('click', function() {
   requestToggle.toggle()
   requestBackScreen.css("display", "block")
-  $("#musician-info-deepscreen").css("display", "block")
+  $("#musician-info-deepscreen").css("display", "block" )
 })
 
 musicianInfoPrev.on('click', function() {

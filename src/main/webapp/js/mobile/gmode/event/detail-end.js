@@ -6,7 +6,7 @@ var mtcno = 0
 function displayEventDetail() {
   $.getJSON('/event/myEventDetail.json', 
       { 
-    "no" : location.href.split('?')[1].split('=')[1]
+    "eventNo" : location.href.split('?')[1].split('=')[1]
       }, 
       function(result) {
         console.log(result)

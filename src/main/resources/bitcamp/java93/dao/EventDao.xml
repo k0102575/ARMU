@@ -50,6 +50,9 @@
     <result column="pr_count" property="pr_count" />
     <result column="mtc_info" property="mtc_info" />
     <result column="prStatus" property="prStatus" />
+    <association property="writeMember" javaType="Member">
+      <result property="photo" column="path" />
+    </association>
   </resultMap>
 
   
