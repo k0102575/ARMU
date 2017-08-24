@@ -41,15 +41,17 @@ public class EventControl {
   }
 
   // 1. 뮤지션에게 홍보(pr)
-  @RequestMapping("prEvent")
-  public JsonResult prEvent(int musicianNo, int eventNo){
+  @RequestMapping("acceptAppyAndPr")
+  public JsonResult acceptAppyAndPr(HttpSession session, int musicianNo, int eventNo){
     JsonResult result = new JsonResult();
     try {
+      int writerNo = getLoginMember(session).getNo();
       HashMap<String,Object> param = new HashMap<>();
       param.put("eventNo", eventNo);
       param.put("musicianNo", musicianNo);
+      param.put("writerNo", writerNo);
 
-      result.setData(eventService.prEvent(param));
+      result.setData(eventService.acceptAppyAndPr(param));
       result.setStatus(JsonResult.SUCCESS);
     } catch (Exception e) {
       result.setStatus(JsonResult.ERROR);
@@ -57,17 +59,24 @@ public class EventControl {
     }
     return result;
   }
-
-  // 4. 뮤지션이 이벤트에 지원(APPY)하기
-  @RequestMapping("appyEvent")
-  public JsonResult appyEvent(HttpSession session, int eventNo){
+  
+  // 2. 뮤지션이 홍보(PR) 거절하기
+  @RequestMapping("rejectPr")
+  public JsonResult rejectPr(int musicianNo, int eventNo){
+    JsonResult result = new JsonResult();
+    return result;
+  }
+  
+  // 4. 뮤지션이 이벤트에 지원(APPY)하기 && 3. 홍보(pr) 수락하기
+  @RequestMapping("acceptPrAndAppy")
+  public JsonResult acceptPrAndAppy(HttpSession session, int eventNo){
     JsonResult result = new JsonResult();
     try {
       HashMap<String,Object> param = new HashMap<>();
       param.put("eventNo", eventNo);
       param.put("musicianNo", getLoginMember(session).getNo());
 
-      result.setData(eventService.appyEvent(param));
+      result.setData(eventService.acceptPrAndAppy(param));
       result.setStatus(JsonResult.SUCCESS);
     } catch (Exception e) {
       result.setStatus(JsonResult.ERROR);
@@ -75,7 +84,6 @@ public class EventControl {
     }
     return result;
   }
-
 
   // 5. 일반인이 지원(APPY) 거절
   @RequestMapping("rejectAppy")
@@ -87,26 +95,6 @@ public class EventControl {
       param.put("musicianNo", musicianNo);
 
       result.setData(eventService.rejectAppy(param));
-      result.setStatus(JsonResult.SUCCESS);
-    } catch (Exception e) {
-      result.setStatus(JsonResult.ERROR);
-      e.printStackTrace();
-    }
-    return result;
-  }
-
-  // 6. 일반인이 매칭 확정
-  @RequestMapping("decideMatch")
-  public JsonResult decideMatch(int musicianNo, int eventNo, HttpSession session) {
-    JsonResult result = new JsonResult();
-    try {
-      int writerNo = getLoginMember(session).getNo();
-      HashMap<String,Object> param = new HashMap<>();
-      param.put("eventNo", eventNo);
-      param.put("musicianNo", musicianNo);
-      param.put("writerNo", writerNo);
-
-      result.setData(eventService.decideMatch(param));
       result.setStatus(JsonResult.SUCCESS);
     } catch (Exception e) {
       result.setStatus(JsonResult.ERROR);

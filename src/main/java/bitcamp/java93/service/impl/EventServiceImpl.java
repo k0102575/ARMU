@@ -52,7 +52,7 @@ public class EventServiceImpl implements EventService {
   }
   
   // 1. 뮤지션에게 홍보(pr)
-  public String prEvent(HashMap<String, Object> valueMap) throws Exception {
+  public String acceptAppyAndPr(HashMap<String, Object> valueMap) throws Exception {
     String result = "success";
     
     if(this.decideMatch(valueMap) == "success") {
@@ -95,7 +95,7 @@ public class EventServiceImpl implements EventService {
   }
   
   /*3. 뮤지션이 홍보(PR) 수락하기*/
-  public String acceptPr(HashMap<String, Object> valueMap) throws Exception {
+  private String acceptPr(HashMap<String, Object> valueMap) throws Exception {
     int prno = matchDao.selectExistPrCount(valueMap);
     if(prno == 0) {
       return "noData";
@@ -112,7 +112,7 @@ public class EventServiceImpl implements EventService {
   }
   
   /*4. 뮤지션이 이벤트에 지원(APPY)하기*/
-  public String appyEvent(HashMap<String, Object> valueMap) throws Exception {
+  public String acceptPrAndAppy(HashMap<String, Object> valueMap) throws Exception {
     String result = "success";
     
     if(this.acceptPr(valueMap) == "success") {
@@ -155,7 +155,7 @@ public class EventServiceImpl implements EventService {
   }
 
   /*6. 일반인이 매칭 확정하기*/
-  public String decideMatch(HashMap<String, Object> valueMap) throws Exception {
+  private String decideMatch(HashMap<String, Object> valueMap) throws Exception {
     int appyno = matchDao.selectExistAppyCount(valueMap);
     if(appyno == 0) {
       return "noData";

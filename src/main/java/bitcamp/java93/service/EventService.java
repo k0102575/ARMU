@@ -7,12 +7,12 @@ import bitcamp.java93.domain.Event;
 
 public interface EventService {
   void add(Event event) throws Exception; // 이벤트 등록
-  String prEvent(HashMap<String, Object> valueMap) throws Exception; // 1. 뮤지션에게 홍보(pr)
+  String acceptAppyAndPr(HashMap<String, Object> valueMap) throws Exception; // 1. 뮤지션에게 홍보(pr) && 6. 일반인이 매칭 확정
   String rejectPr(HashMap<String, Object> valueMap) throws Exception;// 2. 뮤지션이 홍보(PR) 거절하기
-  String acceptPr(HashMap<String, Object> valueMap) throws Exception;// 3. 뮤지션이 홍보(PR) 수락하기
-  String appyEvent(HashMap<String, Object> valueMap) throws Exception;// 4. 뮤지션이 이벤트에 지원(APPY)하기
+  // String acceptPr(HashMap<String, Object> valueMap) throws Exception;// 3. 뮤지션이 홍보(PR) 수락하기
+  String acceptPrAndAppy(HashMap<String, Object> valueMap) throws Exception;// 4. 뮤지션이 이벤트에 지원(APPY)하기 && 3. 홍보(pr) 수락하기
   String rejectAppy(HashMap<String,Object> map) throws Exception;// 5. 일반인이 지원(APPY) 거절
-  String decideMatch(HashMap<String,Object> map) throws Exception;// 6. 일반인이 매칭 확정
+  //String decideMatch(HashMap<String,Object> map) throws Exception;// 6. 일반인이 매칭 확정
   void update(Event event) throws Exception; // 이벤트 변경 > 9. 일반인이 미확정 이벤트 편집
   void delete(int eno) throws Exception; // 이벤트 삭제 > 10. 일반인이 미확정 이벤트 삭제
   String cancelPr(HashMap<String,Object> map) throws Exception;// 11. 일반인이 홍보(PR) 취소
