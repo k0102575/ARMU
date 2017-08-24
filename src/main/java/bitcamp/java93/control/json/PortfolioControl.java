@@ -57,6 +57,7 @@ public class PortfolioControl {
     return result;
   }
   
+  // 일반모드 > 뮤지션 상세페이지 > 뮤지션 정보가져오기
   @RequestMapping("musiInfoIntroduce")
   public JsonResult musiInfoReviewIntroduce(int no) throws Exception {
     JsonResult result = new JsonResult();

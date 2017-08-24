@@ -74,5 +74,18 @@ where mtc.eno = 13
     
     
     
+      select if(mu.hpg is not null, mu.hpg, 0) as hpg, mj.mjrno as majorNo, mj.name as major,
+  g.gnrno as genreNo, g.name as genre, l.locno as locationNo, l.name as location, lt.name as sido, t.thmno as themeNo, t.name as theme
+  from musi mu left outer join mjr_musi mjm on mu.muno=mjm.muno 
+  left outer join mjr mj on mjm.mjrno=mj.mjrno
+  left outer join gnr_musi gm on mu.muno=gm.muno 
+  left outer join gnr g on gm.gnrno=g.gnrno
+  left outer join thm_musi tm on mu.muno=tm.muno 
+  left outer join thm t on tm.thmno=t.thmno
+  left outer join loc_musi lm on mu.muno=lm.muno 
+  left outer join loc l on lm.locno=l.locno
+  left outer join loc_type lt on l.loctno = lt.loctno
+  where mu.muno = 12
+    
     
     

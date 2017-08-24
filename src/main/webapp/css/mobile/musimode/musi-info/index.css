@@ -54,7 +54,7 @@
 #musician-info-portfolio-btn, #musician-info-review-btn, #musician-info-introduce-btn {
   float: left;
   border: 0px;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 5px solid lightgray;
   width: 33.3333%;
   background-color: white;
   height: 100%;
@@ -62,7 +62,7 @@
 }
 
 #musician-info-portfolio-btn {
-  border-bottom: 2.5px solid #8069ef;
+  border-bottom: 5px solid lightseagreen;
 }
 
 /* 뮤지션 버튼 끝 */

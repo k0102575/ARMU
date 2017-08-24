@@ -37,7 +37,11 @@ public class Musician extends Member  {
   String rev;
   Map<String , String> fileMap;
   Map<String , String> appyMap;
+  Map<String , String> locationMap;
+  Map<String , String> locationTypeMap;
   List<Map<Integer , String>> list;
+  List<Map<String , String>> locationTypeList;
+  List<Map<String , String>> locList;
   ArrayList<Musician> reviewList;
   ArrayList<String> majorList;
   ArrayList<String> genreList;
@@ -50,6 +54,22 @@ public class Musician extends Member  {
   List<String> photoList;
   List<String> movieList;
   List<String> muNoList;
+  @Override
+  public String toString() {
+    return "Musician [age=" + age + ", isTeam=" + isTeam + ", homepage=" + homepage + ", intro=" + intro + ", gender="
+        + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite + ", popularity="
+        + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", spno=" + spno
+        + ", specDate=" + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge
+        + ", location=" + location + ", sido=" + sido + ", fav=" + fav + ", indexL=" + indexL + ", indexM=" + indexM
+        + ", indexG=" + indexG + ", locno=" + locno + ", mjrno=" + mjrno + ", gnrno=" + gnrno + ", eno=" + eno
+        + ", nickName=" + nickName + ", search=" + search + ", rev=" + rev + ", fileMap=" + fileMap + ", appyMap="
+        + appyMap + ", locationMap=" + locationMap + ", locationTypeMap=" + locationTypeMap + ", list=" + list
+        + ", locationTypeList=" + locationTypeList + ", locList=" + locList + ", reviewList=" + reviewList
+        + ", majorList=" + majorList + ", genreList=" + genreList + ", themeList=" + themeList + ", locationList="
+        + locationList + ", locationNoList=" + locationNoList + ", majorNoList=" + majorNoList + ", genreNoList="
+        + genreNoList + ", themeNoList=" + themeNoList + ", photoList=" + photoList + ", movieList=" + movieList
+        + ", muNoList=" + muNoList + "]";
+  }
   public int getAge() {
     return age;
   }
@@ -242,11 +262,35 @@ public class Musician extends Member  {
   public void setAppyMap(Map<String, String> appyMap) {
     this.appyMap = appyMap;
   }
+  public Map<String, String> getLocationMap() {
+    return locationMap;
+  }
+  public void setLocationMap(Map<String, String> locationMap) {
+    this.locationMap = locationMap;
+  }
+  public Map<String, String> getLocationTypeMap() {
+    return locationTypeMap;
+  }
+  public void setLocationTypeMap(Map<String, String> locationTypeMap) {
+    this.locationTypeMap = locationTypeMap;
+  }
   public List<Map<Integer, String>> getList() {
     return list;
   }
   public void setList(List<Map<Integer, String>> list) {
     this.list = list;
+  }
+  public List<Map<String, String>> getLocationTypeList() {
+    return locationTypeList;
+  }
+  public void setLocationTypeList(List<Map<String, String>> locationTypeList) {
+    this.locationTypeList = locationTypeList;
+  }
+  public List<Map<String, String>> getLocList() {
+    return locList;
+  }
+  public void setLocList(List<Map<String, String>> locList) {
+    this.locList = locList;
   }
   public ArrayList<Musician> getReviewList() {
     return reviewList;
@@ -320,21 +364,6 @@ public class Musician extends Member  {
   public void setMuNoList(List<String> muNoList) {
     this.muNoList = muNoList;
   }
-  @Override
-  public String toString() {
-    return "Musician [age=" + age + ", isTeam=" + isTeam + ", homepage=" + homepage + ", intro=" + intro + ", gender="
-        + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite + ", popularity="
-        + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", spno=" + spno
-        + ", specDate=" + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge
-        + ", location=" + location + ", sido=" + sido + ", fav=" + fav + ", indexL=" + indexL + ", indexM=" + indexM
-        + ", indexG=" + indexG + ", locno=" + locno + ", mjrno=" + mjrno + ", gnrno=" + gnrno + ", eno=" + eno
-        + ", nickName=" + nickName + ", search=" + search + ", rev=" + rev + ", fileMap=" + fileMap + ", appyMap="
-        + appyMap + ", list=" + list + ", reviewList=" + reviewList + ", majorList=" + majorList + ", genreList="
-        + genreList + ", themeList=" + themeList + ", locationList=" + locationList + ", locationNoList="
-        + locationNoList + ", majorNoList=" + majorNoList + ", genreNoList=" + genreNoList + ", themeNoList="
-        + themeNoList + ", photoList=" + photoList + ", movieList=" + movieList + ", muNoList=" + muNoList + "]";
-  }
-  
   
   
 }
