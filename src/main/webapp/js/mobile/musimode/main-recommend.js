@@ -47,7 +47,7 @@ function displayTop10CategoryList() {
 			console.error("getJSON() 실패: ", result.status)
 			return;
 		}
-		
+		console.log(result)
 		var templateFn = Handlebars.compile($('#rec-most-popular-category-template').text())
 		var generatedHTML = templateFn(result.data)
 		var container = $('#rec-most-popular-category-container')

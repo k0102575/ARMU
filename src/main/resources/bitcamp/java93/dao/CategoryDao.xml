@@ -42,6 +42,7 @@
 
 	<resultMap type="category" id="categoryMap">
     <id column="no" property="no" />
+    <result column="typeno" property="typeNo" />
     <result column="tag" property="name" />
     <result column="count" property="count" />
     <result column="type" property="type" />
@@ -111,7 +112,7 @@
   </select><!-- 승민 -->
 
   <select id="selectTop10CategoryList" resultMap="categoryMap">
- select pt.no as no, t.name as tag, count(pt.no) as count, if(pt.no is not null, "theme", "") as type
+ select pt.no as no, t.name as tag, count(pt.no) as count, if(pt.no is not null, "theme", "") as type, t.thmtno as typeno
 from (
 select tm.thmno as no, fm.muno
 from thm_musi tm inner join fav_musi fm on tm.muno=fm.muno
@@ -120,7 +121,7 @@ group by pt.no
 
 union
 
-select pmj.no as no, mj.name as tag, count(pmj.no) as count, if(pmj.no is not null, "major", "") as type
+select pmj.no as no, mj.name as tag, count(pmj.no) as count, if(pmj.no is not null, "major", "") as type, mj.mjrtno as typeno
 from (
 select mjm.mjrno as no, fm.muno
 from mjr_musi mjm inner join fav_musi fm on mjm.muno=fm.muno
@@ -128,7 +129,7 @@ from mjr_musi mjm inner join fav_musi fm on mjm.muno=fm.muno
 group by pmj.no
 
 union
-select pg.no as no, g.name as tag, count(pg.no) as count, if(pg.no is not null, "genre", "") as type
+select pg.no as no, g.name as tag, count(pg.no) as count, if(pg.no is not null, "genre", "") as type, g.gnrtno as typeno
 from (
 select gm.gnrno as no, fm.muno
 from gnr_musi gm inner join fav_musi fm on gm.muno=fm.muno

@@ -221,7 +221,7 @@ function readyBtns() {
         cancelButtonText: "아니요"
       },
       function(){//확인 버튼 누르면 실행
-        $.post('/event/decideMatch.json', {
+        $.post('/event/acceptAppyAndPr.json', {
           'musicianNo' : musicianNo,
           'eventNo' : eventNo
         }, function(result) {
@@ -230,9 +230,9 @@ function readyBtns() {
             return;
           }
           
-          if(result.data == 'canceled') {//이미 취소된 appy인 경우 실행
+          if(result.data != 'success') {
             swal({
-              title: "뮤지션이 지원을 취소하여 \n\n 매칭되지 않았습니다.",
+              title: "매칭에 실패했습니다. \n\n다시 시도해주세요.",
               type: "warning",
               showCancelButton: false,
               confirmButtonColor: "#8069ef",
@@ -279,7 +279,6 @@ function readyBtns() {
       });//swal()
     })//click event
   }//setCancelBtns()
-
 
 
 

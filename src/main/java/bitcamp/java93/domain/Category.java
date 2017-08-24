@@ -21,6 +21,7 @@ public class Category {
   int locno;
   String locname;
   String type;
+  int typeNo;
   int no;
   String name;
   int count;
@@ -33,6 +34,12 @@ public class Category {
   }
   public void setThmno(int thmno) {
     this.thmno = thmno;
+  }
+  public int getThmtno() {
+    return thmtno;
+  }
+  public void setThmtno(int thmtno) {
+    this.thmtno = thmtno;
   }
   public String getThmtname() {
     return thmtname;
@@ -52,6 +59,12 @@ public class Category {
   public void setMjrno(int mjrno) {
     this.mjrno = mjrno;
   }
+  public int getMjrtno() {
+    return mjrtno;
+  }
+  public void setMjrtno(int mjrtno) {
+    this.mjrtno = mjrtno;
+  }
   public String getMjrtname() {
     return mjrtname;
   }
@@ -69,6 +82,12 @@ public class Category {
   }
   public void setGnrno(int gnrno) {
     this.gnrno = gnrno;
+  }
+  public int getGnrtno() {
+    return gnrtno;
+  }
+  public void setGnrtno(int gnrtno) {
+    this.gnrtno = gnrtno;
   }
   public String getGnrtname() {
     return gnrtname;
@@ -112,6 +131,12 @@ public class Category {
   public void setType(String type) {
     this.type = type;
   }
+  public int getTypeNo() {
+    return typeNo;
+  }
+  public void setTypeNo(int typeNo) {
+    this.typeNo = typeNo;
+  }
   public int getNo() {
     return no;
   }
@@ -154,36 +179,16 @@ public class Category {
   public void setList(List<Map<Integer, String>> list) {
     this.list = list;
   }
-  public int getThmtno() {
-    return thmtno;
-  }
-  public void setThmtno(int thmtno) {
-    this.thmtno = thmtno;
-  }
-
-  public int getMjrtno() {
-    return mjrtno;
-  }
-  public void setMjrtno(int mjrtno) {
-    this.mjrtno = mjrtno;
-  }
-  public int getGnrtno() {
-    return gnrtno;
-  }
-  public void setGnrtno(int gnrtno) {
-    this.gnrtno = gnrtno;
-  }
   @Override
   public String toString() {
     return "Category [thmno=" + thmno + ", thmtno=" + thmtno + ", thmtname=" + thmtname + ", thmname=" + thmname
         + ", mjrno=" + mjrno + ", mjrtno=" + mjrtno + ", mjrtname=" + mjrtname + ", mjrname=" + mjrname + ", gnrno="
         + gnrno + ", gnrtno=" + gnrtno + ", gnrtname=" + gnrtname + ", gnrname=" + gnrname + ", loctno=" + loctno
-        + ", loctname=" + loctname + ", locno=" + locno + ", locname=" + locname + ", type=" + type + ", no=" + no
-        + ", name=" + name + ", count=" + count + ", themeMap=" + themeMap + ", majorMap=" + majorMap + ", genreMap="
-        + genreMap + ", list=" + list + "]";
+        + ", loctname=" + loctname + ", locno=" + locno + ", locname=" + locname + ", type=" + type + ", typeNo="
+        + typeNo + ", no=" + no + ", name=" + name + ", count=" + count + ", themeMap=" + themeMap + ", majorMap="
+        + majorMap + ", genreMap=" + genreMap + ", list=" + list + "]";
   }
-
-
-
-
+ 
+  
+  
 }
