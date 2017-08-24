@@ -464,18 +464,16 @@ public class EventControl {
     return returnList;
   }
 
-  //  @Scheduled(fixedRate=5000) //테스트용
+//  @Scheduled(fixedRate=10000) //테스트용
   @Scheduled(cron="0 0 0 * * ? ")
   public void matching(){
     JsonResult result = new JsonResult();
     try {
       HashMap<String,Object> dataMap = new HashMap<>();
-      dataMap.put("matchingList", eventService.listMatchingEvent());
-      //      dataMap.put("expiredList", eventService.listEventExpired());
+      dataMap.put("matchingList", eventService.MatchingEvent());
+      dataMap.put("expiredList", eventService.EventExpired());
       result.setData(dataMap);
-      //      System.out.println("abc"+dataMap);
       result.setStatus(JsonResult.SUCCESS);
-      //      System.out.println(dataMap);
     } catch (Exception e) {
       result.setStatus(JsonResult.ERROR);
       e.printStackTrace();

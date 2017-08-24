@@ -229,6 +229,7 @@ public class EventServiceImpl implements EventService {
     valueMap.put("musicianNo", musicianNo);
     valueMap.put("eventNo", event.getNo());
     valueMap.put("mtcno", event.getMtcno());
+    System.out.println(valueMap);
     notificationDao.insertEventRevNoti(valueMap);
   }
   
@@ -333,33 +334,34 @@ public class EventServiceImpl implements EventService {
     return matchDao.selectAppyCount(valueMap);
   }
 
-  public List<Event> listMatchingEvent() throws Exception {
+  public List<Event> MatchingEvent() throws Exception {
     List<Event> matchingList = eventDao.selectMatchingEventList();
-    System.out.println("aaaaa"+matchingList);
+    
     HashMap<String,Object> valueMap = new HashMap<>();
     if(matchingList != null) {
       for (int i = 0; i<matchingList.size(); i++) {
         valueMap.put("eventNo", matchingList.get(i).getNo());
         valueMap.put("musicianNo", matchingList.get(i).getMuno());
         valueMap.put("mtcno", matchingList.get(i).getMtcno());
-        System.out.println(valueMap);
-        //        notificationDao.insertEventTodayNoti(valueMap);
+//        System.out.println(valueMap);
+        notificationDao.insertEventTodayNoti(valueMap);
       }
     }
     return matchingList;
   }
 
-  //  public List<Event> listEventExpired() throws Exception {
-  //    List<Event> expiredList = eventDao.selectEventExpiredList();
-  //    System.out.println("bbbbb"+expiredList);
-  //    HashMap<String,Object> valueMap = new HashMap<>();
-  //    for (int i = 0; i<expiredList.size(); i++) {
-  //      valueMap.put("eventNo", expiredList.get(i).getNo());
-  //      notificationDao.insertEventExpiredNoti(valueMap);
-  //      System.out.println(valueMap);
-  //    }
-  //    return expiredList;
-  //  }
+    public List<Event> EventExpired() throws Exception {
+      List<Event> expiredList = eventDao.selectEventExpiredList();
+      HashMap<String,Object> valueMap = new HashMap<>();
+      if (expiredList!=null) {
+        for (int i = 0; i<expiredList.size(); i++) {
+          valueMap.put("eventNo", expiredList.get(i).getNo());
+          notificationDao.insertEventExpiredNoti(valueMap);
+  //        System.out.println(valueMap);
+        }
+      }
+      return expiredList;
+    }
 
   // 이벤트 카테고리 입력 메서드
   private void registCategory(int eventNo, List<String> eventRegistTheme, List<String> eventRegistMajor, List<String> eventRegistGenre) {

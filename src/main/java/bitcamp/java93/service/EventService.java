@@ -37,6 +37,6 @@ public interface EventService {
   List<Event> listMusiPr(int no) throws Exception;//뮤지션모드 - 제안받은 이벤트
   int getEventCount(int no) throws Exception;//일반모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트 - 이벤트 유무 확인
   int getAppyCount(int muNo, int eNo) throws Exception; /* 뮤지션 모드 > 이벤트 상세페이지 > 지원 활성여부 확인 */
-  List<Event> listMatchingEvent() throws Exception;
-//  List<Event> listEventExpired() throws Exception;
+  List<Event> MatchingEvent() throws Exception;
+  List<Event> EventExpired() throws Exception;
 }

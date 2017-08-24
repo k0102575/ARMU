@@ -653,8 +653,8 @@ where ap.mno=#{no}
       from mtc
       group by muno
     ) score on score.muno=mu.muno
-    <!-- where date=curdate() -->
-  </select>
+    where date=curdate()
+  </select> <!-- 규호 -->
   
   <select id="selectEventExpiredList" resultMap="matchEventMap3">
   select e.eno,e.title,e.date,e.active from evn e 
@@ -662,8 +662,8 @@ where ap.mno=#{no}
     select e.eno
     from mtc
     where mtc.eno=e.eno)
-    <!-- DATE_ADD(CURDATE(), INTERVAL -1 DAY) -->
-  </select>
+    and date=date_add(curdate(), interval -1 day)
+  </select><!-- 규호 -->
 </mapper>
 
 
