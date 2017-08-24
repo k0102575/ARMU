@@ -32,45 +32,12 @@
     <result column="team" property="isTeam" />
     <result column="hpg" property="homepage" />
     <result column="intro" property="intro" />
-    <result column="sido" property="sido"/>
-    <collection property="majorList" ofType="string"> 
-        <result column="major"/> 
-    </collection>
-    <collection property="genreList" ofType="string"> 
-        <result column="genre"/> 
-    </collection> 
-    <collection property="themeList" ofType="string"> 
-       <result column="theme"/> 
-    </collection>
-    <collection property="locationList" ofType="string"> 
-        <result column="location"/> 
-    </collection>
-        <collection property="majorNoList" ofType="Integer"> 
-        <result column="majorNo"/> 
-    </collection>
-    <collection property="genreNoList" ofType="Integer"> 
-        <result column="genreNo"/> 
-    </collection> 
-    <collection property="themeNoList" ofType="Integer"> 
-       <result column="themeNo"/> 
-    </collection>
-    <collection property="locationNoList" ofType="Integer"> 
-        <result column="locationNo"/> 
-    </collection>
-  </resultMap>
-    
-  <resultMap type="musician" id="musicianInfoIntroduceMap2">
-    <result column="team" property="isTeam" />
-    <result column="hpg" property="homepage" />
-    <result column="intro" property="intro" />
     <collection property="categoryList" ofType="Category">
         <id column="loctno" property="loctno"/> 
         <result column="sido" property="loctname"/>
         <collection property="list" ofType="java.util.Map">
-
          <result property="key" column="loctno"/> 
         <result property="value" column="location"/>
-    
         </collection> 
     </collection>
     <collection property="majorList" ofType="string"> 
@@ -81,9 +48,6 @@
     </collection> 
     <collection property="themeList" ofType="string"> 
        <result column="theme"/> 
-    </collection>
-    <collection property="locationList" ofType="string"> 
-        <result column="location"/> 
     </collection>
         <collection property="majorNoList" ofType="Integer"> 
         <result column="majorNo"/> 
@@ -100,7 +64,6 @@
   </resultMap>
   
   <resultMap type="musician" id="musicianInfoReviewMap">
-    <id column="count" property="count" />
     <result column="score" property="score" />
     <result column="rev" property="review" />
     <result column="name" property="name" />
@@ -125,11 +88,12 @@
   where sp.muno = #{no}
   </select> <!-- 승민 -->
   
-  <select id="selectMusiIntroduce" resultMap="musicianInfoIntroduceMap2" parameterType="int">
-  select if(mu.hpg is not null, mu.hpg, 0) as hpg, mu.intro, mj.mjrno as majorNo, mj.name as major,
+  <select id="selectMusiIntroduce" resultMap="musicianInfoIntroduceMap" parameterType="int">
+  select if(mu.hpg is not null, mu.hpg, 0) as hpg, mu.intro, 
+  mj.mjrno as majorNo, mj.name as major,
   g.gnrno as genreNo, g.name as genre, 
-  l.locno as locationNo, l.name as location, lt.loctno, lt.name as sido, 
-  t.thmno as themeNo, t.name as theme
+  t.thmno as themeNo, t.name as theme,
+  l.locno as locationNo, l.name as location, lt.loctno, lt.name as sido
   from musi mu left outer join mjr_musi mjm on mu.muno=mjm.muno 
   left outer join mjr mj on mjm.mjrno=mj.mjrno
   left outer join gnr_musi gm on mu.muno=gm.muno 
@@ -143,11 +107,14 @@
   </select> <!-- 승민 -->
   
   <select id="selectMusiReview" resultMap="musicianInfoReviewMap" parameterType="int">
-  select ctr.count, mtc.rev, mtc.score, even.title as eventTitle, DATE_FORMAT(even.date, '%Y-%m-%d') as eventDate, m.name , m.path
-  from musi as mu left outer join mtc on mtc.muno=mu.muno
-  left outer join (select muno, count(*) as count 
-  from mtc 
-  group by muno) ctr on ctr.muno=mtc.muno
+  select mtc.rev, mtc.score, even.title as eventTitle, even.date as eventDate, m.name , m.path
+  from musi as mu 
+  left outer join mtc on mtc.muno=mu.muno
+  left outer join (
+  select avg(score) as score, muno, rev
+  from mtc
+  group by muno
+  ) score on score.muno=mu.muno
   left outer join evn even on mtc.eno = even.eno
   left outer join memb m on even.mno = m.mno
   where mtc.muno = #{no}

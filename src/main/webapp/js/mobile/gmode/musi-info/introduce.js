@@ -44,12 +44,11 @@ function displayMusiInfoIntroduce() {
           $(".introduce-introduce").text(data.intro)
         }
         
-        console.log(categoryList)
-
         for (var i = 0; i < categoryList.length; i++) {
-          $("#musician-info-location-content").append("<div id='musician-info-location-content-box' loctno='"+ categoryList[i].loctno +"'><span>"+categoryList[i].loctname+"</span></div>")
+          $("#musician-info-location-content").append("<div class='musician-info-location-content-box'><span class='location-span locationType'>"+categoryList[i].loctname+"</span>" +
+          		"<div class='musician-info-location-content-container' loctno='"+ categoryList[i].loctno +"'></div></div>")
           for( var j = 0; j < categoryList[i].list.length; j++) {
-            $("#musician-info-location-content-box[loctno='"+ categoryList[i].list[j].key +"']").append("<span>"+ categoryList[i].list[j].value +"</span>")
+            $(".musician-info-location-content-container[loctno='"+ categoryList[i].list[j].key +"']").append("<span class='location-span'>#"+ categoryList[i].list[j].value +"</span>")
           }
           
         }
