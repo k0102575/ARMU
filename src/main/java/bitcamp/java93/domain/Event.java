@@ -42,26 +42,12 @@ public class Event {
   char prStatus;
   char appyStatus;
   int muno;
+  boolean isFavorite;
   List<String> EventRegistTheme;
   List<String> EventRegistMajor;
   List<String> EventRegistGenre;
   ArrayList<Musician> appyList;
   ArrayList<Musician> prList;
-  @Override
-  public String toString() {
-    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", writeMember=" + writeMember
-        + ", matchMusician=" + matchMusician + ", themeList=" + themeList + ", majorList=" + majorList + ", genreList="
-        + genreList + ", themeNoList=" + themeNoList + ", majorNoList=" + majorNoList + ", genreNoList=" + genreNoList
-        + ", city=" + city + ", location=" + location + ", address=" + address + ", pay=" + pay + ", locno=" + locno
-        + ", loctno=" + loctno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
-        + ", tmnno=" + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", pr_count=" + pr_count
-        + ", mtc_info=" + mtc_info + ", appy_check=" + appy_check + ", mtcno=" + mtcno + ", score=" + score + ", rev="
-        + rev + ", appy_activeCheck=" + appy_activeCheck + ", rhsinfo=" + rhsinfo + ", haveRehearsal=" + haveRehearsal
-        + ", appyno=" + appyno + ", eventActive=" + eventActive + ", prStatus=" + prStatus + ", appyStatus="
-        + appyStatus + ", muno=" + muno + ", EventRegistTheme=" + EventRegistTheme + ", EventRegistMajor="
-        + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre + ", appyList=" + appyList + ", prList=" + prList
-        + "]";
-  }
   public int getNo() {
     return no;
   }
@@ -206,6 +192,18 @@ public class Event {
   public void setRhsnum(int rhsnum) {
     this.rhsnum = rhsnum;
   }
+  public int getScore() {
+    return score;
+  }
+  public void setScore(int score) {
+    this.score = score;
+  }
+  public String getRev() {
+    return rev;
+  }
+  public void setRev(String rev) {
+    this.rev = rev;
+  }
   public int getPr_count() {
     return pr_count;
   }
@@ -229,18 +227,6 @@ public class Event {
   }
   public void setMtcno(int mtcno) {
     this.mtcno = mtcno;
-  }
-  public int getScore() {
-    return score;
-  }
-  public void setScore(int score) {
-    this.score = score;
-  }
-  public String getRev() {
-    return rev;
-  }
-  public void setRev(String rev) {
-    this.rev = rev;
   }
   public String getAppy_activeCheck() {
     return appy_activeCheck;
@@ -284,6 +270,18 @@ public class Event {
   public void setAppyStatus(char appyStatus) {
     this.appyStatus = appyStatus;
   }
+  public int getMuno() {
+    return muno;
+  }
+  public void setMuno(int muno) {
+    this.muno = muno;
+  }
+  public boolean isFavorite() {
+    return isFavorite;
+  }
+  public void setFavorite(boolean isFavorite) {
+    this.isFavorite = isFavorite;
+  }
   public List<String> getEventRegistTheme() {
     return EventRegistTheme;
   }
@@ -314,12 +312,22 @@ public class Event {
   public void setPrList(ArrayList<Musician> prList) {
     this.prList = prList;
   }
-  public int getMuno() {
-    return muno;
+  @Override
+  public String toString() {
+    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", writeMember=" + writeMember
+        + ", matchMusician=" + matchMusician + ", themeList=" + themeList + ", majorList=" + majorList + ", genreList="
+        + genreList + ", themeNoList=" + themeNoList + ", majorNoList=" + majorNoList + ", genreNoList=" + genreNoList
+        + ", city=" + city + ", location=" + location + ", address=" + address + ", pay=" + pay + ", locno=" + locno
+        + ", loctno=" + loctno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
+        + ", tmnno=" + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", score=" + score
+        + ", rev=" + rev + ", pr_count=" + pr_count + ", mtc_info=" + mtc_info + ", appy_check=" + appy_check
+        + ", mtcno=" + mtcno + ", appy_activeCheck=" + appy_activeCheck + ", rhsinfo=" + rhsinfo + ", haveRehearsal="
+        + haveRehearsal + ", appyno=" + appyno + ", eventActive=" + eventActive + ", prStatus=" + prStatus
+        + ", appyStatus=" + appyStatus + ", muno=" + muno + ", isFavorite=" + isFavorite + ", EventRegistTheme="
+        + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre
+        + ", appyList=" + appyList + ", prList=" + prList + "]";
   }
-  public void setMuno(int muno) {
-    this.muno = muno;
-  }
+  
   
   
 }

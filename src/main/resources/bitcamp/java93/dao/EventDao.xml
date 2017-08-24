@@ -22,6 +22,7 @@
     <result column="rhsnum" property="rhsnum" />
     <result column="rhsno" property="rhsno" />
     <result column="rhs" property="haveRehearsal" />
+    <result column="fav" property="isFavorite" />
     <association property="writeMember" javaType="Member">
       <id property="no" column="mno" />
       <result property="name" column="name" />
@@ -315,7 +316,7 @@ where ap.mno=#{no}
   <select id="selectRecommandList" resultMap="eventMap"
     parameterType="int">
     select e.title, e.eno, e.date, concat(lt.name, ' ', l.name) as location,
-    e.addr, e.pay,
+    e.addr, e.pay, fe.fav,
     mj.name as major, g.name as genre, t.name as theme,
     m.mno, m.name, m.path
     from (select * from evn where date >= curdate() and eno not in (select eno
@@ -332,13 +333,17 @@ where ap.mno=#{no}
     left outer join mjr_musi mjm on mj.mjrno=mjm.mjrno
     left outer join gnr_musi gm on g.gnrno=gm.gnrno
     left outer join thm_musi tm on t.thmno=tm.thmno
+    left outer join (
+    select count(if(muno is not null, 1, 0)) as fav, muno, eno
+    from fav_evn where muno=#{no} group by eno
+  ) fe on fe.eno=e.eno
     where (mjm.muno=#{no} or gm.muno=#{no} or tm.muno=#{no})
   </select><!-- 완진 -->
 
   <select id="selectRecentList" resultMap="eventMap"
     parameterType="int">
     select e.title, e.eno, e.date, concat(lt.name, ' ', l.name) as location,
-    e.addr, e.pay,
+    e.addr, e.pay, fe.fav,
     mj.name as major, g.name as genre, t.name as theme,
     m.mno, m.name, m.path
     from (select * from evn where date >= curdate() and eno not in (select eno
@@ -352,6 +357,10 @@ where ap.mno=#{no}
     inner join mjr mj on me.mjrno=mj.mjrno
     inner join gnr g on ge.gnrno=g.gnrno
     inner join thm t on te.thmno=t.thmno
+    left outer join (
+    select count(if(muno is not null, 1, 0)) as fav, muno, eno
+    from fav_evn where muno=#{no} group by eno
+  ) fe on fe.eno=e.eno
   </select><!-- 완진 -->
 
   <insert id="insert" parameterType="event" useGeneratedKeys="true"

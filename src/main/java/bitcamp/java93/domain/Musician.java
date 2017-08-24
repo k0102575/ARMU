@@ -50,20 +50,6 @@ public class Musician extends Member  {
   List<String> photoList;
   List<String> movieList;
   List<String> muNoList;
-  @Override
-  public String toString() {
-    return "Musician [age=" + age + ", isTeam=" + isTeam + ", homepage=" + homepage + ", intro=" + intro + ", gender="
-        + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite + ", popularity="
-        + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", spno=" + spno
-        + ", specDate=" + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge
-        + ", location=" + location + ", sido=" + sido + ", fav=" + fav + ", indexL=" + indexL + ", indexM=" + indexM
-        + ", indexG=" + indexG + ", locno=" + locno + ", mjrno=" + mjrno + ", gnrno=" + gnrno + ", eno=" + eno
-        + ", nickName=" + nickName + ", search=" + search + ", rev=" + rev + ", fileMap=" + fileMap + ", appyMap="
-        + appyMap + ", list=" + list + ", reviewList=" + reviewList + ", majorList=" + majorList + ", genreList="
-        + genreList + ", themeList=" + themeList + ", locationList=" + locationList + ", locationNoList="
-        + locationNoList + ", majorNoList=" + majorNoList + ", genreNoList=" + genreNoList + ", themeNoList="
-        + themeNoList + ", photoList=" + photoList + ", movieList=" + movieList + ", muNoList=" + muNoList + "]";
-  }
   public int getAge() {
     return age;
   }
@@ -333,6 +319,20 @@ public class Musician extends Member  {
   }
   public void setMuNoList(List<String> muNoList) {
     this.muNoList = muNoList;
+  }
+  @Override
+  public String toString() {
+    return "Musician [age=" + age + ", isTeam=" + isTeam + ", homepage=" + homepage + ", intro=" + intro + ", gender="
+        + gender + ", score=" + score + ", review=" + review + ", isFavorite=" + isFavorite + ", popularity="
+        + popularity + ", count=" + count + ", eventTitle=" + eventTitle + ", eventDate=" + eventDate + ", spno=" + spno
+        + ", specDate=" + specDate + ", specDscp=" + specDscp + ", minAge=" + minAge + ", maxAge=" + maxAge
+        + ", location=" + location + ", sido=" + sido + ", fav=" + fav + ", indexL=" + indexL + ", indexM=" + indexM
+        + ", indexG=" + indexG + ", locno=" + locno + ", mjrno=" + mjrno + ", gnrno=" + gnrno + ", eno=" + eno
+        + ", nickName=" + nickName + ", search=" + search + ", rev=" + rev + ", fileMap=" + fileMap + ", appyMap="
+        + appyMap + ", list=" + list + ", reviewList=" + reviewList + ", majorList=" + majorList + ", genreList="
+        + genreList + ", themeList=" + themeList + ", locationList=" + locationList + ", locationNoList="
+        + locationNoList + ", majorNoList=" + majorNoList + ", genreNoList=" + genreNoList + ", themeNoList="
+        + themeNoList + ", photoList=" + photoList + ", movieList=" + movieList + ", muNoList=" + muNoList + "]";
   }
   
   
