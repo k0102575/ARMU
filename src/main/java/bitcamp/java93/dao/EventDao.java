@@ -12,6 +12,8 @@ public interface EventDao {
   void delete(int eno); // 이벤트 삭제
   int insertReherse(Event event); // 리허설 추가
   void deleteReherse(int no); // 리허설 삭제
+  void favorEventAdd(HashMap<String,Object> valueMap); //선호이벤트 추가
+  void favorEventRemove(HashMap<String,Object> valueMap); //선호이벤트 제거
   List<Event> selectOngoingList();
   List<Event> selectRecommandList(int no);//뮤지션모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트
   List<Event> selectRecentList(int no);//뮤지션모드 > 추천탭 > 최근 이벤트 리스트 (파라미터 받는 이유는 관심 이벤트 정보 가져오려고)

@@ -202,6 +202,14 @@
     <result column="muno" property="muno" />
     <result column="mtcno" property="mtcno" />
   </resultMap>
+  
+  <select id="favorEventRemove" parameterType="map">
+    delete from fav_evn where muno = #{musicianNo} and eno = #{eventNo};
+  </select> <!-- 승민 -->
+
+  <select id="favorEventAdd" parameterType="map">
+    insert into fav_evn (muno, eno) values (#{musicianNo}, #{eventNo})
+  </select> <!-- 승민 -->
     
   <select id="selectEventWriter" resultType="int"
     parameterType="map">

@@ -233,7 +233,25 @@ public class EventServiceImpl implements EventService {
     notificationDao.insertEventRevNoti(valueMap);
   }
   
-
+  //선호이벤트 추가
+  @Override
+  public void favorAdd(int musicianNo, int eventNo) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("musicianNo", musicianNo);
+    valueMap.put("eventNo", eventNo);
+    System.out.println(valueMap);
+    eventDao.favorEventAdd(valueMap);
+  }
+  
+  //선호이벤트 제거
+  @Override
+  public void favorRemove(int musicianNo, int eventNo) throws Exception {
+    HashMap<String,Object> valueMap = new HashMap<>();
+    valueMap.put("musicianNo", musicianNo);
+    valueMap.put("eventNo", eventNo);
+    eventDao.favorEventRemove(valueMap);
+  }
+  
   /*뮤지션모드 > 추천탭 > 나에게 꼭 맞는 이벤트*/
   public List<Event> listRecommand(int no) throws Exception {
     return eventDao.selectRecommandList(no);

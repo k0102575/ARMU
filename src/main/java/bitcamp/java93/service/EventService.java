@@ -19,6 +19,9 @@ public interface EventService {
   String cancelAppy(HashMap<String, Object> param) throws Exception; // 12. 뮤지션이 지원(Appy) 취소
   void updateReview(Event event, int muno) throws Exception; // 13. 리뷰 작성
   
+  void favorAdd(int musicianNo, int eventNo) throws Exception; // 선호이벤트 추가
+  void favorRemove(int musicianNo, int eventNo) throws Exception; // 선호이벤트 제거
+  
   List<Event> listOngoing() throws Exception;//일반모드 > 나의이벤트 > 진행중 이벤트 리스트
   List<Event> listRecommand(int no) throws Exception;//뮤지션모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트
   List<Event> listRecent(int no) throws Exception;//뮤지션모드 > 추천탭 > 최근 이벤트 리스트
