@@ -68,7 +68,7 @@
         <result column="sido" property="loctname"/>
         <collection property="list" ofType="java.util.Map">
 
-         <result property="key" column="locationNo"/> 
+         <result property="key" column="loctno"/> 
         <result property="value" column="location"/>
     
         </collection> 

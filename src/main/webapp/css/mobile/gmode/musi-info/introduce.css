@@ -169,5 +169,9 @@ td:first-child {
 	border-right: 1px solid black;
 }
 
-
 /* 팀정보 끝 */
+
+#musician-info-location-content-box {
+  height: 50px;
+  width: 90%;
+}
