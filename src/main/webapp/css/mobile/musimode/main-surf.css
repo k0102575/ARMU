@@ -386,7 +386,8 @@ input[type="checkbox"]:checked + label:before {
 	width: 100%;
 	height: 483px;
 	bottom: 0;
-	display: none;
+	/* display: none; */
+	visibility:hidden;
 	position: fixed;
 	background-color: black;
 	z-index: 2;
@@ -414,7 +415,7 @@ input[type="checkbox"]:checked + label:before {
 
 .filter-mjr-sub-tab {
   display: inline-block;
-  width: 19.7%; /*탭 개수에 따라서 비율을 맞춰야 함*/
+  width: 16.3%; /*탭 개수에 따라서 비율을 맞춰야 함*/
   height: 65%;
   color: lightgray;
   padding-top: 2%;
@@ -433,7 +434,8 @@ input[type="checkbox"]:checked + label:before {
   width: 100%;
   height: 483px;
   bottom: 0;
-  display: none;
+  /* display: none; */
+  visibility:hidden;
   position: fixed;
   background-color: black;
   z-index: 2;
@@ -462,7 +464,8 @@ input[type="checkbox"]:checked + label:before {
 
 .filter-gen-sub-tab {
   display: inline-block;
-  width: 16.3%; /*탭 개수에 따라서 비율을 맞춰야 함*/
+  width: auto;
+  margin: 0 3.2%;
   height: 65%;
   color: lightgray;
   padding-top: 2%;
@@ -481,7 +484,8 @@ input[type="checkbox"]:checked + label:before {
   width: 100%;
   height: 483px;
   bottom: 0;
-  display: none;
+  /* display: none; */
+  visibility:hidden;
   position: fixed;
   background-color: black;
   z-index: 2;

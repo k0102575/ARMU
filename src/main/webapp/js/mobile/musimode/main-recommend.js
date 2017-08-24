@@ -53,6 +53,31 @@ function displayTop10CategoryList() {
 		var container = $('#rec-most-popular-category-container')
 		var html = container.html()
 		container.html(html + generatedHTML)
+		
+		$('.rec-hashtag').on('click', function(e) {
+		  e.preventDefault()
+		  var type =$(this).attr('data-type'),
+		      typeno=$(this).attr('data-typeno'),
+		      no=$(this).attr('data-no')
+		      $('#category2').trigger('click')
+		  if (type=='theme') {
+       $('#filter-theme').trigger('click') 
+       $('.filter-thm-sub-tab[data-no='+typeno+']').trigger('click')
+       $('.thm[data-no='+no+']').trigger('click')
+       $('#filter-thm-backscreen').trigger('click')
+      } else if (type=='genre'){
+        $('#filter-genre').trigger('click') 
+        $('.filter-gen-sub-tab[data-no='+typeno+']').trigger('click')
+        $('.gen[data-no='+no+']').trigger('click')
+        $('#filter-gen-backscreen').trigger('click')
+      } else if (type=='major'){
+        $('#filter-major').trigger('click') 
+        $('.filter-mjr-sub-tab[data-no='+typeno+']').trigger('click')
+        $('.mjr[data-no='+no+']').trigger('click')
+        $('#filter-mjr-backscreen').trigger('click')
+      }
+    })
+		
 	}, function(err) {
 		console.log(err)
 	})

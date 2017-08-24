@@ -16,7 +16,6 @@
 <div id="filter-mjr-backscreen"></div>
 <div id="filter-mjr-toggle">
 	<div id="filter-mjr-tab">
-	
 	</div>
 	<div id="filter-mjr-content">
 	</div>
@@ -39,9 +38,12 @@
 </div>
 
 <script id="theme-template" type="text/x-handlebars-template">
+<div style="width:120%">
+<div class="filter-thm-sub-tab on" data-no="0">전체</div>
 {{#listEventTheme}}
     <div class="filter-thm-sub-tab" data-no="{{thmtno}}">{{thmtname}}</div>
 {{/listEventTheme}}
+</div>
 </script>
 
 <script id="theme-sub-template" type="text/x-handlebars-template">
@@ -58,9 +60,12 @@
 </script>
 
 <script id="major-template" type="text/x-handlebars-template">
+<div style="width:120%">
+<div class="filter-mjr-sub-tab on" data-no="0">전체</div>
 {{#listEventMajor}}
     <div class="filter-mjr-sub-tab" data-no="{{mjrtno}}">{{mjrtname}}</div>
 {{/listEventMajor}}
+</div>
 </script>
 
 <script id="major-sub-template" type="text/x-handlebars-template">
@@ -77,9 +82,12 @@
 </script>
 
 <script id="genre-template" type="text/x-handlebars-template">
+<div style="width:135%">
+<div class="filter-gen-sub-tab on" data-no="0">전체</div>
 {{#listEventGenre}}
     <div class="filter-gen-sub-tab" data-no="{{gnrtno}}">{{gnrtname}}</div>
 {{/listEventGenre}}
+</div>
 </script>
 
 <script id="genre-sub-template" type="text/x-handlebars-template">

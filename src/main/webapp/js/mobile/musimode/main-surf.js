@@ -59,13 +59,13 @@ $('#filter-theme').click(function() {
     return false;
  });
   $('#filter-thm-backscreen').css('display','block')
-  $('#filter-thm-toggle').css('display','block')
+  $('#filter-thm-toggle').css('visibility','visible')
 })
 
 $('#filter-thm-backscreen').click(function() {
   $('#main-surf').off('scroll touchmove mousewheel')
   $('#filter-thm-backscreen').css('display','none')
-  $('#filter-thm-toggle').css('display','none')
+  $('#filter-thm-toggle').css('visibility','hidden')
 })
 
 $('#filter-major').click(function() {
@@ -75,13 +75,13 @@ $('#filter-major').click(function() {
     return false;
  });
   $('#filter-mjr-backscreen').css('display','block')
-  $('#filter-mjr-toggle').css('display','block')
+  $('#filter-mjr-toggle').css('visibility','visible')
 })
 
 $('#filter-mjr-backscreen').click(function() {
   $('#main-surf').off('scroll touchmove mousewheel')
   $('#filter-mjr-backscreen').css('display','none')
-  $('#filter-mjr-toggle').css('display','none')
+  $('#filter-mjr-toggle').css('visibility','hidden')
 })
 
 $('#filter-genre').click(function() {
@@ -91,13 +91,13 @@ $('#filter-genre').click(function() {
     return false;
  });
   $('#filter-gen-backscreen').css('display','block')
-  $('#filter-gen-toggle').css('display','block')
+  $('#filter-gen-toggle').css('visibility','visible')
 })
 
 $('#filter-gen-backscreen').click(function() {
   $('#main-surf').off('scroll touchmove mousewheel')
   $('#filter-gen-backscreen').css('display','none')
-  $('#filter-gen-toggle').css('display','none')
+  $('#filter-gen-toggle').css('visibility','hidden')
 })
 
 function getLocation() {
@@ -123,10 +123,17 @@ function filter() {
     var container = $('#filter-thm-tab')
     var html = container.html()
     container.html(html + generatedHTML)
+    
+    var xScroll = new jindo.m.Scroll("filter-thm-tab", {
+          bUseHScroll: true,
+          bUseVScroll: false,
+          bUseMomentum: false,
+          nHeight: 100,
+          nWidth: 980
+        });
     subcon()
-
     function subcon() {
-      $('#filter-thm-tab:first-child').find(">:first-child").addClass('on')
+//      $('#filter-thm-tab:first-child').find(">:first-child").addClass('on')
       $.getJSON('/category/listEventTheme.json', function(result) {
         var templateFn = Handlebars.compile($('#theme-sub-template').text())
         var generatedHTML = templateFn(result.data)
@@ -185,10 +192,17 @@ function filterMajor() {
     var container = $('#filter-mjr-tab')
     var html = container.html()
     container.html(html + generatedHTML)
+    var xScroll = new jindo.m.Scroll("filter-mjr-tab", {
+          bUseHScroll: true,
+          bUseVScroll: false,
+          bUseMomentum: false,
+          nHeight: 100,
+          nWidth: 980
+        });
     subcon()
 
     function subcon() {
-      $('#filter-mjr-tab:first-child').find(">:first-child").addClass('on')
+//      $('#filter-mjr-tab:first-child').find(">:first-child").addClass('on')
       $.getJSON('/category/listEventMajor.json', function(result) {
         var templateFn = Handlebars.compile($('#major-sub-template').text())
         var generatedHTML = templateFn(result.data)
@@ -247,10 +261,18 @@ function filterGenre() {
     var html = container.html()
     container.html(html + generatedHTML)
     $(".filter-gen-sub-tab[data-no=4]").text('재즈')
+    
+    var xScroll = new jindo.m.Scroll("filter-gen-tab", {
+          bUseHScroll: true,
+          bUseVScroll: false,
+          bUseMomentum: false,
+          nHeight: 100,
+          nWidth: 980
+        });
     subcon()
 
     function subcon() {
-      $('#filter-gen-tab:first-child').find(">:first-child").addClass('on')
+//      $('#filter-gen-tab:first-child').find(">:first-child").addClass('on')
       $.getJSON('/category/listEventGenre.json', function(result) {
         var templateFn = Handlebars.compile($('#genre-sub-template').text())
         var generatedHTML = templateFn(result.data)
@@ -331,4 +353,6 @@ $('body').on('click', '#location-check-check', function() {
       container.html(generatedHTML)
     },'json')
 });
+
+
   
