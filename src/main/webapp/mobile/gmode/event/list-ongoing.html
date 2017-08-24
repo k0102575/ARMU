@@ -27,7 +27,7 @@
 	<div class='ongoing-applicant-box'>
     <div class='ongoing-applicant-block'>
         <br><br>
-<div class="ongoing-applicant">
+<div class="ongoing-applicant musician-click" data-no={{no}}>
     <div class="ongoing-applicant-img" style='background-image: url("{{photo}}_300.png")'></div>
     <div class="ongoing-applicant-name">
       <span>{{nickName}}</span>
@@ -35,23 +35,21 @@
     </div>
     <!-- ongoing-applicant-name -->
 
-    <div class="ongoing-applicant-fav">{{{isFavorite}}}</i></div>
     <div class="ongoing-applicant-hashtagbax">
       {{#majorList}}<span>#{{this}}</span>{{/majorList}}
       {{#themeList}}<span>#{{this}}</span>{{/themeList}}
       {{#genreList}}<span>#{{this}}</span>{{/genreList}}
     </div>
-    <div class='ongoing-applicant-btn'>메시지 보내기</div>
-  
-  </div><!-- ongoing-applicant -->
+  </div><!-- ongoing-applicant musician-click -->
 
-
-
+<div class="ongoing-applicant-fav favor-click" data-no={{no}}>{{{isFavorite}}}</i></div>
+<div class='ongoing-applicant-btn' data-receiver={{no}}
+data-nick={{nickName}}{{/matchMusician}} data-sender={{writer}}>메시지 보내기</div>
   </div> <!-- recruiting-applicant-block -->
 	</div> <!-- ongoing-applicant-box -->
   </div><!-- recruiting-musibox -->
   <!--뮤지션 끝-->
-{{/matchMusician}}
+
 
     </div><!-- recruiting -->
 {{/each}}

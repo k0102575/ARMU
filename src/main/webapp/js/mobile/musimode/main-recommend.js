@@ -142,7 +142,6 @@ function heartAdd(item) {
 
 
 function heartChange(isFavorite, pressedBtn) {
-  console.log('heartChagne')
   if (isFavorite == '<i class="fa fa-heart" aria-hidden="true"></i>') {
     isFavorite = '<i class="fa fa-heart-o" aria-hidden="true"></i>'
       $.post('/event/favorRemove.json', {

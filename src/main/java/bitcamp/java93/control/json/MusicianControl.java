@@ -134,15 +134,25 @@ public class MusicianControl {
   // 관심 뮤지션 삭제
   @RequestMapping("favorRemove")
   public JsonResult favorRemove(HttpSession session, int no) throws Exception {
-    musicianService.favorRemove(getLoginMember(session).getNo(), no);
-    return new JsonResult(JsonResult.SUCCESS, "ok");
+    JsonResult result = new JsonResult(JsonResult.SUCCESS, "ok");
+    try {
+      musicianService.favorRemove(getLoginMember(session).getNo(), no);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+    }
+    return result;
   }
 
   // 관심 뮤지션 추가
   @RequestMapping("favorAdd")
   public JsonResult favorAdd(HttpSession session, int no) throws Exception {
-    musicianService.favorAdd(getLoginMember(session).getNo(), no);
-    return new JsonResult(JsonResult.SUCCESS, "ok");
+    JsonResult result = new JsonResult(JsonResult.SUCCESS, "ok");
+    try {
+      musicianService.favorAdd(getLoginMember(session).getNo(), no);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+    }
+    return result;
   }
 
   @RequestMapping("listSurf")

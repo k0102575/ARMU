@@ -93,14 +93,14 @@
 	    searchTextDelete = $('#search-text-delete')
 	    
 	menuBtn.on('click', function() {
-		menuBackscreen.css('display', 'block');
 		menuToggle.toggle("slide", 300);
+		menuBackscreen.fadeIn(300)
 		container.css('position', 'fixed').css('overflow', 'hidden');
 	});
 
 	menuBackscreen.on('click', function() {
 		menuToggle.toggle("slide", 300);
-		menuBackscreen.css('display', 'none');
+		menuBackscreen.fadeOut(300)
 		container.css('position', '').css('overflow', '');
 	})
 	

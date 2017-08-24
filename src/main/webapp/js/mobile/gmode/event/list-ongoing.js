@@ -1,4 +1,5 @@
 "use strict"
+var domain = "http://192.168.0.22:8888";
 
 displayOngoingEventList()
 
@@ -9,6 +10,8 @@ function displayOngoingEventList() {
       console.error("getJSON() 실패: ", result.status)
       return;
     }
+    
+    console.log(result.data)
 
     $.each(result.data.listOngoing, function(i, item) {
       var starInteger = parseInt(item.matchMusician.score),
@@ -26,6 +29,7 @@ function displayOngoingEventList() {
     $('.event-box').on('click', function(e) {
       location.href = 'detail.html?no=' + $(this).attr('data-no')
     })
+    setMusicianClickEvents()
   }, function(err) {
     console.log(err)
   })
@@ -67,5 +71,44 @@ function heartAdd(item) {
   } else {
     item.isFavorite = '<i class="fa fa-heart-o" aria-hidden="true"></i>'
   }
+}
+
+function heartChange(isFavorite, pressedBtn) {
+  if (isFavorite == '<i class="fa fa-heart" aria-hidden="true"></i>') {
+    isFavorite = '<i class="fa fa-heart-o" aria-hidden="true"></i>'
+      $.post('/musician/favorRemove.json', {
+        'no': pressedBtn.attr('data-no')
+        }, function(result) {
+          if(result.status == 'error') {
+            
+          }
+        }, 'json')
+  } else {
+    isFavorite = '<i class="fa fa-heart" aria-hidden="true"></i>'
+    $.post('/musician/favorAdd.json', {
+      'no': pressedBtn.attr('data-no')
+      }, function(result) {}, 'json')
+  }
+  return isFavorite;
+}
+
+function setMusicianClickEvents() {
+  $('.musician-click').on('click', function() {
+    location.href = '../musi-info/index.html?no=' + $(this).attr('data-no')
+  })
+  
+  $('.favor-click').on('click', function() {
+    var pressedBtn = $(this);
+    var isFavorite = heartChange(pressedBtn.html(), pressedBtn)
+    pressedBtn.html(isFavorite)
+  })
+  
+  $('.ongoing-applicant-btn').on('click', function() {
+    location.href = domain + '/mobile/chat/chat-msg.html' 
+                    + '?receiverNo=' + $(this).attr('data-receiver')
+                    + '&nickname=' + $(this).attr('data-nick')
+                    + '&senderNo=' + $(this).attr('data-sender')
+                    + '&mode=gmode'
+  })
 }
 
