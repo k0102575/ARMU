@@ -128,7 +128,7 @@ function filter() {
           bUseHScroll: true,
           bUseVScroll: false,
           bUseMomentum: false,
-          nHeight: 100,
+          nHeight: 104,
           nWidth: 980
         });
     subcon()
@@ -140,7 +140,8 @@ function filter() {
         var container = $('#filter-thm-content')
         var html = container.html()
         container.html(html + generatedHTML)
-        $('.thm').first().addClass('on2').html('<img class="check-img check3" src="/image/icon/tick.png">&nbsp;'+ $('.thm').first().text())
+        $(".filter-thm-sub-con").css('display','none')
+//        $('.thm').first().addClass('on2').html('<img class="check-img check3" src="/image/icon/tick.png">&nbsp;'+ $('.thm').first().text())
         
         $('.filter-thm-sub-tab').click(function() {
           $('.filter-thm-sub-tab').removeClass('on')
@@ -148,10 +149,32 @@ function filter() {
           var find = $('.filter-thm-sub-con').attr('data-no')
           find = $(this).attr('data-no')
           $(".filter-thm-sub-con").css('display','none')
-          $(".filter-thm-sub-con[data-no="+find+"]").css('display','block')
+          $(".filter-thm-sub-con[data-no="+find+"]").css('display','table')
           indexT= find
         })
-        
+        $('#resetT').click(function() {
+          if(mjrno ==3000)
+            mjrno=2000
+          if(gnrno ==3000)
+            gnrno=2000
+          thmno = $(this).attr('data-no')
+//          console.log('thmno=',thmno,'mjrno=',mjrno,'gnrno=',gnrno,indexT,indexM,indexG)
+          $.post('/event/searchEvent.json',
+              {'thmno':thmno,
+                'mjrno':mjrno, 
+                'gnrno':gnrno, 
+                'indexT':indexT, 
+                'indexM':indexM, 
+                'indexG':indexG,
+                'locFilter':locFilter}, function(result) {
+//                  console.log(result.data)
+                  var templateFn = Handlebars.compile($('#event-surf-template').text())
+                  var generatedHTML = templateFn(result.data)
+                  var container = $('#event-surf-container')
+                  var html = container.html()
+                  container.html(generatedHTML)
+              },'json')
+        })
         $('.thm').click(function() {
           if(mjrno ==3000)
             mjrno=2000
@@ -177,7 +200,7 @@ function filter() {
 
           $('.check3').remove()
           $('.thm').removeClass('on2')
-          $(this).html('<img class="check-img check3" src="/image/icon/tick.png">&nbsp;'+ $(this).text())
+          $(this).html('<img class="check-img check3" src="/image/icon/tick.png">'+ $(this).text())
           $(this).addClass('on2')
         })
       })
@@ -196,7 +219,7 @@ function filterMajor() {
           bUseHScroll: true,
           bUseVScroll: false,
           bUseMomentum: false,
-          nHeight: 100,
+          nHeight: 104,
           nWidth: 980
         });
     subcon()
@@ -209,7 +232,8 @@ function filterMajor() {
         var container = $('#filter-mjr-content')
         var html = container.html()
         container.html(html + generatedHTML)
-        $('.mjr').first().addClass('on2').html('<img class="check-img check1" src="/image/icon/tick.png">&nbsp;'+ $('.mjr').first().text())
+        $(".filter-mjr-sub-con").css('display','none')
+//        $('.mjr').first().addClass('on2').html('<img class="check-img check1" src="/image/icon/tick.png">&nbsp;'+ $('.mjr').first().text())
         
         $('.filter-mjr-sub-tab').click(function() {
           $('.filter-mjr-sub-tab').removeClass('on')
@@ -217,8 +241,31 @@ function filterMajor() {
           var find = $('.filter-mjr-sub-con').attr('data-no')
           find = $(this).attr('data-no')
           $(".filter-mjr-sub-con").css('display','none')
-          $(".filter-mjr-sub-con[data-no="+find+"]").css('display','block')
+          $(".filter-mjr-sub-con[data-no="+find+"]").css('display','table')
           indexM= find
+        })
+        $('#resetM').click(function() {
+          if(thmno ==3000)
+            thmno=2000
+          if(gnrno ==3000)
+            gnrno=2000
+          mjrno = $(this).attr('data-no')
+//          console.log('thmno=',thmno,'mjrno=',mjrno,'gnrno=',gnrno,indexT,indexM,indexG)
+          $.post('/event/searchEvent.json',
+              {'thmno':thmno,
+                'mjrno':mjrno, 
+                'gnrno':gnrno, 
+                'indexT':indexT, 
+                'indexM':indexM, 
+                'indexG':indexG,
+                'locFilter':locFilter}, function(result) {
+//                  console.log(result.data)
+                  var templateFn = Handlebars.compile($('#event-surf-template').text())
+                  var generatedHTML = templateFn(result.data)
+                  var container = $('#event-surf-container')
+                  var html = container.html()
+                  container.html(generatedHTML)
+              },'json')
         })
         $('.mjr').click(function() {
           if(thmno ==3000)
@@ -245,7 +292,7 @@ function filterMajor() {
               
           $('.check1').remove()
           $('.mjr').removeClass('on2')
-          $(this).html('<img class="check-img check1" src="/image/icon/tick.png">&nbsp;'+ $(this).text())
+          $(this).html('<img class="check-img check1" src="/image/icon/tick.png">'+ $(this).text())
           $(this).addClass('on2')
         })
       })
@@ -266,7 +313,7 @@ function filterGenre() {
           bUseHScroll: true,
           bUseVScroll: false,
           bUseMomentum: false,
-          nHeight: 100,
+          nHeight: 104,
           nWidth: 980
         });
     subcon()
@@ -279,7 +326,8 @@ function filterGenre() {
         var container = $('#filter-gen-content')
         var html = container.html()
         container.html(html + generatedHTML)
-        $('.gen').first().addClass('on2').html('<img class="check-img check2" src="/image/icon/tick.png">&nbsp;'+ $('.gen').first().text())
+        $(".filter-gen-sub-con").css('display','none')
+//        $('.gen').first().addClass('on2').html('<img class="check-img check2" src="/image/icon/tick.png">&nbsp;'+ $('.gen').first().text())
         
         $('.filter-gen-sub-tab').click(function() {
           $('.filter-gen-sub-tab').removeClass('on')
@@ -287,10 +335,32 @@ function filterGenre() {
           var find = $('.filter-gen-sub-con').attr('data-no')
           find = $(this).attr('data-no')
           $(".filter-gen-sub-con").css('display','none')
-          $(".filter-gen-sub-con[data-no="+find+"]").css('display','block')
+          $(".filter-gen-sub-con[data-no="+find+"]").css('display','table')
           indexG = find
         })
-        
+        $('#resetG').click(function() {
+          if(thmno ==3000)
+            thmno=2000
+          if(mjrno ==3000)
+            mjrno=2000
+          gnrno = $(this).attr('data-no')
+//          console.log('thmno=',thmno,'mjrno=',mjrno,'gnrno=',gnrno,indexT,indexM,indexG)
+          $.post('/event/searchEvent.json',
+              {'thmno':thmno,
+                'mjrno':mjrno, 
+                'gnrno':gnrno, 
+                'indexT':indexT, 
+                'indexM':indexM, 
+                'indexG':indexG,
+                'locFilter':locFilter}, function(result) {
+//                  console.log(result.data)
+                  var templateFn = Handlebars.compile($('#event-surf-template').text())
+                  var generatedHTML = templateFn(result.data)
+                  var container = $('#event-surf-container')
+                  var html = container.html()
+                  container.html(generatedHTML)
+              },'json')
+        })
         $('.gen').click(function() {
           if(thmno ==3000)
             thmno=2000
@@ -316,7 +386,7 @@ function filterGenre() {
           gnrno = $(this).attr('data-no')
           $('.check2').remove()
           $('.gen').removeClass('on2')
-          $(this).html('<img class="check-img check2" src="/image/icon/tick.png">&nbsp;'+ $(this).text())
+          $(this).html('<img class="check-img check2" src="/image/icon/tick.png">'+ $(this).text())
           $(this).addClass('on2')
         })
       })

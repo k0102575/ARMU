@@ -447,11 +447,12 @@ input:checked + label {
   border-right: 1px solid grey;
 }
 
+
 #filter-loc {
   padding-left : 6%;
 }
 
-#filter-loc-toggle {
+/* #filter-loc-toggle {
   height: 483px;
   bottom: 0;
   visibility: hidden;
@@ -478,7 +479,7 @@ input:checked + label {
 
 .filter-loc-sub-tab {
   display: inline-block;
-  width: 12.27%; /*탭 개수에 따라서 비율을 맞춰야 함*/
+  width: 12.27%; 탭 개수에 따라서 비율을 맞춰야 함
   height: 65%;
   color: lightgray;
   padding-top: 1.5%;
@@ -490,8 +491,98 @@ input:checked + label {
 .filter-loc-sub-con {
   height: 400px;
   visibility: hidden;
+} */
+#filter-loc-tab {
+  font-size: 100%;
+  border-bottom: 1px solid grey;
 }
 
+#filter-loc-backscreen {
+  top: 0;
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, .6);
+  z-index: 1
+}
+
+.filter-loc-sub-tab {
+  display: inline-block;
+  width: auto;
+  padding: 0 1.6%;
+  height: 65%;
+  color: lightgray;
+  padding-top: 0.6%;
+  padding-bottom: 0.3%;
+  text-align: center;
+  font-size: 250%;
+}
+
+.filter-loc-sub-con {
+  height: 400px;
+  width: 100%;
+  display: none;
+  /* visibility: hidden; */
+}
+
+#filter-loc-toggle {
+  width: 100%;
+  height: 483px;
+  bottom: 0;
+  /* display: none; */
+  visibility:hidden;
+  position: fixed;
+  background-color: black;
+  z-index: 2;
+}
+
+
+#filter-mjr-tab {
+  font-size: 100%;
+  border-bottom: 1px solid grey;
+}
+
+#filter-mjr-backscreen {
+  top: 0;
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, .6);
+  z-index: 1
+}
+
+.filter-mjr-sub-tab {
+  display: inline-block;
+  width: auto;
+  padding: 0 4.4%;
+  height: 65%;
+  color: lightgray;
+  padding-top: 2%;
+  padding-bottom: 0.9%;
+  text-align: center;
+  font-size: 250%;
+}
+
+.filter-mjr-sub-con {
+  height: 400px;
+  width: 100%;
+  display: none;
+}
+
+#filter-mjr-toggle {
+  width: 100%;
+  height: 483px;
+  bottom: 0;
+  /* display: none; */
+  visibility:hidden;
+  position: fixed;
+  background-color: black;
+  z-index: 2;
+}
+
+/* 
 #filter-mjr-toggle {
   width:100%;
   height: 483px;
@@ -519,7 +610,7 @@ input:checked + label {
 
 .filter-mjr-sub-tab {
   display: inline-block;
-  width: 19.5%; /*탭 개수에 따라서 비율을 맞춰야 함*/
+  width: 19.5%; 탭 개수에 따라서 비율을 맞춰야 함
   height: 65%;
   color: lightgray;
  padding-top: 2%;
@@ -532,8 +623,50 @@ input:checked + label {
   height: 400px;
   display: none;
 }
+ */
+#filter-gen-tab {
+  font-size: 100%;
+  border-bottom: 1px solid grey;
+}
+#filter-gen-backscreen {
+  top: 0;
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, .6);
+  z-index: 1
+}
+
+.filter-gen-sub-tab {
+  display: inline-block;
+  width: auto;
+  padding: 0 3.2% ;
+  height: 49%;
+  color: lightgray;
+  padding-top:2%;
+  padding-bottom:1.6%;
+  text-align: center;
+  font-size: 250%;
+}
+
+.filter-gen-sub-con {
+  height: 400px;
+  width: 100%;
+  display: none;
+}
 
 #filter-gen-toggle {
+  width: 100%;
+  height: 483px;
+  bottom: 0;
+  /* display: none; */
+  visibility:hidden;
+  position: fixed;
+  background-color: black;
+  z-index: 2;
+}
+/* #filter-gen-toggle {
   width:100%;
   height: 483px;
   bottom: 0;
@@ -560,7 +693,7 @@ input:checked + label {
 
 .filter-gen-sub-tab {
   display: inline-block;
-  width: 11.1%; /*탭 개수에 따라서 비율을 맞춰야 함*/
+  width: 11.1%; 탭 개수에 따라서 비율을 맞춰야 함
   height: 65%;
   color: lightgray;
  padding-top: 1.5%;
@@ -572,12 +705,12 @@ input:checked + label {
 .filter-gen-sub-con {
   height: 400px;
   display: none;
-}
+} */
 
 
 
 .loc, .mjr, .gen{
-  padding: 2% 1%;
+  padding: 2% 1.04%;
   color: lightgray;
   text-align: center;
   display: inline-block;
@@ -604,4 +737,5 @@ input:checked + label {
 
 .check-img {
   height: 30px;
+  margin-right: 3%;
 }

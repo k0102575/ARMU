@@ -53,6 +53,16 @@
     <result javaType="int" column="thmno"/>
   </resultMap>
 
+  <resultMap type="category" id="locationMap2">
+     <result column="loctno" property="loctno"/>
+     <result column="loctname" property="loctname"/>
+     <collection property="list" ofType="java.util.Map">
+       <association property="locationMap" javaType="java.util.Map">
+      <result property="key" column="locno"/>
+       <result property="value" column="locname"></result>
+      </association>
+    </collection>
+  </resultMap>
   <resultMap type="category" id="themeMap2">
      <result column="thmtno" property="thmtno"/>
      <result column="thmtname" property="thmtname"/>
@@ -176,6 +186,12 @@ delete from gnr_musi where muno = #{musiNo}
 <delete id="deleteMusilocation" parameterType="int">
 delete from loc_musi where muno = #{musiNo}
 </delete><!-- 승민 -->
+
+<select id="selectListEventLocation" resultMap="locationMap2">
+  select loct.loctno, loct.name as loctname, loc.locno, loc.name as locname
+  from loc loc inner join loc_type loct on loct.loctno= loc.loctno
+  order by loct.loctno asc
+</select>
 
 <select id="selectListEventTheme" resultMap="themeMap2">
   select thmt.thmtno, thmt.name as thmtname, thme.thmno, thme.name as thmname
