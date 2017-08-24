@@ -8,6 +8,9 @@ import bitcamp.java93.domain.Notification;
 public interface NotificationDao {
   List<Notification> selectNotiList(int no);
   List<Notification> selectMusiNotiList(int no);
+  int selectUnread(int no);
+  int selectMusiUnread(int no);
+  int updateRead(int no);
   void insertEventPrNoti(Map<String,Object> valueMap); // 1.뮤지션에게 일반인이 pr
   void rejectEventPrNoti(Map<String,Object> valueMap); // 2.뮤지션이 pr 거절
   void acceptEventPrNoti(Map<String,Object> valueMap); // 3. 뮤지션이 pr 수락

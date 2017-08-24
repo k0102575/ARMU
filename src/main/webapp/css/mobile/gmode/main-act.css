@@ -26,6 +26,10 @@
   box-shadow: 4px 6px 10px 1px rgba(0, 0, 0, 0.12);
 }
 
+.unread {
+  background-color: #cacaca;
+}
+
 .noti-img {
 	position: absolute;
   height: 140px;

@@ -91,6 +91,22 @@ display: none;
   right: 0%;
   transform: translateX(0%);
 }
+
+.act-noti-tag {
+  display: none;
+  position: absolute;
+  right: 8%;
+  top: 15%;
+  width: 40px;
+  height: 40px;
+  background-color: #8069ef;
+  border: 2px solid #8069ef;
+  border-radius: 100%;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  line-height: 40px;
+}
 /*카테고리 끝끝*/
 
 </style>
@@ -106,6 +122,7 @@ display: none;
 	<div id="category">
 		<a href='#'><span class='category-menu' id="category1">추천</span></a>
 		<a href='#'><span class='category-menu' id="category2">탐색</span></a>
+        <span class='act-noti-tag'></span>
 		<a href='#'><span class='category-menu' id="category3">내 활동</span></a>
 	</div> <!-- category -->
 
@@ -220,7 +237,17 @@ HandlebarsIntl.registerWith(Handlebars);
      $("#category2").css('font-weight', 'normal')
      $("#category3").css('font-weight', '700')
    })
-	})
+   
+      /* 내활동 */
+   $.getJSON('/notification/getMusiUnread.json', function(result) {
+    console.log(result.data)
+    if(result.data != 0) {
+      $('.act-noti-tag').show().text(result.data)
+    }
+  }, function(err) {
+    console.log(err)
+  })
+})
 
 
 </script>

@@ -10,11 +10,8 @@ public class Notification {
   String type;
   String contents;
   String whom;
-  @Override
-  public String toString() {
-    return "Notification [no=" + no + ", musician=" + musician + ", event=" + event + ", writer=" + writer + ", date="
-        + date + ", type=" + type + ", contents=" + contents + ", whom=" + whom + "]";
-  }
+  int isread;
+  int unread;
   public int getNo() {
     return no;
   }
@@ -62,6 +59,24 @@ public class Notification {
   }
   public void setWhom(String whom) {
     this.whom = whom;
+  }
+  public int getIsread() {
+    return isread;
+  }
+  public void setIsread(int isread) {
+    this.isread = isread;
+  }
+  public int getUnread() {
+    return unread;
+  }
+  public void setUnread(int unread) {
+    this.unread = unread;
+  }
+  @Override
+  public String toString() {
+    return "Notification [no=" + no + ", musician=" + musician + ", event=" + event + ", writer=" + writer + ", date="
+        + date + ", type=" + type + ", contents=" + contents + ", whom=" + whom + ", isread=" + isread + ", unread="
+        + unread + "]";
   }
   
   

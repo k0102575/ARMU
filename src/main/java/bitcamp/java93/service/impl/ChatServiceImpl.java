@@ -36,6 +36,16 @@ public class ChatServiceImpl implements ChatService {
 //    return chatDao.insertChat(chat);
 //  }
 
+  @Override
+  public int getUnread(int no) throws Exception {
+    return chatDao.selectUnread(no);
+  }
+
+  @Override
+  public int getMusiUnread(int no) throws Exception {
+    return chatDao.selectMusiUnread(no);
+  }
+
 //  public String getPhoto(int no) throws Exception {
 //    return chatDao.selectPhoto(no);
 //  }

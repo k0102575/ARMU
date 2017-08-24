@@ -59,6 +59,61 @@ public class NotificationControl {
     }
     return result;
   }
+  
+  
+  @RequestMapping("getUnread")
+  public JsonResult getUnread(HttpSession session) {
+    JsonResult result = new JsonResult();
+    Member loginMember = (Member)session.getAttribute("loginMember");
+    int unread = 0;
+
+    if(loginMember != null) {
+      try {
+        unread = notificationService.getUnread(loginMember.getNo());
+        result.setStatus(JsonResult.SUCCESS);
+        
+      } catch (Exception e) {
+        e.printStackTrace();
+        result.setStatus(JsonResult.ERROR);
+      }
+    }
+    result.setData(unread);
+    return result;
+  }
+
+  @RequestMapping("getMusiUnread")
+  public JsonResult getMusiUnread(HttpSession session) {
+    JsonResult result = new JsonResult();
+    Member loginMember = (Member)session.getAttribute("loginMember");
+
+    try {
+      int unread = notificationService.getMusiUnread(loginMember.getNo());
+      result.setStatus(JsonResult.SUCCESS);
+      result.setData(unread);
+    } catch (Exception e) {
+      e.printStackTrace();
+      result.setStatus(JsonResult.ERROR);
+    }
+
+    return result;
+  }
+  
+  @RequestMapping("setRead")
+  public JsonResult setRead(int no) {
+    JsonResult result = new JsonResult();
+
+    try {
+      notificationService.setRead(no);
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      e.printStackTrace();
+      result.setStatus(JsonResult.ERROR);
+    }
+
+    return result;
+  }
+
+  
 
   private Member getLoginMember(HttpSession session) {
     Member loginMember = (Member) session.getAttribute("loginMember");

@@ -17,7 +17,8 @@
 
 <script id="noti-template" type="text/x-handlebars-template">
 {{#each listNoti}}
-<div class='noti'>
+<div class='noti {{isread}}' data-type='{{type}}' data-no={{no}} 
+{{#musician}}data-musician-no={{no}}{{/musician}} {{#event}}data-event-no={{no}}{{/event}}>
 {{#musician}}
   <div class='noti-img'style='background-image: url("{{photo}}_80.png")'></div>
 {{/musician}}
