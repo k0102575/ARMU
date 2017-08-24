@@ -310,7 +310,7 @@ seoul.click(function () {
   
   $('.check1').remove()
   seoul.removeClass('on2')
-  $(this).html('<i class="fa fa-check check1" aria-hidden="true"></i>'+ $(this).text())
+  $(this).html('<img class="check-img check1" src="/image/icon/tick.png">&nbsp;'+ $(this).text())
   $(this).addClass('on2')
   return locno;
 })
@@ -339,7 +339,7 @@ major.click(function () {
   
   $('.check2').remove()
   major.removeClass('on2')
-  $(this).html('<i class="fa fa-check check2" aria-hidden="true"></i>'+ $(this).text())
+  $(this).html('<img class="check-img check2" src="/image/icon/tick.png">&nbsp;'+ $(this).text())
   $(this).addClass('on2')
   return mjrno;
 })
@@ -368,7 +368,7 @@ genre.click(function () {
   
   $('.check3').remove()
   genre.removeClass('on2')
-  $(this).html('<i class="fa fa-check check3" aria-hidden="true"></i>'+ $(this).text())
+  $(this).html('<img class="check-img check3" src="/image/icon/tick.png">&nbsp;'+ $(this).text())
   $(this).addClass('on2')
   return gnrno;
 })

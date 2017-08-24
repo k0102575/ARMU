@@ -29,13 +29,14 @@
 <script id="rec-event-template" type="text/x-handlebars-template">
 {{#if listRecommand}}
 {{#each listRecommand}}
-<div class="rec-event rec-recent-event" data-no={{no}}>
+<div class='recent-favor'><i class="fa fa-heart-o" aria-hidden="true"></i></div>
 
+<div class="rec-event" data-no={{no}}>
+  
   <div class='recent-writerbox'>
 
-   <div class='recent-favor'><i class="fa fa-heart-o" aria-hidden="true"></i></div>
    {{#intl locales="ko-KO"}}
-   <div class="recent-dday">{{formatRelative date units="day"}}</div>
+   <div class="rec-event-dday">{{formatRelative date units="day"}}</div>
    {{/intl}}
 
    {{#writeMember}}
@@ -69,7 +70,7 @@
 </script>
 <script id="rec-most-popular-category-template" type="text/x-handlebars-template">
 {{#each listTop10}}
-<a href="#" class='rec-hashtag' data-no={{no}} data-typeno={{typeNo}} data-type={{type}}>#{{name}}</a>
+<span href="#" class='rec-hashtag' data-no={{no}} data-typeno={{typeNo}} data-type={{type}}>#{{name}}</span>
 {{/each}}
 </script>
 
@@ -80,6 +81,7 @@
   <div class='recent-writerbox'>
 
    <div class='recent-favor'><i class="fa fa-heart-o" aria-hidden="true"></i></div>
+   <img src='/image/icon/new.png' class='recent-new-tag'>
    {{#intl locales="ko-KO"}}
    <div class="recent-dday">{{formatRelative date units="day"}}</div>
    {{/intl}}

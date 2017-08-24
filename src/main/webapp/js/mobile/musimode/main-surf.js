@@ -133,7 +133,7 @@ function filter() {
         var container = $('#filter-thm-content')
         var html = container.html()
         container.html(html + generatedHTML)
-        $('.thm').first().addClass('on2').html('<i class="fa fa-check check3" aria-hidden="true"></i>'+ $('.thm').first().text())
+        $('.thm').first().addClass('on2').html('<img class="check-img check3" src="/image/icon/tick.png">&nbsp;'+ $('.thm').first().text())
         
         $('.filter-thm-sub-tab').click(function() {
           $('.filter-thm-sub-tab').removeClass('on')
@@ -170,7 +170,7 @@ function filter() {
 
           $('.check3').remove()
           $('.thm').removeClass('on2')
-          $(this).html('<i class="fa fa-check check3" aria-hidden="true"></i>'+ $(this).text())
+          $(this).html('<img class="check-img check3" src="/image/icon/tick.png">&nbsp;'+ $(this).text())
           $(this).addClass('on2')
         })
       })
@@ -195,7 +195,7 @@ function filterMajor() {
         var container = $('#filter-mjr-content')
         var html = container.html()
         container.html(html + generatedHTML)
-        $('.mjr').first().addClass('on2').html('<i class="fa fa-check check1" aria-hidden="true"></i>'+ $('.mjr').first().text())
+        $('.mjr').first().addClass('on2').html('<img class="check-img check1" src="/image/icon/tick.png">&nbsp;'+ $('.mjr').first().text())
         
         $('.filter-mjr-sub-tab').click(function() {
           $('.filter-mjr-sub-tab').removeClass('on')
@@ -231,7 +231,7 @@ function filterMajor() {
               
           $('.check1').remove()
           $('.mjr').removeClass('on2')
-          $(this).html('<i class="fa fa-check check1" aria-hidden="true"></i>'+ $(this).text())
+          $(this).html('<img class="check-img check1" src="/image/icon/tick.png">&nbsp;'+ $(this).text())
           $(this).addClass('on2')
         })
       })
@@ -257,7 +257,7 @@ function filterGenre() {
         var container = $('#filter-gen-content')
         var html = container.html()
         container.html(html + generatedHTML)
-        $('.gen').first().addClass('on2').html('<i class="fa fa-check check2" aria-hidden="true"></i>'+ $('.gen').first().text())
+        $('.gen').first().addClass('on2').html('<img class="check-img check2" src="/image/icon/tick.png">&nbsp;'+ $('.gen').first().text())
         
         $('.filter-gen-sub-tab').click(function() {
           $('.filter-gen-sub-tab').removeClass('on')
@@ -294,7 +294,7 @@ function filterGenre() {
           gnrno = $(this).attr('data-no')
           $('.check2').remove()
           $('.gen').removeClass('on2')
-          $(this).html('<i class="fa fa-check check2" aria-hidden="true"></i>'+ $(this).text())
+          $(this).html('<img class="check-img check2" src="/image/icon/tick.png">&nbsp;'+ $(this).text())
           $(this).addClass('on2')
         })
       })
