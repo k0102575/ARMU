@@ -7,7 +7,7 @@ import bitcamp.java93.domain.Event;
 
 public interface EventService {
   void add(Event event) throws Exception; // 이벤트 등록
-  void prEvent(int musicianNo, int eventNo) throws Exception; // 1. 뮤지션에게 홍보(pr)
+  String prEvent(HashMap<String, Object> valueMap) throws Exception; // 1. 뮤지션에게 홍보(pr)
   String rejectPr(HashMap<String, Object> valueMap) throws Exception;// 2. 뮤지션이 홍보(PR) 거절하기
   String acceptPr(HashMap<String, Object> valueMap) throws Exception;// 3. 뮤지션이 홍보(PR) 수락하기
   String appyEvent(HashMap<String, Object> valueMap) throws Exception;// 4. 뮤지션이 이벤트에 지원(APPY)하기
@@ -31,7 +31,7 @@ public interface EventService {
   List<Event> listMusiOngoing(int no) throws Exception;//뮤지션모드 - 매칭이벤트 > 진행중 이벤트 리스트
   List<Event> listMusiEnd(int no) throws Exception;//뮤지션모드 - 매칭이벤트 > 종료 이벤트 리스트
   Event detail(int eNo, int muNo) throws Exception; // 뮤지션 모드 - 이벤트 상세 페이지 
-  Event myEventDetail(int eNo) throws Exception; // 일반모드 - 이벤트 상세 페이지
+  Event myEventDetail(int eventNo) throws Exception; // 일반모드 - 이벤트 상세 페이지
   List<Event> searchEvent(int no, int thmno, int mjrno, int gnrno,int indexT,int indexM,int indexG,List<String> locFilter) throws Exception;
   List<Event> listMusiAppy(int no) throws Exception;//뮤지션모드 - 지원한 이벤트
   List<Event> listMusiPr(int no) throws Exception;//뮤지션모드 - 제안받은 이벤트

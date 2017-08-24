@@ -27,7 +27,7 @@ public interface EventDao {
   List<Event> selectMusiPrList(int no);//뮤지션모드 - 제안받은 이벤트
   List<Event> eventSearch(HashMap<String,Object> valueMap);
   Event selectEvent(HashMap<String, Object> valueMap); // 뮤지션 모드 이벤트 상세정보
-  Event selectMyEvent(int eNo); // 일반모드 이벤트 상세정보
+  Event selectMyEvent(int eventNo); // 일반모드 이벤트 상세정보
   int selectEventCount(int no);//일반모드 > 추천탭 > 나에게 꼭 맞는 이벤트 리스트 - 이벤트 유무 확인
   int selectAppyCount(HashMap<String, Object> valueMap); /* 뮤지션 모드 > 이벤트 상세페이지 > 지원 활성여부 확인 */
   List<Event> selectMatchingEventList();

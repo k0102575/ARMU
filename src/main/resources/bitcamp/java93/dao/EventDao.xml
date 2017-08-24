@@ -479,7 +479,7 @@ where ap.mno=#{no}
            if(mtc.mtcno is not null, 1, 0) as mtc_info,
            mtc.mtcno
     from evn e
-    left outer join (select mtcno, muno, eno from mtc group by muno, eno having eno = #{eNo}
+    left outer join (select mtcno, muno, eno from mtc group by muno, eno having eno = #{eventNo}
     ) mtc on e.eno = mtc.eno
     left outer join loc l on e.locno = l.locno
     left outer join loc_type lt on l.loctno = lt.loctno
@@ -491,7 +491,7 @@ where ap.mno=#{no}
     left outer join gnr_evn ge on e.eno = ge.eno
     left outer join gnr g on ge.gnrno = g.gnrno
     left outer join memb memb on e.mno = memb.mno
-    where e.eno = #{eNo}
+    where e.eno = #{eventNo}
   </select> <!-- 승민 -->
 
   <select id="eventSearch" resultMap="eventMap" parameterType="map">

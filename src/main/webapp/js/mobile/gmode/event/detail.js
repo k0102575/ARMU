@@ -5,9 +5,10 @@ displayEventDetail()
 function displayEventDetail() {
   $.getJSON('/event/myEventDetail.json', 
       { 
-    "no" : location.href.split('?')[1].split('=')[1]
+    "eventNo" : location.href.split('?')[1].split('=')[1]
       }, 
       function(result) {
+        console.log(result)
         var templateFn = Handlebars.compile($('#select-event-template').text())
         var generatedHTML = templateFn(result.data)
         var container = $('#container')
@@ -97,6 +98,8 @@ function displayEventDetail() {
           $("#event-edit-btn").css("display", "none")
           $("#event-list-btn").css("display", "block")
           $("#event-delete-btn").css("display", "none")
+          $("#event-detail-mtc").css("display", "block")
+          $("#event-detail-mtc-container").css("display", "block")
 
           $.getJSON('/musician/myEventMatchMusician.json', 
               { 
@@ -113,11 +116,8 @@ function displayEventDetail() {
                 var container = $("#event-detail-mtc-container")
                 var html = container.html()
                 container.html(html + generatedHTML)
-                
-                
               })
               return
-
         }
 
         setMusicianList()

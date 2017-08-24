@@ -45,12 +45,15 @@ public class EventControl {
   public JsonResult prEvent(int musicianNo, int eventNo){
     JsonResult result = new JsonResult();
     try {
-      eventService.prEvent(musicianNo, eventNo);
-      return new JsonResult(JsonResult.SUCCESS, "success");
+      HashMap<String,Object> param = new HashMap<>();
+      param.put("eventNo", eventNo);
+      param.put("musicianNo", musicianNo);
 
+      result.setData(eventService.prEvent(param));
+      result.setStatus(JsonResult.SUCCESS);
     } catch (Exception e) {
-      e.printStackTrace();
       result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
     }
     return result;
   }
@@ -422,11 +425,11 @@ public class EventControl {
   }
 
   @RequestMapping("myEventDetail")
-  public JsonResult myEventDetail(int no) {
+  public JsonResult myEventDetail(int eventNo) {
     JsonResult result = new JsonResult();
     try {
       HashMap<String,Object> dataMap = new HashMap<>();
-      dataMap.put("detail", eventService.myEventDetail(no));
+      dataMap.put("detail", eventService.myEventDetail(eventNo));
 
       result.setData(dataMap);
       result.setStatus(JsonResult.SUCCESS);

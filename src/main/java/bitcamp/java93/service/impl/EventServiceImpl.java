@@ -52,23 +52,32 @@ public class EventServiceImpl implements EventService {
   }
   
   // 1. 뮤지션에게 홍보(pr)
-  public void prEvent(int musicianNo, int eventNo) throws Exception {
-    HashMap<String,Object> valueMap = new HashMap<>();
-    valueMap.put("musicianNo", musicianNo);
-    valueMap.put("eventNo", eventNo);
-
-    int prno = matchDao.selectExistPrCount(valueMap);
-
-    if(prno != 0) {
-      valueMap.put("prno", prno);
-      matchDao.updatePrActiveY(prno);
-      notificationDao.insertEventPrNoti(valueMap);
-      return;
+  public String prEvent(HashMap<String, Object> valueMap) throws Exception {
+    String result = "success";
+    
+    if(this.decideMatch(valueMap) == "success") {
+      result = "decideMatch";
     }
+    
+    int prno = matchDao.selectExistPrCount(valueMap);
+    if(prno == 0) {//처음 홍보한 경우
+      matchDao.insertPr(valueMap);
+    } else {
+      
+      int isRejected = matchDao.checkPrStatus(prno);
+      if(isRejected != 0) {//상대가 거절하여 홍보를 할 수 없는 경우
+        return "rejected";
+      }
+      
+      int isCanceled = matchDao.checkPrActive(prno);
+      if(isCanceled != 0) {//재홍보인 경우
+        matchDao.updatePrActiveY(prno);
+      }
+    }
+    
+    if(result != "decideMatch") notificationDao.insertEventPrNoti(valueMap);
 
-    matchDao.insertPr(valueMap);
-    valueMap.put("prno", valueMap.get("prno"));
-    notificationDao.insertEventPrNoti(valueMap);
+    return result;
   }
   
   /*2. 뮤지션이 홍보(PR) 거절하기*/
@@ -88,8 +97,11 @@ public class EventServiceImpl implements EventService {
   /*3. 뮤지션이 홍보(PR) 수락하기*/
   public String acceptPr(HashMap<String, Object> valueMap) throws Exception {
     int prno = matchDao.selectExistPrCount(valueMap);
+    if(prno == 0) {
+      return "noData";
+    }
+    
     int isCanceled = matchDao.checkPrActive(prno);
-
     if(isCanceled != 0) return "canceled";
 
     matchDao.updatePrStatusY(prno);
@@ -101,33 +113,31 @@ public class EventServiceImpl implements EventService {
   
   /*4. 뮤지션이 이벤트에 지원(APPY)하기*/
   public String appyEvent(HashMap<String, Object> valueMap) throws Exception {
+    String result = "success";
+    
+    if(this.acceptPr(valueMap) == "success") {
+      result = "acceptPr";
+    }
+    
     int appyno = matchDao.selectExistAppyCount(valueMap);
     if(appyno == 0) {//처음 지원한 경우
       matchDao.insertAppy(valueMap);
     } else {
-      int isCanceled = matchDao.checkAppyActive(appyno);
-      if(isCanceled != 0) {//재지원인 경우
-        matchDao.updateAppyActiveY(appyno);
-      }
-
+      
       int isRejected = matchDao.checkAppyStatus(appyno);
       if(isRejected != 0) {//상대가 거절하여 지원을 할 수 없는 경우
         return "rejected";
       }
-    }
-
-    int prno = matchDao.selectExistPrCount(valueMap);
-    if(prno != 0) {//prno가 있는 경우
-      valueMap.put("prno", prno);
-      int isPrCanceled = matchDao.checkPrActive(prno);
-      if(isPrCanceled == 0) {//pr이 유효한 경우, 즉 취소 상태가 아닌 경우
-        matchDao.updatePrStatusY(prno);
+      
+      int isCanceled = matchDao.checkAppyActive(appyno);
+      if(isCanceled != 0) {//재지원인 경우
+        matchDao.updateAppyActiveY(appyno);
       }
     }
+    
+    if(result != "acceptPr") notificationDao.insertEventAppyNoti(valueMap);
 
-    notificationDao.insertEventAppyNoti(valueMap);
-
-    return "success";
+    return result;
   }
   
   /*5. 일반인이 지원(APPY) 거절*/
@@ -147,8 +157,11 @@ public class EventServiceImpl implements EventService {
   /*6. 일반인이 매칭 확정하기*/
   public String decideMatch(HashMap<String, Object> valueMap) throws Exception {
     int appyno = matchDao.selectExistAppyCount(valueMap);
+    if(appyno == 0) {
+      return "noData";
+    }
+    
     int isCanceled = matchDao.checkAppyActive(appyno);
-
     if(isCanceled != 0) return "canceled";
 
     matchDao.updateAppyStatusY(appyno);
@@ -283,8 +296,8 @@ public class EventServiceImpl implements EventService {
     return eventDao.selectEvent(valueMap);
   }
 
-  public Event myEventDetail(int eNo) throws Exception {
-    return eventDao.selectMyEvent(eNo);
+  public Event myEventDetail(int eventNo) throws Exception {
+    return eventDao.selectMyEvent(eventNo);
   }
 
   /*뮤지션모드 - 매칭이벤트 > 진행중 이벤트 리스트*/
