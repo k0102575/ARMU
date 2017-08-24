@@ -9,14 +9,24 @@ var source = []
 
 
 displayMusiInfoPortfolio()
+HandlebarsIntl.registerWith(Handlebars);
     
 function displayMusiInfoPortfolio() {
   $.getJSON('/portfolio/musiInfoPortfolio.json',
       { 
         "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {
-  		  var templateFn = Handlebars.compile($('#musician-info-portfolio-template').text())
-        var generatedHTML = templateFn(result.data)
+        
+        if(result.data.getPortfolio.length == 0) {
+          var templateFn = Handlebars.compile($('#musician-info-zero-portfolio-template').text())
+          var generatedHTML = templateFn(result.data)
+          var container = $('.portfolio-container')
+          var html = container.html()
+          container.html(generatedHTML)
+        }
+        
+		  var templateFn = Handlebars.compile($('#musician-info-portfolio-template').text())
+      var generatedHTML = templateFn(result.data)
 		  var container = $('.portfolio-container')
 		  var html = container.html()
 		  container.html(html + generatedHTML)
@@ -44,25 +54,19 @@ function displayMusiInfoPortfolio() {
 		  $(".timeline-content").on('click', function(){
 		    var no = $(this).attr("data-no")
 		    $(".spec-detail[data-no=" + no + "]").toggle('slide', {direction:'down'}, 400)
-		    $("#spec-backscreen").css('display', 'block')
+		    $(".spec-detail[data-no=" + no + "]").scrollTop(0)
+		    $("#spec-backscreen").toggle('slide', {direction:'down'}, 400)
+        $("#spec-deepscreen").toggle('slide', {direction:'down'}, 400)
 		    $("#container").css('position', 'fixed')
 		  })
 		  
 		  $(".spec-close").on('click', function() {
 		    var no = $(this).attr("data-no")
 		    $(".spec-detail[data-no=" + no + "]").toggle('slide', {direction:'down'}, 400)
-		    $("#spec-backscreen").css('display', 'none')
+		    $("#spec-backscreen").toggle('slide', {direction:'down'}, 400)
+        $("#spec-deepscreen").toggle('slide', {direction:'down'}, 400)
 		    $("#container").css('position', 'relative')
 		  })
-        
-        /*var source = $("#timeline-movie").text().substring(20, 31)
-        $("#timeline-movie").html("")
-        $("#timeline-movie").append("<img id='timeline-picture' src='https://img.youtube.com/vi/" + source + "/0.jpg'>")
-        
-        var sourceMovie = $("#spec-movie").text().substring(20, 31)
-        $("#spec-movie").html("")
-        $("#spec-movie").append("<iframe width='791' height='876' src='https://www.youtube.com/embed/" + source + "?rel=0&amp;showinfo=0' frameborder='0' allowfullscreen></iframe>")
-        */
         
       })
 }

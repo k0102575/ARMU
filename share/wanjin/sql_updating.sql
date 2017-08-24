@@ -68,32 +68,30 @@ group by pg.no;
 
 
 -- 인기 분야 탑10 구하기 - 기준: 관심 뮤지션이 많은 뮤지션의 분야
-select pt.no as no, t.name as tag, count(pt.no) as count, if(pt.no is not null, "theme", "") as type
-from (
-select tm.thmno as no, fm.muno
-from thm_musi tm inner join fav_musi fm on tm.muno=fm.muno
-) pt inner join thm t on pt.no=t.thmno
-group by pt.no
+select mjr.mjrno as no, mjr.name as tag, count(mjr_evn.mjrno) as count, mjr.mjrtno as typeno, if(mjr.mjrno is not null, "major", "") as type
+from mjr_evn inner join evn on mjr_evn.eno=evn.eno and evn.date > curdate() and evn.eno not in (select eno from mtc)
+left outer join mjr on mjr_evn.mjrno=mjr.mjrno
+group by mjr.mjrno
+
 
 union
 
-select pmj.no as no, mj.name as tag, count(pmj.no) as count, if(pmj.no is not null, "major", "") as type
-from (
-select mjm.mjrno as no, fm.muno
-from mjr_musi mjm inner join fav_musi fm on mjm.muno=fm.muno
-) pmj inner join mjr mj on pmj.no=mj.mjrno
-group by pmj.no
+select gnr.gnrno as no, gnr.name as tag, count(gnr_evn.gnrno) as count, gnr.gnrtno as typeno, if(gnr.gnrno is not null, "genre", "") as type
+from gnr_evn inner join evn on gnr_evn.eno=evn.eno and evn.date > curdate() and evn.eno not in (select eno from mtc)
+left outer join gnr on gnr_evn.gnrno=gnr.gnrno
+group by gnr.gnrno
 
 union
-select pg.no as no, g.name as tag, count(pg.no) as count, if(pg.no is not null, "genre", "") as type
-from (
-select gm.gnrno as no, fm.muno
-from gnr_musi gm inner join fav_musi fm on gm.muno=fm.muno
-) pg inner join gnr g on pg.no=g.gnrno
-group by pg.no
+
+select thm.thmno as no, thm.name as tag, count(thm_evn.thmno) as count, thm.thmtno as typeno, if(thm.thmno is not null, "theme", "") as type
+from thm_evn inner join evn on thm_evn.eno=evn.eno and evn.date > curdate() and evn.eno not in (select eno from mtc)
+left outer join thm on thm_evn.thmno=thm.thmno
+group by thm.thmno
 
 order by count desc
-limit 10;
+limit 10
+
+
 
 
 

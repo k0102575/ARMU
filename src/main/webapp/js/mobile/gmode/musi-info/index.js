@@ -29,17 +29,24 @@ infoIntroduce.css('display', 'none')
 infoReview.css('display', 'none')
 
 displayMusiInfo()
-matchRequest()
 
+var heartCount = 0,
+    musiPhoto = ""
 function displayMusiInfo() {
   $.getJSON('/portfolio/musiInfo.json',
       { 
     "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {
         var data = result.data.musician
+        musiPhoto = data.photo
         musicianInfoNickName.text(data.nickName)
         musicianHeaderInfoImg.attr("src", data.photo + '_80.png')
         musicianBasicInfoImg.attr("src", data.photo + '_300.png')
+        
+        $("#musician-info-backscreen").css("background", "url('"+ musiPhoto +"')")
+        $("#musician-info-backscreen").css("background-size", "cover")
+        $("#musician-info-backscreen").css("background-position", "center")
+        
         if(data.isTeam == "Y") {
           musicianBasicInfoName.text(data.nickName + "  (팀)")
         } else {
@@ -50,48 +57,41 @@ function displayMusiInfo() {
           }
         }
 
+        heartChange(data.fav)
+        heartCount = data.fav
+
         $("#musician-basic-info-favor").on("click", function() {
-          if(data.fav == 0) {
+          if(heartCount == 0) {
             $.post('/musician/favorAdd.json', {
               'no': location.href.split('?')[1].split('=')[1]
             }, function(result) {
-              swal({
-                title: "관심뮤지션 리스트에 \n\n뮤지션이 추가되었습니다!",
-                type: "success",
-                showCancelButton: false,
-                confirmButtonColor: "#8069ef",
-                confirmButtonText: "확인",
-                customClass: "checkSwal"
-              },function() {
-                location.reload()
-              });
+              heartCount++
+              heartChange(heartCount)
             }, 'json')
-          } else if (data.fav == 1) {
+          } else if (heartCount == 1) {
             $.post('/musician/favorRemove.json', {
               "no" : location.href.split('?')[1].split('=')[1]
             }, function(result) {
-              swal({
-                title: "관심뮤지션 리스트에서 \n\n뮤지션이 삭제되었습니다!",
-                type: "success",
-                showCancelButton: false,
-                confirmButtonColor: "#8069ef",
-                confirmButtonText: "확인",
-                customClass: "checkSwal"
-              },function() {
-                location.reload()
-              });
+              heartCount--
+              heartChange(heartCount)
             }, 'json')
 
           }
         })
 
-        if(data.fav == 1) {
-          $("#musician-basic-info-favor").css("color", "#ba3d3d")
-        } else if (data.fav == 0) {
-          $("#musician-basic-info-favor").css("color", "black")
-        }
-
       })
+      
+      matchRequest()
+}
+
+function heartChange(fav) {
+  if(fav == 1) {
+    $("#musician-basic-info-favor").removeClass("fa fa-heart-o")
+    $("#musician-basic-info-favor").addClass("fa fa-heart")
+  } else if (fav == 0) {
+    $("#musician-basic-info-favor").removeClass("fa fa-heart")
+    $("#musician-basic-info-favor").addClass("fa fa-heart-o")
+  }
 }
 
 $(window).scroll(function(event){
@@ -165,23 +165,14 @@ function matchRequest() {
     var templateFn = Handlebars.compile($('#select-event-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#musician-info-toggle')
-    var html = container.html()
-    container.html(html + generatedHTML)
+    container.html(generatedHTML)
+    container.prepend("<div id='event-header'><img id='signup-cancel-btn' src='/image/icon/access-black.png'>나의 이벤트 목록</div>")
     
     for(var i = 0; i < result.data.eventList.length; i++) {
-      
-      $(".request-button[data-no='"+ result.data.eventList[i].no +"']").attr("pr_count", result.data.eventList[i].pr_count)
-      $(".request-button[data-no='"+ result.data.eventList[i].no +"']").attr("prStatus", result.data.eventList[i].prStatus)
-      
-      if(result.data.eventList[i].pr_count == 0) {
-        $(".request-button[data-no='"+ result.data.eventList[i].no +"']").attr("prStatus", "null")
-      }
-
       if(result.data.eventList[i].pr_count != 0 && result.data.eventList[i].prStatus == "Y") {
         $(".request-button[data-no='"+ result.data.eventList[i].no +"']").html("요청<br>취소")
         $(".request-button[data-no='"+ result.data.eventList[i].no +"']").addClass("prIng")
       }
-
     } // for
 
     $(".request-button").on('click', function(e) {
@@ -213,11 +204,11 @@ function matchRequest() {
               confirmButtonText: "확인",
               customClass: "checkSwal"
             },function(){
-              location.reload() 
+              location.reload()
             })
           }, 'json')
 
-        }) // swal
+        }) // 매칭 취소 swal
         return
       }
 
@@ -232,41 +223,60 @@ function matchRequest() {
         cancelButtonText: "아니요"
       },
       function(){
-        $.post('/event/prEvent.json', {
+        $.post('/event/acceptAppyAndPr.json', {
           'musicianNo': location.href.split('?')[1].split('=')[1],
           'eventNo': no
         }, function(result) {
-          if(result.data == "success") {
-            swal({
-              title: "매칭요청이 성공했습니다!",
-              type: "success",
-              showCancelButton: false,
-              confirmButtonColor: "#8069ef",
-              confirmButtonText: "확인",
-              customClass: "checkSwal"
-            },function(){
-              location.reload() 
-            })
-          }
+          acceptAppyAndPrResult(result.data)
         }, 'json')
-
-      }) // swal
+      }) // 매칭 요청 swal
+      
     })  // button
-    
+
     $("#signup-cancel-btn").on('click', function() {
       requestToggle.toggle()
       requestBackScreen.css("display", "none")
+      $("#musician-info-deepscreen").css("display", "none" )
     })
 
-  }
-  )}
+  })
+}
+
 
 requestBtn.on('click', function() {
   requestToggle.toggle()
   requestBackScreen.css("display", "block")
+  $("#musician-info-deepscreen").css("display", "block" )
 })
 
 musicianInfoPrev.on('click', function() {
   location.href = "/mobile/gmode/index.html"
 })
 
+function acceptAppyAndPrResult(result) {
+  if(result == "decideMatch") {
+    swal({
+      title: "매칭이 확정되었습니다.",
+      type: "success",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    },function(){
+      location.reload()
+    })
+  }
+
+  if(result == "success") {
+    swal({
+      title: "매칭요청이 성공했습니다!",
+      type: "success",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    },function(){
+      location.reload()
+    })
+  }
+}

@@ -177,16 +177,26 @@ public class EventControl {
   
   //선호 이벤트 추가
   @RequestMapping("favorAdd")
-  public JsonResult favorAdd(HttpSession session, int no) throws Exception {
-    eventService.favorAdd(getLoginMember(session).getNo(), no);
-    return new JsonResult(JsonResult.SUCCESS, "ok");
+  public JsonResult favorAdd(HttpSession session, int eventNo) throws Exception {
+    JsonResult result = new JsonResult(JsonResult.SUCCESS, "ok");
+    try {
+      eventService.favorAdd(getLoginMember(session).getNo(), eventNo);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+    }
+    return result;
   }
   
   // 선호 이벤트 제거
   @RequestMapping("favorRemove")
-  public JsonResult favorRemove(HttpSession session, int no) throws Exception {
-    eventService.favorRemove(getLoginMember(session).getNo(), no);
-    return new JsonResult(JsonResult.SUCCESS, "ok");
+  public JsonResult favorRemove(HttpSession session, int eventNo) throws Exception {
+    JsonResult result = new JsonResult(JsonResult.SUCCESS, "ok");
+    try {
+      eventService.favorRemove(getLoginMember(session).getNo(), eventNo);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+    }
+    return result;
   }
   
   /* musimode 나에게 꼭 맞는 이벤트*/

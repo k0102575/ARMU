@@ -1,7 +1,9 @@
 "use strict"
+var renderCount = 0;
 displayRecommandEventList();
 displayTop10CategoryList();
 displayRecentEventList();
+
 
 function displayRecommandEventList() {
 	$.getJSON('/event/listRecommand.json', function(result) {
@@ -9,18 +11,17 @@ function displayRecommandEventList() {
 			console.error("getJSON() 실패: ", result.status)
 			return;
 		}
-			$.each(result.data.listRecruiting, function(i, item) {
-				var starInteger = parseInt(item.score),
-				starRealNumber = item.score - starInteger;
-				starAdd(starInteger, starRealNumber, item)//별점 처리
+			$.each(result.data.listRecommand, function(i, item) {
+				heartAdd(item)
 			});
 
-		var templateFn = Handlebars.compile($('#rec-event-template').text())
+			var templateFn = Handlebars.compile($('#rec-event-template').text())
 		var generatedHTML = templateFn(result.data)
 		var container = $('#rec-event-container')
 		var html = container.html()
 		container.html(html + generatedHTML)
-
+          
+		if(++renderCount == 3) setClickEvents()
 		/*initialize swiper when document ready*/
 		$(document).ready(function () {
 			var mySwiper = new Swiper ('.swiper-container', {
@@ -47,7 +48,6 @@ function displayTop10CategoryList() {
 			console.error("getJSON() 실패: ", result.status)
 			return;
 		}
-		console.log(result)
 		var templateFn = Handlebars.compile($('#rec-most-popular-category-template').text())
 		var generatedHTML = templateFn(result.data)
 		var container = $('#rec-most-popular-category-container')
@@ -77,7 +77,8 @@ function displayTop10CategoryList() {
         $('#filter-mjr-backscreen').trigger('click')
       }
     })
-		
+    
+    if(++renderCount == 3) setClickEvents()
 	}, function(err) {
 		console.log(err)
 	})
@@ -90,20 +91,19 @@ function displayRecentEventList() {
       return;
     }
     $.each(result.data.listRecent, function(i, item) {
-      var starInteger = parseInt(item.score),
-      starRealNumber = item.score - starInteger;
-      starAdd(starInteger, starRealNumber, item)//별점 처리
+      heartAdd(item)
     });
     var templateFn = Handlebars.compile($('#rec-recent-event-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#rec-recent-event-container')
     var html = container.html()
     container.html(html + generatedHTML)
+    
+    if(++renderCount == 3) setClickEvents()
   }, function(err) {
     console.log(err)
   })
 }
-
 
 
 
@@ -131,5 +131,47 @@ function starAdd(starInteger, starRealNumber, item) {
 	return item;
 }
 
+function heartAdd(item) {
+  if (item.isFavorite == 1) {
+    item.isFavorite = '<i class="fa fa-heart" aria-hidden="true"></i>'
+  } else {
+    item.isFavorite = '<i class="fa fa-heart-o" aria-hidden="true"></i>'
+  }
+}
+
+
+
+function heartChange(isFavorite, pressedBtn) {
+  console.log('heartChagne')
+  if (isFavorite == '<i class="fa fa-heart" aria-hidden="true"></i>') {
+    isFavorite = '<i class="fa fa-heart-o" aria-hidden="true"></i>'
+      $.post('/event/favorRemove.json', {
+        'no': pressedBtn.attr('data-no')
+        }, function(result) {
+          if(result.status == 'error') {
+            
+          }
+        }, 'json')
+  } else {
+    isFavorite = '<i class="fa fa-heart" aria-hidden="true"></i>'
+    $.post('/event/favorAdd.json', {
+      'no': pressedBtn.attr('data-no')
+      }, function(result) {}, 'json')
+  }
+  return isFavorite;
+}
+
+
+function setClickEvents() {
+  $('.event-click').on('click', function() {
+    location.href = 'event/detail.html?no=' + $(this).attr('data-no')
+  })
+  
+  $('.favor-click').on('click', function() {
+    var pressedBtn = $(this);
+    var isFavorite = heartChange(pressedBtn.html(), pressedBtn)
+    pressedBtn.html(isFavorite)
+  })
+}
 
 

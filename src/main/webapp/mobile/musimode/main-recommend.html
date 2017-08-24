@@ -29,22 +29,21 @@
 <script id="rec-event-template" type="text/x-handlebars-template">
 {{#if listRecommand}}
 {{#each listRecommand}}
-<div class='recent-favor'><i class="fa fa-heart-o" aria-hidden="true"></i></div>
 
 <div class="rec-event" data-no={{no}}>
-  
+
+  <div class="event-click" data-no={{no}}>
   <div class='recent-writerbox'>
 
    {{#intl locales="ko-KO"}}
    <div class="rec-event-dday">{{formatRelative date units="day"}}</div>
    {{/intl}}
-
    {{#writeMember}}
    <div class="recent-writer-img" style='background-image: url("{{photo}}")'></div>
    <div class="recent-writer-name"><span>{{name}}</span></div>
    {{/writeMember}}
   </div>
-
+  
  <div class="recent-title"><span>{{title}}</span></div>
 
             <div class="recent-date">
@@ -57,7 +56,9 @@
             {{#themeList}}<span>#{{this}}</span>{{/themeList}}
             {{#genreList}}<span>#{{this}}</span>{{/genreList}}
             </div>
-          </div><!-- recent -->
+</div><!-- event-click -->
+  <div class='recent-favor favor-click' data-no={{no}}>{{{isFavorite}}}</div>
+</div><!-- recent -->
 {{/each}}
 {{/if}}
 {{#unless listRecommand}}
@@ -77,10 +78,9 @@
 <script id="rec-recent-event-template" type="text/x-handlebars-template">
 {{#each listRecent}}
   <div class="rec-event rec-recent-event" data-no={{no}}>
-
+<div class="event-click" data-no={{no}}>
   <div class='recent-writerbox'>
 
-   <div class='recent-favor'><i class="fa fa-heart-o" aria-hidden="true"></i></div>
    <img src='/image/icon/new.png' class='recent-new-tag'>
    {{#intl locales="ko-KO"}}
    <div class="recent-dday">{{formatRelative date units="day"}}</div>
@@ -105,6 +105,8 @@
             {{#themeList}}<span>#{{this}}</span>{{/themeList}}
             {{#genreList}}<span>#{{this}}</span>{{/genreList}}
             </div>
+</div><!-- event-click -->
+<div class='recent-favor favor-click' data-no={{no}}>{{{isFavorite}}}</div>
           </div><!-- recent -->
   {{/each}}
 </script>
