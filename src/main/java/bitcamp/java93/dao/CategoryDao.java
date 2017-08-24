@@ -13,6 +13,7 @@ public interface CategoryDao {
   List<Category> selectListLocationType();
   List<Category> selectListLocation(int no);
   List<Category> selectTop10CategoryList();
+  List<Category> selectListEventLocation();
   List<Category> selectListEventMajor();
   List<Category> selectListEventGenre();
   List<Category> selectListEventTheme();

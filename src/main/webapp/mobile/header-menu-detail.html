@@ -96,15 +96,15 @@
   mainAct = $('#main-act');
   
   menuBtn.on('click', function() {
-    menuBackscreen.css('display', 'block');
-    menuToggle.toggle("slide", 300);
-    container.css('position', 'fixed').css('overflow', 'hidden');
+    menuToggle.toggle("slide", 300)
+    menuBackscreen.fadeIn(300)
+    container.css('position', 'fixed').css('overflow', 'hidden')
   });
 
   menuBackscreen.on('click', function() {
-    menuToggle.toggle("slide", 300);
-    menuBackscreen.css('display', 'none');
-    container.css('position', '').css('overflow', '');
+    menuToggle.toggle("slide", 300)
+    menuBackscreen.fadeOut(300)
+    container.css('position', '').css('overflow', '')
   })
 
   headerMenuSearch.on('click', function() {

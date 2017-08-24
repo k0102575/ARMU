@@ -38,8 +38,8 @@
 </div>
 
 <script id="theme-template" type="text/x-handlebars-template">
-<div style="width:120%">
-<div class="filter-thm-sub-tab on" data-no="0">전체</div>
+<div style="width:110%">
+<div class="filter-thm-sub-tab on" id="resetT" data-no="2000">전체</div>
 {{#listEventTheme}}
     <div class="filter-thm-sub-tab" data-no="{{thmtno}}">{{thmtname}}</div>
 {{/listEventTheme}}
@@ -60,8 +60,8 @@
 </script>
 
 <script id="major-template" type="text/x-handlebars-template">
-<div style="width:120%">
-<div class="filter-mjr-sub-tab on" data-no="0">전체</div>
+<div style="width:110%">
+<div class="filter-mjr-sub-tab on" id="resetM" data-no="2000">전체</div>
 {{#listEventMajor}}
     <div class="filter-mjr-sub-tab" data-no="{{mjrtno}}">{{mjrtname}}</div>
 {{/listEventMajor}}
@@ -83,7 +83,7 @@
 
 <script id="genre-template" type="text/x-handlebars-template">
 <div style="width:135%">
-<div class="filter-gen-sub-tab on" data-no="0">전체</div>
+<div class="filter-gen-sub-tab on" id="resetG" data-no="2000">전체</div>
 {{#listEventGenre}}
     <div class="filter-gen-sub-tab" data-no="{{gnrtno}}">{{gnrtname}}</div>
 {{/listEventGenre}}

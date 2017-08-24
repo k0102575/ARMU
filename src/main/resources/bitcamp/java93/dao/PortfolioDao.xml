@@ -58,6 +58,46 @@
         <result column="locationNo"/> 
     </collection>
   </resultMap>
+    
+  <resultMap type="musician" id="musicianInfoIntroduceMap2">
+    <result column="team" property="isTeam" />
+    <result column="hpg" property="homepage" />
+    <result column="intro" property="intro" />
+    <collection property="categoryList" ofType="Category">
+        <id column="loctno" property="loctno"/> 
+        <result column="sido" property="loctname"/>
+        <collection property="list" ofType="java.util.Map">
+
+         <result property="key" column="locationNo"/> 
+        <result property="value" column="location"/>
+    
+        </collection> 
+    </collection>
+    <collection property="majorList" ofType="string"> 
+        <result column="major"/> 
+    </collection>
+    <collection property="genreList" ofType="string"> 
+        <result column="genre"/> 
+    </collection> 
+    <collection property="themeList" ofType="string"> 
+       <result column="theme"/> 
+    </collection>
+    <collection property="locationList" ofType="string"> 
+        <result column="location"/> 
+    </collection>
+        <collection property="majorNoList" ofType="Integer"> 
+        <result column="majorNo"/> 
+    </collection>
+    <collection property="genreNoList" ofType="Integer"> 
+        <result column="genreNo"/> 
+    </collection> 
+    <collection property="themeNoList" ofType="Integer"> 
+       <result column="themeNo"/> 
+    </collection>
+    <collection property="locationNoList" ofType="Integer"> 
+        <result column="locationNo"/> 
+    </collection>
+  </resultMap>
   
   <resultMap type="musician" id="musicianInfoReviewMap">
     <id column="count" property="count" />
@@ -85,9 +125,11 @@
   where sp.muno = #{no}
   </select> <!-- 승민 -->
   
-  <select id="selectMusiIntroduce" resultMap="musicianInfoIntroduceMap" parameterType="int">
+  <select id="selectMusiIntroduce" resultMap="musicianInfoIntroduceMap2" parameterType="int">
   select if(mu.hpg is not null, mu.hpg, 0) as hpg, mu.intro, mj.mjrno as majorNo, mj.name as major,
-  g.gnrno as genreNo, g.name as genre, l.locno as locationNo, l.name as location, lt.name as sido, t.thmno as themeNo, t.name as theme
+  g.gnrno as genreNo, g.name as genre, 
+  l.locno as locationNo, l.name as location, lt.loctno, lt.name as sido, 
+  t.thmno as themeNo, t.name as theme
   from musi mu left outer join mjr_musi mjm on mu.muno=mjm.muno 
   left outer join mjr mj on mjm.mjrno=mj.mjrno
   left outer join gnr_musi gm on mu.muno=gm.muno 

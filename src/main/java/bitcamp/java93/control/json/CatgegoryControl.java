@@ -68,6 +68,13 @@ public class CatgegoryControl {
     return result;
   }
 
+  @RequestMapping("listEventLocation")
+  public JsonResult listEventLocation() throws Exception {
+    HashMap<String,Object> dataMap = new HashMap<>();
+    dataMap.put("listEventLocation", categoryService.listEventLocation());
+    return new JsonResult(JsonResult.SUCCESS, dataMap);
+  }
+  
   @RequestMapping("listEventTheme")
   public JsonResult listEventTheme() throws Exception {
     HashMap<String,Object> dataMap = new HashMap<>();

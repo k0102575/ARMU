@@ -88,6 +88,10 @@ public class CategoryServiceImpl implements CategoryService {
     }
   }
 
+  public List<Category> listEventLocation() throws Exception {
+    return categoryDao.selectListEventLocation();
+  }
+  
   public List<Category> listEventMajor() throws Exception {
     return categoryDao.selectListEventMajor();
   }

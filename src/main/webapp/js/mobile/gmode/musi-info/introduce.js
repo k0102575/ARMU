@@ -29,6 +29,7 @@ function displayMusiInfoIntroduce() {
       { 
         "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {
+        console.log(result.data)
     	  data = result.data.getIntroduce
         var templateFn = Handlebars.compile($('#musician-info-introduce-template').text())
         var generatedHTML = templateFn(data)

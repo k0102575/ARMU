@@ -40,13 +40,13 @@
   <div class='category-main' id='end-list'><!-- include --></div>
 	
 	
-	<i class="fa fa-angle-double-up" id="move_top_btn" aria-hidden="true"></i>
+	<span class='move-top-btn'><i class="fa fa-angle-double-up" aria-hidden="true"></i></span>
 
 <script>
 HandlebarsIntl.registerWith(Handlebars);
 
 var lastScroll = 0,
-moveTopBtn = $("#move_top_btn"),
+moveTopBtn = $(".move-top-btn"),
 eventTypeBtnContainer = $("#event-type-btn-container"),
 RecruitingBtn = $('#event-type-recruiting-btn'),
 OngoingBtn = $('#event-type-ongoing-btn'),

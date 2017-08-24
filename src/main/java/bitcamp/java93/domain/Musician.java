@@ -51,6 +51,7 @@ public class Musician extends Member  {
   ArrayList<Integer> majorNoList;
   ArrayList<Integer> genreNoList;
   ArrayList<Integer> themeNoList;
+  ArrayList<Category> categoryList;
   List<String> photoList;
   List<String> movieList;
   List<String> muNoList;
@@ -346,6 +347,12 @@ public class Musician extends Member  {
   public void setThemeNoList(ArrayList<Integer> themeNoList) {
     this.themeNoList = themeNoList;
   }
+  public ArrayList<Category> getCategoryList() {
+    return categoryList;
+  }
+  public void setCategoryList(ArrayList<Category> categoryList) {
+    this.categoryList = categoryList;
+  }
   public List<String> getPhotoList() {
     return photoList;
   }
@@ -364,6 +371,7 @@ public class Musician extends Member  {
   public void setMuNoList(List<String> muNoList) {
     this.muNoList = muNoList;
   }
+  
   
   
 }
