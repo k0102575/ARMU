@@ -62,8 +62,19 @@ public class EventControl {
   
   // 2. 뮤지션이 홍보(PR) 거절하기
   @RequestMapping("rejectPr")
-  public JsonResult rejectPr(int musicianNo, int eventNo){
+  public JsonResult rejectPr(HttpSession session, int eventNo){
     JsonResult result = new JsonResult();
+    try {
+      HashMap<String,Object> param = new HashMap<>();
+      param.put("eventNo", eventNo);
+      param.put("musicianNo", getLoginMember(session).getNo());
+
+      result.setData(eventService.rejectPr(param));
+      result.setStatus(JsonResult.SUCCESS);
+    } catch (Exception e) {
+      result.setStatus(JsonResult.ERROR);
+      e.printStackTrace();
+    }
     return result;
   }
   

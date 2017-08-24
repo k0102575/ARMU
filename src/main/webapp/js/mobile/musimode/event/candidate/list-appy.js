@@ -45,6 +45,19 @@ function displayAppyEventList() {
     $('.event-box').on('click', function(e) {
       location.href = '../detail.html?no=' + $(this).attr('data-no')
     })
+    
+    $('.appy-writer-btn').on('click', function(e) {
+      var pressedBtn = $(this)
+      $.post('/event/cancelAppy.json', {
+        'eventNo': pressedBtn.attr('data-no')
+        }, function(result) {
+          if(result.status != 'success') {
+            console.log('json error')
+          }
+          
+          location.reload()
+        }, 'json')
+    })
   }, function(err) {
     console.log(err)
   })

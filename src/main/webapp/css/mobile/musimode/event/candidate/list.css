@@ -229,29 +229,22 @@ body {
 }
 
 .appy-writer-img {
-  position: absolute;
-  display: table;
-  height:  100px;
+  display: inline-block;
+  height: 100px;
   width: 100px;
   overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 100%;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .appy-writer-name {
-  position: absolute;
-  display: inline-block;
+  display: block;
   color: black;
   font-size: 27px;
   font-weight: 500;
   bottom: 40%;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 

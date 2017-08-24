@@ -21,14 +21,16 @@
 
 {{#writeMember}}
   <div class="appy-musibox">
-    <div class="appy-writer-img" style='background-image: url("{{photo}}_80.png")'></div>
-    <div class="appy-writer-name"><span>{{name}}</span></div>
-    <!-- appy-writer-name -->
+	<div class="appy-none-click">
+    	<div class="appy-writer-img" style='background-image: url("{{photo}}_80.png")'></div>
+   		<div class="appy-writer-name"><span>{{name}}</span></div>
+   		<!-- appy-writer-name -->
+	</div><!-- appy-none-click -->
+{{/writeMember}}
 
-    <div class='appy-writer-btn'>지원 취소하기</div>
+    <div class='appy-writer-btn' data-no={{no}}>지원 취소하기</div>
 
   </div><!-- appy-musibox -->
-{{/writeMember}}
  
 
     </div><!-- appy -->
