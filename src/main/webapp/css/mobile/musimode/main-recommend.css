@@ -117,7 +117,7 @@
 
 .rec-event-writer-name {
   font-size: 27px;
-  color: gray;
+  color: black;
   font-weight: 300;
 }
 
@@ -144,19 +144,20 @@
 .rec-event-dday {
   position: absolute;
   display: inline-block;
-  color: white;
-  border: 1px solid rgb(155, 155, 155);
+  color: LightSeaGreen;
+  border: 2px solid LightSeaGreen;
   font-size: 30px;
   font-weight: 400;
   width: auto;
   padding-left: 1.5%;
   padding-right: 1.5%;
-  background-color: #8069ef;
+  background-color: white;
   border-radius: 6px;
   line-height: 46px;
   height: 48px;
-  top: 5%;
-  right: 2%;
+  top: 33%;
+  left: 4%;
+  transform: translateY(-50%);
 }
 
 .rec-event-date > span {
@@ -200,7 +201,7 @@
 .rec-event-hashtagbox > span {
   display: inline-block;
   margin-right: 3%;
-  border: 1px solid #8069ef;
+  border: 1px solid #727272;
   padding: 0 2%;
   border-radius: 50px;
   margin-bottom: 1%;
@@ -255,7 +256,7 @@
 .recent-favor {
   position: absolute;
   display: inline-block;
-  top: 50%;
+  top: 29%;
   right: 3%;
   transform: translateY(-50%);
   font-size: 3rem;
@@ -265,18 +266,18 @@
 .recent-dday {
   position: absolute;
   display: inline-block;
-  color: white;
-  border: 1px solid #8069ef;
+  color: LightSeaGreen;
+  border: 2px solid LightSeaGreen;
   font-size: 30px;
   font-weight: 400;
   width: auto;
   padding-left: 1.5%;
   padding-right: 1.5%;
-  background-color: #8069ef;
+  background-color: white;
   border-radius: 6px;
   line-height: 46px;
   height: 48px;
-  top: 50%;
+  top: 33%;
   left: 4%;
   transform: translateY(-50%);
 }
@@ -308,7 +309,7 @@
 
 .recent-writer-name {
   font-size: 27px;
-  color: gray;
+  color: black;
   font-weight: 300;
 }
 
@@ -373,7 +374,7 @@
 .recent-hashtagbox > span {
   display: inline-block;
   margin-right: 3%;
-  border: 1px solid #8069ef;
+  border: 1px solid #727272;
   padding: 0 2%;
   border-radius: 50px;
   margin-bottom: 1%;

@@ -31,7 +31,7 @@
   gm.mno as gmno, gm.name as gmname, gm.path as gmphoto, 
   n.muno as musino, mu.nick, m.path as musiphoto
 from noti n
-inner join memb m on n.muno=m.mno inner join musi mu on m.mno=mu.muno
+left outer join memb m on n.muno=m.mno left outer join musi mu on m.mno=mu.muno
 inner join evn e on n.eno=e.eno inner join memb gm on e.mno=gm.mno
 where gm.mno=#{no} and (n.whom='gmember' or n.whom='both')
 order by date desc
@@ -42,7 +42,7 @@ order by date desc
   gm.mno as gmno, gm.name as gmname, gm.path as gmphoto, 
   n.muno as musino, mu.nick, m.path as musiphoto
 from noti n
-inner join memb m on n.muno=m.mno inner join musi mu on m.mno=mu.muno
+left outer join memb m on n.muno=m.mno left outer join musi mu on m.mno=mu.muno
 inner join evn e on n.eno=e.eno inner join memb gm on e.mno=gm.mno
 where n.muno=#{no} and (n.whom='musician' or n.whom='both')
 order by date desc
