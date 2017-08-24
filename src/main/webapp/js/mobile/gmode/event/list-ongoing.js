@@ -93,11 +93,11 @@ function heartChange(isFavorite, pressedBtn) {
 }
 
 function setMusicianClickEvents() {
-  $('.musician-click').on('click', function() {
+  $('.ongoing-musician-click').on('click', function() {
     location.href = '../musi-info/index.html?no=' + $(this).attr('data-no')
   })
   
-  $('.favor-click').on('click', function() {
+  $('.ongoing-favor-click').on('click', function() {
     var pressedBtn = $(this);
     var isFavorite = heartChange(pressedBtn.html(), pressedBtn)
     pressedBtn.html(isFavorite)

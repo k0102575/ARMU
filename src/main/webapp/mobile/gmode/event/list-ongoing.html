@@ -27,22 +27,22 @@
 	<div class='ongoing-applicant-box'>
     <div class='ongoing-applicant-block'>
         <br><br>
-<div class="ongoing-applicant musician-click" data-no={{no}}>
-    <div class="ongoing-applicant-img" style='background-image: url("{{photo}}_300.png")'></div>
-    <div class="ongoing-applicant-name">
+<div class="ongoing-applicant" data-no={{no}}>
+    <div class="ongoing-applicant-img ongoing-musician-click" data-no={{no}} style='background-image: url("{{photo}}_300.png")'></div>
+    <div class="ongoing-applicant-name ongoing-musician-click" data-no={{no}} >
       <span>{{nickName}}</span>
       <div class="ongoing-applicant-score">{{{score}}}</div>
     </div>
     <!-- ongoing-applicant-name -->
 
-    <div class="ongoing-applicant-hashtagbax">
+    <div class="ongoing-applicant-hashtagbax ongoing-musician-click" data-no={{no}} >
       {{#majorList}}<span>#{{this}}</span>{{/majorList}}
       {{#themeList}}<span>#{{this}}</span>{{/themeList}}
       {{#genreList}}<span>#{{this}}</span>{{/genreList}}
     </div>
-  </div><!-- ongoing-applicant musician-click -->
+  </div><!-- ongoing-applicant-->
 
-<div class="ongoing-applicant-fav favor-click" data-no={{no}}>{{{isFavorite}}}</i></div>
+<div class="ongoing-applicant-fav ongoing-favor-click" data-no={{no}}>{{{isFavorite}}}</i></div>
 <div class='ongoing-applicant-btn' data-receiver={{no}}
 data-nick={{nickName}}{{/matchMusician}} data-sender={{writer}}>메시지 보내기</div>
   </div> <!-- recruiting-applicant-block -->

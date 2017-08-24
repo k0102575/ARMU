@@ -593,10 +593,9 @@ body {
 .end-musibox {
   position: relative;
   text-align: center;
-  margin-top: 2%;
+  margin: 2% 0;
   color: black;
   width: 100%;
-  height: 240px;
   z-index: 2;
 }
 
@@ -652,7 +651,6 @@ body {
 
 
 .end-applicant-btn {
-  position: absolute;
   display: inline-block;
   width: 143px;
   height: 50px;
@@ -664,8 +662,7 @@ body {
   border: 1px solid black;
   border-radius: 10px;
   bottom: 3%;
-  transform: translateX(-50%);
-  left: 50%;
+  margin-top: 1%;
 }
 
 .review-exist {

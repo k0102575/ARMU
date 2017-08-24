@@ -17,12 +17,12 @@
 
  </div><!-- event-end-box -->
 
-  <div class="end-musibox end-musician-click" data-no={{no}}>
+  <div class="end-musibox end-musician-click musician-{{isReview}}" data-no={{no}}>
  {{#matchMusician}}
     <div class="end-applicant-img" style='background-image: url("{{photo}}_300.png")'></div>
     <div class="end-applicant-name"><span>{{nickName}}</span></div><!-- end-applicant-name -->
 {{/matchMusician}}
- <div class='end-applicant-btn review-btn {{isReview}}' data-no={{no}}>리뷰달기</div>
+ <div class='end-applicant-btn review-btn {{isReview}}'>리뷰달기</div>
   </div><!-- end-musibox musician-click -->
 
 

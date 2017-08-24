@@ -8,8 +8,12 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import bitcamp.java93.domain.Member;
 import bitcamp.java93.domain.Musician;
@@ -19,6 +23,7 @@ import bitcamp.java93.service.MusicianService;
 
 @RestController
 @RequestMapping("/musician/")
+@SessionAttributes({"loginMember"})
 public class MusicianControl {
   
   @Autowired ServletContext ctx;
@@ -201,7 +206,7 @@ public class MusicianControl {
   
   @RequestMapping("add")
   public JsonResult add(Musician musician, String musicianAddTheme, String musicianAddMajor,
-    String musicianAddGenre, String musicianAddLocation, HttpSession session) throws Exception {
+    String musicianAddGenre, String musicianAddLocation, HttpSession session, Model model, SessionStatus status) throws Exception {
     
     String[] themeList = musicianAddTheme.split(",");
     String[] majorList = musicianAddMajor.split(",");
@@ -235,6 +240,9 @@ public class MusicianControl {
     musician.setLocationList(addLocationList);
     musician.setNo(getLoginMember(session).getNo());
     
+//    status.setComplete();
+//    session.invalidate();  
+//    model.addAttribute("loginMember", member);
     try {
       musicianService.add(musician);
       categoryService.addMusiCategory(musician); 
@@ -245,7 +253,11 @@ public class MusicianControl {
     }
   }
 
-  @RequestMapping("updateNick")
+  
+    
+
+      
+      @RequestMapping("updateNick")
   public JsonResult updateNick(Musician musician) throws Exception {
     musicianService.updateNick(musician);
     return new JsonResult(JsonResult.SUCCESS, "ok");

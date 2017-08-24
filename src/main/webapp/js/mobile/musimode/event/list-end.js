@@ -44,7 +44,7 @@ function controlBtns() {
 
 
 	eventBox.on('click', function(e) {
-		location.href = 'detail.html'
+		location.href = 'detail.html?no=' + $(this).attr('data-no')
 	})
 
 }

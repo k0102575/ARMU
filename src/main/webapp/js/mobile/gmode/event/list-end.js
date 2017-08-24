@@ -9,11 +9,9 @@ function displayEndEventList() {
 			console.error("getJSON() 실패: ", result.status)
 			return;
 		}
-	console.log(result.data)
 	$.each(result.data.listEnd, function(i, item) {
-	  if(item.isReview == 1) {
-	    item.isReview = 'review-exist'
-	  }
+	  if(item.isReview == 1) item.isReview = 'review-exist';
+	  else item.isReview = 'no-review';
 	})
 		var templateFn = Handlebars.compile($('#end-event-template').text())
 		var generatedHTML = templateFn(result.data)
@@ -32,28 +30,18 @@ function displayEndEventList() {
 
 
 function controlBtns() {
-	var applicantBtn = $('.end-applicant-btn');
-
-	applicantBtn.on('click', function(e) {
-		if($(this).attr('data-open') == "true") {
-			$(this).html('함께한 뮤지션 <i class="fa fa-angle-down" aria-hidden="true"></i>')
-			.attr('data-open', false)
-		} else {
-			$(this).html('함께한 뮤지션 <i class="fa fa-angle-up" aria-hidden="true"></i>')
-			.attr('data-open', true)
-		}
-		$(this).siblings('.end-applicant-box').toggle( "fold", 500 );
-		e.preventDefault()
-	})
-
-
   $('.end-event-click').on('click', function(e) {
     location.href = 'detail-end.html?no=' + $(this).attr('data-no') +'&review=false'
   })
   
-    $('.end-musician-click').on('click', function(e) {
-    location.href = 'detail-end.html?no=' + $(this).attr('data-no') +'&review=true'
-//    location.href = '../musi-info/index.html?no=' + $(this).attr('data-no')
+  $('.musician-review-exist').on('click', function(e) {
+    var pressedBtn = $(this)
+    location.href = 'detail-end.html?no=' + pressedBtn.attr('data-no') +'&review=false'
+  })
+  
+  $('.musician-no-review').on('click', function(e) {
+    var pressedBtn = $(this)
+    location.href = 'detail-end.html?no=' + pressedBtn.attr('data-no') +'&review=true'
   })
   
 }

@@ -94,9 +94,8 @@ function displayAppyMusicians(pressedBtn) {
           var html = container.html()
           container.html(html + generatedHTML)
 
-          setRejectBtns(eventNo)
-          setMatchBtns(eventNo)
-          setFoldBtns(pressedBtn)
+
+          setFoldBtns(pressedBtn, eventNo)
         }, function(err) {
           console.log(err)
         })//getJson()
@@ -133,7 +132,6 @@ function displayPrMusicians(pressedBtn) {
           var html = container.html()
           container.html(html + generatedHTML)
           
-          setCancelBtns(eventNo, pressedBtn)
           setFoldBtns(pressedBtn)
         }, function(err) {
           console.log(err)
@@ -234,7 +232,7 @@ function setMatchBtns(eventNo) {
 }//setMatchBtns()
 
 
-function setCancelBtns(eventNo, pressedBtn) {
+function setCancelBtns(eventNo) {
   $('.cancel-btn').on('click', function() {
     var musicianNo = $(this).attr('data-no')
     swal({
@@ -264,17 +262,17 @@ function setCancelBtns(eventNo, pressedBtn) {
 
 
 
-function setFoldBtns(pressedBtn) {
+function setFoldBtns(pressedBtn, eventNo) {
   if(pressedBtn.attr('data-open') == "true") {
     pressedBtn.html('펼치기 <i class="fa fa-angle-down" aria-hidden="true"></i>')
     .attr('data-open', false)
     offMusicianClickEvents()
-    setMusicianClickEvents()
+    setMusicianClickEvents(eventNo)
   } else {
     pressedBtn.html('접기 <i class="fa fa-angle-up" aria-hidden="true"></i>')
     .attr('data-open', true)
     offMusicianClickEvents()
-    setMusicianClickEvents()
+    setMusicianClickEvents(eventNo)
   }
   pressedBtn.siblings('.recruiting-musibox-open-container').toggle( "fold", 500 );
 }
@@ -341,21 +339,28 @@ function heartChange(isFavorite, pressedBtn) {
 }
 
 
-function setMusicianClickEvents() {
-  $('.musician-click').on('click', function() {
+function setMusicianClickEvents(eventNo) {
+  $('.recruiting-musician-click').on('click', function() {
     location.href = '../musi-info/index.html?no=' + $(this).attr('data-no')
   })
   
-  $('.favor-click').on('click', function() {
+  $('.recruiting-favor-click').on('click', function() {
     var pressedBtn = $(this);
     var isFavorite = heartChange(pressedBtn.html(), pressedBtn)
     pressedBtn.html(isFavorite)
   })
+  
+  setRejectBtns(eventNo)
+  setMatchBtns(eventNo)
+  setCancelBtns(eventNo)
 }
 
 function offMusicianClickEvents() {
-  $('.musician-click').off('click')
-  $('.favor-click').off('click')
+  $('.recruiting-musician-click').off('click')
+  $('.recruiting-favor-click').off('click')
+  $('.reject-btn').off('click')
+  $('.decide-btn').off('click')
+  $('.cancel-btn').off('click')
 }
 
 

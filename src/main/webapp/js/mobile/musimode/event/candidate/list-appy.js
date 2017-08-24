@@ -50,13 +50,13 @@ function displayAppyEventList() {
       var pressedBtn = $(this)
       $.post('/event/cancelAppy.json', {
         'eventNo': pressedBtn.attr('data-no')
-        }, function(result) {
-          if(result.status != 'success') {
-            console.log('json error')
-          }
-          
-          location.reload()
-        }, 'json')
+      }, function(result) {
+        if(result.status != 'success') {
+          console.log('json error')
+        }
+        
+        location.reload()
+      }, 'json')
     })
   }, function(err) {
     console.log(err)
