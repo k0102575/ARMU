@@ -177,15 +177,15 @@ public class EventControl {
   
   //선호 이벤트 추가
   @RequestMapping("favorAdd")
-  public JsonResult favorAdd(HttpSession session, int no) throws Exception {
-    eventService.favorAdd(getLoginMember(session).getNo(), no);
+  public JsonResult favorAdd(HttpSession session, int eventNo) throws Exception {
+    eventService.favorAdd(getLoginMember(session).getNo(), eventNo);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   
   // 선호 이벤트 제거
   @RequestMapping("favorRemove")
-  public JsonResult favorRemove(HttpSession session, int no) throws Exception {
-    eventService.favorRemove(getLoginMember(session).getNo(), no);
+  public JsonResult favorRemove(HttpSession session, int eventNo) throws Exception {
+    eventService.favorRemove(getLoginMember(session).getNo(), eventNo);
     return new JsonResult(JsonResult.SUCCESS, "ok");
   }
   

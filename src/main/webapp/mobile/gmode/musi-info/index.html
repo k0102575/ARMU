@@ -32,7 +32,7 @@
 	<div id="musician-basic-info">
 	  <img id="musician-basic-info-img" src="">
 	  <div id="musician-basic-info-name"></div>
-	  <i class="fa fa-heart-o" id="musician-basic-info-favor" aria-hidden="true"></i>
+	  <i id="musician-basic-info-favor" aria-hidden="true"></i>
 	  <input type="hidden" id="hidden-no" value="">
 	  <button type="button" id="musician-basic-info-request-btn">매칭 요청하기</button>
 	</div>
@@ -44,9 +44,9 @@
   <button id="musician-info-review-btn">평점 및 리뷰</button>
   </div>
   
+  <div id="musician-info-deepscreen"></div>
   <div id="musician-info-backscreen"></div>
 	<div id="musician-info-toggle">
-	<div id="event-header"><img id="signup-cancel-btn" src="/image/icon/access-black.png">나의 이벤트 목록</div>
 	
 	 <script id="select-event-template" type="text/x-handlebars-template">
   {{#each eventList}}
@@ -59,7 +59,7 @@
     <div class='recruiting-area'><i class="fa fa-map-marker" aria-hidden="true"></i></div>
     <div id="recruting-location">{{city}}&nbsp;{{location}}&nbsp;{{address}}</div>
     <div class="recruiting-price"><i class="fa fa-krw" aria-hidden="true"></i>{{pay}}</div>
-  <div class="request-button" data-no="{{no}}">요청
+  <div class="request-button" data-no="{{no}}" pr_count="{{pr_count}}" prStatus="{{prStatus}}">요청
   </div>
     </div>
   </div>

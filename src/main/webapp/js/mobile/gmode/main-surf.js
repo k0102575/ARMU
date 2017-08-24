@@ -2,33 +2,14 @@ $(document).ready(function() {
   displaySurfMusiList()
 })
 
-//$("#filter-update").on('click', function() {
-//  var checkVal = $(":input:radio[name=gender]:checked").val()
-//  
-//  if(minAge == 0 && maxAge == 0) {
-//		  $.getJSON('/musician/listSurfFilter.json', 
-//			{
-//		    "gender" : checkVal,
-//			  "minAge" : "10",
-//			  "maxAge" : "60"
-//			},
-//			function(result) {
-//				handleList(result)
-//				filterContainer.toggle();
-//		  })
-//		  return
-//	  } 
-//		  $.getJSON('/musician/listSurfFilter.json', 
-//			{
-//		    "gender" : checkVal,
-//			  "minAge" : minAge,
-//			  "maxAge" : maxAge
-//			},
-//			function(result) {
-//				handleList(result)
-//				filterContainer.toggle();
-//		  })
-//	  })
+function heartAdd(item) {
+  if (item.isFavorite == true) {
+    item.isFavorite = '<i class="fa fa-heart" aria-hidden="true"></i>'
+  } else {
+    item.isFavorite = '<i class="fa fa-heart-o" aria-hidden="true"></i>'
+  }
+}
+
 
 function handleList(result) {
 	var templateFn = Handlebars.compile($('#musician-list-template').text())
@@ -54,17 +35,14 @@ function displaySurfMusiList() {
     }
     
     if(result.status == "success") {
+      $.each(result.data.listSurf, function(i, item) {
+        heartAdd(item)
+      });
+      
       var templateFn = Handlebars.compile($('#musician-list-template').text())
       var generatedHTML = templateFn(result.data)
       var container = $('#musician-surf-list')
       container.html(generatedHTML)
-      var surfLike = $(".surfLike")
-      for(var i = 0; i <= result.data.listSurf.length -1; i++){
-          
-        if(result.data.listSurf[i].isFavorite == true){
-          surfLike[i].style.color = "#ba3d3d"
-        }
-    }
 
     }
     

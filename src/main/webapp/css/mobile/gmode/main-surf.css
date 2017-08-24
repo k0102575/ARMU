@@ -399,6 +399,7 @@ input:checked + label {
   right: 5%;
   bottom: 15%;
   font-size: 2rem;
+  color: crimson;
 }
 
 #musician-surf-like-favor {

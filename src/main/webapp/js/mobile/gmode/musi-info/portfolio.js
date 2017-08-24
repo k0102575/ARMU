@@ -15,8 +15,17 @@ function displayMusiInfoPortfolio() {
       { 
         "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {
-  		  var templateFn = Handlebars.compile($('#musician-info-portfolio-template').text())
-        var generatedHTML = templateFn(result.data)
+        
+        if(result.data.getPortfolio.length == 0) {
+          var templateFn = Handlebars.compile($('#musician-info-zero-portfolio-template').text())
+          var generatedHTML = templateFn(result.data)
+          var container = $('.portfolio-container')
+          var html = container.html()
+          container.html(generatedHTML)
+        }
+        
+		  var templateFn = Handlebars.compile($('#musician-info-portfolio-template').text())
+      var generatedHTML = templateFn(result.data)
 		  var container = $('.portfolio-container')
 		  var html = container.html()
 		  container.html(html + generatedHTML)
@@ -54,15 +63,6 @@ function displayMusiInfoPortfolio() {
 		    $("#spec-backscreen").css('display', 'none')
 		    $("#container").css('position', 'relative')
 		  })
-        
-        /*var source = $("#timeline-movie").text().substring(20, 31)
-        $("#timeline-movie").html("")
-        $("#timeline-movie").append("<img id='timeline-picture' src='https://img.youtube.com/vi/" + source + "/0.jpg'>")
-        
-        var sourceMovie = $("#spec-movie").text().substring(20, 31)
-        $("#spec-movie").html("")
-        $("#spec-movie").append("<iframe width='791' height='876' src='https://www.youtube.com/embed/" + source + "?rel=0&amp;showinfo=0' frameborder='0' allowfullscreen></iframe>")
-        */
         
       })
 }
