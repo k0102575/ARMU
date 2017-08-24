@@ -1,12 +1,16 @@
 "use strict"
 HandlebarsIntl.registerWith(Handlebars);
 displayEventDetail()
-var mtcno = 0
+
+var mtcno = 0,
+    params = decodeURIComponent(location.href).split('?')[1].split('&'),
+    eventNo = params[0].split('=')[1],
+    openReview = params[1].split('=')[1];
 
 function displayEventDetail() {
   $.getJSON('/event/myEventDetail.json', 
       { 
-    "eventNo" : location.href.split('?')[1].split('=')[1]
+    "eventNo" : eventNo
       }, 
       function(result) {
         console.log(result)
@@ -29,7 +33,7 @@ function displayEventDetail() {
 
         $.getJSON('/musician/myEventMatchMusician.json', 
             { 
-          "eNo" : location.href.split('?')[1].split('=')[1]
+          "eNo" : eventNo
             }, 
             function(result) {
               var starInteger = parseInt(result.data.matchMusician.score),
@@ -97,7 +101,7 @@ function displayEventDetail() {
                     'rev': $("#event-rev-text").val(),
                     'mtcno' : mtcno,
                     'musicianNo' : muno,
-                    "no" : location.href.split('?')[1].split('=')[1]
+                    "no" : eventNo
                   }, function(result) {
                     if(result.data == "ok") {
                       location.reload()

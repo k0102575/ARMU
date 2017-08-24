@@ -42,8 +42,16 @@ function controlBtns() {
 	})
 
 
-  $('.event-end-box').on('click', function(e) {
-    location.href = 'detail-end.html?no=' + $(this).attr('data-no')
+  $('.event-click').on('click', function(e) {
+    location.href = 'detail-end.html?no=' + $(this).attr('data-no') +'&review=false'
+  })
+  
+    $('.musician-click').on('click', function(e) {
+    location.href = '../musi-info/index.html?no=' + $(this).attr('data-no')
+  })
+  
+  $('.review-btn').on('click', function(e) {
+    location.href = '../musi-info/index.html?no=' + $(this).attr('data-no') +'&review=true'
   })
 
 }

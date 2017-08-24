@@ -5,26 +5,27 @@
 <script id="end-event-template" type="text/x-handlebars-template">
 {{#each listEnd}}
 <div class="end" data-no={{no}}>
-<div class="event-end-box" data-no={{no}}>
+ <div class="event-end-box event-click" data-no={{no}}>
+  
   <div class="recruiting-title">
-  <span>&nbsp;{{title}}</span></div><!-- recruiting-title -->
-<div class='end-edit-btn'><i class="fa fa-angle-right" aria-hidden="true"></i></div>
-{{#intl locales="ko-KO"}}
+    <span>&nbsp;{{title}}</span>
+  </div><!-- recruiting-title -->
+  <div class='end-edit-btn'><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+  {{#intl locales="ko-KO"}}
   <div class="end-date"><span>{{formatDate date day="numeric" month="long" year="numeric"}}</span></div>
-{{/intl}}
+  {{/intl}}
 
-</div>
+ </div><!-- event-end-box -->
 
-{{#matchMusician}}
-  <div class="end-musibox">
+ {{#matchMusician}}
+  <div class="end-musibox musician-click" data-no={{no}}>
     <div class="end-applicant-img" style='background-image: url("{{photo}}_300.png")'></div>
-    <div class="end-applicant-name"><span>{{nickName}}</span></div>
-    <!-- end-applicant-name -->
-
-    <div class='end-applicant-btn review-btn'>리뷰달기</div>
-
+    <div class="end-applicant-name"><span>{{nickName}}</span></div><!-- end-applicant-name -->
   </div><!-- end-musibox -->
-  <!--뮤지션 끝-->
+
+ <div class='end-applicant-btn review-btn' data-no={{no}}>리뷰달기</div>
+
+ <!--뮤지션 끝-->
 {{/matchMusician}}
 
 </div><!-- end -->
