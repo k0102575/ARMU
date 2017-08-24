@@ -9,7 +9,12 @@ function displayEndEventList() {
 			console.error("getJSON() 실패: ", result.status)
 			return;
 		}
-	
+	console.log(result.data)
+	$.each(result.data.listEnd, function(i, item) {
+	  if(item.isReview == 1) {
+	    item.isReview = 'review-exist'
+	  }
+	})
 		var templateFn = Handlebars.compile($('#end-event-template').text())
 		var generatedHTML = templateFn(result.data)
 		var container = $('#end-event-container')
@@ -42,17 +47,14 @@ function controlBtns() {
 	})
 
 
-  $('.event-click').on('click', function(e) {
+  $('.end-event-click').on('click', function(e) {
     location.href = 'detail-end.html?no=' + $(this).attr('data-no') +'&review=false'
   })
   
-    $('.musician-click').on('click', function(e) {
-    location.href = '../musi-info/index.html?no=' + $(this).attr('data-no')
+    $('.end-musician-click').on('click', function(e) {
+    location.href = 'detail-end.html?no=' + $(this).attr('data-no') +'&review=true'
+//    location.href = '../musi-info/index.html?no=' + $(this).attr('data-no')
   })
   
-  $('.review-btn').on('click', function(e) {
-    location.href = '../musi-info/index.html?no=' + $(this).attr('data-no') +'&review=true'
-  })
-
 }
 

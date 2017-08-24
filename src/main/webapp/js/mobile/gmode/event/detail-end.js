@@ -1,11 +1,12 @@
 "use strict"
 HandlebarsIntl.registerWith(Handlebars);
-displayEventDetail()
 
 var mtcno = 0,
     params = decodeURIComponent(location.href).split('?')[1].split('&'),
-    eventNo = params[0].split('=')[1],
+    eventNo = parseInt(params[0].split('=')[1]),
     openReview = params[1].split('=')[1];
+
+displayEventDetail()
 
 function displayEventDetail() {
   $.getJSON('/event/myEventDetail.json', 
@@ -13,7 +14,6 @@ function displayEventDetail() {
     "eventNo" : eventNo
       }, 
       function(result) {
-        console.log(result)
         mtcno = result.data.detail.mtcno
         var templateFn = Handlebars.compile($('#select-event-template').text())
         var generatedHTML = templateFn(result.data)
@@ -47,12 +47,15 @@ function displayEventDetail() {
               container.html(html + generatedHTML)
               
               var muno = result.data.matchMusician.no
-
+              
+              
               $(".ongoing-applicant-btn").on("click", function(e) {
                 $("#event-appy-info").toggle()
                 $("#event-appy-backscreen").css("display", "block")
                 $("#container").css("position", "fixed")
               })
+              
+              if(openReview == 'true') $('.ongoing-applicant-btn').trigger('click')
 
               $("#event-appy-cancel-btn").on('click', function() {
                 $("#event-appy-info").toggle()

@@ -147,6 +147,7 @@
     <result column="rpay" property="rhspay" />
     <result column="info" property="rhsinfo" />
     <result column="num" property="rhsnum" />
+    <result column="isrev" property="isReview" />
      <association property="matchMusician" javaType="Musician">
       <id property="no" column="muno" />
       <result property="nickName" column="nick" />
@@ -271,7 +272,7 @@ inner join memb m on m.mno=e.mno
   <select id="selectEndList" resultMap="matchEventMap"
     parameterType="int">
     select e.eno, title, e.date, mu.muno, mu.nick, mm.path, 
-    null as location, null as major, null as genre, null as theme 
+    null as location, null as major, null as genre, null as theme, if(mtc.rev is not null, 1, 0) as isrev 
 from evn e
 left outer join memb m on e.mno=m.mno and e.active='Y'
 left outer join mtc on e.eno=mtc.eno and e.mno=#{no}

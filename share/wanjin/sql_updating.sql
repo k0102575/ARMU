@@ -533,7 +533,7 @@ left outer join (
 
 
 -- 종료한 이벤트 리스트 가져오기
-select e.eno, title, e.date, mu.muno, mu.nick, mm.path
+select e.eno, title, e.date, mu.muno, mu.nick, mm.path, if(mtc.rev is not null, 1, 0) as isrev
 from evn e
 left outer join memb m on e.mno=m.mno
 left outer join mtc on e.eno=mtc.eno and e.mno=5

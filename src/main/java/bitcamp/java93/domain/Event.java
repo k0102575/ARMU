@@ -29,6 +29,7 @@ public class Event {
   int rhspay;
   int rhsnum;
   int score;
+  int isReview;
   String rev;
   int pr_count;
   int mtc_info;
@@ -198,6 +199,12 @@ public class Event {
   public void setScore(int score) {
     this.score = score;
   }
+  public int getIsReview() {
+    return isReview;
+  }
+  public void setIsReview(int isReview) {
+    this.isReview = isReview;
+  }
   public String getRev() {
     return rev;
   }
@@ -320,14 +327,13 @@ public class Event {
         + ", city=" + city + ", location=" + location + ", address=" + address + ", pay=" + pay + ", locno=" + locno
         + ", loctno=" + loctno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
         + ", tmnno=" + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", score=" + score
-        + ", rev=" + rev + ", pr_count=" + pr_count + ", mtc_info=" + mtc_info + ", appy_check=" + appy_check
-        + ", mtcno=" + mtcno + ", appy_activeCheck=" + appy_activeCheck + ", rhsinfo=" + rhsinfo + ", haveRehearsal="
-        + haveRehearsal + ", appyno=" + appyno + ", eventActive=" + eventActive + ", prStatus=" + prStatus
-        + ", appyStatus=" + appyStatus + ", muno=" + muno + ", isFavorite=" + isFavorite + ", EventRegistTheme="
-        + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre
-        + ", appyList=" + appyList + ", prList=" + prList + "]";
+        + ", isReview=" + isReview + ", rev=" + rev + ", pr_count=" + pr_count + ", mtc_info=" + mtc_info
+        + ", appy_check=" + appy_check + ", mtcno=" + mtcno + ", appy_activeCheck=" + appy_activeCheck + ", rhsinfo="
+        + rhsinfo + ", haveRehearsal=" + haveRehearsal + ", appyno=" + appyno + ", eventActive=" + eventActive
+        + ", prStatus=" + prStatus + ", appyStatus=" + appyStatus + ", muno=" + muno + ", isFavorite=" + isFavorite
+        + ", EventRegistTheme=" + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre="
+        + EventRegistGenre + ", appyList=" + appyList + ", prList=" + prList + "]";
   }
-  
   
   
 }

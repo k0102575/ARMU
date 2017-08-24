@@ -592,6 +592,7 @@ body {
 
 .end-musibox {
   position: relative;
+  text-align: center;
   margin-top: 2%;
   color: black;
   width: 100%;
@@ -629,8 +630,7 @@ body {
 
 
 .end-applicant-img {
-  position: absolute;
-  display: table;
+  display: inline-block;
   height: 120px;
   width: 120px;
   overflow: hidden;
@@ -639,19 +639,15 @@ body {
   background-position: center;
   border-radius: 100%;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .end-applicant-name {
-  position: absolute;
-  display: inline-block;
+  display: block;
   color: black;
   font-size: 32px;
   font-weight: 500;
   bottom: 30%;
-  left: 50%;
-  transform: translateX(-50%);
+  text-align: center;
 }
 
 
@@ -670,6 +666,10 @@ body {
   bottom: 3%;
   transform: translateX(-50%);
   left: 50%;
+}
+
+.review-exist {
+  display: none;
 }
 /*.add-review-btn {
 	position: absolute;
