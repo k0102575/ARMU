@@ -39,7 +39,9 @@
 <!-- menu slider ended -->
 
 
+<div id="search-backscreen-back"></div>
 <div id="search-backscreen"></div>
+<div id="search-backscreen-front"></div>
 <div id="search-toggle">
   <div id='search-contents'>
   <i class="fa fa-angle-left" id="search-cancel" aria-hidden="true"></i>
@@ -110,13 +112,33 @@
     }, 300);
     $('#search-text').val('')
     $('#search-text').focus()
+    $('#search-backscreen').toggle("slide", {
+      direction : 'right'
+    }, 300);
+    $('#search-backscreen-back').toggle("slide", {
+      direction : 'right'
+    }, 300);
+    $('#search-backscreen-front').toggle("slide", {
+      direction : 'right'
+    }, 300);
   })
 
   searchCancel.on('click', function() {
     searchToggle.toggle("slide", {
       direction : 'right'
     }, 300);
+    $('#search-backscreen').toggle("slide", {
+      direction : 'right'
+    }, 300);
+    $('#search-backscreen-back').toggle("slide", {
+      direction : 'right'
+    }, 300);
+    $('#search-backscreen-front').toggle("slide", {
+      direction : 'right'
+    }, 300);
+    
     $('.search-event-list').remove()
+    
   })
 
   searchTextDelete.on('click', function() {

@@ -240,7 +240,6 @@ $(document).ready(function() {
      
    /* 내활동 */
    $.getJSON('/notification/getUnread.json', function(result) {
-    console.log(result.data)
     if(result.data != 0) {
       $('.act-noti-tag').show().text(result.data)
     }

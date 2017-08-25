@@ -185,7 +185,7 @@ delete from loc_musi where muno = #{musiNo}
 <select id="selectListEventLocation" resultMap="locationMap2">
   select loct.loctno, loct.name as loctname, loc.locno, loc.name as locname
   from loc loc inner join loc_type loct on loct.loctno= loc.loctno
-  order by loct.loctno asc
+  order by loct.loctno asc, locname asc
 </select>
 
 <select id="selectListEventTheme" resultMap="themeMap2">

@@ -40,7 +40,6 @@ public class MusicianServiceImpl implements MusicianService {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("myNo", myNo);
     valueMap.put("muNo", muNo);
-    System.out.println(valueMap);
        musicianDao.favorMusiAdd(valueMap);
   }
 
@@ -53,7 +52,6 @@ public class MusicianServiceImpl implements MusicianService {
     valueMap.put("gender", gender);
     valueMap.put("minAge", minAge);
     valueMap.put("maxAge", maxAge);
-    System.out.println(valueMap);
     return musicianDao.selectSurfListFilter(valueMap);
   }
   
@@ -70,7 +68,6 @@ public class MusicianServiceImpl implements MusicianService {
     valueMap.put("gender", gender);
     valueMap.put("minAge", minAge);
     valueMap.put("maxAge", maxAge);
-    System.out.println(valueMap);
     return musicianDao.musicianSearch(valueMap);
   }
 
