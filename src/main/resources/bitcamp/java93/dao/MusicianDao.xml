@@ -291,7 +291,7 @@ left outer join (
   left outer join thm t on tm.thmno=t.thmno
   left outer join mtc on mtc.muno=mu.muno
   left outer join (select count(if(mno is not null, 1, 0)) as fav, mno, muno
-  from fav_musi where mno = 1 group by muno) fm on fm.muno=mu.muno
+  from fav_musi where mno = #{no} group by muno) fm on fm.muno=mu.muno
   left outer join loc_musi lm on lm.muno=m.mno
   left outer join loc l on lm.locno= l.locno
   left outer join loc_type lt on l.loctno = lt.loctno

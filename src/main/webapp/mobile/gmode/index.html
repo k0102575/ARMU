@@ -104,8 +104,7 @@
   top: 15%;
   width: 40px;
   height: 40px;
-  background-color: #8069ef;
-  border: 2px solid #8069ef;
+  background-image: linear-gradient( to left top, rgb(116, 92, 233), rgb(215, 105, 239));
   border-radius: 100%;
   color: white;
   text-align: center;
@@ -240,7 +239,6 @@ $(document).ready(function() {
      
    /* 내활동 */
    $.getJSON('/notification/getUnread.json', function(result) {
-    console.log(result.data)
     if(result.data != 0) {
       $('.act-noti-tag').show().text(result.data)
     }

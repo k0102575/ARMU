@@ -174,6 +174,8 @@ function filter() {
                   var html = container.html()
                   container.html(generatedHTML)
               },'json')
+              $('.check3').remove()
+              $('.thm').removeClass('on2')
         })
         $('.thm').click(function() {
           if(mjrno ==3000)
@@ -266,6 +268,8 @@ function filterMajor() {
                   var html = container.html()
                   container.html(generatedHTML)
               },'json')
+              $('.check1').remove()
+              $('.mjr').removeClass('on2')
         })
         $('.mjr').click(function() {
           if(thmno ==3000)
@@ -360,6 +364,8 @@ function filterGenre() {
                   var html = container.html()
                   container.html(generatedHTML)
               },'json')
+              $('.check2').remove()
+              $('.gen').removeClass('on2')
         })
         $('.gen').click(function() {
           if(thmno ==3000)

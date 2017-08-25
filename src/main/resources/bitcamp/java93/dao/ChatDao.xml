@@ -75,15 +75,16 @@ order by e.date desc
  </select>
  
   <select id="selectUnread" resultType="int" parameterType="int">
-   select sum(if(isread='N',if(who=muno, 1, 0), 0)) as unread
+   select count(*)
    from chat
-   where mno=#{no}
+   where isread='N' and mno=#{no} and who=muno
+   
  </select>
  
    <select id="selectMusiUnread" resultType="int" parameterType="int">
-   select sum(if(isread='N',if(who=mno, 1, 0), 0)) as unread
+   select count(*)
    from chat
-   where muno=#{no}
+   where isread='N' and muno=#{no} and who=mno
  </select>
  
 

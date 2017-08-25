@@ -34,16 +34,15 @@
   </update><!-- 완진 -->
   
   <select id="selectUnread" resultType="int" parameterType="int">
-  select sum(if(isread='N',if(whom='gmember' or whom='both', 1, 0), 0)) as unread
-  from noti
-  left outer join evn on noti.eno=evn.eno
-  where evn.mno=#{no}
+  select count(*)
+  from noti left outer join evn on noti.eno=evn.eno
+  where isread='N' and (whom='gmember' or whom='both') and evn.mno=#{no}
   </select><!-- 완진 -->
   
   <select id="selectMusiUnread" resultType="int" parameterType="int">
-  select sum(if(isread='N',if(whom='musician' or whom='both', 1, 0), 0)) as unread
+  select count(*)
   from noti
-  where muno=#{no}
+  where isread='N' and (whom='musician' or whom='both') and muno=#{no}
   </select><!-- 완진 -->
   
  <select id="selectNotiList" resultMap="notificationMap" parameterType="int">

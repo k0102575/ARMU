@@ -71,69 +71,30 @@ filterCancel.on('click', function() {
   filterContainer.toggle();
   surfBackscreen.css('display', 'none');
 })
+/*$('#filter-loc').click(function() {
+  $("#filter-loc-backscreen").css('display','block')
+    $("#filter-loc-backscreen").on('touchmove', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    });
+    $('#musician-surf-list').css('overflow','hidden').css('position','absolute')
+    $("#filter-loc-toggle").css('display', 'block');
+    $(".filter-loc-sub-con").css('display','block');
+    $("#filter-loc-toggle").css('visibility', 'visible');
+    $(".filter-loc-sub-con").css('visibility','visible');
+});
 
-//var xScroll = new jindo.m.Scroll("filter-loc-tab", {
-//    bUseHScroll: true,
-//    bUseVScroll: false,
-//    bUseMomentum: false,
-//    nHeight: 100,
-//    nWidth: 980
-//});
-//
-//var yScroll = new jindo.m.Scroll("seoul", {
-//    bUseHScroll: false,
-//    bUseVScroll: true,
-//    bUseMomentum: false,
-//    nHeight: 400
-//});
-////yScroll = new jindo.m.Scroll("busan", {
-//    bUseHScroll: false,
-//    bUseVScroll: true,
-//    bUseMomentum: false,
-//    nHeight: 400
-//});
-//yScroll = new jindo.m.Scroll("kyeonggi", {
-//    bUseHScroll: false,
-//    bUseVScroll: true,
-//    bUseMomentum: false,
-//    nHeight: 400
-//});
-//
-//yScroll = new jindo.m.Scroll("incheon", {
-//    bUseHScroll: false,
-//    bUseVScroll: true,
-//    bUseMomentum: false,
-//    nHeight: 400
-//});
-//yScroll = new jindo.m.Scroll("busan", {
-//    bUseHScroll: false,
-//    bUseVScroll: true,
-//    bUseMomentum: false,
-//    nHeight: 400
-//});
-//yScroll = new jindo.m.Scroll("daegu", {
-//    bUseHScroll: false,
-//    bUseVScroll: true,
-//    bUseMomentum: false,
-//    nHeight: 400
-//});
-//yScroll = new jindo.m.Scroll("gwangju", {
-//    bUseHScroll: false,
-//    bUseVScroll: true,
-//    bUseMomentum: false,
-//    nHeight: 400
-//});
-//yScroll = new jindo.m.Scroll("daejun", {
-//    bUseHScroll: false,
-//    bUseVScroll: true,
-//    bUseMomentum: false,
-//    nHeight: 400
-//});
-
+$("#filter-loc-backscreen").click(function() {
+    $('#musician-surf-list').css('overflow','').css('position','absolute')
+    $("#filter-loc-toggle").css('display', 'none');
+    $(".filter-loc-sub-con").css('display','none');
+    $("#filter-loc-backscreen").css('display', 'none');
+})*/
 
 $('#filter-loc').click(function() {
   $("#filter-loc-backscreen").css('display','block')
-    $("#filter-loc-backscreen").on('scroll touchmove mousewheel', function(event) {
+    $("#main-surf").on('scroll touchmove mousewheel', function(event) {
       event.preventDefault();
       event.stopPropagation();
       return false;
@@ -144,8 +105,11 @@ $('#filter-loc').click(function() {
 $("#filter-loc-backscreen").click(function() {
   $('#main-surf').off('scroll touchmove mousewheel')
     $("#filter-loc-toggle").css('visibility', 'hidden');
+    $(".active").css('visibility', 'hidden');
     $("#filter-loc-backscreen").css('display', 'none');
 })
+
+
 
 $('#filter-major').click(function() {
     $("#filter-mjr-backscreen").css('display', 'block');
@@ -162,6 +126,8 @@ $("#filter-mjr-backscreen").click(function() {
     $("#filter-mjr-toggle").css('visibility', 'hidden');
     $("#filter-mjr-backscreen").css('display', 'none');
 })
+
+
 
 $('#filter-genre').click(function() {
     $("#filter-gen-backscreen").css('display', 'block');
@@ -253,59 +219,6 @@ $("#filter-update").on('click', function() {
 var locno=3000,mjrno=3000,gnrno=3000
 var indexL=1, 
 indexM=1, indexG =1;
-//$('.loc').click(function () {
-//  if(!checkVal)
-//    checkVal='G'
-//  if(mjrno ==3000)
-//    mjrno=2000
-//  if(gnrno ==3000)
-//    gnrno=2000
-//  locno=$(this).attr('data-no')
-////  console.log('seoul',locno,mjrno,gnrno, checkVal,minAge,maxAge,indexL,indexM,indexG)
-//    $.post('/musician/searchMusician.json',
-//      {'locno':locno, 'mjrno':mjrno, 'gnrno':gnrno, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,"gender" : checkVal, "minAge" : minAge, "maxAge" : maxAge}, function(result) {
-//        handleList(result)
-//        
-//        var surfLike = $(".surfLike")
-//        for(var i = 0; i <= result.data.listSurf.length -1; i++){
-//            
-//          if(result.data.listSurf[i].isFavorite == true){
-//            surfLike[i].style.color = "#ba3d3d"
-//          }
-//      }
-//  },'json')
-//  
-//  $('.check1').remove()
-//  seoul.removeClass('on2')
-//  $(this).html('<img class="check-img check1" src="/image/icon/tick.png">'+ $(this).text())
-//  $(this).addClass('on2')
-//  return locno;
-//})
-
-
-
-
-//$(function ($) {
-//    let index =null;
-//    // let $filterwrap = $('.filter-loc-toggle')
-//    let $fcon1 = $('.filter-loc-sub-tab')
-//    let $fcon2 = $('.filter-loc-sub-con')
-//
-//    tabMenu($fcon1, $fcon2)
-//    function tabMenu(els, con) {
-//      els.on('click', function () {
-//        indexL = $(this).index()+1;
-//          els.removeClass('on')
-//          $(this).addClass('on')
-//          index = $(this).index()
-//
-//          con.css("visibility","hidden")
-//          con.css("height","0")
-//          con.eq(index).css("visibility","visible")
-//          con.eq(index).css("height","400px")
-//      })
-//    }
-//})
 function filterLocation() {
   $.getJSON('/category/listEventLocation.json', function(result) {
     var templateFn = Handlebars.compile($('#location-template').text())
@@ -331,11 +244,12 @@ function filterLocation() {
         container.html(html + generatedHTML)
         $('.filter-loc-sub-con[data-no=1]').attr('id','seoul')
         $('.filter-loc-sub-con[data-no=2]').attr('id','busan')
+        $('#busan').children().css('height','600px')
         var yScroll = new jindo.m.Scroll("seoul", {
-            bUseHScroll: false,
-            bUseVScroll: true,
-            bUseMomentum: false,
-            nHeight: 400
+          bUseHScroll: false,
+          bUseVScroll: true,
+          bUseMomentum: false,
+          nHeight: 400
         });
         yScroll = new jindo.m.Scroll("busan", {
             bUseHScroll: false,
@@ -353,9 +267,17 @@ function filterLocation() {
           find = $(this).attr('data-no')
 //          $(".filter-loc-sub-con").css('display','none')
 //          $(".filter-loc-sub-con[data-no="+find+"]").css('display','table')
-          $(".filter-loc-sub-con").css('display','none')
+          $(".filter-loc-sub-con").css({
+            'visibility':'hidden',
+            'height':'0'
+           })
+          $(".filter-loc-sub-con").removeClass('active')
 //          console.log($(".filter-loc-sub-con[data-no="+find+"]"))
-          $(".filter-loc-sub-con[data-no="+find+"]").css('display','table')
+          $(".filter-loc-sub-con[data-no="+find+"]").css({
+            'visibility':'visible',
+            'height':'400px'
+           })
+           $(".filter-loc-sub-con[data-no="+find+"]").addClass('active')
           indexL= find
         })
         
@@ -368,14 +290,13 @@ function filterLocation() {
 //          console.log('location',locno,mjrno,gnrno, checkVal,minAge,maxAge,indexL,indexM,indexG)
           $.post('/musician/searchMusician.json',
               {'locno':locno, 'mjrno':mjrno, 'gnrno':gnrno, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,"gender" : checkVal, "minAge" : minAge, "maxAge" : maxAge}, function(result) {
+                  $.each(result.data.listSurf, function(i, item) {
+                    heartAdd(item)
+                  });
                   handleList(result)
-                  for(var i = 0; i <= result.data.listSurf.length -1; i++){
-                    
-                    if(result.data.listSurf[i].isFavorite == true){
-                      surfLike[i].style.color = "#ba3d3d"
-                    }
-                  }
               },'json')
+              $('.check3').remove()
+              $('.loc').removeClass('on2')
         })
         $('.loc').click(function() {
           if(mjrno ==3000)
@@ -386,13 +307,10 @@ function filterLocation() {
 //          console.log('location',locno,mjrno,gnrno, checkVal,minAge,maxAge,indexL,indexM,indexG)
           $.post('/musician/searchMusician.json',
               {'locno':locno, 'mjrno':mjrno, 'gnrno':gnrno, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,"gender" : checkVal, "minAge" : minAge, "maxAge" : maxAge}, function(result) {
-                  handleList(result)
-                  for(var i = 0; i <= result.data.listSurf.length -1; i++){
-                    
-                    if(result.data.listSurf[i].isFavorite == true){
-                      surfLike[i].style.color = "#ba3d3d"
-                    }
-                  }
+                  $.each(result.data.listSurf, function(i, item) {
+                    heartAdd(item)
+                  });
+                handleList(result)
               },'json')
               
           $('.check3').remove()
@@ -454,14 +372,13 @@ function filterMajor() {
 //          console.log('major',locno,mjrno,gnrno, checkVal,minAge,maxAge,indexL,indexM,indexG)
           $.post('/musician/searchMusician.json',
               {'locno':locno, 'mjrno':mjrno, 'gnrno':gnrno, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,"gender" : checkVal, "minAge" : minAge, "maxAge" : maxAge}, function(result) {
+                  $.each(result.data.listSurf, function(i, item) {
+                    heartAdd(item)
+                  });
                   handleList(result)
-                  for(var i = 0; i <= result.data.listSurf.length -1; i++){
-                    
-                    if(result.data.listSurf[i].isFavorite == true){
-                      surfLike[i].style.color = "#ba3d3d"
-                    }
-                  }
               },'json')
+              $('.check1').remove()
+              $('.mjr').removeClass('on2')
         })
         $('.mjr').click(function() {
           if(locno ==3000)
@@ -472,13 +389,10 @@ function filterMajor() {
 //          console.log('major',locno,mjrno,gnrno, checkVal,minAge,maxAge,indexL,indexM,indexG)
           $.post('/musician/searchMusician.json',
               {'locno':locno, 'mjrno':mjrno, 'gnrno':gnrno, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,"gender" : checkVal, "minAge" : minAge, "maxAge" : maxAge}, function(result) {
+                  $.each(result.data.listSurf, function(i, item) {
+                    heartAdd(item)
+                  });
                   handleList(result)
-                  for(var i = 0; i <= result.data.listSurf.length -1; i++){
-                    
-                    if(result.data.listSurf[i].isFavorite == true){
-                      surfLike[i].style.color = "#ba3d3d"
-                    }
-                  }
               },'json')
               
           $('.check1').remove()
@@ -540,15 +454,14 @@ function filterGenre() {
           gnrno = $(this).attr('data-no')
 //          console.log('genre',locno,mjrno,gnrno, checkVal,minAge,maxAge,indexL,indexM,indexG)
           $.post('/musician/searchMusician.json',
-              {'locno':locno, 'mjrno':mjrno, 'gnrno':gnrno, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,"gender" : checkVal, "minAge" : minAge, "maxAge" : maxAge}, function(result) {
+              {'locno':locno, 'mjrno':mjrno, 'gnrno':gnrno, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,"gender" : checkVal, "minAge" : minAge, "maxAge" : maxAge}, function(result) {adskfa;ldskfl;akdflaksdof;apodetapewpsdfopsdf
+                $.each(result.data.listSurf, function(i, item) {
+                  heartAdd(item)
+                });
                 handleList(result)
-                for(var i = 0; i <= result.data.listSurf.length -1; i++){
-                  
-                  if(result.data.listSurf[i].isFavorite == true){
-                    surfLike[i].style.color = "#ba3d3d"
-                  }
-                }
               },'json')
+              $('.check2').remove()
+              $('.gen').removeClass('on2')
         })
         $('.gen').click(function() {
           if(locno ==3000)
@@ -559,13 +472,10 @@ function filterGenre() {
 //          console.log('genre',locno,mjrno,gnrno, checkVal,minAge,maxAge,indexL,indexM,indexG)
           $.post('/musician/searchMusician.json',
               {'locno':locno, 'mjrno':mjrno, 'gnrno':gnrno, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,"gender" : checkVal, "minAge" : minAge, "maxAge" : maxAge}, function(result) {
+                $.each(result.data.listSurf, function(i, item) {
+                  heartAdd(item)
+                });
                 handleList(result)
-                for(var i = 0; i <= result.data.listSurf.length -1; i++){
-                  
-                  if(result.data.listSurf[i].isFavorite == true){
-                    surfLike[i].style.color = "#ba3d3d"
-                  }
-                }
               },'json')
           gnrno = $(this).attr('data-no')
           $('.check2').remove()
