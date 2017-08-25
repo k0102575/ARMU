@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -19,6 +18,7 @@ import bitcamp.java93.domain.Member;
 import bitcamp.java93.domain.Musician;
 import bitcamp.java93.service.CategoryService;
 import bitcamp.java93.service.EventService;
+import bitcamp.java93.service.MemberService;
 import bitcamp.java93.service.MusicianService;
 
 @RestController
@@ -32,6 +32,7 @@ public class MusicianControl {
   @Autowired MusicianService musicianService;
   @Autowired CategoryService categoryService;
   @Autowired EventService eventService;
+  @Autowired MemberService memberService;
 
   @RequestMapping("listRecommand")
   public JsonResult list(HttpSession session) {
@@ -239,13 +240,18 @@ public class MusicianControl {
     musician.setGenreList(addGenreList);
     musician.setLocationList(addLocationList);
     musician.setNo(getLoginMember(session).getNo());
+
     
-//    status.setComplete();
-//    session.invalidate();  
-//    model.addAttribute("loginMember", member);
     try {
       musicianService.add(musician);
       categoryService.addMusiCategory(musician); 
+      
+      Member member = getLoginMember(session);
+      member.setIsMusician(1);
+      session.setAttribute("loginMember", member);
+
+      System.out.println(member);
+
       return new JsonResult(JsonResult.SUCCESS, "ok");
       
     } catch (Exception e) {

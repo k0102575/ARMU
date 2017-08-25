@@ -6,8 +6,9 @@
 		<div id='menu-upper-btn'>
 			<a id='home-btn' href='/mobile/gmode/index.html'><i class="fa fa-home" aria-hidden="true"></i></a> 
       <div class='change-mode-btn go-musimode-btn'>
-        <span class='change-mode-btn-text'>일반모드</span>
-        <img class='change-mode-btn-img' src='/image/icon/change.png'>
+          <!-- <img class='change-mode-btn-img' src='/image/icon/mode.png'> -->
+           <span class='change-mode-btn-text'> 일반모드</span>
+      
       </div>
 		</div>
 		<br>
@@ -79,6 +80,7 @@
 <script>
 
 
+$(window).on('load', function() {
   /*메뉴 관련*/
   var container = $("#container"), 
   menuBtn = $('#header-menu-menu'), 
@@ -269,6 +271,7 @@
   return item;
 }
 /* 검색끝 */
+})
 
 
 </script>

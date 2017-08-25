@@ -121,7 +121,8 @@
 }
 
 .change-mode-btn-text {
-  vertical-align: super;
+  text-decoration-line: underline;
+  font-weight: 400;
 }
 
 .change-mode-btn-img {
