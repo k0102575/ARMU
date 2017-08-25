@@ -33,15 +33,15 @@ public class Event {
   String rev;
   int pr_count;
   int mtc_info;
-  int appy_check;
   int mtcno;
-  String appy_activeCheck;
   String rhsinfo;
   boolean haveRehearsal;
   int appyno;
   char eventActive;
   char prStatus;
   char appyStatus;
+  char prActive;
+  char appyActive;
   int muno;
   boolean isFavorite;
   List<String> EventRegistTheme;
@@ -49,6 +49,22 @@ public class Event {
   List<String> EventRegistGenre;
   ArrayList<Musician> appyList;
   ArrayList<Musician> prList;
+  @Override
+  public String toString() {
+    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", writeMember=" + writeMember
+        + ", matchMusician=" + matchMusician + ", themeList=" + themeList + ", majorList=" + majorList + ", genreList="
+        + genreList + ", themeNoList=" + themeNoList + ", majorNoList=" + majorNoList + ", genreNoList=" + genreNoList
+        + ", city=" + city + ", location=" + location + ", address=" + address + ", pay=" + pay + ", locno=" + locno
+        + ", loctno=" + loctno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
+        + ", tmnno=" + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", score=" + score
+        + ", isReview=" + isReview + ", rev=" + rev + ", pr_count=" + pr_count + ", mtc_info=" + mtc_info + ", mtcno="
+        + mtcno + ", rhsinfo=" + rhsinfo + ", haveRehearsal=" + haveRehearsal + ", appyno=" + appyno + ", eventActive="
+        + eventActive + ", prStatus=" + prStatus + ", appyStatus=" + appyStatus + ", prActive=" + prActive
+        + ", appyActive=" + appyActive + ", muno=" + muno + ", isFavorite=" + isFavorite + ", EventRegistTheme="
+        + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre=" + EventRegistGenre
+        + ", appyList=" + appyList + ", prList=" + prList + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+        + ", toString()=" + super.toString() + "]";
+  }
   public int getNo() {
     return no;
   }
@@ -223,23 +239,11 @@ public class Event {
   public void setMtc_info(int mtc_info) {
     this.mtc_info = mtc_info;
   }
-  public int getAppy_check() {
-    return appy_check;
-  }
-  public void setAppy_check(int appy_check) {
-    this.appy_check = appy_check;
-  }
   public int getMtcno() {
     return mtcno;
   }
   public void setMtcno(int mtcno) {
     this.mtcno = mtcno;
-  }
-  public String getAppy_activeCheck() {
-    return appy_activeCheck;
-  }
-  public void setAppy_activeCheck(String appy_activeCheck) {
-    this.appy_activeCheck = appy_activeCheck;
   }
   public String getRhsinfo() {
     return rhsinfo;
@@ -276,6 +280,18 @@ public class Event {
   }
   public void setAppyStatus(char appyStatus) {
     this.appyStatus = appyStatus;
+  }
+  public char getPrActive() {
+    return prActive;
+  }
+  public void setPrActive(char prActive) {
+    this.prActive = prActive;
+  }
+  public char getAppyActive() {
+    return appyActive;
+  }
+  public void setAppyActive(char appyActive) {
+    this.appyActive = appyActive;
   }
   public int getMuno() {
     return muno;
@@ -319,21 +335,5 @@ public class Event {
   public void setPrList(ArrayList<Musician> prList) {
     this.prList = prList;
   }
-  @Override
-  public String toString() {
-    return "Event [no=" + no + ", title=" + title + ", writer=" + writer + ", writeMember=" + writeMember
-        + ", matchMusician=" + matchMusician + ", themeList=" + themeList + ", majorList=" + majorList + ", genreList="
-        + genreList + ", themeNoList=" + themeNoList + ", majorNoList=" + majorNoList + ", genreNoList=" + genreNoList
-        + ", city=" + city + ", location=" + location + ", address=" + address + ", pay=" + pay + ", locno=" + locno
-        + ", loctno=" + loctno + ", requirement=" + requirement + ", contents=" + contents + ", downPay=" + downPay
-        + ", tmnno=" + tmnno + ", date=" + date + ", rhspay=" + rhspay + ", rhsnum=" + rhsnum + ", score=" + score
-        + ", isReview=" + isReview + ", rev=" + rev + ", pr_count=" + pr_count + ", mtc_info=" + mtc_info
-        + ", appy_check=" + appy_check + ", mtcno=" + mtcno + ", appy_activeCheck=" + appy_activeCheck + ", rhsinfo="
-        + rhsinfo + ", haveRehearsal=" + haveRehearsal + ", appyno=" + appyno + ", eventActive=" + eventActive
-        + ", prStatus=" + prStatus + ", appyStatus=" + appyStatus + ", muno=" + muno + ", isFavorite=" + isFavorite
-        + ", EventRegistTheme=" + EventRegistTheme + ", EventRegistMajor=" + EventRegistMajor + ", EventRegistGenre="
-        + EventRegistGenre + ", appyList=" + appyList + ", prList=" + prList + "]";
-  }
-  
   
 }

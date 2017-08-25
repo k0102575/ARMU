@@ -80,8 +80,10 @@
     <result column="pr_count" property="pr_count" />
     <result column="mtc_info" property="mtc_info" />
     <result column="mtcno" property="mtcno" />
-    <result column="appy_check" property="appy_check" />
-    <result column="appy_activeCheck" property="appy_activeCheck" />
+    <result column="prActive" property="prActive" />
+    <result column="appyActive" property="appyActive" />
+    <result column="prStatus" property="prStatus" />
+    <result column="appyStatus" property="appyStatus" />
     <association property="writeMember" javaType="Member">
       <id property="no" column="muno" />
       <result property="name" column="name" />
@@ -472,16 +474,14 @@ where ap.mno=#{no}
            t.name as theme, t.thmno as themeNo,
            m.name as major, m.mjrno as majorNo,
            g.name as genre, g.gnrno as genreNo,
-           if(prc.prno is not null, 1, 0) as pr_count, 
-           if(mtc.mtcno is not null, 1, 0) as mtc_info,
-           if(appy.appyno is not null, appy.appyno, 0) as appy_check,
-           appy.active as appy_activeCheck
+           if(pr.active is not null, 'Y', 'Z') as prActive,
+           if(pr.status is not null, 'Y', 'Z') as prStatus,
+           if(appy.active is not null, 'Y', 'Z') as appyActive,
+           if(appy.status is not null, 'Y', 'Z') as appyStatus
     from evn e
-    left outer join (select prno, muno, eno from pr group by muno, eno having muno = #{muNo} and eno = #{eNo}
-    ) prc on e.eno = prc.eno
-    left outer join (select mtcno, muno, eno from mtc group by muno, eno having muno = #{muNo}
-    ) mtc on e.eno = mtc.eno
-    left outer join (select appyno, muno, eno, active from appy group by muno, eno having muno = #{muNo}
+    left outer join (select * from pr group by muno, eno having muno = #{muNo} and eno = #{eNo}
+    ) pr on e.eno = pr.eno
+    left outer join (select * from appy group by muno, eno having muno = #{muNo} and eno = #{eNo}
     ) appy on e.eno = appy.eno
     left outer join loc l on e.locno = l.locno
     left outer join loc_type lt on l.loctno = lt.loctno

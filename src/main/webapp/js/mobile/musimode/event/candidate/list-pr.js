@@ -46,7 +46,7 @@ function setBtns() {
       cancelButtonText: "아니요"
     },
     function(){//확인 버튼 누르면 실행
-      $.post('/event/rejectPr.json', {
+      $.post('/event/rejectPr.json', { 
         'eventNo': pressedBtn.attr('data-no')
       }, function(result) {
         if(result.status != 'success') {
