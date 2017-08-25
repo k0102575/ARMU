@@ -47,7 +47,7 @@ function displayEventDetail() {
             return
           }
           
-            $.post('/event/appyEvent.json', {
+            $.post('/event/acceptPrAndAppy.json', {
               'eventNo': $(this).attr("data-value")
             }, function(result) {
               if(result.data == "success") {
