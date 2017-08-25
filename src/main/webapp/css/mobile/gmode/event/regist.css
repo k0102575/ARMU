@@ -22,7 +22,7 @@
   height: 10%;
   left: 7%;
   bottom: 20%;
-  border: 1px solid #6f6f6f;
+  border: 1px solid #a3a3a3;
   border-radius: 25px;
 }
 
@@ -44,11 +44,8 @@
 #event-cancelbtn {
   position: absolute;
   left: 3%;
-  top: 21%;
-  transform: translate(-3%, 20%);
-  font-size: 300%;
-  color: white;
-  font-weight: 100;
+  top: 28%;
+  transform: translate(-3%, 26%);
 }
 
 #event-progress {
@@ -72,7 +69,7 @@
 }
 
 #event-page1, #event-page2, #event-page3, 
-#event-page4, #event-page5, #event-page6, #event-page7, #event-page9 {
+#event-page4, #event-page5, #event-page6, #event-page7{
   display: none;
   position: fixed;
   top: 250px;
@@ -276,6 +273,7 @@ select::-ms-expand {
     border: 0px;
     margin-left: 21%;
     padding-top: 60px;
+    color: #555;
 }
 
 #theme-select-box-button, #major-select-box-button, #genre-select-box-button {
@@ -735,12 +733,15 @@ input[type="radio"].toggle:checked + label:after {
 }
 
 #event-page8-text {
-  float: left;
-  color: black;
-  font-size: 300%;
-  font-weight: normal;
-  text-align: center;
-  width: 100%;
+float: left;
+    color: black;
+    font-size: 2.5rem;
+    font-weight: normal;
+    text-align: center;
+    width: 95%;
+    margin-top: 7%;
+    margin-left: 2.5%;
+    padding-bottom: 7%;
 }
 
 .event-title {
@@ -815,6 +816,7 @@ input[type="radio"].toggle:checked + label:after {
   float: right;
   margin-right: 10%;
   font-size: 300%;
+  font-weight: 600;
 }
 
 
@@ -822,24 +824,75 @@ input[type="radio"].toggle:checked + label:after {
 
 /* 이벤트 페이지 9 시작 */
 
-#event-page9-text {
+#event-page9-end-text {
     position: absolute;
-    color: black;
-    top: 30%;
-    font-size: 3.6em;
+    color: white;
+    top: 10%;
+    font-size: 4rem;
     font-weight: 500;
-    padding-left: 7%;
-    padding-right: 7%;
+    width: 100%;
+    text-align: center;
     /* width: 90%; */
 }
 
+#event-page9-text {
+position: absolute;
+    color: white;
+    top: 40%;
+    font-size: 3.5em;
+    font-weight: 500;
+    text-align: left;
+    padding-left: 10%;
+}
+
 #event-page9-home {
-  position: absolute;
-  height: 100px;
-  left: 43%;
-  bottom: 0%;
-  font-size: 3em;
-  font-weight: normal;
+    position: absolute;
+    height: 95px;
+    width: 65%;
+    left: 20%;
+    transform: translateX(-20%);
+    font-size: 2.5rem;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 49px;
+    line-height: 95px;
+    box-sizing: border-box;
+    bottom: 15%;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.46);
+    transform: translateY(25%);
+}
+
+#event-page9  {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: transparent;
+  display: none;
+}
+
+#event-page9-backscreen {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(12, 12, 12, 0.43)), url(/image/background/event-regist.jpg);
+    -webkit-filter: blur(50px);
+    filter: blur(5px);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#event-page9-deepscreen {
+	position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  background-color: white;
 }
 
 /* 이벤트 페이지 9 끝 */
