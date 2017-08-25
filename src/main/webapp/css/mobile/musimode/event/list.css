@@ -96,7 +96,7 @@ body {
 }
 
 #event-type-ongoing-btn {
-  border-bottom: 4px solid #8069ef;
+  border-bottom: 4px solid lightseagreen;
 }
 
 .category-main {
@@ -147,7 +147,7 @@ body {
   width: auto;
   padding-left: 1.5%;
   padding-right: 1.5%;
-  background-color: #8069ef;
+  background-color: lightseagreen;
   /* border: 1px solid black; */
   border-radius: 6px;
   line-height: 46px;

@@ -28,7 +28,7 @@ function displayEndEventList() {
 
 function controlBtns() {
 	var applicantBtn = $('.end-applicant-btn'),
-	eventBox = $('.event-box');
+	eventBox = $('.end-event-box');
 
 	applicantBtn.on('click', function(e) {
 		if($(this).attr('data-open') == "true") {

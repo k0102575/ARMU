@@ -25,10 +25,10 @@
 #surf-backscreen {
   position: fixed;
   display: none;
-  top: 120px;
+  top: 0;
   width: 100%;
-  height: 95%;
-  background: rgba(0, 0, 0, .3);
+  height: 100vh;
+  background: rgba(0, 0, 0, .6);
   z-index: 11;
 }
 
@@ -53,7 +53,7 @@
 
 #filter-text {
   position: absolute;
-  color: black;
+  color: #383838;
   font-size: 2.5em;
   font-weight: normal;
   left: 50%;
@@ -80,15 +80,15 @@
   text-align: center;
   color: #525252;
   z-index: 15;
-  background-color: white;
-  background: linear-gradient(rgba(255, 255, 255, 1.45), rgba(255, 255, 255, 1.45));
   line-height: 95px;
   border-bottom-left-radius: 25px;
+  background: white;
 }
 
 #filter-update {
   position: absolute;
-  color: #8069ef;
+  color: white;
+  background: black;
   font-size: 2em;
   right: 0;
   font-weight: 600;
@@ -198,6 +198,7 @@ input:checked + label {
 
 #age-group {
   position: absolute;
+  display:none;
   top: 50%;
   left: 55%;
   font-size: 2.5em;
@@ -230,7 +231,7 @@ input:checked + label {
 .ui-slider .ui-slider-range {
   height: 11%;
   margin-top: 3%;
-  background-color: #8069ef;
+  background-image: linear-gradient( to left top, rgb(116, 92, 233), rgb(215, 105, 239));
   z-index: 2;
 }
 
@@ -374,12 +375,22 @@ input:checked + label {
   -webkit-box-orient: vertical;
 }
 
+#musician-surf-intro > span {
+  display: inline-table;
+  margin-bottom: 2%;
+  margin-right: 2%;
+  padding: 0 2%;
+  color: #414141;
+}
+
 #musician-surf-name {
   position: absolute;
   left: 5%;
   bottom: 30%;
   width: auto;
   font-size: 1.8em;
+  color: black;
+  font-weight: 600;
 }
 
 #musician-surf-location {
@@ -388,7 +399,7 @@ input:checked + label {
   bottom: 10%;
   width: 80%;
   font-size: 1.8em;
-  font-weight: 600;
+  font-weight: 400;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -398,7 +409,7 @@ input:checked + label {
   position: absolute;
   right: 5%;
   bottom: 15%;
-  font-size: 2rem;
+  font-size: 2.6rem;
   color: crimson;
 }
 
@@ -413,7 +424,7 @@ input:checked + label {
 /*뮤지션 리스트 끝*/
 
 #filter-body {
-    box-shadow: 3px 3px 20px 2px rgba(167, 167, 167, 0.8);
+    /* box-shadow: 3px 3px 20px 2px rgba(167, 167, 167, 0.8); */
     border-radius: 40px;
     font-size: 2.3em;
     font-weight: 440;
@@ -422,7 +433,7 @@ input:checked + label {
     transform: translateX(-50%);
     top: 90%;
     z-index: 1;
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.74);
     width: 46%;
     height: 80px;
     /* padding-left: 2%; */
@@ -433,7 +444,7 @@ input:checked + label {
 .filter {
   padding: 3% 4%;
   display: inline-block;
-  color: black;
+  color: white;
   font-weight: 500;
 }
 
@@ -444,8 +455,8 @@ input:checked + label {
 #filter-major {
   padding-left: 6%;
   padding-right: 5%;
-  border-left: 1px solid grey;
-  border-right: 1px solid grey;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
 }
 
 

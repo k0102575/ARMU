@@ -37,7 +37,7 @@ function setBtns() {
   $('.pr-reject-btn').on('click', function(e) {
     var pressedBtn = $(this)
     swal({
-      title: "참여 요청을 거절하시겠어요?",
+      title: "\n참여 요청을 거절하시겠어요?",
       type: "warning",
       showCancelButton: true,
       confirmButtonColor: "lightSeaGreen",
@@ -97,7 +97,7 @@ function setBtns() {
         })//swal()
       } else {//성공적으로 거절 완료한 경우 실행
         swal({
-          title: "요청을 수락하였습니다.\n\n\n이벤트 작성자가 확정하면\n\n매칭이 이뤄집니다.",
+          title: "요청을 수락하였습니다.\n\n\n지원한 이벤트 목록에서 \n\n확인하세요!",
           type: "success",
           showCancelButton: false,
           confirmButtonColor: "lightseagreen",
@@ -112,43 +112,6 @@ function setBtns() {
   })
   
   
-  $('.pr-accept-cancel-btn').on('click', function(e) {
-    var pressedBtn = $(this)
-
-    $.post('/event/acceptPrAndAppy.json', {
-      'eventNo': pressedBtn.attr('data-no')
-    }, function(result) {
-      if(result.status != 'success') {
-        console.log('json error')
-      }
-
-      if(result.data == 'canceled') {//이미 취소된 pr인 경우 실행
-        swal({
-          title: "요청을 취소하여 \n\n수락할 수 없는 상태입니다.",
-          type: "warning",
-          showCancelButton: false,
-          confirmButtonColor: "lightseagreen",
-          confirmButtonText: "확인",
-          customClass: "checkSwal"
-        },
-        function(){
-          location.reload()
-        })//swal()
-      } else {//성공적으로 거절 완료한 경우 실행
-        swal({
-          title: "요청을 수락하였습니다.\n\n\n지원한 이벤트 목록에서 확인하세요!",
-          type: "success",
-          showCancelButton: false,
-          confirmButtonColor: "lightseagreen",
-          confirmButtonText: "확인",
-          customClass: "acceptCheckSwal"
-        },
-        function(){
-          location.reload()
-        })//swal()
-      }
-    }, 'json')
-  })
 
 }
 

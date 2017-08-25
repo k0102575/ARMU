@@ -5,7 +5,7 @@
 <script id="ongoing-event-template" type="text/x-handlebars-template">
 {{#each listOngoing}}
 <div class="ongoing">
-<div class="event-box">
+<div class="ongoing-event-box" data-no={{no}}>
   <div class="ongoing-title">
 {{#intl locales="ko-KO"}}
   <div class="ongoing-dday ongoing-dday">{{formatRelative date units="day"}}</div>
@@ -24,10 +24,11 @@
     <div class="ongoing-applicant-name"><span>{{name}}</span></div>
     <!-- ongoing-applicant-name -->
 
-    <div class='ongoing-applicant-btn'>메시지 보내기</div>
+
+    <div class='ongoing-applicant-btn' data-receiver={{no}}
+data-nick={{name}}{{/writeMember}} data-sender={{muno}}>메시지 보내기</div>
 
   </div><!-- ongoing-musibox -->
-{{/writeMember}}
  
 
     </div><!-- ongoing -->
@@ -36,8 +37,6 @@
 {{#unless listOngoing}}
 <div class="no-event">
   현재 진행중인 이벤트가 없어요<br><br>
-  <i class="fa fa-frown-o" aria-hidden="true" id='no-event-cry'></i><br><br><br>
-  <a href="/mobile/gmode/event-regist/inex.html" class='event-add-btn'>이벤트 등록하기</a>
 </div>
 {{/unless}}
 

@@ -1,4 +1,6 @@
 "use strict"
+var domain = "http://192.168.0.22:8888";
+
 $(document).ready(function() {
   $(".animsition").animsition({
     inClass: 'fade-in-up',
@@ -33,13 +35,27 @@ function displayOngoingEventList() {
       console.error("getJSON() 실패: ", result.status)
       return;
     }
+    console.log(result.data)
     var templateFn = Handlebars.compile($('#ongoing-event-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#ongoing-event-container')
     var html = container.html()
     container.html(html + generatedHTML)
-    
+
     $('.loader-box').hide();
+
+
+    $('.ongoing-event-box').on('click', function(e) {
+      location.href = 'detail.html?no=' + $(this).attr('data-no')
+    })
+
+    $('.ongoing-applicant-btn').on('click', function() {
+      location.href = domain + '/mobile/chat/chat-msg.html' 
+      + '?receiverNo=' + $(this).attr('data-receiver')
+      + '&nickname=' + $(this).attr('data-nick')
+      + '&senderNo=' + $(this).attr('data-sender')
+      + '&mode=musimode'
+    })
   }, function(err) {
     console.log(err)
   })

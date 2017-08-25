@@ -11,8 +11,6 @@ function displayOngoingEventList() {
       return;
     }
     
-    console.log(result.data)
-
     $.each(result.data.listOngoing, function(i, item) {
       var starInteger = parseInt(item.matchMusician.score),
       starRealNumber = item.matchMusician.score - starInteger;

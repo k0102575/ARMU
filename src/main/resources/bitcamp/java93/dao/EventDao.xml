@@ -8,6 +8,7 @@
     <id column="eno" property="no" />
     <result column="title" property="title" />
     <result column="mno" property="writer" />
+    <result column="muno" property="muno" />
     <result column="location" property="location" />
     <result column="addr" property="address" />
     <result column="pay" property="pay" />

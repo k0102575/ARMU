@@ -98,6 +98,7 @@
   background-size: cover;
   border-radius: 100%;
   overflow: hidden;
+  border: 1px solid rgba(128, 128, 128, 0.57);
   margin-left: 3%;
 }
 
@@ -298,6 +299,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 100%;
+  border: 1px solid rgba(128, 128, 128, 0.57);
   overflow: hidden;
 }
 

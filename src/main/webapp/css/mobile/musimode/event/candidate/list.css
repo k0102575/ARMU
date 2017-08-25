@@ -96,7 +96,7 @@ body {
 }
 
 #event-type-appy-btn {
-  border-bottom: 4px solid #8069ef;
+  border-bottom: 4px solid lightseagreen;
 }
 
 .category-main {
@@ -339,7 +339,7 @@ body {
   width: auto;
   padding-left: 1.5%;
   padding-right: 1.5%;
-  background-color: #8069ef;
+  background-color: lightseagreen;
   border-radius: 6px;
   line-height: 46px;
   height: 48px;
@@ -419,3 +419,5 @@ body {
 }
 
 /*제안받은 이벤트 리스트 끝*/
+
+
