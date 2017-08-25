@@ -76,8 +76,10 @@ function eventCheck(event) {
   }
 
   if(prActive == "Y") { // 수락 거절 버튼 2개 뛰워야한다.
+    btn.addClass("acceptPrAndAppy")
     
   }
+  
 }
 
 function clickSetting() {
@@ -158,51 +160,4 @@ function clickSetting() {
 
 
 }
-
-/*$("#event-detail-header-prev").on('click', function() {
-  location.href = "/mobile/musimode/index.html"
-})
-
-$(".portfolio-add-btn").on('click', function() {
-
-  if(appy != 0 && appyActiveCheck == "Y") {
-    $.post('/event/cancelAppy.json', {
-      'eventNo': $(this).attr("data-value")
-    }, function(result) {
-      if(result.data == "success") {
-        swal({
-          title: "지원취소가 성공했습니다!",
-          type: "success",
-          showCancelButton: false,
-          confirmButtonColor: "#8069ef",
-          confirmButtonText: "확인",
-          customClass: "checkSwal"
-        },function(){
-          location.reload()
-        })
-      }
-    }, 'json')
-    return
-  }
-
-  $.post('/event/acceptPrAndAppy.json', {
-    'eventNo': $(this).attr("data-value")
-  }, function(result) {
-    if(result.data == "success") {
-      swal({
-        title: "이벤트 지원이 성공했습니다!",
-        type: "success",
-        showCancelButton: false,
-        confirmButtonColor: "#8069ef",
-        confirmButtonText: "확인",
-        customClass: "checkSwal"
-      },function(){
-        location.reload()
-      })
-    }
-  }, 'json')
-
-}) */
-
-//portfolio-add-btn.click
 
