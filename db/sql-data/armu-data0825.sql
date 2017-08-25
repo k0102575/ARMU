@@ -1060,7 +1060,7 @@ insert into noti (muno, eno, type, date, cont, whom, prno, isread) values (14, 7
 -- appy(뮤지션이 이벤트에 지원) 추가
 insert into appy (active, eno, muno) values ("Y", 4, 1);
 insert into appy (active, eno, muno) values ("Y", 4, 2);
-insert into appy (active, eno, muno) values ("Y", 4, 3);
+insert into appy (active, eno, muno) values ("Y", 8, 3);
 insert into appy (active, eno, muno) values ("Y", 4, 11);
 
 insert into appy (active, eno, muno) values ("Y", 7, 8);
@@ -1068,7 +1068,7 @@ insert into appy (active, eno, muno) values ("Y", 7, 14);
 
 insert into noti (muno, eno, type, date, cont, whom, appyno, isread) values (1, 4, "appy", '2017-08-01 23:55:35', "이벤트 지원", 'gmember', 1, 'N');
 insert into noti (muno, eno, type, date, cont, whom, appyno, isread) values (2, 4, "appy", '2017-08-02 12:45:15', "이벤트 지원", 'gmember', 2, 'N');
-insert into noti (muno, eno, type, date, cont, whom, appyno, isread) values (3, 4, "appy", '2017-08-03 05:55:35', "이벤트 지원", 'gmember', 3, 'N');
+insert into noti (muno, eno, type, date, cont, whom, appyno, isread) values (3, 8, "appy", '2017-08-03 05:55:35', "이벤트 지원", 'gmember', 3, 'N');
 insert into noti (muno, eno, type, date, cont, whom, appyno, isread) values (11, 4, "appy", '2017-08-04 11:12:15', "이벤트 지원", 'gmember', 4, 'N');
 
 insert into noti (muno, eno, type, date, cont, whom, appyno, isread) values (8, 7, "appy", '2017-08-01 23:38:15', "이벤트 지원", 'gmember', 5, 'N');
@@ -1657,4 +1657,184 @@ insert into thm_musi (muno, thmno) values (70, 9);
 insert into loc_musi (muno, locno) values (70, 5);
 insert into loc_musi (muno, locno) values (70, 6);
 insert into loc_musi (muno, locno) values (70, 7);
+
+-- 이벤트 추가
+
+insert into evn (active, title, mno, locno, pay, addr, date, cont, req)
+values ("Y", "결혼식 축가 구합니다", 15, 1, 50000, '인사동 123-6 인사웨딩홀', '2017-09-20',
+'결혼식 축가 구합니다
+알바 형식으로 주말(토.일)에만 하시면 됩니다
+어려운거 없구요
+한곡당 5만원씩 드립니다 중식 제공 뷔페로 합니다
+010-5895-9112로 문자주세요', '늦지 않게 와주실분 약속 잘지켜 주시는분 원합니다');
+
+insert into evn (active, title, mno, locno, pay, addr, date, cont, req)
+values ("Y", "성악 축가 구합니다", 16, 26, 150000, '중구 131 코모도호텔', '2017-09-03',
+'예식은 부산에서 9/3 오후 1시에 해요.',
+'계약 전에 확인 할 수 있는 영상도 봤으면 좋겠어요^^');
+
+insert into evn (active, title, mno, locno, pay, addr, date, cont, req)
+values ("Y", "결혼식 축가를 해주실 회원님 구합니다", 17, 25, 100000, '강동구청 앞 행복웨딩홀', '2017-08-21',
+
+'드디어 제 남동생이 늦장가를 갑니다.
+  
+8. 21(일) 14:00  서울 강동구청앞 예식장 
+
+실력만 되면 제가 당연히 축가를 해야 겠으나, 아직 박자 따라가기도 벅차놔서... 
+
+그래서 서울 경기 지역에 계시는 학생회원님들중에 축가해주실분을 지원받습니다. 
+
+', '독주도 괜찮고, 학생회원님 2분이 합주를 해 주어도 좋겠습니다. 
+
+만약 2분이서 합주를 하신다면 결혼행진곡도 가능할까요? 
+
+축가 곡목은 따로 정해진 것은 아니고, 자신있는 곡 중 하나로 정하면 되겠습니다.');
+
+insert into evn (active, title, mno, locno, pay, addr, date, cont, req)
+values ("Y", "우리언니 결혼식 축가로 All I ask of you 불러주실 분 구합니다", 18, 18, 50000, '독산동 25 실버 컨벤션', '2017-09-30',
+'그리 넉넉하지 않은 살림에 좁은방 함께 쓰며 티격태격 싸우며 커서 그런지 ... 
+
+이제는 혼자 방을 쓸 수 있단 생각에 슬프기도 기쁘기도 하지만..
+
+너무너무 사랑하는 우리 언니 결혼식 선물로 좋은 추억을 해주고 싶어요.
+
+결혼식 축가나 연주를 알아보고 있는데..
+
+혹시 싱어 추천해주시거나 직접 불러주실 분들 없나요?
+
+불러주시는 분들에게도 좋은 추억이 될거에요!
+
+소중한 날인만큼 멋지게 빛내주실 분 기다릴게요', '신청곡은 All I ask of you 입니다.');
+
+insert into evn (active, title, mno, locno, pay, addr, date, cont)
+values ("Y", "[급구] 내일 결혼식 축가 부르실 사람 구합니다", 19, 48, 200000, '달서구 이미지 웨딩홀', '2017-09-02',
+
+'원래 부르기러 했던 친구가 급출장을 가는 바람에 축가 부를 사람이 없어요 ㅠ ㅠ 
+
+평소 노래 실력에 자신이 있거나 축가 부른 경험이 좀 있으신 분 연락 좀 ㅠ ㅠ 
+
+당근 수고비는 드려요 
+
+지역은 대구입니다.
+');
+
+insert into evn (active, title, mno, locno, pay, addr, date, cont)
+values ("Y", "결혼식 반주팀 구합니다~^^", 20, 19, 350000, '여의도동 켄싱턴호텔', '2017-10-14',
+
+'일시 : 2017년 10월 14일 입니다.
+
+결혼식은 여의도에서 하구요.. 
+
+비용은 35만원입니다.
+
+관심있으신분들 매칭 요청주세요~~~~ 
+');
+
+insert into evn (active, title, mno, locno, pay, addr, date, cont, req)
+values ("Y", "결혼식 축가 해주실 분을 찾습니다", 5, 21, 100000, '은천동 124 로얄웨딩홀', '2017-12-4',
+'안녕하세요. 12월 초에 결혼을 앞둔 사람입니다.
+첫번째는 정해졌는데
+두번째 곡을 할사람은 너도나도 못한대서^^
+한분은 아르바이트 하실분이나 관련된 곳을 통해서
+구하려 합니다.
+성대한 결혼식이 아니기에 높은 금액이나 완전 가수같은 분을 구하는건 아닙니다.
+조촐한 금액이나마 마음을 잘 전달해주실분을 구합니다.
+장난스런 댓글이나 현실성없는 글이아닌^^
+준수한 실력과마음으로 
+축가를 불러주실분이 계시다면 답글 남겨주세요^^ 
+감사합니다. 날짜는 12월 초 서울입니다.
+', '신청곡은 성시경의 두사람 입니다.');
+
+insert into evn (active, title, mno, locno, pay, addr, date, cont, req)
+values ("Y", "결혼식 축가 해 주실 테너분 구합니다", 6, 14, 80000, '아현동 252 아현컨벤션', '2017-09-16',
+'9월 16일 12시 결혼식 축가고요,
+ 
+축가곡만 저와 듀엣으로 불러주시면 됩니다.
+ 
+페이는 8만원입니다. (적어서 죄송합니다.)
+ 
+데모있으심 보내주세요. weibe@hanmail.net  기한이 얼마 남지 않아 급하게 됐습니다.
+', '미녀와 야수 영어버전을 부를겁니다 (모르는 가사 손에 써서 커닝해도 되고요. ㅋ)');
+
+
+-- 이벤트 전공(mjr_evn) 추가
+insert into mjr_evn (eno, mjrno) values (19, 1);
+insert into mjr_evn (eno, mjrno) values (19, 2);
+insert into mjr_evn (eno, mjrno) values (19, 6);
+insert into mjr_evn (eno, mjrno) values (19, 7);
+
+insert into mjr_evn (eno, mjrno) values (20, 3);
+insert into mjr_evn (eno, mjrno) values (20, 9);
+insert into mjr_evn (eno, mjrno) values (20, 12);
+
+insert into mjr_evn (eno, mjrno) values (21, 1);
+insert into mjr_evn (eno, mjrno) values (21, 2);
+insert into mjr_evn (eno, mjrno) values (21, 3);
+
+insert into mjr_evn (eno, mjrno) values (22, 1);
+insert into mjr_evn (eno, mjrno) values (22, 2);
+
+insert into mjr_evn (eno, mjrno) values (23, 4);
+insert into mjr_evn (eno, mjrno) values (23, 5);
+insert into mjr_evn (eno, mjrno) values (23, 6);
+insert into mjr_evn (eno, mjrno) values (23, 7);
+insert into mjr_evn (eno, mjrno) values (23, 8);
+insert into mjr_evn (eno, mjrno) values (23, 9);
+
+insert into mjr_evn (eno, mjrno) values (24, 10);
+insert into mjr_evn (eno, mjrno) values (24, 11);
+insert into mjr_evn (eno, mjrno) values (24, 18);
+
+insert into mjr_evn (eno, mjrno) values (25, 1);
+
+insert into mjr_evn (eno, mjrno) values (26, 6);
+
+
+-- 이벤트 장르(gnr_evn) 추가
+insert into gnr_evn (eno, gnrno) values (19, 1);
+insert into gnr_evn (eno, gnrno) values (19, 2);
+insert into gnr_evn (eno, gnrno) values (19, 5);
+
+insert into gnr_evn (eno, gnrno) values (20, 13);
+insert into gnr_evn (eno, gnrno) values (20, 14);
+
+insert into gnr_evn (eno, gnrno) values (21, 1);
+
+insert into gnr_evn (eno, gnrno) values (22, 1);
+
+insert into gnr_evn (eno, gnrno) values (23, 9);
+insert into gnr_evn (eno, gnrno) values (23, 10);
+insert into gnr_evn (eno, gnrno) values (23, 13);
+insert into gnr_evn (eno, gnrno) values (23, 14);
+
+insert into gnr_evn (eno, gnrno) values (24, 15);
+insert into gnr_evn (eno, gnrno) values (24, 16);
+
+insert into gnr_evn (eno, gnrno) values (25, 1);
+insert into gnr_evn (eno, gnrno) values (25, 2);
+
+insert into gnr_evn (eno, gnrno) values (25, 14);
+
+-- 이벤트 테마(thm_evn) 추가
+insert into thm_evn (eno, thmno) values (19, 2);
+insert into thm_evn (eno, thmno) values (20, 2);
+insert into thm_evn (eno, thmno) values (21, 2);
+insert into thm_evn (eno, thmno) values (22, 2);
+insert into thm_evn (eno, thmno) values (23, 2);
+insert into thm_evn (eno, thmno) values (24, 1);
+insert into thm_evn (eno, thmno) values (25, 2);
+insert into thm_evn (eno, thmno) values (26, 2);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
