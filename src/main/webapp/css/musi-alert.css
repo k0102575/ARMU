@@ -1,0 +1,134 @@
+@CHARSET "UTF-8";
+
+
+/*알림창 시작*/
+
+.sweet-alert {
+  width: 700px !important;
+  left: 38%;
+  top: 50%;
+  height: 500px;
+}
+
+.sweet-alert .sa-icon .sa-warning .pulseWarning {
+    border-color: lightseagreen;
+}
+
+.sweet-alert h2 {
+  font-size: 3em;
+  top: 10%;
+}
+
+.sweet-alert .sa-confirm-button-container {
+  margin-top: 250px;
+  width: 150px;
+}
+
+.sweet-alert button {
+    background-color: #8CD4F5;
+    color: white;
+    border: none;
+    box-shadow: none;
+    font-size: 2rem;
+    font-weight: 500;
+    -webkit-border-radius: 4px;
+    border-radius: 5px;
+    padding: 10px 32px;
+    margin: 26px 5px 0 5px;
+    width: 160px;
+}
+
+.sa-button-container {
+  position: absolute;
+  top: 26%;
+  left: 27%;
+}
+
+.checkSwal > .sa-button-container {
+   position: absolute;
+  top: 20%;
+  left: 39%;
+}
+
+.checkSwal > h2 {
+    font-size: 3em;
+    top: 15%;
+}
+
+.sweet-alert .checkSwal {
+  width: 700px !important;
+  left: 38%;
+  top: 50%;
+  height: 465px;
+}
+
+.sweet-alert[data-has-cancel-button=false] button {
+  width: 150px;
+  height: 75px;
+  font-size: 2em;
+}
+
+@-webkit-keyframes pulseWarning {
+  0% {
+    border-color: lightseagreen; }
+  100% {
+    border-color: lightseagreen; } }
+
+@keyframes pulseWarning {
+  0% {
+    border-color: lightseagreen; }
+  100% {
+    border-color: lightseagreen; } }
+    
+    @-webkit-keyframes pulseWarningIns {
+  0% {
+    background-color: lightseagreen; }
+  100% {
+    background-color: lightseagreen; } }
+
+@keyframes pulseWarningIns {
+  0% {
+    background-color: lightseagreen; }
+  100% {
+    background-color: lightseagreen; } }
+
+.sweet-alert .sa-icon.sa-warning .sa-body {
+    position: absolute;
+    width: 5px;
+    height: 47px;
+    left: 50%;
+    top: 10px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    margin-left: -2px;
+    background-color: lightseagreen;
+}
+
+.sweet-alert .sa-icon.sa-success .sa-line {
+    height: 5px;
+    background-color: lightseagreen;
+    display: block;
+    border-radius: 2px;
+    position: absolute;
+    z-index: 2;
+}
+
+.sweet-alert .sa-icon.sa-success {
+    border-color: lightseagreen;
+}
+
+.sweet-alert .sa-icon.sa-success .sa-placeholder {
+    width: 80px;
+    height: 80px;
+    border: 4px solid lightseagreen;
+    -webkit-border-radius: 40px;
+    border-radius: 40px;
+    border-radius: 50%;
+    box-sizing: content-box;
+    position: absolute;
+    left: -4px;
+    top: -4px;
+    z-index: 2;
+}
+
+/*알림창 끝*/

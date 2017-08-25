@@ -11,6 +11,7 @@ function displayRecommandEventList() {
 			console.error("getJSON() 실패: ", result.status)
 			return;
 		}
+		console.log(result.data)
 			$.each(result.data.listRecommand, function(i, item) {
 				heartAdd(item)
 			});

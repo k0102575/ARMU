@@ -30,16 +30,42 @@ function displayEndEventList() {
 function setBtns() {
   $('.pr-reject-btn').on('click', function(e) {
     var pressedBtn = $(this)
-    $.post('/event/rejectPr.json', {
-      'eventNo': pressedBtn.attr('data-no')
-    }, function(result) {
-      if(result.status != 'success') {
-        console.log('json error')
-      }
-      
-      location.reload()
-    }, 'json')
+    swal({
+      title: "이 이벤트에 대한 참여 요청을 \n\n거절하시겠어요?",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "lightSeaGreen",
+      confirmButtonText: "네",
+      closeOnConfirm: true,
+      cancelButtonText: "아니요"
+    },
+    function(){//확인 버튼 누르면 실행
+      $.post('/event/rejectPr.json', {
+        'eventNo': pressedBtn.attr('data-no')
+      }, function(result) {
+        if(result.status != 'success') {
+          console.log('json error')
+        }
+        
+        if(result.data == 'canceled') {//이미 취소된 pr인 경우 실행
+          swal({
+            title: "이미 뮤지션이 취소하였습니다.",
+            type: "warning",
+            showCancelButton: false,
+            confirmButtonColor: "lightseagreen",
+            confirmButtonText: "확인",
+            customClass: "checkSwal"
+          },
+          function(){
+            location.reload()
+          })//swal()
+        } else {//성공적으로 거절 완료한 경우 실행
+          location.reload()
+        }
+      }, 'json')
+    });//swal()
   })
+  
   
     $('.pr-accept-btn').on('click', function(e) {
     var pressedBtn = $(this)

@@ -338,9 +338,9 @@ where ap.mno=#{no}
     left outer join gnr_musi gm on g.gnrno=gm.gnrno
     left outer join thm_musi tm on t.thmno=tm.thmno
     left outer join (
-    select count(if(muno is not null, 1, 0)) as fav, muno, eno
-    from fav_evn where muno=#{no} group by eno
-  ) fe on fe.eno=e.eno
+      select count(if(muno is not null, 1, 0)) as fav, muno, eno
+      from fav_evn where muno=#{no} group by eno
+    ) fe on fe.eno=e.eno
     where (mjm.muno=#{no} or gm.muno=#{no} or tm.muno=#{no})
   </select><!-- 완진 -->
 

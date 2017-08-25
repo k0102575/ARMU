@@ -13,7 +13,6 @@ function displayNotiList() {
       console.error("getJSON() 실패: ", result.status)
       return;
     }
-    
     if(result.data == "browse") {
       hideNotiList()
       return;
