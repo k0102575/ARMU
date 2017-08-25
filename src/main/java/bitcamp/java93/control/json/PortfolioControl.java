@@ -73,11 +73,16 @@ public class PortfolioControl {
   }
   
   @RequestMapping("musiInfoReview")
-  public JsonResult musiInfoReview(int no) {
+  public JsonResult musiInfoReview(HttpSession session, int no) {
     JsonResult result = new JsonResult();
+    HashMap<String,Object> dataMap = new HashMap<>();
+    
+    if (no == 0) {
+      no = getLoginMember(session).getNo();
+    }
+    
     try {
       List<Musician> musicianReview = (List<Musician>) portfolioService.listReview(no);
-      HashMap<String,Object> dataMap = new HashMap<>();
       dataMap.put("musicianReview", musicianReview);
       result.setData(dataMap);
     } catch (Exception e) {
@@ -127,21 +132,6 @@ public class PortfolioControl {
     result.setStatus(JsonResult.SUCCESS);
     dataMap.put("getIntroduce", musicianIntroduce);
     result.setData(dataMap);
-    return result;
-  }
-  
-  @RequestMapping("myReview")
-  public JsonResult myReview(HttpSession session) {
-    JsonResult result = new JsonResult();
-    try {
-      List<Musician> musicianReview = (List<Musician>) portfolioService.listReview(getLoginMember(session).getNo());
-      HashMap<String,Object> dataMap = new HashMap<>();
-      dataMap.put("musicianReview", musicianReview);
-      result.setData(dataMap);
-    } catch (Exception e) {
-      result.setStatus(JsonResult.ERROR);
-      result.setData(e.getMessage());
-    }
     return result;
   }
   

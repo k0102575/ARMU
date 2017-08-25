@@ -1,102 +1,92 @@
-var reviewContent = $(".review-content"),
-  reviewContentText = $(".review-content-text"),
-  reviewBox = $(".review-box"),
-  count = 0,
-  score = 0
-
+HandlebarsIntl.registerWith(Handlebars)
 displayMusiInfoReview()
 
-
 function displayMusiInfoReview() {
-  $.getJSON('/portfolio/myReview.json', function(result) {
-        
-        if(result.data.musicianReview.length == 0) {
-          $(".review-header").text("진행/완료된 이벤트 0개 ")
-        } else {
-          
-          var totalCount = result.data.musicianReview[0].count
-              score = 0;
-          $(".review-header").text("진행/완료된 이벤트  "+ totalCount +"개")
-          
+  $.getJSON('/portfolio/musiInfoReview.json',
+      { 
+    "no" : 0
+      }, function(result) {
+        $(".review-header").text("진행/완료된 이벤트  "+ result.data.musicianReview.length +"개")
+        if(result.data.musicianReview.length != 0) {
           var templateFn = Handlebars.compile($('#musician-info-review-template').text())
           var generatedHTML = templateFn(result.data)
           var container = $('.review-container')
           var html = container.html()
           container.html(html + generatedHTML)
-          
-          var reviewContentText = $(".review-content-text")
-              reviewBox = $(".review-box")
-              reviewContentMore = $(".review-content-more"),
-              reviewScore = $(".review-score")
-              
-          for (var i = 0; i <= reviewContentText.length - 1; i++) {
-            
-            score += parseInt(reviewScore[i].innerText)
-            
-            if(reviewContentText[i].innerText.length <= 7) {
-              reviewContentText[i].innerText = "아직 완료되지 않은 이벤트 입니다."
-            }
-            
-            if(reviewContentText[i].innerText.length <= 44) {
-              reviewContentText[i].style.height = "100px" 
-              reviewBox[i].style.height = "230px"
-            }
-            
-            if(reviewContentText[i].innerText.length >= 116) {
-              reviewContentMore[i].style.display = "block"
-            }
-          
-          }
-          
-          var grade =  score / totalCount
-          
-         $(".review-rating-grade").text(grade)
-          
+          textSetting()
         }
-        
-        var reviewContentMore = $(".review-content-more"),
-        reviewContentHide = $(".review-content-hide"),
-        reviewRatingGrade = $(".review-rating-grade")
-        
-        reviewContentMore.on('click', function() {
-          $(this).parent().parent().css('height', 'auto')
-          $(this).parent().children()[0].style.height = 'auto'
-          $(this).parent().children()[1].style.display = 'none'
-          $(this).parent().children()[2].style.display = 'block'
-        })
+        starAdd(result)
+      })
+}
 
-        reviewContentHide.on('click', function() {
-          $(this).parent().children()[0].style.height = '150px'
-          $(this).parent().children()[1].style.display = 'block'
-          $(this).parent().children()[2].style.display = 'none'
+function textSetting () {
+  var reviewContentText = $(".review-content-text")
+  reviewBox = $(".review-box")
+  reviewContentMore = $(".review-content-more"),
+  reviewContentHide = $(".review-content-hide"),
+  reviewRatingGrade = $(".review-rating-grade")
+
+  for (var i = 0; i <= reviewContentText.length - 1; i++) {
+    if(reviewContentText[i].innerText.length <= 7) {
+      reviewContentText[i].innerText = "아직 완료되지 않은 이벤트 입니다."
+    }
+    if(reviewContentText[i].innerText.length <= 44) {
+      reviewContentText[i].style.height = "100px" 
+        reviewBox[i].style.height = "230px"
+    }
+    if(reviewContentText[i].innerText.length >= 116) {
+      reviewContentMore[i].style.display = "block"
+    }
+  }
+
+  reviewContentMore.on('click', function() {
+    $(this).parent().parent().css('height', 'auto')
+    $(this).parent().children()[0].style.height = 'auto'
+      $(this).parent().children()[1].style.display = 'none'
+        $(this).parent().children()[2].style.display = 'block'
+  })
+
+  reviewContentHide.on('click', function() {
+    $(this).parent().children()[0].style.height = '150px'
+      $(this).parent().children()[1].style.display = 'block'
+        $(this).parent().children()[2].style.display = 'none'
           $(this).parent().parent().css('height', '350px')
-        })
-        
-        
-        }
-        
-)}
-      
+  })
+}
 
-$(window).load(function(){
-  starAdd()
-})
+function starAdd(result) {
+  var reviewScore = $(".review-score"),
+  count = 0,
+  totalScore = 0
 
-function starAdd() {
+  for(var i = 0; i < result.data.musicianReview.length; i++) {
+    if(reviewScore[i].innerText != 0) {
+      totalScore += parseInt(reviewScore[i].innerText)
+      count++
+    }
+  }
   
-  var starInteger = parseInt($(".review-rating-grade").text()),
-      starRealNumber = $(".review-rating-grade").text() - starInteger,
-      reviewRating = $(".review-rating")
-      
-  
+  var starInteger = parseInt(totalScore),
+  starRealNumber = totalScore - starInteger,
+  reviewRating = $(".review-rating")
+
+  if(starInteger == 0) {
+    for (var i = 1; i <= 5; i++) {
+      reviewRating.append("<i class='fa fa-star-o' aria-hidden='true'></i>")
+    }
+    return
+  }
+
+  $(".review-rating-grade").text(parseInt(totalScore) / count)
+
   for (var i = 1; i <= starInteger; i++) {
     reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
   }
-  
+
   if(starInteger == 5) {
     return;
   }
-  
+
   if(starRealNumber >= 0.8) {
     reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
   } else if(starRealNumber <= 0.3) {
@@ -104,14 +94,12 @@ function starAdd() {
   } else {
     reviewRating.append("<i class='fa fa-star-half-o' aria-hidden='true'></i>")
   }
-  
+
   if(starInteger < 4) {
     for (var i = 1; i <= 4 - starInteger; i++) {
       reviewRating.append("<i class='fa fa-star-o' aria-hidden='true'></i>")
     }
   }
-  
+
 }
-
-
 

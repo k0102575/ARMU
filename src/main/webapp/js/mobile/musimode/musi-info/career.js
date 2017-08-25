@@ -11,6 +11,7 @@ try {
 
 if (spno == 0) {
   
+  $(".musician-info-nickname").text("포트폴리오 추가")
   
   
   $('.portfolio-container').append(Handlebars.compile($('#musician-add-portfolio-template').text()))
@@ -178,6 +179,30 @@ $('body').on('click', "#movie-text-btn", function() {
 })
 
 $('body').on('click', "#introduce-add-btn", function() {
+  if($("#spec-desc").val() == "") {
+    swal({
+      title: "경력파일을 ",
+      type: "success",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    }
+    return
+  }
+  
+  if(fiFilenames == "" && fiMovienames == "") {
+    swal({
+      title: "경력파일을 ",
+      type: "success",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    }
+     return
+  }
+  
   $.post('/portfolio/addSpec.json', {
     'specDate': $("#spec-date").val(),
     'specDscp': $("#spec-desc").val(),
@@ -200,6 +225,17 @@ $('body').on('click', "#introduce-add-btn", function() {
 })
 
 $('body').on('click', "#introduce-edit-btn", function() {
+  if($("#spec-desc").val() == "") {
+    
+    return
+  }
+  
+  if(fiFilenames == "" && fiMovienames == "") {
+    
+    
+     return
+  }
+  
   $.post('/portfolio/updateSpec.json', {
     'spno': spno,
     'specDate': $("#spec-date").val(),

@@ -173,15 +173,15 @@
 }
 
 #filter-container {
-  display: none;
-  position: fixed;
-  top: 10%;
-  width: 90%;
-  height: 50%;
-  left:5%;
-  background-color: white;
-  border-radius: 25px;
-  z-index: 12;
+	display: none;
+position: fixed;
+    top: 10%;
+    width: 90%;
+    height: 60%;
+    left: 5%;
+    background-color: white;
+    border-radius: 10px;
+    z-index: 12;
 }
 
 .selectSpan {
@@ -199,16 +199,18 @@
 }
 
 #filter-category {
-  position: relative;
-  height: 100px;
-  width: 100%;
+position: relative;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 10%;
+    margin-top: 2%;
+    font-size: 3rem;
+    color: #555;
 }
 
 #filter-text {
   position: absolute;
   color: black;
-  font-size: 2.5em;
-  font-weight: normal;
   left: 50%;
   top: 14%;
   transform: translate(-50%, 6%);
@@ -236,7 +238,7 @@
 
 #location-check-btn {
   position: fixed;
-  top: 52%;
+  top: 62%;
   left: 14%;
   display: none;
   z-index: 20;
@@ -255,7 +257,6 @@
 }
 
 #location-check-check {
-  border: 2.5px solid white;
   font-size: 2rem;
   color: white;
   z-index: 15;

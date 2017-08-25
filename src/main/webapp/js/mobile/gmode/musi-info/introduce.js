@@ -45,12 +45,11 @@ function displayMusiInfoIntroduce() {
         }
         
         for (var i = 0; i < categoryList.length; i++) {
-          $("#musician-info-location-content").append("<div class='musician-info-location-content-box'><span class='location-span locationType'>"+categoryList[i].loctname+"</span>" +
+          $("#musician-info-location-content").append("<div class='musician-info-location-content-box'><span class='locationType'>"+categoryList[i].loctname+"</span><br><br>" +
           		"<div class='musician-info-location-content-container' loctno='"+ categoryList[i].loctno +"'></div></div>")
           for( var j = 0; j < categoryList[i].list.length; j++) {
-            $(".musician-info-location-content-container[loctno='"+ categoryList[i].list[j].key +"']").append("<span class='location-span'>#"+ categoryList[i].list[j].value +"</span>")
+            $(".musician-info-location-content-container[loctno='"+ categoryList[i].list[j].loctno +"']").append("<span class='hash-tag'>#"+ categoryList[i].list[j].location +"</span>")
           }
-          
         }
         
 

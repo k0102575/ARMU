@@ -237,7 +237,7 @@
   margin-right: 2%;
   margin-top: 2%;
   color: white;
-  background-color: #8069ef;
+  background-color: lightseagreen;
   border: 0px;
 }
 
@@ -298,9 +298,9 @@
 
 #movie-help-btn {
   background: white;
-  border: 5px solid #8069ef;
+  border: 5px solid lightseagreen;
   font-size: 2rem;
-  color: #8069ef;
+  color: lightseagreen;
   border-radius: 50px;
   display: inline-block;
   width: 75px;
@@ -309,8 +309,8 @@
 }
 
 .movie-delete-btn {
-  background: #8069ef;
-  border: 5px solid #8069ef;
+  background: lightseagreen;
+  border: 5px solid lightseagreen;
   font-size: 2.5rem;
   color: white;
   border-radius: 50px;
@@ -337,7 +337,7 @@ div[style^='background-image'] {
 }
 
 #question-btn {
-	color: #8069ef;
+	color: lightseagreen;
   width: 100px;
   height: 100px;
   margin-left: 2%;

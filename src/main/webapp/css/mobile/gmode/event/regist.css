@@ -770,7 +770,7 @@ float: left;
 
 .event-text {
   display: inline-block;
-  font-size: 2.3em;
+  font-size: 300%;
   margin-left: 5%;
   margin-top: 3%;
   font-weight: 400;
@@ -884,6 +884,7 @@ position: absolute;
     filter: blur(5px);
     background-repeat: no-repeat;
     background-size: cover;
+    display: none;
 }
 
 #event-page9-deepscreen {
@@ -893,6 +894,7 @@ position: absolute;
   height: 100%;
   z-index: 9;
   background-color: white;
+  display: none;
 }
 
 /* 이벤트 페이지 9 끝 */

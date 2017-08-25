@@ -140,41 +140,10 @@ $("#introduce-edit-btn").on('click', function() {
 function displayMusiInfoIntroduce() {
   $.getJSON('/portfolio/myIntroduce.json', function(result) {
     var data = result.data.getIntroduce
-    for(var theme of data.themeList) {
-      themeSelectText.append("<span class='selectSpan'>#" + theme + "</span>")
-    }
+
     
-    for (var i = 0; i < data.themeNoList.length; i++) {
-      categoryThemeNo += data.themeNoList[i] + ","
-    }
+    dataSetting(data)
     
-    for(var major of data.majorList) {
-      majorSelectText.append("<span class='selectSpan'>#" + major + "</span>")
-    }
-    
-    for (var i = 0; i < data.majorNoList.length; i++) {
-      categoryMajorNo += data.majorNoList[i] + ","
-    }
-    
-    for(var genre of data.genreList) {
-      genreSelectText.append("<span class='selectSpan'>#" + genre + "</span>")
-    }
-    
-    for (var i = 0; i < data.genreNoList.length; i++) {
-      categoryGenreNo += data.genreNoList[i] + ","
-    }
-    
-    locationSelectText.append("<span class='selectSpan'>" + data.sido + "</span>")
-    for(var location of data.locationList) {
-      locationSelectText.append("<span class='selectSpan'>#" + location + "</span>")
-    }
-    
-    for (var i = 0; i < data.locationNoList.length; i++) {
-      locationNo += data.locationNoList[i] + ","
-    }
-    
-    $("#intro-homepage").val(data.homepage)
-    $("#intro-text").val(data.intro)
 })
 }
 
@@ -319,4 +288,49 @@ function getLocation() {
     
 })
 })
+}
+
+function dataSetting(data) {
+  var categoryList = data.categoryList
+  for(var theme of data.themeList) {
+    themeSelectText.append("<span class='selectSpan'>#" + theme + "</span>")
+  }
+  
+  for (var i = 0; i < data.themeNoList.length; i++) {
+    categoryThemeNo += data.themeNoList[i] + ","
+  }
+  
+  for(var major of data.majorList) {
+    majorSelectText.append("<span class='selectSpan'>#" + major + "</span>")
+  }
+  
+  for (var i = 0; i < data.majorNoList.length; i++) {
+    categoryMajorNo += data.majorNoList[i] + ","
+  }
+  
+  for(var genre of data.genreList) {
+    genreSelectText.append("<span class='selectSpan'>#" + genre + "</span>")
+  }
+  
+  for (var i = 0; i < data.genreNoList.length; i++) {
+    categoryGenreNo += data.genreNoList[i] + ","
+  }
+  
+  for (var i = 0; i < data.locationNoList.length; i++) {
+    locationNo += data.locationNoList[i] + ","
+  }
+  
+  for (var i = 0; i < categoryList.length; i++) {
+    $("#musician-info-location-content").append("<div class='musician-info-location-content-box'><span class='location-span locationType'>"+categoryList[i].loctname+"</span>" +
+        "<div class='musician-info-location-content-container' loctno='"+ categoryList[i].loctno +"'></div></div>")
+    for( var j = 0; j < categoryList[i].list.length; j++) {
+      $(".musician-info-location-content-container[loctno='"+ categoryList[i].list[j].loctno +"']").append("<span class='location-span'>#"+ categoryList[i].list[j].location +"</span>")
+    }
+  }
+  
+  $("#intro-text").val(data.intro)
+  if(data.homepage == "0") {
+    return
+  }
+  $("#intro-homepage").val(data.homepage)
 }

@@ -380,7 +380,7 @@ function checkConfirm() {
 function progress(per) {
   progressBar.progressbar({
     value: per,
-    create: function(signup, ui) {$(this).find('.ui-widget-header').css({'background-color': 'rgba(128, 105, 239, 0.6)'})}
+    create: function(event, ui) {$(this).find('.ui-widget-header').css({'background-image': 'linear-gradient( to left top, rgb(116, 92, 233), rgb(215, 105, 239))'})}
   });
 };
 

@@ -277,14 +277,15 @@ input[type="checkbox"]:checked + label:before {
 }
 
 #intro-homepage {
-  float: left;
-  width: 80%;
-  border: 0px;
-  border-bottom: 1px solid black;
-  margin-left: 3%;
-  height: 100px;
-  margin-bottom: 2%;
-  font-size: 2.5rem;
+float: left;
+    width: 80%;
+    border: 0px;
+    border-bottom: 1px solid black;
+    margin-left: 3%;
+    height: 100px;
+    margin-bottom: 2%;
+    font-size: 2.5rem;
+    padding-top: 5px;
 }
 
 #intro-text {
@@ -317,5 +318,18 @@ input[type="checkbox"]:checked + label:before {
     background-color: rgba(0, 0, 0, .85);
     margin-left: 30%;
     margin-bottom: 10%;
+}
+
+.intro-span{
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.locationType {
+	 font-weight: 500;
+}
+
+.musician-info-location-content-box {
+	margin-bottom: 20px;
 }
 

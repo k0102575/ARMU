@@ -75,6 +75,7 @@
  margin-top: 50px;
  margin-left: 5%;
  font-size: 2em;
+ padding-top: 15px;
 }
 
 .introduce-introduce {
@@ -183,4 +184,24 @@ td:first-child {
 
 #musician-info-location-content {
  margin-left: 9%;
+}
+
+.musician-info-location-content-box {
+  margin-bottom: 20px;
+}
+
+.hash-tag {
+  width: auto;
+  height: 52px;
+  line-height: 50px;
+  display: inline-block;
+  padding-left: 3%;
+  padding-right: 3%;
+  border-radius: 30px;
+  background-color: white;
+  color: black;
+  margin-right: 2%;
+  border: 2px solid #8069ef;
+  font-size: 2rem;
+  margin-bottom: 3%;
 }

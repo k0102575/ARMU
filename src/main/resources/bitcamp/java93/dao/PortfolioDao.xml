@@ -29,15 +29,14 @@
   </resultMap>
   
   <resultMap type="musician" id="musicianInfoIntroduceMap">
-    <result column="team" property="isTeam" />
     <result column="hpg" property="homepage" />
     <result column="intro" property="intro" />
     <collection property="categoryList" ofType="Category">
         <id column="loctno" property="loctno"/> 
-        <result column="sido" property="loctname"/>
+        <result column="loctname" property="loctname"/>
         <collection property="list" ofType="java.util.Map">
-         <result property="key" column="loctno"/> 
-        <result property="value" column="location"/>
+         <result property="loctno" column="loctno"/> 
+        <result property="location" column="location"/>
         </collection> 
     </collection>
     <collection property="majorList" ofType="string"> 
@@ -93,7 +92,7 @@
   mj.mjrno as majorNo, mj.name as major,
   g.gnrno as genreNo, g.name as genre, 
   t.thmno as themeNo, t.name as theme,
-  l.locno as locationNo, l.name as location, lt.loctno, lt.name as sido
+  l.locno as locationNo, l.name as location, lt.loctno as loctno, lt.name as loctname
   from musi mu left outer join mjr_musi mjm on mu.muno=mjm.muno 
   left outer join mjr mj on mjm.mjrno=mj.mjrno
   left outer join gnr_musi gm on mu.muno=gm.muno 

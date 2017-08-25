@@ -16,7 +16,9 @@
  
   <div class="review-box">
   <div class="review-member">
-  <span id="review-text">{{eventDate}}</span> &nbsp;&nbsp;&nbsp;
+  {{#intl locales="ko-KO"}}
+    <span id="review-text">{{formatDate eventDate day="numeric" month="long" year="numeric"}}</span> &nbsp;&nbsp;&nbsp;
+    {{/intl}}
   <span class="review-title">{{eventTitle}}</span>
   </div>
   

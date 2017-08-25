@@ -15,9 +15,8 @@ function displayMusiInfoReview() {
 					var html = container.html()
 					container.html(html + generatedHTML)
 					textSetting()
-					scoreSetting(result)
-					starAdd()
 				}
+				starAdd(result)
 			})
 }
 
@@ -56,47 +55,52 @@ function textSetting () {
 	})
 }
 
-function starAdd() {
+function starAdd(result) {
+  var reviewScore = $(".review-score"),
+  count = 0,
+  totalScore = 0
 
-	var starInteger = parseInt($(".review-rating-grade").text()),
-	starRealNumber = $(".review-rating-grade").text() - starInteger,
-	reviewRating = $(".review-rating")
+  for(var i = 0; i < result.data.musicianReview.length; i++) {
+    if(reviewScore[i].innerText != 0) {
+      totalScore += parseInt(reviewScore[i].innerText)
+      count++
+    }
+  }
+  
+  var starInteger = parseInt(totalScore),
+  starRealNumber = totalScore - starInteger,
+  reviewRating = $(".review-rating")
 
-	for (var i = 1; i <= starInteger; i++) {
-		reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
-	}
+  if(starInteger == 0) {
+    for (var i = 1; i <= 5; i++) {
+      reviewRating.append("<i class='fa fa-star-o' aria-hidden='true'></i>")
+    }
+    return
+  }
 
-	if(starInteger == 5) {
-		return;
-	}
+  $(".review-rating-grade").text(parseInt(totalScore) / count)
+  
+  for (var i = 1; i <= starInteger; i++) {
+    reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
+  }
 
-	if(starRealNumber >= 0.8) {
-		reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
-	} else if(starRealNumber <= 0.3) {
-		reviewRating.append("<i class='fa fa-star-o' aria-hidden='true'></i>")
-	} else {
-		reviewRating.append("<i class='fa fa-star-half-o' aria-hidden='true'></i>")
-	}
+  if(starInteger == 5) {
+    return;
+  }
 
-	if(starInteger < 4) {
-		for (var i = 1; i <= 4 - starInteger; i++) {
-			reviewRating.append("<i class='fa fa-star-o' aria-hidden='true'></i>")
-		}
-	}
+  if(starRealNumber >= 0.8) {
+    reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")
+  } else if(starRealNumber <= 0.3) {
+    reviewRating.append("<i class='fa fa-star-o' aria-hidden='true'></i>")
+  } else {
+    reviewRating.append("<i class='fa fa-star-half-o' aria-hidden='true'></i>")
+  }
+
+  if(starInteger < 4) {
+    for (var i = 1; i <= 4 - starInteger; i++) {
+      reviewRating.append("<i class='fa fa-star-o' aria-hidden='true'></i>")
+    }
+  }
+
 }
-
-function scoreSetting(result) {
-	var reviewScore = $(".review-score"),
-	count = 0,
-	totalScore = ""
-
-		for(var i = 0; i < result.data.musicianReview.length; i++) {
-			if(reviewScore[i].innerText != 0) {
-				totalScore += reviewScore[i].innerText
-				count++
-			}
-		}
-	$(".review-rating-grade").text(parseInt(totalScore) / count)
-}
-
 

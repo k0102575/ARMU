@@ -1,13 +1,17 @@
 <link rel="stylesheet" type="text/css" href="/node_modules/sweetalert/dist/sweetalert.css">
+<script src="/node_modules/sweetalert/dist/sweetalert.min.js"></script>
+
+==============================일반모드===============================
 <link href="/css/alert.css" rel="stylesheet" type="text/css" media="all">
 
-<script src="/node_modules/sweetalert/dist/sweetalert.min.js"></script>
+==============================뮤지션모드==============================
+<link href="/css/musimode-alert.css" rel="stylesheet" type="text/css" media="all">
+
+
+
 
 
 버튼 2개짜리 js
-
-type: warning  느낌표
-      success 성공
 
 swal({
     title: "입력하신 정보가 사라집니다 \n\n" +
@@ -23,7 +27,6 @@ swal({
   
 });
 
-
 버튼 1개짜리 js
 
 swal({
@@ -33,4 +36,10 @@ swal({
   confirmButtonColor: "#8069ef",
   confirmButtonText: "확인",
   customClass: "checkSwal"
+},function () {
+
 });
+
+
+
+
