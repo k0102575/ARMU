@@ -55,7 +55,17 @@ function displayAppyEventList() {
           console.log('json error')
         }
         
-        location.reload()
+        swal({
+          title: "지원을 취소하였습니다.",
+          type: "warning",
+          showCancelButton: false,
+          confirmButtonColor: "lightseagreen",
+          confirmButtonText: "확인",
+          customClass: "checkSwal"
+        },
+        function(){
+          location.reload()
+        })//swal()
       }, 'json')
     })
   }, function(err) {
