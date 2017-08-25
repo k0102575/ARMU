@@ -114,12 +114,15 @@
           {{/writeMember}}
             <div class="event-surf-title"><span>{{title}}</span></div>
 
+              {{#intl locales="ko-KO"}}
+              <div class="event-surf-date"><span class="event-surf-date2">{{formatRelative date units="day"}}</span>
+              {{/intl}}
+              <i class="fa fa-circle delimiter" aria-hidden="true"></i>
+              <span>{{location}}</span>
+              <i class="fa fa-circle delimiter" aria-hidden="true"></i>
+              <span>{{formatNumber pay style="currency" currency="KRW"}}</span>
             </div>
-{{#intl locales="ko-KO"}}
-            <div class="event-surf-date"><span>{{formatDate date day="numeric" month="long" year="numeric"}}</span></div><br>
-{{/intl}}
-            <div class='event-surf-area'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{location}}&nbsp;{{address}}</span></div><br>
-            <div class="event-surf-price">{{formatNumber pay style="currency" currency="KRW"}}</div>
+            </div>
             <div class='event-surf-hashtagbox'>
             {{#majorList}}<span>#{{this}}</span>{{/majorList}}
             {{#themeList}}<span>#{{this}}</span>{{/themeList}}

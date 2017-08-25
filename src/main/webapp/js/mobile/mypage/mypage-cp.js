@@ -50,7 +50,7 @@ function updatePwd() {
       confirmButtonText: "확인",
       customClass: "checkSwal"
     }, function() {
-      location.href = '/mobile/mypage/mypage.html'
+      history.go(-1)
     });
   })
 }

@@ -100,12 +100,15 @@ $('#filter-loc').click(function() {
       return false;
     });
     $("#filter-loc-toggle").css('visibility', 'visible');
+    $(".active").css('visibility', 'visible');
+    $(".active").css('height', '400px');
 });
 
 $("#filter-loc-backscreen").click(function() {
   $('#main-surf').off('scroll touchmove mousewheel')
     $("#filter-loc-toggle").css('visibility', 'hidden');
     $(".active").css('visibility', 'hidden');
+    $(".active").css('height', '0');
     $("#filter-loc-backscreen").css('display', 'none');
 })
 
@@ -195,6 +198,9 @@ $("#filter-update").on('click', function() {
         "maxAge" : "60"
       },
       function(result) {
+        $.each(result.data.listSurf, function(i, item) {
+          heartAdd(item)
+        });
         handleList(result)
         filterContainer.toggle();
       },'json')
@@ -208,6 +214,9 @@ $("#filter-update").on('click', function() {
         "maxAge" : maxAge
       },
       function(result) {
+        $.each(result.data.listSurf, function(i, item) {
+          heartAdd(item)
+        });
         handleList(result)
         filterContainer.toggle();
       },'json')
