@@ -6,7 +6,6 @@ function displayMusiInfoReview() {
 			{ 
 		"no" : location.href.split('?')[1].split('=')[1]
 			}, function(result) {
-				console.log(result)
 				$(".review-header").text("진행/완료된 이벤트  "+ result.data.musicianReview.length +"개")
 				if(result.data.musicianReview.length != 0) {
 					var templateFn = Handlebars.compile($('#musician-info-review-template').text())
@@ -58,7 +57,8 @@ function textSetting () {
 function starAdd(result) {
   var reviewScore = $(".review-score"),
   count = 0,
-  totalScore = 0
+  totalScore = 0,
+  resultScore = 0
 
   for(var i = 0; i < result.data.musicianReview.length; i++) {
     if(reviewScore[i].innerText != 0) {
@@ -67,18 +67,19 @@ function starAdd(result) {
     }
   }
   
-  var starInteger = parseInt(totalScore),
-  starRealNumber = totalScore - starInteger,
-  reviewRating = $(".review-rating")
-
-  if(starInteger == 0) {
+  resultScore = parseInt(totalScore) / count
+  $(".review-rating-grade").text(resultScore)
+  
+  if(resultScore == 0) {
     for (var i = 1; i <= 5; i++) {
       reviewRating.append("<i class='fa fa-star-o' aria-hidden='true'></i>")
     }
     return
   }
-
-  $(".review-rating-grade").text(parseInt(totalScore) / count)
+  
+  var starInteger = parseInt(resultScore),
+  starRealNumber = resultScore - starInteger,
+  reviewRating = $(".review-rating")
   
   for (var i = 1; i <= starInteger; i++) {
     reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")

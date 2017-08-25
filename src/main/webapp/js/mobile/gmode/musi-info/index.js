@@ -31,8 +31,8 @@ infoReview.css('display', 'none')
 displayMusiInfo()
 
 var heartCount = 0,
-    musiPhoto = ""
-function displayMusiInfo() {
+musiPhoto = ""
+  function displayMusiInfo() {
   $.getJSON('/portfolio/musiInfo.json',
       { 
     "no" : location.href.split('?')[1].split('=')[1]
@@ -42,11 +42,11 @@ function displayMusiInfo() {
         musicianInfoNickName.text(data.nickName)
         musicianHeaderInfoImg.attr("src", data.photo + '_80.png')
         musicianBasicInfoImg.attr("src", data.photo + '_300.png')
-        
+
         $("#musician-info-backscreen").css("background", "url('"+ musiPhoto +"')")
         $("#musician-info-backscreen").css("background-size", "cover")
         $("#musician-info-backscreen").css("background-position", "center")
-        
+
         if(data.isTeam == "Y") {
           musicianBasicInfoName.text(data.nickName + "  (팀)")
         } else {
@@ -80,7 +80,7 @@ function displayMusiInfo() {
         })
 
       })
-      
+
       matchRequest()
 }
 
@@ -153,12 +153,21 @@ function matchRequest() {
     "no" : location.href.split('?')[1].split('=')[1]
   },
   function(result) {
+    console.log(result)
     if(result.data.eventList.length == 0) {
       var templateFn = Handlebars.compile($('#select-no-event-template').text())
       var generatedHTML = templateFn(result.data)
       var container = $('#musician-info-toggle')
-      var html = container.html()
-      container.html(html + generatedHTML)
+      container.html(generatedHTML)
+      container.prepend("<div id='event-header'><img id='signup-cancel-btn' src='/image/icon/access-black.png'>나의 이벤트 목록</div>")
+      $("#signup-cancel-btn").on('click', function() {
+        requestToggle.toggle()
+        requestBackScreen.css("display", "none")
+        $("#musician-info-deepscreen").css("display", "none" )
+      })
+
+
+      return
     }
 
     var templateFn = Handlebars.compile($('#select-event-template').text())
@@ -166,7 +175,7 @@ function matchRequest() {
     var container = $('#musician-info-toggle')
     container.html(generatedHTML)
     container.prepend("<div id='event-header'><img id='signup-cancel-btn' src='/image/icon/access-black.png'>나의 이벤트 목록</div>")
-    
+
     for(var i = 0; i < result.data.eventList.length; i++) {
       if(result.data.eventList[i].pr_count != 0 && result.data.eventList[i].prStatus == "Y") {
         $(".request-button[data-no='"+ result.data.eventList[i].no +"']").html("요청<br>취소")
@@ -229,7 +238,7 @@ function matchRequest() {
           acceptAppyAndPrResult(result.data)
         }, 'json')
       }) // 매칭 요청 swal
-      
+
     })  // button
 
     $("#signup-cancel-btn").on('click', function() {

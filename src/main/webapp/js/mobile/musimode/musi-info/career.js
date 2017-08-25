@@ -181,25 +181,27 @@ $('body').on('click', "#movie-text-btn", function() {
 $('body').on('click', "#introduce-add-btn", function() {
   if($("#spec-desc").val() == "") {
     swal({
-      title: "경력파일을 ",
+      title: "경력에 관한 내용을\n\n" +
+      		"작성해주세요",
       type: "success",
       showCancelButton: false,
-      confirmButtonColor: "#8069ef",
+      confirmButtonColor: "lightseagreen",
       confirmButtonText: "확인",
       customClass: "checkSwal"
-    }
+    })
     return
   }
   
   if(fiFilenames == "" && fiMovienames == "") {
     swal({
-      title: "경력파일을 ",
+      title: "경력을 설명할 \n\n" +
+      		"사진이나 동영상을 올려주세요! ",
       type: "success",
       showCancelButton: false,
-      confirmButtonColor: "#8069ef",
+      confirmButtonColor: "lightseagreen",
       confirmButtonText: "확인",
       customClass: "checkSwal"
-    }
+    })
      return
   }
   
@@ -214,7 +216,7 @@ $('body').on('click', "#introduce-add-btn", function() {
         title: "등록에 성공했습니다",
         type: "success",
         showCancelButton: false,
-        confirmButtonColor: "#8069ef",
+        confirmButtonColor: "lightseagreen",
         confirmButtonText: "확인",
         customClass: "checkSwal"
       }, function() {
@@ -226,13 +228,28 @@ $('body').on('click', "#introduce-add-btn", function() {
 
 $('body').on('click', "#introduce-edit-btn", function() {
   if($("#spec-desc").val() == "") {
-    
+    swal({
+      title: "경력에 관한 내용을\n\n" +
+          "작성해주세요",
+      type: "success",
+      showCancelButton: false,
+      confirmButtonColor: "lightseagreen",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    })
     return
   }
   
   if(fiFilenames == "" && fiMovienames == "") {
-    
-    
+    swal({
+      title: "경력을 설명할 \n\n" +
+          "사진이나 동영상을 올려주세요! ",
+      type: "success",
+      showCancelButton: false,
+      confirmButtonColor: "lightseagreen",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    })
      return
   }
   
@@ -248,7 +265,7 @@ $('body').on('click', "#introduce-edit-btn", function() {
         title: "변경에 성공했습니다",
         type: "success",
         showCancelButton: false,
-        confirmButtonColor: "#8069ef",
+        confirmButtonColor: "lightseagreen",
         confirmButtonText: "확인",
         customClass: "checkSwal"
       }, function() {
@@ -259,6 +276,17 @@ $('body').on('click', "#introduce-edit-btn", function() {
 })
 
 $('body').on('click', "#introduce-delete-btn", function() {
+  swal({
+    title: "경력을 삭제하시겠습니까?\n\n" +
+    		"삭제한 경력은 되돌릴수 없습니다.",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "lightseagreen",
+    confirmButtonText: "네",
+    closeOnConfirm: false,
+    cancelButtonText: "아니요"
+  },
+  function(){
   $.post('/portfolio/deleteSpec.json', {
     'spno': spno
   }, function(result) {
@@ -267,7 +295,7 @@ $('body').on('click', "#introduce-delete-btn", function() {
         title: "삭제에 성공했습니다",
         type: "success",
         showCancelButton: false,
-        confirmButtonColor: "#8069ef",
+        confirmButtonColor: "lightseagreen",
         confirmButtonText: "확인",
         customClass: "checkSwal"
       }, function() {
@@ -275,6 +303,8 @@ $('body').on('click', "#introduce-delete-btn", function() {
       });
     }
   }, 'json')
+})
+  
 })
 
 $('body').on('click', "#musician-info-prev", function() {

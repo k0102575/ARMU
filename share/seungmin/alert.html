@@ -4,13 +4,6 @@
 ==============================일반모드===============================
 <link href="/css/alert.css" rel="stylesheet" type="text/css" media="all">
 
-==============================뮤지션모드==============================
-<link href="/css/musimode-alert.css" rel="stylesheet" type="text/css" media="all">
-
-
-
-
-
 버튼 2개짜리 js
 
 swal({
@@ -19,6 +12,37 @@ swal({
     type: "warning",
     showCancelButton: true,
     confirmButtonColor: "#8069ef",
+    confirmButtonText: "네",
+    closeOnConfirm: true,
+    cancelButtonText: "아니요"
+  },
+  function(){
+})
+
+버튼 1개짜리 js
+
+swal({
+  title: "테마를 선택 하세요!",
+  type: "warning",
+  showCancelButton: false,
+  confirmButtonColor: "#8069ef",
+  confirmButtonText: "확인",
+  customClass: "checkSwal"
+},function () {
+
+});
+
+==============================뮤지션모드==============================
+<link href="/css/musimode-alert.css" rel="stylesheet" type="text/css" media="all">
+
+버튼 2개짜리 js
+
+swal({
+    title: "입력하신 정보가 사라집니다 \n\n" +
+        "취소하시겠습니까?",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "lightseagreen",
     confirmButtonText: "네",
     closeOnConfirm: true,
     cancelButtonText: "아니요"
@@ -33,12 +57,15 @@ swal({
   title: "테마를 선택 하세요!",
   type: "warning",
   showCancelButton: false,
-  confirmButtonColor: "#8069ef",
+  confirmButtonColor: "lightseagreen",
   confirmButtonText: "확인",
   customClass: "checkSwal"
 },function () {
 
 });
+
+
+
 
 
 

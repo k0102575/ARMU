@@ -94,29 +94,54 @@
   top: 0px;
   z-index: 15;
   overflow: scroll;
+  padding-bottom: 20%;
+  box-sizing: border-box;
+  height: 100vh;
+  background: transparent;
+}
+
+#spec-backscreen {
+  width: 100%;
+  display: none;
+  position: fixed;
+  top: 0px;
+  z-index: 15;
+  overflow: scroll;
   padding-bottom: 5%;
   box-sizing: border-box;
   height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
   url(/image/background/portfolio2.png);
   background-repeat: no-repeat;
   background-size: 200vw 100vh;
   background-position: center center;
+  filter: blur(100px);
+}
+
+#spec-deepscreen {
+  width: 100%;
+  display: none;
+  position: fixed;
+  top: 0px;
+  z-index: 15;
+  overflow: scroll;
+  padding-bottom: 5%;
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: white;
 }
 
 .spec-close {
-  height: 10%;
-  width: 100%;
-  font-size: 2.5em;
-  font-weight: 300;
-  z-index: 15;
-  background-color: none;
-  color: white;
-  position: fixed;
-  bottom: 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/image/background/portfolio2.png);
-  background-size: 200vw 100vh;
-  background-position: center 100%;
+height: 10%;
+    width: 100%;
+    font-size: 2.5em;
+    font-weight: 300;
+    z-index: 15;
+    background-color: none;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .spec-portfolio-container {
@@ -136,14 +161,21 @@
 }
 
 #spec-desc {
-  width: 90%;
+  width: 80%;
   float: left;
   font-size: 2.5em;
-  margin-left: 8%;
+  margin-left: 10%;
   font-weight: 400;
-margin-top: 10vh;
-  margin-bottom: 5%;
-  color: white;
+  margin-top: 15vh;
+  margin-bottom: 10vh;
+  color: black;
+  text-align: center;
+}
+
+.fa-quote-right,  .fa-quote-left{
+  font-size: 1.5rem;
+  vertical-align: super;
+  color: #6e6e6e;
 }
 
 #portfolio-prev {
