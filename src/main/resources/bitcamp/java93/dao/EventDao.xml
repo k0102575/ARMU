@@ -452,6 +452,7 @@ where ap.mno=#{no}
     left outer join gnr_musi gm on g.gnrno=gm.gnrno
     left outer join thm_musi tm on t.thmno=tm.thmno
     where l.name like '%${value}%' or
+    lt.name like '%${value}%' or
     g.name like '%${value}%' or
     mj.name like '%${value}%'or
     t.name like '%${value}%'

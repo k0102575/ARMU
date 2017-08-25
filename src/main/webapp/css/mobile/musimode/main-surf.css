@@ -20,7 +20,7 @@
 	text-align: justify;
 	color: black;
 	z-index: 1;
-	box-shadow: 1px 1px 12px 1px rgba(128, 128, 128, 0.59);
+	box-shadow: 1px 0px 10px 0px rgba(178, 178, 178, 0.59);
 	background-size: cover;
 }
 

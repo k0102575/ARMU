@@ -540,6 +540,7 @@ where mtc.eno = #{eNo}
   left outer join mjr_type mjrt on mj.mjrtno=mjrt.mjrtno
   left outer join gnr_type gnrt on g.gnrtno=gnrt.gnrtno
   where mu.nick like '%${value}%' or
+  lt.name like '%${value}%' or
   l.name like '%${value}%' or
   g.name like '%${value}%' or
   mj.name like '%${value}%'or
