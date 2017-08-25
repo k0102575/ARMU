@@ -23,6 +23,8 @@
     <result column="rhsno" property="rhsno" />
     <result column="rhs" property="haveRehearsal" />
     <result column="fav" property="isFavorite" />
+    <result column="pr_status" property="prStatus" />
+    <result column="appy_status" property="appyStatus" />
     <association property="writeMember" javaType="Member">
       <id property="no" column="mno" />
       <result property="name" column="name" />
@@ -239,10 +241,13 @@ where ap.muno=#{no}
   
    <select id="selectMusiPrList" resultMap="eventMap"
     parameterType="int">
-    select p.eno, p.title, p.date, p.location, p.addr, p.pay, p.major, p.genre, p.theme,
-p.prno, p.mno, m.name, m.path
-from eventlist_pr_musicians p inner join memb m on p.mno=m.mno
-where p.muno=#{no}
+select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme,
+pr.prno, mu.muno, mu.nick, m.path, pr.status as pr_status
+from recruiting_eventlist e
+left outer join pr on e.eno=pr.eno and pr.active="Y" and (pr.status is null)
+left outer join musi mu on pr.muno=mu.muno and pr.active="Y" and (pr.status is null)
+inner join memb m on e.mno=m.mno
+where mu.muno=#{no}
   </select><!-- 완진 -->
   
    <select id="selectMusiOngoingList" resultMap="eventMap"

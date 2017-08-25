@@ -414,4 +414,8 @@ body {
   font-weight: 500;
 }
 
+.pr-no-btn {
+  display: none;
+}
+
 /*제안받은 이벤트 리스트 끝*/

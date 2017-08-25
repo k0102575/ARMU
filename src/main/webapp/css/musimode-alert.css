@@ -62,6 +62,7 @@
   height: 465px;
 }
 
+
 .sweet-alert[data-has-cancel-button=false] button {
   width: 150px;
   height: 75px;
@@ -131,4 +132,18 @@
     z-index: 2;
 }
 
+
+.acceptCheckSwal {
+  width: 700px !important;
+  left: 38%;
+  top: 50%;
+  height: 600px;
+}
+
+.acceptCheckSwal > .sa-button-container  {
+  position: absolute;
+  top: 37%;
+  left: 50%;
+  transform: translateX(-50%);
+}
 /*알림창 끝*/

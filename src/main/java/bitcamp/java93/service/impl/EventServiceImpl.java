@@ -199,8 +199,11 @@ public class EventServiceImpl implements EventService {
   /* 11. 일반인이 홍보(PR) 취소*/
   public String cancelPr(HashMap<String, Object> valueMap) throws Exception {
     int prno = matchDao.selectExistPrCount(valueMap);
+    if(prno == 0) {
+      return "noData";
+    }
+    
     int isRejected = matchDao.checkPrStatus(prno);
-
     if(isRejected != 0) return "rejected";
 
     matchDao.updatePrActiveN(prno);
@@ -212,15 +215,22 @@ public class EventServiceImpl implements EventService {
   // 12. 뮤지션이 지원(Appy) 취소
   public String cancelAppy(HashMap<String, Object> valueMap) throws Exception {
     int appyno = matchDao.selectExistAppyCount(valueMap);
-    int isRejected = matchDao.checkPrStatus(appyno);
-
+    if(appyno == 0) {
+      return "noData";
+    }
+    
+    int isRejected = matchDao.checkAppyStatus(appyno);
     if(isRejected != 0) return "rejected";
-
+    
     matchDao.updateAppyActiveN(appyno);
     valueMap.put("appyno", appyno);
     notificationDao.deleteEventAppyNoti(appyno);
+    
     return "success";
   }
+  
+  
+  
   
   // 13. 리뷰 작성
   public void updateReview(Event event, int musicianNo) throws Exception {
