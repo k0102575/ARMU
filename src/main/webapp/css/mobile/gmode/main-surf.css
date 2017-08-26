@@ -249,6 +249,7 @@ input:checked + label {
 /* 로그인 안된 부분 시작 */
 
 .surf-no-login {
+	display:none;
   position: relative;
   hegiht: 900px;
   width: 100%;
@@ -605,7 +606,8 @@ input:checked + label {
   text-align: center;
   display: inline-block;
   font-size: 230%;
-  width: 30.9%;
+   width: 33.05%;
+    box-sizing: border-box;
   border-right: 0.5px solid grey;
   border-bottom: 0.5px solid grey;
 }
@@ -628,4 +630,8 @@ input:checked + label {
 .check-img {
   height: 30px;
   margin-right: 3%;
+}
+
+.loader-box {
+	z-index:100;
 }

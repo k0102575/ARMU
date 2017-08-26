@@ -43,7 +43,7 @@ function updateNick() {
       {'nickName':nick.val(),
         'no': mno
       }, function(result) {
-  location.href = '/mobile/mypage/mypage.html'
+    	  history.back()
   },'json')
 }
 
