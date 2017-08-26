@@ -1814,6 +1814,7 @@ insert into gnr_evn (eno, gnrno) values (25, 1);
 insert into gnr_evn (eno, gnrno) values (25, 2);
 
 insert into gnr_evn (eno, gnrno) values (25, 14);
+insert into gnr_evn (eno, gnrno) values (26, 2);
 
 -- 이벤트 테마(thm_evn) 추가
 insert into thm_evn (eno, thmno) values (19, 2);

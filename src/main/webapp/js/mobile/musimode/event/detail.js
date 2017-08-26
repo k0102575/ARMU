@@ -46,7 +46,12 @@ function eventCheck(event) {
   btn = $(".btn"),
   eventDetail = $("#event-detail-display")
 
-  if(appyStatus == "N" && prStatus == "N" && appyActive == "N" && prActive == "N") {
+  if(appyStatus == "Z" && prStatus == "Z" && appyActive == "N" && prActive == "Z") {
+    btn.addClass("acceptPrAndAppy")
+    return;
+  }
+  
+  if(appyStatus == "Z" && prStatus == "Z" && appyActive == "Z" && prActive == "Z") {
     btn.addClass("acceptPrAndAppy")
     return;
   }
@@ -66,6 +71,22 @@ function eventCheck(event) {
   if(prStatus == "N") {
     $(".btn").addClass("prReject-btn")
     return
+  }
+  
+  if(appyStatus == "Z" && prStatus == "Y" && appyActive == "Y" && prActive == "Y") {
+    btn.html("지원<br>취소")
+    btn.addClass("cancelAppy-btn")
+    eventDetail.css("display", "block")
+    eventDetail.append("<span class='event-display-hashtag'>지원한 이벤트</span>")
+    eventDetail.append("<span class='event-display-hashtag'>지원받은 이벤트</span>")
+    return;
+  }
+  
+  if(appyStatus == "Z" && prStatus == "Y" && appyActive == "N" && prActive == "Y") {
+    btn.addClass("acceptPrAndAppy")
+    eventDetail.css("display", "block")
+    eventDetail.append("<span class='event-display-hashtag'>지원받은 이벤트</span>")
+    return;
   }
 
   if(prStatus == "Y" || appyActive == "Y") {
@@ -90,7 +111,46 @@ function clickSetting() {
   $("#event-detail-header-prev").on('click', function() {
 	  location.href="/mobile/musimode/index.html"
   })
+  
+  // 2. 뮤지션이 홍보(PR) 거절하기
+  $(".rejectPr").on('click', function() {
+	    swal({
+	        title: "\n참여 요청을 거절하시겠어요?",
+	        type: "warning",
+	        showCancelButton: true,
+	        confirmButtonColor: "lightSeaGreen",
+	        confirmButtonText: "네",
+	        closeOnConfirm: true,
+	        cancelButtonText: "아니요"
+	      },
+	      function(){//확인 버튼 누르면 실행
+	        $.post('/event/rejectPr.json', { 
+	          'eventNo': eventNo
+	        }, function(result) {
+	          if(result.status != 'success') {
+	            console.log('json error')
+	          }
 
+	          if(result.data == 'canceled') {//이미 취소된 pr인 경우 실행
+	            swal({
+	              title: "이미 뮤지션이 취소하였습니다.",
+	              type: "warning",
+	              showCancelButton: false,
+	              confirmButtonColor: "lightseagreen",
+	              confirmButtonText: "확인",
+	              customClass: "checkSwal"
+	            },
+	            function(){
+	              location.reload()
+	            })//swal()
+	          } else {//성공적으로 거절 완료한 경우 실행
+	            location.reload()
+	          }
+	        }, 'json')
+	      });//swal()
+  })
+
+  // 4. 뮤지션이 이벤트에 지원(APPY)하기 && 3. 홍보(pr) 수락하기
   $(".acceptPrAndAppy").on('click', function () {
     swal({
       title: "이벤트에 지원하시겠습니까?",
@@ -102,7 +162,7 @@ function clickSetting() {
       cancelButtonText: "아니요"
     },function() {
       $.post('/event/acceptPrAndAppy.json', {
-        'eventNo': pressedBtn.attr('data-no')
+        'eventNo': eventNo
       }, function(result) {
         if(result.status != 'success') {
           console.log('json error')
@@ -133,10 +193,56 @@ function clickSetting() {
             location.reload()
           })//swal()
         }
+        
+        if(result.status == "success") {
+        	location.reload()
+        }
+        
       }, 'json') // 이벤트 지원 이벤트
     }) // 지원 묻는 swal
   }) // .acceptPrAndAppy
+  
+  // 12. 뮤지션이 지원(Appy) 취소
+  $(".cancelAppy-btn").on('click', function () {
+	  swal({
+	        title: "\n지원 요청을 취소하시겠어요?",
+	        type: "warning",
+	        showCancelButton: true,
+	        confirmButtonColor: "lightSeaGreen",
+	        confirmButtonText: "네",
+	        closeOnConfirm: true,
+	        cancelButtonText: "아니요"
+	      },
+	      function(){//확인 버튼 누르면 실행
+	    	  console.log(eventNo)
+	        $.post('/event/cancelAppy.json', { 
+	          'eventNo': eventNo
+	        }, function(result) {
+	        	console.log(result)
+	          if(result.status != 'success') {
+	            console.log('json error')
+	          }
 
+	          if(result.data == 'rejected') {//이미 거절된 pr인 경우 실행
+	            swal({
+	              title: "이미 뮤지션이 거절하였습니다.",
+	              type: "warning",
+	              showCancelButton: false,
+	              confirmButtonColor: "lightseagreen",
+	              confirmButtonText: "확인",
+	              customClass: "checkSwal"
+	            },
+	            function(){
+	              location.reload()
+	            })//swal()
+	          } else {//성공적으로 거절 완료한 경우 실행
+	            location.reload()
+	          }
+	        }, 'json')
+	      });//swal()
+  })
+
+  // 지원요청을 거절받았을때 상황
   $(".appyReject-btn").on('click', function() {
     swal({
       title: "지원요청을 거절받은 \n\n" +
@@ -148,7 +254,8 @@ function clickSetting() {
       customClass: "checkSwal"
     })
   }) // .appyReject-btn
-  
+
+  // 매칭요청을 거절했을때 상황
   $(".prReject-btn").on('click', function() {
     swal({
       title: "매칭요청을 거절했던 \n\n" +
@@ -160,12 +267,6 @@ function clickSetting() {
       customClass: "checkSwal"
     })
   }) // .appyReject-btn
-  
-  $(".cancelAppy-btn").on('click', function () {
-    
-  })
-  
-  
   
   
   

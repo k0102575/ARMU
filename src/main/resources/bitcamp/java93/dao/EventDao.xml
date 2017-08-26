@@ -477,10 +477,10 @@ where e.mno=#{no}
            t.name as theme, t.thmno as themeNo,
            m.name as major, m.mjrno as majorNo,
            g.name as genre, g.gnrno as genreNo,
-           if(pr.active is not null, 'Y', 'Z') as prActive,
-           if(pr.status is not null, 'Y', 'Z') as prStatus,
-           if(appy.active is not null, 'Y', 'Z') as appyActive,
-           if(appy.status is not null, 'Y', 'Z') as appyStatus
+           if(pr.active is not null, pr.active, 'Z') as prActive,
+           if(pr.status is not null, pr.status, 'Z') as prStatus,
+           if(appy.active is not null, appy.active, 'Z') as appyActive,
+           if(appy.status is not null, appy.status, 'Z') as appyStatus
     from evn e
     left outer join (select * from pr group by muno, eno having muno = #{muNo} and eno = #{eNo}
     ) pr on e.eno = pr.eno
