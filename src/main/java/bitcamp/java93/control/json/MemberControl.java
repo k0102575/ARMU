@@ -28,8 +28,11 @@ public class MemberControl {
   @Autowired MemberService memberService;
   
   @RequestMapping("add")
-  public JsonResult add(Member member,HttpSession session, Model model) throws Exception {
+  public void add(Member member,HttpSession session, Model model) throws Exception {
+    System.out.println(member);
     
+    
+    /*
     memberService.add(member);
 
     if (member != null) { 
@@ -39,7 +42,7 @@ public class MemberControl {
       
     }else {
       return new JsonResult(JsonResult.FAIL, "fail");
-    }
+    }*/
   }
   
   @RequestMapping("getProfile")
