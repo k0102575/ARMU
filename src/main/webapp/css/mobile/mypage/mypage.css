@@ -225,7 +225,7 @@ a {
     right: 6%;
 }
 #dn{
-  top: 18%;
+  top: 45%;
 }
 .dp{
 	margin-top:-11%;
@@ -370,4 +370,8 @@ a {
 
 #pwd-enter {
 	color: lightgray;
+}
+
+.nickDiv {
+	position: relative;
 }

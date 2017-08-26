@@ -1,4 +1,6 @@
+
 $(document).ready(function() {
+	
   displaySurfMusiList()
   filterLocation()
   filterMajor()
@@ -34,6 +36,7 @@ function displaySurfMusiList() {
       $(".filterBtn").css("display", "none")
       $("#filter-btn-icon").css("display", "none")
       $("#filter-body").css("top", "100%")
+      $('surf-no-login').show()
       return;
     }
     
@@ -45,8 +48,10 @@ function displaySurfMusiList() {
       var templateFn = Handlebars.compile($('#musician-list-template').text())
       var generatedHTML = templateFn(result.data)
       var container = $('#musician-surf-list')
-      container.html(generatedHTML)
-
+      $('.loader-box').fadeOut(300)
+      container.html(generatedHTML).hide().fadeIn(700)
+      
+      
     }
     
   })

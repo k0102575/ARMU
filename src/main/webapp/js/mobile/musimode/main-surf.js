@@ -1,3 +1,5 @@
+
+
 var surfBackscreen = $("#surf-backscreen"),
     container = $("#container"),
     filterContainer = $("#filter-container"),
@@ -17,13 +19,11 @@ function displaySurfEventList() {
     var container = $('#event-surf-container')
     var html = container.html()
     container.html(html + generatedHTML)
-    
-    $(".event-surf").on('click', function() {
-      location.href = '/mobile/musimode/event/detail.html?no=' + $(this).attr('data-no')
-    })
+    $('.event-surf').on('click', function() {
+    	location.href = '/mobile/musimode/event/detail.html?no=' + $(this).attr('data-no')
+	})
   })
 }
-
 $('body').on('click', ".filterBtn", function() {
   surfBackscreen.css('display', 'block')
   container.css('position', 'fixed')
@@ -142,7 +142,6 @@ function filter() {
         container.html(html + generatedHTML)
         $(".filter-thm-sub-con").css('display','none')
 //        $('.thm').first().addClass('on2').html('<img class="check-img check3" src="/image/icon/tick.png">&nbsp;'+ $('.thm').first().text())
-        
         $('.filter-thm-sub-tab').click(function() {
           $('.filter-thm-sub-tab').removeClass('on')
           $(this).addClass('on')
@@ -173,7 +172,10 @@ function filter() {
                   var container = $('#event-surf-container')
                   var html = container.html()
                   container.html(generatedHTML)
-              },'json')
+              $('.event-surf').on('click', function() {
+    	location.href = '/mobile/musimode/event/detail.html?no=' + $(this).attr('data-no')
+	})
+                },'json')
               $('.check3').remove()
               $('.thm').removeClass('on2')
         })
@@ -198,8 +200,10 @@ function filter() {
                   var container = $('#event-surf-container')
                   var html = container.html()
                   container.html(generatedHTML)
-              },'json')
-
+$('.event-surf').on('click', function() {
+    	location.href = '/mobile/musimode/event/detail.html?no=' + $(this).attr('data-no')
+	})
+                },'json')
           $('.check3').remove()
           $('.thm').removeClass('on2')
           $(this).html('<img class="check-img check3" src="/image/icon/tick.png">'+ $(this).text())
@@ -267,7 +271,10 @@ function filterMajor() {
                   var container = $('#event-surf-container')
                   var html = container.html()
                   container.html(generatedHTML)
-              },'json')
+              $('.event-surf').on('click', function() {
+    	location.href = '/mobile/musimode/event/detail.html?no=' + $(this).attr('data-no')
+	})
+                },'json')
               $('.check1').remove()
               $('.mjr').removeClass('on2')
         })
@@ -292,8 +299,10 @@ function filterMajor() {
                   var container = $('#event-surf-container')
                   var html = container.html()
                   container.html(generatedHTML)
-              },'json')
-              
+              $('.event-surf').on('click', function() {
+    	location.href = '/mobile/musimode/event/detail.html?no=' + $(this).attr('data-no')
+	})
+                },'json')
           $('.check1').remove()
           $('.mjr').removeClass('on2')
           $(this).html('<img class="check-img check1" src="/image/icon/tick.png">'+ $(this).text())
@@ -332,7 +341,9 @@ function filterGenre() {
         container.html(html + generatedHTML)
         $(".filter-gen-sub-con").css('display','none')
 //        $('.gen').first().addClass('on2').html('<img class="check-img check2" src="/image/icon/tick.png">&nbsp;'+ $('.gen').first().text())
-        
+        $('.event-surf').on('click', function() {
+    	location.href = '/mobile/musimode/event/detail.html?no=' + $(this).attr('data-no')
+	})
         $('.filter-gen-sub-tab').click(function() {
           $('.filter-gen-sub-tab').removeClass('on')
           $(this).addClass('on')
@@ -363,7 +374,10 @@ function filterGenre() {
                   var container = $('#event-surf-container')
                   var html = container.html()
                   container.html(generatedHTML)
-              },'json')
+              $('.event-surf').on('click', function() {
+            	  location.href = '/mobile/musimode/event/detail.html?no=' + $(this).attr('data-no')
+              })
+                },'json')
               $('.check2').remove()
               $('.gen').removeClass('on2')
         })
@@ -388,7 +402,10 @@ function filterGenre() {
                   var container = $('#event-surf-container')
                   var html = container.html()
                   container.html(generatedHTML)
-              },'json')
+              $('.event-surf').on('click', function() {
+    	location.href = '/mobile/musimode/event/detail.html?no=' + $(this).attr('data-no')
+	})
+                },'json')
           gnrno = $(this).attr('data-no')
           $('.check2').remove()
           $('.gen').removeClass('on2')
