@@ -120,3 +120,12 @@ $('#fi-photoupload').fileupload({
   $('#consent-menu').click(function() {
     window.open("clause.html");
   })
+  
+  $(".login-btn").on('click', function() {
+	  location.href="/mobile/gmode/index.html"
+  })
+  
+   $(".musician-btn").on('click', function() {
+	  location.href="/mobile/musi_signup.html"
+  })
+  

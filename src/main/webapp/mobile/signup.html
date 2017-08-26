@@ -6,6 +6,7 @@
 <title>ARMU MOBILE</title>
 <link rel='shortcut icon' type='image/x-icon' href='/image/favicon/favicon.ico'/>
 <link rel="stylesheet" href="/node_modules/jquery-ui-dist/jquery-ui.css">
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
 <link href="/css/signup.css" rel="stylesheet" type="text/css" media="all">
 <script src="/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
@@ -65,7 +66,7 @@
         <label for="fi-photoupload">+</label> 
           <input id="fi-photoupload" type="file" class="form-control upload"  name="files" multiple="multiple"> 
            </div>
-          <input id="fi-filenames" type="hidden" name="filenames" value="/image/profile/default.png">
+          <input id="fi-filenames" type="hidden" name="filenames" value="/image/profile/default">
           <div id="profile-img"></div>
           <button type="button" class="signup-btn">회원 가입</button>
 					 <div id="consent-menu">
@@ -87,17 +88,17 @@
     
     <div id="member-text">
     <br>
-    회원가입을 축하합니다
+    회원가입을 축하합니다!
     </div> <!-- member-text -->
     <div id="musician-text">
     <br>
     뮤지션으로 회원가입을 원하시면<br>
-    뮤지션 회원가입을 눌러주세요
+    뮤지션 회원가입을 눌러주세요.
     </div> <!-- musician-text -->
     
     <div id="btnDiv">
-    <a href="/mobile/gmode/index.html" class="login-btn btn" type="button">홈 화면으로</a>
-    <a href="musi_signup.html" class="musician-btn btn" type="button">뮤지션 회원가입</a>
+    <div class="login-btn btn"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;홈으로</div>
+    <div class="musician-btn btn" >뮤지션 회원가입</div>
     </div> <!-- btnDiv -->
     
     </div>

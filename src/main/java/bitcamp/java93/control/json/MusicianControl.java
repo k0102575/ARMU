@@ -250,8 +250,6 @@ public class MusicianControl {
       member.setIsMusician(1);
       session.setAttribute("loginMember", member);
 
-      System.out.println(member);
-
       return new JsonResult(JsonResult.SUCCESS, "ok");
       
     } catch (Exception e) {

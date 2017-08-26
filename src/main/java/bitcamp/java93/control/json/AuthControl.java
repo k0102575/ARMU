@@ -50,7 +50,6 @@ public class AuthControl {
   public JsonResult userinfo(HttpSession session) throws Exception {
     
     Member loginMember = (Member)session.getAttribute("loginMember");
-    
     if(loginMember == null) {
       return new JsonResult(JsonResult.FAIL, "browse");
     }

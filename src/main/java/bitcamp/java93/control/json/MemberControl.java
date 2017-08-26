@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import bitcamp.java93.domain.Member;
@@ -29,6 +30,10 @@ public class MemberControl {
   
   @RequestMapping("add")
   public JsonResult add(Member member,HttpSession session, Model model) throws Exception {
+    
+    System.out.println(member);
+    
+    
     memberService.add(member);
 
     if (member != null) { 

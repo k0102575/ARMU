@@ -9,8 +9,8 @@ function displayEventDetail() {
     "no" : location.href.split('?')[1].split('=')[1]
       },
       function(result) {
-        console.log(data)
         var data = result.data.detail
+        console.log(data)
         eventNo = data.no
         var templateFn = Handlebars.compile($('#select-event-template').text())
         var generatedHTML = templateFn(result.data)
@@ -77,12 +77,19 @@ function eventCheck(event) {
 
   if(prActive == "Y") { // 수락 거절 버튼 2개 뛰워야한다.
     btn.addClass("acceptPrAndAppy")
-    
+    btn.html("수락<br>하기")
+    $(".rejectPr").css("display", "block")
+    eventDetail.css("display", "block")
+    eventDetail.append("<span class='event-display-hashtag'>지원받은 이벤트</span>")
   }
   
 }
 
 function clickSetting() {
+	
+  $("#event-detail-header-prev").on('click', function() {
+	  location.href="/mobile/musimode/index.html"
+  })
 
   $(".acceptPrAndAppy").on('click', function () {
     swal({
@@ -157,6 +164,11 @@ function clickSetting() {
   $(".cancelAppy-btn").on('click', function () {
     
   })
+  
+  
+  
+  
+  
 
 
 }

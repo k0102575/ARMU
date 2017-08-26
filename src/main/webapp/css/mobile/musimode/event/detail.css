@@ -25,6 +25,24 @@
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.38);
 }
 
+.rejectPr {
+   position: fixed;
+  border-radius: 100%;
+  width: 150px;
+  height: 150px;
+  bottom: 15%;
+  right: 5%;
+  font-weight: 500;
+  background: black;
+  font-size: 2.2rem;
+  padding-top: 25px;
+  box-sizing: border-box;
+  text-align: center;
+  color: white;
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.38);
+  display: none;
+}
+
 .cancelAppy-btn {
   position: fixed;
   border-radius: 100%;

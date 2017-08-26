@@ -864,6 +864,8 @@ position: absolute;
   color: white;
   background-color: rgba(0, 0, 0, .7);
   transform: translateY(25%);
+  border: 1px solid white;
+  background: transparent;
 }
 
 .musician-btn {
