@@ -75,7 +75,7 @@ var memberToggle = $("#member-toggle" ),
         'phone': phoneInput.val(),
         'password': passwordInput1.val(),
         'email': emailInput.val(),
-        'photo' : '/image/profile/'+ fiFilenames.val()
+        'photo' : fiFilenames.val()
       }, function(result) {
         memberToggle.toggle()
       }, 'json')
@@ -113,7 +113,7 @@ $('#fi-photoupload').fileupload({
     done: function (e, d) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
       var imlibsData = d.result;
       var file = imlibsData.data[0];
-      fiFilenames.val(file.filename)
+      fiFilenames.val('/image/profile/' + file.filename)
     }
 });
   
