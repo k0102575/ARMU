@@ -68,30 +68,32 @@ group by pg.no;
 
 
 -- 인기 분야 탑10 구하기 - 기준: 관심 뮤지션이 많은 뮤지션의 분야
-select mjr.mjrno as no, mjr.name as tag, count(mjr_evn.mjrno) as count, mjr.mjrtno as typeno, if(mjr.mjrno is not null, "major", "") as type
-from mjr_evn inner join evn on mjr_evn.eno=evn.eno and evn.date > curdate() and evn.eno not in (select eno from mtc)
-left outer join mjr on mjr_evn.mjrno=mjr.mjrno
-group by mjr.mjrno
-
-
-union
-
-select gnr.gnrno as no, gnr.name as tag, count(gnr_evn.gnrno) as count, gnr.gnrtno as typeno, if(gnr.gnrno is not null, "genre", "") as type
-from gnr_evn inner join evn on gnr_evn.eno=evn.eno and evn.date > curdate() and evn.eno not in (select eno from mtc)
-left outer join gnr on gnr_evn.gnrno=gnr.gnrno
-group by gnr.gnrno
+select pt.no as no, t.name as tag, count(pt.no) as count, if(pt.no is not null, "theme", "") as type
+from (
+select tm.thmno as no, fm.muno
+from thm_musi tm inner join fav_musi fm on tm.muno=fm.muno
+) pt inner join thm t on pt.no=t.thmno
+group by pt.no
 
 union
 
-select thm.thmno as no, thm.name as tag, count(thm_evn.thmno) as count, thm.thmtno as typeno, if(thm.thmno is not null, "theme", "") as type
-from thm_evn inner join evn on thm_evn.eno=evn.eno and evn.date > curdate() and evn.eno not in (select eno from mtc)
-left outer join thm on thm_evn.thmno=thm.thmno
-group by thm.thmno
+select pmj.no as no, mj.name as tag, count(pmj.no) as count, if(pmj.no is not null, "major", "") as type
+from (
+select mjm.mjrno as no, fm.muno
+from mjr_musi mjm inner join fav_musi fm on mjm.muno=fm.muno
+) pmj inner join mjr mj on pmj.no=mj.mjrno
+group by pmj.no
+
+union
+select pg.no as no, g.name as tag, count(pg.no) as count, if(pg.no is not null, "genre", "") as type
+from (
+select gm.gnrno as no, fm.muno
+from gnr_musi gm inner join fav_musi fm on gm.muno=fm.muno
+) pg inner join gnr g on pg.no=g.gnrno
+group by pg.no
 
 order by count desc
-limit 10
-
-
+limit 10;
 
 
 
@@ -403,25 +405,11 @@ where m.mno=5
 
 
 
-select ap.eno, ap.mno, ap.title, ap.date, ap.location, ap.addr, ap.pay,
-ap.major, ap.genre, ap.theme,
-ap.appyno, ap.muno as ap_muno, ap.nick as ap_nick, ap.path as ap_path,
-p.prno, p.muno as p_muno, p.nick as p_nick, p.path as p_path
-from eventlist_appy_musicians ap
-left outer join eventlist_pr_musicians p on ap.eno = p.eno
-where ap.mno=#{no}
-
-
-select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme
-from recruiting_eventlist e
-where e.mno=#{no}
-
-
 -- 모든 모집 중인 이벤트 리스트 뷰 생성하기
 create view recruiting_eventlist as
 select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
 mj.name as major, g.name as genre, t.name as theme
-from (select * from evn where date >= curdate() and eno not in (select eno from mtc) and active='Y' order by date asc) e
+from (select * from evn where date >= curdate() and eno not in (select eno from mtc) order by date asc) e
 inner join memb m on e.mno=m.mno
 inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
 left outer join mjr_evn me on e.eno=me.eno inner join mjr mj on me.mjrno=mj.mjrno
@@ -449,14 +437,13 @@ create view eventlist_pr_musicians as
 select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme,
 pr.prno, mu.muno, mu.nick, m.path, score.score
 from recruiting_eventlist e
-left outer join pr on e.eno=pr.eno and pr.active="Y" and (pr.status is null or pr.status='Y')
-left outer join musi mu on pr.muno=mu.muno and pr.active="Y" and (pr.status is null or pr.status='Y')
-left outer join memb m on mu.muno=m.mno
+left outer join pr on e.eno=pr.eno
+left outer join musi mu on pr.muno=mu.muno inner join memb m on mu.muno=m.mno
 left outer join (
   select avg(score) as score, muno
   from mtc
   group by muno
-) score on score.muno=mu.muno;
+) score on score.muno=mu.muno
 
 
 
@@ -465,14 +452,13 @@ create view eventlist_appy_musicians as
 select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay, e.major, e.genre, e.theme,
 appy.appyno, mu.muno, mu.nick, m.path, score.score
 from recruiting_eventlist e
-left outer join appy on e.eno=appy.eno and appy.active = 'Y' and (appy.status is null or appy.status='Y')
-left outer join musi mu on appy.muno=mu.muno and appy.active = 'Y' and (appy.status is null or appy.status='Y')
-left outer join memb m on mu.muno=m.mno
+left outer join appy on e.eno=appy.eno
+left outer join musi mu on appy.muno=mu.muno inner join memb m on mu.muno=m.mno
 left outer join (
   select avg(score) as score, muno
   from mtc
   group by muno
-) score on score.muno=mu.muno;
+) score on score.muno=mu.muno
 
 
 
@@ -513,7 +499,6 @@ where ap.mno=5
 
 
 
-
 -- 진행중인 이벤트 리스트 가져오기
 select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
 mu.muno, mu.nick, mm.path, fav.fav,
@@ -533,7 +518,7 @@ left outer join (
 
 
 -- 종료한 이벤트 리스트 가져오기
-select e.eno, title, e.date, mu.muno, mu.nick, mm.path, if(mtc.rev is not null, 1, 0) as isrev
+select e.eno, title, e.date, mu.muno, mu.nick, mm.path
 from evn e
 left outer join memb m on e.mno=m.mno
 left outer join mtc on e.eno=mtc.eno and e.mno=5
@@ -579,6 +564,7 @@ left outer join gnr_evn ge on e.eno=ge.eno inner join gnr g on ge.gnrno=g.gnrno
 left outer join thm_evn te on e.eno=te.eno inner join thm t on te.thmno=t.thmno
 inner join memb m on m.mno=e.mno
 
+
 -- 위와 같음(간략버전)
 select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
 mu.muno, mu.nick, mm.path,
@@ -587,11 +573,3 @@ from evn e inner join mtc on e.eno=mtc.eno and e.date < curdate() and mtc.muno=1
 inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
 inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
 inner join memb m on m.mno=e.mno
-
-
-
--- 특정 뮤지션의 지원한(appy) 이벤트 리스트 가져오기
-select ap.eno, ap.title, ap.date, ap.location, ap.addr, ap.pay, ap.major, ap.genre, ap.theme,
-ap.appyno, ap.mno, m.name, m.path
-from eventlist_appy_musicians ap inner join memb m on ap.mno=m.mno
-where ap.muno=11

@@ -54,8 +54,9 @@ public class AuthControl {
     if(loginMember == null) {
       return new JsonResult(JsonResult.FAIL, "browse");
     }
-    
-    return new JsonResult(JsonResult.SUCCESS, loginMember);
+
+    Member member = memberService.getByEmailPassword(loginMember.getEmail(), "1111");
+    return new JsonResult(JsonResult.SUCCESS, member);
   }
   
   
