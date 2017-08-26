@@ -32,11 +32,12 @@ $(document.body).on('click', '.detail-link', function(event) {
 function displaySurfMusiList() {
   $.getJSON('/musician/listSurf.json', function(result) {
     if(result.data == "browse") {
+      $('.surf-no-login').css('display','block')
+      $('.loader-box').fadeOut(300)
       $("#musician-surf-list").css("height", "1280px")
       $(".filterBtn").css("display", "none")
       $("#filter-btn-icon").css("display", "none")
       $("#filter-body").css("top", "100%")
-      $('surf-no-login').show()
       return;
     }
     
@@ -50,8 +51,6 @@ function displaySurfMusiList() {
       var container = $('#musician-surf-list')
       $('.loader-box').fadeOut(300)
       container.html(generatedHTML).hide().fadeIn(700)
-      
-      
     }
     
   })

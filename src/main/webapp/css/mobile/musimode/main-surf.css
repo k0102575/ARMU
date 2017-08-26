@@ -526,3 +526,8 @@ input[type="checkbox"]:checked + label:before {
   height: 30px;
   margin-right: 3%;
 }
+
+.loader-box{
+    z-index: 100;
+	
+}

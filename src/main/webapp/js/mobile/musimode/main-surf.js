@@ -18,7 +18,8 @@ function displaySurfEventList() {
     var generatedHTML = templateFn(result.data)
     var container = $('#event-surf-container')
     var html = container.html()
-    container.html(html + generatedHTML)
+    $('.loader-box').fadeOut(300)
+    container.html(html + generatedHTML).hide().fadeIn(700)
     $('.event-surf').on('click', function() {
     	location.href = '/mobile/musimode/event/detail.html?no=' + $(this).attr('data-no')
 	})

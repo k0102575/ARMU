@@ -48,7 +48,7 @@
   <form action="">
    <div id="search-container">
      <i class="fa fa-search" id="search-icon" aria-hidden="true"></i>
-     <input type="search" id="search-text" placeholder="이벤트 검색" autofocus="autofocus">
+     <input type="text" id="search-text" placeholder="이벤트 검색" autofocus="autofocus">
      <i class="fa fa-times-circle" id="search-text-delete" aria-hidden="true"></i>
      <hr id="hrhrhr">
    </div> 
@@ -194,6 +194,9 @@
     
     
   searchText.keyup(function() {
+	if(event.keyCode == 13){
+	  document.activeElement.blur();
+	}
     if(searchText.val().length != 0) {
       $('#search-text-delete').css('display','block')
     }

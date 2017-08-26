@@ -116,6 +116,12 @@ $(window).on('load', function() {
     }, 300);
     $('#search-text').val('')
     $('#search-text').focus()
+    /* $("html").on('scroll touchmove mousewheel', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    }); */
+    /* $('#search-toggle').off('scroll touchmove mousewheel') */
     $('#search-backscreen').toggle("slide", {
       direction : 'right'
     }, 300);
@@ -215,6 +221,9 @@ $(window).on('load', function() {
     
     
   searchText.keyup(function() {
+	if(event.keyCode == 13){
+      document.activeElement.blur();
+    }
     if(searchText.val().length != 0) {
       $('#search-text-delete').css('display','block')
     }
