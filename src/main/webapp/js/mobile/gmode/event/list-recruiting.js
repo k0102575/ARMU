@@ -1,30 +1,6 @@
 "use strict"
-var rendercount = 0;
+$('.loader-box').show()
 
-$(document).ready(function() {
-  $(".animsition").animsition({
-    inClass: 'fade-in-up',
-    outClass: 'fade-out-down',
-    inDuration: 500,
-    outDuration: 700,
-    linkElement: '.animsition-link',
-    // e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
-    loading: false,
-    loadingParentElement: 'body', //animsition wrapper element
-    loadingClass: 'animsition-loading',
-    loadingInner: '', // e.g '<img src="loading.svg" />'
-    timeout: false,
-    timeoutCountdown: 5000,
-    onLoadEvent: true,
-    browser: [ 'animation-duration', '-webkit-animation-duration'],
-    // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
-    // The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
-    overlay : false,
-    overlayClass : 'animsition-overlay-slide',
-    overlayParentElement : 'body',
-    transition: function(url){ window.location.href = url; }
-  });
-});
 
 
 displayRecruitingEventList()
@@ -41,7 +17,8 @@ function displayRecruitingEventList() {
     var generatedHTML = templateFn(result.data)
     var container = $('#recruiting-event-container')
     var html = container.html()
-    container.html(html + generatedHTML)
+    $('.loader-box').fadeOut(100)
+    container.html(html + generatedHTML).hide().fadeIn(700)
     readyBtns()
   }, function(err) {
     console.log(err)
@@ -365,14 +342,14 @@ function offMusicianClickEvents() {
 
 
 
-
-
-function displayOngoing() {
-  var param = decodeURIComponent(location.href).split('?')[1]
-  if(!param) return;
-
-  var tab = param.split('=')[1]
-  if(tab == 'ongoing') $('#event-type-ongoing-btn').trigger("click");
-  
-  window.history.replaceState(null, null, window.location.href.split("?")[0]);
-}//displayTab()
+//
+//
+//function displayOngoing() {
+//  var param = decodeURIComponent(location.href).split('?')[1]
+//  if(!param) return;
+//
+//  var tab = param.split('=')[1]
+//  if(tab == 'ongoing') $('#event-type-ongoing-btn').trigger("click");
+//  
+//  window.history.replaceState(null, null, window.location.href.split("?")[0]);
+//}//displayTab()

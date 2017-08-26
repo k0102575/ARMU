@@ -1,5 +1,6 @@
 "use strict"
 
+
 var noEventView = $('.rec-no-event'),
 yesEventView = $('.rec-yes-event'),
 noMemberView = $('.rec-no-member'),

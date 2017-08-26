@@ -50,7 +50,7 @@ textarea {
   transform: translate(-50%, -50%);
 }
 
-.loader {
+/* .loader {
   display: inline-block;
   border: 9px solid #d1d1d1;
   border-top: 9px solid #9b9b9b;
@@ -59,6 +59,27 @@ textarea {
   height: 50px;
   animation: spin 800ms linear infinite;
 }
+ */
+
+.loader {
+    width: 32px;
+    height: 32px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -16px;
+    margin-left: -16px;
+    border-radius: 50%;
+    background-color: transparent;
+    border-top: 5px solid rgba(0,0,0,.2);
+    border-right: 5px solid rgba(0,0,0,.2);
+    border-bottom: 5px solid rgba(0,0,0,.2);
+    border-left: 5px solid #eee;
+    animation: spin 800ms linear infinite;
+}
+
+
+
 
 @keyframes spin {
     0% { transform: rotate(0deg); }

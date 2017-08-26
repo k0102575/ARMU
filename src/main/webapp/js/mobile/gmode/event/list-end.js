@@ -1,5 +1,5 @@
 "use strict"
-
+$('.loader-box').show()
 displayEndEventList()
 
 
@@ -17,7 +17,8 @@ function displayEndEventList() {
 		var generatedHTML = templateFn(result.data)
 		var container = $('#end-event-container')
 		var html = container.html()
-		container.html(html + generatedHTML)
+		$('.loader-box').fadeOut(100)
+		container.html(html + generatedHTML).hide().fadeIn(700)
 	
 		controlBtns()
 	}, function(err) {

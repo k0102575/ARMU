@@ -1,4 +1,5 @@
 "use strict"
+$('.loader-box').show()
 var domain = "http://192.168.0.22:8888";
 
 displayOngoingEventList()
@@ -22,7 +23,8 @@ function displayOngoingEventList() {
     var generatedHTML = templateFn(result.data)
     var container = $('#ongoing-event-container')
     var html = container.html()
-    container.html(html + generatedHTML)
+    $('.loader-box').fadeOut(100)
+    container.html(html + generatedHTML).hide().fadeIn(700)
     
     $('.event-box').on('click', function(e) {
       location.href = 'detail.html?no=' + $(this).attr('data-no')
