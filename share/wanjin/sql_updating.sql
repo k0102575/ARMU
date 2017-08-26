@@ -498,6 +498,17 @@ left outer join eventlist_pr_musicians p on ap.eno = p.eno
 where ap.mno=5
 
 
+-- 위와 같음(더빨라)
+select e.eno, e.mno, e.title, e.date, e.location, e.addr, e.pay,
+e.major, e.genre, e.theme,
+appy.appyno, apmu.muno as ap_muno, apmu.nick as ap_nick, apm.path as ap_path,
+pr.prno, prmu.muno as p_muno, prmu.nick as p_nick, prm.path as p_path
+from recruiting_eventlist e
+left outer join appy on e.eno=appy.eno and e.mno=5
+left outer join pr on e.eno=pr.eno and e.mno=5
+left outer join musi apmu on appy.muno=apmu.muno inner join memb apm on apmu.muno=apm.mno
+left outer join musi prmu on pr.muno=prmu.muno inner join memb prm on prmu.muno=prm.mno
+
 
 -- 진행중인 이벤트 리스트 가져오기
 select e.eno, e.mno, e.title, e.date, concat(lt.name, ' ', l.name) as location, e.addr, e.pay,
