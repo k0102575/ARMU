@@ -20,6 +20,7 @@ function displayNotiList() {
     }//로그인 안 한 경우
     
     if(jQuery.isEmptyObject(result.data.listNoti)) {
+    	$('.loader-box').hide()
       displayNoData()
       return;
     }//받아온 데이터가 없는 경우
