@@ -216,7 +216,7 @@
 	height: 100vh;
 	width: 100vw;
 	background-color: #000002;
-	z-index: 1;
+	z-index: 21;
 }
 
 #search-backscreen {
@@ -231,7 +231,7 @@
   filter: blur(27px);
   background-repeat: no-repeat;
   background-size: cover;
-  z-index:2;
+  z-index:22;
 }
 
 #search-toggle {
@@ -248,7 +248,7 @@
   border-bottom: 1px solid black;
   background-size: cover;
   background-repeat: none;
-  z-index:3;
+  z-index:23;
 }
 
 #search-cancel {
