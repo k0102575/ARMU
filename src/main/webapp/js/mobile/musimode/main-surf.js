@@ -28,15 +28,15 @@ function displaySurfEventList() {
 $('body').on('click', ".filterBtn", function() {
   surfBackscreen.css('display', 'block')
   container.css('position', 'fixed')
-  filterContainer.toggle(0)
-  $("#location-check-btn").toggle(0)
+  filterContainer.toggle('display', 'block')
+  $("#location-check-btn").toggle('display', 'block')
 })
 
 $('body').on('click', "#location-check-cancel", function() {
   surfBackscreen.css('display', 'none')
   container.css('position', 'relative')
-  filterContainer.toggle(0)
-  $("#location-check-btn").toggle(0)
+  filterContainer.toggle('display', 'none')
+  $("#location-check-btn").toggle('display', 'none')
 })
 
 $('body').on('click', "#location-check-check", function() {
