@@ -1102,3 +1102,10 @@ FOREIGN KEY (
 REFERENCES musi ( -- 뮤지션회원
 muno -- 뮤지션회원번호
 );
+
+
+
+-- 확인
+show tables;
+
+
