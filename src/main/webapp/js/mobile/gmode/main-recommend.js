@@ -8,6 +8,10 @@ noDataView = $('.rec-no-data');
 
 var isRecommandEvent = true;
 
+var renderCount = 0;
+
+$('.rec-title').hide()
+$('.loader-box').show()
 showRecommandList();
 displayRecommandByEventMusiList();
 displayBestReviewMusiList();
@@ -37,7 +41,7 @@ function displayRecommandByEventMusiList() {
     var generatedHTML = templateFn(result.data)
     var container = $('#rec-by-event-musi-container')
     var html = container.html()
-    container.html(html + generatedHTML)
+    container.html(html + generatedHTML).hide()
 
     $('.rec-by-event-musi-click').on('click', function() {
       location.href = 'musi-info/index.html?no=' + $(this).attr('data-no')
@@ -64,6 +68,8 @@ function displayRecommandByEventMusiList() {
         paginationElement: 'span'
       });
     });//initialize swiper ended
+    
+    removeLoader(++renderCount)
   }, function(err) {
     console.log(err)
   })
@@ -99,34 +105,18 @@ function displayBestReviewMusiList() {
     var generatedHTML = templateFn(result.data)
     var container = $('#rec-best-review-musi-container')
     var html = container.html()
-    container.html(html + generatedHTML)
+    container.html(html + generatedHTML).hide()
     
     $('.rec-best-review').on('click', function() {
       location.href = 'musi-info/index.html?no=' + $(this).attr('data-no')
     })
+    
+    removeLoader(++renderCount)
   }, function(err) {
     console.log(err)
   })
 }
 
-function displayMostPopularCategoryList() {
-  $.getJSON('/category/listTop10.json', function(result) {
-    if(result.status != 'success') {
-      console.error("getJSON() 실패: ", result.status)
-      return;
-    }
-    
-    var templateFn = Handlebars.compile($('#rec-most-popular-category-template').text())
-    var generatedHTML = templateFn(result.data)
-    var container = $('#rec-most-popular-category-container')
-    var html = container.html()
-    container.html(html + generatedHTML)
-    
-    console.log(result.data)
-  }, function(err) {
-    console.log(err)
-  })
-}
 
 function displayPopularMusiList() {
   $.getJSON('/musician/listPopular.json', function(result) {
@@ -146,12 +136,13 @@ function displayPopularMusiList() {
     var generatedHTML = templateFn(result.data)
     var container = $('#rec-popular-musi-container')
     var html = container.html()
-    container.html(html + generatedHTML)
+    container.html(html + generatedHTML).hide()
     
         
     $('.rec-popular-musi').on('click', function() {
       location.href = 'musi-info/index.html?no=' + $(this).attr('data-no')
     })
+    removeLoader(++renderCount)
   }, function(err) {
     console.log(err)
   })
@@ -210,3 +201,13 @@ function heartChange(isFavorite, pressedBtn) {
   return isFavorite;
 }
 
+
+function removeLoader(count) {
+	if(count != 3) return
+	
+	$('.loader-box').fadeOut(100)
+	$('.rec-title').fadeIn(700)
+	$('#rec-by-event-musi-container').fadeIn(700)
+	$('#rec-best-review-musi-container').fadeIn(700)
+	$('#rec-popular-musi-container').fadeIn(700)
+}

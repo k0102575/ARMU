@@ -125,8 +125,8 @@ height: 100vh;
 
 <div>
 
-<div id="container" class="animsition">
-
+<div id="container" >
+<div class='loader-box'><div class='loader'></div></div>
 	<div id="header-box"><!-- include --></div>
 
 	<div id="category">
@@ -198,9 +198,10 @@ $(document).ready(function() {
   });
   
   categoryBtn1.on('click', function() {
+	  mainRecommend.hide()
 	mainRecommend.load('main-recommend.html');
     categoryUnderbar1.css('display', "inline-block")
-    mainRecommend.css('display', '')
+    mainRecommend.fadeIn(700)
     mainSurf.css('display', 'none')
     $('#filter-body').css('display', 'none')
     mainAct.css('display', 'none')

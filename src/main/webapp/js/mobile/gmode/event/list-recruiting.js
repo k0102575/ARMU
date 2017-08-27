@@ -109,7 +109,7 @@ function displayPrMusicians(pressedBtn) {
           var html = container.html()
           container.html(html + generatedHTML)
           
-          setFoldBtns(pressedBtn)
+          setFoldBtns(pressedBtn, eventNo)
         }, function(err) {
           console.log(err)
         })//getJson()
@@ -169,7 +169,7 @@ function setMatchBtns(eventNo) {
   $('.decide-btn').on('click', function() {
     var musicianNo = $(this).attr('data-no')
     swal({
-      title: "매칭 후에는 취소가 불가해요. \n\n매칭을 확정하시겠어요?",
+      title: "매칭 후에는 취소할 수 없어요. \n\n매칭을 확정하시겠어요?",
       type: "warning",
       showCancelButton: true,
       confirmButtonColor: "#8069ef",
@@ -182,11 +182,6 @@ function setMatchBtns(eventNo) {
         'musicianNo' : musicianNo,
         'eventNo' : eventNo
       }, function(result) {
-        if(result.status != 'success') {
-          console.error("JSON 요청 실패: ", result.status)
-          return;
-        }
-        
         if(result.data != 'success') {
           swal({
             title: "매칭에 실패했습니다. \n\n다시 시도해주세요.",
@@ -200,7 +195,7 @@ function setMatchBtns(eventNo) {
             location.reload()
           })//swal()
         } else {//성공적으로 매칭 완료한 경우 실행
-          var newLocation = location.href + '?tab=ongoing'
+          var newLocation = location.href + '?tab=ongoing';
           location.href = newLocation
         }
       }, 'json')

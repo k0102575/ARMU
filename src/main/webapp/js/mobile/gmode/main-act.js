@@ -4,7 +4,7 @@ var noView = $('.no-view'),
     yesView = $('.yes-view'),
     noDataView = $('.no-data-view');
 
-
+$('.loader-box').show()
 displayNotiList()
 
 function displayNotiList() {
@@ -33,7 +33,8 @@ function displayNotiList() {
     var generatedHTML = templateFn(result.data)
     var container = $('#noti-container')
     var html = container.html()
-    container.html(html + generatedHTML)
+    $('.loader-box').fadeOut(100)
+    container.html(html + generatedHTML).hide().fadeIn(700)
     
     $('.noti').on('click', function() {
       setClickEvents($(this))
