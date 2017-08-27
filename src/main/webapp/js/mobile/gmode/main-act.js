@@ -14,6 +14,7 @@ function displayNotiList() {
       return;
     }
     if(result.data == "browse") {
+    	$('.loader-box').hide()
       hideNotiList()
       return;
     }//로그인 안 한 경우

@@ -27,6 +27,7 @@ function displayRecommandByEventMusiList() {
 
     if(result.data == "browse" || result.data == "noEvent") {
       hideRecommandList(result.data)
+      removeLoader(++renderCount)
       return;
     }
     

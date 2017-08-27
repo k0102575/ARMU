@@ -166,7 +166,7 @@ $(document).ready(function() {
   headerBox.load("../header-box.html");
   headerMenuDetail.load("../header-menu-detail.html");
     
-  $(".animsition").animsition({
+  /* /* $(".animsition").animsition({
     inClass : 'fade-in',
     outClass : 'fade-out',
     inDuration : 500,
@@ -188,8 +188,8 @@ $(document).ready(function() {
     overlayParentElement : 'body',
     transition : function(url) {
       window.location.href = url;
-    }
-  });
+    } 
+  }); */
     
   /* 카테고리별 메인 화면 띄우기 */
 
@@ -198,10 +198,9 @@ $(document).ready(function() {
   });
   
   categoryBtn1.on('click', function() {
-	  mainRecommend.hide()
+	  mainRecommend.hide().fadeIn(700)
 	mainRecommend.load('main-recommend.html');
     categoryUnderbar1.css('display', "inline-block")
-    mainRecommend.fadeIn(700)
     mainSurf.css('display', 'none')
     $('#filter-body').css('display', 'none')
     mainAct.css('display', 'none')
@@ -233,9 +232,9 @@ $(document).ready(function() {
   })
 
   categoryBtn3.on('click', function() {
+    mainAct.fadeIn(700)
 	mainAct.load('main-act.html');
     categoryUnderbar3.css('display', "inline-block")
-    mainAct.css('display', '')
     mainSurf.css('display', 'none')
     mainRecommend.css('display', 'none')
     $('#filter-body').css('display', 'none')
