@@ -212,16 +212,13 @@ $(document).ready(function() {
   })
 
   categoryBtn2.on('click', function() {
-	mainSurf.css('display', 'none')
-	mainSurf.load('main-surf.html', function () {
-		filterLoad()
-	});
+	  mainSurf.css('display', 'none')
+	  mainSurf.load('main-surf.html', function () {
+	    mainSurf.fadeIn(700)
+      mainSurf.css('visibility', 'visible')
+      $('#filter-body').fadeIn(700)
+    });
     categoryUnderbar2.css('display', "inline-block")
-    function filterLoad() {
-    mainSurf.fadeIn(700)
-    mainSurf.css('visibility', 'visible')
-    	$('#filter-body').fadeIn(700)
-	}
     mainRecommend.css('display', 'none')
     mainAct.css('display', 'none')
     categoryUnderbar1.css('display', "none")
@@ -233,7 +230,7 @@ $(document).ready(function() {
 
   categoryBtn3.on('click', function() {
     mainAct.fadeIn(700)
-	mainAct.load('main-act.html');
+	  mainAct.load('main-act.html');
     categoryUnderbar3.css('display', "inline-block")
     mainSurf.css('display', 'none')
     mainRecommend.css('display', 'none')
@@ -254,6 +251,10 @@ $(document).ready(function() {
     }
   }, function(err) {
     console.log(err)
+  })
+  
+  $('body').on('click','#logo-img', function() {
+    location.href='/mobile/gmode/index.html'
   })
 })
 </script>

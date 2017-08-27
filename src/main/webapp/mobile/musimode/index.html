@@ -204,7 +204,6 @@ HandlebarsIntl.registerWith(Handlebars);
    /* 카테고리별 메인 화면 띄우기 */
 
    $(window).on('load', function () {
-	   categoryBtn2.trigger('click')
 	   categoryBtn1.trigger('click')
 });
 
@@ -224,12 +223,12 @@ HandlebarsIntl.registerWith(Handlebars);
 
    categoryBtn2.on('click', function() {
 	   mainSurf.css('display', 'none')
-	 mainSurf.load('main-surf.html', function () {
-		 $('#filter-body').fadeIn(700)
-	});
+	   mainSurf.load('main-surf.html', function () {
+       mainSurf.fadeIn(700)
+       mainSurf.css('visibility', 'visible')
+		   $('#filter-body').fadeIn(700)
+		 });
      categoryUnderbar2.css('display', "inline-block")
-     mainSurf.fadeIn(700)
-     mainSurf.css('visibility', 'visible')
      mainRecommend.css('display', 'none')
      mainAct.css('display', 'none')
      categoryUnderbar1.css('display', "none")
@@ -263,6 +262,10 @@ HandlebarsIntl.registerWith(Handlebars);
     console.log(err)
   })
 })
+
+$('body').on('click','#logo-img', function() {
+    location.href='/mobile/musimode/index.html'
+  })
 
 
 </script>

@@ -43,9 +43,20 @@ function updateNick() {
       {'nickName':nick.val(),
         'no': mno
       }, function(result) {
-    	  history.back()
+//    	  history.back()
   },'json')
-}
+  console.log('aaa')
+  swal({
+    title: "닉네임이 변경되었습니다.",
+    type: "success",
+    showCancelButton: false,
+    confirmButtonColor: "#8069ef",
+    confirmButtonText: "확인",
+    customClass: "checkSwal"
+  }, function() {
+    history.go(-1)
+  });
+  }
 
 $(document.body).on('click', '#logout-link', function(event) {
   $.getJSON('/auth/logout.json', function(result) {
