@@ -24,6 +24,7 @@
 <script src="/node_modules/sweetalert/dist/sweetalert.min.js"></script>
 <script src="/node_modules/handlebars-intl/dist/handlebars-intl.min.js"></script>
 <script src="/node_modules/handlebars-intl/dist/locale-data/ko.js"></script>
+<script src="/node_modules/moment/min/moment.min.js"></script>
 <style>
 
 /*카테고리 시작*/
@@ -241,7 +242,7 @@ $(document).ready(function() {
   })
 
   categoryBtn3.on('click', function() {
-    mainAct.fadeIn(700)
+    mainAct.hide().fadeIn(700)
 	mainAct.load('main-act.html');
     categoryUnderbar3.css('display', "inline-block")
     mainSurf.css('display', 'none')
