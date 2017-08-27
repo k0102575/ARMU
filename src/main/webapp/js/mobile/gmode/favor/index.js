@@ -15,6 +15,16 @@ $(document).ready(function() {
 
 function listFavor() {
 $.getJSON('/musician/listFavor.json', function(result) {
+ if(result.data.listFavor.length == 0) {
+	 $("#musician-favor-count-text").text("관심 뮤지션 : 0명")
+	  var templateFn = Handlebars.compile($('#musician-favor-zero-template').text())
+	  var generatedHTML = templateFn(result.data)
+	  var container = $('#musician-favor-list')
+	  container.html("")
+	  container.html(generatedHTML)
+	  return
+ }
+	
   var templateFn = Handlebars.compile($('#musician-favor-template').text())
   var generatedHTML = templateFn(result.data)
   var container = $('#musician-favor-list')
@@ -36,12 +46,12 @@ $.getJSON('/musician/listFavor.json', function(result) {
 }
 
 
-$(document.body).on('click', '#musician-favor-preview', function(event) {
-  location.href = '/mobile/gmode/musi-info/index.html?no=' + $("#hidden-no").val() 
+$(document.body).on('click', '.musician-favor-preview', function(event) {
+  location.href = '/mobile/gmode/musi-info/index.html?no=' + $(this).attr("no") 
 })
 
-$(document.body).on('click', '#musician-favor-picture', function(event) {
-  location.href = '/mobile/gmode/musi-info/index.html?no=' + $("#hidden-no").val() 
+$(document.body).on('click', '.musician-favor-picture', function(event) {
+  location.href = '/mobile/gmode/musi-info/index.html?no=' + $(this).attr("no")
 })
 
 var lastScroll = 0;

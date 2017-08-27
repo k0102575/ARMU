@@ -37,7 +37,7 @@
   position: fixed;
   top: 10%;
   width: 90%;
-  height: 50%;
+  height: 70%;
   left:5%;
   background-color: white;
   border-radius: 25px;
@@ -130,13 +130,91 @@ label::before {
 
 input:checked + label {
   border: 2px solid #8069ef;
+  background-color: #8069ef;
+  color: white;
   z-index: 100;
   font-weight: 600;
 }
 
+#team-text {
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  font-size: 2.5em;
+  font-weight: 500;
+}
+
+#team-check-btn {
+  position: absolute;
+  width: 50%;
+  left: 27%;
+  top: 60%;
+}
+
+.team-btn {
+  display: inline-block;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  height: 30px;
+  font-size: 2em;
+  padding-bottom: 30px;
+  color:black;
+  border: 1px solid black;
+}
+
+#toggle-team-on + label{
+ top: 25%;
+ left: 26%;
+}
+
+#toggle-team-off + label {
+ top: 25%;
+ left: 51%;
+}
+
+input[name="team-toggle"].toggle {
+  display: none;
+}
+input[name="team-toggle"].toggle + label {
+  min-width: 200px;
+   border: 2.5px solid white; 
+}
+input[name="team-toggle"].toggle + label:hover {
+}
+input[name="team-toggle"].toggle + label:after {
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+  color:white;
+}
+
+input[name="team-toggle"].toggle.toggle-left + label {
+  border-right: 0;
+  }
+input[name="team-toggle"].toggle.toggle-left + label:after {
+  left: 100%;
+}
+input[name="team-toggle"].toggle.toggle-right + label {
+  margin-left: -5px;
+}
+input[name="team-toggle"].toggle.toggle-right + label:after {
+  left: -100%;
+}
+input[name="team-toggle"].toggle:checked + label {
+  background: #8069ef;
+}
+input[name="team-toggle"].toggle:checked + label:after {
+  left: 0;
+  background: #8069ef;
+}
+
 #gender-text {
   position: absolute;
-  top: 19%;
+  top: 40%;
   left: 5%;
   font-size: 2.5em;
   font-weight: 500;
@@ -144,34 +222,34 @@ input:checked + label {
 
 #gender-all {
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 5%;
 }
 
 #gender-male {
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 35%;
 }
 
 #gender-female {
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 64%;
 }
 
 #age-text {
-  position: absolute;
-  top: 55%;
-  left: 5%;
-  font-size: 2.5em;
-  font-weight: 500;
+position: absolute;
+    top: 67%;
+    left: 5%;
+    font-size: 2.5em;
+    font-weight: 500;
 }
 
  #age-10s, #age-20s, #age-30s,
 #age-40s, #age-50s, #age-60s {
   position: absolute;
-  top: 72%;
+  top: 82%;
   font-size: 2em;
 }
 
@@ -209,23 +287,24 @@ input:checked + label {
 }
 
 #slider-range {
-  position: absolute;
-  top: 65%;
-  left: 8%;
-  width: 80%;
-  height: 10%;
-  border: 0px;
-  background-color: white;
+    position: absolute;
+    top: 75%;
+    left: 8%;
+    width: 80%;
+    height: 10%;
+    border: 0px;
+    background-color: white;
 }
 
 .slider-max-range {
-  position: absolute;
-  left: 6%;
-  bottom: 31.5%;
-  background-color: white;
-  border: 3px solid white;
-  width: 80%;
-  z-index: 1;
+    position: absolute;
+    left: 11%;
+    bottom: 22.5%;
+    background-color: #f5f5f5;
+    border: 0px;
+    width: 80%;
+    z-index: 1;
+    height: 0.5%;
 }
 
 .ui-slider .ui-slider-range {
@@ -236,7 +315,7 @@ input:checked + label {
 }
 
 .ui-slider .ui-slider-handle {
-  height: 60%;
+  height: 45%;
   width: 6%;
   border-radius: 50px;
   background-color: white;

@@ -683,7 +683,7 @@ input[type="radio"].toggle:checked + label:after {
   border: 1px solid #525252;
   color: black;
   padding-left: 4%;
-  font-size: 2.6em;
+  font-size: 2.6rem;
 }
 
 #event-pay {
@@ -692,7 +692,7 @@ input[type="radio"].toggle:checked + label:after {
 
 #event-pay-text{
   color: black;
-  font-size: 2.6em;
+  font-size: 2.6rem;
   position: absolute;
   left: 15%;
   top: 12%;
@@ -707,13 +707,13 @@ input[type="radio"].toggle:checked + label:after {
   border: 1px solid #525252;
   color: #525252;
   padding-left: 4%;
-  font-size: 2.6em;
+  font-size: 2.6rem;
   resize: none;
 }
 
 #event-require-text{
   color: black;
-  font-size: 2.6em;
+  font-size: 2.6rem;
   position: absolute;
   left: 15%;
   top: 38%;
@@ -728,7 +728,7 @@ input[type="radio"].toggle:checked + label:after {
   position: relative;
   top: 300px;
   width: 100%;
-  min-height: 1500px;
+  min-height: 100vh;
   background-color: white;
 }
 
@@ -747,7 +747,7 @@ float: left;
 .event-title {
   display: inline-block;
   width: 90%;
-  font-size: 2.5em;
+  font-size: 2.5rem;
   margin-left: 5%;
   margin-top: 5%;
   font-weight: 500;
@@ -755,7 +755,7 @@ float: left;
 
 .event-writer {
   display: inline-block;
-  font-size: 2em;
+  font-size: 2rem;
   margin-left: 5%;
   margin-top: 3%;
   font-weight: 200;
@@ -770,7 +770,7 @@ float: left;
 
 .event-text {
   display: inline-block;
-  font-size: 300%;
+  font-size: 2rem;
   margin-left: 5%;
   margin-top: 3%;
   font-weight: 400;
@@ -799,11 +799,11 @@ float: left;
  }
 
 #event-page8-btn {
-  float: left;
-  width: 100%;
-  margin-top: 10%;
-  margin-bottom: 10%;
-  display: inline-block;
+    float: left;
+    width: 100%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    display: inline-block;
 }
 
 #event-page8-prev {

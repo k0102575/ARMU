@@ -10,9 +10,15 @@
     <span id="filter-text">필터</span><span></span>
   </div> <!-- filter-category -->
   <hr>
+  
+  <span id="team-text">팀</span>
+    <input id="toggle-team-on" class="toggle toggle-left" name="team-toggle" value="true" type="radio">
+    <label for="toggle-team-on" class="team-btn">네</label>
+    <input id="toggle-team-off" class="toggle toggle-right" name="team-toggle" value="false" type="radio">
+    <label for="toggle-team-off" class="team-btn">아니요</label>
 
     <span id="gender-text">성별</span>
-    <input id="gender1" name="gender" value="G" type="radio" checked>
+    <input id="gender1" name="gender" value="G" type="radio">
     <label for="gender1" id="gender-all">둘다</label>
     <input id="gender2" name="gender" value="M" type="radio">
     <label for="gender2" id="gender-male">남성</label>
@@ -188,4 +194,3 @@
 </script>
 
 <script src="/js/mobile/gmode/main-surf.js"></script>
-<script src="/js/mobile/gmode/jquery.ui.touch-punch.min.js"></script>

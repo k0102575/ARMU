@@ -732,7 +732,7 @@ input[type="radio"].toggle:checked+label:after {
 	position: relative;
 	top: 300px;
 	width: 100%;
-	min-height: 1500px;
+	min-height: 100%;
 	background-color: white;
 }
 
@@ -803,11 +803,11 @@ input[type="radio"].toggle:checked+label:after {
 }
 
 #event-page8-btn {
-	float: left;
 	width: 100%;
 	margin-top: 10%;
 	margin-bottom: 10%;
 	display: inline-block;
+	position: relative;
 }
 
 #event-page8-prev {

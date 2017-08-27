@@ -178,6 +178,7 @@ insert into loc (name, loctno) values ('서초구', 1);
 insert into loc (name, loctno) values ('강남구', 1);
 insert into loc (name, loctno) values ('송파구', 1);
 insert into loc (name, loctno) values ('강동구', 1);
+insert into loc (name, loctno) values ('전체', 1);
 
 insert into loc (name, loctno) values ('중구', 2);
 insert into loc (name, loctno) values ('서구', 2);
@@ -195,6 +196,7 @@ insert into loc (name, loctno) values ('연제구', 2);
 insert into loc (name, loctno) values ('수영구', 2);
 insert into loc (name, loctno) values ('사상구', 2);
 insert into loc (name, loctno) values ('기장군', 2);
+insert into loc (name, loctno) values ('전체', 2);
 
 insert into loc (name, loctno) values ('중구', 3);
 insert into loc (name, loctno) values ('동구', 3);
@@ -204,6 +206,7 @@ insert into loc (name, loctno) values ('북구', 3);
 insert into loc (name, loctno) values ('수성구', 3);
 insert into loc (name, loctno) values ('달서구', 3);
 insert into loc (name, loctno) values ('달성군', 3);
+insert into loc (name, loctno) values ('전체', 1);
 
 insert into loc (name, loctno) values ('중구', 4);
 insert into loc (name, loctno) values ('동구', 4);

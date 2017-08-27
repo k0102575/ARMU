@@ -64,9 +64,17 @@ var surfBackscreen = $("#surf-backscreen"),
 $(".filterBtn").on('click', function() {
 //  console.log(loc,mjr,gen, checkVal,minAge,maxAge,indexL,indexM,indexG)
   surfBackscreen.css('display', 'block');
-  ageGroup.val("20대 이하" + " - " + "50대 이상");
+  $("#musician-surf-list").css("position", "fixed")
   filterContainer.toggle();
 });
+
+$("input:radio[name=team-toggle]").on('click',function() {
+	$("input:radio[name=gender]").removeAttr("checked")
+})
+
+$("input:radio[name=gender]").on('click',function() {
+ $("input:radio[name=team-toggle]").removeAttr("checked")
+})
 
 
 
@@ -74,6 +82,7 @@ $(".filterBtn").on('click', function() {
 filterCancel.on('click', function() {
   filterContainer.toggle();
   surfBackscreen.css('display', 'none');
+  $("#musician-surf-list").css("position", "absolute")
 })
 /*$('#filter-loc').click(function() {
   $("#filter-loc-backscreen").css('display','block')
@@ -169,16 +178,12 @@ $( function() {
     	  maxAge = ui.values[1]
 
         if (ui.values[0] == 10 && ui.values[1] == 50) {
-          ageGroup.val("20대 이하" + " - " + "50대 이상");
           ageGroup.css("left", "55%").css("width", "41%");
         } else if (ui.values[1] == 50) {
-          ageGroup.val(ui.values[0] + "대" +  " - " + "50대 이상");
           ageGroup.css("left", "62%").css("width", "36%");
         } else if (ui.values[0] == 10) {
-          ageGroup.val("20대 이하" + " - " + ui.values[ 1 ] + "대");
           ageGroup.css("left", "62%").css("width", "36%");
         } else {
-          ageGroup.val(ui.values[ 0 ] + "대" + " - " + ui.values[ 1 ] + "대");
           ageGroup.css("left", "67%").css("width", "31%");
         } // if
 
@@ -190,6 +195,7 @@ $( function() {
 
 var checkVal = 'G'
 $("#filter-update").on('click', function() {
+  $("#musician-surf-list").css("position", "absolute")
 //  console.log(loc,mjr,gen, checkVal,minAge,maxAge,indexL,indexM,indexG)
   checkVal = $(":input:radio[name=gender]:checked").val()
   

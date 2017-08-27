@@ -1,11 +1,13 @@
 "use strict"
 HandlebarsIntl.registerWith(Handlebars);
+var eventNo = parseInt(location.href.split('?')[1].split('=')[1])
 displayEventDetail()
+
 
 function displayEventDetail() {
   $.getJSON('/event/myEventDetail.json', 
       { 
-    "eventNo" : location.href.split('?')[1].split('=')[1]
+    "eventNo" : eventNo
       }, 
       function(result) {
         console.log(result)
@@ -57,7 +59,7 @@ function displayEventDetail() {
           function(){
             $.getJSON('/event/delete.json', 
                 { 
-              "eno" : location.href.split('?')[1].split('=')[1]
+              "eno" : eventNo
                 },
                 function(result) {
                   if(result.data == "ok") {
@@ -70,7 +72,7 @@ function displayEventDetail() {
                       customClass: "checkSwal"
                     },
                     function(){
-                      location.href= "/mobile/gmode/index.html"
+                      location.href= "/mobile/gmode/event/list.html"
                     });
                   }
                 })
@@ -103,7 +105,7 @@ function displayEventDetail() {
 
           $.getJSON('/musician/myEventMatchMusician.json', 
               { 
-            "eNo" : location.href.split('?')[1].split('=')[1]
+            "eNo" : eventNo
               }, 
               function(result) {
                 console.log(result)
@@ -127,7 +129,7 @@ function displayEventDetail() {
 
 function setMusicianList() {
   $.getJSON('/musician/listAppy.json',
-      {'eventNo': location.href.split('?')[1].split('=')[1]},
+      {'eventNo': eventNo},
       function(result) {
         if(result.status != 'success') {
           console.error("getJSON() 실패: ", result.status)
@@ -170,7 +172,7 @@ function setMusicianList() {
       })//getJson()
 
       $.getJSON('/musician/listPr.json',
-          {'eventNo': location.href.split('?')[1].split('=')[1]},
+          {'eventNo': eventNo},
           function(result) {
             if(result.status != 'success') {
               console.error("getJSON() 실패: ", result.status)

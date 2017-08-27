@@ -293,7 +293,7 @@ signupPage5Next.on('click', function() {
   signupPage5.toggle(0);
   signupPage6.toggle(0 , function() {
     checkConfirm()
-    progress(95)
+    progress(100)
   });
 })
 

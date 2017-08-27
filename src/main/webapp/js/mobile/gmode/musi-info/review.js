@@ -55,19 +55,22 @@ function textSetting () {
 }
 
 function starAdd(result) {
-  var reviewScore = $(".review-score"),
+  var reviewRating = $(".review-rating"),
   count = 0,
   totalScore = 0,
   resultScore = 0
 
   for(var i = 0; i < result.data.musicianReview.length; i++) {
-    if(reviewScore[i].innerText != 0) {
-      totalScore += parseInt(reviewScore[i].innerText)
+      totalScore += parseInt(result.data.musicianReview[i].score)
+      if(result.data.musicianReview[i].score != 0) {
       count++
     }
   }
   
-  resultScore = parseInt(totalScore) / count
+  if(totalScore != 0 && count != 0) {
+	  resultScore = parseInt(totalScore) / count
+  }
+  
   $(".review-rating-grade").text(resultScore)
   
   if(resultScore == 0) {
@@ -78,8 +81,7 @@ function starAdd(result) {
   }
   
   var starInteger = parseInt(resultScore),
-  starRealNumber = resultScore - starInteger,
-  reviewRating = $(".review-rating")
+  starRealNumber = resultScore - starInteger
   
   for (var i = 1; i <= starInteger; i++) {
     reviewRating.append("<i class='fa fa-star' aria-hidden='true'></i>")

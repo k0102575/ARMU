@@ -90,13 +90,11 @@
 .spec-detail {
   width: 100%;
   display: none;
-  position: fixed;
-  top: 0px;
+  position: absolute;
+  top: -70%;
   z-index: 15;
   overflow: scroll;
-  padding-bottom: 20%;
-  box-sizing: border-box;
-  height: 100vh;
+  min-height: 100vh;
   background: transparent;
 }
 
@@ -109,7 +107,7 @@
   overflow: scroll;
   padding-bottom: 5%;
   box-sizing: border-box;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
   url(/image/background/portfolio2.png);
   background-repeat: no-repeat;
@@ -127,7 +125,7 @@
   overflow: scroll;
   padding-bottom: 5%;
   box-sizing: border-box;
-  height: 100vh;
+  min-height: 100vh;
   background-color: white;
 }
 
@@ -148,6 +146,7 @@ height: 10%;
   text-align: center;
   float: left;
   width: 100%;
+  min-height: 50vh;
 }
 
 #spec-date {
@@ -206,6 +205,13 @@ iframe {
   width: 95%;
   height: 100%;
   margin-top: 5%;
+}
+
+.spec-empty-container {
+ display: none;
+ width: 100%;
+ height: 400px;
+ float: left;
 }
 
 .musician-portfolio-edit-btn {

@@ -1,4 +1,4 @@
-login-btn btn@CHARSET "UTF-8";
+@CHARSET "UTF-8";
 
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
@@ -8,20 +8,17 @@ login-btn btn@CHARSET "UTF-8";
   margin: 0;
 }
 
-body {
-  position: relative;
-}
-
 #container {
   height: 100vh;
   width: 100%;
   position: relative;
+  background-color: black;
+  top: 0px;
+  left: 0px;
 }
 
 #container-filter {
   position: fixed;
-  height: 100%;
-  width: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url("/image/background/mobile_intro_index.jpg");
   height: 100vh;
@@ -32,6 +29,8 @@ body {
   -o-filter: blur(50px);
   -ms-filter: blur(50px);
   filter: blur(5px); 
+  top: 0px;
+    left: 0px;
 }
 
 /* 뒤로가기 시작 */
@@ -40,7 +39,6 @@ body {
   position: absolute;
   top: 4%;
   left: 7%;
-  width: 60px;
 }
 
 /* 뒤로가기 끝 */

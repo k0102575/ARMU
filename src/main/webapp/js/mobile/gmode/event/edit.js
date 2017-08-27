@@ -87,12 +87,10 @@ categoryGenreNo = ""
 
   var eventDate = 0,
   eventLoctno = 0,
-  eventLocno = 0
+  eventLocno = 0,
+  eventNo = location.href.split('?')[1].split('=')[1]
 
   $(document).ready(function() {
-    eventPage2.toggle();
-    progress(10)
-    categoryList()
     displayEventDetail()
   })
 
@@ -108,7 +106,7 @@ categoryGenreNo = ""
       cancelButtonText: "아니요"
     },
     function(){
-      location.href = "/mobile/gmode/index.html"
+      location.href = "/mobile/gmode/event/detail.html?no=" + eventNo
     });
 
   })
@@ -435,8 +433,8 @@ categoryGenreNo = ""
   eventPage8Next.on('click', function() {
 
     if($("input[name=toggle]:checked").val() =="true") {
-      $.post('/even0t/update.json', {
-        'no' : location.href.split('?')[1].split('=')[1],
+      $.post('/event/update.json', {
+        'no' : eventNo,
         'locno': citySelectMenu.val(),
         'pay': inputEventPay.val(),
         'requirement': inputEventRequire.val(),
@@ -451,11 +449,11 @@ categoryGenreNo = ""
         "rhsnum" : inputRehearseCount.val(),
         "rhsinfo" : inputRehearseText.val()
       }, function(result) {
-        location.href = "/mobile/gmode/event/detail.html?no=" + location.href.split('?')[1].split('=')[1]
+        location.href = "/mobile/gmode/event/detail.html?no=" + eventNo
       }, 'json')
     } else if($("input[name=toggle]:checked").val() =="false") {
       $.post('/event/update.json', {
-        'no' : location.href.split('?')[1].split('=')[1],
+        'no' : eventNo,
         'locno': citySelectMenu.val(),
         'pay': inputEventPay.val(),
         'requirement': inputEventRequire.val(),
@@ -470,7 +468,7 @@ categoryGenreNo = ""
         "rhsnum" : 0,
         "rhsinfo" : null
       }, function(result) {
-        location.href = "/mobile/gmode/event/detail.html?no=" + location.href.split('?')[1].split('=')[1]
+        location.href = "/mobile/gmode/event/detail.html?no=" + eventNo
       }, 'json')
     }
 
@@ -496,7 +494,7 @@ function eventConfirm() {
   reherseConfirmInfo.text(inputRehearseText.val())
 } // eventConfirm
 
-function eventHaveRehearsal(rehearsal) {
+function eventHaveRehearsal(rehearsal, data) {
   if(rehearsal == true) {
     $(".toggle-left").attr("checked", "checked")
     inputRehearseText.css("display", "block")
@@ -673,11 +671,16 @@ function LocationList() {
 function displayEventDetail() {
   $.getJSON('/event/detail.json', 
       { 
-    "no" : location.href.split('?')[1].split('=')[1]
+    "no" : eventNo
       },
       function(result) {
+    	  console.log(result)
         var data = result.data.detail 
         eventDate = data.date
+        
+        eventPage2.toggle();
+        progress(10)
+        categoryList()
 
         eventLoctno = data.loctno
         eventLocno = data.locno
@@ -686,7 +689,7 @@ function displayEventDetail() {
         inputEventName.val(data.title)
         inputEventConent.val(data.contents)
 
-        eventHaveRehearsal(data.haveRehearsal)
+        eventHaveRehearsal(data.haveRehearsal, data)
 
         inputEventPay.val(data.pay)
 

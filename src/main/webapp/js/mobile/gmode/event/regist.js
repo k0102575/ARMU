@@ -98,10 +98,38 @@ categoryGenreNo = ""
   eventPage9Home = $("#event-page9-home")
 
   // 이벤트 9페이지 
+  
+function forward(start, end) {
+  var stopProgress = setInterval(
+		  function() { 
+				if(start >= end) {
+					clearInterval(stopProgress);
+				} else {
+					progress(start) 
+					start++
+				}
+			  
+		  }
+		  , 10);
+  }
+
+function back(start, end) {
+  var stopProgress = setInterval(
+		  function() { 
+				if(start <= end) {
+					clearInterval(stopProgress);
+				} else {
+					progress(start) 
+					start--
+				}
+			  
+		  }
+		  , 10);
+}
 
   $(document).ready(function() {
     eventPage1.toggle();
-    progress(10)
+    forward(0, 10)
   })
 
   pageCancelBtn.on('click', function() {
@@ -212,7 +240,7 @@ categoryGenreNo = ""
 
     eventPage1.toggle(0);
     eventPage2.toggle(0 , function() {
-      progress(22)
+    	forward(10, 22)
     });
   })
 
@@ -240,12 +268,11 @@ categoryGenreNo = ""
   eventPage2Prev.on('click', function() {
     eventPage2.toggle(0);
     eventPage1.toggle(0 , function() {
-      progress(10)
+    	back(22, 10)
     });
   })
 
   eventPage2Next.on('click', function() {
-
 
     themeSelcetHidden.val(categoryThemeNo)
     majorSelcetHidden.val(categoryMajorNo)
@@ -289,7 +316,7 @@ categoryGenreNo = ""
 
     eventPage2.toggle(0);
     eventPage3.toggle(0 , function() {
-      progress(34)
+    	forward(22, 34)
       eventPage3Calendar.datepicker({
         dateFormat: "yy-mm-dd",
         minDate: 0,
@@ -303,7 +330,7 @@ categoryGenreNo = ""
   eventPage3Prev.on('click', function() {
     eventPage3.toggle(0);
     eventPage2.toggle(0 , function() {
-      progress(22)
+        back(34, 22)
     });
   })
 
@@ -358,14 +385,14 @@ categoryGenreNo = ""
 
     eventPage3.toggle(0);
     eventPage4.toggle(0 , function() {
-      progress(46)
+    	forward(34, 46)
     });
   })
 
   eventPage4Prev.on('click', function() {
     eventPage4.toggle(0);
     eventPage3.toggle(0 , function() {
-      progress(34)
+        back(46, 34)
     });
   })
 
@@ -418,14 +445,14 @@ categoryGenreNo = ""
 
     eventPage4.toggle(0);
     eventPage5.toggle(0 , function() {
-      progress(58)
+    	forward(46, 58)
     });
   })
 
   eventPage5Prev.on('click', function() {
     eventPage5.toggle(0);
     eventPage4.toggle(0 , function() {
-      progress(46)
+        back(58, 46)
     });
   })
 
@@ -462,14 +489,14 @@ categoryGenreNo = ""
 
     eventPage5.toggle(0);
     eventPage6.toggle(0 , function() {
-      progress(70)
+    	forward(58, 70)
     });
   })
 
   eventPage6Prev.on('click', function() {
     eventPage6.toggle(0);
     eventPage5.toggle(0 , function() {
-      progress(58)
+        back(70, 58)
     });
   })
 
@@ -517,7 +544,7 @@ categoryGenreNo = ""
     reherseCheck($("input[name=toggle]:checked").val())
     eventPage6.toggle(0);
     eventPage7.toggle(0 , function() {
-      progress(82)
+    	forward(70,82)
     });
   })
 
@@ -538,7 +565,7 @@ categoryGenreNo = ""
   eventPage7Prev.on('click', function() {
     eventPage7.toggle(0);
     eventPage6.toggle(0 , function() {
-      progress(70)
+        back(82, 70)
     });
   })
 
@@ -554,7 +581,12 @@ categoryGenreNo = ""
         customClass: "checkSwal"
       });
       return
-    } 
+    }
+    
+    if($("input[name=toggle]:checked").val() =="true") {
+    $("#event-page8").css("min-height", "130vh")
+    $("#event-page8-btn").css("margin-top", "10%")
+    }
     
     if(inputEventRequire.val() == "") {
       $(".req-header").css("display", "none")
@@ -563,7 +595,7 @@ categoryGenreNo = ""
 
     eventPage7.toggle(0);
     eventPage8.toggle(0 , function() {
-      progress(100)
+    	forward(82, 101)
       eventConfirm()
     });
   })
@@ -571,7 +603,7 @@ categoryGenreNo = ""
   eventPage8Prev.on('click', function() {
     eventPage8.toggle(0);
     eventPage7.toggle(0 , function() {
-      progress(82)
+      back(101, 82)
     });
   })
 
@@ -595,6 +627,9 @@ categoryGenreNo = ""
       }, function(result) {
         eventPage8.toggle(0);
         eventPage9.toggle(0 , function() {
+        $("#event-page").css("display", "none");
+        $("#event-page9-deepscreen").css("display", "block")
+        $("#event-page9-backscreen").css("display", "block")
           progress(100)
         });
       }, 'json')

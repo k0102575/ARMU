@@ -73,7 +73,7 @@
   padding-bottom: 3%;
 }
 
-#musician-favor-picture {
+.musician-favor-picture {
   border-radius: 15px;
   margin-left: 2%;
   margin-top: 2%;
@@ -83,7 +83,7 @@
   display: inline-block;
 }
 
-#musician-favor-preview {
+.musician-favor-preview {
   float: right;
   width: 50%;
   height: 75%;
@@ -133,7 +133,7 @@ width: 20%;
     left: 50%;
 }
 
-.fa-arrow-circle-o-up {
+.fa-angle-double-up {
   font-size: 400%;
   position: fixed;
   bottom: 3%;
@@ -143,3 +143,15 @@ width: 20%;
 }
 
 /* 뮤지션 관심 리스트 끝 */
+
+.rec-no-event {
+    position: relative;
+    hegiht: 900px;
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+    color: black;
+    overflow: visible;
+    background-color: transparent;
+    top: 300px;
+}

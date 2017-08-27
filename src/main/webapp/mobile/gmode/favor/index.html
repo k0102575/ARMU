@@ -41,9 +41,9 @@
 
 {{#each listFavor}}
 <div id='musician-favor'>
-  <img id='musician-favor-picture' src='{{photo}}_300.png'>
+  <img class='musician-favor-picture' src='{{photo}}_300.png' no="{{no}}">
   
-  <div id="musician-favor-preview">
+  <div class="musician-favor-preview" no="{{no}}">
   <div id="musician-favor-name">{{name}}</div>
   <div id="musician-favor-intro">
      {{#each majorList}}
@@ -64,7 +64,14 @@
 
 </div> <!-- container -->
 
-<i class="fa fa-arrow-circle-o-up" id="move_top_btn" aria-hidden="true"></i>
+<script id="musician-favor-zero-template" type="text/x-handlebars-template">
+    <div class="rec-no-event">
+      <br> 관심 뮤지션이 없습니다.<br><br>
+    </div>
+    <!-- rec-no-event -->
+</script>
+
+<i class="fa fa-angle-double-up" id="move_top_btn" aria-hidden="true"></i>
 
 <script src="/js/mobile/gmode/favor/index.js"></script>
 

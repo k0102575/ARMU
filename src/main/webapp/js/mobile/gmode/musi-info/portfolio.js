@@ -57,7 +57,7 @@ function displayMusiInfoPortfolio() {
           $(".spec-detail[data-no=" + no + "]").scrollTop(0)
           $("#spec-backscreen").toggle('slide', {direction:'down'}, 400)
           $("#spec-deepscreen").toggle('slide', {direction:'down'}, 400)
-          $("#container").css('position', 'fixed')
+          $(".spec-empty-container").css("display", "block")
         })
 
         $(".spec-close").on('click', function() {
@@ -65,7 +65,7 @@ function displayMusiInfoPortfolio() {
           $(".spec-detail[data-no=" + no + "]").toggle('slide', {direction:'down'}, 400)
           $("#spec-backscreen").toggle('slide', {direction:'down'}, 400)
           $("#spec-deepscreen").toggle('slide', {direction:'down'}, 400)
-          $("#container").css('position', 'relative')
+        $(".spec-empty-container").css("display", "none")
         })
 
 

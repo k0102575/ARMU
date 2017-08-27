@@ -3,7 +3,7 @@
 /* 이벤트 공통 시작 */
 
 #container {
-  position: relative;
+  position: fixed;
   width: 100%;
   min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),

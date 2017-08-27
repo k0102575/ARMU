@@ -2,12 +2,10 @@ var lastScroll = 0,
 musicianHeaderInfoImg = $("#musician-header-info-img"),
 moveTopBtn = $("#move_top_btn"),
 musicianInfoBtnContainer = $("#musician-info-btn-container"),
-musicianHeaderInfoImg = $("#musician-header-info-img"),
 musicianInfoPortfolioBtn = $('#musician-info-portfolio-btn'),
 musicianInfoIntroduceBtn = $('#musician-info-introduce-btn'),
 musicianInfoReviewBtn = $('#musician-info-review-btn'),
 musicianInfoNickName = $("#musician-info-nickname"),
-musicianHeaderInfoImg = $("#musician-header-info-img"),
 musicianBasicInfoImg = $("#musician-basic-info-img"),
 musicianBasicInfoName = $("#musician-basic-info-name"),
 musicianInfoPrev = $("#musician-info-prev"),
@@ -98,11 +96,9 @@ $(window).scroll(function(event){
   if($(document).scrollTop() > 327) {
     musicianInfoBtnContainer.css("position", "fixed")
     musicianHeaderInfoImg.css("display", "block")
-    musicianHeaderInfoImg.css("top", "9%")
   } else if ($(document).scrollTop() < 327) {
     musicianInfoBtnContainer.css("position", "relative")
     musicianHeaderInfoImg.css("display", "none")
-    musicianHeaderInfoImg.css("top", "18%")
   }
 
   var st = $(this).scrollTop();

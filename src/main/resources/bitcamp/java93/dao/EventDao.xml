@@ -422,7 +422,7 @@ where e.mno=#{no}
     group by muno, eno
     having muno = #{muNo}
     ) prc on even.eno = prc.eno
-    where even.mno= #{myNo}
+    where even.mno= #{myNo} and even.active = 'Y'
   </select><!-- 승민 -->
   
   <select id="selectSurfList" resultMap="eventMap">
