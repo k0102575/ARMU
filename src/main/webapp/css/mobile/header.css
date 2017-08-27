@@ -1,9 +1,10 @@
 /*헤더부분*/
 #header-box {
-  position: relative;
-  height: 120px;
-  width: 100%;
-  background-color: white;
+    position: fixed;
+    height: 120px;
+    width: 100%;
+    background-color: white;
+    z-index: 11;
 }
 
 .header-menu {

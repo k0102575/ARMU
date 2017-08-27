@@ -206,7 +206,7 @@ function heartChange(isFavorite, pressedBtn) {
 function removeLoader(count) {
 	if(count != 3) return
 	
-	$('.loader-box').fadeOut(100)
+	$('.loader-box').css('display','none')
 	$('.rec-title').fadeIn(700)
 	$('#rec-by-event-musi-container').fadeIn(700)
 	$('#rec-best-review-musi-container').fadeIn(700)

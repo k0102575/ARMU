@@ -1,5 +1,7 @@
 "use strict"
 HandlebarsIntl.registerWith(Handlebars);
+moment().format();
+
 var noView = $('.no-view'),
     yesView = $('.yes-view'),
     noDataView = $('.no-data-view');
@@ -20,6 +22,7 @@ function displayNotiList() {
     }//로그인 안 한 경우
     
     if(jQuery.isEmptyObject(result.data.listNoti)) {
+    	$('.loader-box').hide()
       displayNoData()
       return;
     }//받아온 데이터가 없는 경우
@@ -28,13 +31,14 @@ function displayNotiList() {
    $.each(result.data.listNoti, function(i, item) {
      setMessage(item)
      setUnread(item)
+     setDate(item)
    })
-   
-    var templateFn = Handlebars.compile($('#noti-template').text())
+
+   var templateFn = Handlebars.compile($('#noti-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#noti-container')
     var html = container.html()
-    $('.loader-box').fadeOut(100)
+    $('.loader-box').hide()
     container.html(html + generatedHTML).hide().fadeIn(700)
     
     $('.noti').on('click', function() {
@@ -104,4 +108,11 @@ function setClickEvents(pressedBtn) {
     else if(type == 'evn_expired') location.href = 'event/regist.html'
     else if(type == 'evn_today') location.href = 'event/list.html?event=ongoing'
   }, 'json')
+}
+
+
+function setDate(item) {
+    var d = moment(item.date)
+    item.date = d.format('YYYY-MM-DD')
+    item.time = d.format('hh:mm:ss')
 }

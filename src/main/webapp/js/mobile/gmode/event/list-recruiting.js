@@ -182,7 +182,7 @@ function setMatchBtns(eventNo) {
         'musicianNo' : musicianNo,
         'eventNo' : eventNo
       }, function(result) {
-        if(result.data != 'success') {
+        if(result.status != 'success') {
           swal({
             title: "매칭에 실패했습니다. \n\n다시 시도해주세요.",
             type: "warning",

@@ -158,7 +158,7 @@ function clickSetting() {
       showCancelButton: true,
       confirmButtonColor: "lightseagreen",
       confirmButtonText: "네",
-      closeOnConfirm: true,
+      closeOnConfirm: false,
       cancelButtonText: "아니요"
     },function() {
       $.post('/event/acceptPrAndAppy.json', {
@@ -195,7 +195,6 @@ function clickSetting() {
         }
         
         if(result.status == "success") {
-        	location.reload()
         }
         
       }, 'json') // 이벤트 지원 이벤트
@@ -214,7 +213,6 @@ function clickSetting() {
 	        cancelButtonText: "아니요"
 	      },
 	      function(){//확인 버튼 누르면 실행
-	    	  console.log(eventNo)
 	        $.post('/event/cancelAppy.json', { 
 	          'eventNo': eventNo
 	        }, function(result) {
