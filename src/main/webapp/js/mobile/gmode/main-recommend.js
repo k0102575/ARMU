@@ -8,8 +8,6 @@ noDataView = $('.rec-no-data');
 
 var isRecommandEvent = true;
 
-var renderCount = 0;
-
 $('.rec-title').hide()
 $('.loader-box').show()
 showRecommandList();

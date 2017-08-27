@@ -1,5 +1,8 @@
 "use strict"
-var renderCount = 0;
+var renderCount=0;
+
+$('.rec-title').hide()
+$('.loader-box').show()
 displayRecommandEventList();
 displayTop10CategoryList();
 displayRecentEventList();
@@ -20,9 +23,8 @@ function displayRecommandEventList() {
 		var generatedHTML = templateFn(result.data)
 		var container = $('#rec-event-container')
 		var html = container.html()
-		container.html(html + generatedHTML)
+		container.html(html + generatedHTML).hide()
           
-		if(++renderCount == 3) setClickEvents()
 		/*initialize swiper when document ready*/
 		$(document).ready(function () {
 			var mySwiper = new Swiper ('.swiper-container', {
@@ -38,6 +40,8 @@ function displayRecommandEventList() {
 				paginationElement: 'span'
 			});
 		});//initialize swiper ended
+			
+		removeLoader(++renderCount)
 	}, function(err) {
 		console.log(err)
 	})
@@ -53,7 +57,7 @@ function displayTop10CategoryList() {
 		var generatedHTML = templateFn(result.data)
 		var container = $('#rec-most-popular-category-container')
 		var html = container.html()
-		container.html(html + generatedHTML)
+		container.html(html + generatedHTML).hide()
 		
 		$('.rec-hashtag').on('click', function(e) {
 		  e.preventDefault()
@@ -79,7 +83,7 @@ function displayTop10CategoryList() {
       }
     })
     
-    if(++renderCount == 3) setClickEvents()
+    removeLoader(++renderCount)
 	}, function(err) {
 		console.log(err)
 	})
@@ -98,9 +102,9 @@ function displayRecentEventList() {
     var generatedHTML = templateFn(result.data)
     var container = $('#rec-recent-event-container')
     var html = container.html()
-    container.html(html + generatedHTML)
+    container.html(html + generatedHTML).hide()
     
-    if(++renderCount == 3) setClickEvents()
+    removeLoader(++renderCount)
   }, function(err) {
     console.log(err)
   })
@@ -174,4 +178,16 @@ function setClickEvents() {
   })
 }
 
+
+function removeLoader(count) {
+	console.log(count)
+	if(count != 3) return
+	
+	$('.loader-box').css('display' , 'none')
+	$('.rec-title').fadeIn(700)
+	$('#rec-event-container').fadeIn(700)
+	$('#rec-most-popular-category-container').fadeIn(700)
+	$('#rec-recent-event-container').fadeIn(700)
+	setClickEvents()
+}
 

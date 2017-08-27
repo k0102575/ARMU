@@ -1,5 +1,8 @@
 "use strict"
+HandlebarsIntl.registerWith(Handlebars);
+moment().format();
 
+$('.loader-box').show()
 displayNotiList()
 
 function displayNotiList() {
@@ -9,16 +12,19 @@ function displayNotiList() {
       return;
     }
     console.log(result.data)
-       $.each(result.data.listNoti, function(i, item) {
+    $.each(result.data.listNoti, function(i, item) {
      setMessage(item)
      setUnread(item)
+     setDate(item)
    })
+   
    
     var templateFn = Handlebars.compile($('#noti-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#noti-container')
     var html = container.html()
-    container.html(html + generatedHTML)
+    $('.loader-box').hide()
+    container.html(html + generatedHTML).hide().fadeIn(700)
     
     $('.noti').on('click', function() {
       setClickEvents($(this))
@@ -75,4 +81,10 @@ function setClickEvents(pressedBtn) {
     else if(type == 'evn_today' || type == 'evn_edit') location.href = 'event/detail.html?no=' + eventNo
     else if(type == 'evn_expired') location.href = 'musi-info/index.html?no=' + musicianNo
   }, 'json')
+}
+
+function setDate(item) {
+    var d = moment(item.date)
+    item.date = d.format('YYYY-MM-DD')
+    item.time = d.format('hh:mm:ss')
 }

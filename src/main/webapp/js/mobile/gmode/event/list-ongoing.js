@@ -1,6 +1,6 @@
 "use strict"
 $('.loader-box').show()
-var domain = "http://192.168.0.22:8888";
+var domain = "http://192.168.35.238:8888";
 
 displayOngoingEventList()
 
