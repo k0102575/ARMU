@@ -70,7 +70,7 @@ var memberToggle = $("#member-toggle" ),
         passwordInput2.val().length > 0 && nameInput.val().length > 0 && phoneInput.val().length > 0) {
       
       $.post('/member/add.json', {
-        'name': emailInput.val(),
+        'name': nameInput.val(),
         'nickName': nicknameInput.val(),
         'phone': phoneInput.val(),
         'password': passwordInput1.val(),
