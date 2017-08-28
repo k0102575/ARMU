@@ -5,12 +5,12 @@ pageCancelPageBackscreen = $("#event-cancelpage-backscreen"),
 pageCancelPageReturn = $("#event-cancelpage-return"),
 pageCancelPageQuit = $("#event-cancelpage-quit"),
 menuBackScreen = $("#menu-backscreen")
-// 이벤트 프로그레스바 밑 취소페이지
+//이벤트 프로그레스바 밑 취소페이지
 
 var eventPage1 = $("#event-page1"),
 eventPage1Cancel = $("#event-page1-cancel"),
 eventPage1Next = $("#event-page1-next")
-//  이벤트 1페이지
+//이벤트 1페이지
 
 var eventPage2 = $("#event-page2"),
 eventPage2Prev = $("#event-page2-prev"),
@@ -98,189 +98,418 @@ categoryGenreNo = ""
   eventPage9Home = $("#event-page9-home")
 
   // 이벤트 9페이지 
-  
+
 function forward(start, end) {
   var stopProgress = setInterval(
-		  function() { 
-				if(start >= end) {
-					clearInterval(stopProgress);
-				} else {
-					progress(start) 
-					start++
-				}
-			  
-		  }
-		  , 10);
-  }
+      function() { 
+        if(start >= end) {
+          clearInterval(stopProgress);
+        } else {
+          progress(start) 
+          start++
+        }
+
+      }
+      , 10);
+}
 
 function back(start, end) {
   var stopProgress = setInterval(
-		  function() { 
-				if(start <= end) {
-					clearInterval(stopProgress);
-				} else {
-					progress(start) 
-					start--
-				}
-			  
-		  }
-		  , 10);
+      function() { 
+        if(start <= end) {
+          clearInterval(stopProgress);
+        } else {
+          progress(start) 
+          start--
+        }
+
+      }
+      , 10);
 }
 
-  $(document).ready(function() {
-    eventPage1.toggle();
-    forward(0, 10)
+$(document).ready(function() {
+  eventPage1.toggle();
+  forward(0, 10)
+})
+
+pageCancelBtn.on('click', function() {
+  swal({
+    title: "입력하신 정보가 사라집니다. \n\n" +
+    "취소하시겠습니까?",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#8069ef",
+    confirmButtonText: "네",
+    closeOnConfirm: false,
+    cancelButtonText: "아니요"
+  },
+  function(){
+    location.href = "/mobile/gmode/index.html"
+  });
+
+})
+
+eventPage1Next.on('click', function() {
+
+  $.getJSON('/category/listTheme.json', function(result) {
+    var templateFn = Handlebars.compile($('#select-theme-template').text())
+    var generatedHTML = templateFn(result.data)
+    var container = $('#theme-select-box')
+    var html = container.html()
+    container.html(html + generatedHTML)
+
+  }, function(err) {
+    console.log(err)
   })
 
-  pageCancelBtn.on('click', function() {
+  $.getJSON('/category/listMajor.json', function(result) {
+    var templateFn = Handlebars.compile($('#select-major-template').text())
+    var generatedHTML = templateFn(result.data)
+    var container = $('#major-select-box')
+    var html = container.html()
+    container.html(html + generatedHTML)
+
+  }, function(err) {
+    console.log(err)
+  })
+
+  $.getJSON('/category/listGenre.json', function(result) {
+    var templateFn = Handlebars.compile($('#select-genre-template').text())
+    var generatedHTML = templateFn(result.data)
+    var container = $('#genre-select-box')
+    var html = container.html()
+    container.html(html + generatedHTML)
+
+  }, function(err) {
+    console.log(err)
+  })
+
+  eventPage1.toggle(0);
+  eventPage2.toggle(0 , function() {
+    forward(10, 22)
+  });
+})
+
+themeSelectButton.on('click', function() {
+  themeSelectBox.toggle(0)
+  menuBackScreen.toggle(0)
+  themeSelectText.text("")
+  $("#theme-check-btn").toggle(0)
+})
+
+majorSelectButton.on('click', function() {
+  majorSelectBox.toggle(0)
+  menuBackScreen.toggle(0)
+  majorSelectText.text("")
+  $("#major-check-btn").toggle(0)
+})
+
+genreSelectButton.on('click', function() {
+  genreSelectBox.toggle(0)
+  menuBackScreen.toggle(0)
+  genreSelectText.text("")
+  $("#genre-check-btn").toggle(0)
+})
+
+$("#theme-check-cancel").on('click', function() {
+  themeSelectBox.toggle(0)
+  menuBackScreen.toggle(0)
+  $("#theme-check-btn").toggle(0)
+})
+
+$("#theme-check-check").on('click', function() {
+  $("input[name=theme]:checked").each(function() {
+    categoryThemeNo += $(this).val() + "," 
+    categoryThemeName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
+    themeSelectText.append("<span class='selectSpan'>" + categoryThemeName + "</span>")
+    themeConfirmText.append("<span class='selectSpan'>" + categoryThemeName + "</span>")
+  });
+  themeSelectBox.toggle(0)
+  menuBackScreen.toggle(0)
+  $("#theme-check-btn").toggle(0)
+})
+
+$("#major-check-cancel").on('click', function() {
+  menuBackScreen.toggle(0)
+  majorSelectBox.toggle(0)
+  $("#major-check-btn").toggle(0)
+})
+
+$("#major-check-check").on('click', function() {
+  $("input[name=major]:checked").each(function() {
+    categoryMajorNo += $(this).val() + ","
+    categoryMajorName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
+    majorSelectText.append("<span class='selectSpan'>" + categoryMajorName + "</span>")
+    majorConfirmText.append("<span class='selectSpan'>" + categoryMajorName + "</span>")
+  });
+  menuBackScreen.toggle(0)
+  majorSelectBox.toggle(0)
+  $("#major-check-btn").toggle(0)
+})
+
+$("#genre-check-cancel").on('click', function() {
+  menuBackScreen.toggle(0)
+  genreSelectBox.toggle(0)
+  $("#genre-check-btn").toggle(0)
+})
+
+$("#genre-check-check").on('click', function() {
+  $("input[name=genre]:checked").each(function() {
+    categoryGenreNo += $(this).val() + ","
+    categoryGenreName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
+    genreSelectText.append("<span class='selectSpan'>" + categoryGenreName + "</span>")
+    genreConfirmText.append("<span class='selectSpan'>" + categoryGenreName + "</span>")
+  });
+  menuBackScreen.toggle(0)
+  genreSelectBox.toggle(0)
+  $("#genre-check-btn").toggle(0)
+})
+
+eventPage2Prev.on('click', function() {
+  eventPage2.toggle(0);
+  eventPage1.toggle(0 , function() {
+    back(22, 10)
+    $('#theme-select-box').html("")
+    $('#major-select-box').html("")
+    $('#genre-select-box').html("")
+  });
+})
+
+eventPage2Next.on('click', function() {
+
+  themeSelcetHidden.val(categoryThemeNo)
+  majorSelcetHidden.val(categoryMajorNo)
+  genreSelcetHidden.val(categoryGenreNo)
+
+  if(themeSelectText.text() == "") {
     swal({
-      title: "입력하신 정보가 사라집니다. \n\n" +
-      "취소하시겠습니까?",
+      title: "테마를 선택 하세요!",
       type: "warning",
-      showCancelButton: true,
+      showCancelButton: false,
       confirmButtonColor: "#8069ef",
-      confirmButtonText: "네",
-      closeOnConfirm: false,
-      cancelButtonText: "아니요"
-    },
-    function(){
-      location.href = "/mobile/gmode/index.html"
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
     });
+    return
+  } 
 
-  })
+  if(majorSelectText.text() == "") {
+    swal({
+      title: "전공을 선택 하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
+    return
+  } 
 
-  eventPage1Next.on('click', function() {
+  if(genreSelectText.text() == "") {
+    swal({
+      title: "장르를 선택 하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
+    return
+  }
 
-    $.getJSON('/category/listTheme.json', function(result) {
-      var templateFn = Handlebars.compile($('#select-theme-template').text())
-      var generatedHTML = templateFn(result.data)
-      var container = $('#theme-select-box')
-      var html = container.html()
-      container.html(html + generatedHTML)
+  eventPage2.toggle(0);
+  eventPage3.toggle(0 , function() {
+    forward(22, 34)
+    eventPage3Calendar.datepicker({
+      dateFormat: "yy-mm-dd",
+      minDate: 0,
+      dayNames: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+      dayNamesMin: ["일"," 월"," 수"," 목"," 금"," 토"," 일"]
+    });
+  });
+})
 
-      $("#theme-check-cancel").on('click', function() {
-        themeSelectBox.toggle(0)
-        menuBackScreen.toggle(0)
-        $("#theme-check-btn").toggle(0)
+
+eventPage3Prev.on('click', function() {
+  eventPage3.toggle(0);
+  eventPage2.toggle(0 , function() {
+    back(34, 22)
+  });
+})
+
+eventPage3Next.on('click', function() {
+  var now = new Date();
+  var year= now.getFullYear();
+  var mon = (now.getMonth()+1)>9 ? ''+(now.getMonth()+1) : '0'+(now.getMonth()+1);
+  var day = now.getDate()>9 ? ''+now.getDate() : '0'+now.getDate();
+
+  var chan_val = year + '-' + mon + '-' + day;
+
+  if(eventPage3Calendar.val() == chan_val) {
+    swal({
+      title: "오늘 날짜는 선택되지 않습니다.",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
+    return
+  } 
+
+  $.getJSON('/category/listLocationType.json', function(result) {
+    var templateFn = Handlebars.compile($('#select-sido-template').text())
+    var generatedHTML = templateFn(result.data)
+    var container = sidoSelectMenu
+    container.html(generatedHTML)
+
+    sidoSelectMenu.change(function(){
+      var loctno = $(this).val()
+      var sidoText = $("#sido-select-menu option:selected").text()
+      citySelectMenu.html("")
+      optGroup = $('<optgroup>').attr('label', sidoText);
+      citySelectMenu.append(optGroup);
+
+      $.getJSON('/category/listLocation.json', {"loctno" : loctno},function(result) {
+        var templateFn = Handlebars.compile($('#select-city-template').text())
+        var generatedHTML = templateFn(result.data)
+        var container = citySelectMenu
+        var html = container.html()
+        container.html(html + generatedHTML)
+      }, function(err) {
+        console.log(err)
       })
 
-      $("#theme-check-check").on('click', function() {
-        $("input[name=theme]:checked").each(function() {
-          categoryThemeNo += $(this).val() + "," 
-          categoryThemeName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
-          themeSelectText.append("<span class='selectSpan'>" + categoryThemeName + "</span>")
-          themeConfirmText.append("<span class='selectSpan'>" + categoryThemeName + "</span>")
-        });
-        themeSelectBox.toggle(0)
-        menuBackScreen.toggle(0)
-        $("#theme-check-btn").toggle(0)
-      })
-
-    }, function(err) {
-      console.log(err)
     })
 
-    $.getJSON('/category/listMajor.json', function(result) {
-      var templateFn = Handlebars.compile($('#select-major-template').text())
-      var generatedHTML = templateFn(result.data)
-      var container = $('#major-select-box')
-      var html = container.html()
-      container.html(html + generatedHTML)
+  }, function(err) {
+    console.log(err)
+  })
 
-      $("#major-check-cancel").on('click', function() {
-        menuBackScreen.toggle(0)
-        majorSelectBox.toggle(0)
-        $("#major-check-btn").toggle(0)
-      })
+  eventPage3.toggle(0);
+  eventPage4.toggle(0 , function() {
+    forward(34, 46)
+  });
+})
 
-      $("#major-check-check").on('click', function() {
-        $("input[name=major]:checked").each(function() {
-          categoryMajorNo += $(this).val() + ","
-          categoryMajorName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
-          majorSelectText.append("<span class='selectSpan'>" + categoryMajorName + "</span>")
-          majorConfirmText.append("<span class='selectSpan'>" + categoryMajorName + "</span>")
-        });
-        menuBackScreen.toggle(0)
-        majorSelectBox.toggle(0)
-        $("#major-check-btn").toggle(0)
-      })
+eventPage4Prev.on('click', function() {
+  eventPage4.toggle(0);
+  eventPage3.toggle(0 , function() {
+    back(46, 34)
+  });
+})
 
-    }, function(err) {
-      console.log(err)
-    })
+eventPage4Next.on('click', function() {
 
-    $.getJSON('/category/listGenre.json', function(result) {
-      var templateFn = Handlebars.compile($('#select-genre-template').text())
-      var generatedHTML = templateFn(result.data)
-      var container = $('#genre-select-box')
-      var html = container.html()
-      container.html(html + generatedHTML)
 
-      $("#genre-check-cancel").on('click', function() {
-        menuBackScreen.toggle(0)
-        genreSelectBox.toggle(0)
-        $("#genre-check-btn").toggle(0)
-      })
+  sidoSelectMenu.css("border", "1px solid black")
+  citySelectMenu.css("border", "1px solid black")
+  DetailLocation.css("boder", "1px solid black")
 
-      $("#genre-check-check").on('click', function() {
-        $("input[name=genre]:checked").each(function() {
-          categoryGenreNo += $(this).val() + ","
-          categoryGenreName = "#" + $("label[for='"+$(this).attr('id') +"']").text()
-          genreSelectText.append("<span class='selectSpan'>" + categoryGenreName + "</span>")
-          genreConfirmText.append("<span class='selectSpan'>" + categoryGenreName + "</span>")
-        });
-        menuBackScreen.toggle(0)
-        genreSelectBox.toggle(0)
-        $("#genre-check-btn").toggle(0)
-      })
-
-    }, function(err) {
-      console.log(err)
-    })
-
-    eventPage1.toggle(0);
-    eventPage2.toggle(0 , function() {
-    	forward(10, 22)
+  if(sidoSelectMenu.val() == "") {
+    sidoSelectMenu.css("border", "1px solid red")
+    swal({
+      title: "시/도를 선택 하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
     });
-  })
+    return
+  } 
 
-  themeSelectButton.on('click', function() {
-    themeSelectBox.toggle(0)
-    menuBackScreen.toggle(0)
-    themeSelectText.text("")
-    $("#theme-check-btn").toggle(0)
-  })
-
-  majorSelectButton.on('click', function() {
-    majorSelectBox.toggle(0)
-    menuBackScreen.toggle(0)
-    majorSelectText.text("")
-    $("#major-check-btn").toggle(0)
-  })
-
-  genreSelectButton.on('click', function() {
-    genreSelectBox.toggle(0)
-    menuBackScreen.toggle(0)
-    genreSelectText.text("")
-    $("#genre-check-btn").toggle(0)
-  })
-
-  eventPage2Prev.on('click', function() {
-    eventPage2.toggle(0);
-    eventPage1.toggle(0 , function() {
-    	back(22, 10)
+  if(citySelectMenu.val() == "") {
+    citySelectMenu.css("border", "1px solid red")
+    swal({
+      title: "시/군구를 선택 하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
     });
-  })
+    return
+  } 
 
-  eventPage2Next.on('click', function() {
+  if(DetailLocation.val() == "") {
+    DetailLocation.css("border", "1px solid red")
+    swal({
+      title: "상세주소를 선택 하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
+    return
+  }
 
-    themeSelcetHidden.val(categoryThemeNo)
-    majorSelcetHidden.val(categoryMajorNo)
-    genreSelcetHidden.val(categoryGenreNo)
 
-    if(themeSelectText.text() == "") {
+  eventPage4.toggle(0);
+  eventPage5.toggle(0 , function() {
+    forward(46, 58)
+  });
+})
+
+eventPage5Prev.on('click', function() {
+  eventPage5.toggle(0);
+  eventPage4.toggle(0 , function() {
+    back(58, 46)
+  });
+})
+
+eventPage5Next.on('click', function() {
+
+  inputEventName.css("border", "1px solid black")
+  inputEventConent.css("boder", "1px solid black")
+
+  if(inputEventName.val() == "") {
+    inputEventName.css("border", "1px solid red")
+    swal({
+      title: "이벤트명을 입력하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
+    return
+  } 
+
+  if(inputEventConent.val() == "") {
+    inputEventConent.css("border", "1px solid red")
+    swal({
+      title: "이벤트 내용을 입력하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    });
+    return
+  } 
+
+  eventPage5.toggle(0);
+  eventPage6.toggle(0 , function() {
+    forward(58, 70)
+  });
+})
+
+eventPage6Prev.on('click', function() {
+  eventPage6.toggle(0);
+  eventPage5.toggle(0 , function() {
+    back(70, 58)
+  });
+})
+
+eventPage6Next.on('click', function() {
+
+  if($("input[name=toggle]:checked").val() == "true") {
+
+    if(inputRehearseCount.val() == "") {
       swal({
-        title: "테마를 선택 하세요!",
+        title: "리허설 횟수를 입력하세요!",
         type: "warning",
         showCancelButton: false,
         confirmButtonColor: "#8069ef",
@@ -290,9 +519,9 @@ function back(start, end) {
       return
     } 
 
-    if(majorSelectText.text() == "") {
+    if(inputRehearsePay.val() == "") {
       swal({
-        title: "전공을 선택 하세요!",
+        title: "리허설 금액을 입력하세요!",
         type: "warning",
         showCancelButton: false,
         confirmButtonColor: "#8069ef",
@@ -302,49 +531,9 @@ function back(start, end) {
       return
     } 
 
-    if(genreSelectText.text() == "") {
+    if(inputRehearseText.val() == "") {
       swal({
-        title: "장르를 선택 하세요!",
-        type: "warning",
-        showCancelButton: false,
-        confirmButtonColor: "#8069ef",
-        confirmButtonText: "확인",
-        customClass: "checkSwal"
-      });
-      return
-    }
-
-    eventPage2.toggle(0);
-    eventPage3.toggle(0 , function() {
-    	forward(22, 34)
-      eventPage3Calendar.datepicker({
-        dateFormat: "yy-mm-dd",
-        minDate: 0,
-        dayNames: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
-        dayNamesMin: ["일"," 월"," 수"," 목"," 금"," 토"," 일"]
-      });
-    });
-  })
-
-
-  eventPage3Prev.on('click', function() {
-    eventPage3.toggle(0);
-    eventPage2.toggle(0 , function() {
-        back(34, 22)
-    });
-  })
-
-  eventPage3Next.on('click', function() {
-    var now = new Date();
-    var year= now.getFullYear();
-    var mon = (now.getMonth()+1)>9 ? ''+(now.getMonth()+1) : '0'+(now.getMonth()+1);
-    var day = now.getDate()>9 ? ''+now.getDate() : '0'+now.getDate();
-
-    var chan_val = year + '-' + mon + '-' + day;
-
-    if(eventPage3Calendar.val() == chan_val) {
-      swal({
-        title: "오늘 날짜는 선택되지 않습니다.",
+        title: "리허설 정보를 입력하세요!",
         type: "warning",
         showCancelButton: false,
         confirmButtonColor: "#8069ef",
@@ -353,320 +542,134 @@ function back(start, end) {
       });
       return
     } 
+  }
 
-    $.getJSON('/category/listLocationType.json', function(result) {
-      var templateFn = Handlebars.compile($('#select-sido-template').text())
-      var generatedHTML = templateFn(result.data)
-      var container = sidoSelectMenu
-      container.html(generatedHTML)
+  reherseCheck($("input[name=toggle]:checked").val())
+  eventPage6.toggle(0);
+  eventPage7.toggle(0 , function() {
+    forward(70,82)
+  });
+})
 
-      sidoSelectMenu.change(function(){
-        var loctno = $(this).val()
-        var sidoText = $("#sido-select-menu option:selected").text()
-        citySelectMenu.html("")
-        optGroup = $('<optgroup>').attr('label', sidoText);
-        citySelectMenu.append(optGroup);
 
-        $.getJSON('/category/listLocation.json', {"loctno" : loctno},function(result) {
-          var templateFn = Handlebars.compile($('#select-city-template').text())
-          var generatedHTML = templateFn(result.data)
-          var container = citySelectMenu
-          var html = container.html()
-          container.html(html + generatedHTML)
-        }, function(err) {
-          console.log(err)
-        })
+$(".btn").on('click', function(event) {
+  if(event.currentTarget.innerText == "네") {
+    inputRehearseText.css("display", "block")
+    inputRehearseCount.css("display", "block")
+    inputRehearsePay.css("display", "block")
+  } else if (event.currentTarget.innerText == "아니요") {
+    inputRehearseText.css("display", "none")
+    inputRehearseCount.css("display", "none")
+    inputRehearsePay.css("display", "none")
+  }
 
-      })
+})
 
-    }, function(err) {
-      console.log(err)
-    })
+eventPage7Prev.on('click', function() {
+  eventPage7.toggle(0);
+  eventPage6.toggle(0 , function() {
+    back(82, 70)
+  });
+})
 
-    eventPage3.toggle(0);
-    eventPage4.toggle(0 , function() {
-    	forward(34, 46)
+eventPage7Next.on('click', function() {
+
+  if(inputEventPay.val() == "") {
+    swal({
+      title: "금액을 선택 하세요!",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
     });
-  })
+    return
+  }
 
-  eventPage4Prev.on('click', function() {
-    eventPage4.toggle(0);
-    eventPage3.toggle(0 , function() {
-        back(46, 34)
-    });
-  })
-
-  eventPage4Next.on('click', function() {
-
-
-    sidoSelectMenu.css("border", "1px solid black")
-    citySelectMenu.css("border", "1px solid black")
-    DetailLocation.css("boder", "1px solid black")
-
-    if(sidoSelectMenu.val() == "") {
-      sidoSelectMenu.css("border", "1px solid red")
-      swal({
-        title: "시/도를 선택 하세요!",
-        type: "warning",
-        showCancelButton: false,
-        confirmButtonColor: "#8069ef",
-        confirmButtonText: "확인",
-        customClass: "checkSwal"
-      });
-      return
-    } 
-
-    if(citySelectMenu.val() == "") {
-      citySelectMenu.css("border", "1px solid red")
-      swal({
-        title: "시/군구를 선택 하세요!",
-        type: "warning",
-        showCancelButton: false,
-        confirmButtonColor: "#8069ef",
-        confirmButtonText: "확인",
-        customClass: "checkSwal"
-      });
-      return
-    } 
-
-    if(DetailLocation.val() == "") {
-      DetailLocation.css("border", "1px solid red")
-      swal({
-        title: "상세주소를 선택 하세요!",
-        type: "warning",
-        showCancelButton: false,
-        confirmButtonColor: "#8069ef",
-        confirmButtonText: "확인",
-        customClass: "checkSwal"
-      });
-      return
-    }
-
-
-    eventPage4.toggle(0);
-    eventPage5.toggle(0 , function() {
-    	forward(46, 58)
-    });
-  })
-
-  eventPage5Prev.on('click', function() {
-    eventPage5.toggle(0);
-    eventPage4.toggle(0 , function() {
-        back(58, 46)
-    });
-  })
-
-  eventPage5Next.on('click', function() {
-
-    inputEventName.css("border", "1px solid black")
-    inputEventConent.css("boder", "1px solid black")
-
-    if(inputEventName.val() == "") {
-      inputEventName.css("border", "1px solid red")
-      swal({
-        title: "이벤트명을 입력하세요!",
-        type: "warning",
-        showCancelButton: false,
-        confirmButtonColor: "#8069ef",
-        confirmButtonText: "확인",
-        customClass: "checkSwal"
-      });
-      return
-    } 
-
-    if(inputEventConent.val() == "") {
-      inputEventConent.css("border", "1px solid red")
-      swal({
-        title: "이벤트 내용을 입력하세요!",
-        type: "warning",
-        showCancelButton: false,
-        confirmButtonColor: "#8069ef",
-        confirmButtonText: "확인",
-        customClass: "checkSwal"
-      });
-      return
-    } 
-
-    eventPage5.toggle(0);
-    eventPage6.toggle(0 , function() {
-    	forward(58, 70)
-    });
-  })
-
-  eventPage6Prev.on('click', function() {
-    eventPage6.toggle(0);
-    eventPage5.toggle(0 , function() {
-        back(70, 58)
-    });
-  })
-
-  eventPage6Next.on('click', function() {
-
-    if($("input[name=toggle]:checked").val() == "true") {
-
-      if(inputRehearseCount.val() == "") {
-        swal({
-          title: "리허설 횟수를 입력하세요!",
-          type: "warning",
-          showCancelButton: false,
-          confirmButtonColor: "#8069ef",
-          confirmButtonText: "확인",
-          customClass: "checkSwal"
-        });
-        return
-      } 
-
-      if(inputRehearsePay.val() == "") {
-        swal({
-          title: "리허설 금액을 입력하세요!",
-          type: "warning",
-          showCancelButton: false,
-          confirmButtonColor: "#8069ef",
-          confirmButtonText: "확인",
-          customClass: "checkSwal"
-        });
-        return
-      } 
-
-      if(inputRehearseText.val() == "") {
-        swal({
-          title: "리허설 정보를 입력하세요!",
-          type: "warning",
-          showCancelButton: false,
-          confirmButtonColor: "#8069ef",
-          confirmButtonText: "확인",
-          customClass: "checkSwal"
-        });
-        return
-      } 
-    }
-
-    reherseCheck($("input[name=toggle]:checked").val())
-    eventPage6.toggle(0);
-    eventPage7.toggle(0 , function() {
-    	forward(70,82)
-    });
-  })
-
-
-  $(".btn").on('click', function(event) {
-    if(event.currentTarget.innerText == "네") {
-      inputRehearseText.css("display", "block")
-      inputRehearseCount.css("display", "block")
-      inputRehearsePay.css("display", "block")
-    } else if (event.currentTarget.innerText == "아니요") {
-      inputRehearseText.css("display", "none")
-      inputRehearseCount.css("display", "none")
-      inputRehearsePay.css("display", "none")
-    }
-
-  })
-
-  eventPage7Prev.on('click', function() {
-    eventPage7.toggle(0);
-    eventPage6.toggle(0 , function() {
-        back(82, 70)
-    });
-  })
-
-  eventPage7Next.on('click', function() {
-
-    if(inputEventPay.val() == "") {
-      swal({
-        title: "금액을 선택 하세요!",
-        type: "warning",
-        showCancelButton: false,
-        confirmButtonColor: "#8069ef",
-        confirmButtonText: "확인",
-        customClass: "checkSwal"
-      });
-      return
-    }
-    
-    if($("input[name=toggle]:checked").val() =="true") {
+  if($("input[name=toggle]:checked").val() =="true") {
     $("#event-page8").css("min-height", "130vh")
     $("#event-page8-btn").css("margin-top", "10%")
-    }
-    
-    if(inputEventRequire.val() == "") {
-      $(".req-header").css("display", "none")
-      $(".event-req").css("display", "none")
-    } 
+  }
 
-    eventPage7.toggle(0);
-    eventPage8.toggle(0 , function() {
-    	forward(82, 101)
-      eventConfirm()
-    });
-  })
+  if(inputEventRequire.val() == "") {
+    $(".req-header").css("display", "none")
+    $(".event-req").css("display", "none")
+  } 
 
-  eventPage8Prev.on('click', function() {
-    eventPage8.toggle(0);
-    eventPage7.toggle(0 , function() {
-      back(101, 82)
-    });
-  })
+  eventPage7.toggle(0);
+  eventPage8.toggle(0 , function() {
+    forward(82, 101)
+    eventConfirm()
+  });
+})
 
-  eventPage8Next.on('click', function() {
+eventPage8Prev.on('click', function() {
+  eventPage8.toggle(0);
+  eventPage7.toggle(0 , function() {
+    back(101, 82)
+  });
+})
 
-    if($("input[name=toggle]:checked").val() =="true") {
-      $.post('/event/add.json', {
-        'locno': citySelectMenu.val(),
-        'pay': inputEventPay.val(),
-        'requirement': inputEventRequire.val(),
-        'contents': inputEventConent.val(),
-        'address': DetailLocation.val(),
-        'date': eventPage3Calendar.val(),
-        'title': inputEventName.val(),
-        "eventRegistTheme" : themeSelcetHidden.val(),
-        "eventRegistMajor" : majorSelcetHidden.val(),
-        "eventRegistGenre" : genreSelcetHidden.val(),
-        "rhspay" : inputRehearsePay.val(),
-        "rhsnum" : inputRehearseCount.val(),
-        "rhsinfo" : inputRehearseText.val()
-      }, function(result) {
-        eventPage8.toggle(0);
-        eventPage9.toggle(0 , function() {
+eventPage8Next.on('click', function() {
+
+  if($("input[name=toggle]:checked").val() =="true") {
+    $.post('/event/add.json', {
+      'locno': citySelectMenu.val(),
+      'pay': inputEventPay.val(),
+      'requirement': inputEventRequire.val(),
+      'contents': inputEventConent.val(),
+      'address': DetailLocation.val(),
+      'date': eventPage3Calendar.val(),
+      'title': inputEventName.val(),
+      "eventRegistTheme" : themeSelcetHidden.val(),
+      "eventRegistMajor" : majorSelcetHidden.val(),
+      "eventRegistGenre" : genreSelcetHidden.val(),
+      "rhspay" : inputRehearsePay.val(),
+      "rhsnum" : inputRehearseCount.val(),
+      "rhsinfo" : inputRehearseText.val()
+    }, function(result) {
+      eventPage8.toggle(0);
+      eventPage9.toggle(0 , function() {
         $("#event-page").css("display", "none");
         $("#event-page9-deepscreen").css("display", "block")
         $("#event-page9-backscreen").css("display", "block")
-          progress(100)
-        });
-      }, 'json')
-    } else if($("input[name=toggle]:checked").val() =="false") {
-      $.post('/event/add.json', {
-        'locno': citySelectMenu.val(),
-        'pay': inputEventPay.val(),
-        'requirement': inputEventRequire.val(),
-        'contents': inputEventConent.val(),
-        'address': DetailLocation.val(),
-        'date': eventPage3Calendar.val(),
-        'title': inputEventName.val(),
-        "eventRegistTheme" : themeSelcetHidden.val(),
-        "eventRegistMajor" : majorSelcetHidden.val(),
-        "eventRegistGenre" : genreSelcetHidden.val(),
-        "rhspay" : 0,
-        "rhsnum" : 0,
-        "rhsinfo" : null
-      }, function(result) {
-        console.log(result)
-        eventPage8.toggle(0);
-        eventPage9.toggle(0 , function() {
-          $("#event-page").css("display", "none");
-          $("#event-page9-deepscreen").css("display", "block")
-          $("#event-page9-backscreen").css("display", "block")
-          progress(100)
-        });
-      }, 'json')
-    }
+        progress(100)
+      });
+    }, 'json')
+  } else if($("input[name=toggle]:checked").val() =="false") {
+    $.post('/event/add.json', {
+      'locno': citySelectMenu.val(),
+      'pay': inputEventPay.val(),
+      'requirement': inputEventRequire.val(),
+      'contents': inputEventConent.val(),
+      'address': DetailLocation.val(),
+      'date': eventPage3Calendar.val(),
+      'title': inputEventName.val(),
+      "eventRegistTheme" : themeSelcetHidden.val(),
+      "eventRegistMajor" : majorSelcetHidden.val(),
+      "eventRegistGenre" : genreSelcetHidden.val(),
+      "rhspay" : 0,
+      "rhsnum" : 0,
+      "rhsinfo" : null
+    }, function(result) {
+      console.log(result)
+      eventPage8.toggle(0);
+      eventPage9.toggle(0 , function() {
+        $("#event-page").css("display", "none");
+        $("#event-page9-deepscreen").css("display", "block")
+        $("#event-page9-backscreen").css("display", "block")
+        progress(100)
+      });
+    }, 'json')
+  }
 
-  })
+})
 
-  eventPage9Home.on('click', function() {
-    location.href="/mobile/gmode/index.html"
-  })
+eventPage9Home.on('click', function() {
+  location.href="/mobile/gmode/index.html"
+})
 
-  function progress(per) {
+function progress(per) {
   progressBar.progressbar({
     value: per,
     create: function(event, ui) {$(this).find('.ui-widget-header').css({'background-image': 'linear-gradient( to left top, rgb(116, 92, 233), rgb(215, 105, 239))'})}

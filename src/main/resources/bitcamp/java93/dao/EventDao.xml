@@ -50,9 +50,10 @@
     <result column="addr" property="address" />
     <result column="pay" property="pay" />
     <result column="date" property="date" />
-    <result column="pr_count" property="pr_count" />
-    <result column="mtc_info" property="mtc_info" />
+    <result column="prActive" property="prActive" />
+    <result column="appyActive" property="appyActive" />
     <result column="prStatus" property="prStatus" />
+    <result column="appyStatus" property="appyStatus" />
     <association property="writeMember" javaType="Member">
       <result property="photo" column="path" />
     </association>
@@ -411,17 +412,18 @@ where e.mno=#{no}
   <select id="prCheckList" resultMap="eventSelectMap" parameterType="map">
     select distinct even.eno, even.pay, even.date, even.title,
     loct.name as loctname, loc.name as locname, even.addr, 
-    if(prc.prno is not null, prc.prno, 0) as pr_count, prc.active as prStatus
+    if(pr.active is not null, pr.active, 'Z') as prActive,
+    if(pr.status is not null, pr.status, 'Z') as prStatus,
+    if(appy.active is not null, appy.active, 'Z') as appyActive,
+    if(appy.status is not null, appy.status, 'Z') as appyStatus
     from (select * from evn where date >= curdate() and eno not in (select
     eno from mtc)) even
+    left outer join (select * from pr group by muno, eno having muno = #{muNo}
+    ) pr on even.eno = pr.eno
+    left outer join (select * from appy group by muno, eno having muno = #{muNo}
+    ) appy on even.eno = appy.eno
     left outer join loc loc on even.locno = loc.locno
     left outer join loc_type loct on loc.loctno = loct.loctno
-    left outer join
-    (select prno, muno, eno, active
-    from pr
-    group by muno, eno
-    having muno = #{muNo}
-    ) prc on even.eno = prc.eno
     where even.mno= #{myNo} and even.active = 'Y'
   </select><!-- 승민 -->
   

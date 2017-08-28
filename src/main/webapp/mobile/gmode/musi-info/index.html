@@ -70,12 +70,16 @@
     <div class="recruiting-title">
     {{title}}
     </div>
+    <div class="event-detail-display" data-no="{{no}}">
+    </div>
     <div class="recruiting-date"><span>{{date}}</span></div>
     <div class='recruiting-area'><i class="fa fa-map-marker" aria-hidden="true"></i></div>
     <div id="recruting-location">{{city}}&nbsp;{{location}}&nbsp;{{address}}</div>
     <div class="recruiting-price"><i class="fa fa-krw" aria-hidden="true"></i>{{pay}}</div>
-  <div class="request-button" data-no="{{no}}" pr_count="{{pr_count}}" prStatus="{{prStatus}}">요청
-  </div>
+  <div class="btn" data-no="{{no}}">요청</div>
+  <div class="rejectAppy" data-no="{{no}}">거절</div>
+  
+
     </div>
   </div>
   {{/each}}

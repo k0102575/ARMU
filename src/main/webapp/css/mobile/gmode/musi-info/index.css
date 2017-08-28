@@ -332,51 +332,92 @@
 	background-color: white;
 }
 
-.request-button {
-	position: absolute;
-	right: 3%;
-	top: 35%;
-	width: 100px;
-	height: 100px;
-	border: 1px solid #8069ef;
-	border-radius: 50px;
-	background-color: #8069ef;
-	font-size: 2rem;
-	color: white;
-	text-align: center;
-	line-height: 95px;
+.btn {
+  position: absolute;
+  right: 3%;
+  top: 35%;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #8069ef;
+  border-radius: 50px;
+  background-color: #8069ef;
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  line-height: 95px;
 }
 
-.prIng {
-	position: absolute;
-	right: 3%;
-	top: 35%;
-	width: 100px;
-	height: 90px;
-	border: 0px;
-	border-radius: 50px;
-	background-color: lightgray;
-	font-size: 1.5rem;
-	color: black;
-	font-weight: 300;
-	line-height: 38px;
-	padding-top: 10px;
+.rejectAppy {
+  position: absolute;
+  right: 2%;
+  top: 35%;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #8069ef;
+  border-radius: 50px;
+  background-color: #8069ef;
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  line-height: 95px;
+  display: none;
 }
 
-.mtc {
-	position: absolute;
-	right: 3%;
-	top: 35%;
-	width: 75px;
-	height: 75px;
-	border: 1px solid #555;
-	border-radius: 50px;
-	background-color: #f5f5f5;
-	font-size: 2rem;
-	color: #555;
+.decideMatch {
+  right: 15%;
+  top: 35%;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #8069ef;
+  border-radius: 50px;
+  background-color: #8069ef;
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  line-height: 95px;
+}
+
+.cancelPr {
+  right: 8%;
+  top: 35%;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #8069ef;
+  border-radius: 50px;
+  background-color: #8069ef;
+  font-size: 2rem;
+  color: white;
+}
+
+.event-detail-display {
+    width: 22%;
+    height: 50px;
+    position: absolute;
+    right: 2%;
+    top: 25px;
+    display: none;
+}
+
+.event-display-hashtag {
+  width: auto;
+  height: 47px;
+  line-height: 45px;
+  display: inline-block;
+  padding-left: 2%;
+  padding-right: 2%;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  margin-right: 2%;
+  font-size: 1.8rem;
 }
 
 /* 매칭요청하기 끝 */
+
+.checkSwal > h2 {
+    font-size: 3em;
+    top: 10%;
+}
 
 /* 이벤트 없음 시작*/
 .rec-no-event {

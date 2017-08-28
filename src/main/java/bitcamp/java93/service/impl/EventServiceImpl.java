@@ -428,12 +428,11 @@ public class EventServiceImpl implements EventService {
   private  void deleteActive(int eventNo, String Type) throws Exception {
     HashMap<String,Object> valueMap = new HashMap<>();
     valueMap.put("eventNo", eventNo);
-
     Musician musicianPrList = musicianDao.myEventPrList(eventNo);
     if(musicianPrList != null) {
       for (String muNo : musicianPrList.getMuNoList()) {
         valueMap.put("musicianNo", muNo);
-        matchDao.updateAllPrActiveN(valueMap);
+        matchDao.updateAllPrActiveN(valueMap) ;
       }
     }
 

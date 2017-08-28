@@ -84,6 +84,34 @@ categoryGenreNo = ""
   reherseConfirmLine = $("#reherse-line"),
   reherseConfirmHeader =$(".reherse-header")
   // 이벤트 8페이지 
+  
+function forward(start, end) {
+  var stopProgress = setInterval(
+      function() { 
+        if(start >= end) {
+          clearInterval(stopProgress);
+        } else {
+          progress(start) 
+          start++
+        }
+
+      }
+      , 10);
+}
+
+function back(start, end) {
+  var stopProgress = setInterval(
+      function() { 
+        if(start <= end) {
+          clearInterval(stopProgress);
+        } else {
+          progress(start) 
+          start--
+        }
+
+      }
+      , 10);
+}
 
   var eventDate = 0,
   eventLoctno = 0,
@@ -170,7 +198,7 @@ categoryGenreNo = ""
 
     eventPage2.toggle(10);
     eventPage3.toggle(0 , function() {
-      progress(25)
+      forward(10, 25)
       eventPage3Calendar.datepicker({
         dateFormat: "yy-mm-dd",
         minDate: 0,
@@ -184,7 +212,7 @@ categoryGenreNo = ""
   eventPage3Prev.on('click', function() {
     eventPage3.toggle(0);
     eventPage2.toggle(10 , function() {
-      progress(12.5)
+      back(25, 10)
     });
   })
 
@@ -212,14 +240,14 @@ categoryGenreNo = ""
 
     eventPage3.toggle(0);
     eventPage4.toggle(0 , function() {
-      progress(40)
+      forward(25, 40)
     });
   })
 
   eventPage4Prev.on('click', function() {
     eventPage4.toggle(0);
     eventPage3.toggle(0 , function() {
-      progress(25)
+      back(40, 25)
     });
   })
 
@@ -271,14 +299,14 @@ categoryGenreNo = ""
 
     eventPage4.toggle(0);
     eventPage5.toggle(0 , function() {
-      progress(55)
+      forward(40, 55)
     });
   })
 
   eventPage5Prev.on('click', function() {
     eventPage5.toggle(0);
     eventPage4.toggle(0 , function() {
-      progress(40)
+      back(55, 40)
     });
   })
 
@@ -315,14 +343,14 @@ categoryGenreNo = ""
 
     eventPage5.toggle(0);
     eventPage6.toggle(0 , function() {
-      progress(70)
+      forward(55, 70)
     });
   })
 
   eventPage6Prev.on('click', function() {
     eventPage6.toggle(0);
     eventPage5.toggle(0 , function() {
-      progress(55)
+      back(70, 55)
     });
   })
 
@@ -372,7 +400,7 @@ categoryGenreNo = ""
     reherseCheck($("input[name=toggle]:checked").val())
     eventPage6.toggle(0);
     eventPage7.toggle(0 , function() {
-      progress(85)
+      forward(70, 85)
     });
   })
 
@@ -393,7 +421,7 @@ categoryGenreNo = ""
   eventPage7Prev.on('click', function() {
     eventPage7.toggle(0);
     eventPage6.toggle(0 , function() {
-      progress(70)
+      back(85, 70)
     });
   })
 
@@ -418,7 +446,7 @@ categoryGenreNo = ""
 
     eventPage7.toggle(0);
     eventPage8.toggle(0 , function() {
-      progress(100)
+      forward(85, 101)
       eventConfirm()
     });
   })
@@ -426,7 +454,7 @@ categoryGenreNo = ""
   eventPage8Prev.on('click', function() {
     eventPage8.toggle(0);
     eventPage7.toggle(0 , function() {
-      progress(85)
+      back(101, 85)
     });
   })
 

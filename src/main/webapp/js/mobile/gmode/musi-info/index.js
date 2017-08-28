@@ -26,6 +26,8 @@ infoPortfolio.css('display', 'block')
 infoIntroduce.css('display', 'none')
 infoReview.css('display', 'none')
 
+var musicianNo = parseInt(location.href.split('?')[1].split('=')[1])
+
 displayMusiInfo()
 
 var heartCount = 0,
@@ -44,7 +46,7 @@ musiPhoto = ""
         $("#musician-info-backscreen").css("background", "url('"+ musiPhoto +"')")
         $("#musician-info-backscreen").css("background-size", "cover")
         $("#musician-info-backscreen").css("background-position", "center")
-
+        
         if(data.isTeam == "Y") {
           musicianBasicInfoName.text(data.nickName + "  (팀)")
         } else {
@@ -61,14 +63,14 @@ musiPhoto = ""
         $("#musician-basic-info-favor").on("click", function() {
           if(heartCount == 0) {
             $.post('/musician/favorAdd.json', {
-              'no': location.href.split('?')[1].split('=')[1]
+              'no': musicianNo
             }, function(result) {
               heartCount++
               heartChange(heartCount)
             }, 'json')
           } else if (heartCount == 1) {
             $.post('/musician/favorRemove.json', {
-              "no" : location.href.split('?')[1].split('=')[1]
+              "no" : musicianNo
             }, function(result) {
               heartCount--
               heartChange(heartCount)
@@ -146,10 +148,9 @@ musicianInfoReviewBtn.on('click', function() {
 
 function matchRequest() {
   $.getJSON('/event/prCheckEvent.json', {
-    "no" : location.href.split('?')[1].split('=')[1]
+    "no" : musicianNo
   },
   function(result) {
-    console.log(result)
     if(result.data.eventList.length == 0) {
       var templateFn = Handlebars.compile($('#select-no-event-template').text())
       var generatedHTML = templateFn(result.data)
@@ -161,89 +162,72 @@ function matchRequest() {
         requestBackScreen.css("display", "none")
         $("#musician-info-deepscreen").css("display", "none" )
       })
-
-
       return
     }
-
+    
     var templateFn = Handlebars.compile($('#select-event-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#musician-info-toggle')
     container.html(generatedHTML)
     container.prepend("<div id='event-header'><img id='signup-cancel-btn' src='/image/icon/access-black.png'>나의 이벤트 목록</div>")
-
-    for(var i = 0; i < result.data.eventList.length; i++) {
-      if(result.data.eventList[i].pr_count != 0 && result.data.eventList[i].prStatus == "Y") {
-        $(".request-button[data-no='"+ result.data.eventList[i].no +"']").html("요청<br>취소")
-        $(".request-button[data-no='"+ result.data.eventList[i].no +"']").addClass("prIng")
-      }
-    } // for
-
-    $(".request-button").on('click', function(e) {
-      var prCount = $(this).attr('pr_count')
-      var prStatus = $(this).attr('prStatus')
-      var no = $(this).attr('data-no')
-
-      if(prCount != 0 && prStatus== "Y") {
-        swal({
-          title: "매칭 요청 중입니다.\n\n" + 
-          "취소하시겠습니까?",
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#8069ef",
-          confirmButtonText: "네",
-          closeOnConfirm: false,
-          cancelButtonText: "아니요"
-        },
-        function(){
-          $.post('/event/cancelPr.json', {
-            'musicianNo': location.href.split('?')[1].split('=')[1],
-            'eventNo': no
-          }, function(result) {
-            swal({
-              title: "매칭 취소가 성공했습니다!",
-              type: "success",
-              showCancelButton: false,
-              confirmButtonColor: "#8069ef",
-              confirmButtonText: "확인",
-              customClass: "checkSwal"
-            },function(){
-              location.reload()
-            })
-          }, 'json')
-
-        }) // 매칭 취소 swal
-        return
-      }
-
-      swal({
-        title: "이 이벤트에 대해 \n\n" +
-        "매칭 요청을 하시겠어요?" ,
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#8069ef",
-        confirmButtonText: "네",
-        closeOnConfirm: false,
-        cancelButtonText: "아니요"
-      },
-      function(){
-        $.post('/event/acceptAppyAndPr.json', {
-          'musicianNo': location.href.split('?')[1].split('=')[1],
-          'eventNo': no
-        }, function(result) {
-          acceptAppyAndPrResult(result.data)
-        }, 'json')
-      }) // 매칭 요청 swal
-
-    })  // button
-
-    $("#signup-cancel-btn").on('click', function() {
-      requestToggle.toggle()
-      requestBackScreen.css("display", "none")
-      $("#musician-info-deepscreen").css("display", "none" )
-    })
-
+    
+    eventCheck(result.data)
+    clickSetting()
+    
+   
   })
+}
+
+
+function eventCheck(result) {
+  console.log(result)
+  
+  for(var i = 0; i < result.eventList.length; i++) {
+    
+    if(result.eventList[i].appyStatus == "N") { // 지원을 거절한 상태
+      $(".btn[data-no=" + result.eventList[i].no + "]").html("요청")
+      $(".btn[data-no=" + result.eventList[i].no + "]").addClass("appyStatusN")
+      continue
+    }
+    
+    if(result.eventList[i].prStatus == "N") { // 홍보를 거절 받은 상태
+      $(".btn[data-no=" + result.eventList[i].no + "]").html("요청")
+      $(".btn[data-no=" + result.eventList[i].no + "]").addClass("prStatusN")
+      continue
+    }
+    
+    if(result.eventList[i].appyActive == "Y") { // 지원 받은 상태
+      $(".btn[data-no=" + result.eventList[i].no + "]").html("수락")
+      $(".btn[data-no=" + result.eventList[i].no + "]").addClass("decideMatch")
+      $(".rejectAppy[data-no=" + result.eventList[i].no + "]").css("display", "block")
+      $(".event-detail-display[data-no=" + result.eventList[i].no + "]").css("display", "block")
+      $(".event-detail-display[data-no=" + result.eventList[i].no + "]").append("<span class='event-display-hashtag'>지원받은 이벤트</span>")
+      continue
+    }
+    
+    
+    // 아무것도 아닌 상태
+    if(result.eventList[i].appyStatus == "Z" && result.eventList[i].prStatus == "Z" && result.eventList[i].appyActive == "Z" && result.eventList[i].prActive == "Z") {
+      $(".btn[data-no=" + result.eventList[i].no + "]").html("요청")
+      $(".btn[data-no=" + result.eventList[i].no + "]").addClass("acceptAppyAndPr")
+    }
+    
+    // 재홍보 상태
+    if(result.eventList[i].appyStatus == "Z" && result.eventList[i].prStatus == "Z" && result.eventList[i].appyActive == "Z" && result.eventList[i].prActive == "N") {
+      $(".btn[data-no=" + result.eventList[i].no + "]").html("요청")
+      $(".btn[data-no=" + result.eventList[i].no + "]").addClass("acceptAppyAndPr")
+    }
+    
+    
+    if(result.eventList[i].prActive == "Y") { // 홍보중인 상태
+      $(".btn[data-no=" + result.eventList[i].no + "]").html("취소")
+      $(".btn[data-no=" + result.eventList[i].no + "]").addClass("cancelPr")
+      $(".event-detail-display[data-no=" + result.eventList[i].no + "]").css("display", "block")
+      $(".event-detail-display[data-no=" + result.eventList[i].no + "]").append("<span class='event-display-hashtag'>홍보중인 이벤트</span>")
+    }
+    
+    
+  } // for
 }
 
 
@@ -254,33 +238,247 @@ requestBtn.on('click', function() {
 })
 
 musicianInfoPrev.on('click', function() {
-  location.href = "/mobile/gmode/index.html"
+  window.history.go(-1);
 })
 
-function acceptAppyAndPrResult(result) {
-  if(result == "decideMatch") {
-    swal({
-      title: "매칭이 확정되었습니다.",
-      type: "success",
-      showCancelButton: false,
-      confirmButtonColor: "#8069ef",
-      confirmButtonText: "확인",
-      customClass: "checkSwal"
-    },function(){
-      location.reload()
-    })
-  }
 
-  if(result == "success") {
-    swal({
-      title: "매칭요청이 성공했습니다!",
-      type: "success",
+function clickSetting() {
+  
+  $("#signup-cancel-btn").on('click', function() {
+    requestToggle.toggle()
+    requestBackScreen.css("display", "none")
+    $("#musician-info-deepscreen").css("display", "none" )
+  })
+  
+  $(".appyStatusN").on('click', function() {
+    var eventNo = parseInt($(this).attr("data-no"))
+        swal({
+      title: "\n지원을 거절했던 뮤지션입니다.",
+      type: "warning",
       showCancelButton: false,
       confirmButtonColor: "#8069ef",
       confirmButtonText: "확인",
       customClass: "checkSwal"
-    },function(){
-      location.reload()
-    })
-  }
+    },function() {
+      }, 'json') // swal
+    }) // appy_reject
+    
+    $(".prStatusN").on('click', function() {
+    var eventNo = parseInt($(this).attr("data-no"))
+        swal({
+      title: "\n홍보를 거절받았던 뮤지션입니다.",
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "확인",
+      customClass: "checkSwal"
+    },function() {
+      }, 'json') // swal
+    }) // appy_reject
+  
+//4. 뮤지션이 이벤트에 지원(APPY)하기 && 3. 홍보(pr) 수락하기
+  $(".acceptAppyAndPr").on('click', function () {
+    var eventNo = parseInt($(this).attr("data-no"))
+    swal({
+      title: "\n매칭을 요청하시겠습니까?",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "네",
+      closeOnConfirm: false,
+      cancelButtonText: "아니요"
+    },function() {
+      $.post('/event/acceptAppyAndPr.json', {
+        'eventNo': eventNo,
+        'musicianNo' : musicianNo
+      }, function(result) {
+        if(result.status != 'success') {
+          console.log('json error')
+        }
+
+        if(result.data == 'canceled') {//이미 취소된 pr인 경우 실행
+          swal({
+            title: "요청을 취소하여 \n\n수락할 수 없는 상태입니다.",
+            type: "warning",
+            showCancelButton: false,
+            confirmButtonColor: "#8069ef",
+            confirmButtonText: "확인",
+            customClass: "checkSwal"
+          },
+          function(){
+            location.reload()
+          })//swal()
+        } else {//성공적으로 거절 완료한 경우 실행
+          swal({
+            title: "매칭을 요청했습니다.\n\n이벤트 목록에서 확인하세요!",
+            type: "success",
+            showCancelButton: false,
+            confirmButtonColor: "#8069ef",
+            confirmButtonText: "확인",
+            customClass: "checkSwal"
+          },
+          function(){
+            location.reload()
+          })//swal()
+        }
+        
+      }, 'json') // 이벤트 지원 이벤트
+    }) // 지원 묻는 swal
+  }) // .acceptAppyAndPr
+  
+  $(".rejectAppy").on('click', function () {
+    var eventNo = parseInt($(this).attr("data-no"))
+    swal({
+      title: "지원을 거절하시겠습니까?\n\n" +
+          "거절후 에는 매칭할수 없습니다.",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "네",
+      closeOnConfirm: false,
+      cancelButtonText: "아니요"
+    },function() {
+      $.post('/event/rejectAppy.json', {
+        'eventNo': eventNo,
+        'musicianNo' : musicianNo
+      }, function(result) {
+        if(result.status != 'success') {
+          console.log('json error')
+        }
+
+        if(result.data == 'canceled') {//이미 취소된 pr인 경우 실행
+          swal({
+            title: "요청을 취소하여 \n\n수락할 수 없는 상태입니다.",
+            type: "warning",
+            showCancelButton: false,
+            confirmButtonColor: "#8069ef",
+            confirmButtonText: "확인",
+            customClass: "checkSwal"
+          },
+          function(){
+            location.reload()
+          })//swal()
+        } else {//성공적으로 거절 완료한 경우 실행
+          swal({
+            title: "매칭을 거절했습니다.",
+            type: "success",
+            showCancelButton: false,
+            confirmButtonColor: "#8069ef",
+            confirmButtonText: "확인",
+            customClass: "checkSwal"
+          },
+          function(){
+            location.reload()
+          })//swal()
+        }
+        
+      }, 'json') // 이벤트 지원 이벤트
+    }) // 지원 묻는 swal
+  }) // .rejectAppy
+  
+  // 4. 매칭 확정하기
+  $(".decideMatch").on('click', function () {
+    var eventNo = parseInt($(this).attr("data-no"))
+    swal({
+      title: "매칭을 확정하시겠습니까?\n\n" +
+      		"확정후 에는 취소할수없습니다.",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "네",
+      closeOnConfirm: false,
+      cancelButtonText: "아니요"
+    },function() {
+      $.post('/event/acceptAppyAndPr.json', {
+        'eventNo': eventNo,
+        'musicianNo' : musicianNo
+      }, function(result) {
+        if(result.status != 'success') {
+          console.log('json error')
+        }
+
+        if(result.data == 'canceled') {//이미 취소된 pr인 경우 실행
+          swal({
+            title: "요청을 취소하여 \n\n수락할 수 없는 상태입니다.",
+            type: "warning",
+            showCancelButton: false,
+            confirmButtonColor: "#8069ef",
+            confirmButtonText: "확인",
+            customClass: "checkSwal"
+          },
+          function(){
+            location.reload()
+          })//swal()
+        } else {//성공적으로 거절 완료한 경우 실행
+          swal({
+            title: "매칭을 확정했습니다.\n\n이벤트 목록에서 확인하세요!",
+            type: "success",
+            showCancelButton: false,
+            confirmButtonColor: "#8069ef",
+            confirmButtonText: "확인",
+            customClass: "checkSwal"
+          },
+          function(){
+            location.reload()
+          })//swal()
+        }
+        
+      }, 'json') // 이벤트 지원 이벤트
+    }) // 지원 묻는 swal
+  }) // .decideMatch
+  
+  // 11. 일반인이 홍보(PR) 취소
+  $(".cancelPr").on('click', function () {
+    var eventNo = parseInt($(this).attr("data-no"))
+    swal({
+      title: "\n홍보를 취소하시겠습니까?",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#8069ef",
+      confirmButtonText: "네",
+      closeOnConfirm: false,
+      cancelButtonText: "아니요"
+    },function() {
+      $.post('/event/cancelPr.json', {
+        'eventNo': eventNo,
+        'musicianNo' : musicianNo
+      }, function(result) {
+        if(result.status != 'success') {
+          console.log('json error')
+        }
+
+        if(result.data == 'canceled') {//이미 취소된 pr인 경우 실행
+          swal({
+            title: "요청을 취소하여 \n\n수락할 수 없는 상태입니다.",
+            type: "warning",
+            showCancelButton: false,
+            confirmButtonColor: "#8069ef",
+            confirmButtonText: "확인",
+            customClass: "checkSwal"
+          },
+          function(){
+            location.reload()
+          })//swal()
+        } else {//성공적으로 거절 완료한 경우 실행
+          swal({
+            title: "\n홍보를 취소했습니다.",
+            type: "success",
+            showCancelButton: false,
+            confirmButtonColor: "#8069ef",
+            confirmButtonText: "확인",
+            customClass: "checkSwal"
+          },
+          function(){
+            location.reload()
+          })//swal()
+        }
+        
+      }, 'json') // 이벤트 지원 이벤트
+    }) // 지원 묻는 swal
+  }) // .cancelPr
+  
+  
 }
+
+
+
