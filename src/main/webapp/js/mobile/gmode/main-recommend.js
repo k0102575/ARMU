@@ -1,5 +1,5 @@
 "use strict"
-
+var renderCount = 0
 
 var noEventView = $('.rec-no-event'),
 yesEventView = $('.rec-yes-event'),
