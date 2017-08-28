@@ -30,6 +30,8 @@ html{
 background-color:#f5f5f5;
 height: 100vh;
 }
+
+
 #category {
 position: fixed;
     height: 100px;
@@ -37,6 +39,7 @@ position: fixed;
     background-color: white;
     top: 120px;
     z-index: 11;
+    border-top: 1px solid white;
 }
 
 .category-main {
@@ -182,11 +185,8 @@ HandlebarsIntl.registerWith(Handlebars);
 
 
 		headerBox.load("../header-box.html");
-		
-		
-    
     headerMenuDetail.load("header-menu-detail.html");
-
+    
 
    /* 카테고리별 메인 화면 띄우기 */
 
@@ -241,7 +241,7 @@ HandlebarsIntl.registerWith(Handlebars);
    
       /* 내활동 */
    $.getJSON('/notification/getMusiUnread.json', function(result) {
-    console.log(result.data)
+    console.log('내활동 안읽은 개수:' + result.data)
     if(result.data != 0) {
       $('.act-noti-tag').show().text(result.data)
     }

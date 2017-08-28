@@ -106,17 +106,12 @@
   </select> <!-- 승민 -->
   
   <select id="selectMusiReview" resultMap="musicianInfoReviewMap" parameterType="int">
-  select mtc.rev, mtc.score, even.title as eventTitle, even.date as eventDate, m.name , m.path
-  from musi as mu 
-  left outer join mtc on mtc.muno=mu.muno
-  left outer join (
-  select avg(score) as score, muno, rev
-  from mtc
-  group by muno
-  ) score on score.muno=mu.muno
-  left outer join evn even on mtc.eno = even.eno
-  left outer join memb m on even.mno = m.mno
-  where mtc.muno = #{no}
+select mtc.rev, mtc.score, even.title as eventTitle, even.date as eventDate, m.name , m.path
+ from musi as mu
+ left outer join mtc on mtc.muno=mu.muno
+ left outer join evn even on mtc.eno = even.eno
+ left outer join memb m on even.mno = m.mno
+ where mtc.muno = #{no}
   </select> <!-- 승민 -->
   
   <select id="myMusiInfo" resultMap="musicianInfoMap" parameterType="map">

@@ -584,3 +584,16 @@ from evn e inner join mtc on e.eno=mtc.eno and e.date < curdate() and mtc.muno=1
 inner join musi mu on mtc.muno=mu.muno inner join memb mm on mu.muno=mm.mno
 inner join loc l on e.locno=l.locno inner join loc_type lt on l.loctno=lt.loctno
 inner join memb m on m.mno=e.mno
+
+
+select mtc.rev, score.score, even.title as eventTitle, even.date as eventDate, m.name , m.path
+ from musi as mu
+ left outer join mtc on mtc.muno=mu.muno
+ left outer join (
+ select avg(score) as score, muno
+ from mtc
+ group by muno
+ ) score on score.muno=mu.muno
+ left outer join evn even on mtc.eno = even.eno
+ left outer join memb m on even.mno = m.mno
+ where mtc.muno = 1

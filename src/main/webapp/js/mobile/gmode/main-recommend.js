@@ -4,7 +4,8 @@ var renderCount = 0
 var noEventView = $('.rec-no-event'),
 yesEventView = $('.rec-yes-event'),
 noMemberView = $('.rec-no-member'),
-noDataView = $('.rec-no-data');
+noDataView = $('.rec-no-data'),
+recContainerTop = $('.rec-container-top');
 
 var isRecommandEvent = true;
 
@@ -52,21 +53,6 @@ function displayRecommandByEventMusiList() {
       pressedBtn.html(isFavorite)
     })
     
-    /*initialize swiper when document ready*/
-    $(document).ready(function () {
-      var mySwiper = new Swiper ('.swiper-container', {
-        pagination: '.swiper-pagination',
-        prevButton: '.swiper-button-prev',
-        nextButton: '.swiper-button-next',
-        centeredSlides: true,
-        paginationClickable: true,
-        spaceBetween: 30,
-        slidesPerView: 'auto',
-        cssWidthAndHeight: true,
-        paginationType: 'bullets',
-        paginationElement: 'span'
-      });
-    });//initialize swiper ended
     
     removeLoader(++renderCount)
   }, function(err) {
@@ -78,12 +64,16 @@ function displayRecommandByEventMusiList() {
 function showRecommandList() {
   noEventView.hide()
   yesEventView.show()
+  
+  recContainerTop.hide()
 }
 function hideRecommandList(state) {
   yesEventView.hide()
   
   if(state == "browse") noMemberView.show()
   else if(state == "noEvent") noDataView.show()
+  
+  recContainerTop.hide()
 }
 
 
@@ -206,7 +196,24 @@ function removeLoader(count) {
 	
 	$('.loader-box').css('display','none')
 	$('.rec-title').fadeIn(700)
+	recContainerTop.fadeIn(700)
 	$('#rec-by-event-musi-container').fadeIn(700)
 	$('#rec-best-review-musi-container').fadeIn(700)
 	$('#rec-popular-musi-container').fadeIn(700)
+	
+    /*initialize swiper when document ready*/
+  $(document).ready(function () {
+    var mySwiper = new Swiper ('.swiper-container', {
+      pagination: '.swiper-pagination',
+      prevButton: '.swiper-button-prev',
+      nextButton: '.swiper-button-next',
+      centeredSlides: true,
+      paginationClickable: true,
+      spaceBetween: 30,
+      slidesPerView: 'auto',
+      cssWidthAndHeight: true,
+      paginationType: 'bullets',
+      paginationElement: 'span'
+    });
+  });//initialize swiper ended
 }
