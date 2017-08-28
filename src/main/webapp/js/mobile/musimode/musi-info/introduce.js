@@ -142,7 +142,7 @@ $("#introduce-edit-btn").on('click', function() {
 function displayMusiInfoIntroduce() {
   $.getJSON('/portfolio/myIntroduce.json', function(result) {
     var data = result.data.getIntroduce
-
+    $('.loader-box').hide()
     dataSetting(data)
   })
 }
