@@ -1,4 +1,5 @@
-
+"use strict"
+$('.loader-box').show()
 
 var surfBackscreen = $("#surf-backscreen"),
     container = $("#container"),

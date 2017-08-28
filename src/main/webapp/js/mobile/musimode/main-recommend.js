@@ -57,7 +57,7 @@ function displayTop10CategoryList() {
 		var generatedHTML = templateFn(result.data)
 		var container = $('#rec-most-popular-category-container')
 		var html = container.html()
-		container.html(html + generatedHTML).hide()
+		container.show().html(html + generatedHTML).hide()
 		
 		$('.rec-hashtag').on('click', function(e) {
 		  e.preventDefault()
@@ -180,7 +180,6 @@ function setClickEvents() {
 
 
 function removeLoader(count) {
-	console.log(count)
 	if(count != 3) return
 	
 	$('.loader-box').css('display' , 'none')
