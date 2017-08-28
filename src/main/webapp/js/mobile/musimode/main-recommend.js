@@ -8,6 +8,8 @@ displayTop10CategoryList();
 displayRecentEventList();
 
 
+
+
 function displayRecommandEventList() {
 	$.getJSON('/event/listRecommand.json', function(result) {
 		if(result.status != 'success') {

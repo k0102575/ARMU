@@ -31,7 +31,7 @@
 	</div>
 
 	<div class="event-list-headerbox">
-		<a href="javascript:history.go(-1)" class='back-btn'><i
+		<a href="javascript:void(0)" class='back-btn'><i
 			class="fa fa-angle-left" aria-hidden="true"></i></a>
 		<div class="event-list-header">나의 이벤트</div>
 	</div>
@@ -63,9 +63,12 @@
 
 		var lastScroll = 0, moveTopBtn = $(".move-top-btn"), eventTypeBtnContainer = $("#event-type-btn-container"), RecruitingBtn = $('#event-type-recruiting-btn'), OngoingBtn = $('#event-type-ongoing-btn'), endBtn = $('#event-type-end-btn'), recruitingList = $("#recruiting-list"), ongoingList = $("#ongoing-list"), endList = $("#end-list")
 
+		$('.back-btn').on('click', function(e) {
+		  e.preventDefault()
+		  location.href = '../index.html'
+		})
+		
     $(window).on('load', function() {
-     ongoingList.hide()
-     endList.hide()
     	RecruitingBtn.trigger('click')
     })
     

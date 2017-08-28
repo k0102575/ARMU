@@ -17,7 +17,7 @@ function displayRecruitingEventList() {
     var generatedHTML = templateFn(result.data)
     var container = $('#recruiting-event-container')
     var html = container.html()
-    $('.loader-box').fadeOut(100)
+    $('.loader-box').hide()
     container.html(html + generatedHTML).hide().fadeIn(700)
     readyBtns()
   }, function(err) {
