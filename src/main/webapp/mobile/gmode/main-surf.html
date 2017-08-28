@@ -1,8 +1,9 @@
-
 <div id="surf-filter-container">
   <div id="musician-surf-sort">
     <div class="filterBtn">필터&nbsp;</div><span><i class="fa fa-filter" id="filter-btn-icon" aria-hidden="true"></i></span>
   </div>
+  
+  
 
   <div id="surf-backscreen"></div>
   <div id="filter-container">
@@ -10,23 +11,19 @@
     <span id="filter-text">필터</span><span></span>
   </div> <!-- filter-category -->
   <hr>
-  
-  <span id="team-text">팀</span>
-    <input id="toggle-team-on" class="toggle toggle-left" name="team-toggle" value="true" type="radio">
-    <label for="toggle-team-on" class="team-btn">네</label>
-    <input id="toggle-team-off" class="toggle toggle-right" name="team-toggle" value="false" type="radio">
-    <label for="toggle-team-off" class="team-btn">아니요</label>
-
-    <span id="gender-text">성별</span>
-    <input id="gender1" name="gender" value="G" type="radio">
-    <label for="gender1" id="gender-all">둘다</label>
+  <div class="filter-ga">
+  <div class="filter-g">
+    <div id="gender-text">성별</div>
+    <input id="gender1" name="gender" value="G" type="radio" checked>
+    <label class="gend" for="gender1" id="gender-all">둘다</label>
     <input id="gender2" name="gender" value="M" type="radio">
-    <label for="gender2" id="gender-male">남성</label>
+    <label class="gend" for="gender2" id="gender-male">남성</label>
     <input id="gender3" name="gender" value="F" type="radio">
-    <label for="gender3" id="gender-female">여성</label>
+    <label class="gend" for="gender3" id="gender-female">여성</label>
+  </div>
 
-    <span id="age-text">나이</span>
-
+  <div class="filter-a">
+    <div id="age-text">나이</div>
    <input type="text" id="age-group" readonly>
     <hr class="slider-max-range">
     <div id="slider-range" ></div>
@@ -35,7 +32,8 @@
        <span id="age-30s" data-step='3'>30대</span>
        <span id="age-40s" data-step='4'>40대</span>
        <span id="age-50s" data-step='5'>50대 이상</span>
-
+  </div>
+  </div>
   <div id="filter-btn">
   <hr>
   <hr class="hr-sero">
@@ -48,7 +46,9 @@
 
 </div>
 <!-- surf-filter-container -->
-
+<div id="no-result-view">
+      <br> 조건에 맞는 뮤지션이 없어요<br><br>
+</div>
 <div id="musician-surf-list">
     <div class="surf-no-login">
       <br> 로그인을 해주세요!<br><br>

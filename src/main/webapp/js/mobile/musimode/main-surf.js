@@ -168,11 +168,7 @@ function filter() {
                 'indexG':indexG,
                 'locFilter':locFilter}, function(result) {
 //                  console.log(result.data)
-                  var templateFn = Handlebars.compile($('#event-surf-template').text())
-                  var generatedHTML = templateFn(result.data)
-                  var container = $('#event-surf-container')
-                  var html = container.html()
-                  container.html(generatedHTML)
+                  handleList(result)
               $('.event-surf').on('click', function() {
     	location.href = '/mobile/musimode/event/detail.html?no=' + $(this).attr('data-no')
 	})
@@ -196,12 +192,8 @@ function filter() {
                 'indexG':indexG,
                 'locFilter':locFilter}, function(result) {
 //                  console.log(result.data)
-                  var templateFn = Handlebars.compile($('#event-surf-template').text())
-                  var generatedHTML = templateFn(result.data)
-                  var container = $('#event-surf-container')
-                  var html = container.html()
-                  container.html(generatedHTML)
-$('.event-surf').on('click', function() {
+                  handleList(result)
+                  $('.event-surf').on('click', function() {
     	location.href = '/mobile/musimode/event/detail.html?no=' + $(this).attr('data-no')
 	})
                 },'json')
@@ -267,11 +259,7 @@ function filterMajor() {
                 'indexG':indexG,
                 'locFilter':locFilter}, function(result) {
 //                  console.log(result.data)
-                  var templateFn = Handlebars.compile($('#event-surf-template').text())
-                  var generatedHTML = templateFn(result.data)
-                  var container = $('#event-surf-container')
-                  var html = container.html()
-                  container.html(generatedHTML)
+                  handleList(result)
               $('.event-surf').on('click', function() {
     	location.href = '/mobile/musimode/event/detail.html?no=' + $(this).attr('data-no')
 	})
@@ -295,11 +283,7 @@ function filterMajor() {
                 'indexG':indexG,
                 'locFilter':locFilter}, function(result) {
 //                  console.log(result.data)
-                  var templateFn = Handlebars.compile($('#event-surf-template').text())
-                  var generatedHTML = templateFn(result.data)
-                  var container = $('#event-surf-container')
-                  var html = container.html()
-                  container.html(generatedHTML)
+                  handleList(result)
               $('.event-surf').on('click', function() {
     	location.href = '/mobile/musimode/event/detail.html?no=' + $(this).attr('data-no')
 	})
@@ -370,11 +354,7 @@ function filterGenre() {
                 'indexG':indexG,
                 'locFilter':locFilter}, function(result) {
 //                  console.log(result.data)
-                  var templateFn = Handlebars.compile($('#event-surf-template').text())
-                  var generatedHTML = templateFn(result.data)
-                  var container = $('#event-surf-container')
-                  var html = container.html()
-                  container.html(generatedHTML)
+                  handleList(result)
               $('.event-surf').on('click', function() {
             	  location.href = '/mobile/musimode/event/detail.html?no=' + $(this).attr('data-no')
               })
@@ -398,11 +378,7 @@ function filterGenre() {
                 'indexG':indexG,
                 'locFilter':locFilter}, function(result) {
 //                  console.log(result.data)
-                  var templateFn = Handlebars.compile($('#event-surf-template').text())
-                  var generatedHTML = templateFn(result.data)
-                  var container = $('#event-surf-container')
-                  var html = container.html()
-                  container.html(generatedHTML)
+                  handleList(result)
               $('.event-surf').on('click', function() {
     	location.href = '/mobile/musimode/event/detail.html?no=' + $(this).attr('data-no')
 	})
@@ -440,13 +416,27 @@ $('body').on('click', '#location-check-check', function() {
     'indexG':indexG,
     'locFilter':locFilter}, function(result) {
 //            console.log(result.data)
-      var templateFn = Handlebars.compile($('#event-surf-template').text())
-      var generatedHTML = templateFn(result.data)
-      var container = $('#event-surf-container')
-      var html = container.html()
-      container.html(generatedHTML)
+      handleList(result)
     },'json')
 });
+
+
+function handleList(result) {
+  $('.loader-box').show()
+  if(result.data.listSurf==0){
+    $('#no-result-view').css('display','block')
+    $('#event-surf-container').css('min-height','0vh')
+  } else {
+    $('#no-result-view').css('display','none')
+    $('#event-surf-container').css('min-height','100vh')
+  }
+  var templateFn = Handlebars.compile($('#event-surf-template').text())
+    var generatedHTML = templateFn(result.data)
+    var container = $('#event-surf-container')
+    $('.loader-box').hide()
+    container.html(generatedHTML).hide().fadeIn(700)
+    surfBackscreen.css('display', 'none');
+}
 
 
   

@@ -163,8 +163,6 @@ position: fixed;
 
 </div> <!-- container -->
 
-<div id='header-menu-detail'><!-- include --></div>
-
 
 
 </div>
@@ -172,10 +170,9 @@ position: fixed;
 <script type="text/javascript">
 
 $(document).ready(function() {
-  var categoryBtn1 = $('#category1'), categoryBtn2 = $('#category2'), categoryBtn3 = $('#category3'), categoryUnderbar1 = $('#category-underline-bar1'), categoryUnderbar2 = $('#category-underline-bar2'), categoryUnderbar3 = $('#category-underline-bar3'), mainRecommend = $('#main-recommend'), mainSurf = $('#main-surf'), mainAct = $('#main-act'), headerBox = $("#header-box"), headerMenuDetail = $("#header-menu-detail");
+  var categoryBtn1 = $('#category1'), categoryBtn2 = $('#category2'), categoryBtn3 = $('#category3'), categoryUnderbar1 = $('#category-underline-bar1'), categoryUnderbar2 = $('#category-underline-bar2'), categoryUnderbar3 = $('#category-underline-bar3'), mainRecommend = $('#main-recommend'), mainSurf = $('#main-surf'), mainAct = $('#main-act'), headerBox = $("#header-box");
   
-  headerBox.load("../header-box.html");
-  headerMenuDetail.load("../header-menu-detail.html");
+  headerBox.load("header-box.html");
     
   /* /* $(".animsition").animsition({
     inClass : 'fade-in',

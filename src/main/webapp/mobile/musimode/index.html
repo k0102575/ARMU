@@ -36,7 +36,7 @@ position: fixed;
     width: 100%;
     background-color: white;
     top: 120px;
-    z-index: 11;
+    z-index: 10;
 }
 
 .category-main {
@@ -77,7 +77,7 @@ position: fixed;
     top: 220px;
     width: 100%;
     border-bottom: 5px solid lightgray;
-    z-index: 11;
+    z-index: 10;
 }
 
 #category-underline-bar1 {
@@ -159,7 +159,6 @@ display: none;
 
 </div> <!-- container -->
 
-<div id='header-menu-detail'><!-- include --></div>
 
 
 
@@ -177,15 +176,12 @@ HandlebarsIntl.registerWith(Handlebars);
 	    mainRecommend = $('#main-recommend'),
 	    mainSurf = $('#main-surf'),
 	    mainAct = $('#main-act'),
-	    headerBox = $("#header-box"),
-	    headerMenuDetail = $("#header-menu-detail");
+	    headerBox = $("#header-box");
 
 
-		headerBox.load("../header-box.html");
+		headerBox.load("header-box.html");
 		
 		
-    
-    headerMenuDetail.load("header-menu-detail.html");
 
 
    /* 카테고리별 메인 화면 띄우기 */

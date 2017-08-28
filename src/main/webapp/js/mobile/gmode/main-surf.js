@@ -17,10 +17,19 @@ function heartAdd(item) {
 
 
 function handleList(result) {
+  $('.loader-box').show()
+  if(result.data.listSurf==0){
+    $('#no-result-view').css('display','block')
+    $('#musician-surf-list').css('min-height','0vh')
+  } else {
+    $('#no-result-view').css('display','none')
+    $('#musician-surf-list').css('min-height','100vh')
+  }
 	var templateFn = Handlebars.compile($('#musician-list-template').text())
     var generatedHTML = templateFn(result.data)
     var container = $('#musician-surf-list')
-    container.html(generatedHTML)
+    $('.loader-box').hide()
+    container.html(generatedHTML).hide().fadeIn(700)
     surfBackscreen.css('display', 'none');
 }
 
@@ -473,7 +482,7 @@ function filterGenre() {
           gnrno = $(this).attr('data-no')
 //          console.log('genre',locno,mjrno,gnrno, checkVal,minAge,maxAge,indexL,indexM,indexG)
           $.post('/musician/searchMusician.json',
-              {'locno':locno, 'mjrno':mjrno, 'gnrno':gnrno, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,"gender" : checkVal, "minAge" : minAge, "maxAge" : maxAge}, function(result) {adskfa;ldskfl;akdflaksdof;apodetapewpsdfopsdf
+              {'locno':locno, 'mjrno':mjrno, 'gnrno':gnrno, 'indexL':indexL, 'indexM':indexM, 'indexG':indexG,"gender" : checkVal, "minAge" : minAge, "maxAge" : maxAge}, function(result) {
                 $.each(result.data.listSurf, function(i, item) {
                   heartAdd(item)
                 });
