@@ -468,7 +468,8 @@ where e.mno=#{no}
     lt.name like '%${value}%' or
     g.name like '%${value}%' or
     mj.name like '%${value}%'or
-    t.name like '%${value}%'
+    t.name like '%${value}%' or
+    e.title like '%${value}%'
   </select>
   
   <select id="selectEvent" resultMap="selectDetailMap" parameterType="map">
