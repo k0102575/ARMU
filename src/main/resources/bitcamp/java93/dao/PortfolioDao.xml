@@ -111,7 +111,7 @@ select mtc.rev, mtc.score, even.title as eventTitle, even.date as eventDate, m.n
  left outer join mtc on mtc.muno=mu.muno
  left outer join evn even on mtc.eno = even.eno
  left outer join memb m on even.mno = m.mno
- where mtc.muno = #{no}
+ where mtc.muno = #{no} and mtc.score != 0
   </select> <!-- 승민 -->
   
   <select id="myMusiInfo" resultMap="musicianInfoMap" parameterType="map">

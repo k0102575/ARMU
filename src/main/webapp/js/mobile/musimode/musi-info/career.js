@@ -13,7 +13,6 @@ if (spno == 0) {
   
   $(".musician-info-nickname").text("포트폴리오 추가")
   
-  
   $('.portfolio-container').append(Handlebars.compile($('#musician-add-portfolio-template').text()))
   
   $("#question-btn").on('click', function() {
@@ -60,8 +59,27 @@ if (spno == 0) {
 	        $(".profile-image" + count).attr('data-path', "/image/profile/" + file.filename)
 	        $(".photo-delete-btn" + count).attr("value", "/image/profile/" + file.filename)
 	        count++
+	        
+	        $(".movie-delete-btn").on('click', function() {
+	          $("iframe[data-value='"+ $(this).val() +"']").remove()
+	          var str = $(this).val() + ","
+	          fiMovienames = fiMovienames.replace(str, '')
+	          $(this).remove()
+	        })
+
+	        $(".delbtn").on('click', function() {
+	          /*$(".proimg[data-path='"+ $(this).attr('data-path') +"']").remove()*/
+	          $(".proimg[data-path='"+ $(this).val() +"']").remove()
+	          var str = $(this).val() + ","
+	          fiFilenames = fiFilenames.replace(str, '')
+	          $(this).remove()
+	        })
+	        
 	      }
+	      
 	    });  // file-upload
+  
+  clickSetting()
   
 } else {
   $("#introduce-edit-btn").css('display', 'block');
@@ -80,6 +98,8 @@ if (spno == 0) {
   var container = $('.portfolio-container')
   var html = container.html()
   container.html(html + generatedHTML)
+  
+  clickSetting()
   
   $("#question-btn").on('click', function() {
     $("#filter-container").toggle(0)
@@ -135,185 +155,194 @@ if (spno == 0) {
         $(".profile-image" + count).attr('data-path', "/image/profile/" + file.filename)
         $(".photo-delete-btn" + count).attr("value", "/image/profile/" + file.filename)
         count++
+        
+        $(".movie-delete-btn").on('click', function() {
+          $("iframe[data-value='"+ $(this).val() +"']").remove()
+          var str = $(this).val() + ","
+          fiMovienames = fiMovienames.replace(str, '')
+          $(this).remove()
+        })
+
+        $(".delbtn").on('click', function() {
+          /*$(".proimg[data-path='"+ $(this).attr('data-path') +"']").remove()*/
+          $(".proimg[data-path='"+ $(this).val() +"']").remove()
+          var str = $(this).val() + ","
+          fiFilenames = fiFilenames.replace(str, '')
+          $(this).remove()
+        })
       }
+      
     });  // file-upload
+  
   
   })  // get json
   
 } // if
 
-$('body').on('click', ".movie-delete-btn", function() {
-  $("iframe[data-value='"+ $(this).val() +"']").remove()
-  var str = $(this).val() + ","
-  fiMovienames = fiMovienames.replace(str, '')
-  $(this).remove()
-})
+function clickSetting() {
+  
+  $("#movie-text-btn").on('click', function() {
+    var findStr = "https://youtu.be/"
+      if ($("#movie-text").val().indexOf(findStr) != -1) {
+        fiMovienames += $("#movie-text").val() + ","
+        $(".movie-container").append("<iframe class='profile-movie' width='800' height='800' data-value='"+ $("#movie-text").val() + "' src='https://www.youtube.com/embed/" + $("#movie-text").val().substring(17,28) + "?rel=0&amp;showinfo=0' frameborder='0' allowfullscreen></iframe>")
+        $(".movie-container").append("<button type='button' class='movie-delete-btn' value='"+ $("#movie-text").val() + "'><i class='fa fa-minus' aria-hidden='true'></i></button>")
+        $("#movie-text").val('')
+      } else {
+      swal({
+        title: "유튜브 주소를 \n\n" +
+            "정확하게 입력하세요!",
+        type: "warning",
+        showCancelButton: false,
+        confirmButtonColor: "lightseagreen",
+        confirmButtonText: "확인",
+        customClass: "checkSwal"
+      });
+      return
+    }
+  })
 
-$('body').on('click', ".delbtn", function() {
-  /*$(".proimg[data-path='"+ $(this).attr('data-path') +"']").remove()*/
-  $(".proimg[data-path='"+ $(this).val() +"']").remove()
-  var str = $(this).val() + ","
-  fiFilenames = fiFilenames.replace(str, '')
-  $(this).remove()
-})
+  $("#introduce-add-btn").on('click', function() {
+    if($("#spec-desc").val() == "") {
+      swal({
+        title: "경력에 관한 내용을\n\n" +
+            "작성해주세요",
+        type: "success",
+        showCancelButton: false,
+        confirmButtonColor: "lightseagreen",
+        confirmButtonText: "확인",
+        customClass: "checkSwal"
+      })
+      return
+    }
+    
+    if(fiFilenames == "" && fiMovienames == "") {
+      swal({
+        title: "경력을 설명할 \n\n" +
+            "사진이나 동영상을 올려주세요! ",
+        type: "success",
+        showCancelButton: false,
+        confirmButtonColor: "lightseagreen",
+        confirmButtonText: "확인",
+        customClass: "checkSwal"
+      })
+       return
+    }
+    
+    $.post('/portfolio/addSpec.json', {
+      'specDate': $("#spec-date").val(),
+      'specDscp': $("#spec-desc").val(),
+      'fiFilenames': fiFilenames,
+      "fiMovienames" : fiMovienames
+    }, function(result) {
+      if(result.status == "success") {
+        swal({
+          title: "\n등록되었습니다!",
+          type: "success",
+          showCancelButton: false,
+          confirmButtonColor: "lightseagreen",
+          confirmButtonText: "확인",
+          customClass: "checkSwal"
+        }, function() {
+          location.href="index.html"
+        });
+      }
+    }, 'json')
+  })
+  
 
-$('body').on('click', "#movie-text-btn", function() {
-  var findStr = "https://youtu.be/"
-    if ($("#movie-text").val().indexOf(findStr) != -1) {
-      fiMovienames += $("#movie-text").val() + ","
-      $(".movie-container").append("<iframe class='profile-movie' width='800' height='800' data-value='"+ $("#movie-text").val() + "' src='https://www.youtube.com/embed/" + $("#movie-text").val().substring(17,28) + "?rel=0&amp;showinfo=0' frameborder='0' allowfullscreen></iframe>")
-      $(".movie-container").append("<button type='button' class='movie-delete-btn' value='"+ $("#movie-text").val() + "'><i class='fa fa-minus' aria-hidden='true'></i></button>")
-      $("#movie-text").val('')
-    } else {
+  $("#introduce-edit-btn").on('click', function() {
+    if($("#spec-desc").val() == "") {
+      swal({
+        title: "경력에 관한 내용을\n\n" +
+            "작성해주세요",
+        type: "success",
+        showCancelButton: false,
+        confirmButtonColor: "lightseagreen",
+        confirmButtonText: "확인",
+        customClass: "checkSwal"
+      })
+      return
+    }
+    
+    if(fiFilenames == "" && fiMovienames == "") {
+      swal({
+        title: "경력을 설명할 \n\n" +
+            "사진이나 동영상을 올려주세요! ",
+        type: "success",
+        showCancelButton: false,
+        confirmButtonColor: "lightseagreen",
+        confirmButtonText: "확인",
+        customClass: "checkSwal"
+      })
+       return
+    }
+    
+    $.post('/portfolio/updateSpec.json', {
+      'spno': spno,
+      'specDate': $("#spec-date").val(),
+      'specDscp': $("#spec-desc").val(),
+      'fiFilenames': fiFilenames,
+      "fiMovienames" : fiMovienames
+    }, function(result) {
+      if(result.status == "success") {
+        swal({
+          title: "\n변경되었습니다.",
+          type: "success",
+          showCancelButton: false,
+          confirmButtonColor: "lightseagreen",
+          confirmButtonText: "확인",
+          customClass: "checkSwal"
+        }, function() {
+          location.href="index.html"
+        });
+      }
+    }, 'json')
+  })
+  
+  $("#introduce-delete-btn").on('click', function() {
     swal({
-      title: "유튜브 주소를 \n\n" +
-          "정확하게 입력하세요!",
+      title: "이 포트폴리오를\n\n" +
+          "삭제하시겠습니까?",
       type: "warning",
-      showCancelButton: false,
+      showCancelButton: true,
       confirmButtonColor: "lightseagreen",
-      confirmButtonText: "확인",
-      customClass: "checkSwal"
-    });
-    return
-  }
-})
-
-$('body').on('click', "#introduce-add-btn", function() {
-  if($("#spec-desc").val() == "") {
-    swal({
-      title: "경력에 관한 내용을\n\n" +
-      		"작성해주세요",
-      type: "success",
-      showCancelButton: false,
-      confirmButtonColor: "lightseagreen",
-      confirmButtonText: "확인",
-      customClass: "checkSwal"
-    })
-    return
-  }
+      confirmButtonText: "네",
+      closeOnConfirm: false,
+      cancelButtonText: "아니요"
+    },
+    function(){
+    $.post('/portfolio/deleteSpec.json', {
+      'spno': spno
+    }, function(result) {
+      if(result.status == "success") {
+        swal({
+          title: "삭제에 성공했습니다",
+          type: "success",
+          showCancelButton: false,
+          confirmButtonColor: "lightseagreen",
+          confirmButtonText: "확인",
+          customClass: "checkSwal"
+        }, function() {
+          location.href="index.html"
+        });
+      }
+    }, 'json')
+  })
+    
+  })
   
-  if(fiFilenames == "" && fiMovienames == "") {
-    swal({
-      title: "경력을 설명할 \n\n" +
-      		"사진이나 동영상을 올려주세요! ",
-      type: "success",
-      showCancelButton: false,
-      confirmButtonColor: "lightseagreen",
-      confirmButtonText: "확인",
-      customClass: "checkSwal"
-    })
-     return
-  }
+  $("#musician-info-prev").on('click', function() {
+    location.href= "index.html"
+  })
   
-  $.post('/portfolio/addSpec.json', {
-    'specDate': $("#spec-date").val(),
-    'specDscp': $("#spec-desc").val(),
-    'fiFilenames': fiFilenames,
-    "fiMovienames" : fiMovienames
-  }, function(result) {
-    if(result.status == "success") {
-      swal({
-        title: "\n등록되었습니다!",
-        type: "success",
-        showCancelButton: false,
-        confirmButtonColor: "lightseagreen",
-        confirmButtonText: "확인",
-        customClass: "checkSwal"
-      }, function() {
-        location.href="index.html"
-      });
-    }
-  }, 'json')
-})
-
-$('body').on('click', "#introduce-edit-btn", function() {
-  if($("#spec-desc").val() == "") {
-    swal({
-      title: "경력에 관한 내용을\n\n" +
-          "작성해주세요",
-      type: "success",
-      showCancelButton: false,
-      confirmButtonColor: "lightseagreen",
-      confirmButtonText: "확인",
-      customClass: "checkSwal"
-    })
-    return
-  }
+  $("#signup-cancel-btn").on('click', function() {
+    $("#filter-container").toggle(0)
+    $("#surf-backscreen").css('display', 'none')
+    $(".container").css('position', 'relative')
+  })
   
-  if(fiFilenames == "" && fiMovienames == "") {
-    swal({
-      title: "경력을 설명할 \n\n" +
-          "사진이나 동영상을 올려주세요! ",
-      type: "success",
-      showCancelButton: false,
-      confirmButtonColor: "lightseagreen",
-      confirmButtonText: "확인",
-      customClass: "checkSwal"
-    })
-     return
-  }
-  
-  $.post('/portfolio/updateSpec.json', {
-    'spno': spno,
-    'specDate': $("#spec-date").val(),
-    'specDscp': $("#spec-desc").val(),
-    'fiFilenames': fiFilenames,
-    "fiMovienames" : fiMovienames
-  }, function(result) {
-    if(result.status == "success") {
-      swal({
-        title: "\n변경되었습니다.",
-        type: "success",
-        showCancelButton: false,
-        confirmButtonColor: "lightseagreen",
-        confirmButtonText: "확인",
-        customClass: "checkSwal"
-      }, function() {
-        location.href="index.html"
-      });
-    }
-  }, 'json')
-})
+}
 
-$('body').on('click', "#introduce-delete-btn", function() {
-  swal({
-    title: "이 포트폴리오를\n\n" +
-    		"삭제하시겠습니까?",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "lightseagreen",
-    confirmButtonText: "네",
-    closeOnConfirm: false,
-    cancelButtonText: "아니요"
-  },
-  function(){
-  $.post('/portfolio/deleteSpec.json', {
-    'spno': spno
-  }, function(result) {
-    if(result.status == "success") {
-      swal({
-        title: "삭제에 성공했습니다",
-        type: "success",
-        showCancelButton: false,
-        confirmButtonColor: "lightseagreen",
-        confirmButtonText: "확인",
-        customClass: "checkSwal"
-      }, function() {
-        location.href="index.html"
-      });
-    }
-  }, 'json')
-})
-  
-})
 
-$('body').on('click', "#musician-info-prev", function() {
-  location.href = "index.html"
-})
-
-$('body').on('click', "#signup-cancel-btn", function() {
-  $("#filter-container").toggle(0)
-  $("#surf-backscreen").css('display', 'none')
-  $(".container").css('position', 'relative')
-})
 
