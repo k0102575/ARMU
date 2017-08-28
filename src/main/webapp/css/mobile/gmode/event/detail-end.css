@@ -118,17 +118,17 @@
 /* 리뷰 달기 토글 시작 */
 
 #event-appy-info {
-  border: 1px solid black;
-  position: fixed;
-  width: 90%;
-  left: 5%;
-  height: 80%;
-  top: 15%;
-  display: none;
-  background-color: white;
-  z-index: 20;
-  overflow-y:auto; 
-  border-radius: 25px;
+    border: 1px solid black;
+    position: fixed;
+    width: 90%;
+    left: 5%;
+    height: 1300px;
+    top: 15%;
+    display: none;
+    background-color: white;
+    z-index: 20;
+    overflow-y: auto;
+    border-radius: 25px;
 }
 
 #event-appy-backscreen {
@@ -179,28 +179,29 @@
 }
 
 #event-rev-text {
-  width: 90%;
-  margin-left: 5%;
-  height: 650px;
-  border: 1px solid #b2b2b2;
-  margin-top: 5%;
-  resize: none;
+    width: 90%;
+    margin-left: 5%;
+    height: 600px;
+    border: 1px solid #b2b2b2;
+    margin-top: 5%;
+    resize: none;
+    font-size: 2rem;
 }
 
 .event-rev-btn {
-  position: absolute;
-  display: inline-block;
-  bottom: 3%;
-  left: 301px;
-  width: 30%;
-  height: 70px;
-  text-align: center;
-  line-height: 70px;
-  font-size: 2rem;
-  color: black;
-  background: white;
-  border: 1px solid black;
-  border-radius: 10px;
+position: absolute;
+    display: inline-block;
+    bottom: 2%;
+    left: 301px;
+    width: 30%;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+    font-size: 2rem;
+    color: black;
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
 .rating { 

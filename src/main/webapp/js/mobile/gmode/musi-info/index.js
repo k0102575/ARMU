@@ -158,9 +158,9 @@ function matchRequest() {
       container.html(generatedHTML)
       container.prepend("<div id='event-header'><img id='signup-cancel-btn' src='/image/icon/access-black.png'>나의 이벤트 목록</div>")
       $("#signup-cancel-btn").on('click', function() {
-        requestToggle.toggle()
-        requestBackScreen.css("display", "none")
-        $("#musician-info-deepscreen").css("display", "none" )
+        requestToggle.toggle('slide', {direction:'down'}, 300)
+        requestBackScreen.toggle('slide', {direction:'down'}, 300)
+        $("#musician-info-deepscreen").toggle('slide', {direction:'down'}, 300)
       })
       return
     }
@@ -232,28 +232,28 @@ function eventCheck(result) {
 
 
 requestBtn.on('click', function() {
-  requestToggle.toggle()
-  requestBackScreen.css("display", "block")
-  $("#musician-info-deepscreen").css("display", "block" )
+  requestToggle.toggle('slide', {direction:'down'}, 300)
+  requestBackScreen.toggle('slide', {direction:'down'}, 300)
+  $("#musician-info-deepscreen").toggle('slide', {direction:'down'}, 300)
 })
 
 musicianInfoPrev.on('click', function() {
   window.history.go(-1);
 })
 
-
 function clickSetting() {
   
   $("#signup-cancel-btn").on('click', function() {
-    requestToggle.toggle()
-    requestBackScreen.css("display", "none")
-    $("#musician-info-deepscreen").css("display", "none" )
+    requestToggle.toggle('slide', {direction:'down'}, 300)
+    requestBackScreen.toggle('slide', {direction:'down'}, 300)
+    $("#musician-info-deepscreen").toggle('slide', {direction:'down'}, 300)
   })
   
   $(".appyStatusN").on('click', function() {
     var eventNo = parseInt($(this).attr("data-no"))
         swal({
-      title: "\n지원을 거절했던 뮤지션입니다.",
+      title: "이전에 거절하셔서\n\n " +
+      		"재요청 하실 수 없습니다.",
       type: "warning",
       showCancelButton: false,
       confirmButtonColor: "#8069ef",
@@ -266,7 +266,8 @@ function clickSetting() {
     $(".prStatusN").on('click', function() {
     var eventNo = parseInt($(this).attr("data-no"))
         swal({
-      title: "\n홍보를 거절받았던 뮤지션입니다.",
+      title: "뮤지션이 요청을 \n\n" +
+      		"거절했습니다.",
       type: "warning",
       showCancelButton: false,
       confirmButtonColor: "#8069ef",
@@ -330,7 +331,7 @@ function clickSetting() {
     var eventNo = parseInt($(this).attr("data-no"))
     swal({
       title: "지원을 거절하시겠습니까?\n\n" +
-          "거절후 에는 매칭할수 없습니다.",
+          "거절 후에는 매칭할 수 없습니다.",
       type: "warning",
       showCancelButton: true,
       confirmButtonColor: "#8069ef",
@@ -381,7 +382,7 @@ function clickSetting() {
     var eventNo = parseInt($(this).attr("data-no"))
     swal({
       title: "매칭을 확정하시겠습니까?\n\n" +
-      		"확정후 에는 취소할수없습니다.",
+      		"확정 후에는 취소할 수 없습니다.",
       type: "warning",
       showCancelButton: true,
       confirmButtonColor: "#8069ef",

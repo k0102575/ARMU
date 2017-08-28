@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no">
 <title>이벤트 상세페이지</title>
 <link rel='shortcut icon' type='image/x-icon'
 	href='/image/favicon/favicon.ico' />
@@ -158,15 +159,10 @@
     <div id="event-star-header">뮤지션에 대한 점수를 체크해주세요.</div><br><br>
     <fieldset class="rating">
     <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-    <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
     <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-    <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
     <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-    <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
     <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-    <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
     <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-    <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
     </fieldset>
     </div> <!-- star-container -->
     <div id="event-rev-header">
@@ -183,7 +179,6 @@
     <div class="ongoing-applicant-name"><span>{{nickName}}</span><div class="ongoing-applicant-score">{{{score}}}</div></div>
     <!-- ongoing-applicant-name -->
 
-    <div class="ongoing-applicant-fav">{{{isFavorite}}}</i></div>
     <div class="ongoing-applicant-hashtagbax">
       {{#majorList}}<span>#{{this}}</span>{{/majorList}}
       {{#themeList}}<span>#{{this}}</span>{{/themeList}}

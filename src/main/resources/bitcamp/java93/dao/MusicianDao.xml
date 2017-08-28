@@ -498,7 +498,7 @@ left outer join (
   
   <select id="selectMatchMusician" parameterType="map" resultMap="musicianMatchMap">
    select
-   mu.muno, mu.nick, mm.path, fav.fav, score.score, mtc.rev,
+   mu.muno, mu.nick, mm.path, fav.fav, score.score, if(mtc.rev is not null, mtc.rev, 'null') as rev,
   mj.name as major, g.name as genre, t.name as theme
 from mtc mtc
 left outer join musi mu on mtc.muno = mu.muno

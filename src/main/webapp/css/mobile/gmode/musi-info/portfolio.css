@@ -96,6 +96,7 @@
   overflow: scroll;
   min-height: 100vh;
   background: transparent;
+  border-top: 1px solid black;
 }
 
 #spec-backscreen {

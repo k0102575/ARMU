@@ -228,6 +228,7 @@
 	z-index: 20;
 	overflow-y: auto;
 	background: transparent;
+	border-top: 1px solid gray;
 }
 
 #musician-info-backscreen {
@@ -349,13 +350,13 @@
 
 .rejectAppy {
   position: absolute;
-  right: 2%;
+  right: 15%;
   top: 35%;
   width: 100px;
   height: 100px;
-  border: 1px solid #8069ef;
+    border: 2px solid white;
   border-radius: 50px;
-  background-color: #8069ef;
+    background-color: transparent;
   font-size: 2rem;
   color: white;
   text-align: center;
@@ -364,7 +365,7 @@
 }
 
 .decideMatch {
-  right: 15%;
+  right: 3%;
   top: 35%;
   width: 100px;
   height: 100px;
@@ -378,38 +379,37 @@
 }
 
 .cancelPr {
-  right: 8%;
-  top: 35%;
-  width: 100px;
-  height: 100px;
-  border: 1px solid #8069ef;
-  border-radius: 50px;
-  background-color: #8069ef;
-  font-size: 2rem;
-  color: white;
+    right: 3%;
+    top: 35%;
+    width: 100px;
+    height: 100px;
+    border: 2px solid white;
+    border-radius: 50px;
+    background-color: transparent;
+    font-size: 2rem;
+    color: white;
 }
 
 .event-detail-display {
-    width: 22%;
+    width: 27%;
     height: 50px;
     position: absolute;
-    right: 2%;
+    right: 0%;
     top: 25px;
     display: none;
 }
 
 .event-display-hashtag {
-  width: auto;
-  height: 47px;
-  line-height: 45px;
-  display: inline-block;
-  padding-left: 2%;
-  padding-right: 2%;
-  border-radius: 5px;
-  background-color: black;
-  color: white;
-  margin-right: 2%;
-  font-size: 1.8rem;
+    width: auto;
+    height: 47px;
+    line-height: 45px;
+    padding-left: 8%;
+    padding-right: 8%;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.41);
+    color: white;
+    margin-right: 2%;
+    font-size: 1.8rem;
 }
 
 /* 매칭요청하기 끝 */

@@ -36,10 +36,10 @@ function displayEventDetail() {
           "eNo" : eventNo
             }, 
             function(result) {
+              console.log(result.data)
               var starInteger = parseInt(result.data.matchMusician.score),
               starRealNumber = result.data.matchMusician.score - starInteger;
               starAdd(starInteger, starRealNumber, result.data.matchMusician)
-              heartAdd(result.data.matchMusician)
               var templateFn = Handlebars.compile($('#event-match-template').text())
               var generatedHTML = templateFn(result.data)
               var container = $("#event-detail-mtc-container")
@@ -55,8 +55,6 @@ function displayEventDetail() {
                 $("#container").css("position", "fixed")
               })
               
-              if(openReview == 'true') $('.ongoing-applicant-btn').trigger('click')
-
               $("#event-appy-cancel-btn").on('click', function() {
                 $("#event-appy-info").toggle()
                 $("#event-appy-backscreen").css("display", "none")
@@ -89,7 +87,7 @@ function displayEventDetail() {
                 }
                 
                 swal({
-                  title: "작성하신 리뷰는 수정 불가합니다. \n" +
+                  title: "작성하신 리뷰는 수정 할수 없어요.\n" +
                       "작성하시겠습니까?",
                   type: "warning",
                   showCancelButton: true,
@@ -112,17 +110,26 @@ function displayEventDetail() {
                   }, 'json')
               });
               })
-
-              if(result.data.matchMusician.rev == null) {
+              
+              if(result.data.matchMusician.rev != "null") {
+                openReview = "false"
+              }
+              
+              if(openReview == 'true') $('.ongoing-applicant-btn').trigger('click')
+              
+              if(result.data.matchMusician.rev == "null") {
+                openReview = "false"
                 $("#event-detail-rev").css('display', 'none')
                 $("#event-detail-rev-container").css('display', 'none')
                 return
+                console.log(openReview)
               }
-
+              
               $(".ongoing-applicant-btn").css("display", "none")
               $(".ongoing-applicant-img").addClass("haveReview")
               $("#event-detail-mtc-container").css('height', '150px')
               $("#event-detail-rev-container").html(result.data.matchMusician.rev)
+              
 
             })
       })
@@ -173,10 +180,3 @@ function starAdd(starInteger, starRealNumber, item) {
 
 
 
-function heartAdd(item) {
-  if (item.isFavorite == 1) {
-    item.isFavorite = '<i class="fa fa-heart" aria-hidden="true"></i>'
-  } else {
-    item.isFavorite = '<i class="fa fa-heart-o" aria-hidden="true"></i>'
-  }
-}

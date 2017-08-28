@@ -171,7 +171,7 @@ public class EventControl {
 
   // 13. 리뷰 작성
   @RequestMapping("updateReview")
-  public JsonResult updateReview(Event event, int musicianNo) throws Exception {
+  public JsonResult updateReview(Event event, int musicianNo, Float Score) throws Exception {
     JsonResult result = new JsonResult();
     try {
       eventService.updateReview(event, musicianNo);
