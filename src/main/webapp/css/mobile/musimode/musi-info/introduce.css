@@ -274,6 +274,12 @@ input[type="checkbox"]:checked + label:before {
   font-size: 2.5rem;
   margin-left: 7%;
   margin-top: 3%;
+  border: 1px solid white;
+  outline: none;
+}
+
+textarea:focus, input:focus{
+    outline: none;
 }
 
 #intro-homepage {

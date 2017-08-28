@@ -153,7 +153,7 @@ function clickSetting() {
   // 4. 뮤지션이 이벤트에 지원(APPY)하기 && 3. 홍보(pr) 수락하기
   $(".acceptPrAndAppy").on('click', function () {
     swal({
-      title: "이벤트에 지원하시겠습니까?",
+      title: "\n이벤트에 지원하시겠습니까?",
       type: "warning",
       showCancelButton: true,
       confirmButtonColor: "lightseagreen",
@@ -182,7 +182,7 @@ function clickSetting() {
           })//swal()
         } else {//성공적으로 거절 완료한 경우 실행
           swal({
-            title: "요청을 수락하였습니다.\n\n\n지원한 이벤트 목록에서 확인하세요!",
+            title: "\n이벤트에 지원하였습니다.\n\n 이벤트 목록에서 확인하세요!",
             type: "success",
             showCancelButton: false,
             confirmButtonColor: "lightseagreen",
@@ -243,7 +243,7 @@ function clickSetting() {
   // 지원요청을 거절받았을때 상황
   $(".appyReject-btn").on('click', function() {
     swal({
-      title: "지원요청을 거절받은 \n\n" +
+      title: "\n지원요청을 거절받은 \n\n" +
       "이벤트입니다.",
       type: "warning",
       showCancelButton: false,
@@ -256,7 +256,7 @@ function clickSetting() {
   // 매칭요청을 거절했을때 상황
   $(".prReject-btn").on('click', function() {
     swal({
-      title: "매칭요청을 거절했던 \n\n" +
+      title: "\n매칭요청을 거절했던 \n\n" +
       "이벤트입니다.",
       type: "warning",
       showCancelButton: false,
