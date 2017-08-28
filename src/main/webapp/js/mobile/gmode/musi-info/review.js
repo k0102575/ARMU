@@ -7,8 +7,16 @@ function displayMusiInfoReview() {
 		"no" : location.href.split('?')[1].split('=')[1]
 			}, function(result) {
 			  console.log(result.data)
-				$(".review-header").text("리뷰  "+ result.data.musicianReview.length +"개")
-				if(result.data.musicianReview.length != 0) {
+			  $(".review-header").text("리뷰  "+ result.data.musicianReview.length +"개")
+			  
+			  if(result.data.musicianReview.length == 0) {
+	         var templateFn = Handlebars.compile($('#musician-info-zero-review-template').text())
+	          var generatedHTML = templateFn(result.data)
+	          var container = $('.review-container')
+	          var html = container.html()
+	          container.html(html + generatedHTML)
+	          textSetting()
+			  }else if(result.data.musicianReview.length != 0) {
 					var templateFn = Handlebars.compile($('#musician-info-review-template').text())
 					var generatedHTML = templateFn(result.data)
 					var container = $('.review-container')

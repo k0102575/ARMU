@@ -167,5 +167,18 @@
 	margin-bottom: 100px;
 }
 
+.rec-no-review {
+  position: relative;
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+  color: darkgray;
+  overflow: visible;
+  min-height: 896px;
+  background-color: white;
+  margin-top: 38%;
+  padding-top: 30%;
+}
+
 
 /* 리뷰 끝 */
