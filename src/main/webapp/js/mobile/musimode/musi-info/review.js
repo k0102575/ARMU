@@ -1,4 +1,5 @@
 HandlebarsIntl.registerWith(Handlebars)
+$('.loader-box').show()
 displayMusiInfoReview()
 
 function displayMusiInfoReview() {
@@ -12,7 +13,8 @@ function displayMusiInfoReview() {
           var generatedHTML = templateFn(result.data)
           var container = $('.review-container')
           var html = container.html()
-          container.html(html + generatedHTML)
+          $('.loader-box').hide()
+          container.html(html + generatedHTML).hide().fadeIn(700)
           textSetting()
         }
         starAdd(result)

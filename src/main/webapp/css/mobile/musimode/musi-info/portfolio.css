@@ -35,7 +35,7 @@
 #timeline-mark {
   position: absolute;
   left: 18%;
-  top: 34.5%;
+  top: 31.5%;
   width: 50px;
   background-color: white;
   border: 10px solid white;
@@ -70,6 +70,7 @@
   font-weight: 400;
   white-space: normal;
   line-height: 1.2;
+  min-height: 55px;
   max-height: 100px;
   text-align: left;
   word-break: break-word;

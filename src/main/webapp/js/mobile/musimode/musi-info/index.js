@@ -14,44 +14,46 @@ var lastScroll = 0,
     requestBtn = $("#musician-basic-info-request-btn"),
     requestToggle = $("#musician-info-toggle"),
     requestBackScreen = $("#musician-info-backscreen"),
-    eventCheckBtn = $("#event-check-btn")
-    
+    eventCheckBtn = $("#event-check-btn"),
     infoPortfolio = $("#info-portfolio"),
     infoIntroduce = $("#info-introduce"),
-    infoReview = $("#info-review")
-    
-    infoPortfolio.load('portfolio.html');
-    infoIntroduce.load('introduce.html')
-    infoReview.load('review.html'); 
-    
-    infoPortfolio.css('display', 'block')
-    infoIntroduce.css('display', 'none')
-    infoReview.css('display', 'none')
+    infoReview = $("#info-review");
+
+
+
+$(window).on('load', function () {
+  musicianInfoPortfolioBtn.trigger('click')
+});
+
+
+
+//infoPortfolio.css('display', 'block')
+//infoIntroduce.css('display', 'none')
+//infoReview.css('display', 'none')
 
 displayMusiInfo()
-    
+
 function displayMusiInfo() {
   $.getJSON('/portfolio/myInfo.json', function(result) {
-      var data = result.data.musician
-      musicianInfoNickName.text(data.nickName)
-      musicianHeaderInfoImg.attr("src", data.photo)
-      musicianBasicInfoImg.attr("src", data.photo)
-      if(data.isTeam == "Y") {
-        musicianBasicInfoName.text(data.nickName + "  (팀)")
-      } else {
-        if(data.gender == "F") {
-          musicianBasicInfoName.text(data.name + "    " + data.age + "    여성")
-        } else if(data.gender == "M") {
-          musicianBasicInfoName.text(data.name + "    " + data.age + "    남성")
-        }
+    var data = result.data.musician
+    musicianInfoNickName.text(data.nickName)
+    musicianHeaderInfoImg.attr("src", data.photo)
+    musicianBasicInfoImg.attr("src", data.photo)
+    if(data.isTeam == "Y") {
+      musicianBasicInfoName.text(data.nickName + "  (팀)")
+    } else {
+      if(data.gender == "F") {
+        musicianBasicInfoName.text(data.name + "    " + data.age + "    여성")
+      } else if(data.gender == "M") {
+        musicianBasicInfoName.text(data.name + "    " + data.age + "    남성")
       }
-      
+    }
   })
 }
-    
+
 /*
 $(window).scroll(function(event){
-  
+
 
  if($(document).scrollTop() > 327) {
   musicianInfoBtnContainer.css("position", "fixed")
@@ -80,30 +82,33 @@ moveTopBtn.on('click', function() {
 });*/
 
 musicianInfoPortfolioBtn.on('click', function() {
+  infoPortfolio.load('portfolio.html');
   musicianInfoPortfolioBtn.css('border-bottom', '5px solid lightSeagreen')
   musicianInfoIntroduceBtn.css('border-bottom', '5px solid lightgray')
   musicianInfoReviewBtn.css('border-bottom', '5px solid lightgray')
-  infoPortfolio.css('display', 'block')
+  infoPortfolio.fadeIn(700)
   infoIntroduce.css('display', 'none')
   infoReview.css('display', 'none')
 })
 
 musicianInfoIntroduceBtn.on('click', function() {
+  infoIntroduce.load('introduce.html')
   musicianInfoPortfolioBtn.css('border-bottom', '5px solid lightgray')
   musicianInfoIntroduceBtn.css('border-bottom', '5px solid lightSeagreen')
   musicianInfoReviewBtn.css('border-bottom', '5px solid lightgray')
   infoPortfolio.css('display', 'none')
-  infoIntroduce.css('display', 'block')
+  infoIntroduce.fadeIn(700)
   infoReview.css('display', 'none')
 })
 
 musicianInfoReviewBtn.on('click', function() {
+  infoReview.load('review.html');
   musicianInfoPortfolioBtn.css('border-bottom', '5px solid lightgray')
   musicianInfoIntroduceBtn.css('border-bottom', '5px solid lightgray')
   musicianInfoReviewBtn.css('border-bottom', '5px solid lightSeagreen')
   infoPortfolio.css('display', 'none')
   infoIntroduce.css('display', 'none')
-  infoReview.css('display', 'block')
+  infoReview.fadeIn(700)
 })
 
 musicianInfoPrev.on('click', function() {

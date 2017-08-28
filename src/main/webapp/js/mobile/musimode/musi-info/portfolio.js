@@ -1,5 +1,7 @@
 var source = []
 
+$('.loader-box').show()
+
 Handlebars.registerHelper('isIndex', function(key, options) {
   if (key == "Y") {
     return options.fn(this);
@@ -30,7 +32,8 @@ function displayMusiInfoPortfolio() {
     var generatedHTML = templateFn(result.data)
     var container = $('.portfolio-container')
     var html = container.html()
-    container.html(html + generatedHTML)
+    $('.loader-box').hide()
+    container.html(html + generatedHTML).hide().fadeIn(700)
 
     for(var j = 0; j < result.data.getPortfolio.length; j++){
       var spno = result.data.getPortfolio[j].spno

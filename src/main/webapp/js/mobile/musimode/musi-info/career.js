@@ -170,7 +170,7 @@ $('body').on('click', "#movie-text-btn", function() {
           "정확하게 입력하세요!",
       type: "warning",
       showCancelButton: false,
-      confirmButtonColor: "#8069ef",
+      confirmButtonColor: "lightseagreen",
       confirmButtonText: "확인",
       customClass: "checkSwal"
     });
@@ -213,7 +213,7 @@ $('body').on('click', "#introduce-add-btn", function() {
   }, function(result) {
     if(result.status == "success") {
       swal({
-        title: "등록에 성공했습니다",
+        title: "\n등록되었습니다!",
         type: "success",
         showCancelButton: false,
         confirmButtonColor: "lightseagreen",
@@ -262,7 +262,7 @@ $('body').on('click', "#introduce-edit-btn", function() {
   }, function(result) {
     if(result.status == "success") {
       swal({
-        title: "변경에 성공했습니다",
+        title: "\n변경되었습니다.",
         type: "success",
         showCancelButton: false,
         confirmButtonColor: "lightseagreen",
@@ -277,8 +277,8 @@ $('body').on('click', "#introduce-edit-btn", function() {
 
 $('body').on('click', "#introduce-delete-btn", function() {
   swal({
-    title: "경력을 삭제하시겠습니까?\n\n" +
-    		"삭제한 경력은 되돌릴수 없습니다.",
+    title: "이 포트폴리오를\n\n" +
+    		"삭제하시겠습니까?",
     type: "warning",
     showCancelButton: true,
     confirmButtonColor: "lightseagreen",
