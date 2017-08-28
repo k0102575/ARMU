@@ -29,6 +29,7 @@ infoReview.css('display', 'none')
 var musicianNo = parseInt(location.href.split('?')[1].split('=')[1])
 
 displayMusiInfo()
+displayScrollTop()
 
 var heartCount = 0,
 musiPhoto = ""
@@ -111,6 +112,13 @@ $(window).scroll(function(event){
   }
   lastScroll = st;
 });
+
+function displayScrollTop() {
+  $('html, body').animate({
+	    scrollTop : 0
+	  }, 0);
+	  return false;
+}
 
 moveTopBtn.on('click', function() {
   $('html, body').animate({

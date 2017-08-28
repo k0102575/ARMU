@@ -82,12 +82,12 @@ function eventCheck(event) {
     return;
   }
   
-  if(appyStatus == "Z" && prStatus == "Y" && appyActive == "N" && prActive == "Y") {
+/*  if(appyStatus == "Z" && prStatus == "Y" && appyActive == "N" && prActive == "Y") {
     btn.addClass("acceptPrAndAppy")
     eventDetail.css("display", "block")
     eventDetail.append("<span class='event-display-hashtag'>지원받은 이벤트</span>")
     return;
-  }
+  }*/
 
   if(prStatus == "Y" || appyActive == "Y") {
     btn.html("지원<br>취소")
@@ -101,16 +101,17 @@ function eventCheck(event) {
     btn.html("수락<br>하기")
     $(".rejectPr").css("display", "block")
     eventDetail.css("display", "block")
-    eventDetail.append("<span class='event-display-hashtag'>지원받은 이벤트</span>")
+    eventDetail.append("<span class='event-display-hashtag'>제안받은 이벤트</span>")
   }
   
 }
 
 function clickSetting() {
 	
-  $("#event-detail-header-prev").on('click', function() {
-	  location.href="/mobile/musimode/index.html"
-  })
+	$("#event-detail-header-prev").on('click', function() {
+		  window.history.go(-1);
+	})
+	
   
   // 2. 뮤지션이 홍보(PR) 거절하기
   $(".rejectPr").on('click', function() {

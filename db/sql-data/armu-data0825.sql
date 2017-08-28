@@ -123,10 +123,10 @@ insert into gnr_musi (muno, gnrno) values (3, 11);
 insert into thm_musi (muno, thmno) values(1, 2);
 insert into thm_musi (muno, thmno) values(1, 6);
 
-insert into thm_musi (muno, thmno) values(2, 2);
 insert into thm_musi (muno, thmno) values(2, 6);
 insert into thm_musi (muno, thmno) values(2, 7);
 insert into thm_musi (muno, thmno) values(2, 8);
+insert into thm_musi (muno, thmno) values(2, 9);
 
 insert into thm_musi (muno, thmno) values(3, 6);
 insert into thm_musi (muno, thmno) values(3, 7);
@@ -309,13 +309,14 @@ insert into memb (name, phone, pwd, email, path) values ('김승민', '010-3333-
 insert into memb (name, phone, pwd, email, path) values ('박규호', '010-1423-4523',  password('1111'), 'gggyuu@gmail.com', '/image/profile/park');
 
 -- 이벤트
-insert into evn (active, title, mno, locno, pay, addr, date, cont, req)
-values ("Y", "결혼식 축가 구해요~!", 4, 22, 200000, '딩댕동 553-5', '2017-08-20',
-'의정부역 근처 예식장 4월 28일 오후 2시 예식에
-축가 구합니다.
-성악전공하신분이였으면 좋겠습니다.
-학생도 가능하니 연락주세요^^
-페이는 20만원입니다^^', '늦지 않게 와주실분 약속 잘지켜 주시는분 원합니다');
+
+insert into evn (active, title, mno, locno, pay, addr, date, cont)
+values ("Y", "가든파티 연주자를 구합니다~~", 4, 8, 300000, '몰라동 131 몰라캠핑장', '2017-08-30',
+'8월 30일에 모임에서 가든파티를 하는데, 연주가 함께 있는 파티를 하려고 합니다!
+약 5시부터 8시까지 신나는 연주를 해주실 밴드를 모시고자 합니다.
+금액은 협의하여 더 드릴 수 있습니다.
+알뮤 메시지로 연락 부탁드려요!!
+');
 
 insert into evn (active, title, mno, locno, pay, addr, date, cont, req)
 values ("Y", "결혼식 피아노 반주자를 구합니다!", 4, 14, 150000, '링딩동 113-1 샤이니웨딩홀', '2017-08-20',
@@ -352,13 +353,13 @@ values ("Y", "창립기념행사에 모실 초청공연 연주자를 구합니�
 주소 : 4606 Mangum Rd, Houston, TX 77092
 ');
 
-insert into evn (active, title, mno, locno, pay, addr, date, cont)
-values ("Y", "가든파티 연주자를 구합니다~~", 5, 8, 300000, '몰라동 131 몰라캠핑장', '2017-08-30',
-'8월 30일에 모임에서 가든파티를 하는데, 연주가 함께 있는 파티를 하려고 합니다!
-약 5시부터 8시까지 신나는 연주를 해주실 밴드를 모시고자 합니다.
-금액은 협의하여 더 드릴 수 있습니다.
-알뮤 메시지로 연락 부탁드려요!!
-');
+insert into evn (active, title, mno, locno, pay, addr, date, cont, req)
+values ("Y", "결혼식 축가 구해요~!", 5, 22, 100000, '논현로 742 래팡 파티오 나인 예식장', '2017-09-30',
+'논현역 근처 예식장 9월 30일 오후 2시 예식에
+축가 구합니다.
+성악전공하신분이였으면 좋겠습니다.
+학생도 가능하니 연락주세요^^
+페이는 10만원입니다^^', '늦지 않게 와주실분 약속 잘지켜 주시는분 원합니다');
 
 insert into evn (active, title, mno, locno, pay, addr, date, cont, req)
 values ("Y", "졸업연주를 하는데, 악기연주자가 필요합니다.", 6, 8, 80000, '정릉로 77 국민대학교 경영대 1층 콘서트홀', '2017-11-21',
@@ -554,12 +555,12 @@ insert into thm_evn (eno, thmno) values (9, 4);
 
 
 -- 이벤트 홍보(pr)
-insert into pr (eno, muno, active) values (1, 1, 'Y');
 insert into pr (eno, muno, active) values (1, 2, 'Y');
+insert into pr (eno, muno, active) values (2, 2, 'Y');
 insert into pr (eno, muno, active) values (2, 3, 'Y');
 
-insert into noti (muno, eno, type, date, cont, whom, prno, isread) values (1, 1, "pr", '2017-07-19 15:02:19', "제안받은 이벤트", 'musician', 1, 'N');
-insert into noti (muno, eno, type, date, cont, whom, prno, isread) values (2, 1, "pr", '2017-07-20 11:52:14', "제안받은 이벤트", 'musician', 2, 'N');
+insert into noti (muno, eno, type, date, cont, whom, prno, isread) values (2, 1, "pr", '2017-07-20 11:52:14', "제안받은 이벤트", 'musician', 1, 'N');
+insert into noti (muno, eno, type, date, cont, whom, prno, isread) values (2, 2, "pr", '2017-07-19 15:02:19', "제안받은 이벤트", 'musician', 2, 'N');
 insert into noti (muno, eno, type, date, cont, whom, prno, isread) values (3, 2, "pr", '2017-07-28 21:02:18', "제안받은 이벤트", 'musician', 3, 'N');
 
 -- 이벤트&뮤지션 매칭정보(mtc)
@@ -593,6 +594,7 @@ insert into loc_musi (muno, locno) values (1, 3);
 insert into loc_musi (muno, locno) values (1, 4);
 insert into loc_musi (muno, locno) values (1, 5);
 insert into loc_musi (muno, locno) values (1, 6);
+insert into loc_musi (muno, locno) values (1, 23);
 
 insert into loc_musi (muno, locno) values (2, 6);
 insert into loc_musi (muno, locno) values (2, 7);
@@ -1344,9 +1346,9 @@ insert into gnr_musi (muno, gnrno) values (39, 1);
 insert into gnr_musi (muno, gnrno) values (39, 6);
 insert into gnr_musi (muno, gnrno) values (39, 7);
 insert into gnr_musi (muno, gnrno) values (39, 8);
-insert into thm_musi (muno, thmno) values (39, 2);
 insert into thm_musi (muno, thmno) values (39, 3);
 insert into thm_musi (muno, thmno) values (39, 4);
+insert into thm_musi (muno, thmno) values (39, 6);
 insert into loc_musi (muno, locno) values (39, 1);
 insert into loc_musi (muno, locno) values (39, 13);
 insert into loc_musi (muno, locno) values (39, 8);

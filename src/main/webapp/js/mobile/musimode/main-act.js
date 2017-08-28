@@ -77,7 +77,7 @@ function setClickEvents(pressedBtn) {
     
     if(type == 'pr') location.href = 'event/candidate/index.html?tab=pr'
     else if(type == 'appy_reject'|| type == 'evn_delete') $('#category2').trigger('click')
-    else if(type == 'mtc') $('#header-menu-email').trigger('click')
+    else if(type == 'mtc') location.href = 'event/index.html'
     else if(type == 'evn_today' || type == 'evn_edit') location.href = 'event/detail.html?no=' + eventNo
     else if(type == 'evn_delete') return;
     else if(type == 'rev') location.href = 'musi-info/index.html'
