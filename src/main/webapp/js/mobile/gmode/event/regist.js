@@ -99,7 +99,7 @@ categoryGenreNo = ""
 
   // 이벤트 9페이지 
 
-function forward(start, end) {
+  function forward(start, end) {
   var stopProgress = setInterval(
       function() { 
         if(start >= end) {
@@ -186,13 +186,12 @@ eventPage1Next.on('click', function() {
 
   eventPage1.toggle('slide', {direction:'left'}, 
       500 , function() {
-    forward(10, 22)
-    })
-    
+  })
+
   eventPage2.toggle('slide', {direction:'right'}, 
       500 , function() {
     forward(10, 22)
-    })
+  })
 })
 
 themeSelectButton.on('click', function() {
@@ -271,13 +270,18 @@ $("#genre-check-check").on('click', function() {
 })
 
 eventPage2Prev.on('click', function() {
-  eventPage2.toggle(0);
-  eventPage1.toggle(0 , function() {
+  eventPage2.toggle('slide', {direction:'right'}, 
+      500 , function() {
+  })
+
+  eventPage1.toggle('slide', {direction:'left'}, 
+      500 , function() {
     back(22, 10)
     $('#theme-select-box').html("")
     $('#major-select-box').html("")
     $('#genre-select-box').html("")
-  });
+  })
+
 })
 
 eventPage2Next.on('click', function() {
@@ -321,25 +325,34 @@ eventPage2Next.on('click', function() {
     });
     return
   }
+  
+  eventPage3Calendar.datepicker({
+    dateFormat: "yy-mm-dd",
+    minDate: 0,
+    dayNames: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+    dayNamesMin: ["일"," 월"," 수"," 목"," 금"," 토"," 일"]
+  });
 
-  eventPage2.toggle(0);
-  eventPage3.toggle(0 , function() {
+  eventPage2.toggle('slide', {direction:'left'}, 
+      500 , function() {
+  })
+
+  eventPage3.toggle('slide', {direction:'right'}, 
+      500 , function() {
     forward(22, 34)
-    eventPage3Calendar.datepicker({
-      dateFormat: "yy-mm-dd",
-      minDate: 0,
-      dayNames: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
-      dayNamesMin: ["일"," 월"," 수"," 목"," 금"," 토"," 일"]
-    });
   });
 })
 
 
 eventPage3Prev.on('click', function() {
-  eventPage3.toggle(0);
-  eventPage2.toggle(0 , function() {
+  eventPage3.toggle('slide', {direction:'right'}, 
+      500 , function() {
+  })
+
+  eventPage2.toggle('slide', {direction:'left'}, 
+      500 , function() {
     back(34, 22)
-  });
+  })
 })
 
 eventPage3Next.on('click', function() {
@@ -360,7 +373,7 @@ eventPage3Next.on('click', function() {
       customClass: "checkSwal"
     });
     return
-  } 
+  }
 
   $.getJSON('/category/listLocationType.json', function(result) {
     var templateFn = Handlebars.compile($('#select-sido-template').text())
@@ -391,17 +404,24 @@ eventPage3Next.on('click', function() {
     console.log(err)
   })
 
-  eventPage3.toggle(0);
-  eventPage4.toggle(0 , function() {
+  eventPage3.toggle('slide', {direction:'left'}, 
+      500 , function() {
+  })
+  eventPage4.toggle('slide', {direction:'right'}, 
+      500 , function() {
     forward(34, 46)
-  });
+  })
 })
 
 eventPage4Prev.on('click', function() {
-  eventPage4.toggle(0);
-  eventPage3.toggle(0 , function() {
+  eventPage4.toggle('slide', {direction:'right'}, 
+      500 , function() {
+  })
+
+  eventPage3.toggle('slide', {direction:'left'}, 
+      500 , function() {
     back(46, 34)
-  });
+  })
 })
 
 eventPage4Next.on('click', function() {
@@ -450,18 +470,25 @@ eventPage4Next.on('click', function() {
     return
   }
 
+  eventPage4.toggle('slide', {direction:'left'}, 
+      500 , function() {
+  })
 
-  eventPage4.toggle(0);
-  eventPage5.toggle(0 , function() {
+  eventPage5.toggle('slide', {direction:'right'}, 
+      500 , function() {
     forward(46, 58)
-  });
+  })
 })
 
 eventPage5Prev.on('click', function() {
-  eventPage5.toggle(0);
-  eventPage4.toggle(0 , function() {
+  eventPage5.toggle('slide', {direction:'right'}, 
+      500 , function() {
+  })
+
+  eventPage4.toggle('slide', {direction:'left'}, 
+      500 , function() {
     back(58, 46)
-  });
+  })
 })
 
 eventPage5Next.on('click', function() {
@@ -495,17 +522,25 @@ eventPage5Next.on('click', function() {
     return
   } 
 
-  eventPage5.toggle(0);
-  eventPage6.toggle(0 , function() {
+  eventPage5.toggle('slide', {direction:'left'}, 
+      500 , function() {
+  })
+
+  eventPage6.toggle('slide', {direction:'right'}, 
+      500 , function() {
     forward(58, 70)
-  });
+  })
 })
 
 eventPage6Prev.on('click', function() {
-  eventPage6.toggle(0);
-  eventPage5.toggle(0 , function() {
+  eventPage6.toggle('slide', {direction:'right'}, 
+      500 , function() {
+  })
+
+  eventPage5.toggle('slide', {direction:'left'}, 
+      500 , function() {
     back(70, 58)
-  });
+  })
 })
 
 eventPage6Next.on('click', function() {
@@ -550,10 +585,14 @@ eventPage6Next.on('click', function() {
   }
 
   reherseCheck($("input[name=toggle]:checked").val())
-  eventPage6.toggle(0);
-  eventPage7.toggle(0 , function() {
-    forward(70,82)
-  });
+
+  eventPage6.toggle('slide', {direction:'left'}, 
+      500 , function() {
+  })
+  eventPage7.toggle('slide', {direction:'right'}, 
+      500 , function() {
+    forward(70, 82)
+  })
 })
 
 
@@ -571,10 +610,14 @@ $(".btn").on('click', function(event) {
 })
 
 eventPage7Prev.on('click', function() {
-  eventPage7.toggle(0);
-  eventPage6.toggle(0 , function() {
+  eventPage7.toggle('slide', {direction:'right'}, 
+      500 , function() {
+  })
+
+  eventPage6.toggle('slide', {direction:'left'}, 
+      500 , function() {
     back(82, 70)
-  });
+  })
 })
 
 eventPage7Next.on('click', function() {
@@ -601,18 +644,28 @@ eventPage7Next.on('click', function() {
     $(".event-req").css("display", "none")
   } 
 
-  eventPage7.toggle(0);
-  eventPage8.toggle(0 , function() {
+  eventConfirm()
+  eventPage7.toggle('slide', {direction:'left'}, 
+      500 , function() {
     forward(82, 101)
-    eventConfirm()
-  });
+  })
+  eventPage8.toggle('slide', {direction:'right'}, 
+      500 , function() {
+    forward(82, 101)
+  })
+
+
 })
 
 eventPage8Prev.on('click', function() {
-  eventPage8.toggle(0);
-  eventPage7.toggle(0 , function() {
+  eventPage8.toggle('slide', {direction:'right'}, 
+      500 , function() {
+  })
+
+  eventPage7.toggle('slide', {direction:'left'}, 
+      500 , function() {
     back(101, 82)
-  });
+  })
 })
 
 eventPage8Next.on('click', function() {
@@ -634,12 +687,10 @@ eventPage8Next.on('click', function() {
       "rhsinfo" : inputRehearseText.val()
     }, function(result) {
       eventPage8.toggle(0);
-      eventPage9.toggle(0 , function() {
-        $("#event-page").css("display", "none");
-        $("#event-page9-deepscreen").css("display", "block")
-        $("#event-page9-backscreen").css("display", "block")
-        progress(100)
-      });
+      $("#event-page").css("display", "none")
+      $("#event-page9").fadeIn(700)
+      $("#event-page9-deepscreen").fadeIn(700)
+      $("#event-page9-backscreen").fadeIn(700)
     }, 'json')
   } else if($("input[name=toggle]:checked").val() =="false") {
     $.post('/event/add.json', {
@@ -657,14 +708,11 @@ eventPage8Next.on('click', function() {
       "rhsnum" : 0,
       "rhsinfo" : null
     }, function(result) {
-      console.log(result)
       eventPage8.toggle(0);
-      eventPage9.toggle(0 , function() {
-        $("#event-page").css("display", "none");
-        $("#event-page9-deepscreen").css("display", "block")
-        $("#event-page9-backscreen").css("display", "block")
-        progress(100)
-      });
+      $("#event-page").css("display", "none")
+      $("#event-page9").fadeIn(700)
+      $("#event-page9-deepscreen").fadeIn(700)
+      $("#event-page9-backscreen").fadeIn(700)
     }, 'json')
   }
 

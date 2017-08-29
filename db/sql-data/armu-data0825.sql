@@ -618,12 +618,10 @@ insert into noti (muno, eno, type, date, cont, whom, prno, isread) values (3, 2,
 
 -- 뮤지션 경력 파일 (spec, spec_path)
 insert into spec (muno, spdt, dscp) values(2, '2017-07-23', '저번 결혼식 이벤트때 찍은 사진입니다.');
-insert into spec (muno, spdt, dscp) values(1, '2017-07-22', '짱짱맨 조승우 입니다. 비밀의숲 예고편 영상 올려봅니다.');
 
 insert into spec_path (spno, path, isimg) values(1, '/image/event/spec/sam6.jpg', 'Y');
 insert into spec_path (spno, path, isimg) values(1, '/image/event/spec/sam7.jpg', 'Y');
 insert into spec_path (spno, path, isimg) values(1, 'https://youtu.be/oLLwRUWRAUE', 'N');
-insert into spec_path (spno, path, isimg) values(2, 'https://youtu.be/9F56WWIPGg0', 'N');
 
 -- 뮤지션 추가
 insert into memb (name, phone, pwd, email, path) values ('김랑랑', '010-1234-1234',  password('1111'), 'lang@gmail.com', '/image/profile/1502328657463_21');
