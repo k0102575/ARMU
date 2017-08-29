@@ -23,6 +23,7 @@ function displayMusiInfoPortfolio() {
           var container = $('.portfolio-container')
           var html = container.html()
           container.html(generatedHTML)
+          return
         }
 
         var templateFn = Handlebars.compile($('#musician-info-portfolio-template').text())

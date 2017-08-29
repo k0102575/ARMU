@@ -98,7 +98,7 @@ function eventCheck(event) {
 
   if(prActive == "Y") { // 수락 거절 버튼 2개 뛰워야한다.
     btn.addClass("acceptPrAndAppy")
-    btn.html("수락<br>하기")
+    btn.html("수락")
     $(".rejectPr").css("display", "block")
     eventDetail.css("display", "block")
     eventDetail.append("<span class='event-display-hashtag'>제안받은 이벤트</span>")

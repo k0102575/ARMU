@@ -11,14 +11,14 @@
 .btn {
   position: fixed;
   border-radius: 100%;
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   bottom: 5%;
   right: 5%;
   font-weight: 500;
   background: black;
   font-size: 2.2rem;
-  padding-top: 25px;
+  padding-top: 40px;
   box-sizing: border-box;
   text-align: center;
   color: white;
@@ -26,34 +26,52 @@
 }
 
 .rejectPr {
-   position: fixed;
-  border-radius: 100%;
-  width: 150px;
-  height: 150px;
-  bottom: 15%;
-  right: 5%;
-  font-weight: 500;
-  background: black;
-  font-size: 2.2rem;
-  padding-top: 25px;
-  box-sizing: border-box;
-  text-align: center;
-  color: white;
-  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.38);
-  display: none;
+    position: fixed;
+    border-radius: 100%;
+    width: 130px;
+    height: 130px;
+    bottom: 14%;
+    right: 5%;
+    font-weight: 500;
+    background: #ddd;
+    font-size: 2.2rem;
+    padding-top: 40px;
+    box-sizing: border-box;
+    text-align: center;
+    color: black;
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.38);
+    display: none;
+}
+
+.acceptPrAndAppy {
+    position: fixed;
+    border-radius: 100%;
+    width: 130px;
+    height: 130px;
+    bottom: 5%;
+    right: 5%;
+    font-weight: 500;
+    background: black;
+    font-size: 2.2rem;
+    padding-top: 40px;
+    box-sizing: border-box;
+    text-align: center;
+    color: white;
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.38);
+	
 }
 
 .cancelAppy-btn {
   position: fixed;
   border-radius: 100%;
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   bottom: 5%;
   right: 5%;
   font-weight: 400;
   background: #ddd;
   font-size: 2.2rem;
-  padding-top: 25px;
+  padding-top: 20px;
   box-sizing: border-box;
   text-align: center;
   color: black;
