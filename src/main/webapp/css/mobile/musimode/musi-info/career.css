@@ -415,3 +415,28 @@ div[style^='background-image'] {
     top: 10%;
 }
 
+.loader-box {
+    position: absolute;
+    left: 50vw;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.loader {
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -16px;
+    margin-left: -16px;
+    border-radius: 50%;
+    background-color: transparent;
+    border-top: 10px solid rgba(0,0,0,.2);
+    border-right: 10px solid rgba(0,0,0,.2);
+    border-bottom: 10px solid rgba(0,0,0,.2);
+    border-left: 10px solid #eee;
+    animation: spin 800ms linear infinite;
+}
+
