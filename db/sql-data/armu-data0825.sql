@@ -1830,10 +1830,20 @@ insert into thm_evn (eno, thmno) values (25, 2);
 insert into thm_evn (eno, thmno) values (26, 2);
 
 
+insert into spec (muno, spdt, dscp) values(1, '2016-10-14', '2016년 10월 단국대학교 축제 공연 사진들입니다.');
 
+insert into spec_path (spno, path, isimg) values(2, '/image/event/spec/jo1.jpg', 'Y');
+insert into spec_path (spno, path, isimg) values(2, '/image/event/spec/jo2.png', 'Y');
+insert into spec_path (spno, path, isimg) values(2, '/image/event/spec/jo3.jpg', 'Y');
 
+insert into spec (muno, spdt, dscp) values(1, '2017-04-30', '올 초 대학로에서 공연했던 뮤지컬 영상입니다.');
 
+insert into spec_path (spno, path, isimg) values(3, 'https://youtu.be/W80u3UY0zwo', 'N');
 
+insert into spec (muno, spdt, dscp) values(1, '2017-07-21', '지난 달에 알뮤를 통해 만나게 된 뮤지컬 공연 사진들입니다.');
+
+insert into spec_path (spno, path, isimg) values(4, '/image/event/spec/jo4.jpg', 'Y');
+insert into spec_path (spno, path, isimg) values(4, '/image/event/spec/jo5.jpg', 'Y');
 
 
 
