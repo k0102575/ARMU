@@ -109,12 +109,8 @@
   padding-bottom: 5%;
   box-sizing: border-box;
   min-height: 100vh;
-  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
-  url(/image/background/portfolio2.png);
-  background-repeat: no-repeat;
-  background-size: 200vw 100vh;
-  background-position: center center;
-  filter: blur(100px);
+  -webkit-filter: blur(50px);
+  filter: blur(150px);
 }
 
 #spec-deepscreen {

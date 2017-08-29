@@ -19,6 +19,7 @@
     <id column="spno" property="spno" />
     <result column="specDate" property="specDate" />
     <result column="specDscp" property="specDscp" />
+    <result column="path" property="photo" />
      <collection property="list" ofType="java.util.Map">
        <association property="fileMap" javaType="java.util.Map"> 
        <result column="spno" property="spno" />
@@ -82,8 +83,10 @@
   </select> <!-- 승민 -->
   
   <select id="selectMusiPortfolio" resultMap="musicianInfoPortfolioMap" parameterType="int">
-  select sp.spno, sp.spdt as specDate, sp.dscp as specDscp, spp.isimg as fileType, spp.path as filePath 
+  select sp.spno, sp.spdt as specDate, sp.dscp as specDscp, spp.isimg as fileType, spp.path as filePath, m.path
   from spec sp left outer join spec_path spp on sp.spno = spp.spno
+  left outer join musi mu on sp.muno = mu.muno
+  left outer join memb m on mu.muno = m.mno
   where sp.muno = #{no}
   </select> <!-- 승민 -->
   

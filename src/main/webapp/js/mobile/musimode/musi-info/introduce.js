@@ -142,6 +142,7 @@ $("#introduce-edit-btn").on('click', function() {
 function displayMusiInfoIntroduce() {
   $.getJSON('/portfolio/myIntroduce.json', function(result) {
     var data = result.data.getIntroduce
+    console.log(result.data)
     $('.loader-box').hide()
     dataSetting(data)
   })
@@ -236,7 +237,7 @@ function dataSetting(data) {
     $("#musician-info-location-content").append("<div class='musician-info-location-content-box'><span class='location-span locationType'>"+categoryList[i].loctname+"</span>" +
         "<div class='musician-info-location-content-container' loctno='"+ categoryList[i].loctno +"'></div></div>")
         for( var j = 0; j < categoryList[i].list.length; j++) {
-          $(".musician-info-location-content-container[loctno='"+ categoryList[i].list[j].loctno +"']").append("<span class='location-span'>#"+ categoryList[i].list[j].location +"</span>")
+          $(".musician-info-location-content-container[loctno='"+ categoryList[i].list[j].loctno +"']").append("<span class='location-span'>  #"+ categoryList[i].list[j].location +"</span>")
         }
   }
 

@@ -18,6 +18,7 @@ displayMusiInfoPortfolio()
 
 function displayMusiInfoPortfolio() {
   $.getJSON('/portfolio/myPortfolio.json', function(result) {
+    console.log(result.data)
     if(result.data.getPortfolio.length == 0) {
       var templateFn = Handlebars.compile($('#musician-info0-portfolio-template').text())
       var generatedHTML = templateFn(result.data)
@@ -34,6 +35,10 @@ function displayMusiInfoPortfolio() {
     var html = container.html()
     $('.loader-box').hide()
     container.html(html + generatedHTML).hide().fadeIn(700)
+    
+            $("#spec-backscreen").css("background", "url('"+ result.data.getPortfolio[0].photo +"')")
+        $("#spec-backscreen").css("background-size", "cover")
+        $("#spec-backscreen").css("background-position", "center")
 
     for(var j = 0; j < result.data.getPortfolio.length; j++){
       var spno = result.data.getPortfolio[j].spno

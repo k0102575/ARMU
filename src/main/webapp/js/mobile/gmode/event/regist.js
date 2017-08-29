@@ -110,7 +110,7 @@ function forward(start, end) {
         }
 
       }
-      , 10);
+      , 20);
 }
 
 function back(start, end) {
@@ -124,7 +124,7 @@ function back(start, end) {
         }
 
       }
-      , 10);
+      , 20);
 }
 
 $(document).ready(function() {
@@ -184,10 +184,15 @@ eventPage1Next.on('click', function() {
     console.log(err)
   })
 
-  eventPage1.toggle(0);
-  eventPage2.toggle(0 , function() {
+  eventPage1.toggle('slide', {direction:'left'}, 
+      500 , function() {
     forward(10, 22)
-  });
+    })
+    
+  eventPage2.toggle('slide', {direction:'right'}, 
+      500 , function() {
+    forward(10, 22)
+    })
 })
 
 themeSelectButton.on('click', function() {

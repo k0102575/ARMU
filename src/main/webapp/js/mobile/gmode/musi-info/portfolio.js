@@ -16,7 +16,7 @@ function displayMusiInfoPortfolio() {
       { 
     "no" : location.href.split('?')[1].split('=')[1]
       }, function(result) {
-
+        console.log(result)
         if(result.data.getPortfolio.length == 0) {
           var templateFn = Handlebars.compile($('#musician-info-zero-portfolio-template').text())
           var generatedHTML = templateFn(result.data)
@@ -30,7 +30,11 @@ function displayMusiInfoPortfolio() {
         var container = $('.portfolio-container')
         var html = container.html()
         container.html(html + generatedHTML)
-
+        
+        $("#spec-backscreen").css("background", "url('"+ result.data.getPortfolio[0].photo +"')")
+        $("#spec-backscreen").css("background-size", "cover")
+        $("#spec-backscreen").css("background-position", "center")
+        
         for(var j = 0; j < result.data.getPortfolio.length; j++){
           var spno = result.data.getPortfolio[j].spno
           for(var i = 0; i < result.data.getPortfolio[j].list.length; i++) {
