@@ -1820,6 +1820,15 @@ insert into thm_evn (eno, thmno) values (23, 2);
 insert into thm_evn (eno, thmno) values (24, 1);
 insert into thm_evn (eno, thmno) values (25, 2);
 
+insert into mjr_evn (eno, mjrno) values (26, 1);
+insert into mjr_evn (eno, mjrno) values (26, 2);
+insert into mjr_evn (eno, mjrno) values (26, 3);
+
+insert into gnr_evn (eno, gnrno) values (26, 8);
+
+insert into thm_evn (eno, thmno) values (26, 6);
+insert into thm_evn (eno, thmno) values (26, 11);
+
 -- 조승우 포트폴리오 추가
 
 insert into spec (muno, spdt, dscp) values(1, '2016-10-14', '2016년 10월 홍익대학교 축제 공연 사진들입니다.');
@@ -1846,14 +1855,13 @@ values ("Y", "뮤지컬 스위니토드에서 함께할 뮤지션을 구해요",
 
 -- 조승우 완료 이벤트 카테고리 추가
 
-insert into mjr_evn (eno, mjrno) values (26, 1);
-insert into mjr_evn (eno, mjrno) values (26, 2);
-insert into mjr_evn (eno, mjrno) values (26, 3);
+insert into mjr_evn (eno, mjrno) values (27, 1);
+insert into mjr_evn (eno, mjrno) values (27, 2);
+insert into mjr_evn (eno, mjrno) values (27, 3);
+insert into gnr_evn (eno, gnrno) values (27, 8);
 
-insert into gnr_evn (eno, gnrno) values (26, 8);
-
-insert into thm_evn (eno, thmno) values (26, 6);
-insert into thm_evn (eno, thmno) values (26, 11);
+insert into thm_evn (eno, thmno) values (27, 6);
+insert into thm_evn (eno, thmno) values (27, 11);
 
 -- 조승우 완료 이벤트 노티 추가
 
