@@ -997,9 +997,8 @@ insert into mtc (muno, eno, mtcdt, score, rev) values (13, 12, '2017-06-19', 3,
 담엔 선곡좀 신경써주세요.
 진짜 이벤트 내용에 하나도 안맞는 곡 선곡해서 난처해 죽는줄알았어요.');
 
-insert into mtc (muno, eno, mtcdt, score, rev) values (1, 13, '2016-09-19', 5,
-'아 정말 한 편의 뮤지컬을 보는 것 같았습니다.
-나중에 기회가 된다면 꼭 다시 부르고 싶은 분입니다.^^
+insert into mtc (muno, eno, mtcdt, score, rev) values (1, 13, '2016-10-19', 5,
+'나중에 기회가 된다면 꼭 다시 부르고 싶은 분입니다.^^
 외모에 반하고 노래에 또 한 번 반합니다 ^^');
 
 insert into mtc (muno, eno, mtcdt, score, rev) values (8, 14, '2017-06-19', 1,
@@ -1788,7 +1787,6 @@ insert into mjr_evn (eno, mjrno) values (24, 18);
 
 insert into mjr_evn (eno, mjrno) values (25, 1);
 
-insert into mjr_evn (eno, mjrno) values (26, 6);
 
 
 -- 이벤트 장르(gnr_evn) 추가
@@ -1815,7 +1813,6 @@ insert into gnr_evn (eno, gnrno) values (25, 1);
 insert into gnr_evn (eno, gnrno) values (25, 2);
 
 insert into gnr_evn (eno, gnrno) values (25, 14);
-insert into gnr_evn (eno, gnrno) values (26, 2);
 
 -- 이벤트 테마(thm_evn) 추가
 insert into thm_evn (eno, thmno) values (19, 2);
@@ -1825,7 +1822,6 @@ insert into thm_evn (eno, thmno) values (22, 2);
 insert into thm_evn (eno, thmno) values (23, 2);
 insert into thm_evn (eno, thmno) values (24, 1);
 insert into thm_evn (eno, thmno) values (25, 2);
-insert into thm_evn (eno, thmno) values (26, 2);
 
 -- 조승우 포트폴리오 추가
 
@@ -1856,17 +1852,20 @@ insert into mjr_evn (eno, mjrno) values (26, 1);
 insert into mjr_evn (eno, mjrno) values (26, 2);
 insert into mjr_evn (eno, mjrno) values (26, 3);
 
-insert into gnr_evn (eno, gnrno) values (26, 8);0
+insert into gnr_evn (eno, gnrno) values (26, 8);
 
 insert into thm_evn (eno, thmno) values (26, 6);
 insert into thm_evn (eno, thmno) values (26, 11);
 
 -- 조승우 완료 이벤트 노티 추가
 
+insert into mtc (muno, eno, mtcdt, score, rev) values (1, 26, '2017-06-11', 4,
+'완료 이벤트 리뷰');
+
 insert into noti (muno, eno, type, date, cont, whom, mtcno, isread) values (1, 13, "mtc", '2016-09-19 16:52:14', "매칭 확정", 'both', 7, 'Y');
 insert into noti (muno, eno, type, date, cont, whom, mtcno, isread) values (1, 13, "evn_today", '2016-10-14 00:00:00', "이벤트 당일", 'both', 7, 'Y');
-insert into noti (muno, eno, type, date, cont, whom, mtcno, isread) values (1, 26, "mtc", '2017-06-11 10:31:95', "매칭 확정", 'both', 7, 'Y');
-insert into noti (muno, eno, type, date, cont, whom, mtcno, isread) values (1, 26, "evn_today", '2017-10-14 00:00:00', "이벤트 당일", 'both', 7, 'Y');
+insert into noti (muno, eno, type, date, cont, whom, mtcno, isread) values (1, 26, "mtc", '2017-06-11 10:31:35', "매칭 확정", 'both', 14, 'Y');
+insert into noti (muno, eno, type, date, cont, whom, mtcno, isread) values (1, 26, "evn_today", '2017-7-21 00:00:00', "이벤트 당일", 'both', 14, 'Y');
 
 
 

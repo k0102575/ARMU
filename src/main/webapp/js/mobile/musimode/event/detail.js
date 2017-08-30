@@ -244,7 +244,7 @@ function clickSetting() {
   // 지원요청을 거절받았을때 상황
   $(".appyReject-btn").on('click', function() {
     swal({
-      title: "\n지원요청을 거절받은 \n\n" +
+      title: "지원요청을 거절받은 \n\n" +
       "이벤트입니다.",
       type: "warning",
       showCancelButton: false,
@@ -257,7 +257,7 @@ function clickSetting() {
   // 매칭요청을 거절했을때 상황
   $(".prReject-btn").on('click', function() {
     swal({
-      title: "\n매칭요청을 거절했던 \n\n" +
+      title: "매칭요청을 거절했던 \n\n" +
       "이벤트입니다.",
       type: "warning",
       showCancelButton: false,
