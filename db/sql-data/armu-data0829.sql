@@ -1751,7 +1751,7 @@ values ("Y", "결혼식 축가 해 주실 테너분 구합니다", 6, 14, 80000,
 페이는 8만원입니다. (적어서 죄송합니다.)
  
 데모있으심 보내주세요. weibe@hanmail.net  기한이 얼마 남지 않아 급하게 됐습니다.
-', '미녀와 야수 영어버전을 부를겁니다 (모르는 가사 손에 써서 커닝해도 되고요. ㅋ)')
+', '미녀와 야수 영어버전을 부를겁니다 (모르는 가사 손에 써서 커닝해도 되고요. ㅋ)');
 
 
 -- 이벤트 전공(mjr_evn) 추가
@@ -1828,8 +1828,9 @@ insert into spec_path (spno, path, isimg) values(2, '/image/event/spec/jo1.jpg',
 insert into spec_path (spno, path, isimg) values(2, '/image/event/spec/jo2.png', 'Y');
 insert into spec_path (spno, path, isimg) values(2, '/image/event/spec/jo3.jpg', 'Y');
 
-insert into spec (muno, spdt, dscp) values(1, '2017-04-30', '올 초 대학로에서 공연했던 뮤지컬 영상입니다.');
+insert into spec (muno, spdt, dscp) values(1, '2017-04-30', '올 초 대학로에서 공연했던 뮤지컬 영상 및 사진입니다.');
 
+insert into spec_path (spno, path, isimg) values(3, '/image/event/spec/jo6.png', 'Y');
 insert into spec_path (spno, path, isimg) values(3, 'https://youtu.be/W80u3UY0zwo', 'N');
 
 insert into spec (muno, spdt, dscp) values(1, '2017-07-21', '지난 달에 알뮤를 통해 만나게 된 뮤지컬 공연 사진들입니다.');
@@ -1856,13 +1857,13 @@ insert into thm_evn (eno, thmno) values (26, 11);
 
 -- 조승우 완료 이벤트 노티 추가
 
-insert into mtc (muno, eno, mtcdt, score, rev) values (1, 26, '2017-06-11', 4,
-'');
+insert into mtc (muno, eno, mtcdt, score, rev) values (1, 27, '2017-06-11', 4,
+'너무 좋았습니다 카리스마 넘치는 연기 잘보았고, 중간중간에 애드립도 정말 좋았네요');
 
 insert into noti (muno, eno, type, date, cont, whom, mtcno, isread) values (1, 13, "mtc", '2016-09-19 16:52:14', "매칭 확정", 'both', 7, 'Y');
 insert into noti (muno, eno, type, date, cont, whom, mtcno, isread) values (1, 13, "evn_today", '2016-10-14 00:00:00', "이벤트 당일", 'both', 7, 'Y');
-insert into noti (muno, eno, type, date, cont, whom, mtcno, isread) values (1, 26, "mtc", '2017-06-11 10:31:35', "매칭 확정", 'both', 14, 'Y');
-insert into noti (muno, eno, type, date, cont, whom, mtcno, isread) values (1, 26, "evn_today", '2017-7-21 00:00:00', "이벤트 당일", 'both', 14, 'Y');
+insert into noti (muno, eno, type, date, cont, whom, mtcno, isread) values (1, 27, "mtc", '2017-06-11 10:31:35', "매칭 확정", 'both', 14, 'Y');
+insert into noti (muno, eno, type, date, cont, whom, mtcno, isread) values (1, 27, "evn_today", '2017-7-21 00:00:00', "이벤트 당일", 'both', 14, 'Y');
 
 
 
