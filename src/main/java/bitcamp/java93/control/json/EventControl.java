@@ -498,6 +498,7 @@ public class EventControl {
     return returnList;
   }
 
+  @Scheduled(cron="0 0 0 * * * ")
   public void matching(){
     JsonResult result = new JsonResult();
     try {
