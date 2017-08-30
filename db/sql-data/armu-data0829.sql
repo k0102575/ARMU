@@ -1424,11 +1424,8 @@ insert into musi (muno, nick, age, team, gender, hpg, intro) values (47, 'Dean',
 insert into mjr_musi (muno, mjrno) values (47, 1);
 insert into mjr_musi (muno, mjrno) values (47, 11);
 insert into mjr_musi (muno, mjrno) values (47, 23);
-insert into gnr_musi (muno, gnrno) values (47, 1);
-insert into gnr_musi (muno, gnrno) values (47, 2);
-insert into gnr_musi (muno, gnrno) values (47, 4);
 insert into gnr_musi (muno, gnrno) values (47, 10);
-insert into gnr_musi (muno, gnrno) values (47, 19);
+insert into gnr_musi (muno, gnrno) values (47, 11);
 insert into thm_musi (muno, thmno) values (47, 8);
 insert into thm_musi (muno, thmno) values (47, 9);
 insert into thm_musi (muno, thmno) values (47, 11);
@@ -1467,8 +1464,8 @@ insert into loc_musi (muno, locno) values (51, 55);
 insert into loc_musi (muno, locno) values (51, 56);
 insert into loc_musi (muno, locno) values (51, 14);
 insert into musi (muno, nick, age, team, gender, hpg, intro) values (52, '찔레꽃', 68, 'N', 'M','http://tistory.saik.com', '가장 한국적인 목소리, 한국 최고의 대중 소리꾼 장사익입니다.');
-insert into mjr_musi (muno, mjrno) values (52, 1);
 insert into gnr_musi (muno, gnrno) values (52, 18);
+insert into mjr_musi (muno, mjrno) values (52, 1);
 insert into thm_musi (muno, thmno) values (52, 7);
 insert into thm_musi (muno, thmno) values (52, 11);
 insert into loc_musi (muno, locno) values (52, 32);
@@ -1844,7 +1841,7 @@ insert into spec_path (spno, path, isimg) values(4, '/image/event/spec/jo5.jpg',
 
 insert into evn (active, title, mno, locno, pay, addr, date, cont)
 values ("Y", "뮤지컬 스위니토드에서 함께할 뮤지션을 구해요", 7, 24, 1000000, '올림픽로 240 샤 롯데 씨어터', '2017-07-21',
-'뮤지컬 헤드윅에서 함께할 뮤지션을 구해요');
+'뮤지컬 스위니토드에서 함께할 뮤지션을 구해요');
 
 -- 조승우 완료 이벤트 카테고리 추가
 
@@ -1860,7 +1857,7 @@ insert into thm_evn (eno, thmno) values (26, 11);
 -- 조승우 완료 이벤트 노티 추가
 
 insert into mtc (muno, eno, mtcdt, score, rev) values (1, 26, '2017-06-11', 4,
-'완료 이벤트 리뷰');
+'');
 
 insert into noti (muno, eno, type, date, cont, whom, mtcno, isread) values (1, 13, "mtc", '2016-09-19 16:52:14', "매칭 확정", 'both', 7, 'Y');
 insert into noti (muno, eno, type, date, cont, whom, mtcno, isread) values (1, 13, "evn_today", '2016-10-14 00:00:00', "이벤트 당일", 'both', 7, 'Y');
