@@ -197,6 +197,7 @@ eventPage1Next.on('click', function() {
 themeSelectButton.on('click', function() {
   themeSelectBox.toggle(0)
   menuBackScreen.toggle(0)
+  categoryThemeNo =""
   themeSelectText.text("")
   $("#theme-check-btn").toggle(0)
 })
@@ -204,6 +205,7 @@ themeSelectButton.on('click', function() {
 majorSelectButton.on('click', function() {
   majorSelectBox.toggle(0)
   menuBackScreen.toggle(0)
+  categoryMajorNo =""
   majorSelectText.text("")
   $("#major-check-btn").toggle(0)
 })
@@ -211,6 +213,7 @@ majorSelectButton.on('click', function() {
 genreSelectButton.on('click', function() {
   genreSelectBox.toggle(0)
   menuBackScreen.toggle(0)
+  categoryGenreNo =""
   genreSelectText.text("")
   $("#genre-check-btn").toggle(0)
 })
