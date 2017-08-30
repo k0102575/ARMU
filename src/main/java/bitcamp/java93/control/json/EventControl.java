@@ -498,8 +498,6 @@ public class EventControl {
     return returnList;
   }
 
-//  @Scheduled(fixedRate=10000) //테스트용
-  @Scheduled(cron="0 0 0 * * ? ")
   public void matching(){
     JsonResult result = new JsonResult();
     try {
@@ -514,6 +512,7 @@ public class EventControl {
     }
   }
 
+  
 }
 
 

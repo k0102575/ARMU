@@ -113,7 +113,7 @@ order by date desc
   <!-- 8.확정 이벤트 당일 -->
   <insert id="insertEventTodayNoti" parameterType="map">
     insert into noti(muno, eno, type, date, cont, whom, mtcno, isread) 
-    values(#{musicianNo}, #{eventNo}, 'evn_today', NOW(), '이벤트 만료', 'both', #{mtcno}, 'N')
+    values(#{musicianNo}, #{eventNo}, 'evn_today', NOW(), '이벤트 당일', 'both', #{mtcno}, 'N')
   </insert><!-- 공통 -->
   
   <!-- 9.뮤지션에게 이벤트 편집 -->
