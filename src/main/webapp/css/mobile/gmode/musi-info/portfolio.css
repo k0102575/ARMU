@@ -88,15 +88,15 @@
 }
 
 .spec-detail {
-  width: 100%;
-  display: none;
-  position: absolute;
-  top: -70%;
-  z-index: 15;
-  overflow: scroll;
-  min-height: 100vh;
-  background: transparent;
-  border-top: 1px solid black;
+width: 100%;
+    display: none;
+    position: fixed;
+    top: -3px;
+    z-index: 15;
+    overflow-y: auto;
+    background: transparent;
+    border-top: 1px solid black;
+    max-height: 100%;
 }
 
 #spec-backscreen {
@@ -144,6 +144,7 @@ height: 10%;
   float: left;
   width: 100%;
   min-height: 50vh;
+  margin-bottom: 500px;
 }
 
 #spec-date {

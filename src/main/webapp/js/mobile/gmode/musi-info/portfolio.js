@@ -58,19 +58,21 @@ function displayMusiInfoPortfolio() {
 
         $(".timeline-content").on('click', function(){
           var no = $(this).attr("data-no")
-          $(".spec-detail[data-no=" + no + "]").toggle('slide', {direction:'down'}, 400)
-          $(".spec-detail[data-no=" + no + "]").scrollTop(0)
+          $(".spec-detail[data-no=" + no + "]").toggle('slide', {direction:'down'}, 400, function () {
+            $(".spec-empty-container").css("display", "block")
+            $(".spec-detail[data-no=" + no + "]").scrollTop(0)
+          })
           $("#spec-backscreen").toggle('slide', {direction:'down'}, 400)
           $("#spec-deepscreen").toggle('slide', {direction:'down'}, 400)
-          $(".spec-empty-container").css("display", "block")
         })
 
         $(".spec-close").on('click', function() {
           var no = $(this).attr("data-no")
-          $(".spec-detail[data-no=" + no + "]").toggle('slide', {direction:'down'}, 400)
+          $(".spec-detail[data-no=" + no + "]").toggle('slide', {direction:'down'}, 400, function () {
+            $(".spec-empty-container").css("display", "none")
+          })
           $("#spec-backscreen").toggle('slide', {direction:'down'}, 400)
           $("#spec-deepscreen").toggle('slide', {direction:'down'}, 400)
-        $(".spec-empty-container").css("display", "none")
         })
 
 
