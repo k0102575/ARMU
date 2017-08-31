@@ -88,6 +88,7 @@
   left outer join musi mu on sp.muno = mu.muno
   left outer join memb m on mu.muno = m.mno
   where sp.muno = #{no}
+  order by sp.spno desc;
   </select> <!-- 승민 -->
   
   <select id="selectMusiIntroduce" resultMap="musicianInfoIntroduceMap" parameterType="int">
@@ -115,6 +116,7 @@ select mtc.rev, mtc.score, even.title as eventTitle, even.date as eventDate, m.n
  left outer join evn even on mtc.eno = even.eno
  left outer join memb m on even.mno = m.mno
  where mtc.muno = #{no} and mtc.score != 0
+ order by mtc.mtcno desc;
   </select> <!-- 승민 -->
   
   <select id="myMusiInfo" resultMap="musicianInfoMap" parameterType="map">
