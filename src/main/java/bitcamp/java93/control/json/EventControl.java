@@ -35,9 +35,6 @@ public class EventControl {
     event.setEventRegistMajor(setArrayList(eventRegistMajor));
     event.setEventRegistGenre(setArrayList(eventRegistGenre));
     event.setWriter(getLoginMember(session).getNo());
-    System.out.println(eventRegistTheme);
-    System.out.println(eventRegistMajor);
-    System.out.println(eventRegistGenre);
 
     eventService.add(event);
     return new JsonResult(JsonResult.SUCCESS, "ok");
