@@ -53,10 +53,11 @@
 
 .review-rating-grade {
   float: left;
-  width: 20%;
+  max-width: 9.2%;
   margin-left: 5%;
   margin-top: 0.5%;
   font-size: 4em;
+  overflow: hidden;
 }
 
 .review-rating-text {

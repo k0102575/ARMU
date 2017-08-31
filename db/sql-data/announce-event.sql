@@ -1,19 +1,20 @@
-insert into evn (active, title, mno, locno, pay, addr, date, cont, req)
-values ("Y", "결혼식 축가구해요", 71, 23, 200000, '비트캠프 웨딩홀', '2017-08-31',
-'결혼식 축가 구합니다', '신청곡은 10월의 어느 좋은날로 불러주세요');
+insert into appy (muno, eno, active) values (50, 28, 'Y');
 
-insert into mjr_evn (eno, mjrno) values (28, 1);
-
-insert into gnr_evn (eno, gnrno) values (28, 1);
-insert into gnr_evn (eno, gnrno) values (28, 2);
-
-insert into thm_evn (eno, thmno) values (28, 2);
-
-insert into appy (active, status, eno, muno) values ("Y", "Y", 28, 1);
-
-insert into mtc (muno, eno, mtcdt, score, rev) values (1, 28, '2017-08-31', null,
-null);
+insert into pr (muno, eno, active) values (43, 28, 'Y');
+insert into pr (muno, eno, active) values (60, 28, 'Y');
+insert into pr (muno, eno, active) values (68, 28, 'Y');
 
 
 
+-----------------------------------------------------------------------------
+
+
+update evn set date='2017-08-29' where eno=28;
+
+
+insert into noti (muno, eno, type, date, cont, isread, whom) 
+values (1, 28, 'evn_today', now(), '이벤트 당일', 'N', 'both');
+
+
+insert into spec (muno, spdt, dscp) values(1, '2017-08-29', '"결혼식 축가 구해요" 이벤트에 참여한 내용입니다.');
 
