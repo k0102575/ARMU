@@ -1,0 +1,72 @@
+@CHARSET "UTF-8";
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+	font-family: 'Noto Sans KR', sans-serif;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	position: relative;
+}
+
+a, a:before {
+	text-decoration: none;
+  color: black;
+}
+
+#container {
+	height: auto;
+	width: 100%;
+}
+
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select:focus,
+textarea {
+  font-size: 16px;
+}
+
+
+/* 스마트폰 (가로 및 세로) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width
+  : 480px) {
+}
+/*------- 스마트폰에서 아이폰 사이 ---------*/
+@media only screen and (min-device-width : 481px) and (max-device-width
+  : 767px) {
+}
+
+/* 아이패드 (가로 및 세로) -----------*/
+@media only screen and (min-device-width : 768px) and (max-device-width
+  : 1223px) {
+}
+
+/*------데탑!!!!!!!!----------
+/*----- 노트북/pc중간 스크린----
+@media only screen and (min-width : 1224px) and (max-device-width : 1823px) {
+body {
+color: aqua;
+}
+}
+/* 대형 스크린 -----------
+@media only screen and (min-width : 1824px) {
+body {
+color: orange;
+}
+}
+*/
