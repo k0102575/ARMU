@@ -53,7 +53,7 @@
 <img src="./README%20Image/architecture.png" width="600"><br><br>
 
 ### 사용기술 및 도구
-<img src="./README%20Image/Tech.png" width="275"><img src="./README%20Image/Tech2.png" width="275"><img src="./README%20Image/Tech3.png" width="275"><br><br>
+<img src="./README%20Image/Tech.png" width="275"><img src="./README%20Image/Tech2.png" width="275"><img src="./README%20Image/Tech4.png" width="275"><br><br>
 
 ### 테이블 구조
 <img src="./README%20Image/exerd.png"><br>
