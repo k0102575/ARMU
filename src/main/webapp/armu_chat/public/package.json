@@ -12,7 +12,7 @@
     "animsition": "^4.0.2",
     "handlebars": "^4.0.6",
     "handlebars-intl": "^1.1.2",
-    "jquery": "^1.12.4",
+    "jquery": "^3.5.0",
     "jquery-ui-dist": "^1.12.1",
     "moment": "^2.18.1",
     "sweetalert": "^1.1.3"
