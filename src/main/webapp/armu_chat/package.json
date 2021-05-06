@@ -13,7 +13,7 @@
     "consolidate": "^0.14.5",
     "express": "^4.15.2",
     "express-ws": "^3.0.0",
-    "handlebars": "^4.0.6",
+    "handlebars": "^4.7.7",
     "moment": "^2.18.1",
     "mysql": "^2.13.0"
   }
