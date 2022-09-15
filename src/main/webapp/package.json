@@ -11,7 +11,7 @@
   "dependencies": {
     "animsition": "^4.0.2",
     "blueimp-file-upload": "^9.18.0",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "crypto-js": "^3.1.9-1",
     "handlebars": "^4.0.10",
     "handlebars-intl": "^1.1.2",
