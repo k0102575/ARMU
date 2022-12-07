@@ -11,7 +11,7 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "consolidate": "^0.14.5",
-    "express": "^4.15.2",
+    "express": "^4.17.3",
     "express-ws": "^3.0.0",
     "handlebars": "^4.0.6",
     "moment": "^2.18.1",
